@@ -6,3 +6,4 @@ license = "Apache-2.0"
 description = "UI library based on yew"
 
 [dependencies]
+yew = { git = "https://github.com/yewstack/yew", branch = "master" }
