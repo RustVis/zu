@@ -5,6 +5,7 @@
 use strum_macros::Display;
 use yew::{classes, html, Children, Component, Context, Html, Properties};
 
+use crate::components::config_provider::config_context::default_get_prefix_class;
 use crate::components::config_provider::size_context::SizeType;
 use crate::util::classes_if;
 
@@ -69,8 +70,8 @@ pub struct ButtonProps {
     #[prop_or(ButtonLoading::Load(false))]
     loading: ButtonLoading,
 
-    #[prop_or_else(String::new)]
-    prefix_class: String,
+    #[prop_or_default]
+    prefix_class: Option<String>,
 
     #[prop_or_default]
     class_name: Option<String>,
@@ -109,7 +110,7 @@ impl Component for Button {
         let props = ctx.props();
         let type_ = props.type_.to_string();
         let html_type = props.html_type.to_string();
-        let prefix_class = &props.prefix_class;
+        let prefix_class = default_get_prefix_class("btn", &props.prefix_class);
         // TODO(Shaohua): Read direction from global context.
         let direction = "";
         let block = props.block;
@@ -120,22 +121,22 @@ impl Component for Button {
         let inner_loading = false;
 
         let class_names = classes!(
-            prefix_class,
+            &prefix_class,
             classes_if(vec![
-                (format!("{}-{}", prefix_class, &type_), !type_.is_empty()),
+                (format!("{}-{}", &prefix_class, &type_), !type_.is_empty()),
                 (
-                    format!("{}-{}", prefix_class, &shape),
+                    format!("{}-{}", &prefix_class, &shape),
                     shape != "default" && !shape.is_empty()
                 ),
                 (
-                    format!("{}-{}", prefix_class, &size_class),
+                    format!("{}-{}", &prefix_class, &size_class),
                     !size_class.is_empty(),
                 ),
                 //(format!("{}-icon-only", prefix_class), !children && children !== 0 && !!iconType,),
-                (format!("{}-loading", prefix_class), inner_loading,),
-                (format!("{}-block", prefix_class), block,),
-                (format!("{}-dangerous", prefix_class), danger,),
-                (format!("{}-rtl", prefix_class), direction == "rtl",),
+                (format!("{}-loading", &prefix_class), inner_loading,),
+                (format!("{}-block", &prefix_class), block,),
+                (format!("{}-dangerous", &prefix_class), danger,),
+                (format!("{}-rtl", &prefix_class), direction == "rtl",),
             ]),
             &props.class_name,
         );
