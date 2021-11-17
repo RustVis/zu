@@ -1,11 +1,7 @@
-[package]
-name = "rui"
-version = "0.1.0"
-edition = "2021"
-license = "Apache-2.0"
-description = "UI library based on yew"
+[workspace]
 
-[dependencies]
-log = "0.4.14"
-wasm-bindgen = "0.2.78"
-yew = { git = "https://github.com/yewstack/yew", branch = "master" }
+members = [
+	"rui",
+
+	"examples/button",
+]
