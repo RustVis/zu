@@ -65,7 +65,7 @@ pub struct BaseButtonProps {
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Msg {}
 
-struct Button {}
+pub struct Button {}
 
 impl Button {}
 
@@ -84,6 +84,7 @@ impl Component for Button {
             .iter()
             .map(|item| html! { item })
             .collect();
+        log::debug!("kids: {:?}", kids);
 
         //{ for ctx.props().children.iter() }
         html! {
