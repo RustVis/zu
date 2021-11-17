@@ -110,13 +110,12 @@ impl Component for Button {
         let props = ctx.props();
         let type_ = props.type_.to_string();
         let html_type = props.html_type.to_string();
-        let prefix_class = default_get_prefix_class("btn", &props.prefix_class);
+        let prefix_class = default_get_prefix_class("btn", props.prefix_class.as_deref());
         // TODO(Shaohua): Read direction from global context.
         let direction = "";
         let block = props.block;
         let danger = props.danger;
-        // TODO(Shaohua): Convert size_type to string
-        let size_class = "mid";
+        let size_class = props.size.to_class();
         let shape = "";
         let inner_loading = false;
 

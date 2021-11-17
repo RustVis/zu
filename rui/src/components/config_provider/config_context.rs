@@ -19,11 +19,7 @@ pub struct ConfigConsumer {
 
 pub trait ConfigContext {
     fn direction(&self) -> DirectionType;
-    fn get_prefix_class(
-        &self,
-        suffix_class: &str,
-        customize_prefix_class: &Option<String>,
-    ) -> String;
+    fn get_prefix_class(&self, suffix_class: &str, customize_prefix_class: Option<&str>) -> String;
 }
 
 impl ConfigContext for ConfigConsumer {
@@ -31,22 +27,18 @@ impl ConfigContext for ConfigConsumer {
         self.direction
     }
 
-    fn get_prefix_class(
-        &self,
-        suffix_class: &str,
-        customize_prefix_class: &Option<String>,
-    ) -> String {
+    fn get_prefix_class(&self, suffix_class: &str, customize_prefix_class: Option<&str>) -> String {
         default_get_prefix_class(suffix_class, customize_prefix_class)
     }
 }
 
 pub fn default_get_prefix_class(
     suffix_class: &str,
-    customize_prefix_class: &Option<String>,
+    customize_prefix_class: Option<&str>,
 ) -> String {
     if let Some(customize_prefix_class) = customize_prefix_class {
         if !customize_prefix_class.is_empty() {
-            return customize_prefix_class.clone();
+            return customize_prefix_class.to_string();
         }
     }
     if suffix_class.is_empty() {
