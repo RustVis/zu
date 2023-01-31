@@ -4,7 +4,7 @@
 
 use yew::prelude::*;
 
-use ruicon_ant::{
+use zuicon_ant::{
     home_outlined::HomeOutlined, loading_outlined::LoadingOutlined, setting_filled::SettingFilled,
     smile_outlined::SmileOutlined, sync_outlined::SyncOutlined,
 };

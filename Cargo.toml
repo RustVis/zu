@@ -2,7 +2,7 @@
 
 members = [
 	"crates/zu",
-  "crates/ruicon-ant",
+  "crates/zuicon-ant",
   "crates/zuicon-util",
 
   "examples/ant-icon",

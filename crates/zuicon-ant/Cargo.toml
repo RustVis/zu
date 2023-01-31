@@ -1,5 +1,5 @@
 [package]
-name = "ruicon-ant"
+name = "zuicon-ant"
 version = "0.1.0"
 edition = "2021"
 publish = false

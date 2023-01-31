@@ -5,6 +5,6 @@ edition = "2021"
 publish = false
 
 [dependencies]
-ruicon-ant = { path = "../../crates/ruicon-ant" }
+zuicon-ant = { path = "../../crates/zuicon-ant" }
 wasm-logger = "0.2.0"
 yew = { version="0.20.0", features=["csr"] }
