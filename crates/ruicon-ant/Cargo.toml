@@ -1,0 +1,11 @@
+[package]
+name = "ruicon-ant"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+yew = { version="0.20.0", features=["csr"] }
+
+[build-dependencies]
+inflections = "1.1.1"
+ruicon-util = { path = "../ruicon-util" }

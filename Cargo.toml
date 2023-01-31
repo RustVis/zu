@@ -2,6 +2,7 @@
 
 members = [
 	"crates/rui",
+  "crates/ruicon-ant",
   "crates/ruicon-util",
 
 	"examples/button",

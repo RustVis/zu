@@ -1,0 +1,59 @@
+use yew::prelude::{html, Component, Context, Html, Properties};
+
+pub struct InteractionOutlined {}
+
+#[derive(Properties, Debug, Clone, PartialEq)]
+pub struct Props {
+    #[prop_or_default]
+    pub class: Option<&'static str>,
+
+    #[prop_or_default]
+    pub width: Option<&'static str>,
+
+    #[prop_or_default]
+    pub height: Option<&'static str>,
+
+    #[prop_or_default]
+    pub color: Option<&'static str>,
+
+    #[prop_or_default]
+    pub fill: Option<&'static str>,
+
+    #[prop_or_default]
+    pub spin: bool,
+
+    #[prop_or_default]
+    pub rotate: i16,
+}
+
+impl Component for InteractionOutlined {
+    type Properties = Props;
+    type Message = ();
+
+    fn create(_ctx: &Context<Self>) -> Self {
+        Self {}
+    }
+
+    fn view(&self, ctx: &Context<Self>) -> Html {
+        let props = ctx.props();
+        // TODO(Shaohua): Do not generate style attribute if it is empty.
+        let mut style = String::new();
+        if props.rotate != 0 {
+            style += &format!("transform: rotate({}deg);", props.rotate);
+        }
+        html! {
+            <svg
+                class={ props.class.unwrap_or("") }
+                width={ props.width.unwrap_or("1em") }
+                height={ props.height.unwrap_or("1em") }
+                focusable={ "false" }
+                data-icon={ "interaction" }
+                viewBox={ "0 0 1024 1024" }
+                fill={ props.fill.unwrap_or("currentColor") }
+                style={ style }
+            >
+            <path d="M880 112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V144c0-17.7-14.3-32-32-32zm-40 728H184V184h656v656zM304.8 524h50.7c3.7 0 6.8-3 6.8-6.8v-78.9c0-19.7 15.9-35.6 35.5-35.6h205.7v53.4c0 5.7 6.5 8.8 10.9 5.3l109.1-85.7c3.5-2.7 3.5-8 0-10.7l-109.1-85.7c-4.4-3.5-10.9-.3-10.9 5.3V338H397.7c-55.1 0-99.7 44.8-99.7 100.1V517c0 4 3 7 6.8 7zm-4.2 134.9l109.1 85.7c4.4 3.5 10.9.3 10.9-5.3v-53.4h205.7c55.1 0 99.7-44.8 99.7-100.1v-78.9c0-3.7-3-6.8-6.8-6.8h-50.7c-3.7 0-6.8 3-6.8 6.8v78.9c0 19.7-15.9 35.6-35.5 35.6H420.6V568c0-5.7-6.5-8.8-10.9-5.3l-109.1 85.7c-3.5 2.5-3.5 7.8 0 10.5z"/>
+            </svg>
+        }
+    }
+}
