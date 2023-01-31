@@ -1,0 +1,61 @@
+// Auto Generated! DO NOT EDIT!
+
+use yew::prelude::{html, Component, Context, Html, Properties};
+
+pub struct GearWide {}
+
+#[derive(Properties, Debug, Clone, PartialEq, Eq)]
+pub struct Props {
+    #[prop_or_default]
+    pub class: Option<&'static str>,
+
+    #[prop_or_default]
+    pub width: Option<&'static str>,
+
+    #[prop_or_default]
+    pub height: Option<&'static str>,
+
+    #[prop_or_default]
+    pub color: Option<&'static str>,
+
+    #[prop_or_default]
+    pub fill: Option<&'static str>,
+
+    #[prop_or_default]
+    pub spin: bool,
+
+    #[prop_or_default]
+    pub rotate: i16,
+}
+
+impl Component for GearWide {
+    type Properties = Props;
+    type Message = ();
+
+    fn create(_ctx: &Context<Self>) -> Self {
+        Self {}
+    }
+
+    fn view(&self, ctx: &Context<Self>) -> Html {
+        let props = ctx.props();
+        // TODO(Shaohua): Do not generate style attribute if it is empty.
+        let mut style = String::new();
+        if props.rotate != 0 {
+            style += &format!("transform: rotate({}deg);", props.rotate);
+        }
+        html! {
+            <svg
+                class={ props.class.unwrap_or("") }
+                width={ props.width.unwrap_or("1em") }
+                height={ props.height.unwrap_or("1em") }
+                focusable={ "false" }
+                data-icon={ "gear-wide" }
+                viewBox={ "0 0 1024 1024" }
+                fill={ props.fill.unwrap_or("currentColor") }
+                style={ style }
+            >
+            <path d="M8.932.727c-.243-.97-1.62-.97-1.864 0l-.071.286a.96.96 0 0 1-1.622.434l-.205-.211c-.695-.719-1.888-.03-1.613.931l.08.284a.96.96 0 0 1-1.186 1.187l-.284-.081c-.96-.275-1.65.918-.931 1.613l.211.205a.96.96 0 0 1-.434 1.622l-.286.071c-.97.243-.97 1.62 0 1.864l.286.071a.96.96 0 0 1 .434 1.622l-.211.205c-.719.695-.03 1.888.931 1.613l.284-.08a.96.96 0 0 1 1.187 1.187l-.081.283c-.275.96.918 1.65 1.613.931l.205-.211a.96.96 0 0 1 1.622.434l.071.286c.243.97 1.62.97 1.864 0l.071-.286a.96.96 0 0 1 1.622-.434l.205.211c.695.719 1.888.03 1.613-.931l-.08-.284a.96.96 0 0 1 1.187-1.187l.283.081c.96.275 1.65-.918.931-1.613l-.211-.205a.96.96 0 0 1 .434-1.622l.286-.071c.97-.243.97-1.62 0-1.864l-.286-.071a.96.96 0 0 1-.434-1.622l.211-.205c.719-.695.03-1.888-.931-1.613l-.284.08a.96.96 0 0 1-1.187-1.186l.081-.284c.275-.96-.918-1.65-1.613-.931l-.205.211a.96.96 0 0 1-1.622-.434L8.932.727zM8 12.997a4.998 4.998 0 1 1 0-9.995 4.998 4.998 0 0 1 0 9.996z"/>
+            </svg>
+        }
+    }
+}
