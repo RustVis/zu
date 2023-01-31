@@ -4,6 +4,7 @@
 
 use yew::{classes, Classes};
 
+#[must_use]
 pub fn classes_if(list: Vec<(String, bool)>) -> Classes {
     classes!(list
         .into_iter()

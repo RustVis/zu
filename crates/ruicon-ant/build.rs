@@ -39,7 +39,7 @@ fn build_icons(folder: &str, module_names: &mut Vec<String>) -> Result<(), io::E
             continue;
         }
         if path.extension() != Some(svg_extension) {
-            println!("Ignore non svg file {:?}", path);
+            println!("Ignore non svg file {path:?}");
             continue;
         }
 
@@ -57,7 +57,7 @@ fn build_icons(folder: &str, module_names: &mut Vec<String>) -> Result<(), io::E
         let markup = get_svg_inner(&svg_content).unwrap();
         let rs_content = template
             .replace("NODE_NAME", &node_name)
-            .replace("DATA_NAME", &data_name)
+            .replace("DATA_NAME", data_name)
             .replace("MARKUP", markup);
 
         fs::write(rs_filepath, rs_content).unwrap();
@@ -79,7 +79,7 @@ fn rebuild_icons() {
     module_names.sort();
     for module_name in &module_names {
         buf_fd
-            .write_all(format!("pub mod {};\n", module_name).as_bytes())
+            .write_all(format!("pub mod {module_name};\n").as_bytes())
             .unwrap();
     }
 }

@@ -12,10 +12,11 @@ pub enum SizeType {
 
 impl SizeType {
     /// Convert to class suffix.
-    pub fn to_class(&self) -> &'static str {
+    #[must_use]
+    pub const fn to_class(&self) -> &'static str {
         match self {
             Self::Small => "sm",
-            Self::Middle => "mid",
+            Self::Middle => "md",
             Self::Large => "lg",
         }
     }

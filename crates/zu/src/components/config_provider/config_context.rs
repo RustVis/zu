@@ -32,6 +32,7 @@ impl ConfigContext for ConfigConsumer {
     }
 }
 
+#[must_use]
 pub fn default_get_prefix_class(
     suffix_class: &str,
     customize_prefix_class: Option<&str>,
@@ -44,5 +45,5 @@ pub fn default_get_prefix_class(
     if suffix_class.is_empty() {
         return "ant".to_string();
     }
-    format!("ant-{}", suffix_class)
+    format!("ant-{suffix_class}")
 }
