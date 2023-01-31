@@ -10,9 +10,9 @@
     clippy::pedantic
 )]
 
-pub const UPDATE_KEY: &str = "RUICON_UPDATE";
+pub const UPDATE_KEY: &str = "ZUICON_UPDATE";
 
-/// Get inner html of an svg file, withoug <svg> root tag.
+/// Get inner html of an svg file, withoug `<svg>` root tag.
 #[must_use]
 pub fn get_svg_inner(s: &str) -> Option<&str> {
     let Some(start_index) = s.find("<svg") else {
@@ -35,9 +35,9 @@ pub fn get_svg_inner(s: &str) -> Option<&str> {
     Some(s[start_index_end..end_index].trim())
 }
 
-/// Check whether RUICON module shall be refreshed.
+/// Check whether ZUICON modules shall be refreshed.
 ///
-/// Current `RUICON_UPDATE=1` environment is used.
+/// Current `ZUICON_UPDATE=1` environment is used.
 #[must_use]
 pub fn need_update() -> bool {
     std::env::var_os(UPDATE_KEY).map_or(false, |val| !val.is_empty())

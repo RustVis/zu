@@ -8,7 +8,7 @@ use std::fs::{self, File};
 use std::io::{self, BufWriter, Write};
 use std::path::PathBuf;
 
-use ruicon_util::{get_svg_inner, need_update};
+use zuicon_util::{get_svg_inner, need_update};
 
 const SVG_DIR: &str = "third_party/ant-design-icons/packages/icons-svg/svg";
 const LIB_HEADER: &str = r###"// Auto Generated! DO NOT EDIT!

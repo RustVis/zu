@@ -3,7 +3,7 @@
 members = [
 	"crates/zu",
   "crates/ruicon-ant",
-  "crates/ruicon-util",
+  "crates/zuicon-util",
 
   "examples/ant-icon",
 	"examples/button",
