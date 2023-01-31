@@ -1,11 +1,11 @@
 [package]
-name = "rui"
+name = "zu"
 version = "0.1.0"
 authors = ["Xu Shaohua <shaohua@biofan.org"]
 readme = "README.md"
-homepage = "https://github.com/RustVis/rui/crates/rui"
-repository = "https://github.com/RustVis/rui"
-documentation = "https://docs.rs/rui"
+homepage = "https://github.com/RustVis/zu/crates/zu"
+repository = "https://github.com/RustVis/zu"
+documentation = "https://docs.rs/zu"
 description = "Web App UI library based on yew"
 keywords = ["web", "webasm", "javascript"]
 categories = ["gui", "wasm", "web-programming"]

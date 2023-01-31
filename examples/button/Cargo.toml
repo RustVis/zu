@@ -4,6 +4,6 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-rui = { path = "../../crates/rui" }
+zu = { path = "../../crates/zu" }
 wasm-logger = "0.2.0"
 yew = { version = "0.20.0", features=["csr"] }

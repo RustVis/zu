@@ -4,7 +4,7 @@
 
 use yew::prelude::*;
 
-use rui::components::button::Button;
+use zu::components::button::Button;
 
 struct App;
 

@@ -1,7 +1,7 @@
 [workspace]
 
 members = [
-	"crates/rui",
+	"crates/zu",
   "crates/ruicon-ant",
   "crates/ruicon-util",
 
