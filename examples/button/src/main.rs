@@ -2,7 +2,7 @@
 // Use of this source is governed by General Public License that can be found
 // in the LICENSE file.
 
-use yew::{html, Component, Context, Html};
+use yew::prelude::*;
 
 use rui::components::button::Button;
 
@@ -25,5 +25,5 @@ impl Component for App {
 
 fn main() {
     wasm_logger::init(wasm_logger::Config::default());
-    yew::start_app::<App>();
+    yew::Renderer::<App>::new().render();
 }

@@ -6,4 +6,4 @@ edition = "2021"
 [dependencies]
 rui = { path = "../../rui" }
 wasm-logger = "0.2.0"
-yew = { git = "https://github.com/yewstack/yew", branch = "master" }
+yew = { version = "0.20.0", features=["csr"] }

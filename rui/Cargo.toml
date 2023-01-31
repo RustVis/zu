@@ -6,10 +6,10 @@ license = "Apache-2.0"
 description = "UI library based on yew"
 
 [dependencies]
-log = "0.4.14"
-serde = "1.0.130"
-serde_derive = "1.0.130"
-strum = "0.22.0"
-strum_macros = "0.22.0"
-wasm-bindgen = "0.2.78"
-yew = { git = "https://github.com/yewstack/yew", branch = "master" }
+log = "0.4.17"
+serde = "1.0.152"
+serde_derive = "1.0.152"
+strum = "0.24.1"
+strum_macros = "0.24.3"
+wasm-bindgen = "0.2.83"
+yew = { version="0.20.0", features=["csr"] }
