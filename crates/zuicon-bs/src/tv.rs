@@ -45,12 +45,13 @@ impl Component for Tv {
         }
         html! {
             <svg
+                xmlns={ "http://www.w3.org/2000/svg" }
                 class={ props.class.unwrap_or("") }
-                width={ props.width.unwrap_or("1em") }
-                height={ props.height.unwrap_or("1em") }
+                width={ props.width.unwrap_or("16") }
+                height={ props.height.unwrap_or("16") }
                 focusable={ "false" }
                 data-icon={ "tv" }
-                viewBox={ "0 0 1024 1024" }
+                viewBox={ "0 0 16 16" }
                 fill={ props.fill.unwrap_or("currentColor") }
                 style={ style }
             >
