@@ -37,7 +37,7 @@ pub fn get_svg_inner(s: &str) -> Option<&str> {
 
 /// Check whether RUICON module shall be refreshed.
 ///
-/// Current `RUICON_REFRESH=1` environment is used.
+/// Current `RUICON_UPDATE=1` environment is used.
 #[must_use]
 pub fn need_update() -> bool {
     std::env::var_os(UPDATE_KEY).map_or(false, |val| !val.is_empty())

@@ -11,7 +11,17 @@ use std::path::PathBuf;
 use ruicon_util::{get_svg_inner, need_update};
 
 const SVG_DIR: &str = "third_party/ant-design-icons/packages/icons-svg/svg";
-const LIB_HEADER: &str = "// Auto Generated! DO NOT EDIT!\n\n";
+const LIB_HEADER: &str = r###"// Auto Generated! DO NOT EDIT!
+
+#![deny(
+    warnings,
+    clippy::all,
+    clippy::cargo,
+    clippy::nursery,
+    clippy::pedantic
+)]
+
+"###;
 
 fn build_icons(folder: &str, module_names: &mut Vec<String>) -> Result<(), io::Error> {
     let mut dir = PathBuf::new();

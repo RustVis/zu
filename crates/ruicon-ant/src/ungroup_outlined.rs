@@ -1,8 +1,10 @@
+// Auto Generated! DO NOT EDIT!
+
 use yew::prelude::{html, Component, Context, Html, Properties};
 
 pub struct UngroupOutlined {}
 
-#[derive(Properties, Debug, Clone, PartialEq)]
+#[derive(Properties, Debug, Clone, PartialEq, Eq)]
 pub struct Props {
     #[prop_or_default]
     pub class: Option<&'static str>,
