@@ -4,7 +4,7 @@
 
 use yew::prelude::*;
 
-use zuicon_bs::{app::App, icon_123::Icon123, wifi::Wifi, x::X};
+use zuicon_bs::{icon_123::Icon123, wifi::Wifi, x::X, youtube::Youtube};
 
 struct MainApp;
 
@@ -19,7 +19,7 @@ impl Component for MainApp {
     fn view(&self, _ctx: &Context<Self>) -> Html {
         html! {
           <div className="icons-list" style="font-size: 34px;">
-            <App />
+            <Youtube />
             <Icon123 />
             <X spin={true} />
             <Wifi rotate={180} />
