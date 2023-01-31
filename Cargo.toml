@@ -5,5 +5,6 @@ members = [
   "crates/ruicon-ant",
   "crates/ruicon-util",
 
+  "examples/ant-icon",
 	"examples/button",
 ]
