@@ -1,13 +1,23 @@
 [package]
 name = "zuicon-ant"
 version = "0.1.0"
-edition = "2021"
-publish = false
+authors = ["Xu Shaohua <shaohua@biofan.org>"]
+readme = "README.md"
+homepage = "https://github.com/RustVis/zu"
+repository = "https://github.com/RustVis/zu"
+documentation = "https://docs.rs/zu"
+description = "Wrapper of ant design icons for yew framework"
+keywords = ["web", "webasm", "javascript"]
+categories = ["gui", "wasm", "web-programming"]
+
 build = "build.rs"
+edition = "2021"
+license = "Apache-2.0"
+publish = true
 
 [dependencies]
 yew = { version="0.20.0", features=["csr"] }
 
 [build-dependencies]
 inflections = "1.1.1"
-zuicon-util = { path = "../zuicon-util" }
+zuicon-util = { path = "../zuicon-util", version="0.1.0" }
