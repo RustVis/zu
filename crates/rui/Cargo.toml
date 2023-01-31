@@ -1,9 +1,17 @@
 [package]
 name = "rui"
 version = "0.1.0"
+authors = ["Xu Shaohua <shaohua@biofan.org"]
+readme = "README.md"
+homepage = "https://github.com/RustVis/rui/crates/rui"
+repository = "https://github.com/RustVis/rui"
+documentation = "https://docs.rs/rui"
+description = "Web App UI library based on yew"
+keywords = ["web", "webasm", "javascript"]
+categories = ["gui", "wasm", "web-programming"]
 edition = "2021"
 license = "Apache-2.0"
-description = "UI library based on yew"
+publish = true
 
 [dependencies]
 log = "0.4.17"
