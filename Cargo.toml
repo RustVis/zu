@@ -1,12 +1,12 @@
 [workspace]
 
 members = [
-	"crates/zu",
-  "crates/zuicon-ant",
-  "crates/zuicon-bs",
-  "crates/zuicon-util",
-
-  "examples/ant-icon",
-  "examples/bs-icon",
-	"examples/button",
+	"crates/*",
 ]
+
+exclude = [
+  "examples/*",
+  "tools/*",
+]
+
+resolver = "2"
