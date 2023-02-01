@@ -1,5 +1,5 @@
 
-# Rui
+# Zu
 
 ![Build status](https://github.com/RustVis/zu/actions/workflows/rust.yml/badge.svg)
 [![Latest version](https://img.shields.io/crates/v/zu.svg)](https://crates.io/crates/zu)
