@@ -5,8 +5,8 @@ members = [
 ]
 
 exclude = [
-  "examples/*",
-  "tools/*",
+  "examples",
+  "tools",
 ]
 
 resolver = "2"

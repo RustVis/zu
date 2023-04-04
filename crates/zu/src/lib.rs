@@ -9,7 +9,8 @@
     clippy::nursery,
     clippy::pedantic
 )]
-#![allow(clippy::module_name_repetitions)]
+// TODO(Shaohua): Update syn to 2.0
+#![allow(clippy::module_name_repetitions, clippy::multiple_crate_versions)]
 
 pub mod components;
 pub mod util;
