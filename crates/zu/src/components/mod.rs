@@ -3,4 +3,3 @@
 // in the LICENSE file.
 
 pub mod button;
-pub mod config_provider;

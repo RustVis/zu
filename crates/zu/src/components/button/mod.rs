@@ -5,8 +5,8 @@
 use strum_macros::Display;
 use yew::{classes, html, Children, Component, Context, Html, Properties};
 
-use crate::components::config_provider::config_context::default_get_prefix_class;
-use crate::components::config_provider::size_context::SizeType;
+use crate::config_provider::config_context::default_get_prefix_class;
+use crate::config_provider::size_context::SizeType;
 use crate::util::classes_if;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Display)]

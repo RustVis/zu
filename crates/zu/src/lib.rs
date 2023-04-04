@@ -14,3 +14,4 @@
 
 pub mod components;
 pub mod util;
+pub mod config_provider;
