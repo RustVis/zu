@@ -1,0 +1,17 @@
+[package]
+name = "pan-core"
+version = "0.1.0"
+authors = ["Xu Shaohua <shaohua@biofan.org"]
+readme = "README.md"
+homepage = "https://github.com/RustVis/pan"
+repository = "https://github.com/RustVis/pan"
+documentation = "https://docs.rs/pan-core"
+description = "A toolkit to create floating elements"
+keywords = ["popover", "position", "tooltip", "dropdown", "wasm"]
+categories = ["gui", "wasm", "web-programming"]
+edition = "2021"
+license = "Apache-2.0"
+publish = true
+
+[dependencies]
+log = "0.4.17"

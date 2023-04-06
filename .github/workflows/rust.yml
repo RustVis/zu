@@ -37,3 +37,4 @@ jobs:
     - run: cargo clippy
     - run: cargo build --verbose
     - run: cargo doc --verbose
+    - run: cargo test --verbose
