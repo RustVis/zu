@@ -108,6 +108,25 @@ impl Placement {
         }
     }
 
+    /// Convert placment to main axis.
+    #[must_use]
+    pub const fn main_axis(self) -> Axis {
+        match self {
+            Self::TopStart
+            | Self::Top
+            | Self::TopEnd
+            | Self::BottomStart
+            | Self::Bottom
+            | Self::BottomEnd => Axis::X,
+            Self::RightStart
+            | Self::Right
+            | Self::RightEnd
+            | Self::LeftStart
+            | Self::Left
+            | Self::LeftEnd => Axis::Y,
+        }
+    }
+
     /// Get opposite placement.
     #[must_use]
     pub const fn opposite(self) -> Self {
@@ -134,6 +153,12 @@ impl Placement {
 impl From<Placement> for Side {
     fn from(placement: Placement) -> Self {
         placement.side()
+    }
+}
+
+impl From<Placement> for Axis {
+    fn from(placement: Placement) -> Self {
+        placement.main_axis()
     }
 }
 
