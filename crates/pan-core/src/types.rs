@@ -56,6 +56,20 @@ impl AlignedPlacement {
     #[must_use]
     pub const fn opposite(self) -> Self {
         match self {
+            Self::TopStart => Self::BottomStart,
+            Self::TopEnd => Self::BottomEnd,
+            Self::RightStart => Self::LeftStart,
+            Self::RightEnd => Self::LeftEnd,
+            Self::BottomStart => Self::TopStart,
+            Self::BottomEnd => Self::TopEnd,
+            Self::LeftStart => Self::RightStart,
+            Self::LeftEnd => Self::RightEnd,
+        }
+    }
+
+    #[must_use]
+    pub const fn opposite_alignment(self) -> Self {
+        match self {
             Self::TopStart => Self::TopEnd,
             Self::TopEnd => Self::TopStart,
             Self::RightStart => Self::RightEnd,
@@ -147,6 +161,38 @@ impl Placement {
             Self::Left => Self::Right,
             Self::LeftEnd => Self::RightEnd,
         }
+    }
+
+    /// Get opposite alignment placement.
+    #[must_use]
+    pub const fn opposite_alignment(self) -> Self {
+        match self {
+            Self::TopStart => Self::TopEnd,
+            Self::Top => Self::Top,
+            Self::TopEnd => Self::TopStart,
+
+            Self::RightStart => Self::RightEnd,
+            Self::Right => Self::Right,
+            Self::RightEnd => Self::RightStart,
+
+            Self::BottomStart => Self::BottomEnd,
+            Self::Bottom => Self::Bottom,
+            Self::BottomEnd => Self::BottomStart,
+
+            Self::LeftStart => Self::LeftEnd,
+            Self::Left => Self::Left,
+            Self::LeftEnd => Self::LeftStart,
+        }
+    }
+
+    #[must_use]
+    pub const fn expand(self) -> [Self; 3] {
+        let opposite_placement = self.opposite();
+        [
+            self.opposite_alignment(),
+            opposite_placement,
+            opposite_placement.opposite_alignment(),
+        ]
     }
 }
 
