@@ -52,6 +52,22 @@ impl From<AlignedPlacement> for Alignment {
     }
 }
 
+impl AlignedPlacement {
+    #[must_use]
+    pub const fn opposite(self) -> Self {
+        match self {
+            Self::TopStart => Self::TopEnd,
+            Self::TopEnd => Self::TopStart,
+            Self::RightStart => Self::RightEnd,
+            Self::RightEnd => Self::RightStart,
+            Self::BottomStart => Self::BottomEnd,
+            Self::BottomEnd => Self::BottomStart,
+            Self::LeftStart => Self::LeftEnd,
+            Self::LeftEnd => Self::LeftStart,
+        }
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Placement {
     // Top
