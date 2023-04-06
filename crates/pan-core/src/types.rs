@@ -37,18 +37,21 @@ pub enum AlignedPlacement {
     LeftEnd,
 }
 
-impl From<AlignedPlacement> for Alignment {
-    fn from(val: AlignedPlacement) -> Self {
-        match val {
-            AlignedPlacement::TopStart
-            | AlignedPlacement::RightStart
-            | AlignedPlacement::BottomStart
-            | AlignedPlacement::LeftStart => Self::Start,
-            AlignedPlacement::TopEnd
-            | AlignedPlacement::RightEnd
-            | AlignedPlacement::BottomEnd
-            | AlignedPlacement::LeftEnd => Self::End,
+impl AlignedPlacement {
+    #[must_use]
+    pub const fn alignment(self) -> Alignment {
+        match self {
+            Self::TopStart | Self::RightStart | Self::BottomStart | Self::LeftStart => {
+                Alignment::Start
+            }
+            Self::TopEnd | Self::RightEnd | Self::BottomEnd | Self::LeftEnd => Alignment::End,
         }
+    }
+}
+
+impl From<AlignedPlacement> for Alignment {
+    fn from(align_placement: AlignedPlacement) -> Self {
+        align_placement.alignment()
     }
 }
 
@@ -112,6 +115,17 @@ impl Default for Placement {
 }
 
 impl Placement {
+    #[must_use]
+    pub const fn alignment(self) -> Option<Alignment> {
+        match self {
+            Self::TopStart | Self::RightStart | Self::BottomStart | Self::LeftStart => {
+                Some(Alignment::Start)
+            }
+            Self::TopEnd | Self::BottomEnd | Self::RightEnd | Self::LeftEnd => Some(Alignment::End),
+            _ => None,
+        }
+    }
+
     #[must_use]
     pub const fn side(self) -> Side {
         match self {
@@ -194,6 +208,99 @@ impl Placement {
             opposite_placement.opposite_alignment(),
         ]
     }
+
+    const fn side_list(side: Side, is_start: bool, rtl: bool) -> [Side; 2] {
+        match side {
+            Side::Top | Side::Bottom => {
+                let is_start = if rtl { !is_start } else { is_start };
+                if is_start {
+                    [Side::Left, Side::Right]
+                } else {
+                    [Side::Right, Side::Left]
+                }
+            }
+            Side::Left | Side::Right => {
+                if is_start {
+                    [Side::Top, Side::Bottom]
+                } else {
+                    [Side::Bottom, Side::Top]
+                }
+            }
+        }
+    }
+
+    const fn merge(side: Side, alignment: Alignment) -> Self {
+        match (side, alignment) {
+            (Side::Top, Alignment::Start) => Self::TopStart,
+            (Side::Top, Alignment::End) => Self::TopEnd,
+            (Side::Right, Alignment::Start) => Self::RightStart,
+            (Side::Right, Alignment::End) => Self::RightEnd,
+            (Side::Bottom, Alignment::Start) => Self::BottomStart,
+            (Side::Bottom, Alignment::End) => Self::BottomEnd,
+            (Side::Left, Alignment::Start) => Self::LeftStart,
+            (Side::Left, Alignment::End) => Self::LeftEnd,
+        }
+    }
+
+    #[must_use]
+    pub fn opposite_axis(
+        self,
+        flip_alignment: bool,
+        direction: Option<Alignment>,
+        rtl: bool,
+    ) -> Vec<Self> {
+        let side = self.side();
+        let is_start: bool = direction.map_or(false, |val| val == Alignment::Start);
+        let list = Self::side_list(side, is_start, rtl);
+
+        self.alignment().map_or_else(
+            || list.into_iter().map(Into::into).collect(),
+            |alignment| {
+                let mut list: Vec<_> = list
+                    .into_iter()
+                    .map(|side| Self::merge(side, alignment))
+                    .collect();
+                if flip_alignment {
+                    let mut list2: Vec<_> = list
+                        .iter()
+                        .map(|place| place.opposite_alignment())
+                        .collect();
+                    list.append(&mut list2);
+                }
+
+                list
+            },
+        )
+    }
+}
+
+impl From<Side> for Placement {
+    fn from(side: Side) -> Self {
+        match side {
+            Side::Top => Self::Top,
+            Side::Right => Self::Right,
+            Side::Bottom => Self::Bottom,
+            Side::Left => Self::Left,
+        }
+    }
+}
+
+impl From<AlignedPlacement> for Placement {
+    fn from(align_placement: AlignedPlacement) -> Self {
+        match align_placement {
+            AlignedPlacement::TopStart => Self::TopStart,
+            AlignedPlacement::TopEnd => Self::TopEnd,
+
+            AlignedPlacement::RightStart => Self::RightStart,
+            AlignedPlacement::RightEnd => Self::RightEnd,
+
+            AlignedPlacement::BottomStart => Self::BottomStart,
+            AlignedPlacement::BottomEnd => Self::BottomEnd,
+
+            AlignedPlacement::LeftStart => Self::LeftStart,
+            AlignedPlacement::LeftEnd => Self::LeftEnd,
+        }
+    }
 }
 
 impl From<Placement> for Side {
@@ -205,6 +312,12 @@ impl From<Placement> for Side {
 impl From<Placement> for Axis {
     fn from(placement: Placement) -> Self {
         placement.main_axis()
+    }
+}
+
+impl From<Placement> for Option<Alignment> {
+    fn from(placement: Placement) -> Self {
+        placement.alignment()
     }
 }
 
