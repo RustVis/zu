@@ -105,7 +105,52 @@ pub struct SideObject {
 }
 
 #[derive(Debug, Default, Clone, PartialEq)]
+pub struct PartialCoords {
+    pub x: Option<f64>,
+    pub y: Option<f64>,
+}
+
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct ArrowMiddlewareData {
+    pub coords: PartialCoords,
+    pub center_offset: f64,
+}
+
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct Overflow {
+    pub placement: Placement,
+    pub overflows: Vec<f64>,
+}
+
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct AutoPlacementMiddlewareData {
+    pub index: Option<usize>,
+    pub overflows: Vec<Overflow>,
+}
+
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct FlipMiddlewareData {
+    pub index: Option<usize>,
+    pub overflows: Vec<Overflow>,
+}
+
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct HideMiddlewareData {
+    pub reference_hidden: bool,
+    pub escaped: bool,
+    pub reference_hidden_offset: SideObject,
+    pub escaped_offsets: SideObject,
+}
+
+#[derive(Debug, Default, Clone, PartialEq)]
 pub struct MiddlewareData {
+    pub name: String,
+
+    pub arrow: Option<ArrowMiddlewareData>,
+    pub auto_placement: Option<AutoPlacementMiddlewareData>,
+    pub flip: Option<FlipMiddlewareData>,
+    pub hide: Option<HideMiddlewareData>,
+
     pub offset: Option<Coords>,
     pub shift: Option<Coords>,
 }
