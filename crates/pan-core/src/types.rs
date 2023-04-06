@@ -22,6 +22,18 @@ pub enum Side {
     Left,
 }
 
+impl Side {
+    #[must_use]
+    pub const fn opposite(self) -> Self {
+        match self {
+            Self::Top => Self::Bottom,
+            Self::Right => Self::Left,
+            Self::Bottom => Self::Top,
+            Self::Left => Self::Right,
+        }
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum AlignedPlacement {
     TopStart,
@@ -244,7 +256,7 @@ impl Placement {
 
     #[must_use]
     pub fn opposite_axis(
-        self,
+        &self,
         flip_alignment: bool,
         direction: Option<Alignment>,
         rtl: bool,
@@ -271,6 +283,44 @@ impl Placement {
                 list
             },
         )
+    }
+
+    /// Returns main side and cross side.
+    #[must_use]
+    pub fn alignment_sides(self, rects: &ElementRects, rtl: bool) -> [Side; 2] {
+        let alignment = self.alignment();
+        let main_axis: Axis = self.main_axis();
+        let length: Length = main_axis.into();
+
+        let mut main_alignment_side: Side = match main_axis {
+            Axis::X => {
+                let alignment_start = if rtl {
+                    Alignment::End
+                } else {
+                    Alignment::Start
+                };
+
+                if alignment == Some(alignment_start) {
+                    Side::Right
+                } else {
+                    Side::Left
+                }
+            }
+            Axis::Y => {
+                if alignment == Some(Alignment::Start) {
+                    Side::Bottom
+                } else {
+                    Side::Top
+                }
+            }
+        };
+
+        if rects.reference.length(length) > rects.floating.length(length) {
+            main_alignment_side = main_alignment_side.opposite();
+        }
+
+        let cross_side = main_alignment_side.opposite();
+        [main_alignment_side, cross_side]
     }
 }
 
@@ -487,6 +537,16 @@ pub struct Rect {
     pub y: f64,
     pub width: f64,
     pub height: f64,
+}
+
+impl Rect {
+    #[must_use]
+    pub const fn length(&self, length: Length) -> f64 {
+        match length {
+            Length::Width => self.width,
+            Length::Height => self.height,
+        }
+    }
 }
 
 #[derive(Debug, Default, Clone, PartialEq)]
