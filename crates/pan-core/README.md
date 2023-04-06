@@ -1,5 +1,5 @@
 
-# Pan
+# pan-core
 
 ![Build status](https://github.com/RustVis/pan-core/actions/workflows/rust.yml/badge.svg)
 [![Latest version](https://img.shields.io/crates/v/pan-core.svg)](https://crates.io/crates/pan-core)
