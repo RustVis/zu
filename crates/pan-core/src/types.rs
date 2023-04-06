@@ -221,6 +221,19 @@ pub struct SideObject {
     pub left: f64,
 }
 
+impl SideObject {
+    #[inline]
+    #[must_use]
+    pub const fn new(num: f64) -> Self {
+        Self {
+            top: num,
+            right: num,
+            bottom: num,
+            left: num,
+        }
+    }
+}
+
 #[derive(Debug, Default, Clone, PartialEq)]
 pub struct PartialCoords {
     pub x: Option<f64>,
@@ -400,6 +413,15 @@ impl From<PartialSideObject> for SideObject {
 pub enum Padding {
     Number(f64),
     Side(PartialSideObject),
+}
+
+impl From<Padding> for SideObject {
+    fn from(padding: Padding) -> Self {
+        match padding {
+            Padding::Number(num) => Self::new(num),
+            Padding::Side(side) => side.into(),
+        }
+    }
 }
 
 #[derive(Debug, Clone, PartialEq)]
