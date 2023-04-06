@@ -2,6 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+/// Impl Platform trait to support new platform environment.
 pub trait Platform: Sized {
     fn dimensions(&self) -> i32;
 

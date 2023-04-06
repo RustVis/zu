@@ -71,3 +71,47 @@ pub enum Length {
     Width,
     Height,
 }
+
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct Coords {
+    pub x: f64,
+    pub y: f64,
+}
+
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct SideObject {
+    pub top: f64,
+    pub right: f64,
+    pub bottom: f64,
+    pub left: f64,
+}
+
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct Dimensions {
+    pub width: f64,
+    pub height: f64,
+}
+
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct Rect {
+    pub x: f64,
+    pub y: f64,
+}
+
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct ElementRects {
+    pub reference: Rect,
+    pub floating: Rect,
+}
+
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct ClientRectObject {
+    pub rect: Rect,
+    pub side: SideObject,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum ElementContext {
+    Reference,
+    Floating,
+}

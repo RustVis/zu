@@ -11,5 +11,5 @@
 )]
 #![allow(clippy::module_name_repetitions)]
 
-pub mod enums;
-pub mod platform;
+pub mod traits;
+pub mod types;
