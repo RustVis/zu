@@ -37,12 +37,6 @@ pub enum AlignedPlacement {
     LeftEnd,
 }
 
-impl Default for Placement {
-    fn default() -> Self {
-        Self::TopStart
-    }
-}
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Placement {
     // Top
@@ -64,6 +58,24 @@ pub enum Placement {
     LeftStart,
     Left,
     LeftEnd,
+}
+
+impl Default for Placement {
+    fn default() -> Self {
+        Self::TopStart
+    }
+}
+
+impl Placement {
+    #[must_use]
+    pub const fn side(self) -> Side {
+        match self {
+            Self::TopStart | Self::Top | Self::TopEnd => Side::Top,
+            Self::RightStart | Self::Right | Self::RightEnd => Side::Right,
+            Self::BottomStart | Self::Bottom | Self::BottomEnd => Side::Bottom,
+            Self::LeftStart | Self::Left | Self::LeftEnd => Side::Left,
+        }
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -196,6 +208,8 @@ pub struct Dimensions {
 pub struct Rect {
     pub x: f64,
     pub y: f64,
+    pub width: f64,
+    pub height: f64,
 }
 
 #[derive(Debug, Default, Clone, PartialEq)]
@@ -244,6 +258,18 @@ impl fmt::Debug for MiddlewareState {
 pub struct ClientRectObject {
     pub rect: Rect,
     pub side: SideObject,
+}
+
+impl From<Rect> for ClientRectObject {
+    fn from(rect: Rect) -> Self {
+        let side = SideObject {
+            left: rect.x,
+            top: rect.y,
+            right: rect.x + rect.width,
+            bottom: rect.y + rect.height,
+        };
+        Self { rect, side }
+    }
 }
 
 #[derive(Debug, Default, Clone, PartialEq)]
