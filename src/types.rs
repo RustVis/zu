@@ -2,6 +2,12 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+use std::collections::BTreeMap;
+use std::fmt;
+use std::rc::Rc;
+
+use crate::traits::{Middleware, Platform};
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Alignment {
     Start,
@@ -29,6 +35,12 @@ pub enum AlignedPlacement {
 
     LeftStart,
     LeftEnd,
+}
+
+impl Default for Placement {
+    fn default() -> Self {
+        Self::TopStart
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -60,6 +72,12 @@ pub enum Strategy {
     Fixed,
 }
 
+impl Default for Strategy {
+    fn default() -> Self {
+        Self::Absolute
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Axis {
     X,
@@ -87,6 +105,43 @@ pub struct SideObject {
 }
 
 #[derive(Debug, Default, Clone, PartialEq)]
+pub struct MiddlewareData {
+    pub offset: Option<Coords>,
+    pub shift: Option<Coords>,
+}
+
+#[derive(Clone)]
+pub struct ComputePositionConfig {
+    pub platform: Rc<dyn Platform>,
+    pub placement: Option<Placement>,
+    pub strategy: Option<Strategy>,
+    pub middleware: Vec<Rc<dyn Middleware>>,
+}
+
+impl fmt::Debug for ComputePositionConfig {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.debug_struct("ComputePositionConfig")
+            .field("placement", &self.placement)
+            .field("strategy", &self.strategy)
+            .finish()
+    }
+}
+
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct ComputePositionReturn {
+    pub coords: Coords,
+    pub placement: Placement,
+    pub strategy: Strategy,
+    pub middleware_data: MiddlewareData,
+}
+
+#[derive(Debug, Default, Clone, PartialEq, Eq)]
+pub struct MiddlewareReturn {
+    pub data: BTreeMap<String, String>,
+    pub reset: bool,
+}
+
+#[derive(Debug, Default, Clone, PartialEq)]
 pub struct Dimensions {
     pub width: f64,
     pub height: f64,
@@ -104,10 +159,67 @@ pub struct ElementRects {
     pub floating: Rect,
 }
 
+// TODO(Shaohua):
+pub type ReferenceElement = String;
+pub type FloatingElement = String;
+
+#[derive(Debug, Default, Clone, PartialEq, Eq)]
+pub struct Elements {
+    pub reference: ReferenceElement,
+    pub floating: FloatingElement,
+}
+
+#[derive(Clone)]
+pub struct MiddlewareState {
+    pub coords: Coords,
+    pub initial_placement: Placement,
+    pub placement: Placement,
+    pub strategy: Strategy,
+    pub middleware_data: MiddlewareData,
+    pub elements: Elements,
+    pub rects: ElementRects,
+    pub platform: Rc<dyn Platform>,
+}
+
+impl fmt::Debug for MiddlewareState {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.debug_struct("MiddlewareState")
+            .field("coords", &self.coords)
+            .field("initial_placement", &self.initial_placement)
+            .field("placement", &self.placement)
+            .field("strategy", &self.strategy)
+            .field("middleware_data", &self.middleware_data)
+            .field("elements", &self.elements)
+            .field("rects", &self.rects)
+            .finish()
+    }
+}
+
 #[derive(Debug, Default, Clone, PartialEq)]
 pub struct ClientRectObject {
     pub rect: Rect,
     pub side: SideObject,
+}
+
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct PartialSideObject {
+    pub top: Option<f64>,
+    pub right: Option<f64>,
+    pub bottom: Option<f64>,
+    pub left: Option<f64>,
+}
+
+#[derive(Debug, Clone, PartialEq)]
+pub enum Padding {
+    Number(f64),
+    Side(PartialSideObject),
+}
+
+#[derive(Debug, Clone, PartialEq)]
+pub enum RootBoundary {
+    Viewport,
+    Document,
+    Rect(Rect),
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
