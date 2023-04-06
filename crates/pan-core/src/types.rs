@@ -117,10 +117,31 @@ pub enum Axis {
     Y,
 }
 
+impl Axis {
+    /// Get cross axis
+    #[inline]
+    #[must_use]
+    pub const fn cross(&self) -> Self {
+        match self {
+            Self::X => Self::Y,
+            Self::Y => Self::X,
+        }
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Length {
     Width,
     Height,
+}
+
+impl From<Axis> for Length {
+    fn from(axis: Axis) -> Self {
+        match axis {
+            Axis::X => Self::Width,
+            Axis::Y => Self::Height,
+        }
+    }
 }
 
 #[derive(Debug, Default, Clone, PartialEq)]
