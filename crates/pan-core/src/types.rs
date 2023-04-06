@@ -91,6 +91,28 @@ impl Placement {
             Self::LeftStart | Self::Left | Self::LeftEnd => Side::Left,
         }
     }
+
+    /// Get opposite placement.
+    #[must_use]
+    pub const fn opposite(self) -> Self {
+        match self {
+            Self::TopStart => Self::BottomStart,
+            Self::Top => Self::Bottom,
+            Self::TopEnd => Self::BottomEnd,
+
+            Self::RightStart => Self::LeftStart,
+            Self::Right => Self::Left,
+            Self::RightEnd => Self::LeftEnd,
+
+            Self::BottomStart => Self::TopStart,
+            Self::Bottom => Self::Top,
+            Self::BottomEnd => Self::TopEnd,
+
+            Self::LeftStart => Self::RightStart,
+            Self::Left => Self::Right,
+            Self::LeftEnd => Self::RightEnd,
+        }
+    }
 }
 
 impl From<Placement> for Side {
