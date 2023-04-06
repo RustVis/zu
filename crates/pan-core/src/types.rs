@@ -37,6 +37,21 @@ pub enum AlignedPlacement {
     LeftEnd,
 }
 
+impl From<AlignedPlacement> for Alignment {
+    fn from(val: AlignedPlacement) -> Self {
+        match val {
+            AlignedPlacement::TopStart
+            | AlignedPlacement::RightStart
+            | AlignedPlacement::BottomStart
+            | AlignedPlacement::LeftStart => Self::Start,
+            AlignedPlacement::TopEnd
+            | AlignedPlacement::RightEnd
+            | AlignedPlacement::BottomEnd
+            | AlignedPlacement::LeftEnd => Self::End,
+        }
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Placement {
     // Top
@@ -75,6 +90,12 @@ impl Placement {
             Self::BottomStart | Self::Bottom | Self::BottomEnd => Side::Bottom,
             Self::LeftStart | Self::Left | Self::LeftEnd => Side::Left,
         }
+    }
+}
+
+impl From<Placement> for Side {
+    fn from(placement: Placement) -> Self {
+        placement.side()
     }
 }
 
@@ -278,6 +299,17 @@ pub struct PartialSideObject {
     pub right: Option<f64>,
     pub bottom: Option<f64>,
     pub left: Option<f64>,
+}
+
+impl From<PartialSideObject> for SideObject {
+    fn from(val: PartialSideObject) -> Self {
+        Self {
+            top: val.top.unwrap_or_default(),
+            right: val.right.unwrap_or_default(),
+            bottom: val.bottom.unwrap_or_default(),
+            left: val.left.unwrap_or_default(),
+        }
+    }
 }
 
 #[derive(Debug, Clone, PartialEq)]
