@@ -6,6 +6,8 @@ use crate::types::{
     ComputePositionConfig, ComputePositionReturn, MiddlewareReturn, MiddlewareState,
 };
 
+pub trait Element {}
+
 /// Impl Platform trait to support new platform environment.
 pub trait Platform {
     fn dimensions(&self) -> i32;

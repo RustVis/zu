@@ -11,6 +11,7 @@
 )]
 #![allow(clippy::module_name_repetitions)]
 
+pub mod middleware;
 pub mod traits;
 pub mod types;
 pub mod utils;
