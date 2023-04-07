@@ -2,11 +2,10 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use std::collections::BTreeMap;
 use std::fmt;
 use std::rc::Rc;
 
-use crate::traits::{Middleware, Platform};
+use crate::traits::{AxisTrait, Element, LengthTrait, Middleware, Platform, SideTrait};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Alignment {
@@ -422,12 +421,40 @@ pub struct Coords {
     pub y: f64,
 }
 
+impl AxisTrait for Coords {
+    fn axis(&self, axis: Axis) -> f64 {
+        match axis {
+            Axis::X => self.x,
+            Axis::Y => self.y,
+        }
+    }
+}
+
+impl Coords {
+    #[inline]
+    #[must_use]
+    pub const fn new(x: f64, y: f64) -> Self {
+        Self { x, y }
+    }
+}
+
 #[derive(Debug, Default, Clone, PartialEq)]
 pub struct SideObject {
     pub top: f64,
     pub right: f64,
     pub bottom: f64,
     pub left: f64,
+}
+
+impl SideTrait for SideObject {
+    fn side(&self, side: Side) -> f64 {
+        match side {
+            Side::Top => self.top,
+            Side::Right => self.right,
+            Side::Bottom => self.bottom,
+            Side::Left => self.left,
+        }
+    }
 }
 
 impl SideObject {
@@ -447,6 +474,29 @@ impl SideObject {
 pub struct PartialCoords {
     pub x: Option<f64>,
     pub y: Option<f64>,
+}
+
+impl PartialCoords {
+    #[must_use]
+    pub const fn new(axis: Axis, val: f64) -> Self {
+        match axis {
+            Axis::X => Self {
+                x: Some(val),
+                y: None,
+            },
+            Axis::Y => Self {
+                x: None,
+                y: Some(val),
+            },
+        }
+    }
+
+    pub fn set(&mut self, axis: Axis, val: f64) {
+        match axis {
+            Axis::X => self.x = Some(val),
+            Axis::Y => self.y = Some(val),
+        }
+    }
 }
 
 #[derive(Debug, Default, Clone, PartialEq)]
@@ -519,16 +569,34 @@ pub struct ComputePositionReturn {
     pub middleware_data: MiddlewareData,
 }
 
-#[derive(Debug, Default, Clone, PartialEq, Eq)]
-pub struct MiddlewareReturn {
-    pub data: BTreeMap<String, String>,
-    pub reset: bool,
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct MiddlewareReset {
+    pub flag: Option<bool>,
+    pub rects: Option<ElementRects>,
+    pub placement: Option<Placement>,
 }
 
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct MiddlewareReturn {
+    pub coords: PartialCoords,
+    pub data: MiddlewareData,
+    pub reset: MiddlewareReset,
+}
+
+/// Alias of Geometry
 #[derive(Debug, Default, Clone, PartialEq)]
 pub struct Dimensions {
     pub width: f64,
     pub height: f64,
+}
+
+impl LengthTrait for Dimensions {
+    fn length(&self, length: Length) -> f64 {
+        match length {
+            Length::Width => self.width,
+            Length::Height => self.height,
+        }
+    }
 }
 
 #[derive(Debug, Default, Clone, PartialEq)]
@@ -539,12 +607,20 @@ pub struct Rect {
     pub height: f64,
 }
 
-impl Rect {
-    #[must_use]
-    pub const fn length(&self, length: Length) -> f64 {
+impl LengthTrait for Rect {
+    fn length(&self, length: Length) -> f64 {
         match length {
             Length::Width => self.width,
             Length::Height => self.height,
+        }
+    }
+}
+
+impl AxisTrait for Rect {
+    fn axis(&self, axis: Axis) -> f64 {
+        match axis {
+            Axis::X => self.x,
+            Axis::Y => self.y,
         }
     }
 }
@@ -555,11 +631,11 @@ pub struct ElementRects {
     pub floating: Rect,
 }
 
-// TODO(Shaohua):
-pub type ReferenceElement = String;
-pub type FloatingElement = String;
+// TODO(Shaohua): Remove Rc<> wrapper.
+pub type ReferenceElement = Rc<dyn Element>;
+pub type FloatingElement = Rc<dyn Element>;
 
-#[derive(Debug, Default, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone)]
 pub struct Elements {
     pub reference: ReferenceElement,
     pub floating: FloatingElement,
@@ -632,6 +708,12 @@ impl From<PartialSideObject> for SideObject {
 pub enum Padding {
     Number(f64),
     Side(PartialSideObject),
+}
+
+impl Default for Padding {
+    fn default() -> Self {
+        Self::Number(0.0)
+    }
 }
 
 impl From<Padding> for SideObject {
