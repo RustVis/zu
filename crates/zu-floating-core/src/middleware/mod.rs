@@ -3,3 +3,4 @@
 // in the LICENSE file.
 
 pub mod arrow;
+pub mod hide;
