@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::detect_overflow::detect_overflow;
+use crate::detect_overflow::{detect_overflow, DetectOverflowOption};
 use crate::traits::Middleware;
 use crate::types::{
     HideMiddlewareData, MiddlewareData, MiddlewareReturn, MiddlewareState, SideObject,
@@ -11,6 +11,7 @@ use crate::types::{
 #[derive(Debug, Clone)]
 pub struct HideOption {
     pub strategy: HideStrategy,
+    pub detect_overflow: DetectOverflowOption,
 }
 
 /// The strategy used to determine when to hide the floating element.
@@ -34,7 +35,7 @@ impl Middleware for Hide {
         let rects = &state.rects;
         let hide_data = match self.option.strategy {
             HideStrategy::ReferenceHidden => {
-                let overflow: SideObject = detect_overflow(state);
+                let overflow: SideObject = detect_overflow(state, &self.option.detect_overflow);
                 let offsets: SideObject = overflow.offset(&rects.reference);
 
                 HideMiddlewareData {
@@ -44,7 +45,7 @@ impl Middleware for Hide {
                 }
             }
             HideStrategy::Escaped => {
-                let overflow = detect_overflow(state);
+                let overflow = detect_overflow(state, &self.option.detect_overflow);
                 let offsets = overflow.offset(&rects.floating);
 
                 HideMiddlewareData {

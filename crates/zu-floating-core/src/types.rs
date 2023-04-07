@@ -468,6 +468,21 @@ impl SideObject {
             left: num,
         }
     }
+
+    #[must_use]
+    pub fn offset(&self, rect: &Rect) -> Self {
+        Self {
+            top: self.top - rect.height,
+            right: self.right - rect.width,
+            bottom: self.bottom - rect.height,
+            left: self.left - rect.width,
+        }
+    }
+
+    #[must_use]
+    pub fn is_any_side_fully_clipped(&self) -> bool {
+        self.top >= 0.0 || self.right >= 0.0 || self.bottom >= 0.0 || self.left >= 0.0
+    }
 }
 
 #[derive(Debug, Default, Clone, PartialEq)]
@@ -525,10 +540,10 @@ pub struct FlipMiddlewareData {
 
 #[derive(Debug, Default, Clone, PartialEq)]
 pub struct HideMiddlewareData {
-    pub reference_hidden: bool,
-    pub escaped: bool,
-    pub reference_hidden_offset: SideObject,
-    pub escaped_offsets: SideObject,
+    pub reference_hidden: Option<bool>,
+    pub reference_hidden_offset: Option<SideObject>,
+    pub escaped: Option<bool>,
+    pub escaped_offsets: Option<SideObject>,
 }
 
 #[derive(Debug, Default, Clone, PartialEq)]
@@ -725,6 +740,17 @@ impl From<Padding> for SideObject {
     }
 }
 
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum Boundary {
+    ClippingAncestors,
+}
+
+impl Default for Boundary {
+    fn default() -> Self {
+        Self::ClippingAncestors
+    }
+}
+
 #[derive(Debug, Clone, PartialEq)]
 pub enum RootBoundary {
     Viewport,
@@ -732,8 +758,20 @@ pub enum RootBoundary {
     Rect(Rect),
 }
 
+impl Default for RootBoundary {
+    fn default() -> Self {
+        Self::Viewport
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum ElementContext {
-    Reference,
     Floating,
+    Reference,
+}
+
+impl Default for ElementContext {
+    fn default() -> Self {
+        Self::Floating
+    }
 }
