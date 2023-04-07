@@ -2,15 +2,33 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+use std::fmt;
+use std::rc::Rc;
+
 use crate::types::{
-    ComputePositionConfig, ComputePositionReturn, MiddlewareReturn, MiddlewareState,
+    Axis, ComputePositionConfig, ComputePositionReturn, Dimensions, Length, MiddlewareReturn,
+    MiddlewareState, Side,
 };
 
-pub trait Element {}
+pub trait LengthTrait {
+    fn length(&self, length: Length) -> f64;
+}
+
+pub trait AxisTrait {
+    fn axis(&self, axis: Axis) -> f64;
+}
+
+pub trait SideTrait {
+    fn side(&self, side: Side) -> f64;
+}
+
+pub trait Element: fmt::Debug + LengthTrait {}
 
 /// Impl Platform trait to support new platform environment.
 pub trait Platform {
-    fn dimensions(&self) -> i32;
+    fn dimensions(&self) -> Dimensions;
+
+    fn offset_parent(&self, element: &Rc<dyn Element>) -> Rc<dyn Element>;
 
     /// Returns true if layout direction is Right-To-Left.
     fn is_rtl(&self) -> bool;
