@@ -16,3 +16,6 @@ pub mod middleware;
 pub mod traits;
 pub mod types;
 pub mod utils;
+
+mod compute_coords;
+pub use compute_coords::computer_coords_from_placement;
