@@ -18,4 +18,7 @@ pub mod types;
 pub mod utils;
 
 mod compute_coords;
-pub use compute_coords::computer_coords_from_placement;
+pub use compute_coords::compute_coords_from_placement;
+
+mod compute_position;
+pub use compute_position::compute_position;
