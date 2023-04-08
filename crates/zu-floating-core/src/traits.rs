@@ -6,8 +6,8 @@ use std::fmt;
 use std::rc::Rc;
 
 use crate::types::{
-    Axis, ComputePositionConfig, ComputePositionReturn, Dimensions, Length, MiddlewareReturn,
-    MiddlewareState, Side,
+    Axis, ComputePositionConfig, ComputePositionReturn, Dimensions, ElementRects, Length,
+    MiddlewareDataKind, MiddlewareReturn, MiddlewareState, Side, Strategy,
 };
 
 pub trait LengthTrait {
@@ -34,14 +34,21 @@ pub trait Platform {
     fn offset_parent(&self, element: &Rc<dyn Element>) -> Rc<dyn Element>;
 
     /// Returns true if layout direction is Right-To-Left.
-    fn is_rtl(&self) -> bool;
+    fn is_rtl(&self, element: &Rc<dyn Element>) -> bool;
 
     fn clipping_rect(&mut self) -> (f32, f32);
+
+    fn element_rects(
+        &self,
+        reference_element: &Rc<dyn Element>,
+        floating_element: &Rc<dyn Element>,
+        strategy: Strategy,
+    ) -> ElementRects;
 }
 
 pub trait Middleware {
-    fn name(&self) -> &str;
-    fn run(&mut self, state: &MiddlewareState) -> MiddlewareReturn;
+    fn kind(&self) -> MiddlewareDataKind;
+    fn run(&self, state: &MiddlewareState) -> MiddlewareReturn;
 }
 
 pub type ComputePosition = fn(config: &ComputePositionConfig) -> ComputePositionReturn;

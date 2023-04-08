@@ -6,7 +6,7 @@ use crate::traits::{AxisTrait, LengthTrait};
 use crate::types::{Alignment, Axis, Coords, ElementRects, Length, Placement, Side};
 
 #[must_use]
-pub fn computer_coords_from_placement(
+pub fn compute_coords_from_placement(
     element_rects: &ElementRects,
     placement: Placement,
     rtl: bool,

@@ -8,8 +8,8 @@ use std::rc::Rc;
 
 use crate::traits::{AxisTrait, Element, LengthTrait, Middleware, SideTrait};
 use crate::types::{
-    ArrowMiddlewareData, Axis, Length, MiddlewareData, MiddlewareReturn, MiddlewareState, Padding,
-    PartialCoords, Side, SideObject,
+    ArrowMiddlewareData, Axis, Length, MiddlewareData, MiddlewareDataKind, MiddlewareReturn,
+    MiddlewareState, Padding, PartialCoords, Side, SideObject,
 };
 
 #[derive(Clone)]
@@ -37,11 +37,11 @@ pub struct Arrow {
 }
 
 impl Middleware for Arrow {
-    fn name(&self) -> &str {
-        "arrow"
+    fn kind(&self) -> MiddlewareDataKind {
+        MiddlewareDataKind::Arrow
     }
 
-    fn run(&mut self, state: &MiddlewareState) -> MiddlewareReturn {
+    fn run(&self, state: &MiddlewareState) -> MiddlewareReturn {
         let coords = &state.coords;
         let rects = &state.rects;
         let platform = &state.platform;
@@ -107,7 +107,7 @@ impl Middleware for Arrow {
         };
 
         let data = MiddlewareData {
-            name: self.name().to_owned(),
+            kind: self.kind(),
             arrow: Some(arrow_data),
             ..Default::default()
         };

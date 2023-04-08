@@ -562,9 +562,27 @@ pub struct HideMiddlewareData {
     pub escaped_offsets: Option<SideObject>,
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum MiddlewareDataKind {
+    Nil,
+
+    Arrow,
+    AutoPlacement,
+    Flip,
+    Hide,
+    Offset,
+    Shift,
+}
+
+impl Default for MiddlewareDataKind {
+    fn default() -> Self {
+        Self::Nil
+    }
+}
+
 #[derive(Debug, Default, Clone, PartialEq)]
 pub struct MiddlewareData {
-    pub name: String,
+    pub kind: MiddlewareDataKind,
 
     pub arrow: Option<ArrowMiddlewareData>,
     pub auto_placement: Option<AutoPlacementMiddlewareData>,
@@ -578,9 +596,9 @@ pub struct MiddlewareData {
 #[derive(Clone)]
 pub struct ComputePositionConfig {
     pub platform: Rc<dyn Platform>,
-    pub placement: Option<Placement>,
-    pub strategy: Option<Strategy>,
-    pub middleware: Vec<Rc<dyn Middleware>>,
+    pub placement: Placement,
+    pub strategy: Strategy,
+    pub middlewares: Vec<Rc<dyn Middleware>>,
 }
 
 impl fmt::Debug for ComputePositionConfig {
@@ -599,6 +617,12 @@ pub struct ComputePositionReturn {
     pub strategy: Strategy,
     pub middleware_data: MiddlewareData,
 }
+
+pub type ComputePosition = fn(
+    reference_element: &Rc<dyn Element>,
+    floating_element: &Rc<dyn Element>,
+    config: &ComputePositionConfig,
+) -> ComputePositionReturn;
 
 #[derive(Debug, Default, Clone, PartialEq)]
 pub struct MiddlewareReset {
@@ -683,14 +707,10 @@ pub struct ElementRects {
     pub floating: Rect,
 }
 
-// TODO(Shaohua): Remove Rc<> wrapper.
-pub type ReferenceElement = Rc<dyn Element>;
-pub type FloatingElement = Rc<dyn Element>;
-
 #[derive(Debug, Clone)]
 pub struct Elements {
-    pub reference: ReferenceElement,
-    pub floating: FloatingElement,
+    pub reference: Rc<dyn Element>,
+    pub floating: Rc<dyn Element>,
 }
 
 #[derive(Clone)]

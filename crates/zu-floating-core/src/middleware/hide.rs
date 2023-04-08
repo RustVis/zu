@@ -5,7 +5,8 @@
 use crate::detect_overflow::{detect_overflow, DetectOverflowOption};
 use crate::traits::Middleware;
 use crate::types::{
-    HideMiddlewareData, MiddlewareData, MiddlewareReturn, MiddlewareState, SideObject,
+    HideMiddlewareData, MiddlewareData, MiddlewareDataKind, MiddlewareReturn, MiddlewareState,
+    SideObject,
 };
 
 #[derive(Debug, Clone)]
@@ -27,11 +28,11 @@ pub struct Hide {
 }
 
 impl Middleware for Hide {
-    fn name(&self) -> &str {
-        "hide"
+    fn kind(&self) -> MiddlewareDataKind {
+        MiddlewareDataKind::Hide
     }
 
-    fn run(&mut self, state: &MiddlewareState) -> MiddlewareReturn {
+    fn run(&self, state: &MiddlewareState) -> MiddlewareReturn {
         let rects = &state.rects;
         let hide_data = match self.option.strategy {
             HideStrategy::ReferenceHidden => {
@@ -57,7 +58,7 @@ impl Middleware for Hide {
         };
 
         let data = MiddlewareData {
-            name: self.name().to_owned(),
+            kind: self.kind(),
             hide: Some(hide_data),
             ..Default::default()
         };
