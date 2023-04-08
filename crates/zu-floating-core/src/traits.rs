@@ -12,14 +12,17 @@ use crate::types::{
 
 pub trait LengthTrait {
     fn length(&self, length: Length) -> f64;
+    fn set_length(&mut self, length: Length, val: f64);
 }
 
 pub trait AxisTrait {
     fn axis(&self, axis: Axis) -> f64;
+    fn set_axis(&mut self, axis: Axis, val: f64);
 }
 
 pub trait SideTrait {
     fn side(&self, side: Side) -> f64;
+    fn set_side(&mut self, side: Side, val: f64);
 }
 
 pub trait Element: fmt::Debug + LengthTrait {}

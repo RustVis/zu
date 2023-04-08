@@ -428,6 +428,13 @@ impl AxisTrait for Coords {
             Axis::Y => self.y,
         }
     }
+
+    fn set_axis(&mut self, axis: Axis, val: f64) {
+        match axis {
+            Axis::X => self.x = val,
+            Axis::Y => self.y = val,
+        }
+    }
 }
 
 impl Coords {
@@ -453,6 +460,15 @@ impl SideTrait for SideObject {
             Side::Right => self.right,
             Side::Bottom => self.bottom,
             Side::Left => self.left,
+        }
+    }
+
+    fn set_side(&mut self, side: Side, val: f64) {
+        match side {
+            Side::Top => self.top = val,
+            Side::Right => self.right = val,
+            Side::Bottom => self.bottom = val,
+            Side::Left => self.left = val,
         }
     }
 }
@@ -612,6 +628,13 @@ impl LengthTrait for Dimensions {
             Length::Height => self.height,
         }
     }
+
+    fn set_length(&mut self, length: Length, val: f64) {
+        match length {
+            Length::Width => self.width = val,
+            Length::Height => self.height = val,
+        }
+    }
 }
 
 #[derive(Debug, Default, Clone, PartialEq)]
@@ -629,6 +652,13 @@ impl LengthTrait for Rect {
             Length::Height => self.height,
         }
     }
+
+    fn set_length(&mut self, length: Length, val: f64) {
+        match length {
+            Length::Width => self.width = val,
+            Length::Height => self.height = val,
+        }
+    }
 }
 
 impl AxisTrait for Rect {
@@ -636,6 +666,13 @@ impl AxisTrait for Rect {
         match axis {
             Axis::X => self.x,
             Axis::Y => self.y,
+        }
+    }
+
+    fn set_axis(&mut self, axis: Axis, val: f64) {
+        match axis {
+            Axis::X => self.x = val,
+            Axis::Y => self.y = val,
         }
     }
 }
