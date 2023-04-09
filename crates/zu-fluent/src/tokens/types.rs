@@ -206,7 +206,7 @@ pub struct LineHeightTokens {
 pub struct FontWeightTokens {
     pub regular: i32,
     pub medium: i32,
-    pub semibold: i32,
+    pub semi_bold: i32,
     pub bold: i32,
 }
 
