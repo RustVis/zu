@@ -13,3 +13,6 @@ pub use curves::CURVES;
 
 mod durations;
 pub use durations::DURATIONS;
+
+mod stroke_widths;
+pub use stroke_widths::STROKE_WIDTHS;
