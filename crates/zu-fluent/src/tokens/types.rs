@@ -31,3 +31,15 @@ pub struct BorderRadiusTokens {
     pub xlarge: Val,
     pub circular: Val,
 }
+
+pub struct CurveTokens {
+    pub accelerate_max: Val,
+    pub accelerate_mid: Val,
+    pub accelerate_min: Val,
+    pub decelerate_max: Val,
+    pub decelerate_mid: Val,
+    pub decelerate_min: Val,
+    pub easy_ease_max: Val,
+    pub easy_ease: Val,
+    pub linear: Val,
+}

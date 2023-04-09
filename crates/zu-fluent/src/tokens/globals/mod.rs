@@ -7,3 +7,6 @@ pub use border_radius::BORDER_RADIUS;
 
 mod brand_colors;
 pub use brand_colors::{BRAND_OFFICE, BRAND_TEAMS, BRAND_WEB};
+
+mod curves;
+pub use curves::CURVES;
