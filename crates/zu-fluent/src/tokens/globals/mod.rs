@@ -10,3 +10,6 @@ pub use brand_colors::{BRAND_OFFICE, BRAND_TEAMS, BRAND_WEB};
 
 mod curves;
 pub use curves::CURVES;
+
+mod durations;
+pub use durations::DURATIONS;
