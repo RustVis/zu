@@ -15,7 +15,10 @@ mod durations;
 pub use durations::DURATIONS;
 
 mod fonts;
-pub use fonts::*;
+pub use fonts::{FONT_FAMILIES, FONT_SIZES, FONT_WEIGHTS, LINE_HEIGHTS};
+
+mod spacings;
+pub use spacings::{HORIZONTAL_SPACINGS, VERTICAL_SPACINGS};
 
 mod stroke_widths;
 pub use stroke_widths::STROKE_WIDTHS;
