@@ -42,3 +42,5 @@ pub fn get_svg_inner(s: &str) -> Option<&str> {
 pub fn need_update() -> bool {
     std::env::var_os(UPDATE_KEY).map_or(false, |val| !val.is_empty())
 }
+
+pub const TEMPLATE_FILE: &str = include_str!("template.rs");
