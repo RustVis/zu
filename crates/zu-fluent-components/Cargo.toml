@@ -13,4 +13,6 @@ license = "Apache-2.0"
 publish = true
 
 [dependencies]
+log = "0.4.17"
+web-sys = "0.3.61"
 yew = "0.20.0"
