@@ -4,3 +4,6 @@
 [submodule "crates/zuicon-bs/third_party/icons"]
 	path = crates/zuicon-bs/third_party/icons
 	url = https://github.com/twbs/icons
+[submodule "crates/zuicon-mdl2/third_party/fluentui-mdl2"]
+	path = crates/zuicon-mdl2/third_party/fluentui-mdl2
+	url = https://github.com/RustVis/fluentui-mdl2.git
