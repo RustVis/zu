@@ -1,7 +1,15 @@
 [package]
 name = "zu-fluent-tokens"
 version = "0.1.0"
+authors = ["Xu Shaohua <shaohua@biofan.org>"]
+homepage = "https://github.com/RustVis/zu"
+repository = "https://github.com/RustVis/zu"
+documentation = "https://docs.rs/zu-fluent-tokens"
+description = "Design tokens for fluent ui"
+keywords = ["design", "tokens", "fluent", "style"]
+categories = ["gui", "wasm", "web-programming"]
 edition = "2021"
-publish = false
+license = "Apache-2.0"
+publish = true
 
 [dependencies]
