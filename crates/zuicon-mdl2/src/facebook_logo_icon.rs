@@ -1,0 +1,62 @@
+// Auto Generated! DO NOT EDIT!
+
+use yew::prelude::{html, Component, Context, Html, Properties};
+
+pub struct FacebookLogoIcon {}
+
+#[derive(Properties, Debug, Clone, PartialEq, Eq)]
+pub struct Props {
+    #[prop_or_default]
+    pub class: Option<&'static str>,
+
+    #[prop_or_default]
+    pub width: Option<&'static str>,
+
+    #[prop_or_default]
+    pub height: Option<&'static str>,
+
+    #[prop_or_default]
+    pub color: Option<&'static str>,
+
+    #[prop_or_default]
+    pub fill: Option<&'static str>,
+
+    #[prop_or_default]
+    pub spin: bool,
+
+    #[prop_or_default]
+    pub rotate: i16,
+}
+
+impl Component for FacebookLogoIcon {
+    type Properties = Props;
+    type Message = ();
+
+    fn create(_ctx: &Context<Self>) -> Self {
+        Self {}
+    }
+
+    fn view(&self, ctx: &Context<Self>) -> Html {
+        let props = ctx.props();
+        // TODO(Shaohua): Do not generate style attribute if it is empty.
+        let mut style = String::new();
+        if props.rotate != 0 {
+            style += &format!("transform: rotate({}deg);", props.rotate);
+        }
+        html! {
+            <svg
+                xmlns={ "http://www.w3.org/2000/svg" }
+                class={ props.class.unwrap_or("") }
+                width={ props.width.unwrap_or("16") }
+                height={ props.height.unwrap_or("16") }
+                focusable={ "false" }
+                data-icon={ "FacebookLogoIcon" }
+                viewBox={ "0 0 16 16" }
+                fill={ props.fill.unwrap_or("currentColor") }
+                style={ style }
+            >
+            <path d="M1024 0q141 0 272 36t244 104 207 160 161 207 103 245 37 272q0 126-29 244t-84 225-132 196-174 161-208 118-237 68v-716h239l45-296h-284V832q0-55 18-87t48-48 68-21 79-5h42q21 0 41 1V420q-56-10-114-15t-115-5q-93 0-165 28t-121 80-75 125-26 165v226H604v296h260v716q-125-19-237-67t-208-118-173-161-132-197-84-224-30-245q0-141 36-272t104-244 160-207 207-161T752 37t272-37z" />
+            </svg>
+        }
+    }
+}

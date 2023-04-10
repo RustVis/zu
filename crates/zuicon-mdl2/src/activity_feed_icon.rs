@@ -1,0 +1,62 @@
+// Auto Generated! DO NOT EDIT!
+
+use yew::prelude::{html, Component, Context, Html, Properties};
+
+pub struct ActivityFeedIcon {}
+
+#[derive(Properties, Debug, Clone, PartialEq, Eq)]
+pub struct Props {
+    #[prop_or_default]
+    pub class: Option<&'static str>,
+
+    #[prop_or_default]
+    pub width: Option<&'static str>,
+
+    #[prop_or_default]
+    pub height: Option<&'static str>,
+
+    #[prop_or_default]
+    pub color: Option<&'static str>,
+
+    #[prop_or_default]
+    pub fill: Option<&'static str>,
+
+    #[prop_or_default]
+    pub spin: bool,
+
+    #[prop_or_default]
+    pub rotate: i16,
+}
+
+impl Component for ActivityFeedIcon {
+    type Properties = Props;
+    type Message = ();
+
+    fn create(_ctx: &Context<Self>) -> Self {
+        Self {}
+    }
+
+    fn view(&self, ctx: &Context<Self>) -> Html {
+        let props = ctx.props();
+        // TODO(Shaohua): Do not generate style attribute if it is empty.
+        let mut style = String::new();
+        if props.rotate != 0 {
+            style += &format!("transform: rotate({}deg);", props.rotate);
+        }
+        html! {
+            <svg
+                xmlns={ "http://www.w3.org/2000/svg" }
+                class={ props.class.unwrap_or("") }
+                width={ props.width.unwrap_or("16") }
+                height={ props.height.unwrap_or("16") }
+                focusable={ "false" }
+                data-icon={ "ActivityFeedIcon" }
+                viewBox={ "0 0 16 16" }
+                fill={ props.fill.unwrap_or("currentColor") }
+                style={ style }
+            >
+            <path d="M128 1088V768H0V128h1664v640H448l-320 320zm0-448h128v139l139-139h1141V256H128v384zm1920 384v640h-128v320l-320-320H384v-640h1664zm-128 128H512v384h1141l139 139v-139h128v-384z" />
+            </svg>
+        }
+    }
+}
