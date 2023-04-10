@@ -135,6 +135,7 @@ fn rebuild_icons() {
 }
 
 fn main() {
+    // Check ZUICON_UPDATE=1 environment.
     if need_update() {
         rebuild_icons()
     }
