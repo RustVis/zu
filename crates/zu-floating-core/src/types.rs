@@ -570,8 +570,10 @@ pub enum MiddlewareDataKind {
     AutoPlacement,
     Flip,
     Hide,
+
     Offset,
     Shift,
+    Size,
 }
 
 impl Default for MiddlewareDataKind {
@@ -591,6 +593,7 @@ pub struct MiddlewareData {
 
     pub offset: Option<Coords>,
     pub shift: Option<Coords>,
+    pub size: Option<bool>,
 }
 
 #[derive(Clone)]

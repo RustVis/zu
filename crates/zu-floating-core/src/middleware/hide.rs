@@ -12,7 +12,6 @@ use crate::types::{
 #[derive(Debug, Clone)]
 pub struct HideOption {
     pub strategy: HideStrategy,
-    pub detect_overflow: DetectOverflowOption,
 }
 
 /// The strategy used to determine when to hide the floating element.
@@ -25,6 +24,7 @@ pub enum HideStrategy {
 #[derive(Debug, Clone)]
 pub struct Hide {
     pub option: HideOption,
+    pub detect_overflow_option: DetectOverflowOption,
 }
 
 impl Middleware for Hide {
@@ -32,11 +32,11 @@ impl Middleware for Hide {
         MiddlewareDataKind::Hide
     }
 
-    fn run(&self, state: &MiddlewareState) -> MiddlewareReturn {
+    fn run(&self, state: &mut MiddlewareState) -> MiddlewareReturn {
         let rects = &state.rects;
         let hide_data = match self.option.strategy {
             HideStrategy::ReferenceHidden => {
-                let overflow: SideObject = detect_overflow(state, &self.option.detect_overflow);
+                let overflow: SideObject = detect_overflow(state, &self.detect_overflow_option);
                 let offsets: SideObject = overflow.offset(&rects.reference);
 
                 HideMiddlewareData {
@@ -46,7 +46,7 @@ impl Middleware for Hide {
                 }
             }
             HideStrategy::Escaped => {
-                let overflow = detect_overflow(state, &self.option.detect_overflow);
+                let overflow = detect_overflow(state, &self.detect_overflow_option);
                 let offsets = overflow.offset(&rects.floating);
 
                 HideMiddlewareData {

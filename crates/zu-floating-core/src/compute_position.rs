@@ -33,7 +33,7 @@ pub fn compute_position(
     };
 
     for middleware in middlewares.iter() {
-        let state = MiddlewareState {
+        let mut state = MiddlewareState {
             coords: coords.clone(),
             initial_placement: placement,
             placement: stateful_placement,
@@ -43,7 +43,7 @@ pub fn compute_position(
             platform: platform.clone(),
             elements: elements.clone(),
         };
-        let middleware_return = middleware.run(&state);
+        let middleware_return = middleware.run(&mut state);
         if let Some(x) = middleware_return.coords.x {
             coords.x = x;
         };

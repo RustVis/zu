@@ -41,7 +41,7 @@ impl Middleware for Arrow {
         MiddlewareDataKind::Arrow
     }
 
-    fn run(&self, state: &MiddlewareState) -> MiddlewareReturn {
+    fn run(&self, state: &mut MiddlewareState) -> MiddlewareReturn {
         let coords = &state.coords;
         let rects = &state.rects;
         let platform = &state.platform;
@@ -50,7 +50,7 @@ impl Middleware for Arrow {
         let padding_object: SideObject = self.option.padding.clone().into();
         let axis = placement.main_axis();
         let length: Length = axis.into();
-        let arrow_dimensions = platform.dimensions();
+        let arrow_dimensions = platform.dimensions(&self.option.element);
         let is_y_axis = axis == Axis::Y;
         let min_prop = if is_y_axis { Side::Top } else { Side::Left };
         let max_prop = if is_y_axis { Side::Bottom } else { Side::Right };

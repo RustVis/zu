@@ -30,7 +30,7 @@ pub trait Element: fmt::Debug + LengthTrait {}
 
 /// Impl Platform trait to support new platform environment.
 pub trait Platform {
-    fn dimensions(&self) -> Dimensions;
+    fn dimensions(&self, element: &Rc<dyn Element>) -> Dimensions;
 
     fn offset_parent(&self, element: &Rc<dyn Element>) -> Option<Rc<dyn Element>>;
 
@@ -65,7 +65,7 @@ pub trait Platform {
 
 pub trait Middleware {
     fn kind(&self) -> MiddlewareDataKind;
-    fn run(&self, state: &MiddlewareState) -> MiddlewareReturn;
+    fn run(&self, state: &mut MiddlewareState) -> MiddlewareReturn;
 }
 
 pub type ComputePosition = fn(config: &ComputePositionConfig) -> ComputePositionReturn;
