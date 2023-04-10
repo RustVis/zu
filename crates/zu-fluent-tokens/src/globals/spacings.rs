@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::tokens::types::{HorizontalSpacingTokens, SpacingTokens, VerticalSpacingTokens};
+use crate::types::{HorizontalSpacingTokens, SpacingTokens, VerticalSpacingTokens};
 
 // Intentionally not pubed! Use horizontalSpacings and verticalSpacings instead.
 const SPACINGS: SpacingTokens = SpacingTokens {

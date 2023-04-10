@@ -1,5 +1,5 @@
 [package]
-name = "zu-fluent"
+name = "zu-fluent-tokens"
 version = "0.1.0"
 edition = "2021"
 publish = false

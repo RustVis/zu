@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::tokens::types::StrokeWidthTokens;
+use crate::types::StrokeWidthTokens;
 
 pub const STROKE_WIDTHS: StrokeWidthTokens = StrokeWidthTokens {
     thin: "1px",

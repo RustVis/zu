@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::tokens::types::BorderRadiusTokens;
+use crate::types::BorderRadiusTokens;
 
 pub const BORDER_RADIUS: BorderRadiusTokens = BorderRadiusTokens {
     none: "0",

@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::tokens::types::BrandVariants;
+use crate::types::BrandVariants;
 
 pub const BRAND_WEB: BrandVariants = BrandVariants {
     b10: "#061724",

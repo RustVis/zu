@@ -2,9 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-pub use crate::tokens::types::{
-    FontFamilyTokens, FontSizeTokens, FontWeightTokens, LineHeightTokens,
-};
+pub use crate::types::{FontFamilyTokens, FontSizeTokens, FontWeightTokens, LineHeightTokens};
 
 pub const FONT_SIZES: FontSizeTokens = FontSizeTokens {
     s100: "10px",
