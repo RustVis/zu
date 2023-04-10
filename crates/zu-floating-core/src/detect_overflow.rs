@@ -2,7 +2,10 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::types::{Boundary, ElementContext, MiddlewareState, Padding, RootBoundary, SideObject};
+use crate::types::{
+    Boundary, ClientRectObject, ElementContext, MiddlewareState, Padding, Rect, RootBoundary,
+    Scale, SideObject,
+};
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct DetectOverflowOption {
@@ -26,6 +29,77 @@ impl Default for DetectOverflowOption {
 }
 
 #[must_use]
-pub fn detect_overflow(_state: &MiddlewareState, _option: &DetectOverflowOption) -> SideObject {
-    unimplemented!()
+pub fn detect_overflow(state: &MiddlewareState, option: &DetectOverflowOption) -> SideObject {
+    let platform = &state.platform;
+    let elements = &state.elements;
+
+    let padding = &option.padding;
+    let element_context = option.element_context;
+
+    let padding_object: SideObject = padding.clone().into();
+    let alt_context = option.element_context.alter();
+    let element = if option.alt_boundary {
+        elements.element(alt_context)
+    } else {
+        elements.element(element_context)
+    };
+
+    let clipping_client_rect: ClientRectObject = {
+        // TODO(Shaohua): Call platform.is_element()
+        let clipping_rect: Rect = platform.clipping_rect(
+            &element,
+            option.boundary,
+            &option.root_boundary,
+            state.strategy,
+        );
+        clipping_rect.into()
+    };
+
+    let rect: Rect = if element_context == ElementContext::Floating {
+        let coords = &state.coords;
+        let floating = &state.rects.floating;
+        Rect {
+            x: coords.x,
+            y: coords.y,
+            width: floating.width,
+            height: floating.height,
+        }
+    } else {
+        state.rects.reference.clone()
+    };
+
+    let offset_parent = platform.offset_parent(&elements.floating);
+    let offset_scale: Scale = offset_parent
+        .as_ref()
+        .map_or(Scale { x: 1.0, y: 1.0 }, |offset_parent| {
+            platform.scale(offset_parent)
+        });
+
+    let element_client_rect: ClientRectObject =
+        offset_parent
+            .as_ref()
+            .map_or(rect.clone().into(), |offset_parent| {
+                let offset_rect =
+                    platform.convert_relative_rect(&rect, offset_parent, state.strategy);
+                offset_rect.into()
+            });
+
+    let top = (clipping_client_rect.side.top - element_client_rect.side.top + padding_object.top)
+        / offset_scale.y;
+    let bottom = (element_client_rect.side.bottom - clipping_client_rect.side.bottom
+        + padding_object.bottom)
+        / offset_scale.y;
+    let left = (clipping_client_rect.side.left - element_client_rect.side.left
+        + padding_object.left)
+        / offset_scale.x;
+    let right = (element_client_rect.side.right - clipping_client_rect.side.right
+        + padding_object.right)
+        / offset_scale.x;
+
+    SideObject {
+        top,
+        right,
+        bottom,
+        left,
+    }
 }
