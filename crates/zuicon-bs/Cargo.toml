@@ -15,7 +15,7 @@ license = "Apache-2.0"
 publish = true
 
 [dependencies]
-yew = { version = "0.20.0", features=["csr"] }
+yew = "0.20.0"
 
 [build-dependencies]
 inflections = "1.1.1"
