@@ -713,6 +713,16 @@ pub struct Elements {
     pub floating: Rc<dyn Element>,
 }
 
+impl Elements {
+    #[must_use]
+    pub fn element(&self, element_context: ElementContext) -> Rc<dyn Element> {
+        match element_context {
+            ElementContext::Reference => self.reference.clone(),
+            ElementContext::Floating => self.floating.clone(),
+        }
+    }
+}
+
 #[derive(Clone)]
 pub struct MiddlewareState {
     pub coords: Coords,
@@ -797,7 +807,7 @@ impl From<Padding> for SideObject {
     }
 }
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Boundary {
     ClippingAncestors,
 }
@@ -831,4 +841,20 @@ impl Default for ElementContext {
     fn default() -> Self {
         Self::Floating
     }
+}
+
+impl ElementContext {
+    #[must_use]
+    pub const fn alter(self) -> Self {
+        match self {
+            Self::Floating => Self::Reference,
+            Self::Reference => Self::Floating,
+        }
+    }
+}
+
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct Scale {
+    pub x: f64,
+    pub y: f64,
 }

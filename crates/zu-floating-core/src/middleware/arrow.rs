@@ -66,7 +66,8 @@ impl Middleware for Arrow {
         let start_diff = coords.axis(axis) - rects.reference.axis(axis);
 
         let offset_parent = platform.offset_parent(&self.option.element);
-        let client_size: f64 = offset_parent.length(client_prop);
+        let client_size: f64 =
+            offset_parent.map_or(0.0, |offset_parent| offset_parent.length(client_prop));
 
         // TODO(Shaohua): Dom related parent
 

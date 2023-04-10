@@ -6,8 +6,9 @@ use std::fmt;
 use std::rc::Rc;
 
 use crate::types::{
-    Axis, ComputePositionConfig, ComputePositionReturn, Dimensions, ElementRects, Length,
-    MiddlewareDataKind, MiddlewareReturn, MiddlewareState, Side, Strategy,
+    Axis, Boundary, ComputePositionConfig, ComputePositionReturn, Dimensions, ElementRects, Length,
+    MiddlewareDataKind, MiddlewareReturn, MiddlewareState, Rect, RootBoundary, Scale, Side,
+    Strategy,
 };
 
 pub trait LengthTrait {
@@ -31,12 +32,18 @@ pub trait Element: fmt::Debug + LengthTrait {}
 pub trait Platform {
     fn dimensions(&self) -> Dimensions;
 
-    fn offset_parent(&self, element: &Rc<dyn Element>) -> Rc<dyn Element>;
+    fn offset_parent(&self, element: &Rc<dyn Element>) -> Option<Rc<dyn Element>>;
 
     /// Returns true if layout direction is Right-To-Left.
     fn is_rtl(&self, element: &Rc<dyn Element>) -> bool;
 
-    fn clipping_rect(&mut self) -> (f32, f32);
+    fn clipping_rect(
+        &self,
+        element: &Rc<dyn Element>,
+        boundary: Boundary,
+        root_boundary: &RootBoundary,
+        strategy: Strategy,
+    ) -> Rect;
 
     fn element_rects(
         &self,
@@ -44,6 +51,16 @@ pub trait Platform {
         floating_element: &Rc<dyn Element>,
         strategy: Strategy,
     ) -> ElementRects;
+
+    fn scale(&self, element: &Rc<dyn Element>) -> Scale;
+
+    /// Convert (offset of parent)-relative-rect to viewport-relative-rect
+    fn convert_relative_rect(
+        &self,
+        rect: &Rect,
+        offset_parent: &Rc<dyn Element>,
+        strategy: Strategy,
+    ) -> Rect;
 }
 
 pub trait Middleware {
