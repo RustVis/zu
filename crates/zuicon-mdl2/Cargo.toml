@@ -1,7 +1,20 @@
 [package]
-name = "zuicon-sdl2"
+name = "zuicon-mdl2"
 version = "0.1.0"
+homepage = "https://github.com/RustVis/zu"
+repository = "https://github.com/RustVis/zu"
+documentation = "https://docs.rs/zuicon-mdl2"
+description = "Wrapper of fluentui icons for yew framework"
+keywords = ["web", "webasm", "icons"]
+categories = ["gui", "wasm", "web-programming"]
+build = "build.rs"
 edition = "2021"
-publish = false
+license = "Apache-2.0"
+publish = true
 
 [dependencies]
+yew = "0.20.0"
+
+[build-dependencies]
+inflections = "1.1.1"
+zuicon-util = { path="../zuicon-util", version="0.1.0" }
