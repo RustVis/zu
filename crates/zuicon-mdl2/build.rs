@@ -8,7 +8,7 @@ use std::fs::{self, File};
 use std::io::{self, BufWriter, Write};
 use std::path::PathBuf;
 
-use zuicon_util::{get_svg_inner, need_update};
+use zuicon_util::{get_svg_inner, need_update, TEMPLATE_FILE};
 
 const SVG_DIR: &str = "third_party/fluentui-mdl2/src/components";
 const LIB_HEADER: &str = r###"// Auto Generated! DO NOT EDIT!
@@ -36,7 +36,6 @@ fn build_icons(module_names: &mut Vec<String>) -> Result<(), io::Error> {
     dir.push(SVG_DIR);
 
     let svg_extension = OsStr::new("tsx");
-    let template = include_str!("template.rs");
 
     for entry in fs::read_dir(&dir)? {
         let entry = entry?;
@@ -62,7 +61,7 @@ fn build_icons(module_names: &mut Vec<String>) -> Result<(), io::Error> {
 
         let svg_content = fs::read_to_string(&path).unwrap();
         let markup = get_svg_inner(&svg_content).unwrap();
-        let rs_content = template
+        let rs_content = TEMPLATE_FILE
             .replace("NODE_NAME", &node_name)
             .replace("DATA_NAME", data_name)
             .replace("MARKUP", markup);

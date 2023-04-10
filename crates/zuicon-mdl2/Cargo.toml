@@ -17,4 +17,4 @@ yew = "0.20.0"
 
 [build-dependencies]
 inflections = "1.1.1"
-zuicon-util = { path="../zuicon-util", version="0.1.0" }
+zuicon-util = { path="../zuicon-util", version="0.1.1" }
