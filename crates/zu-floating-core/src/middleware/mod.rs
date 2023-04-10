@@ -4,3 +4,4 @@
 
 pub mod arrow;
 pub mod hide;
+pub mod size;
