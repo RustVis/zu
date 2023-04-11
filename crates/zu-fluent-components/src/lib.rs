@@ -9,7 +9,8 @@
     clippy::nursery,
     clippy::pedantic
 )]
-#![allow(clippy::module_name_repetitions)]
+#![allow(clippy::module_name_repetitions, dead_code)]
 
+pub mod label;
 pub mod spinner;
 pub mod types;
