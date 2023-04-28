@@ -26,9 +26,7 @@ const LIB_HEADER: &str = r###"// Auto Generated! DO NOT EDIT!
 fn map_filename(name: &str) -> String {
     let name: String = name.replace("_24px", "");
     let names = vec!["box", "option", "type", "try", "loop", "html"];
-    if names.contains(&name.as_str()) {
-        format!("icon-{name}")
-    } else if name.chars().nth(0).unwrap().is_ascii_digit() {
+    if names.contains(&name.as_str()) || name.chars().next().unwrap().is_ascii_digit() {
         format!("icon-{name}")
     } else {
         name
