@@ -3,6 +3,7 @@
 // in the LICENSE file.
 
 pub mod amber;
+pub mod blue;
 
 #[derive(Debug, Clone)]
 pub struct Color {
@@ -20,4 +21,10 @@ pub struct Color {
     a2000: &'static str,
     a4000: &'static str,
     a7000: &'static str,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum PaletteMode {
+    Light,
+    Dark,
 }

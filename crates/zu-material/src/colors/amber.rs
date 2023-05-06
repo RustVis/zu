@@ -4,7 +4,7 @@
 
 use super::Color;
 
-pub const AMBER: &Color = &Color{
+pub const AMBER: &Color = &Color {
     a50: "#fff8e1",
     a100: "#ffecb3",
     a200: "#ffe082",
