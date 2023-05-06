@@ -22,12 +22,7 @@ def to_upper(name):
 def rustfmt(filename):
     subprocess.call(["rustfmt", filename])
 
-def main():
-    if len(sys.argv) != 2:
-        print("Usage: %s some-color.js" % sys.argv[0])
-        sys.exit(1)
-
-    input_file = sys.argv[1]
+def convert_color(input_file):
     filename = os.path.split(input_file)[1]
     output_file = to_lower(filename)
     output_file = output_file.replace(".js", ".rs")
@@ -81,6 +76,43 @@ def main():
         output_fh.writelines(lines)
 
     rustfmt(output_file)
+
+def convert_all_colors(input_file):
+    parent_dir = os.path.dirname(input_file)
+    js_files = [
+        "amber.js",
+        "blue.js",
+        "blueGrey.js",
+        "brown.js",
+        "cyan.js",
+        "deepOrange.js",
+        "deepPurple.js",
+        "green.js",
+        "grey.js",
+        "indigo.js",
+        "lightBlue.js",
+        "lightGreen.js",
+        "lime.js",
+        "orange.js",
+        "pink.js",
+        "purple.js",
+        "red.js",
+        "teal.js",
+        "yellow.js",
+    ]
+
+    for js_file in js_files:
+        input_file = os.path.join(parent_dir, js_file)
+        convert_color(input_file)
+
+
+def main():
+    if len(sys.argv) != 2:
+        print("Usage: %s some-color.js" % sys.argv[0])
+        sys.exit(1)
+
+    input_file = sys.argv[1]
+    convert_all_colors(input_file)
 
 if __name__ == "__main__":
     main()
