@@ -9,6 +9,7 @@ pub mod brown;
 pub mod common;
 pub mod cyan;
 pub mod deep_orange;
+pub mod deep_purple;
 
 #[derive(Debug, Clone)]
 pub struct Color {
