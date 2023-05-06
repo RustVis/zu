@@ -5,6 +5,7 @@
 pub mod amber;
 pub mod blue;
 pub mod blue_grey;
+pub mod brown;
 
 #[derive(Debug, Clone)]
 pub struct Color {
