@@ -10,6 +10,18 @@ pub mod common;
 pub mod cyan;
 pub mod deep_orange;
 pub mod deep_purple;
+pub mod green;
+pub mod grey;
+pub mod indigo;
+pub mod light_blue;
+pub mod light_green;
+pub mod lime;
+pub mod orange;
+pub mod pink;
+pub mod purple;
+pub mod red;
+pub mod teal;
+pub mod yellow;
 
 #[derive(Debug, Clone)]
 pub struct Color {
