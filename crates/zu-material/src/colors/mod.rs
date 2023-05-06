@@ -6,6 +6,7 @@ pub mod amber;
 pub mod blue;
 pub mod blue_grey;
 pub mod brown;
+pub mod common;
 
 #[derive(Debug, Clone)]
 pub struct Color {
@@ -23,6 +24,12 @@ pub struct Color {
     a2000: &'static str,
     a4000: &'static str,
     a7000: &'static str,
+}
+
+#[derive(Debug, Clone)]
+pub struct CommonColor {
+    black: &'static str,
+    white: &'static str,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
