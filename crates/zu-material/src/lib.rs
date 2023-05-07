@@ -13,3 +13,5 @@
 #![allow(clippy::module_name_repetitions)]
 
 pub mod colors;
+pub mod skeleton;
+pub mod util;

@@ -4,8 +4,8 @@ members = [
   "crates/zuicon-ant",
   "crates/zuicon-bs",
   "crates/zuicon-material",
-  "zuicon-mdl2",
-  "zuicon-util",
+  "crates/zuicon-mdl2",
+  "crates/zuicon-util",
 ]
 
 exclude = [
