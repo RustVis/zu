@@ -16,5 +16,6 @@
 )]
 
 pub mod colors;
+pub mod config_provider;
 pub mod skeleton;
 pub mod util;

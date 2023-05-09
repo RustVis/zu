@@ -2,31 +2,19 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use strum_macros::Display;
 use yew::{classes, html, Children, Component, Context, Html, Properties};
 
 use crate::config_provider::config_context::default_get_prefix_class;
 use crate::config_provider::size_context::SizeType;
 use crate::util::classes_if;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Display)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum ButtonType {
-    #[strum(serialize = "default")]
     Default,
-
-    #[strum(serialize = "primary")]
     Primary,
-
-    #[strum(serialize = "ghost")]
     Ghost,
-
-    #[strum(serialize = "dashed")]
     Dashed,
-
-    #[strum(serialize = "link")]
     Link,
-
-    #[strum(serialize = "text")]
     Text,
 }
 
@@ -43,15 +31,12 @@ pub enum ButtonLoading {
     Delay(u32),
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Display)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum ButtonHTMLType {
-    #[strum(serialize = "button")]
     Button,
 
-    #[strum(serialize = "submit")]
     Submit,
 
-    #[strum(serialize = "reset")]
     Reset,
 }
 

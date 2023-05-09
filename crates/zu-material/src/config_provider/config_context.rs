@@ -2,14 +2,9 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use strum_macros::Display;
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Display)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum DirectionType {
-    #[strum(serialize = "ltr")]
     LeftToRight,
-
-    #[strum(serialize = "rtl")]
     RightToLeft,
 }
 
@@ -43,7 +38,7 @@ pub fn default_get_prefix_class(
         }
     }
     if suffix_class.is_empty() {
-        return "ant".to_string();
+        return "zu".to_string();
     }
-    format!("ant-{suffix_class}")
+    format!("zu-{suffix_class}")
 }
