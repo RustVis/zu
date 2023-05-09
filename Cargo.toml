@@ -7,7 +7,8 @@ members = [
   "crates/zuicon-mdl2",
   "crates/zuicon-util",
 
-	"crates/zu-material/examples/*",
+  # Examples
+	"crates/zu-material-examples",
 ]
 
 exclude = [

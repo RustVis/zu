@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use zu_material_examples_theme::run_main;
+use zu_material_examples::run_main;
 
 fn main() {
     run_main();
