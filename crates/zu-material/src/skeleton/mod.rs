@@ -4,6 +4,10 @@
 
 use yew::{function_component, html, Html, Properties};
 
+use crate::util::CssClass;
+
+const ROOT_CLS: &str = "ZuSkeleton-root";
+
 /// The type of content that will be rendered.
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
 pub enum Variant {
@@ -19,6 +23,17 @@ impl Default for Variant {
     }
 }
 
+impl CssClass for Variant {
+    fn to_cls(&self) -> &'static str {
+        match self {
+            Self::Text => "ZuSkeleton-text",
+            Self::Circular => "ZuSkeleton-circular",
+            Self::Rect => "ZuSkeleton-rect",
+            Self::Rounded => "ZuSkeleton-rounded",
+        }
+    }
+}
+
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
 pub enum Animation {
     Pulse,
@@ -29,6 +44,16 @@ pub enum Animation {
 impl Default for Animation {
     fn default() -> Self {
         Self::Pulse
+    }
+}
+
+impl CssClass for Animation {
+    fn to_cls(&self) -> &'static str {
+        match self {
+            Self::Pulse => "ZuSkeleton-pulse",
+            Self::Wave => "ZuSkeleton-wave",
+            Self::None => "",
+        }
     }
 }
 
@@ -62,6 +87,12 @@ impl Default for Props {
 }
 
 #[function_component(Skeleton)]
-pub fn skeleton(_props: &Props) -> Html {
-    html! {}
+pub fn skeleton(props: &Props) -> Html {
+    let classes = [ROOT_CLS, props.animation.to_cls(), props.variant.to_cls()];
+    let cls = classes.join(" ");
+
+    html! {
+        <span class={ cls }>
+        </span>
+    }
 }

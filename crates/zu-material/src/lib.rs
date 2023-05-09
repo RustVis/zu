@@ -11,11 +11,12 @@
 )]
 #![allow(
     dead_code,
+    clippy::let_underscore_untyped,
     clippy::module_name_repetitions,
     clippy::multiple_crate_versions
 )]
 
 pub mod colors;
-pub mod config_provider;
 pub mod skeleton;
+pub mod theme_provider;
 pub mod util;
