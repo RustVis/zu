@@ -3,14 +3,25 @@
 // in the LICENSE file.
 
 use yew::prelude::*;
-use zu_material::skeleton::Skeleton;
-use zu_material::theme_provider::ThemeProvider;
+use yew_router::Switch;
+
+use crate::components::footer::Footer;
+use crate::components::header::Header;
+use crate::components::left_panel::LeftPanel;
+use crate::router::{switch_route, Route};
 
 #[function_component(MainContent)]
 pub fn main_content() -> Html {
     html! {
-        <ThemeProvider>
-            <Skeleton />
-        </ThemeProvider>
+        <>
+            <Header />
+            <div class="container">
+                <LeftPanel />
+                <div class="col-sm-8 col-lg-10">
+                    <Switch<Route> render={ switch_route } />
+                </div>
+            </div>
+            <Footer />
+        </>
     }
 }

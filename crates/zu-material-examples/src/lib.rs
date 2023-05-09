@@ -16,6 +16,8 @@
 
 mod app;
 mod components;
+mod router;
+mod views;
 
 use app::App;
 

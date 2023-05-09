@@ -2,7 +2,12 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-mod footer;
-mod header;
-mod left_panel;
-pub mod main_content;
+use yew::prelude::*;
+
+#[function_component(Footer)]
+pub fn footer() -> Html {
+    html! {
+        <>
+        </>
+    }
+}

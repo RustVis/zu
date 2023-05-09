@@ -4,14 +4,17 @@
 
 use yew::prelude::*;
 use yew_router::BrowserRouter;
+use zu_material::theme_provider::ThemeProvider;
 
 use crate::components::main_content::MainContent;
 
 #[function_component(App)]
 pub fn app() -> Html {
     html! {
-        <BrowserRouter>
-            <MainContent />
-        </BrowserRouter>
+        <ThemeProvider>
+            <BrowserRouter>
+                <MainContent />
+            </BrowserRouter>
+        </ThemeProvider>
     }
 }
