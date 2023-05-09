@@ -27,6 +27,7 @@ pub struct ThemeContext {
 
     dark: StyleSource,
     light: StyleSource,
+    common: StyleSource,
 }
 
 impl ThemeContext {
@@ -36,10 +37,17 @@ impl ThemeContext {
     pub fn new(inner: UseStateHandle<ThemeKind>) -> Self {
         let dark_style = include_str!("../../themes/dark-theme.css");
         let light_style = include_str!("../../themes/light-theme.css");
+        let common_style = include_str!("../../themes/common-theme.css");
         let dark = StyleSource::try_from(dark_style).expect("Failed to parse dark theme");
         let light = StyleSource::try_from(light_style).expect("Failed to parse light theme");
+        let common = StyleSource::try_from(common_style).expect("Failed to parse common theme");
 
-        Self { inner, dark, light }
+        Self {
+            inner,
+            dark,
+            light,
+            common,
+        }
     }
 
     pub fn set(&self, kind: ThemeKind) {
@@ -87,11 +95,13 @@ pub fn theme_provider(props: &ThemeProviderProps) -> Html {
     let theme_kind = use_state(ThemeKind::default);
 
     let theme_ctx = ThemeContext::new(theme_kind);
-    let global_css = theme_ctx.style().clone();
+    let theme_css = theme_ctx.style().clone();
+    let common_css = theme_ctx.common.clone();
 
     html! {
         <ContextProvider<ThemeContext> context={ theme_ctx }>
-            <Global css={ global_css } />
+            <Global css={ theme_css } />
+            <Global css={ common_css } />
             { props.children.clone() }
         </ContextProvider<ThemeContext>>
     }
