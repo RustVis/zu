@@ -1,0 +1,32 @@
+
+
+
+/* Palette */
+:root {
+  /* The colors used to style the text. */
+  --zu-palette-text-primary: white;
+  --zu-palette-text-secondary: rgba(255, 255, 255, 0.7);
+  --zu-palette-text-disabled: rgba(0, 0, 0, 0.5);
+  --zu-palette-text-icon: rgba(0, 0, 0, 0.5);
+
+  /* The color used to divide different elements. */
+  --zu-palette-divider: rgba(255, 255, 255, 0.12);
+
+  /* The background colors used to style the surfaces.
+   * Consistency between these values is important. */
+  --zu-palette-background-paper: #121212;
+  --zu-palette-background-default: #121212;
+
+  /* The colors used to style the action elements. */
+  --zu-palette-action-active: white;
+  --zu-palette-action-hover: rgba(255, 255, 255, 0.08);
+  --zu-palette-action-hoverOpacity: 0.08;
+  --zu-palette-action-selected: rgba(255, 255, 255, 0.16);
+  --zu-palette-action-selectedOpacity: 0.16;
+  --zu-palette-action-disabled: rgba(255, 255, 255, 0.3);
+  --zu-palette-action-disabledOpacity: 0.38;
+  --zu-palette-action-disabledBackground: rgba(255, 255, 255, 0.12);
+  --zu-palette-action-focus: rgba(255, 255, 255, 0.12);
+  --zu-palette-action-focusOpacity: 0.12;
+  --zu-palette-action-activatedOpacity: 0.24;
+}
