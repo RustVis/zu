@@ -5,9 +5,8 @@
   height: 1.2em;
 
   /* Create a "on paper" color with sufficient contrast retaining the color */
-  /* TODO(Shaohua): Adjust alpha value to 0.11 */
   /*background-color: var(--zu-palette-text-primary);*/
-  background-color: rgba(0, 0, 0, 0.13);
+  background-color: var(--zu-skeleton-bg);
 }
 
 /* Styles applied when the component is passed children. */

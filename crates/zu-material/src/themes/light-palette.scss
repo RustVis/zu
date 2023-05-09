@@ -1,30 +1,49 @@
 
 /* Light Palette */
+
+/* The colors used to style the text. */
+$zu-palette-text-primary: rgba(0, 0, 0, 0.87);
+$zu-palette-text-secondary: rgba(0, 0, 0, 0.6);
+/* Disabled text have even lower visual prominence. */
+$zu-palette-text-disabled: rgba(0, 0, 0, 0.38);
+
+/* The color used to divide different elements. */
+$zu-palette-divider: rgba(0, 0, 0, 0.12);
+
+/* The background colors used to style the surfaces.
+ * Consistency between these values is important. */
+$zu-palette-background-paper: white;
+$zu-palette-background-default: white;
+
+/* The colors used to style the action elements. */
+$zu-palette-action-active: rgba(0, 0, 0, 0.54);
+$zu-palette-action-hover: rgba(0, 0, 0, 0.04);
+$zu-palette-action-selected: rgba(0, 0, 0, 0.08);
+$zu-palette-action-disabled: rgba(0, 0, 0, 0.26);
+$zu-palette-action-disabledBackground: rgba(0, 0, 0, 0.12);
+$zu-palette-action-focus: rgba(0, 0, 0, 0.12);
+$zu-palette-action-activated: rgba(0, 0, 0, 0.12);
+
 :root {
-  /* The colors used to style the text. */
-  --zu-palette-text-primary: rgba(0, 0, 0, 0.87);
-  --zu-palette-text-secondary: rgba(0, 0, 0, 0.6);
-  /* Disabled text have even lower visual prominence. */
-  --zu-palette-text-disabled: rgba(0, 0, 0, 0.38);
+  --zu-palette-text-primary: #{$zu-palette-text-primary};
+  --zu-palette-text-secondary: #{$zu-palette-text-secondary};
+  --zu-palette-text-disabled: #{$zu-palette-text-disabled};
 
-  /* The color used to divide different elements. */
-  --zu-palette-divider: rgba(0, 0, 0, 0.12);
+  --zu-palette-divider: #{$zu-palette-divider};
 
-  /* The background colors used to style the surfaces.
-   * Consistency between these values is important. */
-  --zu-palette-background-paper: white;
-  --zu-palette-background-default: white;
+  --zu-palette-background-paper: #{$zu-palette-background-paper};
+  --zu-palette-background-default: #{$zu-palette-background-default};
 
-  /* The colors used to style the action elements. */
-  --zu-palette-action-active: rgba(0, 0, 0, 0.54);
-  --zu-palette-action-hover: rgba(0, 0, 0, 0.04);
-  --zu-palette-action-hoverOpacity: 0.04;
-  --zu-palette-action-selected: rgba(0, 0, 0, 0.08);
-  --zu-palette-action-selectedOpacity: 0.08;
-  --zu-palette-action-disabled: rgba(0, 0, 0, 0.26);
-  --zu-palette-action-disabledOpacity: 0.26;
-  --zu-palette-action-disabledBackground: rgba(0, 0, 0, 0.12);
-  --zu-palette-action-focus: rgba(0, 0, 0, 0.12);
-  --zu-palette-action-focusOpacity: 0.12;
-  --zu-palette-action-activatedOpacity: 0.12;
+  --zu-palette-action-active: #{$zu-palette-action-active};
+  --zu-palette-action-hover: #{$zu-palette-action-hover};
+  --zu-palette-action-selected: #{$zu-palette-action-selected};
+  --zu-palette-action-disabled: #{$zu-palette-action-disabled};
+  --zu-palette-action-disabledBackground: #{$zu-palette-action-disabledBackground};
+  --zu-palette-action-focus: #{$zu-palette-action-focus};
+  --zu-palette-action-activated: #{$zu-palette-action-activated};
+}
+
+/* Component specific variables */
+:root {
+  --zu-skeleton-bg: #{change-color($zu-palette-text-primary, $alpha: 0.13)};
 }

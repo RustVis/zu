@@ -28,7 +28,7 @@ fn merge_themes(style_files: &[&str], output_path: &str) -> io::Result<()> {
 
 fn compile_scss<P: AsRef<Path>>(input_path: P, output_path: &str) -> Result<(), Box<dyn Error>> {
     let format = output::Format {
-        style: output::Style::Compressed,
+        style: output::Style::Expanded,
         ..Default::default()
     };
     let css = compile_scss_path(input_path.as_ref(), format)?;
@@ -37,7 +37,9 @@ fn compile_scss<P: AsRef<Path>>(input_path: P, output_path: &str) -> Result<(), 
         .create(true)
         .write(true)
         .open(output_path)?;
-    output_file.write_all(&css)?;
+    let css: String = String::from_utf8(css).unwrap();
+    let css = css.replace("@charset \"UTF-8\";", "");
+    output_file.write_all(css.as_bytes())?;
 
     Ok(())
 }
