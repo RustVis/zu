@@ -1,6 +1,7 @@
 [workspace]
 members = [
 	"crates/zu-material",
+	"crates/zu-material-examples",
   "crates/zuicon-ant",
   "crates/zuicon-bs",
   "crates/zuicon-material",
