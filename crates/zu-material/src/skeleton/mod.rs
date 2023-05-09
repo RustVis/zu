@@ -67,18 +67,28 @@ pub struct Props {
     pub variant: Variant,
 
     /// Width of the skeleton.
-    #[prop_or(100)]
+    #[prop_or_default]
     pub width: i32,
 
     /// Height of the skeleton.
-    #[prop_or(100)]
+    #[prop_or_default]
     pub height: i32,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 #[function_component(Skeleton)]
 pub fn skeleton(props: &Props) -> Html {
     let cls = classes!(ROOT_CLS, props.animation.to_cls(), props.variant.to_cls());
-    let style = format!("width: {}px; height: {}px;", props.width, props.height);
+    let mut styles = vec![props.style.clone()];
+    if props.width > 0 {
+        styles.push(format!("width: {}px", props.width));
+    };
+    if props.height > 0 {
+        styles.push(format!("height: {}px", props.height));
+    }
+    let style = styles.join(";");
 
     html! {
         <span class={ cls } style={ style }>
