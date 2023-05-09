@@ -3,7 +3,7 @@
 // in the LICENSE file.
 
 use std::ops::Deref;
-use stylist::{css, yew::Global, StyleSource};
+use stylist::{yew::Global, StyleSource};
 use yew::html::ImplicitClone;
 use yew::prelude::*;
 
@@ -30,12 +30,16 @@ pub struct ThemeContext {
 }
 
 impl ThemeContext {
+    /// ## Panics
+    /// Will got panic if failed to parse themes.
+    #[must_use]
     pub fn new(inner: UseStateHandle<ThemeKind>) -> Self {
-        Self {
-            inner,
-            dark: css!(""),
-            light: css!(""),
-        }
+        let dark_style = include_str!("../../themes/dark-theme.css");
+        let light_style = include_str!("../../themes/light-theme.css");
+        let dark = StyleSource::try_from(dark_style).expect("Failed to parse dark theme");
+        let light = StyleSource::try_from(light_style).expect("Failed to parse light theme");
+
+        Self { inner, dark, light }
     }
 
     pub fn set(&self, kind: ThemeKind) {
