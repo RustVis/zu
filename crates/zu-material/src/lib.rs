@@ -16,6 +16,7 @@
     clippy::multiple_crate_versions
 )]
 
+pub mod circular_progress;
 pub mod skeleton;
 pub mod styles;
 pub mod theme_provider;
