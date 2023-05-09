@@ -18,5 +18,5 @@
 
 pub mod colors;
 pub mod skeleton;
+pub mod styles;
 pub mod theme_provider;
-pub mod util;

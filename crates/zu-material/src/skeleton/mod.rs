@@ -4,7 +4,7 @@
 
 use yew::{classes, function_component, html, Html, Properties};
 
-use crate::util::CssClass;
+use crate::styles::CssClass;
 
 const ROOT_CLS: &str = "ZuSkeleton-root";
 
