@@ -38,7 +38,7 @@
 }
 
 .ZuSkeleton-text::before {
-  content: " ";
+  content: "\00a0";
 }
 
 /* Styles applied to the root element if variant="circular". */
