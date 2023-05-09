@@ -6,7 +6,8 @@
 
   /* Create a "on paper" color with sufficient contrast retaining the color */
   /* TODO(Shaohua): Adjust alpha value to 0.11 */
-  background-color: var(--zu-palette-text-primary);
+  /*background-color: var(--zu-palette-text-primary);*/
+  background-color: rgba(0, 0, 0, 0.13);
 }
 
 /* Styles applied when the component is passed children. */
@@ -36,6 +37,10 @@
   border-radius: 4px / 6.7px;
 }
 
+.ZuSkeleton-text::before {
+  content: " ";
+}
+
 /* Styles applied to the root element if variant="circular". */
 .ZuSkeleton-circular {
   border-radius: 50%;
@@ -54,7 +59,7 @@
 /* Animation */
 /* Styles applied to the root element if animation="pulse". */
 .ZuSkeleton-pulse {
-  animation: zu-skeleton-pulse 1.5s ease-in-out 0.5s infinite;
+  animation: 1.5s ease-in-out 0.5s infinite zu-skeleton-pulse;
 }
 
 /* Styles applied to the root element if animation="wave". */
@@ -67,22 +72,19 @@
 }
 
 .ZuSkeleton-wave::after {
-  content: '';
+  content: "";
 
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
   transform: translateX(-100%); /* Avoid flash during server-side hydration */
 
-  animation: zu-skeleton-wave 1.6s linear 0.5s infinite;
+  animation: 1.6s linear 0.5s infinite zu-skeleton-wave;
   background: linear-gradient(
       90deg,
       transparent,
       var(--zu-palette-action-hover),
       transparent
   );
+  inset: 0;
 }
 
 @keyframes zu-skeleton-pulse {
