@@ -1,0 +1,17 @@
+/* red color scheme */
+:root {
+  --zu-colors-red-50: "#ffebee";
+  --zu-colors-red-100: "#ffcdd2";
+  --zu-colors-red-200: "#ef9a9a";
+  --zu-colors-red-300: "#e57373";
+  --zu-colors-red-400: "#ef5350";
+  --zu-colors-red-500: "#f44336";
+  --zu-colors-red-600: "#e53935";
+  --zu-colors-red-700: "#d32f2f";
+  --zu-colors-red-800: "#c62828";
+  --zu-colors-red-900: "#b71c1c";
+  --zu-colors-red-a100: "#ff8a80";
+  --zu-colors-red-a200: "#ff5252";
+  --zu-colors-red-a400: "#ff1744";
+  --zu-colors-red-a700: "#d50000";
+}

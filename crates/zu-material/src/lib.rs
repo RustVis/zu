@@ -16,7 +16,6 @@
     clippy::multiple_crate_versions
 )]
 
-pub mod colors;
 pub mod skeleton;
 pub mod styles;
 pub mod theme_provider;
