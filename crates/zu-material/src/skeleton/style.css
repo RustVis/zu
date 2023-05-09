@@ -1,12 +1,31 @@
 
+/* Styles applied to the root element. */
 .ZuSkeleton-root {
   display: block;
   height: 1.2em;
 
-  background-color: var(--zu-palette-skeleton-bg);
+  /* Create a "on paper" color with sufficient contrast retaining the color */
+  /* TODO(Shaohua): Adjust alpha value to 0.11 */
+  background-color: var(--zu-palette-text-primary);
+}
+
+/* Styles applied when the component is passed children. */
+.ZuSkeleton-withChildren {
+
+}
+
+/* Styles applied when the component is passed children and no width. */
+.ZuSkeleton-fitContent {
+
+}
+
+/* 	Styles applied when the component is passed children and no height. */
+.ZuSkeleton-heightAuto {
+
 }
 
 /* Variant */
+/* Styles applied to the root element if variant="text". */
 .ZuSkeleton-text {
   transform-origin: 0 55%;
   transform: scale(1, 0.60);
@@ -18,23 +37,28 @@
   border-radius: 4px / 6.7px;
 }
 
+/* Styles applied to the root element if variant="circular". */
 .ZuSkeleton-circular {
   border-radius: 50%;
 }
 
+/* Styles applied to the root element if variant="rect". */
 .ZuSkeleton-rect {
 
 }
 
+/* Styles applied to the root element if variant="rounded". */
 .ZuSkeleton-rounded {
   border-radius: var(--zu-shape-border-radius);
 }
 
 /* Animation */
+/* Styles applied to the root element if animation="pulse". */
 .ZuSkeleton-pulse {
   animation: zu-skeleton-pulse 1.5s ease-in-out 0.5s infinite;
 }
 
+/* Styles applied to the root element if animation="wave". */
 .ZuSkeleton-wave {
   position: relative;
   overflow: hidden;
