@@ -9,8 +9,11 @@
     clippy::nursery,
     clippy::pedantic
 )]
-#![allow(dead_code)]
-#![allow(clippy::module_name_repetitions)]
+#![allow(
+    dead_code,
+    clippy::module_name_repetitions,
+    clippy::multiple_crate_versions
+)]
 
 pub mod colors;
 pub mod skeleton;
