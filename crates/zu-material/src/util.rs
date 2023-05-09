@@ -12,3 +12,7 @@ pub fn classes_if(list: Vec<(String, bool)>) -> Classes {
         .map(|item| item.0)
         .collect::<Vec<String>>())
 }
+
+pub trait CssClass {
+    fn to_cls(&self) -> &'static str;
+}
