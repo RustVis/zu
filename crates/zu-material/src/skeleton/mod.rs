@@ -50,6 +50,17 @@ pub struct Props {
     pub height: i32,
 }
 
+impl Default for Props {
+    fn default() -> Self {
+        Self {
+            animation: Animation::default(),
+            variant: Variant::default(),
+            width: 100,
+            height: 100,
+        }
+    }
+}
+
 #[function_component(Skeleton)]
 pub fn skeleton(_props: &Props) -> Html {
     html! {}
