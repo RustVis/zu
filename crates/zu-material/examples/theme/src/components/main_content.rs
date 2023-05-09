@@ -3,10 +3,14 @@
 // in the LICENSE file.
 
 use yew::prelude::*;
+use zu_material::skeleton::Skeleton;
+use zu_material::theme_provider::ThemeProvider;
 
 #[function_component(MainContent)]
 pub fn main_content() -> Html {
     html! {
-        <h1>{ "Hello Material Design" }</h1>
+        <ThemeProvider>
+            <Skeleton />
+        </ThemeProvider>
     }
 }
