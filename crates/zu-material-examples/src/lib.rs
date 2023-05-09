@@ -9,8 +9,6 @@
     clippy::nursery,
     clippy::pedantic
 )]
-// wasi v0.10 and v0.11
-#![allow(clippy::multiple_crate_versions)]
 // For <Link> and <BrowserRouter>
 #![allow(clippy::let_underscore_untyped)]
 

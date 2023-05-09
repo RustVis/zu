@@ -1,0 +1,17 @@
+
+body {
+  box-sizing: border-box;
+
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+
+.preview-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  width: 300px;
+}
