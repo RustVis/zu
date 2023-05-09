@@ -86,8 +86,7 @@
   );
 }
 
-@keyframes
-zu-skeleton-pulse {
+@keyframes zu-skeleton-pulse {
   0% {
     opacity: 1;
   }
@@ -101,8 +100,7 @@ zu-skeleton-pulse {
   }
 }
 
-@keyframes
-zu-skeleton-wave {
+@keyframes zu-skeleton-wave {
   0% {
     transform: translateX(-100%);
   }

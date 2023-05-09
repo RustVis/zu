@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{function_component, html, Html, Properties};
+use yew::{classes, function_component, html, Html, Properties};
 
 use crate::util::CssClass;
 
@@ -67,32 +67,21 @@ pub struct Props {
     pub variant: Variant,
 
     /// Width of the skeleton.
-    #[prop_or_default]
+    #[prop_or(100)]
     pub width: i32,
 
     /// Height of the skeleton.
-    #[prop_or_default]
+    #[prop_or(100)]
     pub height: i32,
-}
-
-impl Default for Props {
-    fn default() -> Self {
-        Self {
-            animation: Animation::default(),
-            variant: Variant::default(),
-            width: 100,
-            height: 100,
-        }
-    }
 }
 
 #[function_component(Skeleton)]
 pub fn skeleton(props: &Props) -> Html {
-    let classes = [ROOT_CLS, props.animation.to_cls(), props.variant.to_cls()];
-    let cls = classes.join(" ");
+    let cls = classes!(ROOT_CLS, props.animation.to_cls(), props.variant.to_cls());
+    let style = format!("width: {}px; height: {}px;", props.width, props.height);
 
     html! {
-        <span class={ cls }>
+        <span class={ cls } style={ style }>
         </span>
     }
 }

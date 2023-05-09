@@ -12,6 +12,8 @@ fn merge_themes(palette_file: &str, output_file: &str) -> io::Result<()> {
         "src/themes/animation.css",
         "src/themes/shape.css",
         "src/themes/z-index.css",
+        // Components
+        "src/skeleton/style.css",
     ];
 
     let mut dark_file = fs::OpenOptions::new()
