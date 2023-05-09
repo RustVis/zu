@@ -62,5 +62,30 @@ fn main() -> Result<(), Box<dyn Error>> {
         "src/skeleton/style.scss",
     ];
     merge_themes(&common_styles, "themes/common-theme.scss")?;
-    compile_scss("themes/common-theme.scss", "themes/common-theme.css")
+    compile_scss("themes/common-theme.scss", "themes/common-theme.css")?;
+
+    let colors = [
+        "src/colors/amber.css",
+        "src/colors/blue.css",
+        "src/colors/blue_grey.css",
+        "src/colors/brown.css",
+        "src/colors/cyan.css",
+        "src/colors/deep_orange.css",
+        "src/colors/deep_purple.css",
+        "src/colors/green.css",
+        "src/colors/grey.css",
+        "src/colors/indigo.css",
+        "src/colors/light_blue.css",
+        "src/colors/light_green.css",
+        "src/colors/lime.css",
+        "src/colors/orange.css",
+        "src/colors/pink.css",
+        "src/colors/purple.css",
+        "src/colors/red.css",
+        "src/colors/teal.css",
+        "src/colors/yellow.css",
+    ];
+    merge_themes(&colors, "themes/color-schemes.css")?;
+
+    Ok(())
 }
