@@ -96,10 +96,10 @@ pub fn circular_progress(props: &Props) -> Html {
         SizeVariant::XLarge => 24,
         SizeVariant::Num(num) => num,
     };
-    styles.push(format!("width: {size}px; height: {size}px"));
+    let size_style = format!("width: {size}px; height: {size}px");
+    styles.push(size_style.clone());
 
     let style = styles.join(";");
-    log::info!("style: {style}");
 
     let radius: f64 = (f64::from(SIZE) - props.thickness) / 2.0;
     let mut circle_styles = vec![];
@@ -119,8 +119,8 @@ pub fn circular_progress(props: &Props) -> Html {
         String::new()
     };
 
-    html! {
-        <div class={ cls } style={ style }>
+    let progress = html! {
+        <span class={ cls } style={ style }>
             <svg class="ZuCircularProgress-svg"
                 viewBox={ format!("{} {} {SIZE} {SIZE}", SIZE / 2, SIZE / 2) } >
                 <circle class="ZuCircularProgress-circle"
@@ -131,10 +131,19 @@ pub fn circular_progress(props: &Props) -> Html {
                     fill="none"
                     stroke-width={ props.thickness.to_string()}></circle>
             </svg>
+        </span>
+    };
 
-            if props.with_label {
-                <span class="ZuCircularProgress-label" title={ label.clone() }>{ &label }</span>
-            }
+    if !props.with_label {
+        return progress;
+    }
+
+    // TODO(Shaohua): Replace with <Caption>
+    html! {
+        <div class="ZuCircularProgress-labelContainer"
+            style={ size_style }>
+            { progress }
+            <span class="ZuCircularProgress-label" title={ label.clone() }>{ label }</span>
         </div>
     }
 }

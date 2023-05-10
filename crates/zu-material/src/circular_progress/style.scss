@@ -61,6 +61,30 @@
 
 }
 
+/* Outer container */
+.ZuCircularProgress-labelContainer {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ZuCircularProgress-label {
+  position: absolute;
+
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+
+  /* TODO(Shaohua): Inherit style from caption */
+  font-family: var(--zu-typography-caption-fontFamily);
+  font-weight: var(--zu-typography-caption-fontWeight);
+  font-size: var(--zu-typography-caption-fontSize);
+  line-height: var(--zu-typography-caption-lineHeight);
+  letter-spacing: var(--zu-typography-caption-letterSpacing);
+}
+
 /* Animations */
 @keyframes zu-circular-progress-circular-rotate {
   0% {
