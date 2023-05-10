@@ -1,0 +1,18 @@
+
+/* Border Radius */
+
+$zu-border-radius-none: 0;
+$zu-border-radius-small: 2px;
+$zu-border-radius-medium: 4px;
+$zu-border-radius-large: 6px;
+$zu-border-radius-xLarge: 8px;
+$zu-border-radius-circular: 10000px;
+
+:root {
+  --zu-border-radius-none: #{$zu-border-radius-none};
+  --zu-border-radius-small: #{$zu-border-radius-small};
+  --zu-border-radius-medium: #{$zu-border-radius-medium};
+  --zu-border-radius-large: #{$zu-border-radius-large};
+  --zu-border-radius-xLarge: #{$zu-border-radius-xLarge};
+  --zu-border-radius-circular: #{$zu-border-radius-circular};
+}

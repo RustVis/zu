@@ -76,6 +76,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     compile_scss("light-theme.scss", "light-theme.css")?;
 
     let common_styles = [
+        "src/themes/border-radius.scss",
         "src/themes/breakpoints.scss",
         "src/themes/shadows.scss",
         "src/themes/shape.scss",
