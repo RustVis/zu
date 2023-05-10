@@ -54,12 +54,21 @@ pub struct Props {
     #[prop_or_default]
     pub variant: Variant,
 
-    /// If true, the shrink animation is disabled. This only works if variant is indeterminate.
+    /// If true, the shrink animation is disabled.
+    ///
+    /// This only works if variant is indeterminate.
     #[prop_or(false)]
     pub disable_shrink: bool,
 
+    /// Override root style.
     #[prop_or_default]
     pub style: String,
+
+    /// Show label or not.
+    ///
+    /// This only works if variant is determinate.
+    #[prop_or(false)]
+    pub with_label: bool,
 }
 
 #[function_component(CircularProgress)]
@@ -73,21 +82,42 @@ pub fn circular_progress(props: &Props) -> Html {
     let cls = classes!(class_list);
 
     let mut styles = vec![props.style.clone(), props.color.css_value()];
-    let size = props.size.css_value();
-    styles.push(format!("width: {size}; height: {size}"));
+    // TODO(Shaohua): Read from css.
+    let size = match props.size {
+        SizeVariant::Tiny => 8,
+        SizeVariant::Small => 12,
+        SizeVariant::Regular => 14,
+        SizeVariant::Large => 18,
+        SizeVariant::XLarge => 24,
+        SizeVariant::Num(num) => num,
+    };
+    styles.push(format!("width: {size}px; height: {size}px"));
 
     // if props.variant == Variant::Determinate && props.value >= 0 {
     //     styles.push(format!("stroke-dash-array"));
     // }
     let style = styles.join(";");
+    log::info!("style: {style}");
+
+    let label = if props.with_label {
+        format!("{}%", props.value)
+    } else {
+        String::new()
+    };
 
     html! {
-        <span class={ cls } style={ style }>
-            <svg class="ZuCircularProgress-svg" viewBox="22 22 44 44">
+        <div class={ cls } style={ style }>
+            <svg class="ZuCircularProgress-svg"
+                viewBox="22 22 44 44">
                 <circle class="ZuCircularProgress-circle"
                     cx={ 44 } cy={ 44 } r={ 20.2 }
-                    stroke-width={ props.sickness.to_string() }></circle>
+                    fill="none"
+                    stroke-width={ props.sickness.to_string()}></circle>
             </svg>
-        </span>
+
+            if props.with_label {
+                <span class="ZuCircularProgress-label" title={ label.clone() }>{ &label }</span>
+            }
+        </div>
     }
 }

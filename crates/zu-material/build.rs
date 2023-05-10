@@ -73,6 +73,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         "src/themes/typography.scss",
         "src/themes/z-index.scss",
         // Components
+        "src/circular_progress/style.scss",
         "src/skeleton/style.scss",
     ];
     merge_themes(&common_styles, "themes/common-theme.scss")?;
