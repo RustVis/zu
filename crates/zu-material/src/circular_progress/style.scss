@@ -28,6 +28,7 @@
 /* Styles applied to the svg element. */
 .ZuCircularProgress-svg {
   display: block;
+  transform: rotate(-90deg);
 }
 
 /* Styles applied to the `circle` svg path. */

@@ -2,6 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+use std::f64::consts::PI;
 use yew::prelude::*;
 
 use crate::styles::color::ColorVariant;
@@ -9,6 +10,7 @@ use crate::styles::size::SizeVariant;
 use crate::styles::{CssClass, CssValue};
 
 const ROOT_CLS: &str = "ZuCircularProgress-root";
+const SIZE: i32 = 44;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Variant {
@@ -40,9 +42,9 @@ pub struct Props {
     #[prop_or(SizeVariant::Num(40))]
     pub size: SizeVariant,
 
-    /// The sickness of the circle.
+    /// The thickness of the circle.
     #[prop_or(3.6)]
-    pub sickness: f64,
+    pub thickness: f64,
 
     /// The value of the progress indicator for the determinate variant.
     ///
@@ -81,7 +83,10 @@ pub fn circular_progress(props: &Props) -> Html {
     }
     let cls = classes!(class_list);
 
-    let mut styles = vec![props.style.clone(), props.color.css_value()];
+    let mut styles = vec![
+        props.style.clone(),
+        format!("color: {}", props.color.css_value()),
+    ];
     // TODO(Shaohua): Read from css.
     let size = match props.size {
         SizeVariant::Tiny => 8,
@@ -93,11 +98,20 @@ pub fn circular_progress(props: &Props) -> Html {
     };
     styles.push(format!("width: {size}px; height: {size}px"));
 
-    // if props.variant == Variant::Determinate && props.value >= 0 {
-    //     styles.push(format!("stroke-dash-array"));
-    // }
     let style = styles.join(";");
     log::info!("style: {style}");
+
+    let radius: f64 = (f64::from(SIZE) - props.thickness) / 2.0;
+    let mut circle_styles = vec![];
+    if props.variant == Variant::Determinate && props.value >= 0 {
+        let circumference = 2.0 * radius * PI;
+        let stroke_dasharray = circumference;
+        let stroke_dashoffset = (f64::from(100 - props.value) / 100.0) * circumference;
+
+        circle_styles.push(format!("stroke-dasharray: {stroke_dasharray}px",));
+        circle_styles.push(format!("stroke-dashoffset: {stroke_dashoffset}px",));
+    };
+    let circle_style = circle_styles.join(";");
 
     let label = if props.with_label {
         format!("{}%", props.value)
@@ -108,11 +122,14 @@ pub fn circular_progress(props: &Props) -> Html {
     html! {
         <div class={ cls } style={ style }>
             <svg class="ZuCircularProgress-svg"
-                viewBox="22 22 44 44">
+                viewBox={ format!("{} {} {SIZE} {SIZE}", SIZE / 2, SIZE / 2) } >
                 <circle class="ZuCircularProgress-circle"
-                    cx={ 44 } cy={ 44 } r={ 20.2 }
+                    style={ circle_style }
+                    cx={ SIZE.to_string() }
+                    cy={ SIZE.to_string() }
+                    r={ radius.to_string() }
                     fill="none"
-                    stroke-width={ props.sickness.to_string()}></circle>
+                    stroke-width={ props.thickness.to_string()}></circle>
             </svg>
 
             if props.with_label {
