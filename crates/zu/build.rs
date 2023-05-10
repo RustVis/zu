@@ -80,6 +80,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         "src/themes/breakpoints.scss",
         "src/themes/shadows.scss",
         "src/themes/shape.scss",
+        "src/themes/spacings.scss",
         "src/themes/stroke-widths.scss",
         "src/themes/transitions.scss",
         "src/themes/typography.scss",

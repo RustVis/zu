@@ -1,0 +1,27 @@
+
+/* Spacing variables */
+$zu-spacing-none: 0;
+$zu-spacing-xxs: 2px;
+$zu-spacing-xs: 4px;
+$zu-spacing-sNudge: 6px;
+$zu-spacing-s: 8px;
+$zu-spacing-mNudge: 10px;
+$zu-spacing-m: 12px;
+$zu-spacing-l: 16px;
+$zu-spacing-xl: 20px;
+$zu-spacing-xxl: 24px;
+$zu-spacing-xxxl: 32px;
+
+:root {
+  --zu-spacing-none: #{$zu-spacing-none};
+  --zu-spacing-xxs: #{$zu-spacing-xxs};
+  --zu-spacing-xs: #{$zu-spacing-xs};
+  --zu-spacing-sNudge: #{$zu-spacing-sNudge};
+  --zu-spacing-s: #{$zu-spacing-s};
+  --zu-spacing-mNudge: #{$zu-spacing-mNudge};
+  --zu-spacing-m: #{$zu-spacing-m};
+  --zu-spacing-l: #{$zu-spacing-l};
+  --zu-spacing-xl: #{$zu-spacing-xl};
+  --zu-spacing-xxl: #{$zu-spacing-xxl};
+  --zu-spacing-xxxl: #{$zu-spacing-xxxl};
+}
