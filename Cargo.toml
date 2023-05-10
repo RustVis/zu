@@ -17,3 +17,8 @@ exclude = [
 ]
 
 resolver = "2"
+
+[profile.release]
+lto = true
+#opt-level = 's'
+opt-level = 'z'
