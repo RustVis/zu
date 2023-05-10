@@ -89,6 +89,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         // Components
         "src/circular_progress/style.scss",
         "src/skeleton/style.scss",
+        "src/typography/style.scss",
     ];
     merge_themes(&common_styles, "common-theme.scss")?;
     compile_scss("common-theme.scss", "common-theme.css")?;
