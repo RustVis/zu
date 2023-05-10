@@ -1,0 +1,59 @@
+
+/* Export scss variables to css variables */
+
+:root {
+  --zu-palette-mode: #{$zu-palette-mode};
+
+  --zu-palette-primary-main: #{$zu-palette-primary-main};
+  --zu-palette-primary-light: #{$zu-palette-primary-light};
+  --zu-palette-primary-dark: #{$zu-palette-primary-dark};
+  --zu-palette-primary-contrastText: #{$zu-palette-primary-contrastText};
+
+  --zu-palette-secondary-main: #{$zu-palette-secondary-main};
+  --zu-palette-secondary-light: #{$zu-palette-secondary-light};
+  --zu-palette-secondary-dark: #{$zu-palette-secondary-dark};
+  --zu-palette-secondary-contrastText: #{$zu-palette-secondary-contrastText};
+
+  --zu-palette-error-main: #{$zu-palette-error-main};
+  --zu-palette-error-light: #{$zu-palette-error-light};
+  --zu-palette-error-dark: #{$zu-palette-error-dark};
+  --zu-palette-error-contrastText: #{$zu-palette-error-contrastText};
+
+  --zu-palette-warning-main: #{$zu-palette-warning-main};
+  --zu-palette-warning-light: #{$zu-palette-warning-light};
+  --zu-palette-warning-dark: #{$zu-palette-warning-dark};
+  --zu-palette-warning-contrastText: #{$zu-palette-warning-contrastText};
+
+  --zu-palette-info-main: #{$zu-palette-info-main};
+  --zu-palette-info-light: #{$zu-palette-info-light};
+  --zu-palette-info-dark: #{$zu-palette-info-dark};
+  --zu-palette-info-contrastText: #{$zu-palette-info-contrastText};
+
+  --zu-palette-success-main: #{$zu-palette-success-main};
+  --zu-palette-success-light: #{$zu-palette-success-light};
+  --zu-palette-success-dark: #{$zu-palette-success-dark};
+  --zu-palette-success-contrastText: #{$zu-palette-success-contrastText};
+
+  --zu-palette-contrastThreshold: #{$zu-palette-contrastThreshold};
+  --zu-palette-totalOffset: #{$zu-palette-totalOffset};
+
+  --zu-palette-text-primary: #{$zu-palette-text-primary};
+  --zu-palette-text-secondary: #{$zu-palette-text-secondary};
+  --zu-palette-text-disabled: #{$zu-palette-text-disabled};
+
+  --zu-palette-divider: #{$zu-palette-divider};
+
+  --zu-palette-background-paper: #{$zu-palette-background-paper};
+  --zu-palette-background-default: #{$zu-palette-background-default};
+
+  --zu-palette-action-active: #{$zu-palette-action-active};
+  --zu-palette-action-hover: #{$zu-palette-action-hover};
+  --zu-palette-action-selected: #{$zu-palette-action-selected};
+  --zu-palette-action-selectedOpacity: #{$zu-palette-action-selectedOpacity};
+  --zu-palette-action-disabled: #{$zu-palette-action-disabled};
+  --zu-palette-action-disabledBackground: #{$zu-palette-action-disabledBackground};
+  --zu-palette-action-disabledOpacity: #{$zu-palette-action-disabledOpacity};
+  --zu-palette-action-focus: #{$zu-palette-action-focus};
+  --zu-palette-action-focusOpacity: #{$zu-palette-action-focusOpacity};
+  --zu-palette-action-activatedOpacity: #{$zu-palette-action-activatedOpacity};
+}

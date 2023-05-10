@@ -45,12 +45,20 @@ fn compile_scss<P: AsRef<Path>>(input_path: P, output_path: &str) -> Result<(), 
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    merge_themes(&["src/themes/dark-palette.scss"], "themes/dark-theme.scss")?;
+    merge_themes(
+        &[
+            "src/themes/dark-palette.scss",
+            "src/themes/export-palette.scss",
+            "src/themes/dark-components.scss",
+        ],
+        "themes/dark-theme.scss",
+    )?;
     compile_scss("themes/dark-theme.scss", "themes/dark-theme.css")?;
 
     merge_themes(
         &[
             "src/themes/light-palette.scss",
+            "src/themes/export-palette.scss",
             "src/themes/light-components.scss",
         ],
         "themes/light-theme.scss",
