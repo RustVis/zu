@@ -1,37 +1,60 @@
-
-/* Animation easing curves */
+/* Transition easing curves */
 :root {
   /* This is the most common easing curve. */
-  --zu-animation-easing-easeInOut: cubic-bezier(0.4, 0, 0.2, 1);
+  --zu-easing-easeInOut: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Objects enter the screen at full velocity from off-screen and
    * slowly decelerate to a resting point. */
-  --zu-animation-easing-easeOut: cubic-bezier(0.0, 0, 0.2, 1);
+  --zu-easing-easeOut: cubic-bezier(0.0, 0, 0.2, 1);
 
   /* Objects leave the screen at full velocity. They do not decelerate when off-screen. */
-  --zu-animation-easing-easeIn: cubic-bezier(0.4, 0, 1, 1);
+  --zu-easing-easeIn: cubic-bezier(0.4, 0, 1, 1);
 
   /* The sharp curve is used by objects that may return to the screen at any time. */
-  --zu-animation-easing-sharp: cubic-bezier(0.4, 0, 0.6, 1);
+  --zu-easing-sharp: cubic-bezier(0.4, 0, 0.6, 1);
 }
 
-/* Animation duration */
+/* Alternative easing curves */
 :root {
-  --zu-animation-duration-shortest: 150ms;
-  --zu-animation-duration-shorter: 200ms;
-  --zu-animation-duration-short: 250ms;
+  --zu-easing2-accelerateMax: cubic-bezier(1, 0, 1, 1);
+  --zu-easing2-accelerateMid: cubic-bezier(0.7, 0, 1, 0.5);
+  --zu-easing2-accelerateMin: cubic-bezier(0.8, 0, 1, 1);
+  --zu-easing2-decelerateMax: cubic-bezier(0, 0, 0, 1);
+  --zu-easing2-decelerateMid: cubic-bezier(0.1, 0.9, 0.2, 1);
+  --zu-easing2-decelerateMin: cubic-bezier(0.33, 0, 0.1, 1);
+  --zu-easing2-easyEaseMax: cubic-bezier(0.8, 0, 0.1, 1);
+  --zu-easing2-easyEase: cubic-bezier(0.33, 0, 0.67, 1);
+  --zu-easing2-linear: cubic-bezier(0, 0, 1, 1);
+}
+
+/* Transition duration variables */
+:root {
+  --zu-duration-shortest: 150ms;
+  --zu-duration-shorter: 200ms;
+  --zu-duration-short: 250ms;
 
   /* most basic recommended timing */
-  --zu-animation-duration-standard: 300ms;
+  --zu-duration-standard: 300ms;
   /* this is to be used in complex animations */
-  --zu-animation-duration-complex: 375ms;
+  --zu-duration-complex: 375ms;
   /* recommended when something is entering screen */
-  --zu-animation-duration-enteringScreen: 225ms;
+  --zu-duration-enteringScreen: 225ms;
   /* recommended when something is leaving screen */
-  --zu-animation-duration-leavingScreen: 195ms;
+  --zu-duration-leavingScreen: 195ms;
+}
+
+/* Alternative duration variables */
+:root {
+  --zu-duration2-ultraFast: 50ms;
+  --zu-duration2-faster: 100ms;
+  --zu-duration2-fast: 150ms;
+  --zu-duration2-normal: 200ms;
+  --zu-duration2-slow: 300ms;
+  --zu-duration2-slower: 400ms;
+  --zu-duration2-ultraSlow: 500ms;
 }
 
 /* Transforms */
 :root {
-  --zu-animation-transform: transform var(--zu-animation-duration-standard) var(--zu-animation-easing-easeInOut) 0ms;
+  --zu-transform: transform var(--zu-duration-standard) var(--zu-easing-easeInOut) 0ms;
 }
