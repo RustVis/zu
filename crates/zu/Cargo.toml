@@ -1,8 +1,17 @@
 [package]
 name = "zu"
-version = "0.1.0"
+version = "0.2.1"
+authors = ["Xu Shaohua <shaohua@biofan.org>"]
+readme = "README.md"
+homepage = "https://github.com/RustVis/zu"
+repository = "https://github.com/RustVis/zu"
+documentation = "https://docs.rs/zu"
+description = "Yew web components, implementing Material Design"
+keywords = ["yew", "web", "wasm", "material design"]
+categories = ["gui", "web", "web-programming"]
 edition = "2021"
-publish = false
+license = "Apache-2.0"
+publish = true
 
 [dependencies]
 log = "0.4.17"
