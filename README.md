@@ -14,5 +14,14 @@ This UI library is heavily inspired by [material ui](https://github.com/mui/mate
 - [Documentation](https://docs.rs/zu)
 - [Release notes](https://github.com/RustVis/zu/releases)
 
+## Usage
+Add this to `Cargo.toml`:
+```toml
+[dependencies]
+zu = "0.2"
+```
+
+Or using `cargo add zu` command.
+
 ## License
 This library is release in [Apache License](LICENSE).
