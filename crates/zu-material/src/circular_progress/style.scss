@@ -1,1 +1,79 @@
 /* Styles for ZuCircularProgress */
+
+/* Styles applied to the root element. */
+.MuiCircularProgress-root {
+  display: inline-block;
+}
+
+/* Styles applied to the root element if variant="determinate". */
+.MuiCircularProgress-determinate {
+  transition: var(--zu-animation-transform);
+}
+
+/* Styles applied to the root element if variant="indeterminate". */
+.MuiCircularProgress-indeterminate {
+  animation: zu-circular-progress-circular-rotate 1.4s linear infinite;
+}
+
+/* Styles applied to the root element if color="primary". */
+.MuiCircularProgress-colorPrimary {
+
+}
+
+/* Styles applied to the root element if color="secondary". */
+.MuiCircularProgress-colorSecondary {
+
+}
+
+/* Styles applied to the svg element. */
+.MuiCircularProgress-svg {
+  display: block;
+}
+
+/* Styles applied to the `circle` svg path. */
+.MuiCircularProgress-circle {
+
+}
+
+/* Styles applied to the `circle` svg path if variant="determinate". */
+.MuiCircularProgress-circleDeterminate {
+
+}
+
+/* Styles applied to the `circle` svg path if variant="indeterminate". */
+.MuiCircularProgress-circleIndeterminate {
+
+}
+
+/* Styles applied to the `circle` svg path if disableShrink={true}. */
+.MuiCircularProgress-circleDisableShrink {
+
+}
+
+/* Animations */
+@keyframes zu-circular-progress-circular-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes zu-circular-progress-circular-dash {
+  0% {
+    stroke-dasharray: 1px, 200px;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -15px;
+  }
+
+  100% {
+    stroke-dasharray: 100px, 200px;
+    stroke-dashoffset: -125px;
+  }
+}

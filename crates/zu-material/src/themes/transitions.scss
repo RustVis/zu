@@ -30,3 +30,8 @@
   /* recommended when something is leaving screen */
   --zu-animation-duration-leavingScreen: 195ms;
 }
+
+/* Transforms */
+:root {
+  --zu-animation-transform: transform var(--zu-animation-duration-standard) var(--zu-animation-easing-easeInOut) 0ms;
+}

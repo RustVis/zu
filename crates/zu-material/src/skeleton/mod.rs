@@ -24,7 +24,7 @@ impl Default for Variant {
 }
 
 impl CssClass for Variant {
-    fn to_cls(&self) -> &'static str {
+    fn css_class(&self) -> &'static str {
         match self {
             Self::Text => "ZuSkeleton-text",
             Self::Circular => "ZuSkeleton-circular",
@@ -48,7 +48,7 @@ impl Default for Animation {
 }
 
 impl CssClass for Animation {
-    fn to_cls(&self) -> &'static str {
+    fn css_class(&self) -> &'static str {
         match self {
             Self::Pulse => "ZuSkeleton-pulse",
             Self::Wave => "ZuSkeleton-wave",
@@ -80,7 +80,11 @@ pub struct Props {
 
 #[function_component(Skeleton)]
 pub fn skeleton(props: &Props) -> Html {
-    let cls = classes!(ROOT_CLS, props.animation.to_cls(), props.variant.to_cls());
+    let cls = classes!(
+        ROOT_CLS,
+        props.animation.css_class(),
+        props.variant.css_class()
+    );
     let mut styles = vec![props.style.clone()];
     if props.width > 0 {
         styles.push(format!("width: {}px", props.width));
