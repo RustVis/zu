@@ -4,7 +4,7 @@
 
 use yew::prelude::*;
 use yew_router::BrowserRouter;
-use zu_material::theme_provider::ThemeProvider;
+use zu::theme_provider::ThemeProvider;
 
 use crate::components::main_content::MainContent;
 

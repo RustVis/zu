@@ -3,7 +3,7 @@
 // in the LICENSE file.
 
 use yew::prelude::*;
-use zu_material::skeleton::{Animation, Skeleton, Variant};
+use zu::skeleton::{Animation, Skeleton, Variant};
 
 #[function_component(SkeletonPage)]
 pub fn skeleton_page() -> Html {

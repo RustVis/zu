@@ -1,6 +1,6 @@
 [workspace]
 members = [
-	"crates/zu-material",
+	"crates/zu",
   "crates/zuicon-ant",
   "crates/zuicon-bs",
   "crates/zuicon-material",
@@ -8,7 +8,7 @@ members = [
   "crates/zuicon-util",
 
   # Examples
-  "crates/zu-material-examples",
+  "crates/zu-examples",
 ]
 
 exclude = [

@@ -4,9 +4,9 @@
 
 use gloo_timers::callback::Interval;
 use yew::prelude::*;
-use zu_material::circular_progress::CircularProgress;
-use zu_material::circular_progress::Variant as CircularVariant;
-use zu_material::styles::color::ColorVariant;
+use zu::circular_progress::CircularProgress;
+use zu::circular_progress::Variant as CircularVariant;
+use zu::styles::color::ColorVariant;
 
 #[function_component(ProgressPage)]
 pub fn progress_page() -> Html {
