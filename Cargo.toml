@@ -1,11 +1,11 @@
 [workspace]
 members = [
 	"crates/zu",
-  "crates/zuicon-ant",
-  "crates/zuicon-bs",
-  "crates/zuicon-material",
-  "crates/zuicon-mdl2",
-  "crates/zuicon-util",
+  #"crates/zuicon-ant",
+  #"crates/zuicon-bs",
+  #"crates/zuicon-material",
+  #"crates/zuicon-mdl2",
+  #"crates/zuicon-util",
 
   # Docs
   "crates/zu-docs",
