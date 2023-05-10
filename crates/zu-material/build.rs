@@ -49,7 +49,10 @@ fn main() -> Result<(), Box<dyn Error>> {
     compile_scss("themes/dark-theme.scss", "themes/dark-theme.css")?;
 
     merge_themes(
-        &["src/themes/light-palette.scss"],
+        &[
+            "src/themes/light-palette.scss",
+            "src/themes/light-components.scss",
+        ],
         "themes/light-theme.scss",
     )?;
     compile_scss("themes/light-theme.scss", "themes/light-theme.css")?;
