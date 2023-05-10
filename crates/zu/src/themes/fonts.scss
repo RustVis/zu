@@ -1,0 +1,71 @@
+
+/* Font related variables */
+
+$zu-font-size-s100: 10px;
+$zu-font-size-s200: 12px;
+$zu-font-size-s300: 14px;
+$zu-font-size-s400: 16px;
+$zu-font-size-s500: 20px;
+$zu-font-size-s600: 24px;
+$zu-font-size-s700: 28px;
+$zu-font-size-s800: 32px;
+$zu-font-size-s900: 40px;
+$zu-font-size-s1000: 68px;
+
+:root {
+  --zu-font-size-s100: #{$zu-font-size-s100};
+  --zu-font-size-s200: #{$zu-font-size-s200};
+  --zu-font-size-s300: #{$zu-font-size-s300};
+  --zu-font-size-s400: #{$zu-font-size-s400};
+  --zu-font-size-s500: #{$zu-font-size-s500};
+  --zu-font-size-s600: #{$zu-font-size-s600};
+  --zu-font-size-s700: #{$zu-font-size-s700};
+  --zu-font-size-s800: #{$zu-font-size-s800};
+  --zu-font-size-s900: #{$zu-font-size-s900};
+}
+
+$zu-line-height-h100: 14px;
+$zu-line-height-h200: 16px;
+$zu-line-height-h300: 20px;
+$zu-line-height-h400: 22px;
+$zu-line-height-h500: 28px;
+$zu-line-height-h600: 32px;
+$zu-line-height-h700: 36px;
+$zu-line-height-h800: 40px;
+$zu-line-height-h900: 52px;
+$zu-line-height-h1000: 92px;
+
+:root {
+	--zu-line-height-h100: #{$zu-line-height-h100};
+	--zu-line-height-h200: #{$zu-line-height-h200};
+	--zu-line-height-h300: #{$zu-line-height-h300};
+	--zu-line-height-h400: #{$zu-line-height-h400};
+	--zu-line-height-h500: #{$zu-line-height-h500};
+	--zu-line-height-h600: #{$zu-line-height-h600};
+	--zu-line-height-h700: #{$zu-line-height-h700};
+	--zu-line-height-h800: #{$zu-line-height-h800};
+	--zu-line-height-h900: #{$zu-line-height-h900};
+	--zu-line-height-h1000: #{$zu-line-height-h1000};
+}
+
+$zu-font-weight-regular: 400;
+$zu-font-weight-medium: 500;
+$zu-font-weight-semiBold: 600;
+$zu-font-weight-bold: 700;
+
+:root {
+	--zu-font-weight-regular: #{$zu-font-weight-regular};
+	--zu-font-weight-medium: #{$zu-font-weight-medium};
+	--zu-font-weight-semiBold: #{$zu-font-weight-semiBold};
+	--zu-font-weight-bold: #{$zu-font-weight-bold};
+}
+
+$zu-font-family-base: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+$zu-font-family-monospace: Consolas, 'Courier New', Courier, monospace;
+$zu-font-family-numeric: Bahnschrift, 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+
+:root {
+	--zu-font-family-base: #{$zu-font-family-base};
+	--zu-font-family-monospace: #{$zu-font-family-monospace};
+	--zu-font-family-numeric: #{$zu-font-family-numeric};
+}

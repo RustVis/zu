@@ -78,6 +78,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let common_styles = [
         "src/themes/border-radius.scss",
         "src/themes/breakpoints.scss",
+        "src/themes/fonts.scss",
         "src/themes/shadows.scss",
         "src/themes/shape.scss",
         "src/themes/spacings.scss",
