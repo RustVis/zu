@@ -1,0 +1,13 @@
+
+/* Stroke width variables */
+$zu-stroke-width-thin: 1px;
+$zu-stroke-width-thick: 2px;
+$zu-stroke-width-thicker: 3px;
+$zu-stroke-width-thickest: 4px;
+
+:root {
+  --zu-stroke-width-thin: #{$zu-stroke-width-thin};
+  --zu-stroke-width-thick: #{$zu-stroke-width-thick};
+  --zu-stroke-width-thicker: #{$zu-stroke-width-thicker};
+  --zu-stroke-width-thickest: #{$zu-stroke-width-thickest};
+}
