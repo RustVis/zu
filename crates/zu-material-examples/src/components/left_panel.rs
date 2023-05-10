@@ -35,6 +35,12 @@ pub fn left_panel() -> Html {
                         { "Skeleton" }
                     </Link<Route>>
                 </li>
+
+                <li class="nav-item">
+                    <Link<Route> to={ Route::Progress } classes={ link_cls(Route::Progress) }>
+                        { "Progress" }
+                    </Link<Route>>
+                </li>
             </ul>
         </div>
     }
