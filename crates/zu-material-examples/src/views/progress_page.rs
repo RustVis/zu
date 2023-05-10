@@ -2,19 +2,33 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+use gloo_timers::callback::Interval;
 use yew::prelude::*;
 use zu_material::circular_progress::CircularProgress;
 use zu_material::circular_progress::Variant as CircularVariant;
 use zu_material::styles::color::ColorVariant;
 
-#[derive(Debug, Clone, PartialEq, Eq, Properties)]
-pub struct Props {
-    #[prop_or_default]
-    pub progress: i32,
-}
-
 #[function_component(ProgressPage)]
-pub fn progress_page(props: &Props) -> Html {
+pub fn progress_page() -> Html {
+    let progress = use_state(|| 0);
+
+    {
+        let progress_clone = progress.clone();
+        use_effect(move || {
+            let timer = Interval::new(800, move || {
+                let value = *progress_clone;
+                if value >= 100 {
+                    progress_clone.set(0);
+                } else {
+                    progress_clone.set(value + 10);
+                }
+            });
+            || {
+                timer.cancel();
+            }
+        });
+    }
+
     html! {
         <div class="container">
             <h1>{ "Progress" }</h1>
@@ -41,14 +55,14 @@ pub fn progress_page(props: &Props) -> Html {
                 <CircularProgress variant={ CircularVariant::Determinate } value={ 50 } />
                 <CircularProgress variant={ CircularVariant::Determinate } value={ 75 } />
                 <CircularProgress variant={ CircularVariant::Determinate } value={ 100 } />
-                <CircularProgress variant={ CircularVariant::Determinate } value={ props.progress } />
+                <CircularProgress variant={ CircularVariant::Determinate } value={ *progress } />
             </div>
 
             <h3>{ "Circular with label" }</h3>
             <div class="preview-box">
                 <CircularProgress variant={ CircularVariant::Determinate }
                     with_label={ true }
-                    value={ props.progress } />
+                    value={ *progress } />
             </div>
         </div>
     }

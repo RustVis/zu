@@ -21,6 +21,5 @@ use app::App;
 
 pub fn run_main() {
     wasm_logger::init(wasm_logger::Config::default());
-    log::info!("hello");
     yew::Renderer::<App>::new().render();
 }
