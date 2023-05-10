@@ -1,0 +1,112 @@
+
+/* Typography */
+
+:root {
+  --zu-typography-htmlFontSize: 16;
+  --zu-typography-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"';
+  --zu-typography-fontSize: 14;
+  --zu-typography-fontWeightLight: 300;
+  --zu-typography-fontWeightRegular: 400;
+  --zu-typography-fontWeightMedium: 500;
+  --zu-typography-fontWeightBold: 700;
+
+  /* For h1 */
+  --zu-typography-h1-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"';
+  --zu-typography-h1-fontWeight: 300;
+  --zu-typography-h1-fontSize: 6rem;
+  --zu-typography-h1-lineHeight: 1.167;
+  --zu-typography-h1-letterSpacing: -0.01562em;
+
+  /* For h2 */
+  --zu-typography-h2-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"';
+  --zu-typography-h2-fontWeight: 300;
+  --zu-typography-h2-fontSize: 3.75rem;
+  --zu-typography-h2-lineHeight: 1.2;
+  --zu-typography-h2-letterSpacing: -0.00833em;
+  
+  /* For h3 */
+  --zu-typography-h3-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"';
+  --zu-typography-h3-fontWeight: 400;
+  --zu-typography-h3-fontSize: 3rem;
+  --zu-typography-h3-lineHeight: 1.168;
+  --zu-typography-h3-letterSpacing: 0;
+
+  /* For h4 */
+  --zu-typography-h4-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"';
+  --zu-typography-h4-fontWeight: 400;
+  --zu-typography-h4-fontSize: 2.125rem;
+  --zu-typography-h4-lineHeight: 1.235;
+  --zu-typography-h4-letterSpacing: 0.00735em;
+
+  /* For h5 */
+  --zu-typography-h5-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"';
+  --zu-typography-h5-fontWeight: 400;
+  --zu-typography-h5-fontSize: 1.5rem;
+  --zu-typography-h5-lineHeight: 1.334;
+  --zu-typography-h5-letterSpacing: 0;
+
+  /* For h6 */
+  --zu-typography-h6-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"';
+  --zu-typography-h6-fontWeight: 500;
+  --zu-typography-h6-fontSize: 1.25rem;
+  --zu-typography-h6-lineHeight: 1.6;
+  --zu-typography-h6-letterSpacing: 0.0075em;
+
+  /* For subtitle1 */
+  --zu-typography-subtitle1-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"';
+  --zu-typography-subtitle1-fontWeight: 400;
+  --zu-typography-subtitle1-fontSize: 1rem;
+  --zu-typography-subtitle1-lineHeight: 1.75;
+  --zu-typography-subtitle1-letterSpacing: 0.00938em;
+
+  /* For subtitle2 */
+  --zu-typography-subtitle2-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"';
+  --zu-typography-subtitle2-fontWeight: 500;
+  --zu-typography-subtitle2-fontSize: 0.875rem;
+  --zu-typography-subtitle2-lineHeight: 1.57;
+  --zu-typography-subtitle2-letterSpacing: 0.00714em;
+
+  /* For body1 */
+  --zu-typography-body1-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"';
+  --zu-typography-body1-fontWeight: 400;
+  --zu-typography-body1-fontSize: 1rem;
+  --zu-typography-body1-lineHeight: 1.5;
+  --zu-typography-body1-letterSpacing: 0.00938em;
+
+  /* For body2 */
+  --zu-typography-body2-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"';
+  --zu-typography-body2-fontWeight: 400;
+  --zu-typography-body2-fontSize: 0.875rem;
+  --zu-typography-body2-lineHeight: 1.43;
+  --zu-typography-body2-letterSpacing: 0.01071em;
+
+  /* For button */
+  --zu-typography-button-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"';
+  --zu-typography-button-fontWeight: 500;
+  --zu-typography-button-fontSize: 0.875rem;
+  --zu-typography-button-lineHeight: 1.75;
+  --zu-typography-button-letterSpacing: 0.02857em;
+  --zu-typography-button-textTransform: uppercase;
+
+  /* For caption */
+  --zu-typography-caption-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"';
+  --zu-typography-caption-fontWeight: 400;
+  --zu-typography-caption-fontSize: 0.75rem;
+  --zu-typography-caption-lineHeight: 1.66;
+  --zu-typography-caption-letterSpacing: 0.03333em;
+
+  /* For overline */
+  --zu-typography-overline-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"';
+  --zu-typography-overline-fontWeight: 400;
+  --zu-typography-overline-fontSize: 0.75rem;
+  --zu-typography-overline-lineHeight: 2.66;
+  --zu-typography-overline-letterSpacing: 0.03333em;
+  --zu-typography-overline-textTransform: uppercase;
+
+  /* For inherit */
+  --zu-typography-inherit-fontFamily: inherit;
+  --zu-typography-inherit-fontWeight: inherit;
+  --zu-typography-inherit-fontSize: inherit;
+  --zu-typography-inherit-lineHeight: inherit;
+  --zu-typography-inherit-letterSpacing: inherit;
+}
