@@ -25,26 +25,26 @@ pub fn left_panel() -> Html {
         <div class="col-sm-4 col-lg-2">
             <ul class="nav nav-pills flex-column mb-auto bg-light">
                 <li class="nav-item">
-                    <Link<Route> to={ Route::Home } classes={ link_cls(Route::Home) }>
-                        { "Home" }
+                    <Link<Route> to={Route::Home} classes={link_cls(Route::Home)}>
+                        {"Home"}
                     </Link<Route>>
                 </li>
 
                 <li class="nav-item">
-                    <Link<Route> to={ Route::Skeleton } classes={ link_cls(Route::Skeleton) }>
-                        { "Skeleton" }
+                    <Link<Route> to={Route::Skeleton} classes={link_cls(Route::Skeleton)}>
+                        {"Skeleton"}
                     </Link<Route>>
                 </li>
 
                 <li class="nav-item">
-                    <Link<Route> to={ Route::Progress } classes={ link_cls(Route::Progress) }>
-                        { "Progress" }
+                    <Link<Route> to={Route::Progress} classes={link_cls(Route::Progress)}>
+                        {"Progress"}
                     </Link<Route>>
                 </li>
 
                 <li class="nav-item">
-                    <Link<Route> to={ Route::Typography } classes={ link_cls(Route::Typography) }>
-                        { "Typography" }
+                    <Link<Route> to={Route::Typography} classes={link_cls(Route::Typography)}>
+                        {"Typography"}
                     </Link<Route>>
                 </li>
             </ul>

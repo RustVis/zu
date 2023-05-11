@@ -8,7 +8,7 @@ use yew::prelude::*;
 pub fn home_page() -> Html {
     html! {
         <div class="container">
-            <h2>{ "Home" }</h2>
+            <h2>{"Home"}</h2>
         </div>
     }
 }

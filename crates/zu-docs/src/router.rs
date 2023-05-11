@@ -30,9 +30,9 @@ pub enum Route {
 #[allow(clippy::let_unit_value)]
 pub fn switch_route(routes: Route) -> Html {
     match routes {
-        Route::Home => html! { <HomePage /> },
-        Route::Skeleton => html! { <SkeletonPage /> },
-        Route::Progress => html! { <ProgressPage /> },
-        Route::Typography => html! { <TypographyPage /> },
+        Route::Home => html! {<HomePage />},
+        Route::Skeleton => html! {<SkeletonPage />},
+        Route::Progress => html! {<ProgressPage />},
+        Route::Typography => html! {<TypographyPage />},
     }
 }

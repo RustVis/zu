@@ -31,38 +31,38 @@ pub fn progress_page() -> Html {
 
     html! {
         <div class="container">
-            <h1>{ "Progress" }</h1>
-            <p>{ "Progress indicators inform users about the status of ongoing processes, such as loading an app,\
-             submitting a form, or saving updates." }</p>
-            <p>{ "The animations of the components rely on CSS as much as possible to work even before the JavaScript is loaded." }</p>
+            <h1>{"Progress"}</h1>
+            <p>{"Progress indicators inform users about the status of ongoing processes, such as loading an app,
+             submitting a form, or saving updates."}</p>
+            <p>{"The animations of the components rely on CSS as much as possible to work even before the JavaScript is loaded."}</p>
 
-            <h2>{ "Circular" }</h2>
-            <h3>{ "Circular Indeterminate" }</h3>
+            <h2>{"Circular"}</h2>
+            <h3>{"Circular Indeterminate"}</h3>
             <div class="preview-box">
                 <CircularProgress />
             </div>
 
-            <h3>{ "Circular color" }</h3>
+            <h3>{"Circular color"}</h3>
             <div class="preview-box">
-                <CircularProgress color={ ColorVariant::Secondary } />
-                <CircularProgress color={ ColorVariant::Success } />
-                <CircularProgress color={ ColorVariant::Inherit } />
+                <CircularProgress color={ColorVariant::Secondary} />
+                <CircularProgress color={ColorVariant::Success} />
+                <CircularProgress color={ColorVariant::Inherit} />
             </div>
 
-            <h3>{ "Circular determinate" }</h3>
+            <h3>{"Circular determinate"}</h3>
             <div class="preview-box">
-                <CircularProgress variant={ CircularVariant::Determinate } value={ 25 } />
-                <CircularProgress variant={ CircularVariant::Determinate } value={ 50 } />
-                <CircularProgress variant={ CircularVariant::Determinate } value={ 75 } />
-                <CircularProgress variant={ CircularVariant::Determinate } value={ 100 } />
-                <CircularProgress variant={ CircularVariant::Determinate } value={ *progress } />
+                <CircularProgress variant={CircularVariant::Determinate} value={25} />
+                <CircularProgress variant={CircularVariant::Determinate} value={50} />
+                <CircularProgress variant={CircularVariant::Determinate} value={75} />
+                <CircularProgress variant={CircularVariant::Determinate} value={100} />
+                <CircularProgress variant={CircularVariant::Determinate} value={*progress} />
             </div>
 
-            <h3>{ "Circular with label" }</h3>
+            <h3>{"Circular with label"}</h3>
             <div class="preview-box">
-                <CircularProgress variant={ CircularVariant::Determinate }
-                    with_label={ true }
-                    value={ *progress } />
+                <CircularProgress variant={CircularVariant::Determinate}
+                    with_label={true}
+                    value={*progress} />
             </div>
         </div>
     }
