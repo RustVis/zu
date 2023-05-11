@@ -3,7 +3,7 @@
 // in the LICENSE file.
 
 use std::f64::consts::PI;
-use yew::prelude::*;
+use yew::{classes, function_component, html, Html, Properties};
 
 use crate::styles::color::ColorVariant;
 use crate::styles::size::SizeVariant;

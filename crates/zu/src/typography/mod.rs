@@ -5,7 +5,7 @@
 use yew::{function_component, html, Children, Html, Properties};
 
 use crate::styles::text_align::TextAlign;
-use crate::styles::CssClass;
+use crate::styles::{CssClass, CssValue};
 
 /// Applies the theme typography styles.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -26,24 +26,31 @@ pub enum Variant {
     Inherit,
 }
 
+impl Default for Variant {
+    fn default() -> Self {
+        Self::Body1
+    }
+}
+
 impl Variant {
     #[must_use]
-    pub const fn as_str(&self) -> &'static str {
+    #[allow(clippy::match_same_arms)]
+    pub const fn as_component(&self) -> &'static str {
         match self {
-            Self::Body1 => "body1",
-            Self::Body2 => "body2",
-            Self::Button => "button",
-            Self::Caption => "caption",
+            Self::Body1 => "p",
+            Self::Body2 => "p",
+            Self::Button => "span",
+            Self::Caption => "span",
             Self::H1 => "h1",
             Self::H2 => "h2",
             Self::H3 => "h3",
             Self::H4 => "h4",
             Self::H5 => "h5",
             Self::H6 => "h6",
-            Self::Overline => "overline",
-            Self::Subtitle1 => "subtitle1",
-            Self::Subtitle2 => "subtitle2",
-            Self::Inherit => "inherit",
+            Self::Overline => "span",
+            Self::Subtitle1 => "h6",
+            Self::Subtitle2 => "h6",
+            Self::Inherit => "p",
         }
     }
 }
@@ -74,6 +81,9 @@ pub struct Props {
     #[prop_or_default]
     pub align: TextAlign,
 
+    #[prop_or_default]
+    pub variant: Variant,
+
     /// If true, the text will not wrap, but instead will truncate with a text overflow ellipsis.
     ///
     /// Note that text overflow can only happen with block or inline-block level elements
@@ -91,9 +101,23 @@ pub struct Props {
 }
 
 #[function_component(Typography)]
-pub fn typography(_props: &Props) -> Html {
+pub fn typography(props: &Props) -> Html {
+    let component = if props.paragraph {
+        "p"
+    } else {
+        props.variant.as_component()
+    };
+
+    let cls = props.variant.css_class();
+    let styles = vec![
+        props.style.clone(),
+        format!("text-align: {}", props.align.css_value()),
+    ];
+    let style = styles.join(";");
+
     html! {
-       <>
-        </>
+       <div as={component} class={ cls } style={ style }>
+            { props.children.clone() }
+       </div>
     }
 }
