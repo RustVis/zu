@@ -41,6 +41,12 @@ pub fn left_panel() -> Html {
                         { "Progress" }
                     </Link<Route>>
                 </li>
+
+                <li class="nav-item">
+                    <Link<Route> to={ Route::Typography } classes={ link_cls(Route::Typography) }>
+                        { "Typography" }
+                    </Link<Route>>
+                </li>
             </ul>
         </div>
     }

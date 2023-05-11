@@ -8,6 +8,7 @@ use yew_router::prelude::Routable;
 use crate::views::home_page::HomePage;
 use crate::views::progress_page::ProgressPage;
 use crate::views::skeleton_page::SkeletonPage;
+use crate::views::typography_page::TypographyPage;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Routable)]
 pub enum Route {
@@ -19,6 +20,9 @@ pub enum Route {
 
     #[at("/progress")]
     Progress,
+
+    #[at("/typography")]
+    Typography,
 }
 
 #[must_use]
@@ -29,5 +33,6 @@ pub fn switch_route(routes: Route) -> Html {
         Route::Home => html! { <HomePage /> },
         Route::Skeleton => html! { <SkeletonPage /> },
         Route::Progress => html! { <ProgressPage /> },
+        Route::Typography => html! { <TypographyPage /> },
     }
 }

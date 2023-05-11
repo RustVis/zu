@@ -84,6 +84,10 @@ pub struct Props {
     #[prop_or_default]
     pub variant: Variant,
 
+    /// If true, the text will have a bottom margin.
+    #[prop_or(false)]
+    pub gutter_bottom: bool,
+
     /// If true, the text will not wrap, but instead will truncate with a text overflow ellipsis.
     ///
     /// Note that text overflow can only happen with block or inline-block level elements
