@@ -3,7 +3,7 @@
 
 /* Styles applied to the root element. */
 .ZuTypography-root {
-
+  margin: 0;
 }
 
 /* styles applied to the root element if variant="body1". */
@@ -26,15 +26,20 @@
 
 /* Styles applied to the root element if variant="button". */
 .ZuTypography-button {
+  display: block;
+
   font-family: var(--zu-typography-button-fontFamily);
   font-weight: var(--zu-typography-button-fontWeight);
   font-size: var(--zu-typography-button-fontSize);
   line-height: var(--zu-typography-button-lineHeight);
   letter-spacing: var(--zu-typography-button-letterSpacing);
+  text-transform: var(--zu-typography-button-textTransform);
 }
 
 /* Styles applied to the root element if variant="caption". */
 .ZuTypography-caption {
+  display: block;
+
   font-family: var(--zu-typography-caption-fontFamily);
   font-weight: var(--zu-typography-caption-fontWeight);
   font-size: var(--zu-typography-caption-fontSize);
@@ -98,11 +103,14 @@
 
 /* Styles applied to the root element if variant="overline". */
 .ZuTypography-overline {
+  display: block;
+
   font-family: var(--zu-typography-overline-fontFamily);
   font-weight: var(--zu-typography-overline-fontWeight);
   font-size: var(--zu-typography-overline-fontSize);
   line-height: var(--zu-typography-overline-lineHeight);
   letter-spacing: var(--zu-typography-overline-letterSpacing);
+  text-transform: var(--zu-typography-overline-textTransform);
 }
 
 /* Styles applied to the root element if variant="subtitle1". */
@@ -155,5 +163,5 @@
 
 /* Styles applied to the root element if gutterBottom={true}. */
 .ZuTypography-gutterBottom {
-
+  margin-bottom: 0.35em;
 }
