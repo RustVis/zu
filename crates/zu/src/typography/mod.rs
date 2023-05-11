@@ -120,8 +120,8 @@ pub fn typography(props: &Props) -> Html {
     let style = styles.join(";");
 
     html! {
-       <div as={component} class={ cls } style={ style }>
-            { props.children.clone() }
+       <div as={component} class={cls} style={style}>
+            {props.children.clone()}
        </div>
     }
 }

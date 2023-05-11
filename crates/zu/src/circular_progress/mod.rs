@@ -9,7 +9,6 @@ use crate::styles::color::ColorVariant;
 use crate::styles::size::SizeVariant;
 use crate::styles::{CssClass, CssValue};
 
-const ROOT_CLS: &str = "ZuCircularProgress-root";
 const SIZE: i32 = 44;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -75,7 +74,7 @@ pub struct Props {
 
 #[function_component(CircularProgress)]
 pub fn circular_progress(props: &Props) -> Html {
-    let mut class_list = vec![ROOT_CLS, props.variant.css_class()];
+    let mut class_list = vec!["ZuCircularProgress-root", props.variant.css_class()];
     match props.color {
         ColorVariant::Primary => class_list.push("ZuCircularProgress-colorPrimary"),
         ColorVariant::Secondary => class_list.push("MuiCircularProgress-colorSecondary"),
@@ -122,14 +121,14 @@ pub fn circular_progress(props: &Props) -> Html {
     let progress = html! {
         <span class={ cls } style={ style }>
             <svg class="ZuCircularProgress-svg"
-                viewBox={ format!("{} {} {SIZE} {SIZE}", SIZE / 2, SIZE / 2) } >
+                viewBox={format!("{} {} {SIZE} {SIZE}", SIZE / 2, SIZE / 2)}>
                 <circle class="ZuCircularProgress-circle"
-                    style={ circle_style }
-                    cx={ SIZE.to_string() }
-                    cy={ SIZE.to_string() }
-                    r={ radius.to_string() }
+                    style={circle_style}
+                    cx={SIZE.to_string()}
+                    cy={SIZE.to_string()}
+                    r={radius.to_string()}
                     fill="none"
-                    stroke-width={ props.thickness.to_string()}></circle>
+                    stroke-width={props.thickness.to_string()}></circle>
             </svg>
         </span>
     };
@@ -141,9 +140,9 @@ pub fn circular_progress(props: &Props) -> Html {
     // TODO(Shaohua): Replace with <Caption>
     html! {
         <div class="ZuCircularProgress-labelContainer"
-            style={ size_style }>
-            { progress }
-            <span class="ZuCircularProgress-label" title={ label.clone() }>{ label }</span>
+            style={size_style}>
+            {progress}
+            <span class="ZuCircularProgress-label" title={label.clone()}>{label}</span>
         </div>
     }
 }

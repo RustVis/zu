@@ -95,7 +95,7 @@ pub fn skeleton(props: &Props) -> Html {
     let style = styles.join(";");
 
     html! {
-        <span class={ cls } style={ style }>
+        <span class={cls} style={style}>
         </span>
     }
 }
