@@ -23,6 +23,18 @@ impl Default for ColorVariant {
     }
 }
 
+impl ColorVariant {
+    #[must_use]
+    pub fn text_color(&self) -> String {
+        format!("color: {}", self.css_value())
+    }
+
+    #[must_use]
+    pub fn bg_color(&self) -> String {
+        format!("background-color: {}", self.css_value())
+    }
+}
+
 impl CssValue for ColorVariant {
     fn css_value(&self) -> String {
         match self {

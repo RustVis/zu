@@ -2,10 +2,22 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{function_component, html, Children, Html, Properties};
+use yew::{classes, function_component, html, Children, Html, Properties};
 
+use crate::styles::color::ColorVariant;
 use crate::styles::text_align::TextAlign;
 use crate::styles::{CssClass, CssValue};
+
+#[must_use]
+pub const fn text_align_class(align: TextAlign) -> &'static str {
+    match align {
+        TextAlign::Center => "ZuTypography-center",
+        TextAlign::Start => "ZuTypography-start",
+        TextAlign::End => "ZuTypography-end",
+        TextAlign::Justify => "ZuTypography-justify",
+        TextAlign::Inherit => "",
+    }
+}
 
 /// Applies the theme typography styles.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -82,6 +94,9 @@ pub struct Props {
     pub align: TextAlign,
 
     #[prop_or_default]
+    pub color: ColorVariant,
+
+    #[prop_or_default]
     pub variant: Variant,
 
     /// If true, the text will have a bottom margin.
@@ -112,7 +127,19 @@ pub fn typography(props: &Props) -> Html {
         props.variant.as_component()
     };
 
-    let cls = props.variant.css_class();
+    let mut cls_list = vec![
+        "ZuTypography-root",
+        props.variant.css_class(),
+        text_align_class(props.align),
+    ];
+    if props.no_wrap {
+        cls_list.push("ZuTypography-noWrap");
+    }
+    if props.gutter_bottom {
+        cls_list.push("ZuTypography-gutterBottom");
+    }
+    let cls = classes!(cls_list, props.color.text_color());
+
     let styles = vec![
         props.style.clone(),
         format!("text-align: {}", props.align.css_value()),

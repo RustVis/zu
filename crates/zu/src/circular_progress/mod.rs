@@ -7,7 +7,7 @@ use yew::{classes, function_component, html, Html, Properties};
 
 use crate::styles::color::ColorVariant;
 use crate::styles::size::SizeVariant;
-use crate::styles::{CssClass, CssValue};
+use crate::styles::CssClass;
 
 const SIZE: i32 = 44;
 
@@ -82,10 +82,7 @@ pub fn circular_progress(props: &Props) -> Html {
     }
     let cls = classes!(class_list);
 
-    let mut styles = vec![
-        props.style.clone(),
-        format!("color: {}", props.color.css_value()),
-    ];
+    let mut styles = vec![props.style.clone(), props.color.text_color()];
     // TODO(Shaohua): Read from css.
     let size = match props.size {
         SizeVariant::Tiny => 8,
