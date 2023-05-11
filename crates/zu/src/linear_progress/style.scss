@@ -1,0 +1,143 @@
+
+/* Styles for Linear Progress */
+
+/* Styles applied to the root element. */
+.ZuLinearProgress-root {
+
+}
+
+/* Styles applied to the root and bar2 element if color="primary"; bar2 if variant="buffer". */
+.ZuLinearProgress-colorPrimary {
+
+}
+
+/* Styles applied to the root and bar2 elements if color="secondary"; bar2 if variant="buffer". */
+.ZuLinearProgress-colorSecondary {
+
+}
+
+/* Styles applied to the root element if variant="determinate". */
+.ZuLinearProgress-determinate {
+
+}
+
+/* Styles applied to the root element if variant="indeterminate". */
+.ZuLinearProgress-indeterminate {
+
+}
+
+/* Styles applied to the root element if variant="buffer". */
+.ZuLinearProgress-buffer {
+
+}
+
+/* Styles applied to the root element if variant="query". */
+.ZuLinearProgress-query {
+
+}
+
+/* Styles applied to the additional bar element if variant="buffer". */
+.ZuLinearProgress-dashed {
+
+}
+
+/* Styles applied to the additional bar element if variant="buffer" and color="primary". */
+.ZuLinearProgress-dashedColorPrimary {
+
+}
+
+/* Styles applied to the additional bar element if variant="buffer" and color="secondary". */
+.ZuLinearProgress-dashedColorSecondary {
+
+}
+
+/* Styles applied to the layered bar1 and bar2 elements. */
+.ZuLinearProgress-bar {
+
+}
+
+/* Styles applied to the bar elements if color="primary"; bar2 if variant not "buffer". */
+.ZuLinearProgress-barColorPrimary {
+
+}
+
+/* Styles applied to the bar elements if color="secondary"; bar2 if variant not "buffer". */
+.ZuLinearProgress-barColorSecondary {
+
+}
+
+/* Styles applied to the bar1 element if variant="indeterminate or query". */
+.ZuLinearProgress-bar1Indeterminate {
+
+}
+
+/* Styles applied to the bar1 element if variant="determinate". */
+.ZuLinearProgress-bar1Determinate {
+
+}
+
+/* Styles applied to the bar1 element if variant="buffer". */
+.ZuLinearProgress-bar1Buffer {
+
+}
+
+/* Styles applied to the bar2 element if variant="indeterminate or query". */
+.ZuLinearProgress-bar2Indeterminate {
+
+}
+
+/* Styles applied to the bar2 element if variant="buffer". */
+.ZuLinearProgress-bar2Buffer {
+
+}
+
+@keyframes zu-linear-progress-indeterminate1Keyframe {
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+
+@keyframes zu-linear-progress-indeterminate2Keyframe {
+  0% {
+    left: -200%;
+    right: 100%;
+  }
+
+  60% {
+    left: 107%;
+    right: -8%;
+  }
+
+  100% {
+    left: 107%;
+    right: -8%;
+  }
+}
+
+@keyframes zu-linear-progress-bufferKeyframe {
+  0% {
+    opacity: 1;
+    background-position: 0 -23px;
+  }
+
+  60% {
+    opacity: 0;
+    background-position: 0 -23px;
+  }
+
+  100% {
+    opacity: 1;
+    background-position: -200px -23px;
+  }
+}

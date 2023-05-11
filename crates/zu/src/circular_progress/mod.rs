@@ -77,7 +77,7 @@ pub fn circular_progress(props: &Props) -> Html {
     let mut class_list = vec!["ZuCircularProgress-root", props.variant.css_class()];
     match props.color {
         ColorVariant::Primary => class_list.push("ZuCircularProgress-colorPrimary"),
-        ColorVariant::Secondary => class_list.push("MuiCircularProgress-colorSecondary"),
+        ColorVariant::Secondary => class_list.push("ZuCircularProgress-colorSecondary"),
         _ => (),
     }
     let cls = classes!(class_list);

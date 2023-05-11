@@ -88,6 +88,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         "src/themes/z-index.scss",
         // Components
         "src/circular_progress/style.scss",
+        "src/linear_progress/style.scss",
         "src/skeleton/style.scss",
         "src/typography/style.scss",
     ];
