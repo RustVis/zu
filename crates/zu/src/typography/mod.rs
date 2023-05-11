@@ -6,7 +6,7 @@ use yew::{classes, function_component, html, Children, Html, Properties};
 
 use crate::styles::color::ColorVariant;
 use crate::styles::text_align::TextAlign;
-use crate::styles::{CssClass, CssValue};
+use crate::styles::CssClass;
 
 #[must_use]
 pub const fn text_align_class(align: TextAlign) -> &'static str {
@@ -121,12 +121,6 @@ pub struct Props {
 
 #[function_component(Typography)]
 pub fn typography(props: &Props) -> Html {
-    let component = if props.paragraph {
-        "p"
-    } else {
-        props.variant.as_component()
-    };
-
     let mut cls_list = vec![
         "ZuTypography-root",
         props.variant.css_class(),
@@ -140,15 +134,74 @@ pub fn typography(props: &Props) -> Html {
     }
     let cls = classes!(cls_list, props.color.text_color());
 
-    let styles = vec![
-        props.style.clone(),
-        format!("text-align: {}", props.align.css_value()),
-    ];
+    let styles = vec![props.style.clone()];
     let style = styles.join(";");
 
-    html! {
-       <div as={component} class={cls} style={style}>
-            {props.children.clone()}
-       </div>
+    // TODO(Shaohua): Convert component type on the fly.
+    if props.paragraph {
+        return html! {
+           <p class={cls} style={style}>
+                {props.children.clone()}
+           </p>
+        };
+    }
+    match props.variant {
+        Variant::Body1 | Variant::Body2 | Variant::Inherit => {
+            html! {
+               <p class={cls} style={style}>
+                    {props.children.clone()}
+               </p>
+            }
+        }
+        Variant::Button | Variant::Caption | Variant::Overline => {
+            html! {
+               <span class={cls} style={style}>
+                    {props.children.clone()}
+               </span>
+            }
+        }
+
+        Variant::H1 => {
+            html! {
+               <h1 class={cls} style={style}>
+                    {props.children.clone()}
+               </h1>
+            }
+        }
+        Variant::H2 => {
+            html! {
+               <h2 class={cls} style={style}>
+                    {props.children.clone()}
+               </h2>
+            }
+        }
+        Variant::H3 => {
+            html! {
+               <h3 class={cls} style={style}>
+                    {props.children.clone()}
+               </h3>
+            }
+        }
+        Variant::H4 => {
+            html! {
+               <h4 class={cls} style={style}>
+                    {props.children.clone()}
+               </h4>
+            }
+        }
+        Variant::H5 => {
+            html! {
+               <h5 class={cls} style={style}>
+                    {props.children.clone()}
+               </h5>
+            }
+        }
+        Variant::H6 | Variant::Subtitle1 | Variant::Subtitle2 => {
+            html! {
+               <h6 class={cls} style={style}>
+                    {props.children.clone()}
+               </h6>
+            }
+        }
     }
 }
