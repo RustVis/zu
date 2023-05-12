@@ -5,11 +5,11 @@
 /// The size of the component.
 ///
 /// If using a number, the pixel unit is assumed.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum SizeVariant {
     XSmall,
     Small,
-    Regular,
+    Middle,
     Large,
     XLarge,
 
@@ -18,6 +18,6 @@ pub enum SizeVariant {
 
 impl Default for SizeVariant {
     fn default() -> Self {
-        Self::Regular
+        Self::Middle
     }
 }

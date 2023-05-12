@@ -87,7 +87,7 @@ pub fn circular_progress(props: &Props) -> Html {
     let size = match props.size {
         SizeVariant::XSmall => 8,
         SizeVariant::Small => 12,
-        SizeVariant::Regular => 14,
+        SizeVariant::Middle => 14,
         SizeVariant::Large => 18,
         SizeVariant::XLarge => 24,
         SizeVariant::Num(num) => num,

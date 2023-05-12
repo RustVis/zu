@@ -3,12 +3,16 @@
 
 /* Styles applied to the root element. */
 .ZuContainer-root {
-
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
 }
 
-/* Styles applied to the root element if disable_gutters={true}. */
-.ZuContainer-disableGutters {
-
+/* Styles applied to the root element if disable_gutters={false}. */
+.ZuContainer-enableGutters {
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 /* Styles applied to the root element if fixed={true}. */
@@ -21,9 +25,26 @@
 
 }
 
+@media (min-width: 0px) {
+  .ZuContainer-root {
+    max-width: 444px;
+  }
+}
+
 /* Styles applied to the root element if maxWidth="Small". */
 .ZuContainer-maxWidthSm {
 
+}
+
+@media (min-width: 600px) {
+  .ZuContainer-root {
+    max-width: 600px;
+  }
+
+  .ZuContainer-root {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 }
 
 /* Styles applied to the root element if maxWidth="Middle". */
@@ -37,6 +58,6 @@
 }
 
 /* Styles applied to the root element if maxWidth="XLarge". */
-.ZuContainer-maxWidthXL {
+.ZuContainer-maxWidthXl {
 
 }
