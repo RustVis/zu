@@ -56,7 +56,9 @@ pub fn container(props: &Props) -> Html {
     };
 
     let mut cls_list = vec!["ZuContainer-root", max_width_cls(props.max_width)];
-    if !props.disable_gutters {
+    if props.disable_gutters {
+        cls_list.push("ZuContainer-disableGutters");
+    } else {
         cls_list.push("ZuContainer-enableGutters");
     }
     if props.fixed {
