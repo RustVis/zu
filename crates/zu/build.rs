@@ -78,6 +78,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let common_styles = [
         "src/themes/border-radius.scss",
         "src/themes/breakpoints.scss",
+        "src/themes/components-base.scss",
         "src/themes/fonts.scss",
         "src/themes/shadows.scss",
         "src/themes/shape.scss",
@@ -90,6 +91,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         "src/circular_progress/style.scss",
         "src/linear_progress/style.scss",
         "src/skeleton/style.scss",
+        "src/switch/style.scss",
         "src/typography/style.scss",
     ];
     merge_themes(&common_styles, "common-theme.scss")?;

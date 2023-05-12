@@ -42,5 +42,6 @@ pub mod circular_progress;
 pub mod linear_progress;
 pub mod skeleton;
 pub mod styles;
+pub mod switch;
 pub mod theme_provider;
 pub mod typography;
