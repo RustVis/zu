@@ -29,30 +29,33 @@ pub fn left_panel() -> Html {
                         {"Home"}
                     </Link<Route>>
                 </li>
-
                 <li class="nav-item">
-                    <Link<Route> to={Route::Skeleton} classes={link_cls(Route::Skeleton)}>
-                        {"Skeleton"}
+                    <Link<Route> to={Route::Box} classes={link_cls(Route::Box)}>
+                    {"Box"}
                     </Link<Route>>
                 </li>
-
+                <li class="nav-item">
+                    <Link<Route> to={Route::Paper} classes={link_cls(Route::Paper)}>
+                    {"Paper"}
+                    </Link<Route>>
+                </li>
                 <li class="nav-item">
                     <Link<Route> to={Route::Progress} classes={link_cls(Route::Progress)}>
                         {"Progress"}
                     </Link<Route>>
                 </li>
-
+                <li class="nav-item">
+                    <Link<Route> to={Route::Skeleton} classes={link_cls(Route::Skeleton)}>
+                        {"Skeleton"}
+                    </Link<Route>>
+                </li>
                 <li class="nav-item">
                     <Link<Route> to={Route::Typography} classes={link_cls(Route::Typography)}>
                         {"Typography"}
                     </Link<Route>>
                 </li>
 
-                <li class="nav-item">
-                    <Link<Route> to={Route::Paper} classes={link_cls(Route::Paper)}>
-                    {"Paper"}
-                    </Link<Route>>
-                </li>
+
             </ul>
         </div>
     }

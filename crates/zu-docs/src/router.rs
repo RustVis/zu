@@ -5,6 +5,7 @@
 use yew::prelude::*;
 use yew_router::prelude::Routable;
 
+use crate::views::box_page::BoxPage;
 use crate::views::home_page::HomePage;
 use crate::views::paper_page::PaperPage;
 use crate::views::progress_page::ProgressPage;
@@ -16,17 +17,20 @@ pub enum Route {
     #[at("/")]
     Home,
 
-    #[at("/Skeleton")]
-    Skeleton,
+    #[at("/box")]
+    Box,
+
+    #[at("/paper")]
+    Paper,
 
     #[at("/progress")]
     Progress,
 
+    #[at("/Skeleton")]
+    Skeleton,
+
     #[at("/typography")]
     Typography,
-
-    #[at("/paper")]
-    Paper,
 }
 
 #[must_use]
@@ -35,9 +39,10 @@ pub enum Route {
 pub fn switch_route(routes: Route) -> Html {
     match routes {
         Route::Home => html! {<HomePage />},
-        Route::Skeleton => html! {<SkeletonPage />},
-        Route::Progress => html! {<ProgressPage />},
-        Route::Typography => html! {<TypographyPage />},
+        Route::Box => html! {<BoxPage />},
         Route::Paper => html! {<PaperPage />},
+        Route::Progress => html! {<ProgressPage />},
+        Route::Skeleton => html! {<SkeletonPage />},
+        Route::Typography => html! {<TypographyPage />},
     }
 }
