@@ -7,7 +7,7 @@
 /// If using a number, the pixel unit is assumed.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum SizeVariant {
-    Tiny,
+    XSmall,
     Small,
     Regular,
     Large,

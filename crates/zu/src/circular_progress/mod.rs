@@ -85,7 +85,7 @@ pub fn circular_progress(props: &Props) -> Html {
     let mut styles = vec![props.style.clone(), props.color.text_color()];
     // TODO(Shaohua): Read from css.
     let size = match props.size {
-        SizeVariant::Tiny => 8,
+        SizeVariant::XSmall => 8,
         SizeVariant::Small => 12,
         SizeVariant::Regular => 14,
         SizeVariant::Large => 18,

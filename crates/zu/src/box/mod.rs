@@ -8,7 +8,7 @@ use yew::{classes, function_component, html, Children, Html, Properties};
 pub struct Props {
     /// The component used for the root node.
     #[prop_or_default]
-    pub component: Option<String>,
+    pub component: String,
 
     #[prop_or_default]
     pub children: Children,
@@ -23,7 +23,11 @@ pub struct Props {
 #[function_component(Box)]
 pub fn r#box(props: &Props) -> Html {
     let cls = classes!("ZuBox-root", &props.classes);
-    let component = props.component.clone().unwrap_or_else(|| "div".to_owned());
+    let component = if props.component.is_empty() {
+        "div".to_owned()
+    } else {
+        props.component.clone()
+    };
 
     html! {
         <@{component} class={cls} style={props.style.clone()}>

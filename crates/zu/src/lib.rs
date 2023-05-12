@@ -40,6 +40,7 @@
 
 pub mod r#box;
 pub mod circular_progress;
+pub mod container;
 pub mod linear_progress;
 pub mod paper;
 pub mod skeleton;
