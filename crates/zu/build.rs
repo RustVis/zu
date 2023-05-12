@@ -90,6 +90,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         // Components
         "src/circular_progress/style.scss",
         "src/linear_progress/style.scss",
+        "src/paper/style.scss",
         "src/skeleton/style.scss",
         "src/switch/style.scss",
         "src/typography/style.scss",
