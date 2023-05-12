@@ -3,12 +3,19 @@
 
 /* Styles applied to the root element. */
 .ZuPaper-root {
-
+  color: var(--zu-palette-text-primary);
+  background-color: var(--zu-palette-background-paper);
+  transition: box-shadow var(--zu-duration-standard) var(----zu-easing-easeInOut) 0ms;
 }
 
 /* Styles applied to the root element unless square={true}. */
 .ZuPaper-rounded {
+  border-radius: var(--zu-shape-border-radius);
+}
 
+/* Styles applied to the root element if variant="outlined". */
+.ZuPaper-outlined {
+  border: 1px solid var(--zu-palette-divider);
 }
 
 /* Styles applied to the root element if variant="elevation". */
@@ -16,7 +23,28 @@
 
 }
 
-/* Styles applied to the root element if variant="outlined". */
-.ZuPaper-outlined {
-
-}
+.ZuPaper-elevation-0 { box-shadow: var(--zu-shadow-0); }
+.ZuPaper-elevation-1 { box-shadow: var(--zu-shadow-1); }
+.ZuPaper-elevation-2 { box-shadow: var(--zu-shadow-2); }
+.ZuPaper-elevation-3 { box-shadow: var(--zu-shadow-3); }
+.ZuPaper-elevation-4 { box-shadow: var(--zu-shadow-4); }
+.ZuPaper-elevation-5 { box-shadow: var(--zu-shadow-5); }
+.ZuPaper-elevation-6 { box-shadow: var(--zu-shadow-6); }
+.ZuPaper-elevation-7 { box-shadow: var(--zu-shadow-7); }
+.ZuPaper-elevation-8 { box-shadow: var(--zu-shadow-8); }
+.ZuPaper-elevation-9 { box-shadow: var(--zu-shadow-9); }
+.ZuPaper-elevation-10 { box-shadow: var(--zu-shadow-10); }
+.ZuPaper-elevation-11 { box-shadow: var(--zu-shadow-11); }
+.ZuPaper-elevation-12 { box-shadow: var(--zu-shadow-12); }
+.ZuPaper-elevation-13 { box-shadow: var(--zu-shadow-13); }
+.ZuPaper-elevation-14 { box-shadow: var(--zu-shadow-14); }
+.ZuPaper-elevation-15 { box-shadow: var(--zu-shadow-15); }
+.ZuPaper-elevation-16 { box-shadow: var(--zu-shadow-16); }
+.ZuPaper-elevation-17 { box-shadow: var(--zu-shadow-17); }
+.ZuPaper-elevation-18 { box-shadow: var(--zu-shadow-18); }
+.ZuPaper-elevation-19 { box-shadow: var(--zu-shadow-19); }
+.ZuPaper-elevation-20 { box-shadow: var(--zu-shadow-20); }
+.ZuPaper-elevation-21 { box-shadow: var(--zu-shadow-21); }
+.ZuPaper-elevation-22 { box-shadow: var(--zu-shadow-22); }
+.ZuPaper-elevation-23 { box-shadow: var(--zu-shadow-23); }
+.ZuPaper-elevation-24 { box-shadow: var(--zu-shadow-24); }

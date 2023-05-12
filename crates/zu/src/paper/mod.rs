@@ -5,7 +5,7 @@
 use crate::styles::CssClass;
 use yew::{classes, function_component, html, Children, Html, Properties};
 
-pub type Elevation = u8;
+pub type Elevation = i32;
 pub const ELEVATION_DEFAULT: Elevation = 1;
 pub const ELEVATION_MIN: Elevation = 0;
 pub const ELEVATION_MAX: Elevation = 24;
@@ -41,7 +41,7 @@ pub struct Props {
     pub classes: String,
 
     #[prop_or_default]
-    pub styles: String,
+    pub style: String,
 
     #[prop_or(ELEVATION_DEFAULT)]
     /// Shadow depth, corresponds to dp in the spec. It accepts values between 0 and 24 inclusive.
@@ -58,8 +58,9 @@ pub struct Props {
 
 #[function_component(Paper)]
 pub fn paper(props: &Props) -> Html {
-    let style_list = vec![props.styles.clone()];
+    let style_list = vec![props.style.clone()];
     let style = style_list.join(";");
+    log::info!("style: {style}");
 
     let mut cls_list = vec![
         "ZuPaper-root".to_owned(),
@@ -70,7 +71,10 @@ pub fn paper(props: &Props) -> Html {
         cls_list.push("ZuPaper-rounded".to_owned());
     }
     if props.variant == Variant::Elevation {
-        cls_list.push(format!("ZuPaper-elevation{}", props.elevation));
+        if props.elevation < ELEVATION_MIN || props.elevation > ELEVATION_MAX {
+            log::warn!("elevation out of range, expected {ELEVATION_MIN}-{ELEVATION_MAX}");
+        }
+        cls_list.push(format!("ZuPaper-elevation-{}", props.elevation));
     };
     let cls = classes!(cls_list);
 
