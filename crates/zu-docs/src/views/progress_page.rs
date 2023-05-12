@@ -38,19 +38,19 @@ pub fn progress_page() -> Html {
 
             <h2>{"Circular"}</h2>
             <h3>{"Circular Indeterminate"}</h3>
-            <div class="preview-box">
+            <div class="demo-box">
                 <CircularProgress />
             </div>
 
             <h3>{"Circular color"}</h3>
-            <div class="preview-box">
+            <div class="demo-box">
                 <CircularProgress color={ColorVariant::Secondary} />
                 <CircularProgress color={ColorVariant::Success} />
                 <CircularProgress color={ColorVariant::Inherit} />
             </div>
 
             <h3>{"Circular determinate"}</h3>
-            <div class="preview-box">
+            <div class="demo-box">
                 <CircularProgress variant={CircularVariant::Determinate} value={25} />
                 <CircularProgress variant={CircularVariant::Determinate} value={50} />
                 <CircularProgress variant={CircularVariant::Determinate} value={75} />
@@ -59,7 +59,7 @@ pub fn progress_page() -> Html {
             </div>
 
             <h3>{"Circular with label"}</h3>
-            <div class="preview-box">
+            <div class="demo-box">
                 <CircularProgress variant={CircularVariant::Determinate}
                     with_label={true}
                     value={*progress} />

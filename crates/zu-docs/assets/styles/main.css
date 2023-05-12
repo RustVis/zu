@@ -8,10 +8,16 @@ body {
   line-height: 1.5;
 }
 
-.preview-box {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+.demo-box {
+  position: relative;
 
+  display: flex;
+  justify-content: center;
+  gap: 16px;
   width: 300px;
+  padding: 24px;
+  margin: auto;
+
+  outline: 0;
+  background-color: #e7ebf0;
 }

@@ -13,7 +13,7 @@ pub fn typography_page() -> Html {
 
              <h2>{"Component"}</h2>
              <p>{"The Typography component makes it easy to apply a default set of font weights and sizes in your application."}</p>
-             <div class="preview-box" style={ "width: 80%;" }>
+             <div class="demo-box" style={ "width: 80%;" }>
              <Typography variant={Variant::H1} gutter_bottom={true}>{"h1. Heading"}</Typography>
              <Typography variant={Variant::H2} gutter_bottom={true}>{"h2. Heading"}</Typography>
              <Typography variant={Variant::H3} gutter_bottom={true}>{"h3. Heading"}</Typography>

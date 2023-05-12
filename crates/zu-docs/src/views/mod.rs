@@ -3,6 +3,7 @@
 // in the LICENSE file.
 
 pub mod home_page;
+pub mod paper_page;
 pub mod progress_page;
 pub mod skeleton_page;
 pub mod typography_page;
