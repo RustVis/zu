@@ -41,7 +41,7 @@ pub fn stack_page() -> Html {
         <h2>{"Basics"}</h2>
         <p>{"The Stack component acts as a generic container, wrapping around the elements to be arranged."}</p>
         <div class="demo-box">
-            <Stack spacing={Spacing::Small}>
+            <Stack spacing={Spacing::MiddleNudge}>
                 <Item>{"Item 1"}</Item>
                 <Item>{"Item 2"}</Item>
                 <Item>{"Item 3"}</Item>
