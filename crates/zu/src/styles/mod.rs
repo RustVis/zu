@@ -3,6 +3,7 @@
 // in the LICENSE file.
 
 pub mod color;
+pub mod direction;
 pub mod size;
 pub mod text_align;
 

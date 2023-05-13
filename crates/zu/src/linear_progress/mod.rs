@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::styles::color::ColorVariant;
+use crate::styles::color::Color;
 use crate::styles::CssClass;
 use yew::{function_component, html, Html, Properties};
 
@@ -34,7 +34,7 @@ impl CssClass for Variant {
 #[derive(Debug, Clone, PartialEq, Eq, Properties)]
 pub struct Props {
     #[prop_or_default]
-    pub color: ColorVariant,
+    pub color: Color,
 
     /// The value of the progress indicator for the determinate variant.
     ///

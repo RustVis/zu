@@ -2,22 +2,19 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-/// The size of the component.
+/// Defines the flex-direction style property.
 ///
-/// If using a number, the pixel unit is assumed.
+/// It is applied for all screen sizes.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum Size {
-    XSmall,
-    Small,
-    Middle,
-    Large,
-    XLarge,
-
-    Num(i32),
+pub enum Direction {
+    Column,
+    ColumnReverse,
+    Row,
+    RowReverse,
 }
 
-impl Default for Size {
+impl Default for Direction {
     fn default() -> Self {
-        Self::Middle
+        Self::Column
     }
 }

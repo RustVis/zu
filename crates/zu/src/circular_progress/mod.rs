@@ -5,8 +5,8 @@
 use std::f64::consts::PI;
 use yew::{classes, function_component, html, Html, Properties};
 
-use crate::styles::color::ColorVariant;
-use crate::styles::size::SizeVariant;
+use crate::styles::color::Color;
+use crate::styles::size::Size;
 use crate::styles::CssClass;
 
 const SIZE: i32 = 44;
@@ -35,11 +35,11 @@ impl CssClass for Variant {
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
     #[prop_or_default]
-    pub color: ColorVariant,
+    pub color: Color,
 
     /// The size of the component. Default is 40px.
-    #[prop_or(SizeVariant::Num(40))]
-    pub size: SizeVariant,
+    #[prop_or(Size::Num(40))]
+    pub size: Size,
 
     /// The thickness of the circle.
     #[prop_or(3.6)]
@@ -76,8 +76,8 @@ pub struct Props {
 pub fn circular_progress(props: &Props) -> Html {
     let mut class_list = vec!["ZuCircularProgress-root", props.variant.css_class()];
     match props.color {
-        ColorVariant::Primary => class_list.push("ZuCircularProgress-colorPrimary"),
-        ColorVariant::Secondary => class_list.push("ZuCircularProgress-colorSecondary"),
+        Color::Primary => class_list.push("ZuCircularProgress-colorPrimary"),
+        Color::Secondary => class_list.push("ZuCircularProgress-colorSecondary"),
         _ => (),
     }
     let cls = classes!(class_list);
@@ -85,12 +85,12 @@ pub fn circular_progress(props: &Props) -> Html {
     let mut styles = vec![props.style.clone(), props.color.text_color()];
     // TODO(Shaohua): Read from css.
     let size = match props.size {
-        SizeVariant::XSmall => 8,
-        SizeVariant::Small => 12,
-        SizeVariant::Middle => 14,
-        SizeVariant::Large => 18,
-        SizeVariant::XLarge => 24,
-        SizeVariant::Num(num) => num,
+        Size::XSmall => 8,
+        Size::Small => 12,
+        Size::Middle => 14,
+        Size::Large => 18,
+        Size::XLarge => 24,
+        Size::Num(num) => num,
     };
     let size_style = format!("width: {size}px; height: {size}px");
     styles.push(size_style.clone());

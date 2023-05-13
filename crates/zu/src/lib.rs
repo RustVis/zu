@@ -44,6 +44,7 @@ pub mod container;
 pub mod linear_progress;
 pub mod paper;
 pub mod skeleton;
+pub mod stack;
 pub mod styles;
 pub mod switch;
 pub mod theme_provider;

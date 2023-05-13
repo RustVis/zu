@@ -4,7 +4,7 @@
 
 use yew::{classes, function_component, html, Children, Html, Properties};
 
-use crate::styles::color::ColorVariant;
+use crate::styles::color::Color;
 use crate::styles::text_align::TextAlign;
 use crate::styles::CssClass;
 
@@ -94,7 +94,7 @@ pub struct Props {
     pub align: TextAlign,
 
     #[prop_or_default]
-    pub color: ColorVariant,
+    pub color: Color,
 
     #[prop_or_default]
     pub variant: Variant,

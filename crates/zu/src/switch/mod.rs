@@ -4,7 +4,7 @@
 
 use yew::{function_component, html, Children, Html, Properties};
 
-use crate::styles::color::ColorVariant;
+use crate::styles::color::Color;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Edge {
@@ -32,7 +32,7 @@ pub struct Props {
     // TODO(Shaohua): Add on_change callback.
     /// The color of the component.
     #[prop_or_default]
-    pub color: ColorVariant,
+    pub color: Color,
 
     /// The default checked state. Use when the component is not controlled.
     #[prop_or(false)]

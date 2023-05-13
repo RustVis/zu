@@ -6,7 +6,7 @@ use gloo_timers::callback::Interval;
 use yew::prelude::*;
 use zu::circular_progress::CircularProgress;
 use zu::circular_progress::Variant as CircularVariant;
-use zu::styles::color::ColorVariant;
+use zu::styles::color::Color;
 
 #[function_component(ProgressPage)]
 pub fn progress_page() -> Html {
@@ -44,9 +44,9 @@ pub fn progress_page() -> Html {
 
             <h3>{"Circular color"}</h3>
             <div class="demo-box">
-                <CircularProgress color={ColorVariant::Secondary} />
-                <CircularProgress color={ColorVariant::Success} />
-                <CircularProgress color={ColorVariant::Inherit} />
+                <CircularProgress color={Color::Secondary} />
+                <CircularProgress color={Color::Success} />
+                <CircularProgress color={Color::Inherit} />
             </div>
 
             <h3>{"Circular determinate"}</h3>

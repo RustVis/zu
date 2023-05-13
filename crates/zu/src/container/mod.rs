@@ -2,18 +2,18 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::styles::size::SizeVariant;
+use crate::styles::size::Size;
 use yew::{classes, function_component, html, Children, Html, Properties};
 
 #[must_use]
-pub const fn max_width_cls(size: Option<SizeVariant>) -> &'static str {
+pub const fn max_width_cls(size: Option<Size>) -> &'static str {
     match size {
-        Some(SizeVariant::XSmall) => "ZuContainer-maxWidthXs",
-        Some(SizeVariant::Small) => "ZuContainer-maxWidthSm",
-        Some(SizeVariant::Middle) => "ZuContainer-maxWidthMd",
-        Some(SizeVariant::Large) => "ZuContainer-maxWidthLg",
-        Some(SizeVariant::XLarge) => "ZuContainer-maxWidthXl",
-        Some(SizeVariant::Num(_)) | None => "",
+        Some(Size::XSmall) => "ZuContainer-maxWidthXs",
+        Some(Size::Small) => "ZuContainer-maxWidthSm",
+        Some(Size::Middle) => "ZuContainer-maxWidthMd",
+        Some(Size::Large) => "ZuContainer-maxWidthLg",
+        Some(Size::XLarge) => "ZuContainer-maxWidthXl",
+        Some(Size::Num(_)) | None => "",
     }
 }
 
@@ -41,7 +41,7 @@ pub struct Props {
     /// The container width grows with the size of the screen.
     /// Set to None to disable max-width.
     #[prop_or_default]
-    pub max_width: Option<SizeVariant>,
+    pub max_width: Option<Size>,
 
     #[prop_or_default]
     pub style: String,
@@ -66,7 +66,7 @@ pub fn container(props: &Props) -> Html {
     }
     let cls = classes!(cls_list, &props.classes);
 
-    let style = if let Some(SizeVariant::Num(num)) = props.max_width {
+    let style = if let Some(Size::Num(num)) = props.max_width {
         let lst = [props.style.as_str(), &format!("max-width: {num}px")];
         lst.join(";")
     } else {
