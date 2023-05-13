@@ -50,8 +50,17 @@ pub fn stack(props: &Props) -> Html {
 
     let cls = classes!("ZuStack-root");
 
-    html! {
-        <@{component} class={cls} style={props.style.clone()}>
-        </@>
+    if props.style.is_empty() {
+        html! {
+            <@{component} class={cls}>
+            {props.children.clone()}
+            </@>
+        }
+    } else {
+        html! {
+            <@{component} class={cls} style={props.style.clone()}>
+            {props.children.clone()}
+            </@>
+        }
     }
 }

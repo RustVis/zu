@@ -79,6 +79,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         "src/themes/border-radius.scss",
         "src/themes/breakpoints.scss",
         "src/themes/components-base.scss",
+        "src/themes/direction.scss",
         "src/themes/fonts.scss",
         "src/themes/shadows.scss",
         "src/themes/shape.scss",
