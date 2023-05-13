@@ -5,6 +5,7 @@
 pub mod color;
 pub mod direction;
 pub mod size;
+pub mod spacing;
 pub mod text_align;
 
 use yew::{classes, Classes};

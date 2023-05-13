@@ -3,6 +3,7 @@
 // in the LICENSE file.
 
 use crate::styles::direction::Direction;
+use crate::styles::spacing::Spacing;
 use yew::virtual_dom::VNode;
 use yew::{classes, function_component, html, Children, Html, Properties};
 
@@ -29,7 +30,7 @@ pub struct Props {
     ///
     /// Default is 0.
     #[prop_or_default]
-    pub spacings: Vec<i32>,
+    pub spacing: Spacing,
 
     #[prop_or_default]
     pub style: String,
