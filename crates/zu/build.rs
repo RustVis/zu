@@ -92,6 +92,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         "src/box/style.scss",
         "src/container/style.scss",
         "src/circular_progress/style.scss",
+        "src/divider/style.scss",
         "src/linear_progress/style.scss",
         "src/paper/style.scss",
         "src/skeleton/style.scss",
