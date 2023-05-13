@@ -55,6 +55,11 @@ pub fn left_panel() -> Html {
                     </Link<Route>>
                 </li>
                 <li class="nav-item">
+                    <Link<Route> to={Route::Stack} classes={link_cls(Route::Stack)}>
+                        {"Stack"}
+                    </Link<Route>>
+                </li>
+                <li class="nav-item">
                     <Link<Route> to={Route::Typography} classes={link_cls(Route::Typography)}>
                         {"Typography"}
                     </Link<Route>>
