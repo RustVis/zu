@@ -134,32 +134,30 @@ pub fn divider(props: &Props) -> Html {
     } else {
         props.component.clone()
     };
+
     let role = if component != "hr" && component != "vr" {
         Some("separator")
     } else {
         None
     };
 
-    let _wrapper = if props.children.is_empty() {
+    let style = if props.style.is_empty() {
+        None
+    } else {
+        Some(props.style.clone())
+    };
+
+    if props.children.is_empty() {
         html! {
-            <>
-            </>
+            <@{component} class={cls} style={style} role={role} />
         }
     } else {
         html! {
-            <span class={wrapper_cls.clone()}>
-                {props.children.clone()}
-            </span>
-        }
-    };
-
-    html! {
-        <@{component} class={cls} style={props.style.clone()} role={role}>
-            if !props.children.is_empty() {
+            <@{component} class={cls} style={style} role={role}>
                 <span class={wrapper_cls}>
                     {props.children.clone()}
                 </span>
-            }
-        </@>
+            </@>
+        }
     }
 }
