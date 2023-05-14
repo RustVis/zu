@@ -55,26 +55,6 @@ fn compile_scss(input_name: &str, output_name: &str) -> Result<(), Box<dyn Error
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    merge_themes(
-        &[
-            "src/themes/dark-palette.scss",
-            "src/themes/export-palette.scss",
-            "src/themes/dark-components.scss",
-        ],
-        "dark-theme.scss",
-    )?;
-    compile_scss("dark-theme.scss", "dark-theme.css")?;
-
-    merge_themes(
-        &[
-            "src/themes/light-palette.scss",
-            "src/themes/export-palette.scss",
-            "src/themes/light-components.scss",
-        ],
-        "light-theme.scss",
-    )?;
-    compile_scss("light-theme.scss", "light-theme.css")?;
-
     let common_styles = [
         "src/themes/border-radius.scss",
         "src/themes/breakpoints.scss",
@@ -100,8 +80,24 @@ fn main() -> Result<(), Box<dyn Error>> {
         "src/switch/style.scss",
         "src/typography/style.scss",
     ];
-    merge_themes(&common_styles, "common-theme.scss")?;
-    compile_scss("common-theme.scss", "common-theme.css")?;
+
+    let mut dark_files = vec![
+        "src/themes/dark-palette.scss",
+        "src/themes/export-palette.scss",
+        "src/themes/dark-components.scss",
+    ];
+    dark_files.extend_from_slice(&common_styles);
+    merge_themes(&dark_files, "dark-theme.scss")?;
+    compile_scss("dark-theme.scss", "dark-theme.css")?;
+
+    let mut light_files = vec![
+        "src/themes/light-palette.scss",
+        "src/themes/export-palette.scss",
+        "src/themes/light-components.scss",
+    ];
+    light_files.extend_from_slice(&common_styles);
+    merge_themes(&light_files, "light-theme.scss")?;
+    compile_scss("light-theme.scss", "light-theme.css")?;
 
     let colors = [
         "src/colors/amber.css",
