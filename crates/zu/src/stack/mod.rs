@@ -73,17 +73,15 @@ pub fn stack(props: &Props) -> Html {
         spacing_cls(props.spacing),
     );
 
-    if props.style.is_empty() {
-        html! {
-            <@{component} class={cls}>
-            {props.children.clone()}
-            </@>
-        }
+    let style = if props.style.is_empty() {
+        None
     } else {
-        html! {
-            <@{component} class={cls} style={props.style.clone()}>
+        Some(props.style.clone())
+    };
+
+    html! {
+        <@{component} class={cls} style={style}>
             {props.children.clone()}
-            </@>
-        }
+        </@>
     }
 }

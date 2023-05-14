@@ -116,7 +116,7 @@ pub fn circular_progress(props: &Props) -> Html {
     };
 
     let progress = html! {
-        <span class={ cls } style={ style }>
+        <span class={cls} style={style}>
             <svg class="ZuCircularProgress-svg"
                 viewBox={format!("{} {} {SIZE} {SIZE}", SIZE / 2, SIZE / 2)}>
                 <circle class="ZuCircularProgress-circle"

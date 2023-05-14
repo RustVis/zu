@@ -28,9 +28,14 @@ pub fn r#box(props: &Props) -> Html {
     } else {
         props.component.clone()
     };
+    let style = if props.style.is_empty() {
+        None
+    } else {
+        Some(props.style.clone())
+    };
 
     html! {
-        <@{component} class={cls} style={props.style.clone()}>
+        <@{component} class={cls} style={style}>
             {props.children.clone()}
         </@>
     }
