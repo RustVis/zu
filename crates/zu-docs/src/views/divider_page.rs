@@ -3,11 +3,14 @@
 // in the LICENSE file.
 
 use yew::{function_component, html, Html};
-use zu::divider::Divider;
+use zu::divider::{Divider, Variant};
+use zu::styles::text_align::TextAlign;
 
 #[function_component(DividerPage)]
 pub fn divider_page() -> Html {
     // TODO(Shaohua): Add List, ListItem and ListItemText
+    // TODO(Shaohua): Add vertical divider.
+
     html! {
         <div class="container">
         <h1>{"Divider"}</h1>
@@ -19,17 +22,53 @@ pub fn divider_page() -> Html {
         <div class="demo-box">
             <nav>
                 <div><span>{"Inbox"}</span></div>
-                <Divider></Divider>
+                <Divider />
 
                 <div><span>{"Drafts"}</span></div>
-                <Divider></Divider>
+                <Divider />
 
                 <div><span>{"Trash"}</span></div>
-                <Divider></Divider>
+                <Divider />
 
                 <div><span>{"Spam"}</span></div>
-                <Divider></Divider>
+                <Divider />
             </nav>
+        </div>
+
+        <h2>{"HTML5 specification"}</h2>
+        <p>{"In a list, you should ensure the Divider is rendered as an <li> \
+        to match the HTML5 specification. The examples below show two ways of achieving this."}</p>
+        <h3>{"Inset dividers"}</h3>
+        <div class="demo-box">
+            <ul style="list-style-type: none">
+                <li>{"Photos"}</li>
+                <Divider variant={Variant::Inset} component="li" />
+                <li>{"Work"}</li>
+                <Divider variant={Variant::Inset} component="li" />
+                <li>{"Vacation"}</li>
+            </ul>
+        </div>
+
+        <h3>{"Dividers with text"}</h3>
+        <p>{"You can also render a divider with content."}</p>
+        <div class="demo-box">
+            <div>
+                <div>{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dignissim justo.
+            Nulla ut facilisis ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+            Sed malesuada lobortis pretium."}</div>
+                <Divider>{"CENTER"}</Divider>
+                <div>{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dignissim justo.
+            Nulla ut facilisis ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+            Sed malesuada lobortis pretium."}</div>
+                <Divider text_align={TextAlign::Start}>{"LEFT"}</Divider>
+                <div>{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dignissim justo.
+            Nulla ut facilisis ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+            Sed malesuada lobortis pretium."}</div>
+                <Divider text_align={TextAlign::End}>{"Right"}</Divider>
+                <div>{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dignissim justo.
+            Nulla ut facilisis ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+            Sed malesuada lobortis pretium."}</div>
+            </div>
         </div>
         </div>
     }

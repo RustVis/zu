@@ -3,17 +3,22 @@
 
 /* Styles applied to the root element. */
 .ZuDivider-root {
-
+  margin: 0;
+  border-width: 0;
+  border-style: solid;
+  border-color: var(--zu-palette-divider);
 }
 
 /* Styles applied to the root element if absolute={true}. */
 .ZuDivider-absolute {
-
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 /* Styles applied to the root element if variant="inset". */
 .ZuDivider-inset {
-
+  margin-left: 72px;
 }
 
 /* Styles applied to the root element if variant="fullWidth". */
@@ -26,47 +31,111 @@
 
 }
 
+.ZuDivider-horizontal.ZuDivider-middle {
+  margin-left: var(--zu-spacing-l);
+  margin-right: var(--zu-spacing-l);
+}
+
+.ZuDivider-vertical.ZuDivider-middle {
+  margin-top: var(--zu-spacing-s);
+  margin-bottom: var(--zu-spacing-s);
+}
+
 /* Styles applied to the root element if flexItem={true}. */
 .ZuDivider-flexItem {
-
+  align-self: stretch;
+  height: auto;
 }
 
 /* Styles applied to the root element if divider have text. */
 .ZuDivider-withChildren {
+  display: flex;
+  border: 0;
 
+  white-space: nowrap;
+  text-align: center;
+}
+
+.ZuDivider-withChildren::before,
+.ZuDivider-withChildren::after {
+  content: "";
+  align-self: center;
+}
+
+/* Styles applied to the root element if divider have text and orientation="horizontal". */
+.ZuDivider-withChildrenHorizontal {
+
+}
+.ZuDivider-withChildrenHorizontal::before,
+.ZuDivider-withChildrenHorizontal::after {
+  width: 100%;
+  border-top: thin solid var(--zu-palette-divider);
 }
 
 /* Styles applied to the root element if divider have text and orientation="vertical". */
 .ZuDivider-withChildrenVertical {
-
+  flex-direction: column;
+}
+.ZuDivider-withChildrenVertical::before,
+.ZuDivider-withChildrenVertical::after {
+  height: 100%;
+  border-left: thin solid var(--zu-palette-divider);
 }
 
 /* Styles applied to the root element if textAlign="start" orientation="horizontal". */
 .ZuDivider-textAlignStart {
 
 }
+.ZuDivider-textAlignStart::before {
+  width: 10%;
+}
+.ZuDivider-textAlignStart::after {
+  width: 90%;
+}
 
 /* Styles applied to the root element if textAlign="end" orientation="horizontal". */
 .ZuDivider-textAlignEnd {
 
 }
+.ZuDivider-textAlignEnd::before {
+  width: 90%;
+}
+.ZuDivider-textAlignEnd::after {
+  width: 10%;
+}
 
 /* Styles applied to the root element if light={true}. */
 .ZuDivider-light {
+  /* TODO(Shaohua): Merge scss files. */
+  //border-color: #{change-color($zu-palette-divider, $alpha: 0.08)};
+}
 
+/* Styles applied to the root element if orientation="horizontal". */
+.ZuDivider-horizontal {
+  width: 100%;
+  border-bottom-width: thin;
 }
 
 /* Styles applied to the root element if orientation="vertical". */
 .ZuDivider-vertical {
+  height: 100%;
+  border-bottom-width: 0;
+  border-right-width: thin;
+}
 
+.ZuDivider-wrapper {
+  display: inline-block;
+  padding-left: var(--zu-spacing-mNudge);
+  padding-right: var(--zu-spacing-mNudge);
 }
 
 /* Styles applied to the span children element if orientation="horizontal". */
-.ZuDivider-wrapper {
+.ZuDivider-wrapperHorizontal {
 
 }
 
 /* Styles applied to the span children element if orientation="vertical". */
 .ZuDivider-wrapperVertical {
-
+  padding-top: var(--zu-spacing-mNudge);
+  padding-bottom: var(--zu-spacing-mNudge);
 }
