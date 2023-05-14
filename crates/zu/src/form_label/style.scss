@@ -1,0 +1,51 @@
+
+/* Styles for FormLabel */
+
+/* Styles applied to the root element. */
+.ZuFormLabel-root {
+  position: relative;
+  padding: 0;
+
+  /* body1 */
+  font-family: var(--zu-typography-body1-fontFamily);
+  font-weight: var(--zu-typography-body1-fontWeight);
+  font-size: var(--zu-typography-body1-fontSize);
+  line-height: 1.4375em;
+  letter-spacing: var(--zu-typography-body1-letterSpacing);
+
+  color: var(--zu-palette-text-secondary);
+}
+
+/* Styles applied to the root element if the color is secondary. */
+.ZuFormLabel-colorSecondary {
+
+}
+
+/* State class applied to the root element if focused={true}. */
+.ZuFormLabel-focused {
+}
+
+/* State class applied to the root element if disabled={true}. */
+.ZuFormLabel-disabled {
+  color: var(--zu-palette-text-disabled);
+}
+
+/* State class applied to the root element if error={true}. */
+.ZuFormLabel-error {
+  color: var(--zu-palette-error-main);
+}
+
+/* State class applied to the root element if filled={true}. */
+.ZuFormLabel-filled {
+
+}
+
+/* State class applied to the root element if required={true}. */
+.ZuFormLabel-required {
+
+}
+
+/* Styles applied to the asterisk element. */
+.ZuFormLabel-asterisk {
+  color: var(--zu-palette-error-main);
+}
