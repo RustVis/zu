@@ -4,6 +4,7 @@
 
 pub mod box_page;
 pub mod container_page;
+pub mod divider_page;
 pub mod home_page;
 pub mod paper_page;
 pub mod progress_page;

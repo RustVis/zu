@@ -40,6 +40,11 @@ pub fn left_panel() -> Html {
                     </Link<Route>>
                 </li>
                 <li class="nav-item">
+                    <Link<Route> to={Route::Divider} classes={link_cls(Route::Divider)}>
+                    {"Divider"}
+                    </Link<Route>>
+                </li>
+                <li class="nav-item">
                     <Link<Route> to={Route::Paper} classes={link_cls(Route::Paper)}>
                     {"Paper"}
                     </Link<Route>>

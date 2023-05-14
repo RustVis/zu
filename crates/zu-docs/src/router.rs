@@ -7,6 +7,7 @@ use yew_router::prelude::Routable;
 
 use crate::views::box_page::BoxPage;
 use crate::views::container_page::ContainerPage;
+use crate::views::divider_page::DividerPage;
 use crate::views::home_page::HomePage;
 use crate::views::paper_page::PaperPage;
 use crate::views::progress_page::ProgressPage;
@@ -24,6 +25,9 @@ pub enum Route {
 
     #[at("/container")]
     Container,
+
+    #[at("/divider")]
+    Divider,
 
     #[at("/paper")]
     Paper,
@@ -49,6 +53,7 @@ pub fn switch_route(routes: Route) -> Html {
         Route::Home => html! {<HomePage />},
         Route::Box => html! {<BoxPage />},
         Route::Container => html! {<ContainerPage />},
+        Route::Divider => html! {<DividerPage />},
         Route::Paper => html! {<PaperPage />},
         Route::Progress => html! {<ProgressPage />},
         Route::Skeleton => html! {<SkeletonPage />},

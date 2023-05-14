@@ -35,6 +35,7 @@ pub struct Props {
     #[prop_or_default]
     pub children: Children,
 
+    #[prop_or_default]
     pub orientation: Orientation,
 
     #[prop_or(TextAlign::Center)]
