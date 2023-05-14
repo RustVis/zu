@@ -106,8 +106,7 @@
 
 /* Styles applied to the root element if light={true}. */
 .ZuDivider-light {
-  /* TODO(Shaohua): Merge scss files. */
-  //border-color: #{change-color($zu-palette-divider, $alpha: 0.08)};
+  border-color: #{change-color($zu-palette-divider, $alpha: 0.08)};
 }
 
 /* Styles applied to the root element if orientation="horizontal". */
