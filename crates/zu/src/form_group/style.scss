@@ -1,0 +1,19 @@
+
+/* Styles for FormGroup */
+
+/* Styles applied to the root element. */
+.ZuFormGroup-root {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+/* Styles applied to the root element if row={true}. */
+.ZuFormGroup-row {
+  flex-direction: row;
+}
+
+/* State class applied to the root element if error={true}. */
+.ZuFormGroup-error {
+
+}
