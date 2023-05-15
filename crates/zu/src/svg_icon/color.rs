@@ -5,7 +5,7 @@
 use crate::styles::CssClass;
 
 /// The color of the component.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Color {
     Inherit,
     Action,
@@ -16,7 +16,6 @@ pub enum Color {
     Info,
     Success,
     Warning,
-    Custom(String),
 }
 
 impl Default for Color {
@@ -28,6 +27,7 @@ impl Default for Color {
 impl CssClass for Color {
     fn css_class(&self) -> &'static str {
         match self {
+            Self::Inherit => "",
             Self::Action => "ZuSvgIcon-colorAction",
             Self::Disabled => "ZuSvgIcon-colorDisabled",
             Self::Primary => "ZuSvgIcon-colorPrimary",
@@ -36,7 +36,6 @@ impl CssClass for Color {
             Self::Info => "ZuSvgIcon-colorInfo",
             Self::Success => "ZuSvgIcon-colorSuccess",
             Self::Warning => "ZuSvgIcon-colorWarning",
-            Self::Inherit | Self::Custom(_) => "",
         }
     }
 }

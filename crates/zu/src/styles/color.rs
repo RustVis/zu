@@ -14,6 +14,7 @@ pub enum Color {
     Warning,
     Success,
     Inherit,
+    // TODO(Shaohua): Remove custom color.
     Custom(String),
 }
 

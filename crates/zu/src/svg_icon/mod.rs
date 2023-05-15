@@ -5,7 +5,9 @@
 mod color;
 mod font_size;
 
-use yew::{function_component, html, Children, Html, Properties};
+use yew::{classes, function_component, html, Children, Html, Properties};
+
+use crate::styles::CssClass;
 
 // Re-export
 pub use color::Color;
@@ -33,9 +35,12 @@ pub struct Props {
     #[prop_or_default]
     pub font_size: FontSize,
 
+    #[prop_or_default]
+    pub html_color: String,
+
     /// Element title.
     #[prop_or_default]
-    pub title: String,
+    pub title_access: String,
 
     /// Default is "0 0 24 24".
     #[prop_or_default]
@@ -44,9 +49,36 @@ pub struct Props {
 
 #[function_component(SvgIcon)]
 pub fn svg_icon(props: &Props) -> Html {
+    let component = if props.component.is_empty() {
+        "svg".to_owned()
+    } else {
+        props.component.clone()
+    };
+
+    let root_cls = classes!("ZuSvgIcon-root", props.color.css_class(),);
+
+    let view_box = if props.view_box.is_empty() {
+        DEFAULT_VIEW_BOX.to_owned()
+    } else {
+        props.view_box.clone()
+    };
+    let html_color = if props.html_color.is_empty() {
+        None
+    } else {
+        Some(props.html_color.clone())
+    };
+    let aria_hidden = !props.title_access.is_empty();
+
     html! {
-        <svg>
-        {props.children.clone()}
-        </svg>
+        <@{component} class={root_cls}
+            focusable={"false"}
+            color={html_color}
+            aria-hidden={aria_hidden.to_string()}
+            viewBox={view_box}>
+            {props.children.clone()}
+            if !props.title_access.is_empty() {
+                <title>{&props.title_access}</title>
+            }
+        </@>
     }
 }

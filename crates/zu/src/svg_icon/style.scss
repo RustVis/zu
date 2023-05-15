@@ -3,62 +3,69 @@
 
 /* Styles applied to the root element. */
 .ZuSvgIcon-root {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  transition: fill var(--zu-duration-shorter) var(--zu-easing-easeInOut) 0ms;
 
+  fill: currentColor;
+  user-select: none;
 }
 
 /* Styles applied to the root element if color="primary". */
 .ZuSvgIcon-colorPrimary {
-
+  color: var(--zu-palette-primary-main);
 }
 
 /* Styles applied to the root element if color="secondary". */
 .ZuSvgIcon-colorSecondary {
-
+  color: var(--zu-palette-secondary-main);
 }
 
 /* Styles applied to the root element if color="action". */
 .ZuSvgIcon-colorAction {
-
+  color: var(--zu-palette-action-active);
 }
 
 /* Styles applied to the root element if color="error". */
 .ZuSvgIcon-colorError {
-
+  color: var(--zu-palette-error-main);
 }
 
 /* Styles applied to the root element if color="disabled". */
 .ZuSvgIcon-colorDisabled {
-
+  color: var(--zu-palette-action-disabled);
 }
 
 .ZuSvgIcon-colorInfo {
-
+  color: var(--zu-palette-info-main);
 }
 
 .ZuSvgIcon-colorSuccess {
-
+  color: var(--zu-palette-success-main);
 }
 
 .ZuSvgIcon-colorWarning {
-
+  color: var(--zu-palette-warning-main);
 }
 
 /* Styles applied to the root element if fontSize="inherit". */
 .ZuSvgIcon-fontSizeInherit {
-
+  font-size: inherit;
 }
 
 /* Styles applied to the root element if fontSize="small". */
 .ZuSvgIcon-fontSizeSmall {
-
+  font-size: 1.25rem;
 }
 
 /* Styles applied to the root element if fontSize="medium". */
 .ZuSvgIcon-fontSizeMedium {
-
+  font-size: 1.5rem;
 }
 
 /* Styles applied to the root element if fontSize="large". */
 .ZuSvgIcon-fontSizeLarge {
-
+  font-size: 2.1875rem;
 }
