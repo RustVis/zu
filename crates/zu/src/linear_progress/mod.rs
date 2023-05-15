@@ -2,11 +2,13 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+mod color;
 mod variant;
 
-use yew::{function_component, html, Html, Properties};
+use yew::{classes, function_component, html, Html, Properties};
 
 use crate::styles::color::Color;
+use crate::styles::CssClass;
 
 // Re-export
 pub use variant::Variant;
@@ -42,9 +44,38 @@ pub struct Props {
 }
 
 #[function_component(LinearProgress)]
-pub fn linear_progress(_props: &Props) -> Html {
+pub fn linear_progress(props: &Props) -> Html {
+    let root_cls = classes!(
+        "ZuLinearProgress-root",
+        color::root_class(&props.color),
+        props.variant.css_class()
+    );
+    let _dashed_cls = classes!("ZuLinearProgress-dashed", color::dashed_class(&props.color),);
+    let _bar1_cls = classes!(
+        "ZuLinearProgress-bar",
+        color::bar_class(&props.color),
+        match props.variant {
+            Variant::Indeterminate | Variant::Query => "ZuLinearProgress-bar1Indeterminate",
+            Variant::Determinate => "ZuLinearProgress-bar1Determinate",
+            Variant::Buffer => "ZuLinearProgress-bar1Buffer",
+        },
+    );
+    let _bar2_cls = classes!(
+        "ZuLinearProgress-bar",
+        if props.variant == Variant::Buffer {
+            color::root_class(&props.color)
+        } else {
+            color::bar_class(&props.color)
+        },
+        match props.variant {
+            Variant::Indeterminate | Variant::Query => "ZuLinearProgress-bar2Indeterminate",
+            Variant::Buffer => "ZuLinearProgress-bar2Buffer",
+            Variant::Determinate => "",
+        }
+    );
+
     html! {
-        <>
-        </>
+        <div class={root_cls}>
+        </div>
     }
 }
