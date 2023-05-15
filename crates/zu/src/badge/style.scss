@@ -11,7 +11,7 @@
 }
 
 /* Styles applied to the badge `span` element. */
-.ZuBadge-span {
+.ZuBadge-badge {
   position: absolute;
   z-index: 1;
   transition: transform var(--zu-easing-easeInOut) var(--zu-duration-enteringScreen) 0ms;
@@ -22,6 +22,7 @@
   align-content: center;
   align-items: center;
   justify-content: center;
+  place-content: center;
   box-sizing: border-box;
 
   font-family: var(--zu-typography-fontFamily);
@@ -31,7 +32,7 @@
 }
 
 $zu-badge-radiusDot: 4px;
-$zu-badge-radiusStandard: 10xp;
+$zu-badge-radiusStandard: 10px;
 :root {
   --zu-badge-radiusDot: #{$zu-badge-radiusDot};
   --zu-badge-radiusStandard: #{$zu-badge-radiusStandard};

@@ -14,8 +14,8 @@ pub struct AnchorOrigin {
 impl Default for AnchorOrigin {
     fn default() -> Self {
         Self {
-            horizontal: Side::Top,
-            vertical: Side::Right,
+            horizontal: Side::Right,
+            vertical: Side::Top,
         }
     }
 }

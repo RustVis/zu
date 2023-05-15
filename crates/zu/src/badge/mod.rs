@@ -68,6 +68,7 @@ pub fn badge(props: &Props) -> Html {
         } else {
             ""
         },
+        props.anchor_origin.css_class(),
         props.overlap.css_class(),
         props.color.css_class(),
     ];
