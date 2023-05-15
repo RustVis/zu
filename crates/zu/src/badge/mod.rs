@@ -53,6 +53,8 @@ pub struct Props {
     #[prop_or(false)]
     pub show_zero: bool,
 
+    // TODO(Shaohua): Support custom inline style
+    //pub style: String,
     /// The variant to use.
     #[prop_or_default]
     pub variant: Variant,
