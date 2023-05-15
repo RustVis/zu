@@ -69,6 +69,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         "src/themes/typography.scss",
         "src/themes/z-index.scss",
         // Components
+        "src/badge/style.scss",
         "src/box/style.scss",
         "src/container/style.scss",
         "src/circular_progress/style.scss",

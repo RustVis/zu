@@ -30,24 +30,26 @@
   line-height: 1;
 }
 
+$zu-badge-radiusDot: 4px;
+$zu-badge-radiusStandard: 10xp;
 :root {
-  --zu-badge-radiusDot: 4px;
-  --zu-badge-radiusStandard: 10px;
+  --zu-badge-radiusDot: #{$zu-badge-radiusDot};
+  --zu-badge-radiusStandard: #{$zu-badge-radiusStandard};
 }
 
 /* Styles applied to the badge `span` element if variant="dot". */
 .ZuBadge-dot {
-  border-radius: var(--zu-badge-radiusDot);
-  height: var(--zu-badge-radiusDot) * 2;
-  min-width: var(--zu-badge-radiusDot) * 2;
+  border-radius: $zu-badge-radiusDot;
+  height: $zu-badge-radiusDot * 2;
+  min-width: $zu-badge-radiusDot * 2;
   padding: 0;
 }
 
 /* Styles applied to the badge `span` element if variant="standard". */
 .ZuBadge-standard {
-  min-width: var(--zu-badge-radiusStandard) * 2;
-  height: var(--zu-badge-radiusStandard) * 2;
-  border-radius: var(--zu-badge-radiusStandard);
+  min-width: $zu-badge-radiusStandard * 2;
+  height: $zu-badge-radiusStandard * 2;
+  border-radius: $zu-badge-radiusStandard;
   padding: 0 6px;
 }
 
