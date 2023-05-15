@@ -32,16 +32,13 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: String,
-
-    #[prop_or_default]
-    // TODO(Shaohua): Add Color::Default
     pub color: Color,
 
     #[prop_or_default]
     pub component: String,
 
     /// If true, the badge is invisible.
+    #[prop_or(false)]
     pub invisible: bool,
 
     /// Max count to show.
@@ -57,12 +54,13 @@ pub struct Props {
     pub show_zero: bool,
 
     /// The variant to use.
+    #[prop_or_default]
     pub variant: Variant,
 }
 
 #[function_component(Badge)]
 pub fn badge(props: &Props) -> Html {
-    let cls_list = vec![
+    let badge_cls_list = vec![
         "ZuBadge-badge",
         props.variant.css_class(),
         if props.invisible {
@@ -73,7 +71,7 @@ pub fn badge(props: &Props) -> Html {
         props.overlap.css_class(),
         props.color.css_class(),
     ];
-    let cls = classes!(cls_list);
+    let badge_cls = classes!(badge_cls_list);
 
     let component = if props.component.is_empty() {
         "span".to_owned()
@@ -103,7 +101,7 @@ pub fn badge(props: &Props) -> Html {
     html! {
         <@{component} class="ZuBadge-root">
             {props.children.clone()}
-            <span class={cls}>{display_value}</span>
+            <span class={badge_cls}>{display_value}</span>
         </@>
     }
 }
