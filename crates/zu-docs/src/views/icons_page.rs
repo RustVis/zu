@@ -7,6 +7,10 @@ use zu::svg_icon::{Color, FontSize, SvgIcon};
 
 #[function_component(IconsPage)]
 pub fn icons_page() -> Html {
+    let path = html! {
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+    };
+
     html! {
         <div class="container">
         <h1>{"Icons"}</h1>
@@ -16,16 +20,16 @@ pub fn icons_page() -> Html {
             This component extends the native <svg> element:"}</p>
         <div class="demo-box">
             <SvgIcon color={Color::Primary} font_size={FontSize::Small}>
-                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                {path.clone()}
             </SvgIcon>
-            <SvgIcon color={Color::Primary}>
-                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+            <SvgIcon color={Color::Secondary}>
+                {path.clone()}
             </SvgIcon>
-            <SvgIcon color={Color::Primary} font_size={FontSize::Large}>
-                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+            <SvgIcon color={Color::Action} font_size={FontSize::Large}>
+                {path.clone()}
             </SvgIcon>
-            <SvgIcon color={Color::Primary} style="font-size: 50px">
-                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+            <SvgIcon color={Color::Disabled} style="font-size: 50px">
+                {path.clone()}
             </SvgIcon>
         </div>
 
