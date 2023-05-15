@@ -38,6 +38,9 @@ pub struct Props {
     #[prop_or_default]
     pub html_color: String,
 
+    #[prop_or_default]
+    pub style: String,
+
     /// Element title.
     #[prop_or_default]
     pub title_access: String,
@@ -55,7 +58,11 @@ pub fn svg_icon(props: &Props) -> Html {
         props.component.clone()
     };
 
-    let root_cls = classes!("ZuSvgIcon-root", props.color.css_class(),);
+    let root_cls = classes!(
+        "ZuSvgIcon-root",
+        props.color.css_class(),
+        props.font_size.css_class(),
+    );
 
     let view_box = if props.view_box.is_empty() {
         DEFAULT_VIEW_BOX.to_owned()
@@ -69,8 +76,15 @@ pub fn svg_icon(props: &Props) -> Html {
     };
     let aria_hidden = !props.title_access.is_empty();
 
+    let style = if props.style.is_empty() {
+        None
+    } else {
+        Some(props.style.clone())
+    };
+
     html! {
         <@{component} class={root_cls}
+            style={style}
             focusable={"false"}
             color={html_color}
             aria-hidden={aria_hidden.to_string()}
