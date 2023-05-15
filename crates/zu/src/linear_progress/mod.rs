@@ -2,39 +2,23 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::styles::color::Color;
-use crate::styles::CssClass;
+mod variant;
+
 use yew::{function_component, html, Html, Properties};
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum Variant {
-    Buffer,
-    Determinate,
-    Indeterminate,
-    Query,
-}
+use crate::styles::color::Color;
 
-impl Default for Variant {
-    fn default() -> Self {
-        Self::Indeterminate
-    }
-}
-
-impl CssClass for Variant {
-    fn css_class(&self) -> &'static str {
-        match self {
-            Self::Buffer => "ZuLinearProgress-buffer",
-            Self::Determinate => "ZuLinearProgress-determinate",
-            Self::Indeterminate => "ZuLinearProgress-indeterminate",
-            Self::Query => "ZuLinearProgress-query",
-        }
-    }
-}
+// Re-export
+pub use variant::Variant;
 
 #[derive(Debug, Clone, PartialEq, Eq, Properties)]
 pub struct Props {
     #[prop_or_default]
     pub color: Color,
+
+    /// Override root style.
+    #[prop_or_default]
+    pub style: String,
 
     /// The value of the progress indicator for the determinate variant.
     ///
@@ -43,16 +27,18 @@ pub struct Props {
     pub value: i32,
 
     /// The value for the buffer variant. Value between 0 and 100.
-    #[prop_or(0)]
-    pub value_buffer: i32,
+    ///
+    /// Default is None.
+    #[prop_or_default]
+    pub value_buffer: Option<i32>,
 
     /// Use indeterminate when there is no progress value.
     #[prop_or_default]
     pub variant: Variant,
 
-    /// Override root style.
-    #[prop_or_default]
-    pub style: String,
+    /// Show label text or not.
+    #[prop_or(false)]
+    pub with_label: bool,
 }
 
 #[function_component(LinearProgress)]

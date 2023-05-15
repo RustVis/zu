@@ -67,6 +67,8 @@ pub fn avatar_group(props: &Props) -> Html {
 
     let root_cls = "ZuAvatarGroup-root";
 
+    // TODO(Shaohua): Include Avatar and update styles.
+
     html! {
         <@{component} class={root_cls}>
             {props.children.clone()}

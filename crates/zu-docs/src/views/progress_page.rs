@@ -6,21 +6,33 @@ use gloo_timers::callback::Interval;
 use yew::prelude::*;
 use zu::circular_progress::CircularProgress;
 use zu::circular_progress::Variant as CircularVariant;
+use zu::linear_progress::LinearProgress;
+use zu::linear_progress::Variant as LinearVariant;
 use zu::styles::color::Color;
 
 #[function_component(ProgressPage)]
 pub fn progress_page() -> Html {
     let progress = use_state(|| 0);
+    let buffer = use_state(|| 10);
 
     {
         let progress_clone = progress.clone();
+        let buffer_clone = buffer.clone();
         use_effect(move || {
             let timer = Interval::new(800, move || {
-                let value = *progress_clone;
-                if value >= 100 {
+                let progress_value = *progress_clone;
+                let buffer_value = *buffer_clone;
+                let diff = 10;
+                let diff2 = 10;
+                if progress_value >= 100 {
                     progress_clone.set(0);
                 } else {
-                    progress_clone.set(value + 10);
+                    progress_clone.set(progress_value + diff);
+                }
+                if buffer_value >= 100 {
+                    buffer_clone.set(10);
+                } else {
+                    buffer_clone.set(buffer_value + diff + diff2);
                 }
             });
             || {
@@ -64,6 +76,39 @@ pub fn progress_page() -> Html {
                     with_label={true}
                     value={*progress} />
             </div>
+
+            <h2>{"Linear"}</h2>
+            <h3>{"Linear indeterminate"}</h3>
+            <div class="demo-box">
+                <LinearProgress />
+            </div>
+
+            <h3>{"Linear color"}</h3>
+            <div class="demo-box">
+                <LinearProgress color={Color::Secondary} />
+                <LinearProgress color={Color::Success} />
+                <LinearProgress color={Color::Inherit} />
+            </div>
+
+            <h3>{"Linear determinate"}</h3>
+            <div class="demo-box">
+                   <LinearProgress variant={LinearVariant::Determinate}
+                        value={*progress} />
+            </div>
+
+            <h3>{"Linear with label"}</h3>
+            <div class="demo-box">
+                   <LinearProgress variant={LinearVariant::Determinate}
+                        with_label={true}
+                        value={*progress} />
+            </div>
+
+            <h3>{"Linear buffer"}</h3>
+            <div class="demo-box">
+                <LinearProgress variant={LinearVariant::Buffer}
+                    value={*progress} value_buffer={*buffer} />
+            </div>
+
         </div>
     }
 }
