@@ -52,3 +52,4 @@ pub mod styles;
 pub mod switch;
 pub mod theme_provider;
 pub mod typography;
+pub mod badge;
