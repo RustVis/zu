@@ -51,6 +51,7 @@ pub mod paper;
 pub mod skeleton;
 pub mod stack;
 pub mod styles;
+pub mod svg_icon;
 pub mod switch;
 pub mod theme_provider;
 pub mod typography;

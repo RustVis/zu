@@ -1,0 +1,42 @@
+// Copyright (c) 2023 Xu Shaohua <shaohua@biofan.org>. All rights reserved.
+// Use of this source is governed by Apache-2.0 License that can be found
+// in the LICENSE file.
+
+use crate::styles::CssClass;
+
+/// The color of the component.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum Color {
+    Inherit,
+    Action,
+    Disabled,
+    Primary,
+    Secondary,
+    Error,
+    Info,
+    Success,
+    Warning,
+    Custom(String),
+}
+
+impl Default for Color {
+    fn default() -> Self {
+        Self::Inherit
+    }
+}
+
+impl CssClass for Color {
+    fn css_class(&self) -> &'static str {
+        match self {
+            Self::Action => "ZuSvgIcon-colorAction",
+            Self::Disabled => "ZuSvgIcon-colorDisabled",
+            Self::Primary => "ZuSvgIcon-colorPrimary",
+            Self::Secondary => "ZuSvgIcon-colorSecondary",
+            Self::Error => "ZuSvgIcon-colorError",
+            Self::Info => "ZuSvgIcon-colorInfo",
+            Self::Success => "ZuSvgIcon-colorSuccess",
+            Self::Warning => "ZuSvgIcon-colorWarning",
+            Self::Inherit | Self::Custom(_) => "",
+        }
+    }
+}

@@ -80,6 +80,7 @@ const COMMON_STYLES: &[&str] = &[
     "src/paper/style.scss",
     "src/skeleton/style.scss",
     "src/stack/style.scss",
+    "src/svg_icon/style.scss",
     "src/switch/style.scss",
     "src/typography/style.scss",
 ];
