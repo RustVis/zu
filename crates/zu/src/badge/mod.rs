@@ -3,16 +3,17 @@
 // in the LICENSE file.
 
 mod anchor_origin;
+mod color;
 mod overlap;
 mod variant;
 
 use yew::{classes, function_component, html, Children, Html, Properties};
 
-use crate::styles::color::Color;
+use crate::styles::CssClass;
 
 // Re-export property items.
-use crate::styles::CssClass;
 pub use anchor_origin::AnchorOrigin;
+pub use color::Color;
 pub use overlap::Overlap;
 pub use variant::Variant;
 
@@ -59,24 +60,28 @@ pub struct Props {
 #[function_component(Badge)]
 pub fn badge(props: &Props) -> Html {
     let cls_list = vec![
-        "ZuBadge-root",
+        "ZuBadge-badge",
         props.variant.css_class(),
         if props.invisible {
             "ZuBadge-invisible"
         } else {
             ""
         },
+        props.overlap.css_class(),
+        props.color.css_class(),
     ];
     let cls = classes!(cls_list);
 
     let component = if props.component.is_empty() {
-        "div".to_owned()
+        "span".to_owned()
     } else {
         props.component.clone()
     };
 
     html! {
-        <@{component} class={cls}>
+        <@{component} class="ZuBadge-root">
+            <span class={cls}>
+            </span>
         </@>
     }
 }

@@ -19,8 +19,8 @@ impl Default for Overlap {
 impl CssClass for Overlap {
     fn css_class(&self) -> &'static str {
         match self {
-            Self::Circle => "ZuBadge-circle",
-            Self::Rect => "ZuBadge-rect",
+            Self::Circle => "ZuBadge-overlapCircle",
+            Self::Rect => "ZuBadge-overlapRect",
         }
     }
 }
