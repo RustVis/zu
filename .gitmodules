@@ -1,3 +1,0 @@
-[submodule "crates/zuicon-ant/third_party/ant-design-icons"]
-	path = crates/zuicon-ant/third_party/ant-design-icons
-	url = https://github.com/ant-design/ant-design-icons
