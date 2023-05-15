@@ -4,6 +4,7 @@
 
 mod anchor_origin;
 mod color;
+mod content;
 mod overlap;
 mod variant;
 
@@ -14,6 +15,7 @@ use crate::styles::CssClass;
 // Re-export property items.
 pub use anchor_origin::AnchorOrigin;
 pub use color::Color;
+pub use content::Content;
 pub use overlap::Overlap;
 pub use variant::Variant;
 
@@ -24,7 +26,7 @@ pub struct Props {
 
     /// The content rendered within the badge.
     #[prop_or_default]
-    pub content: Children,
+    pub content: Option<Content>,
 
     #[prop_or_default]
     pub children: Children,
@@ -43,6 +45,7 @@ pub struct Props {
     pub invisible: bool,
 
     /// Max count to show.
+    #[prop_or(99)]
     pub max: i32,
 
     /// Wrapped shape the badge should overlap.
@@ -78,10 +81,29 @@ pub fn badge(props: &Props) -> Html {
         props.component.clone()
     };
 
+    // TODO(Shaohua): Use invisible property.
+    let _invisible = props.invisible || props.content.is_none() || props.variant != Variant::Dot;
+
+    let display_value = if props.variant == Variant::Standard {
+        match &props.content {
+            None => None,
+            Some(Content::Str(s)) => Some(s.clone()),
+            Some(Content::Num(num)) => {
+                if *num > props.max {
+                    Some(format!("{}+", props.max))
+                } else {
+                    Some(num.to_string())
+                }
+            }
+        }
+    } else {
+        None
+    };
+
     html! {
         <@{component} class="ZuBadge-root">
-            <span class={cls}>
-            </span>
+            {props.children.clone()}
+            <span class={cls}>{display_value}</span>
         </@>
     }
 }
