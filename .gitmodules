@@ -7,6 +7,3 @@
 [submodule "crates/zuicon-mdl2/third_party/fluentui-mdl2"]
 	path = crates/zuicon-mdl2/third_party/fluentui-mdl2
 	url = https://github.com/RustVis/fluentui-mdl2.git
-[submodule "crates/zuicon-material/third_party/material-ui"]
-	path = crates/zuicon-material/third_party/material-ui
-	url = https://github.com/mui/material-ui
