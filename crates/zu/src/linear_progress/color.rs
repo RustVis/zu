@@ -8,6 +8,7 @@ pub const fn root_class(color: &Color) -> &'static str {
     match color {
         Color::Primary => "ZuLinearProgress-colorPrimary",
         Color::Secondary => "ZuLinearProgress-colorSecondary",
+        Color::Inherit => "ZuLinearProgress-colorInherit",
         _ => "",
     }
 }

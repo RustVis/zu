@@ -3,16 +3,35 @@
 
 /* Styles applied to the root element. */
 .ZuLinearProgress-root {
+  position: relative;
+  overflow: hidden;
 
+  display: block;
+  height: 4px;
+  /* Fix Safari's bug during composition of different paint. */
+  z-index: 0;
+
+}
+
+@media print {
+  .ZuLinearProgress-root {
+    color-adjust: exact;
+  }
 }
 
 /* Styles applied to the root and bar2 element if color="primary"; bar2 if variant="buffer". */
 .ZuLinearProgress-colorPrimary {
-
+  /* TODO(Shaohua): Adjust alpha value. */
+  background-color: var(--zu-palette-primary-main);
 }
 
 /* Styles applied to the root and bar2 elements if color="secondary"; bar2 if variant="buffer". */
 .ZuLinearProgress-colorSecondary {
+  /* TODO(Shaohua): Adjust alpha value. */
+  background-color: var(--zu-palette-secondary-main);
+}
+
+.ZuLinearProgress-colorInherit {
 
 }
 
@@ -28,31 +47,73 @@
 
 /* Styles applied to the root element if variant="buffer". */
 .ZuLinearProgress-buffer {
+  background-color: transparent;
+}
+.ZuLinearProgress-colorInherit.ZuLinearProgress-noBuffer {
+  background-color: transparent;
+}
+.ZuLinearProgress-colorInherit.ZuLinearProgress-noBuffer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
 
+  background-color: currentColor;
+  opacity: 0.3;
 }
 
 /* Styles applied to the root element if variant="query". */
 .ZuLinearProgress-query {
-
+  transform: rotate(180deg);
 }
 
 /* Styles applied to the additional bar element if variant="buffer". */
 .ZuLinearProgress-dashed {
+  position: absolute;
 
+  margin-top: 0;
+  height: 100%;
+  width: 100%;
+  background-size: 10px 10px;
+  background-position: 0 -23px;
+
+  background-image: radial-gradient(
+          var(--background-color) 0%,
+          var(--background-color) 16%,
+          transparent 42%);
+  background-color: var(--background-color);
 }
 
 /* Styles applied to the additional bar element if variant="buffer" and color="primary". */
 .ZuLinearProgress-dashedColorPrimary {
-
+  --background-color: var(--zu-palette-primary-main);
 }
 
 /* Styles applied to the additional bar element if variant="buffer" and color="secondary". */
 .ZuLinearProgress-dashedColorSecondary {
+  --background-color: var(--zu-palette-secondary-main);
+}
 
+.ZuLinearProgress-dashedColorInherit {
+  --background-color: currentColor;
 }
 
 /* Styles applied to the layered bar1 and bar2 elements. */
-.ZuLinearProgress-bar {
+
+.ZuLinearProgress-bar1 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  transition: transform 0.2s linear;
+  transform-origin: left;
+
+  width: 100%;
+}
+
+.ZuLinearProgress-bar2 {
 
 }
 
