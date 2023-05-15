@@ -54,42 +54,65 @@ fn compile_scss(input_name: &str, output_name: &str) -> Result<(), Box<dyn Error
     Ok(())
 }
 
-fn main() -> Result<(), Box<dyn Error>> {
-    let common_styles = [
-        "src/themes/border-radius.scss",
-        "src/themes/breakpoints.scss",
-        "src/themes/components-base.scss",
-        "src/themes/direction.scss",
-        "src/themes/fonts.scss",
-        "src/themes/shadows.scss",
-        "src/themes/shape.scss",
-        "src/themes/spacings.scss",
-        "src/themes/stroke-widths.scss",
-        "src/themes/transitions.scss",
-        "src/themes/typography.scss",
-        "src/themes/z-index.scss",
-        // Components
-        "src/badge/style.scss",
-        "src/box/style.scss",
-        "src/container/style.scss",
-        "src/circular_progress/style.scss",
-        "src/divider/style.scss",
-        "src/form_group/style.scss",
-        "src/form_label/style.scss",
-        "src/linear_progress/style.scss",
-        "src/paper/style.scss",
-        "src/skeleton/style.scss",
-        "src/stack/style.scss",
-        "src/switch/style.scss",
-        "src/typography/style.scss",
-    ];
+const COMMON_STYLES: &[&str] = &[
+    "src/themes/border-radius.scss",
+    "src/themes/breakpoints.scss",
+    "src/themes/components-base.scss",
+    "src/themes/direction.scss",
+    "src/themes/fonts.scss",
+    "src/themes/shadows.scss",
+    "src/themes/shape.scss",
+    "src/themes/spacings.scss",
+    "src/themes/stroke-widths.scss",
+    "src/themes/transitions.scss",
+    "src/themes/typography.scss",
+    "src/themes/z-index.scss",
+    // Components
+    "src/avatar_group/style.scss",
+    "src/badge/style.scss",
+    "src/box/style.scss",
+    "src/container/style.scss",
+    "src/circular_progress/style.scss",
+    "src/divider/style.scss",
+    "src/form_group/style.scss",
+    "src/form_label/style.scss",
+    "src/linear_progress/style.scss",
+    "src/paper/style.scss",
+    "src/skeleton/style.scss",
+    "src/stack/style.scss",
+    "src/switch/style.scss",
+    "src/typography/style.scss",
+];
 
+const COLORS: &[&str] = &[
+    "src/colors/amber.css",
+    "src/colors/blue.css",
+    "src/colors/blue_grey.css",
+    "src/colors/brown.css",
+    "src/colors/cyan.css",
+    "src/colors/deep_orange.css",
+    "src/colors/deep_purple.css",
+    "src/colors/green.css",
+    "src/colors/grey.css",
+    "src/colors/indigo.css",
+    "src/colors/light_blue.css",
+    "src/colors/light_green.css",
+    "src/colors/lime.css",
+    "src/colors/orange.css",
+    "src/colors/pink.css",
+    "src/colors/purple.css",
+    "src/colors/red.css",
+    "src/colors/teal.css",
+    "src/colors/yellow.css",
+];
+
+fn main() -> Result<(), Box<dyn Error>> {
     let mut dark_files = vec![
         "src/themes/dark-palette.scss",
         "src/themes/export-palette.scss",
         "src/themes/dark-components.scss",
     ];
-    dark_files.extend_from_slice(&common_styles);
+    dark_files.extend_from_slice(COMMON_STYLES);
     merge_themes(&dark_files, "dark-theme.scss")?;
     compile_scss("dark-theme.scss", "dark-theme.css")?;
 
@@ -98,32 +121,11 @@ fn main() -> Result<(), Box<dyn Error>> {
         "src/themes/export-palette.scss",
         "src/themes/light-components.scss",
     ];
-    light_files.extend_from_slice(&common_styles);
+    light_files.extend_from_slice(COMMON_STYLES);
     merge_themes(&light_files, "light-theme.scss")?;
     compile_scss("light-theme.scss", "light-theme.css")?;
 
-    let colors = [
-        "src/colors/amber.css",
-        "src/colors/blue.css",
-        "src/colors/blue_grey.css",
-        "src/colors/brown.css",
-        "src/colors/cyan.css",
-        "src/colors/deep_orange.css",
-        "src/colors/deep_purple.css",
-        "src/colors/green.css",
-        "src/colors/grey.css",
-        "src/colors/indigo.css",
-        "src/colors/light_blue.css",
-        "src/colors/light_green.css",
-        "src/colors/lime.css",
-        "src/colors/orange.css",
-        "src/colors/pink.css",
-        "src/colors/purple.css",
-        "src/colors/red.css",
-        "src/colors/teal.css",
-        "src/colors/yellow.css",
-    ];
-    merge_themes(&colors, "color-schemes.css")?;
+    merge_themes(COLORS, "color-schemes.css")?;
 
     Ok(())
 }

@@ -38,6 +38,8 @@
     clippy::multiple_crate_versions
 )]
 
+pub mod avatar_group;
+pub mod badge;
 pub mod r#box;
 pub mod circular_progress;
 pub mod container;
@@ -52,4 +54,3 @@ pub mod styles;
 pub mod switch;
 pub mod theme_provider;
 pub mod typography;
-pub mod badge;
