@@ -5,6 +5,8 @@
 use yew::{function_component, html, Html};
 use zu::svg_icon::{Color, FontSize, SvgIcon};
 
+use super::abc::Abc;
+
 #[function_component(IconsPage)]
 pub fn icons_page() -> Html {
     let path = html! {
@@ -32,6 +34,8 @@ pub fn icons_page() -> Html {
                 {path.clone()}
             </SvgIcon>
         </div>
+
+        <Abc color={Color::Error} font_size={FontSize::Large} />
 
         </div>
     }
