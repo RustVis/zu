@@ -1,0 +1,25 @@
+// Copyright (c) 2023 Xu Shaohua <shaohua@biofan.org>. All rights reserved.
+// Use of this source is governed by Apache-2.0 License that can be found
+// in the LICENSE file.
+
+// Auto generated, do not edit.
+
+use yew::{function_component, html, Html};
+use zu::svg_icon::{Props, SvgIcon};
+
+#[function_component(LocalAtmTwoTone)]
+pub fn abc(props: &Props) -> Html {
+    html! {
+        <SvgIcon classes={props.classes.clone()}
+            color={props.color}
+            font_size={props.font_size}
+            html_color={props.html_color.clone()}
+            style={props.style.clone()}
+            title_access={props.title_access.clone()}
+            icon="LocalAtmTwoTone"
+            view_box={props.view_box.clone()}
+            >
+            <path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 18h16V6H4v12zm5-4h4v-1h-3c-.55 0-1-.45-1-1V9c0-.55.45-1 1-1h1V7h2v1h2v2h-4v1h3c.55 0 1 .45 1 1v3c0 .55-.45 1-1 1h-1v1h-2v-1H9v-2z" opacity=".3"/><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4V6h16v12zm-9-1h2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-3v-1h4V8h-2V7h-2v1h-1c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h3v1H9v2h2v1z"/>
+        </SvgIcon>
+    }
+}

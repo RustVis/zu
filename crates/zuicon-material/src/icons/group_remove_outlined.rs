@@ -1,0 +1,25 @@
+// Copyright (c) 2023 Xu Shaohua <shaohua@biofan.org>. All rights reserved.
+// Use of this source is governed by Apache-2.0 License that can be found
+// in the LICENSE file.
+
+// Auto generated, do not edit.
+
+use yew::{function_component, html, Html};
+use zu::svg_icon::{Props, SvgIcon};
+
+#[function_component(GroupRemoveOutlined)]
+pub fn abc(props: &Props) -> Html {
+    html! {
+        <SvgIcon classes={props.classes.clone()}
+            color={props.color}
+            font_size={props.font_size}
+            html_color={props.html_color.clone()}
+            style={props.style.clone()}
+            title_access={props.title_access.clone()}
+            icon="GroupRemoveOutlined"
+            view_box={props.view_box.clone()}
+            >
+            <path d="M24,9v2h-6V9H24z M8,4C5.79,4,4,5.79,4,8s1.79,4,4,4s4-1.79,4-4S10.21,4,8,4z M8,10c-1.1,0-2-0.9-2-2s0.9-2,2-2s2,0.9,2,2 S9.1,10,8,10z M8,13c-2.67,0-8,1.34-8,4v3h16v-3C16,14.34,10.67,13,8,13z M14,18H2v-0.99C2.2,16.29,5.3,15,8,15s5.8,1.29,6,2V18z M12.51,4.05C13.43,5.11,14,6.49,14,8s-0.57,2.89-1.49,3.95C14.47,11.7,16,10.04,16,8S14.47,4.3,12.51,4.05z M16.53,13.83 C17.42,14.66,18,15.7,18,17v3h2v-3C20,15.55,18.41,14.49,16.53,13.83z"/>
+        </SvgIcon>
+    }
+}
