@@ -41,6 +41,10 @@ pub struct Props {
     #[prop_or_default]
     pub style: String,
 
+    /// Add data-testid attribute if specified.
+    #[prop_or_default]
+    pub test_id: String,
+
     /// Element title.
     #[prop_or_default]
     pub title_access: String,
@@ -52,7 +56,7 @@ pub struct Props {
 
 #[function_component(SvgIcon)]
 pub fn svg_icon(props: &Props) -> Html {
-    let component = if props.component.is_empty() {
+    let _component = if props.component.is_empty() {
         "svg".to_owned()
     } else {
         props.component.clone()
@@ -82,17 +86,24 @@ pub fn svg_icon(props: &Props) -> Html {
         Some(props.style.clone())
     };
 
+    let test_id = if props.test_id.is_empty() {
+        None
+    } else {
+        Some(props.test_id.clone())
+    };
+
     html! {
-        <@{component} class={root_cls}
+        <svg class={root_cls}
             style={style}
             focusable={"false"}
             color={html_color}
             aria-hidden={aria_hidden.to_string()}
+            data-testid={test_id}
             viewBox={view_box}>
             {props.children.clone()}
             if !props.title_access.is_empty() {
                 <title>{&props.title_access}</title>
             }
-        </@>
+        </svg>
     }
 }
