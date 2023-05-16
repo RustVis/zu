@@ -4,13 +4,12 @@
 
 use crate::styles::CssClass;
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum FontSize {
     Inherit,
     Small,
     Medium,
     Large,
-    Custom(String),
 }
 
 impl Default for FontSize {
@@ -26,7 +25,6 @@ impl CssClass for FontSize {
             Self::Small => "ZuSvgIcon-fontSizeSmall",
             Self::Medium => "ZuSvgIcon-fontSizeMedium",
             Self::Large => "ZuSvgIcon-fontSizeLarge",
-            Self::Custom(_) => "",
         }
     }
 }
