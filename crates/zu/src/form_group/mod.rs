@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{classes, function_component, html, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -17,7 +17,7 @@ pub struct Props {
     pub row: bool,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: AttrValue,
 }
 
 #[function_component(FormGroup)]

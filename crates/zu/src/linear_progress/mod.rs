@@ -20,6 +20,7 @@ pub struct Props {
 
     /// Override root style.
     #[prop_or_default]
+    // TODO(Shaohua): Use custom style.
     pub style: String,
 
     /// The value of the progress indicator for the determinate variant.

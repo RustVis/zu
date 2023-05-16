@@ -8,7 +8,7 @@ mod content;
 mod overlap;
 mod variant;
 
-use yew::{classes, function_component, html, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
 use crate::styles::CssClass;
 
@@ -35,7 +35,7 @@ pub struct Props {
     pub color: Color,
 
     #[prop_or_default]
-    pub component: String,
+    pub component: AttrValue,
 
     /// If true, the badge is invisible.
     #[prop_or(false)]
@@ -77,9 +77,9 @@ pub fn badge(props: &Props) -> Html {
     let badge_cls = classes!(badge_cls_list);
 
     let component = if props.component.is_empty() {
-        "span".to_owned()
+        "span"
     } else {
-        props.component.clone()
+        props.component.as_str()
     };
 
     // TODO(Shaohua): Use invisible property.
@@ -102,7 +102,7 @@ pub fn badge(props: &Props) -> Html {
     };
 
     html! {
-        <@{component} class="ZuBadge-root">
+        <@{component.to_owned()} class="ZuBadge-root">
             {for props.children.iter()}
             <span class={badge_cls}>{display_value}</span>
         </@>

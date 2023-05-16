@@ -6,7 +6,7 @@ use crate::styles::direction::Direction;
 use crate::styles::spacing::Spacing;
 use crate::styles::CssClass;
 use yew::virtual_dom::VNode;
-use yew::{classes, function_component, html, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
 #[must_use]
 pub const fn spacing_cls(spacing: Spacing) -> &'static str {
@@ -31,10 +31,10 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: String,
+    pub classes: AttrValue,
 
     #[prop_or_default]
-    pub component: String,
+    pub component: AttrValue,
 
     /// Defines the flex-direction style property.
     #[prop_or_default]
@@ -52,7 +52,7 @@ pub struct Props {
     pub spacing: Spacing,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: AttrValue,
 
     /// If true, the CSS flexbox gap is used instead of applying margin to children.
     #[prop_or(false)]
@@ -62,25 +62,20 @@ pub struct Props {
 #[function_component(Stack)]
 pub fn stack(props: &Props) -> Html {
     let component = if props.component.is_empty() {
-        "div".to_owned()
+        "div"
     } else {
-        props.component.clone()
+        props.component.as_str()
     };
 
     let cls = classes!(
         "ZuStack-root",
         props.direction.css_class(),
         spacing_cls(props.spacing),
+        props.classes.as_str().to_owned(),
     );
 
-    let style = if props.style.is_empty() {
-        None
-    } else {
-        Some(props.style.clone())
-    };
-
     html! {
-        <@{component} class={cls} style={style}>
+        <@{component.to_owned()} class={cls} style={props.style.clone()}>
             {for props.children.iter()}
         </@>
     }

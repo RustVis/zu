@@ -3,7 +3,7 @@
 // in the LICENSE file.
 
 use crate::styles::size::Size;
-use yew::{classes, function_component, html, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
 #[must_use]
 pub const fn max_width_cls(size: Option<Size>) -> &'static str {
@@ -26,7 +26,7 @@ pub struct Props {
     pub classes: String,
 
     #[prop_or_default]
-    pub component: String,
+    pub component: AttrValue,
 
     /// If true, the left and right padding is removed.
     #[prop_or(false)]
@@ -44,15 +44,15 @@ pub struct Props {
     pub max_width: Option<Size>,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: AttrValue,
 }
 
 #[function_component(Container)]
 pub fn container(props: &Props) -> Html {
     let component = if props.component.is_empty() {
-        "div".to_owned()
+        "div"
     } else {
-        props.component.clone()
+        props.component.as_str()
     };
 
     let mut cls_list = vec!["ZuContainer-root", max_width_cls(props.max_width)];
@@ -70,11 +70,11 @@ pub fn container(props: &Props) -> Html {
         let lst = [props.style.as_str(), &format!("max-width: {num}px")];
         lst.join(";")
     } else {
-        props.style.clone()
+        props.style.as_str().to_owned()
     };
 
     html! {
-        <@{component} class={cls} style={style}>
+        <@{component.to_owned()} class={cls} style={style}>
             {for props.children.iter()}
         </@>
     }

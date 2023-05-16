@@ -5,7 +5,7 @@
 mod spacing;
 mod variant;
 
-use yew::{function_component, html, Children, Html, Properties};
+use yew::{function_component, html, AttrValue, Children, Html, Properties};
 
 pub use spacing::Spacing;
 pub use variant::Variant;
@@ -15,12 +15,13 @@ pub struct Props {
     #[prop_or_default]
     pub children: Children,
 
+    // TODO(Shaohua): Merge classes.
     #[prop_or_default]
-    pub classes: String,
+    pub classes: AttrValue,
 
     /// The component used for the root node.
     #[prop_or_default]
-    pub component: String,
+    pub component: AttrValue,
 
     /// Max avatars to show before +x.
     #[prop_or(5)]
@@ -60,9 +61,9 @@ pub fn avatar_group(props: &Props) -> Html {
         .max(0);
 
     let component = if props.component.is_empty() {
-        "div".to_owned()
+        "div"
     } else {
-        props.component.clone()
+        props.component.as_str()
     };
 
     let root_cls = "ZuAvatarGroup-root";
@@ -70,7 +71,7 @@ pub fn avatar_group(props: &Props) -> Html {
     // TODO(Shaohua): Include Avatar and update styles.
 
     html! {
-        <@{component} class={root_cls}>
+        <@{component.to_owned()} class={root_cls}>
             {for props.children.iter()}
         </@>
     }

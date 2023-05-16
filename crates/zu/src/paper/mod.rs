@@ -3,7 +3,7 @@
 // in the LICENSE file.
 
 use crate::styles::CssClass;
-use yew::{classes, function_component, html, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
 pub type Elevation = i32;
 pub const ELEVATION_DEFAULT: Elevation = 1;
@@ -41,7 +41,7 @@ pub struct Props {
     pub classes: String,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: AttrValue,
 
     #[prop_or(ELEVATION_DEFAULT)]
     /// Shadow depth, corresponds to dp in the spec. It accepts values between 0 and 24 inclusive.
@@ -58,10 +58,6 @@ pub struct Props {
 
 #[function_component(Paper)]
 pub fn paper(props: &Props) -> Html {
-    let style_list = vec![props.style.clone()];
-    let style = style_list.join(";");
-    log::info!("style: {style}");
-
     let mut cls_list = vec![
         "ZuPaper-root".to_owned(),
         props.classes.clone(),
@@ -79,7 +75,7 @@ pub fn paper(props: &Props) -> Html {
     let cls = classes!(cls_list);
 
     html! {
-        <div class={cls} style={style}>
+        <div class={cls} style={props.style.clone()}>
             {for props.children.iter()}
         </div>
     }

@@ -5,7 +5,7 @@
 mod color;
 mod font_size;
 
-use yew::{classes, function_component, html, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
 use crate::styles::CssClass;
 
@@ -21,13 +21,13 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: String,
+    pub classes: AttrValue,
 
     #[prop_or_default]
     pub color: Color,
 
     #[prop_or_default]
-    pub component: String,
+    pub component: AttrValue,
 
     /// The fontSize applied to the icon.
     ///
@@ -36,30 +36,30 @@ pub struct Props {
     pub font_size: FontSize,
 
     #[prop_or_default]
-    pub html_color: String,
+    pub html_color: AttrValue,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: AttrValue,
 
     /// Add data-icon attribute if specified.
     #[prop_or_default]
-    pub icon: String,
+    pub icon: AttrValue,
 
     /// Element title.
     #[prop_or_default]
-    pub title_access: String,
+    pub title_access: AttrValue,
 
     /// Default is "0 0 24 24".
     #[prop_or_default]
-    pub view_box: String,
+    pub view_box: AttrValue,
 }
 
 #[function_component(SvgIcon)]
 pub fn svg_icon(props: &Props) -> Html {
     let _component = if props.component.is_empty() {
-        "svg".to_owned()
+        "svg"
     } else {
-        props.component.clone()
+        props.component.as_str()
     };
 
     let root_cls = classes!(
@@ -69,37 +69,21 @@ pub fn svg_icon(props: &Props) -> Html {
     );
 
     let view_box = if props.view_box.is_empty() {
-        DEFAULT_VIEW_BOX.to_owned()
+        DEFAULT_VIEW_BOX
     } else {
-        props.view_box.clone()
+        props.view_box.as_str()
     };
-    let html_color = if props.html_color.is_empty() {
-        None
-    } else {
-        Some(props.html_color.clone())
-    };
+
     let aria_hidden = !props.title_access.is_empty();
-
-    let style = if props.style.is_empty() {
-        None
-    } else {
-        Some(props.style.clone())
-    };
-
-    let icon = if props.icon.is_empty() {
-        None
-    } else {
-        Some(props.icon.clone())
-    };
 
     html! {
         <svg class={root_cls}
-            style={style}
+            style={props.style.clone()}
             focusable={"false"}
-            color={html_color}
+            color={props.html_color.clone()}
             aria-hidden={aria_hidden.to_string()}
-            data-icon={icon}
-            viewBox={view_box}>
+            data-icon={props.icon.clone()}
+            viewBox={view_box.to_owned()}>
             {for props.children.iter()}
             if !props.title_access.is_empty() {
                 <title>{&props.title_access}</title>

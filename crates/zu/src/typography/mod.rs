@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{classes, function_component, html, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
 use crate::styles::color::Color;
 use crate::styles::text_align::TextAlign;
@@ -116,7 +116,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: AttrValue,
 }
 
 #[function_component(Typography)]
@@ -134,9 +134,6 @@ pub fn typography(props: &Props) -> Html {
     }
     let cls = classes!(cls_list, props.color.text_color());
 
-    let styles = vec![props.style.clone()];
-    let style = styles.join(";");
-
     let component = if props.paragraph {
         "p"
     } else {
@@ -144,7 +141,7 @@ pub fn typography(props: &Props) -> Html {
     };
 
     html! {
-       <@{component} class={cls} style={style}>
+       <@{component} class={cls} style={props.style.clone()}>
             {for props.children.iter()}
        </@>
     }

@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{classes, function_component, html, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Html, Properties};
 
 use crate::styles::CssClass;
 
@@ -75,7 +75,7 @@ pub struct Props {
     pub height: i32,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: AttrValue,
 }
 
 #[function_component(Skeleton)]
@@ -85,7 +85,7 @@ pub fn skeleton(props: &Props) -> Html {
         props.animation.css_class(),
         props.variant.css_class()
     );
-    let mut styles = vec![props.style.clone()];
+    let mut styles = vec![props.style.as_str().to_owned()];
     if props.width > 0 {
         styles.push(format!("width: {}px", props.width));
     };

@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{function_component, html, Children, Html, Properties};
+use yew::{function_component, html, AttrValue, Children, Html, Properties};
 
 use crate::styles::color::Color;
 
@@ -21,14 +21,14 @@ pub struct Props {
 
     /// Override or extend the styles applied to the component.
     #[prop_or_default]
-    pub classes: String,
+    pub classes: AttrValue,
 
     #[prop_or_default]
     pub children: Children,
 
     /// The id of the input element.
     #[prop_or_default]
-    pub id: Option<String>,
+    pub id: AttrValue,
     // TODO(Shaohua): Add on_change callback.
     /// The color of the component.
     #[prop_or_default]

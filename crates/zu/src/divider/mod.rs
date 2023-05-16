@@ -3,7 +3,7 @@
 // in the LICENSE file.
 
 use crate::styles::CssClass;
-use yew::{classes, function_component, html, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
 use crate::styles::orientation::Orientation;
 use crate::styles::text_align::TextAlign;
@@ -41,7 +41,7 @@ pub struct Props {
     pub classes: String,
 
     #[prop_or_default]
-    pub component: String,
+    pub component: AttrValue,
 
     #[prop_or_default]
     pub children: Children,
@@ -58,7 +58,7 @@ pub struct Props {
     pub orientation: Orientation,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: AttrValue,
 
     #[prop_or(TextAlign::Center)]
     pub text_align: TextAlign,
@@ -132,7 +132,7 @@ pub fn divider(props: &Props) -> Html {
             "div".to_owned()
         }
     } else {
-        props.component.clone()
+        props.component.as_str().to_owned()
     };
 
     let role = if component != "hr" && component != "vr" {

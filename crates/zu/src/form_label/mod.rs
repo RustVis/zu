@@ -4,7 +4,7 @@
 
 use crate::styles::color::Color;
 use crate::styles::CssValue;
-use yew::{classes, function_component, html, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
 #[allow(clippy::struct_excessive_bools)]
 #[derive(Debug, Clone, PartialEq, Properties)]
@@ -15,14 +15,14 @@ pub struct Props {
 
     /// Override or extend the styles applied to the component.
     #[prop_or_default]
-    pub classes: String,
+    pub classes: AttrValue,
 
     #[prop_or_default]
     pub color: Color,
 
     /// The component used for the root node
     #[prop_or_default]
-    pub component: String,
+    pub component: AttrValue,
 
     /// If true, the label should be displayed in a disabled state.
     pub disabled: bool,
@@ -47,9 +47,9 @@ pub struct Props {
 #[function_component(FormLabel)]
 pub fn form_label(props: &Props) -> Html {
     let component = if props.component.is_empty() {
-        "label".to_owned()
+        "label"
     } else {
-        props.component.clone()
+        props.component.as_str()
     };
 
     let cls_list = vec![
@@ -94,7 +94,7 @@ pub fn form_label(props: &Props) -> Html {
     };
 
     html! {
-        <@{component} class={cls} style={style}>
+        <@{component.to_owned()} class={cls} style={style}>
             {for props.children.iter()}
             if props.required {
                 <span class={asterisk_cls}>

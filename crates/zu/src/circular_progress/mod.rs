@@ -3,7 +3,7 @@
 // in the LICENSE file.
 
 use std::f64::consts::PI;
-use yew::{classes, function_component, html, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Html, Properties};
 
 use crate::styles::color::Color;
 use crate::styles::size::Size;
@@ -63,7 +63,7 @@ pub struct Props {
 
     /// Override root style.
     #[prop_or_default]
-    pub style: String,
+    pub style: AttrValue,
 
     /// Show label or not.
     ///
@@ -82,7 +82,7 @@ pub fn circular_progress(props: &Props) -> Html {
     }
     let cls = classes!(class_list);
 
-    let mut styles = vec![props.style.clone(), props.color.text_color()];
+    let mut styles = vec![props.style.as_str().to_string(), props.color.text_color()];
     // TODO(Shaohua): Read from css.
     let size = match props.size {
         Size::XSmall => 8,
