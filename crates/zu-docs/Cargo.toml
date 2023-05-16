@@ -31,3 +31,10 @@ features = [
   "Response",
   "Window",
 ]
+
+[dependencies.zuicon-material]
+path = "../zuicon-material"
+version = "0.1.1"
+features = [
+  "Home",
+]
