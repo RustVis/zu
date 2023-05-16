@@ -18,6 +18,7 @@ use std::path::PathBuf;
 use zuicon_util::{get_svg_path_data, need_update};
 
 const SVG_DIR: &str = "icons";
+const CUSTOM_DIR: &str = "custom";
 const TEMPLATE_FILE: &str = include_str!("src/template.rs");
 
 #[derive(Debug, Clone, Deserialize)]
@@ -138,9 +139,12 @@ fn map_filename(name: &str) -> String {
     }
 }
 
-fn build_icons(module_names: &mut Vec<(String, String)>) -> Result<(), Box<dyn Error>> {
+fn build_icons(
+    icons_dir: &str,
+    module_names: &mut Vec<(String, String)>,
+) -> Result<(), Box<dyn Error>> {
     let mut dir = PathBuf::new();
-    dir.push(SVG_DIR);
+    dir.push(icons_dir);
 
     let svg_extension = OsStr::new("svg");
 
@@ -162,7 +166,8 @@ fn build_icons(module_names: &mut Vec<(String, String)>) -> Result<(), Box<dyn E
         let node_name = stem_str.to_pascal_case();
         let module_name = stem_str.to_snake_case();
         let mut rs_filepath = PathBuf::new();
-        rs_filepath.push("src/icons");
+        rs_filepath.push("src");
+        rs_filepath.push(icons_dir);
         rs_filepath.push(&module_name);
         rs_filepath.set_extension("rs");
 
@@ -180,12 +185,14 @@ fn build_icons(module_names: &mut Vec<(String, String)>) -> Result<(), Box<dyn E
     Ok(())
 }
 
-fn generate_components() -> Result<(), Box<dyn Error>> {
+fn generate_components(icons_dir: &str) -> Result<(), Box<dyn Error>> {
     let mut module_names = vec![];
-    build_icons(&mut module_names)?;
+    build_icons(icons_dir, &mut module_names)?;
     module_names.sort();
 
-    let mut icons_file = OpenOptions::new().append(true).open("src/icons.rs")?;
+    let mut icons_file = OpenOptions::new()
+        .append(true)
+        .open(format!("src/{icons_dir}.rs"))?;
     for (module_name, node_name) in module_names.iter() {
         let line = format!(
             r#"#[cfg(feature = "{node_name}")]
@@ -214,11 +221,12 @@ fn run() -> Result<(), Box<dyn Error>> {
     let icons_index = download_index()?;
 
     // 2. Download icons
-    let count = download_icons(&icons_index)?;
-    println!("downloaded icons: {count}");
+    let _count = download_icons(&icons_index)?;
 
     // 3. Convert to SvgIcon components.
-    generate_components()?;
+    generate_components(SVG_DIR)?;
+
+    generate_components(CUSTOM_DIR)?;
 
     Ok(())
 }
