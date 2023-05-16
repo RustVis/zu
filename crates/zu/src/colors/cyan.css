@@ -1,17 +1,17 @@
 /* cyan color scheme */
 :root {
-  --zu-colors-cyan-50: "#e0f7fa";
-  --zu-colors-cyan-100: "#b2ebf2";
-  --zu-colors-cyan-200: "#80deea";
-  --zu-colors-cyan-300: "#4dd0e1";
-  --zu-colors-cyan-400: "#26c6da";
-  --zu-colors-cyan-500: "#00bcd4";
-  --zu-colors-cyan-600: "#00acc1";
-  --zu-colors-cyan-700: "#0097a7";
-  --zu-colors-cyan-800: "#00838f";
-  --zu-colors-cyan-900: "#006064";
-  --zu-colors-cyan-a100: "#84ffff";
-  --zu-colors-cyan-a200: "#18ffff";
-  --zu-colors-cyan-a400: "#00e5ff";
-  --zu-colors-cyan-a700: "#00b8d4";
+  --zu-colors-cyan-50: #e0f7fa;
+  --zu-colors-cyan-100: #b2ebf2;
+  --zu-colors-cyan-200: #80deea;
+  --zu-colors-cyan-300: #4dd0e1;
+  --zu-colors-cyan-400: #26c6da;
+  --zu-colors-cyan-500: #00bcd4;
+  --zu-colors-cyan-600: #00acc1;
+  --zu-colors-cyan-700: #0097a7;
+  --zu-colors-cyan-800: #00838f;
+  --zu-colors-cyan-900: #006064;
+  --zu-colors-cyan-a100: #84ffff;
+  --zu-colors-cyan-a200: #18ffff;
+  --zu-colors-cyan-a400: #00e5ff;
+  --zu-colors-cyan-a700: #00b8d4;
 }

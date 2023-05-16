@@ -40,10 +40,9 @@ def convert_color(input_file):
                 break
             if ":" not in line:
                 continue
-            line = line.replace("'", '"')
             parts = line.split(":")
             key = parts[0].strip().replace("A", "a")
-            value = parts[1].strip().replace(",", "").replace("'", '"')
+            value = parts[1].strip().replace(",", "").replace("'", '')
             line = F"  --zu-colors-{color_name}-{key}: {value};\n"
             lines.append(line)
 

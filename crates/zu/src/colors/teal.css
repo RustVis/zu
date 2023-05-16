@@ -1,17 +1,17 @@
 /* teal color scheme */
 :root {
-  --zu-colors-teal-50: "#e0f2f1";
-  --zu-colors-teal-100: "#b2dfdb";
-  --zu-colors-teal-200: "#80cbc4";
-  --zu-colors-teal-300: "#4db6ac";
-  --zu-colors-teal-400: "#26a69a";
-  --zu-colors-teal-500: "#009688";
-  --zu-colors-teal-600: "#00897b";
-  --zu-colors-teal-700: "#00796b";
-  --zu-colors-teal-800: "#00695c";
-  --zu-colors-teal-900: "#004d40";
-  --zu-colors-teal-a100: "#a7ffeb";
-  --zu-colors-teal-a200: "#64ffda";
-  --zu-colors-teal-a400: "#1de9b6";
-  --zu-colors-teal-a700: "#00bfa5";
+  --zu-colors-teal-50: #e0f2f1;
+  --zu-colors-teal-100: #b2dfdb;
+  --zu-colors-teal-200: #80cbc4;
+  --zu-colors-teal-300: #4db6ac;
+  --zu-colors-teal-400: #26a69a;
+  --zu-colors-teal-500: #009688;
+  --zu-colors-teal-600: #00897b;
+  --zu-colors-teal-700: #00796b;
+  --zu-colors-teal-800: #00695c;
+  --zu-colors-teal-900: #004d40;
+  --zu-colors-teal-a100: #a7ffeb;
+  --zu-colors-teal-a200: #64ffda;
+  --zu-colors-teal-a400: #1de9b6;
+  --zu-colors-teal-a700: #00bfa5;
 }

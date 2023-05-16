@@ -1,17 +1,17 @@
 /* blue_grey color scheme */
 :root {
-  --zu-colors-blue_grey-50: "#eceff1";
-  --zu-colors-blue_grey-100: "#cfd8dc";
-  --zu-colors-blue_grey-200: "#b0bec5";
-  --zu-colors-blue_grey-300: "#90a4ae";
-  --zu-colors-blue_grey-400: "#78909c";
-  --zu-colors-blue_grey-500: "#607d8b";
-  --zu-colors-blue_grey-600: "#546e7a";
-  --zu-colors-blue_grey-700: "#455a64";
-  --zu-colors-blue_grey-800: "#37474f";
-  --zu-colors-blue_grey-900: "#263238";
-  --zu-colors-blue_grey-a100: "#cfd8dc";
-  --zu-colors-blue_grey-a200: "#b0bec5";
-  --zu-colors-blue_grey-a400: "#78909c";
-  --zu-colors-blue_grey-a700: "#455a64";
+  --zu-colors-blue_grey-50: #eceff1;
+  --zu-colors-blue_grey-100: #cfd8dc;
+  --zu-colors-blue_grey-200: #b0bec5;
+  --zu-colors-blue_grey-300: #90a4ae;
+  --zu-colors-blue_grey-400: #78909c;
+  --zu-colors-blue_grey-500: #607d8b;
+  --zu-colors-blue_grey-600: #546e7a;
+  --zu-colors-blue_grey-700: #455a64;
+  --zu-colors-blue_grey-800: #37474f;
+  --zu-colors-blue_grey-900: #263238;
+  --zu-colors-blue_grey-a100: #cfd8dc;
+  --zu-colors-blue_grey-a200: #b0bec5;
+  --zu-colors-blue_grey-a400: #78909c;
+  --zu-colors-blue_grey-a700: #455a64;
 }

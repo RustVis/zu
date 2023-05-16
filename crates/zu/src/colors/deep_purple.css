@@ -1,17 +1,17 @@
 /* deep_purple color scheme */
 :root {
-  --zu-colors-deep_purple-50: "#ede7f6";
-  --zu-colors-deep_purple-100: "#d1c4e9";
-  --zu-colors-deep_purple-200: "#b39ddb";
-  --zu-colors-deep_purple-300: "#9575cd";
-  --zu-colors-deep_purple-400: "#7e57c2";
-  --zu-colors-deep_purple-500: "#673ab7";
-  --zu-colors-deep_purple-600: "#5e35b1";
-  --zu-colors-deep_purple-700: "#512da8";
-  --zu-colors-deep_purple-800: "#4527a0";
-  --zu-colors-deep_purple-900: "#311b92";
-  --zu-colors-deep_purple-a100: "#b388ff";
-  --zu-colors-deep_purple-a200: "#7c4dff";
-  --zu-colors-deep_purple-a400: "#651fff";
-  --zu-colors-deep_purple-a700: "#6200ea";
+  --zu-colors-deep_purple-50: #ede7f6;
+  --zu-colors-deep_purple-100: #d1c4e9;
+  --zu-colors-deep_purple-200: #b39ddb;
+  --zu-colors-deep_purple-300: #9575cd;
+  --zu-colors-deep_purple-400: #7e57c2;
+  --zu-colors-deep_purple-500: #673ab7;
+  --zu-colors-deep_purple-600: #5e35b1;
+  --zu-colors-deep_purple-700: #512da8;
+  --zu-colors-deep_purple-800: #4527a0;
+  --zu-colors-deep_purple-900: #311b92;
+  --zu-colors-deep_purple-a100: #b388ff;
+  --zu-colors-deep_purple-a200: #7c4dff;
+  --zu-colors-deep_purple-a400: #651fff;
+  --zu-colors-deep_purple-a700: #6200ea;
 }

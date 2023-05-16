@@ -1,17 +1,17 @@
 /* blue color scheme */
 :root {
-  --zu-colors-blue-50: "#e3f2fd";
-  --zu-colors-blue-100: "#bbdefb";
-  --zu-colors-blue-200: "#90caf9";
-  --zu-colors-blue-300: "#64b5f6";
-  --zu-colors-blue-400: "#42a5f5";
-  --zu-colors-blue-500: "#2196f3";
-  --zu-colors-blue-600: "#1e88e5";
-  --zu-colors-blue-700: "#1976d2";
-  --zu-colors-blue-800: "#1565c0";
-  --zu-colors-blue-900: "#0d47a1";
-  --zu-colors-blue-a100: "#82b1ff";
-  --zu-colors-blue-a200: "#448aff";
-  --zu-colors-blue-a400: "#2979ff";
-  --zu-colors-blue-a700: "#2962ff";
+  --zu-colors-blue-50: #e3f2fd;
+  --zu-colors-blue-100: #bbdefb;
+  --zu-colors-blue-200: #90caf9;
+  --zu-colors-blue-300: #64b5f6;
+  --zu-colors-blue-400: #42a5f5;
+  --zu-colors-blue-500: #2196f3;
+  --zu-colors-blue-600: #1e88e5;
+  --zu-colors-blue-700: #1976d2;
+  --zu-colors-blue-800: #1565c0;
+  --zu-colors-blue-900: #0d47a1;
+  --zu-colors-blue-a100: #82b1ff;
+  --zu-colors-blue-a200: #448aff;
+  --zu-colors-blue-a400: #2979ff;
+  --zu-colors-blue-a700: #2962ff;
 }

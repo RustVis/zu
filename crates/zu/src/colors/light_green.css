@@ -1,17 +1,17 @@
 /* light_green color scheme */
 :root {
-  --zu-colors-light_green-50: "#f1f8e9";
-  --zu-colors-light_green-100: "#dcedc8";
-  --zu-colors-light_green-200: "#c5e1a5";
-  --zu-colors-light_green-300: "#aed581";
-  --zu-colors-light_green-400: "#9ccc65";
-  --zu-colors-light_green-500: "#8bc34a";
-  --zu-colors-light_green-600: "#7cb342";
-  --zu-colors-light_green-700: "#689f38";
-  --zu-colors-light_green-800: "#558b2f";
-  --zu-colors-light_green-900: "#33691e";
-  --zu-colors-light_green-a100: "#ccff90";
-  --zu-colors-light_green-a200: "#b2ff59";
-  --zu-colors-light_green-a400: "#76ff03";
-  --zu-colors-light_green-a700: "#64dd17";
+  --zu-colors-light_green-50: #f1f8e9;
+  --zu-colors-light_green-100: #dcedc8;
+  --zu-colors-light_green-200: #c5e1a5;
+  --zu-colors-light_green-300: #aed581;
+  --zu-colors-light_green-400: #9ccc65;
+  --zu-colors-light_green-500: #8bc34a;
+  --zu-colors-light_green-600: #7cb342;
+  --zu-colors-light_green-700: #689f38;
+  --zu-colors-light_green-800: #558b2f;
+  --zu-colors-light_green-900: #33691e;
+  --zu-colors-light_green-a100: #ccff90;
+  --zu-colors-light_green-a200: #b2ff59;
+  --zu-colors-light_green-a400: #76ff03;
+  --zu-colors-light_green-a700: #64dd17;
 }

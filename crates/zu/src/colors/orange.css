@@ -1,17 +1,17 @@
 /* orange color scheme */
 :root {
-  --zu-colors-orange-50: "#fff3e0";
-  --zu-colors-orange-100: "#ffe0b2";
-  --zu-colors-orange-200: "#ffcc80";
-  --zu-colors-orange-300: "#ffb74d";
-  --zu-colors-orange-400: "#ffa726";
-  --zu-colors-orange-500: "#ff9800";
-  --zu-colors-orange-600: "#fb8c00";
-  --zu-colors-orange-700: "#f57c00";
-  --zu-colors-orange-800: "#ef6c00";
-  --zu-colors-orange-900: "#e65100";
-  --zu-colors-orange-a100: "#ffd180";
-  --zu-colors-orange-a200: "#ffab40";
-  --zu-colors-orange-a400: "#ff9100";
-  --zu-colors-orange-a700: "#ff6d00";
+  --zu-colors-orange-50: #fff3e0;
+  --zu-colors-orange-100: #ffe0b2;
+  --zu-colors-orange-200: #ffcc80;
+  --zu-colors-orange-300: #ffb74d;
+  --zu-colors-orange-400: #ffa726;
+  --zu-colors-orange-500: #ff9800;
+  --zu-colors-orange-600: #fb8c00;
+  --zu-colors-orange-700: #f57c00;
+  --zu-colors-orange-800: #ef6c00;
+  --zu-colors-orange-900: #e65100;
+  --zu-colors-orange-a100: #ffd180;
+  --zu-colors-orange-a200: #ffab40;
+  --zu-colors-orange-a400: #ff9100;
+  --zu-colors-orange-a700: #ff6d00;
 }
