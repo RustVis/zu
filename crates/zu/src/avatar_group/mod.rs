@@ -71,7 +71,7 @@ pub fn avatar_group(props: &Props) -> Html {
 
     html! {
         <@{component} class={root_cls}>
-            {props.children.clone()}
+            {for props.children.iter()}
         </@>
     }
 }

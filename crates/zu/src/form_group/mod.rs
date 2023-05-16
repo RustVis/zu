@@ -36,7 +36,7 @@ pub fn form_group(props: &Props) -> Html {
 
     html! {
         <div class={cls} style={style}>
-            {props.children.clone()}
+            {for props.children.iter()}
         </div>
     }
 }

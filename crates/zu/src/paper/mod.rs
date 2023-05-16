@@ -80,7 +80,7 @@ pub fn paper(props: &Props) -> Html {
 
     html! {
         <div class={cls} style={style}>
-            {props.children.clone()}
+            {for props.children.iter()}
         </div>
     }
 }

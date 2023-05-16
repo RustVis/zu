@@ -155,7 +155,7 @@ pub fn divider(props: &Props) -> Html {
         html! {
             <@{component} class={cls} style={style} role={role}>
                 <span class={wrapper_cls}>
-                    {props.children.clone()}
+                    {for props.children.iter()}
                 </span>
             </@>
         }

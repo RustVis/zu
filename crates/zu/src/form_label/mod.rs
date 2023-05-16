@@ -95,7 +95,7 @@ pub fn form_label(props: &Props) -> Html {
 
     html! {
         <@{component} class={cls} style={style}>
-            {props.children.clone()}
+            {for props.children.iter()}
             if props.required {
                 <span class={asterisk_cls}>
                 {"&thinsp;{'*'}"}

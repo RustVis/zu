@@ -101,10 +101,10 @@ pub fn theme_provider(props: &ThemeProviderProps) -> Html {
     let color_schemes_css = theme_ctx.color_schemes.clone();
 
     html! {
-        <ContextProvider<ThemeContext> context={ theme_ctx }>
-            <Global css={ theme_css } />
-            <Global css={ color_schemes_css } />
-            { props.children.clone() }
+        <ContextProvider<ThemeContext> context={theme_ctx}>
+            <Global css={theme_css} />
+            <Global css={color_schemes_css} />
+            {for props.children.iter()}
         </ContextProvider<ThemeContext>>
     }
 }

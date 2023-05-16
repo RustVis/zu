@@ -103,7 +103,7 @@ pub fn badge(props: &Props) -> Html {
 
     html! {
         <@{component} class="ZuBadge-root">
-            {props.children.clone()}
+            {for props.children.iter()}
             <span class={badge_cls}>{display_value}</span>
         </@>
     }

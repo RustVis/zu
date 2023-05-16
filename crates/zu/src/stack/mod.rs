@@ -81,7 +81,7 @@ pub fn stack(props: &Props) -> Html {
 
     html! {
         <@{component} class={cls} style={style}>
-            {props.children.clone()}
+            {for props.children.iter()}
         </@>
     }
 }

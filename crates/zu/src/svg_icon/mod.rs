@@ -100,7 +100,7 @@ pub fn svg_icon(props: &Props) -> Html {
             aria-hidden={aria_hidden.to_string()}
             data-icon={icon}
             viewBox={view_box}>
-            {props.children.clone()}
+            {for props.children.iter()}
             if !props.title_access.is_empty() {
                 <title>{&props.title_access}</title>
             }

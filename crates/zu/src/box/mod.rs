@@ -36,7 +36,7 @@ pub fn r#box(props: &Props) -> Html {
 
     html! {
         <@{component} class={cls} style={style}>
-            {props.children.clone()}
+            {for props.children.iter()}
         </@>
     }
 }
