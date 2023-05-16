@@ -12,3 +12,6 @@ categories = ["gui", "wasm", "web-programming"]
 edition = "2021"
 license = "Apache-2.0"
 publish = true
+
+[dependencies]
+roxmltree = "0.18.0"
