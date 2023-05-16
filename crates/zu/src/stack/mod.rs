@@ -74,8 +74,14 @@ pub fn stack(props: &Props) -> Html {
         props.classes.as_str().to_owned(),
     );
 
+    let style = if props.style.is_empty() {
+        None
+    } else {
+        Some(props.style.clone())
+    };
+
     html! {
-        <@{component.to_owned()} class={cls} style={props.style.clone()}>
+        <@{component.to_owned()} class={cls} style={style}>
             {for props.children.iter()}
         </@>
     }

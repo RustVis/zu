@@ -140,7 +140,6 @@ pub fn divider(props: &Props) -> Html {
     } else {
         None
     };
-
     let style = if props.style.is_empty() {
         None
     } else {

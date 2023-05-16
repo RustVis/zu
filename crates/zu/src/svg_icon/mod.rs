@@ -76,13 +76,29 @@ pub fn svg_icon(props: &Props) -> Html {
 
     let aria_hidden = !props.title_access.is_empty();
 
+    let html_color = if props.html_color.is_empty() {
+        None
+    } else {
+        Some(props.html_color.clone())
+    };
+    let icon = if props.icon.is_empty() {
+        None
+    } else {
+        Some(props.icon.clone())
+    };
+    let style = if props.style.is_empty() {
+        None
+    } else {
+        Some(props.style.clone())
+    };
+
     html! {
         <svg class={root_cls}
-            style={props.style.clone()}
+            style={style}
             focusable={"false"}
-            color={props.html_color.clone()}
+            color={html_color}
             aria-hidden={aria_hidden.to_string()}
-            data-icon={props.icon.clone()}
+            data-icon={icon}
             viewBox={view_box.to_owned()}>
             {for props.children.iter()}
             if !props.title_access.is_empty() {

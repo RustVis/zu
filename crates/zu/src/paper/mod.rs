@@ -74,8 +74,14 @@ pub fn paper(props: &Props) -> Html {
     };
     let cls = classes!(cls_list);
 
+    let style = if props.style.is_empty() {
+        None
+    } else {
+        Some(props.style.clone())
+    };
+
     html! {
-        <div class={cls} style={props.style.clone()}>
+        <div class={cls} style={style}>
             {for props.children.iter()}
         </div>
     }

@@ -134,6 +134,12 @@ pub fn typography(props: &Props) -> Html {
     }
     let cls = classes!(cls_list, props.color.text_color());
 
+    let style = if props.style.is_empty() {
+        None
+    } else {
+        Some(props.style.clone())
+    };
+
     let component = if props.paragraph {
         "p"
     } else {
@@ -141,7 +147,7 @@ pub fn typography(props: &Props) -> Html {
     };
 
     html! {
-       <@{component} class={cls} style={props.style.clone()}>
+       <@{component} class={cls} style={style}>
             {for props.children.iter()}
        </@>
     }
