@@ -46,7 +46,7 @@ pub fn get_svg_inner(s: &str) -> Option<&str> {
     Some(s[start_index_end..end_index].trim())
 }
 
-/// Get all <path /> in an svg file.
+/// Get all `<path />` nodes in an svg file.
 ///
 /// # Errors
 /// Returns error if s is not a valid svg file.
