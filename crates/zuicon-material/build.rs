@@ -185,7 +185,7 @@ fn download_icons(index: &IconsIndex) -> Result<i32, Box<dyn Error>> {
     let _ret = fs::create_dir("icons");
     let mut count = 0;
     for (theme, value) in theme_map {
-        let formatted_theme = value.split("_").collect::<Vec<_>>().join("");
+        let formatted_theme = value.split('_').collect::<Vec<_>>().join("");
         for icon in &index.icons {
             if is_icon_ignored(icon) {
                 continue;
@@ -212,6 +212,8 @@ fn run() -> Result<(), Box<dyn Error>> {
     // 2. download icons
     let count = download_icons(&icons_index)?;
     println!("downloaded icons: {count}");
+
+    // 3.
 
     Ok(())
 }
