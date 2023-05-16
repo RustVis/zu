@@ -41,9 +41,9 @@ pub struct Props {
     #[prop_or_default]
     pub style: String,
 
-    /// Add data-testid attribute if specified.
+    /// Add data-icon attribute if specified.
     #[prop_or_default]
-    pub test_id: String,
+    pub icon: String,
 
     /// Element title.
     #[prop_or_default]
@@ -86,10 +86,10 @@ pub fn svg_icon(props: &Props) -> Html {
         Some(props.style.clone())
     };
 
-    let test_id = if props.test_id.is_empty() {
+    let icon = if props.icon.is_empty() {
         None
     } else {
-        Some(props.test_id.clone())
+        Some(props.icon.clone())
     };
 
     html! {
@@ -98,7 +98,7 @@ pub fn svg_icon(props: &Props) -> Html {
             focusable={"false"}
             color={html_color}
             aria-hidden={aria_hidden.to_string()}
-            data-testid={test_id}
+            data-icon={icon}
             viewBox={view_box}>
             {props.children.clone()}
             if !props.title_access.is_empty() {
