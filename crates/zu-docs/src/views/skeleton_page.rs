@@ -22,7 +22,7 @@ pub fn skeleton_page() -> Html {
             </div>
             <p>{"For other variants, adjust the size with `width` and `height`"}</p>
             <div class="demo-box">
-                <Skeleton variant={Variant::Circular} width={40} height={40} />
+                <Skeleton variant={Variant::Circle} width={40} height={40} />
                 <Skeleton variant={Variant::Rect} width={210} height={60} />
                 <Skeleton variant={Variant::Rounded} width={210} height={60} />
             </div>

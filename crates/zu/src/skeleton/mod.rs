@@ -12,7 +12,7 @@ const ROOT_CLS: &str = "ZuSkeleton-root";
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
 pub enum Variant {
     Text,
-    Circular,
+    Circle,
     Rect,
     Rounded,
 }
@@ -27,7 +27,7 @@ impl CssClass for Variant {
     fn css_class(&self) -> &'static str {
         match self {
             Self::Text => "ZuSkeleton-text",
-            Self::Circular => "ZuSkeleton-circular",
+            Self::Circle => "ZuSkeleton-circle",
             Self::Rect => "ZuSkeleton-rect",
             Self::Rounded => "ZuSkeleton-rounded",
         }
