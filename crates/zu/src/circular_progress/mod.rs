@@ -2,6 +2,8 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+mod variant;
+
 use std::f64::consts::PI;
 use yew::{classes, function_component, html, AttrValue, Html, Properties};
 
@@ -9,28 +11,10 @@ use crate::styles::color::Color;
 use crate::styles::size::Size;
 use crate::styles::CssClass;
 
+// Re-export
+pub use variant::Variant;
+
 const SIZE: i32 = 44;
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum Variant {
-    Determinate,
-    Indeterminate,
-}
-
-impl Default for Variant {
-    fn default() -> Self {
-        Self::Indeterminate
-    }
-}
-
-impl CssClass for Variant {
-    fn css_class(&self) -> &'static str {
-        match self {
-            Self::Determinate => "ZuCircularProgress-determinate",
-            Self::Indeterminate => "ZuCircularProgress-indeterminate",
-        }
-    }
-}
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {

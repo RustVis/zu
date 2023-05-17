@@ -2,34 +2,19 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::styles::CssClass;
+mod variant;
+
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+
+use crate::styles::CssClass;
+
+// Re-export
+pub use variant::Variant;
 
 pub type Elevation = i32;
 pub const ELEVATION_DEFAULT: Elevation = 1;
 pub const ELEVATION_MIN: Elevation = 0;
 pub const ELEVATION_MAX: Elevation = 24;
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum Variant {
-    Elevation,
-    Outlined,
-}
-
-impl Default for Variant {
-    fn default() -> Self {
-        Self::Elevation
-    }
-}
-
-impl CssClass for Variant {
-    fn css_class(&self) -> &'static str {
-        match self {
-            Self::Elevation => "ZuPaper-elevation",
-            Self::Outlined => "ZuPaper-outlined",
-        }
-    }
-}
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {

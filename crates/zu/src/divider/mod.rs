@@ -2,34 +2,16 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::styles::CssClass;
+mod variant;
+
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
 use crate::styles::orientation::Orientation;
 use crate::styles::text_align::TextAlign;
+use crate::styles::CssClass;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum Variant {
-    FullWidth,
-    Inset,
-    Middle,
-}
-
-impl Default for Variant {
-    fn default() -> Self {
-        Self::FullWidth
-    }
-}
-
-impl CssClass for Variant {
-    fn css_class(&self) -> &'static str {
-        match self {
-            Self::FullWidth => "ZuDivider-fullWidth",
-            Self::Inset => "ZuDivider-inset",
-            Self::Middle => "ZuDivider-middle",
-        }
-    }
-}
+// Re-export
+pub use variant::Variant;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {

@@ -2,11 +2,12 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+use yew::virtual_dom::VNode;
+use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+
 use crate::styles::direction::Direction;
 use crate::styles::spacing::Spacing;
 use crate::styles::CssClass;
-use yew::virtual_dom::VNode;
-use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
 #[must_use]
 pub const fn spacing_cls(spacing: Spacing) -> &'static str {

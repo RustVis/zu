@@ -2,15 +2,14 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+mod edge;
+
 use yew::{function_component, html, AttrValue, Children, Html, Properties};
 
 use crate::styles::color::Color;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum Edge {
-    Start,
-    End,
-}
+// Re-export
+pub use edge::Edge;
 
 #[allow(clippy::struct_excessive_bools)]
 #[derive(Debug, Clone, PartialEq, Properties)]

@@ -2,60 +2,16 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+mod animation;
+mod variant;
+
 use yew::{classes, function_component, html, AttrValue, Html, Properties};
 
 use crate::styles::CssClass;
 
-const ROOT_CLS: &str = "ZuSkeleton-root";
-
-/// The type of content that will be rendered.
-#[derive(Debug, Clone, Copy, Eq, PartialEq)]
-pub enum Variant {
-    Text,
-    Circle,
-    Rect,
-    Rounded,
-}
-
-impl Default for Variant {
-    fn default() -> Self {
-        Self::Text
-    }
-}
-
-impl CssClass for Variant {
-    fn css_class(&self) -> &'static str {
-        match self {
-            Self::Text => "ZuSkeleton-text",
-            Self::Circle => "ZuSkeleton-circle",
-            Self::Rect => "ZuSkeleton-rect",
-            Self::Rounded => "ZuSkeleton-rounded",
-        }
-    }
-}
-
-#[derive(Debug, Clone, Copy, Eq, PartialEq)]
-pub enum Animation {
-    Pulse,
-    Wave,
-    None,
-}
-
-impl Default for Animation {
-    fn default() -> Self {
-        Self::Pulse
-    }
-}
-
-impl CssClass for Animation {
-    fn css_class(&self) -> &'static str {
-        match self {
-            Self::Pulse => "ZuSkeleton-pulse",
-            Self::Wave => "ZuSkeleton-wave",
-            Self::None => "",
-        }
-    }
-}
+// Re-export
+pub use animation::Animation;
+pub use variant::Variant;
 
 #[derive(Debug, Clone, Eq, PartialEq, Properties)]
 pub struct Props {
@@ -81,7 +37,7 @@ pub struct Props {
 #[function_component(Skeleton)]
 pub fn skeleton(props: &Props) -> Html {
     let cls = classes!(
-        ROOT_CLS,
+        "ZuSkeleton-root",
         props.animation.css_class(),
         props.variant.css_class()
     );

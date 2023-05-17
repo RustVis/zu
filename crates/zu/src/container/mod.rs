@@ -2,8 +2,9 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::styles::size::Size;
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+
+use crate::styles::size::Size;
 
 #[must_use]
 pub const fn max_width_cls(size: Option<Size>) -> &'static str {
