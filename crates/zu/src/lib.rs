@@ -38,6 +38,7 @@
     clippy::multiple_crate_versions
 )]
 
+pub mod avatar;
 pub mod avatar_group;
 pub mod badge;
 pub mod r#box;

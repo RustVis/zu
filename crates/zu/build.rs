@@ -68,6 +68,7 @@ const COMMON_STYLES: &[&str] = &[
     "src/themes/typography.scss",
     "src/themes/z-index.scss",
     // Components
+    "src/avatar/style.scss",
     "src/avatar_group/style.scss",
     "src/badge/style.scss",
     "src/box/style.scss",

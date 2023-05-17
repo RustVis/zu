@@ -3,12 +3,13 @@
 // in the LICENSE file.
 
 mod spacing;
-mod variant;
 
 use yew::{function_component, html, AttrValue, Children, Html, Properties};
 
+use crate::styles::shape_variant::ShapeVariant;
+
+// Re-export
 pub use spacing::Spacing;
-pub use variant::Variant;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -38,7 +39,7 @@ pub struct Props {
     pub total: i32,
 
     #[prop_or_default]
-    pub variant: Variant,
+    pub variant: ShapeVariant,
 }
 
 #[function_component(AvatarGroup)]

@@ -3,13 +3,13 @@
 // in the LICENSE file.
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum Variant {
+pub enum ShapeVariant {
     Circle,
     Rounded,
     Square,
 }
 
-impl Default for Variant {
+impl Default for ShapeVariant {
     fn default() -> Self {
         Self::Circle
     }

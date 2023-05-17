@@ -5,6 +5,7 @@
 pub mod color;
 pub mod direction;
 pub mod orientation;
+pub mod shape_variant;
 pub mod side;
 pub mod size;
 pub mod spacing;
