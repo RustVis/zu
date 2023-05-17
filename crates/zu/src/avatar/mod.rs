@@ -10,7 +10,7 @@ use crate::styles::shape_variant::ShapeVariant;
 pub struct Props {
     /// Used in combination with src or srcSet to provide an alt attribute for the rendered img element.
     #[prop_or_default]
-    pub alter: AttrValue,
+    pub alt: AttrValue,
 
     #[prop_or_default]
     pub children: Children,
@@ -23,6 +23,10 @@ pub struct Props {
 
     #[prop_or_default]
     pub component: AttrValue,
+
+    /// Setup avatar background color and value based on specified name.
+    #[prop_or_default]
+    pub name: AttrValue,
 
     // TODO(Shaohua): Add img_props
     //pub img_props: AttrValue,
