@@ -15,7 +15,7 @@ publish = true
 
 [dependencies]
 log = "0.4.17"
-stylist = { version = "0.12.0", features = ["parser", "yew_integration"] }
+stylist = { version = "0.12.0", default-features = false, features = ["parser", "random", "yew"] }
 yew = "0.20.0"
 
 [build-dependencies]

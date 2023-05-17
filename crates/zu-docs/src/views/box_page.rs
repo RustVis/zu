@@ -2,13 +2,13 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use stylist::style;
+use stylist::Style;
 use yew::{function_component, html, Html};
 use zu::r#box::Box;
 
 #[function_component(BoxPage)]
 pub fn box_page() -> Html {
-    let style = style!(
+    let style = Style::new(
         r#"
         width: 300px;
         height: 300px;
@@ -17,7 +17,7 @@ pub fn box_page() -> Html {
             background-color: var(--zu-palette-primary-main);
             opacity: 0.9;
         }
-    "#
+    "#,
     )
     .unwrap();
 
