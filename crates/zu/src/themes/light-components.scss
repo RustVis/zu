@@ -1,5 +1,9 @@
 
 /* Component specific variables */
 :root {
+  /* Used for Skeleton background color */
   --zu-skeleton-bg: #{change-color($zu-palette-text-primary, $alpha: 0.13)};
+
+  /* Used for Avatar background color if color_default={true} */
+  --zu-avatar-colorDefaultBg: var(--zu-colors-grey-400);
 }

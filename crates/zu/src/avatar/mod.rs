@@ -18,6 +18,9 @@ pub struct Props {
     #[prop_or_default]
     pub classes: AttrValue,
 
+    #[prop_or(false)]
+    pub color_default: bool,
+
     #[prop_or_default]
     pub component: AttrValue,
 

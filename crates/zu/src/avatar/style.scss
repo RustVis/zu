@@ -3,35 +3,58 @@
 
 /* Styles applied to the root element. */
 .ZuAvatar-root {
+  position: relative;
+  overflow: hidden;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+
+  font-family: var(--zu-typography-fontFamily);
+  font-size: 20px;
+  line-height: 1;
+
+  user-select: none;
 }
 
 /* Styles applied to the root element if not src or srcSet. */
 .ZuAvatar-colorDefault {
-
+  color: var(--zu-palette-background-default);
+  background-color: var(--zu-avatar-colorDefaultBg);
 }
 
 /* Styles applied to the root element if variant="circle". */
 .ZuAvatar-circle {
-
+  border-radius: 50%;
 }
 
 /* Styles applied to the root element if variant="rounded". */
 .ZuAvatar-rounded {
-
+  border-radius: var(--zu-shape-borderRadius);
 }
 
 /* Styles applied to the root element if variant="square". */
 .ZuAvatar-square {
-
+  border-radius: 0;
 }
 
 /* Styles applied to the img element if either src or srcSet is defined. */
 .ZuAvatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Handle non-square image. */
 
+  text-align: center;
+  text-indent: 10000px;  /* Hide the image broken icon, only works on Chrome. */
+
+  color: transparent; /* Hide alt text. */
 }
 
 /* Styles applied to the fallback icon */
 .ZuAvatar-fallback {
-
+  width: 75%;
+  height: 75%;
 }
