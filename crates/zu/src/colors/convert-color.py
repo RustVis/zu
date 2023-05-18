@@ -21,11 +21,11 @@ def to_upper(name):
 
 def convert_color(input_file):
     filename = os.path.split(input_file)[1]
-    output_file = to_lower(filename)
+    output_file = filename
     output_file = output_file.replace(".js", ".css")
     
     basename = os.path.splitext(filename)[0]
-    color_name = to_lower(basename)
+    color_name = basename
 
     lines = [
         F"/* {color_name} color scheme */",
