@@ -2,9 +2,16 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{function_component, html, AttrValue, Children, Html, Properties};
+mod person;
+mod variant;
+
+use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
 use crate::styles::shape_variant::ShapeVariant;
+use variant::variant_class;
+
+// Re-export
+pub use person::Person;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -50,9 +57,66 @@ pub struct Props {
 }
 
 #[function_component(Avatar)]
-pub fn avatar(_props: &Props) -> Html {
+pub fn avatar(props: &Props) -> Html {
+    let component = if props.component.is_empty() {
+        "div"
+    } else {
+        props.component.as_str()
+    };
+    let has_image = !props.src.is_empty() || !props.src_set.is_empty() || !props.name.is_empty();
+
+    let root_cls = classes!(
+        "ZuAvatar-root",
+        props.classes.as_str().to_owned(),
+        variant_class(props.variant),
+        if has_image {
+            ""
+        } else {
+            "ZuAvatar-colorDefault"
+        },
+    );
+    // TODO(Shaohua): Load image first.
+
+    let img_src = if props.src.is_empty() {
+        None
+    } else {
+        Some(props.src.to_string())
+    };
+    let src_set = if props.src_set.is_empty() {
+        None
+    } else {
+        Some(props.src_set.to_string())
+    };
+    let alt = if props.alt.is_empty() {
+        None
+    } else {
+        Some(props.alt.to_string())
+    };
+    let sizes = if props.sizes.is_empty() {
+        None
+    } else {
+        Some(props.sizes.to_string())
+    };
+
+    let style = if props.style.is_empty() {
+        None
+    } else {
+        Some(props.style.to_string())
+    };
+
     html! {
-        <>
-        </>
+        <@{component.to_owned()} class={root_cls} style={style}>
+            if !props.children.is_empty() {
+                {for props.children.iter()}
+            } else if has_image {
+                <img class="ZuAvatar-img"
+                    src={img_src}
+                    src-set={src_set}
+                    alt={alt}
+                    sizes={sizes} />
+            } else {
+                <Person classes="ZuAvatar-fallback" />
+            }
+        </@>
     }
 }
