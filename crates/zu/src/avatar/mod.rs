@@ -2,6 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+mod name;
 mod person;
 mod variant;
 
@@ -63,7 +64,7 @@ pub fn avatar(props: &Props) -> Html {
     } else {
         props.component.as_str()
     };
-    let has_image = !props.src.is_empty() || !props.src_set.is_empty() || !props.name.is_empty();
+    let has_image = !props.src.is_empty() || !props.src_set.is_empty();
 
     let root_cls = classes!(
         "ZuAvatar-root",
@@ -98,10 +99,29 @@ pub fn avatar(props: &Props) -> Html {
         Some(props.sizes.to_string())
     };
 
-    let style = if props.style.is_empty() {
+    let mut styles = if props.style.is_empty() {
+        vec![]
+    } else {
+        vec![props.style.to_string()]
+    };
+
+    if !props.name.is_empty() {
+        let named_color = name::name_to_color(props.name.as_str());
+        styles.push(format!("background-color: {named_color};"));
+    }
+
+    let abbr_name: String = if props.name.is_empty() {
+        String::new()
+    } else {
+        let abbr_name = name::abbr_name(props.name.as_str());
+        log::info!("abbr_name: {abbr_name}");
+        abbr_name
+    };
+
+    let style = if styles.is_empty() {
         None
     } else {
-        Some(props.style.to_string())
+        Some(styles.join(";"))
     };
 
     html! {
@@ -114,6 +134,8 @@ pub fn avatar(props: &Props) -> Html {
                     src-set={src_set}
                     alt={alt}
                     sizes={sizes} />
+            } else if !abbr_name.is_empty() {
+                {abbr_name}
             } else {
                 <Person classes="ZuAvatar-fallback" />
             }
