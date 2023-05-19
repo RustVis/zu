@@ -40,6 +40,7 @@
 )]
 
 pub mod accordion;
+pub mod accordion_summary;
 pub mod avatar;
 pub mod avatar_group;
 pub mod badge;
