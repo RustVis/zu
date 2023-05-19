@@ -52,7 +52,7 @@ pub fn paper(props: &Props) -> Html {
 
     let cls = classes!(
         "ZuPaper-root",
-        props.classes.to_string(),
+        props.classes.as_str().to_owned(),
         props.variant.css_class(),
         if props.square { "" } else { "ZuPaper-rounded" },
         if props.variant == Variant::Elevation {

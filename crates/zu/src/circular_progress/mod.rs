@@ -17,6 +17,7 @@ use crate::styles::CssClass;
 pub use variant::Variant;
 
 const SIZE: i32 = 44;
+const SIZE_STR: &str = "44";
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -94,8 +95,8 @@ pub fn circular_progress(props: &Props) -> Html {
                 viewBox={format!("{} {} {SIZE} {SIZE}", SIZE / 2, SIZE / 2)}>
                 <circle class="ZuCircularProgress-circle"
                     style={circle_style}
-                    cx={SIZE.to_string()}
-                    cy={SIZE.to_string()}
+                    cx={SIZE_STR}
+                    cy={SIZE_STR}
                     r={radius.to_string()}
                     fill="none"
                     stroke-width={props.thickness.to_string()}></circle>
