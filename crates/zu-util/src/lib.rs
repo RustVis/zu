@@ -33,3 +33,6 @@
 )]
 
 pub mod name;
+
+#[cfg(feature = "icon")]
+pub mod icon;
