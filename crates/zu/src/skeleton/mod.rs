@@ -41,6 +41,7 @@ pub fn skeleton(props: &Props) -> Html {
         props.animation.css_class(),
         props.variant.css_class()
     );
+    // TODO(Shaohua): Merge styles
     let mut styles = vec![props.style.as_str().to_owned()];
     if props.width > 0 {
         styles.push(format!("width: {}px", props.width));

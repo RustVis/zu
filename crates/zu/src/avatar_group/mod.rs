@@ -32,6 +32,7 @@ pub struct Props {
     #[prop_or_default]
     pub spacing: Spacing,
 
+    // TODO(Shaohua): Add style property.
     /// The total number of avatars. Used for calculating the number of extra avatars.
     ///
     /// Default is children.len()

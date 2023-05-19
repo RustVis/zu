@@ -18,6 +18,7 @@ pub use color::Color;
 pub use content::Content;
 pub use overlap::Overlap;
 pub use variant::Variant;
+use zu_util::prop::attr_optional;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -52,6 +53,9 @@ pub struct Props {
     /// Controls whether the badge is hidden when badgeContent is zero.
     #[prop_or(false)]
     pub show_zero: bool,
+
+    #[prop_or_default]
+    pub style: AttrValue,
 
     // TODO(Shaohua): Support custom inline style
     //pub style: String,
@@ -102,7 +106,7 @@ pub fn badge(props: &Props) -> Html {
     };
 
     html! {
-        <@{component.to_owned()} class="ZuBadge-root">
+        <@{component.to_owned()} class="ZuBadge-root" style={attr_optional(&props.style)}>
             {for props.children.iter()}
             <span class={badge_cls}>{display_value}</span>
         </@>

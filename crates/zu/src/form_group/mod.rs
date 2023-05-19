@@ -3,6 +3,7 @@
 // in the LICENSE file.
 
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use zu_util::prop::attr_optional;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -28,14 +29,9 @@ pub fn form_group(props: &Props) -> Html {
         if props.error { "ZuFormGroup-error" } else { "" },
     ];
     let cls = classes!(cls_list);
-    let style = if props.style.is_empty() {
-        None
-    } else {
-        Some(props.style.clone())
-    };
 
     html! {
-        <div class={cls} style={style}>
+        <div class={cls} style={attr_optional(&props.style)}>
             {for props.children.iter()}
         </div>
     }

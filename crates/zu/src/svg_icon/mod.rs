@@ -12,6 +12,7 @@ use crate::styles::CssClass;
 // Re-export
 pub use color::Color;
 pub use font_size::FontSize;
+use zu_util::prop::attr_optional;
 
 pub const DEFAULT_VIEW_BOX: &str = "0 0 24 24";
 
@@ -76,29 +77,13 @@ pub fn svg_icon(props: &Props) -> Html {
 
     let aria_hidden = !props.title_access.is_empty();
 
-    let html_color = if props.html_color.is_empty() {
-        None
-    } else {
-        Some(props.html_color.clone())
-    };
-    let icon = if props.icon.is_empty() {
-        None
-    } else {
-        Some(props.icon.clone())
-    };
-    let style = if props.style.is_empty() {
-        None
-    } else {
-        Some(props.style.clone())
-    };
-
     html! {
         <svg class={root_cls}
-            style={style}
+            style={attr_optional(&props.style)}
             focusable={"false"}
-            color={html_color}
+            color={attr_optional(&props.html_color)}
             aria-hidden={aria_hidden.to_string()}
-            data-icon={icon}
+            data-icon={attr_optional(&props.icon)}
             viewBox={view_box.to_owned()}>
             {for props.children.iter()}
             if !props.title_access.is_empty() {

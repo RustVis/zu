@@ -93,6 +93,7 @@ pub fn circular_progress(props: &Props) -> Html {
     };
     let circle_style = circle_styles.join(";");
 
+    // TODO(Shaohua): Convert type to Option<String>
     let label = if props.with_label {
         format!("{}%", props.value)
     } else {

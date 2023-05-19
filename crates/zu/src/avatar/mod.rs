@@ -6,7 +6,7 @@ mod person;
 mod variant;
 
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
-use zu_util::name;
+use zu_util::{name, prop::attr_optional};
 
 use crate::styles::shape_variant::ShapeVariant;
 use variant::variant_class;
@@ -78,27 +78,7 @@ pub fn avatar(props: &Props) -> Html {
     );
     // TODO(Shaohua): Load image first.
 
-    let img_src = if props.src.is_empty() {
-        None
-    } else {
-        Some(props.src.to_string())
-    };
-    let src_set = if props.src_set.is_empty() {
-        None
-    } else {
-        Some(props.src_set.to_string())
-    };
-    let alt = if props.alt.is_empty() {
-        None
-    } else {
-        Some(props.alt.to_string())
-    };
-    let sizes = if props.sizes.is_empty() {
-        None
-    } else {
-        Some(props.sizes.to_string())
-    };
-
+    // TODO(Shaohua): Init values on startup.
     let mut styles = if props.style.is_empty() {
         vec![]
     } else {
@@ -130,10 +110,10 @@ pub fn avatar(props: &Props) -> Html {
                 {for props.children.iter()}
             } else if has_image {
                 <img class="ZuAvatar-img"
-                    src={img_src}
-                    src-set={src_set}
-                    alt={alt}
-                    sizes={sizes} />
+                    src={attr_optional(&props.src)}
+                    src-set={attr_optional(&props.src_set)}
+                    alt={attr_optional(&props.alt)}
+                    sizes={attr_optional(&props.sizes)} />
             } else if !abbr_name.is_empty() {
                 {abbr_name}
             } else {

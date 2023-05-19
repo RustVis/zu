@@ -12,6 +12,7 @@ use crate::styles::CssClass;
 
 // Re-export
 pub use variant::Variant;
+use zu_util::prop::attr_optional;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -122,11 +123,7 @@ pub fn divider(props: &Props) -> Html {
     } else {
         None
     };
-    let style = if props.style.is_empty() {
-        None
-    } else {
-        Some(props.style.clone())
-    };
+    let style = attr_optional(&props.style);
 
     if props.children.is_empty() {
         html! {

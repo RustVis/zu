@@ -12,6 +12,7 @@ use crate::styles::CssClass;
 
 // Re-export
 pub use variant::Variant;
+use zu_util::prop::attr_optional;
 
 #[must_use]
 pub const fn text_align_class(align: TextAlign) -> &'static str {
@@ -57,6 +58,12 @@ pub struct Props {
 
 #[function_component(Typography)]
 pub fn typography(props: &Props) -> Html {
+    let component = if props.paragraph {
+        "p"
+    } else {
+        props.variant.as_component()
+    };
+
     let mut cls_list = vec![
         "ZuTypography-root",
         props.variant.css_class(),
@@ -70,20 +77,8 @@ pub fn typography(props: &Props) -> Html {
     }
     let cls = classes!(cls_list, props.color.text_color());
 
-    let style = if props.style.is_empty() {
-        None
-    } else {
-        Some(props.style.clone())
-    };
-
-    let component = if props.paragraph {
-        "p"
-    } else {
-        props.variant.as_component()
-    };
-
     html! {
-       <@{component} class={cls} style={style}>
+       <@{component} class={cls} style={attr_optional(&props.style)}>
             {for props.children.iter()}
        </@>
     }

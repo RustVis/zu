@@ -4,6 +4,7 @@
 
 use yew::virtual_dom::VNode;
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use zu_util::prop::attr_optional;
 
 use crate::styles::direction::Direction;
 use crate::styles::spacing::Spacing;
@@ -75,14 +76,8 @@ pub fn stack(props: &Props) -> Html {
         props.classes.as_str().to_owned(),
     );
 
-    let style = if props.style.is_empty() {
-        None
-    } else {
-        Some(props.style.clone())
-    };
-
     html! {
-        <@{component.to_owned()} class={cls} style={style}>
+        <@{component.to_owned()} class={cls} style={attr_optional(&props.style)}>
             {for props.children.iter()}
         </@>
     }
