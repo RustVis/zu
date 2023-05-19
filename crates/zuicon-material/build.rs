@@ -15,7 +15,7 @@ use std::fs::{self, OpenOptions};
 use std::io::Write;
 use std::path::PathBuf;
 
-use zuicon_util::{get_svg_path_data, need_update};
+use zu_util::icon::{get_svg_path_data, need_update};
 
 const SVG_DIR: &str = "icons";
 const CUSTOM_DIR: &str = "custom";
@@ -232,7 +232,7 @@ fn run() -> Result<(), Box<dyn Error>> {
 }
 
 fn main() {
-    // Check ZUICON_UPDATE=1 environment.
+    // Check ZUI_CON_UPDATE=1 environment.
     if need_update() {
         run().unwrap();
     }
