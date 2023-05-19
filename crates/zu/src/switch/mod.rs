@@ -11,7 +11,6 @@ use crate::styles::color::Color;
 // Re-export
 pub use edge::Edge;
 
-#[allow(clippy::struct_excessive_bools)]
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
     /// If true, the component is checked.

@@ -35,9 +35,11 @@
     dead_code,
     clippy::let_underscore_untyped,
     clippy::module_name_repetitions,
-    clippy::multiple_crate_versions
+    clippy::multiple_crate_versions,
+    clippy::struct_excessive_bools
 )]
 
+pub mod accordion;
 pub mod avatar;
 pub mod avatar_group;
 pub mod badge;

@@ -1,0 +1,84 @@
+/* Styles for Accordion */
+
+/* Styles applied to the root element. */
+.ZuAccordion-root {
+  position: relative;
+  transition: margin var(--zu-duration-shortest) var(--zu-easing-easeInOut) 0ms;
+
+  overflow-anchor: none;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -1px;
+    right: 0;
+    bottom: 1px;
+    transition: opacity var(--zu-duration-shortest) var(--zu-easing-easeInOut) 0ms,
+      background-color var(--zu-duration-shortest) var(--zu-easing-easeInOut) 0ms;
+
+    opacity: 1;
+    background-color: var(--zu-palette-divider);
+  }
+
+  &:first-of-type {
+    &:before {
+      display: none;
+    }
+  }
+}
+
+/* Styles applied to the root element unless square={true}. */
+.ZuAccordion-rounded {
+  border-radius: 0;
+
+  &:first-of-type {
+    border-top-left-radius: var(--zu-shape-border-radius);
+    border-top-right-radius: var(--zu-shape-border-radius);
+  }
+
+  &:last-of-type {
+    border-bottom-left-radius: var(--zu-shape-border-radius);
+    border-bottom-right-radius: var(--zu-shape-border-radius);
+  }
+}
+
+/* State class applied to the root element if expanded={true}. */
+.ZuAccordion-expanded {
+  &:before {
+    opacity: 0;
+  }
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  & + & {
+    &:before {
+      display: none;
+    }
+  }
+}
+
+/* State class applied to the root element if disabled={true}. */
+.ZuAccordion-disabled {
+  background-color: var(--zu-palette-action-disabledBackground);
+}
+
+/* Styles applied to the root element unless disableGutters={true}. */
+.ZuAccordion-gutters {
+
+}
+
+.ZuAccordion-gutters.ZuAccordion-expanded {
+  margin: 16px 0;
+}
+
+/* Styles applied to the region element, the container of the children. */
+.ZuAccordion-region {
+
+}

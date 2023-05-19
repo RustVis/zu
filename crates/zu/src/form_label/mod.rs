@@ -7,7 +7,6 @@ use yew::{classes, function_component, html, AttrValue, Children, Html, Properti
 use crate::styles::color::Color;
 use crate::styles::CssValue;
 
-#[allow(clippy::struct_excessive_bools)]
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
     /// The content of the component.

@@ -23,7 +23,7 @@ pub struct Props {
 
     /// Override or extend the styles applied to the component.
     #[prop_or_default]
-    pub classes: String,
+    pub classes: AttrValue,
 
     #[prop_or_default]
     pub style: AttrValue,
@@ -45,7 +45,7 @@ pub struct Props {
 pub fn paper(props: &Props) -> Html {
     let mut cls_list = vec![
         "ZuPaper-root".to_owned(),
-        props.classes.clone(),
+        props.classes.to_string(),
         props.variant.css_class().to_owned(),
     ];
     if !props.square {
