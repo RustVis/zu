@@ -1,0 +1,17 @@
+
+/* Styles for AccordionActions */
+
+/* Styles applied to the root element. */
+.ZuAccordionActions-root {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 8px;
+}
+
+/* Styles applied to the root element unless disableSpacing={true}. */
+.ZuAccordionActions-spacing {
+  & > :not(:first-of-type) {
+    margin-left: 8px;
+  }
+}
