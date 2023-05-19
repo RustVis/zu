@@ -52,7 +52,7 @@ pub struct Props {
 
 #[function_component(Divider)]
 pub fn divider(props: &Props) -> Html {
-    let cls_list = vec![
+    let cls = classes!(
         "ZuDivider-root",
         if props.absolute {
             "ZuDivider-absolute"
@@ -93,9 +93,8 @@ pub fn divider(props: &Props) -> Html {
         } else {
             ""
         },
-    ];
+    );
 
-    let cls = classes!(cls_list);
     let wrapper_cls = classes!(
         "ZuDivider-wrapper",
         if props.orientation == Orientation::Horizontal {

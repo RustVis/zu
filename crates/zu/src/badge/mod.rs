@@ -66,7 +66,7 @@ pub struct Props {
 
 #[function_component(Badge)]
 pub fn badge(props: &Props) -> Html {
-    let badge_cls_list = vec![
+    let badge_cls = classes!(
         "ZuBadge-badge",
         props.variant.css_class(),
         if props.invisible {
@@ -77,8 +77,7 @@ pub fn badge(props: &Props) -> Html {
         props.anchor_origin.css_class(),
         props.overlap.css_class(),
         props.color.css_class(),
-    ];
-    let badge_cls = classes!(badge_cls_list);
+    );
 
     let component = if props.component.is_empty() {
         "span"

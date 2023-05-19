@@ -78,17 +78,16 @@ pub fn avatar(props: &Props) -> Html {
     );
     // TODO(Shaohua): Load image first.
 
-    // TODO(Shaohua): Init values on startup.
-    let mut styles = if props.style.is_empty() {
-        vec![]
-    } else {
-        vec![props.style.to_string()]
-    };
-
-    if !props.name.is_empty() {
-        let named_color = name::to_color(props.name.as_str());
-        styles.push(format!("background-color: {named_color};"));
-    }
+    let style = [
+        props.style.as_str(),
+        if props.name.is_empty() {
+            String::new()
+        } else {
+            format!("background-color: {};", name::to_color(props.name.as_str()))
+        }
+        .as_str(),
+    ]
+    .join(";");
 
     let abbr_name: String = if props.name.is_empty() {
         String::new()
@@ -96,12 +95,6 @@ pub fn avatar(props: &Props) -> Html {
         let abbr_name = name::abbreviate(props.name.as_str());
         log::info!("abbr_name: {abbr_name}");
         abbr_name
-    };
-
-    let style = if styles.is_empty() {
-        None
-    } else {
-        Some(styles.join(";"))
     };
 
     html! {

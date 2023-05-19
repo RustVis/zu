@@ -56,19 +56,18 @@ pub fn container(props: &Props) -> Html {
         props.component.as_str()
     };
 
-    // TODO(Shaohua): Merge cls_list.
-    let mut cls_list = vec!["ZuContainer-root", max_width_cls(props.max_width)];
-    if props.disable_gutters {
-        cls_list.push("ZuContainer-disableGutters");
-    } else {
-        cls_list.push("ZuContainer-enableGutters");
-    }
-    if props.fixed {
-        cls_list.push("ZuContainer-fixed");
-    }
-    let cls = classes!(cls_list, &props.classes);
+    let cls = classes!(
+        "ZuContainer-root",
+        max_width_cls(props.max_width),
+        if props.disable_gutters {
+            "ZuContainer-disableGutters"
+        } else {
+            "ZuContainer-enableGutters"
+        },
+        if props.fixed { "ZuContainer-fixed" } else { "" },
+        &props.classes
+    );
 
-    // TODO(Shaohua): Merge style
     let style = if let Some(Size::Num(num)) = props.max_width {
         let lst = [props.style.as_str(), &format!("max-width: {num}px")];
         lst.join(";")

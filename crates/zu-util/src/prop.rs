@@ -12,6 +12,6 @@ pub fn attr_optional(val: &AttrValue) -> Option<String> {
     if val.is_empty() {
         None
     } else {
-        Some(val.to_string())
+        Some(val.as_str().to_owned())
     }
 }

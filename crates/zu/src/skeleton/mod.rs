@@ -41,15 +41,23 @@ pub fn skeleton(props: &Props) -> Html {
         props.animation.css_class(),
         props.variant.css_class()
     );
-    // TODO(Shaohua): Merge styles
-    let mut styles = vec![props.style.as_str().to_owned()];
-    if props.width > 0 {
-        styles.push(format!("width: {}px", props.width));
-    };
-    if props.height > 0 {
-        styles.push(format!("height: {}px", props.height));
-    }
-    let style = styles.join(";");
+
+    let style = [
+        props.style.as_str(),
+        if props.width > 0 {
+            format!("width: {}px", props.width)
+        } else {
+            String::new()
+        }
+        .as_str(),
+        if props.height > 0 {
+            format!("height: {}px", props.height)
+        } else {
+            String::new()
+        }
+        .as_str(),
+    ]
+    .join(";");
 
     html! {
         <span class={cls} style={style}>

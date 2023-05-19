@@ -23,12 +23,11 @@ pub struct Props {
 
 #[function_component(FormGroup)]
 pub fn form_group(props: &Props) -> Html {
-    let cls_list = vec![
+    let cls = classes!(
         "ZuFormGroup-root",
         if props.row { "ZuFormGroup-row" } else { "" },
         if props.error { "ZuFormGroup-error" } else { "" },
-    ];
-    let cls = classes!(cls_list);
+    );
 
     html! {
         <div class={cls} style={attr_optional(&props.style)}>

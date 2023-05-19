@@ -44,21 +44,23 @@ pub struct Props {
 
 #[function_component(Paper)]
 pub fn paper(props: &Props) -> Html {
-    let mut cls_list = vec![
-        "ZuPaper-root".to_owned(),
-        props.classes.to_string(),
-        props.variant.css_class().to_owned(),
-    ];
-    if !props.square {
-        cls_list.push("ZuPaper-rounded".to_owned());
-    }
-    if props.variant == Variant::Elevation {
-        if props.elevation < ELEVATION_MIN || props.elevation > ELEVATION_MAX {
-            log::warn!("elevation out of range, expected {ELEVATION_MIN}-{ELEVATION_MAX}");
-        }
-        cls_list.push(format!("ZuPaper-elevation-{}", props.elevation));
+    if props.variant == Variant::Elevation
+        && (props.elevation < ELEVATION_MIN || props.elevation > ELEVATION_MAX)
+    {
+        log::warn!("elevation out of range, expected {ELEVATION_MIN}-{ELEVATION_MAX}");
     };
-    let cls = classes!(cls_list);
+
+    let cls = classes!(
+        "ZuPaper-root",
+        props.classes.to_string(),
+        props.variant.css_class(),
+        if props.square { "" } else { "ZuPaper-rounded" },
+        if props.variant == Variant::Elevation {
+            format!("ZuPaper-elevation-{}", props.elevation)
+        } else {
+            String::new()
+        }
+    );
 
     html! {
         <div class={cls} style={attr_optional(&props.style)}>

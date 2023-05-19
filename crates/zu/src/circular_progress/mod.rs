@@ -2,6 +2,8 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+mod color;
+mod size;
 mod variant;
 
 use std::f64::consts::PI;
@@ -58,28 +60,14 @@ pub struct Props {
 
 #[function_component(CircularProgress)]
 pub fn circular_progress(props: &Props) -> Html {
-    let mut class_list = vec!["ZuCircularProgress-root", props.variant.css_class()];
-    match props.color {
-        Color::Primary => class_list.push("ZuCircularProgress-colorPrimary"),
-        Color::Secondary => class_list.push("ZuCircularProgress-colorSecondary"),
-        _ => (),
-    }
-    let cls = classes!(class_list);
+    let cls = classes!(
+        "ZuCircularProgress-root",
+        props.variant.css_class(),
+        color::css_class(&props.color),
+    );
 
-    let mut styles = vec![props.style.as_str().to_string(), props.color.text_color()];
-    // TODO(Shaohua): Read from css.
-    let size = match props.size {
-        Size::XSmall => 8,
-        Size::Small => 12,
-        Size::Middle => 14,
-        Size::Large => 18,
-        Size::XLarge => 24,
-        Size::Num(num) => num,
-    };
-    let size_style = format!("width: {size}px; height: {size}px");
-    styles.push(size_style.clone());
-
-    let style = styles.join(";");
+    let size_style = size::css_value(props.size);
+    let svg_style = [props.style.as_str(), &props.color.text_color(), &size_style].join(";");
 
     let radius: f64 = (f64::from(SIZE) - props.thickness) / 2.0;
     let mut circle_styles = vec![];
@@ -101,7 +89,7 @@ pub fn circular_progress(props: &Props) -> Html {
     };
 
     let progress = html! {
-        <span class={cls} style={style}>
+        <span class={cls} style={svg_style}>
             <svg class="ZuCircularProgress-svg"
                 viewBox={format!("{} {} {SIZE} {SIZE}", SIZE / 2, SIZE / 2)}>
                 <circle class="ZuCircularProgress-circle"

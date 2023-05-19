@@ -52,7 +52,7 @@ pub fn form_label(props: &Props) -> Html {
         props.component.as_str()
     };
 
-    let cls_list = vec![
+    let cls = classes!(
         "ZuFormLabel-root",
         if props.color == Color::Secondary {
             "ZuFormLabel-colorSecondary"
@@ -79,13 +79,13 @@ pub fn form_label(props: &Props) -> Html {
         } else {
             ""
         },
-    ];
-    let cls = classes!(cls_list);
-    let mut style_list = vec![props.style.clone()];
-    if props.focused {
-        style_list.push(format!("color: {}", props.color.css_value()));
-    };
-    let style = style_list.join(";");
+    );
+
+    let style = [
+        props.style.as_str(),
+        &format!("color: {}", props.color.css_value()),
+    ]
+    .join(";");
 
     let asterisk_cls = if props.error {
         "ZuFormLabel-asterisk ZuFormLabel-error"

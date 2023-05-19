@@ -64,18 +64,22 @@ pub fn typography(props: &Props) -> Html {
         props.variant.as_component()
     };
 
-    let mut cls_list = vec![
+    let cls = classes!(
         "ZuTypography-root",
         props.variant.css_class(),
         text_align_class(props.align),
-    ];
-    if props.no_wrap {
-        cls_list.push("ZuTypography-noWrap");
-    }
-    if props.gutter_bottom {
-        cls_list.push("ZuTypography-gutterBottom");
-    }
-    let cls = classes!(cls_list, props.color.text_color());
+        if props.no_wrap {
+            "ZuTypography-noWrap"
+        } else {
+            ""
+        },
+        if props.gutter_bottom {
+            "ZuTypography-gutterBottom"
+        } else {
+            ""
+        },
+        props.color.text_color()
+    );
 
     html! {
        <@{component} class={cls} style={attr_optional(&props.style)}>
