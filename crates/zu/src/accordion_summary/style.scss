@@ -3,7 +3,12 @@
 
 /* Styles applied to the root element. */
 .ZuAccordionSummary-root {
-
+  display: flex;
+  min-height: 48px;
+  /* TODO(Shaohua): Replace with spacing-base */
+  padding: 0 16px;
+  transition: min-height var(--zu-duration-shortest) var(--zu-easing-easeInOut) 0ms,
+    background-color var(--zu-duration-shortest) var(--zu-easing-easeInOut) 0ms;
 }
 
 /* State class applied to the root element, children wrapper element and IconButton component if expanded={true} */
@@ -13,17 +18,24 @@
 
 /* .Mui-focusVisible	State class applied to the ButtonBase root element if the button is keyboard focused. */
 .ZuAccordionSummary-focusVisible {
-
+  background-color: var(--zu-palette-action-focus);
 }
 
 /* State class applied to the root element if disabled={true}. */
 .ZuAccordionSummary-disabled {
-
+  opacity: var(--zu-palette-action-disabledOpacity);
+}
+.ZuAccordionSummary-root:hover:not(.ZuAccordionSummary-disabled) {
+  cursor: pointer;
 }
 
 /* Styles applied to the root element unless disableGutters={true}. */
 .ZuAccordionSummary-gutters {
 
+}
+
+.ZuAccordionSummary-gutters.ZuAccordionSummary-expanded {
+  min-height: 64px;
 }
 
 /* Styles applied to the children wrapper element unless disableGutters={true}. */
@@ -33,10 +45,28 @@
 
 /* Styles applied to the children wrapper element. */
 .ZuAccordionSummary-content {
+  display: flex;
+  flex-grow: 1;
+  margin: 12px 0;
 
+  &.ZuAccordionSummary-gutters {
+    transition: margin var(--zu-duration-shortest) var(--zu-easing-easeInOut) 0ms;
+  }
+
+  &.ZuAccordionSummary-expanded {
+    margin: 20px 0;
+  }
 }
 
 /* Styles applied to the `expandIcon`'s wrapper element. */
 .ZuAccordionSummary-expandIconWrapper {
+  display: flex;
+  transform: rotate(0deg);
+  transition: transform var(--zu-duration-shortest) var(--zu-easing-easeInOut) 0ms;
 
+  color: var(--zu-palette-action-active);
+
+  &.ZuAccordionSummary-expanded {
+    transform: rotate(180deg);
+  }
 }
