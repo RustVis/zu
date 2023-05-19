@@ -32,7 +32,8 @@
     clippy::pedantic
 )]
 
-pub mod name;
-
 #[cfg(feature = "icon")]
 pub mod icon;
+
+pub mod name;
+pub mod prop;

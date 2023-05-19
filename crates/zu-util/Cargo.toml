@@ -19,3 +19,4 @@ icon = ["roxmltree"]
 
 [dependencies]
 roxmltree = { version = "0.18.0", optional = true }
+yew = "0.20.0"
