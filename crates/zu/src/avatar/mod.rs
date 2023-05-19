@@ -2,11 +2,11 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-mod name;
 mod person;
 mod variant;
 
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use zu_util::name;
 
 use crate::styles::shape_variant::ShapeVariant;
 use variant::variant_class;
@@ -106,14 +106,14 @@ pub fn avatar(props: &Props) -> Html {
     };
 
     if !props.name.is_empty() {
-        let named_color = name::name_to_color(props.name.as_str());
+        let named_color = name::to_color(props.name.as_str());
         styles.push(format!("background-color: {named_color};"));
     }
 
     let abbr_name: String = if props.name.is_empty() {
         String::new()
     } else {
-        let abbr_name = name::abbr_name(props.name.as_str());
+        let abbr_name = name::abbreviate(props.name.as_str());
         log::info!("abbr_name: {abbr_name}");
         abbr_name
     };
