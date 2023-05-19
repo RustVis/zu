@@ -31,10 +31,16 @@ pub struct Props {
     pub align: TextAlign,
 
     #[prop_or_default]
+    pub children: Children,
+
+    #[prop_or_default]
+    pub classes: AttrValue,
+
+    #[prop_or_default]
     pub color: Color,
 
     #[prop_or_default]
-    pub variant: Variant,
+    pub component: AttrValue,
 
     /// If true, the text will have a bottom margin.
     #[prop_or(false)]
@@ -50,15 +56,18 @@ pub struct Props {
     #[prop_or(false)]
     pub paragraph: bool,
 
-    pub children: Children,
-
     #[prop_or_default]
     pub style: AttrValue,
+
+    #[prop_or_default]
+    pub variant: Variant,
 }
 
 #[function_component(Typography)]
 pub fn typography(props: &Props) -> Html {
-    let component = if props.paragraph {
+    let component = if !props.component.is_empty() {
+        props.component.as_str()
+    } else if props.paragraph {
         "p"
     } else {
         props.variant.as_component()
@@ -78,11 +87,12 @@ pub fn typography(props: &Props) -> Html {
         } else {
             ""
         },
-        props.color.text_color()
+        props.color.text_color(),
+        props.classes.as_str().to_owned(),
     );
 
     html! {
-       <@{component} class={cls} style={attr_optional(&props.style)}>
+       <@{component.to_owned()} class={cls} style={attr_optional(&props.style)}>
             {for props.children.iter()}
        </@>
     }
