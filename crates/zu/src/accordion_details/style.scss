@@ -3,6 +3,5 @@
 
 /* Styles applied to the root element. */
 .ZuAccordionDetails-root {
-  /* TODO(Shaohua): Replace with calc() */
-  padding: 8px 16px 16px;
+  padding: calc(var(--zu-spacing-unit)) calc(var(--zu-spacing-unit) * 2) calc(var(--zu-spacing-unit) * 2)
 }

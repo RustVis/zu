@@ -12,6 +12,8 @@ $zu-spacing-xl: 20px;
 $zu-spacing-xxl: 24px;
 $zu-spacing-xxxl: 32px;
 
+$zu-spacing-unit: 8px;
+
 :root {
   --zu-spacing-none: #{$zu-spacing-none};
   --zu-spacing-xxs: #{$zu-spacing-xxs};
@@ -24,4 +26,6 @@ $zu-spacing-xxxl: 32px;
   --zu-spacing-xl: #{$zu-spacing-xl};
   --zu-spacing-xxl: #{$zu-spacing-xxl};
   --zu-spacing-xxxl: #{$zu-spacing-xxxl};
+
+  --zu-spacing-unit: #{$zu-spacing-unit};
 }

@@ -5,8 +5,7 @@
 .ZuAccordionSummary-root {
   display: flex;
   min-height: 48px;
-  /* TODO(Shaohua): Replace with spacing-base */
-  padding: 0 16px;
+  padding: 0 calc(var(--zu-spacing-unit) * 2);
   transition: min-height var(--zu-duration-shortest) var(--zu-easing-easeInOut) 0ms,
     background-color var(--zu-duration-shortest) var(--zu-easing-easeInOut) 0ms;
 }
