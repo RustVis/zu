@@ -1,0 +1,16 @@
+[package]
+name = "zu-util"
+version = "0.1.0"
+authors = ["Xu Shaohua <shaohua@biofan.org>"]
+readme = "README.md"
+homepage = "https://github.com/RustVis/zu/crates/zu-util"
+repository = "https://github.com/RustVis/zu"
+documentation = "https://docs.rs/zu-util"
+description = "Utilities for zu component"
+keywords = ["yew", "web", "wasm", "material-design"]
+categories = ["gui", "wasm", "web-programming"]
+edition = "2021"
+license = "Apache-2.0"
+publish = true
+
+[dependencies]
