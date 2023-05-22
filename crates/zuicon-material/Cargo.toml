@@ -1,6 +1,6 @@
 [package]
 name = "zuicon-material"
-version = "0.1.1"
+version = "0.2.1"
 authors = ["Xu Shaohua <shaohua@biofan.org>"]
 readme = "README.md"
 homepage = "https://github.com/RustVis/zu"
@@ -16,14 +16,14 @@ publish = true
 
 [dependencies]
 yew = "0.20.0"
-zu = { path = "../zu", version = "0.2.2" }
+zu = { path = "../zu", version = "0.2.3" }
 
 [build-dependencies]
 inflections = "1.1.1"
 reqwest = { version = "0.11.18", features = ["blocking"] }
 serde = { version = "1.0.163", features = ["derive"] }
 serde_json = "1.0.96"
-zu-util = { path="../zu-util", version="0.1.0", features = ["icon"] }
+zu-util = { path="../zu-util", version="0.2.1", features = ["icon"] }
 
 [features]
 default = []
