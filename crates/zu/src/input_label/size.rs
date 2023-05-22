@@ -5,24 +5,22 @@
 use crate::styles::CssClass;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum Variant {
-    Filled,
-    Outlined,
-    Standard,
+pub enum Size {
+    Small,
+    Normal,
 }
 
-impl Default for Variant {
+impl Default for Size {
     fn default() -> Self {
-        Self::Standard
+        Self::Normal
     }
 }
 
-impl CssClass for Variant {
+impl CssClass for Size {
     fn css_class(&self) -> &'static str {
         match self {
-            Self::Filled => "ZuInputLabel-filled",
-            Self::Outlined => "ZuInputLabel-outlined",
-            Self::Standard => "ZuInputLabel-standard",
+            Self::Small => "ZuInputLabel-sizeSmall",
+            Self::Normal => "",
         }
     }
 }

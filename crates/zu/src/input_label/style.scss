@@ -1,2 +1,118 @@
 
 /* Styles for InputLabel */
+
+// Styles applied to the root element.
+.ZuInputLabel-root {
+    display: block;
+    transform-origin: top left;
+    overflow: hidden;
+    max-width: 100%;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+// State class applied to the root element if focused={true}.
+.ZuInputLabel-focused {
+
+}
+
+// State class applied to the root element if disabled={true}.
+.ZuInputLabel-disabled {
+
+}
+
+// State class applied to the root element if error={true}.
+.ZuInputLabel-error {
+
+}
+
+// State class applied to the root element if required={true}.
+.ZuInputLabel-required {
+
+}
+
+// State class applied to the asterisk element.
+.ZuInputLabel-asterisk {
+
+}
+
+// Styles applied to the root element if the component is a descendant of FormControl.
+.ZuInputLabel-formControl {
+    position: absolute;
+    left: 0;
+    top: 0;
+    // slight alteration to spec spacing to match visual spec result
+    transform: translate(0, 20px) scale(1);
+}
+
+// Styles applied to the root element if size="small".
+.ZuInputLabel-sizeSmall {
+    // Compensation for the `Input.inputSizeSmall` style.
+    transform: translate(0, 17px) scale(1);
+}
+
+// Styles applied to the input element if shrink={true}.
+.ZuInputLabel-shrink {
+    transform: translate(0, -1.5px) scale(0.75);
+    transform-origin: top left;
+    max-width: 133%;
+}
+
+// Styles applied to the input element unless disableAnimation={true}.
+.ZuInputLable-animated {
+    transition: color var(--zu-duration-shorter) var(--zu-easing-easeOut) 0ms,
+        transform var(--zu-duration-shorter) var(--zu-easing-easeOut) 0ms,
+        max-width var(--zu-duration-shorter) var(--zu-easing-easeOut) 0ms;
+}
+
+// Styles applied to the root element if variant="filled".
+.ZuInputLabel-filled {
+    // Chromes autofill feature gives the input field a yellow background.
+    // Since the input field is behind the label in the HTML tree,
+    // the input field is drawn last and hides the label with an opaque background color.
+    // zIndex: 1 will raise the label above opaque background-colors of input.
+    z-index: 1;
+    pointer-events: none;
+    transform: translate(12px, 16px) scale(1);
+    max-width: calc(100% - 24px);
+    &.ZuInputLabel-sizeSmall {
+      transform: translate(12px, 13px) scale(1);
+    }
+
+    &.ZuInputLabel-shrink {
+      user-select: none;
+      pointer-events: auto;
+      transform: translate(12px, 7px) scale(0.75);
+      max-width: calc(133% - 24px);
+      &.ZuInputLabel-sizeSmall {
+        transform: translate(12px, 4px) scale(0.75);
+      }
+    }
+}
+
+// Styles applied to the root element if variant="outlined".
+.ZuInputLabel-outlined {
+    // see comment above on filled.zIndex
+    z-index: 1;
+    pointer-events: none;
+    transform: translate(14px, 16px) scale(1);
+    max-width: calc(100% - 24px);
+    &.ZuInputLabel-sizeSmall {
+        transform: translate(14px, 9px) scale(1);
+    }
+ 
+    &.ZuInputLabel-shrink {
+        user-select: none;
+        pointer-events: auto;
+        // Theoretically, we should have (8+5)*2/0.75 = 34px
+        // but it feels a better when it bleeds a bit on the left, so 32px.
+        max-width: calc(133% - 32px);
+        transform: translate(14px, -9px) scale(0.75);
+    }
+}
+
+// Styles applied to the root element if variant="standard".
+.ZuInputLabel-standard {
+
+}

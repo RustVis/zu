@@ -25,23 +25,28 @@ pub struct Props {
     pub component: AttrValue,
 
     /// If true, the label should be displayed in a disabled state.
+    #[prop_or(false)]
     pub disabled: bool,
 
     /// If true, the label is displayed in an error state.
+    #[prop_or(false)]
     pub error: bool,
 
     /// If true, the label should use filled classes key.
+    #[prop_or(false)]
     pub filled: bool,
 
     /// If true, the input of this label is focused (used by FormGroup components).
+    #[prop_or(false)]
     pub focused: bool,
 
     /// If true, the label will indicate that the input is required.
+    #[prop_or(false)]
     pub required: bool,
 
     /// Custom inline style.
     #[prop_or_default]
-    pub style: String,
+    pub style: AttrValue,
 }
 
 #[function_component(FormLabel)]

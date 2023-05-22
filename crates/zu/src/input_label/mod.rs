@@ -3,14 +3,17 @@
 // in the LICENSE file.
 
 mod margin;
+mod size;
 mod variant;
 
-use yew::{function_component, html, AttrValue, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
-use crate::styles::{color::Color, size::Size};
+use crate::form_label::FormLabel;
+use crate::styles::{color::Color, CssClass};
 
 // Re-export
 use margin::MarginType;
+use size::Size;
 use variant::Variant;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
@@ -38,7 +41,7 @@ pub struct Props {
 
     /// If true, the input of this label is focused.
     #[prop_or(false)]
-    pub focus: bool,
+    pub focused: bool,
 
     /// If dense, will adjust vertical spacing. This is normally obtained via context from FormControl.
     #[prop_or_default]
@@ -65,8 +68,43 @@ pub struct Props {
 
 #[function_component(InputLabel)]
 pub fn input_label(props: &Props) -> Html {
+    // TODO(Shaohua): Add form control state.
+    let root_cls = classes!(
+        "ZuInputLabel-root",
+        // if props.form_control {
+        //     "ZuInputLabel-formControl"
+        // } else {
+        //     ""
+        // },
+        if props.disable_animation {
+            ""
+        } else {
+            "ZuInputLabel-animated"
+        },
+        if props.shrink {
+            "ZuInputLable-shrink"
+        } else {
+            ""
+        },
+        props.size.css_class(),
+        props.variant.css_class(),
+    );
+    let _asterisk_class = if props.required {
+        "ZuInputLabel-asterisk"
+    } else {
+        ""
+    };
+
+    // TODO(Shaohua): Replace with props!() macro.
     html! {
-       <div style={&props.style}>
-       </div>
+        <FormLabel classes={root_cls}
+            color={props.color.clone()}
+            disabled={props.disabled}
+            error={props.error}
+            focused={props.focused}
+            required={props.required}
+            style={&props.style}>
+            {for props.children.iter()}
+        </FormLabel>
     }
 }
