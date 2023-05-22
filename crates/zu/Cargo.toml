@@ -1,6 +1,6 @@
 [package]
 name = "zu"
-version = "0.2.3"
+version = "0.2.4"
 authors = ["Xu Shaohua <shaohua@biofan.org>"]
 readme = "README.md"
 homepage = "https://github.com/RustVis/zu"
@@ -17,7 +17,7 @@ publish = true
 log = "0.4.17"
 stylist = { version = "0.12.0", default-features = false, features = ["parser", "random", "yew"] }
 yew = "0.20.0"
-zu-util = { path = "../zu-util", version = "0.1.0" }
+zu-util = { path = "../zu-util", version = "0.2.1" }
 
 [build-dependencies]
 rsass = "0.27.0"
