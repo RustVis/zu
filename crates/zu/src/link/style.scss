@@ -1,0 +1,74 @@
+
+/* Styles for Link */
+
+// Styles applied to the root element.
+.ZuLink-root {
+
+}
+
+// Styles applied to the root element if underline="none".
+.ZuLink-underlineNone {
+    text-decoration: none;
+}
+
+// Styles applied to the root element if underline="hover".
+.ZuLink-underlineHover {
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// Styles applied to the root element if underline="always".
+.ZuLink-underlineAlways {
+    text-decoration: underline;
+
+    &:hover {
+        text-decoration-color: inherit;
+    }
+}
+
+// Styles applied to the root element if component="button".
+.ZuLink-button {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+
+    // Disable the focus ring for mouse, touch and keyboard users.
+    outline: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    cursor: pointer;
+    user-select: none;
+    appearance: none;
+    text-decoration: none;
+
+    // Reset default value
+    color: inherit;
+    background-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+
+    &::-moz-focus-inner {
+        // Remove Firefox dotted outline.
+        border-style: none;
+    }
+
+    @media print {
+        color-adjust: exact;
+    }
+
+    &.ZuLink-focusVisible {
+        outline: auto;
+    }
+}
+
+// State class applied to the root element if the link is keyboard focused.
+.ZuLink-focusVisible {
+
+}

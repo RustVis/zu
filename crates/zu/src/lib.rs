@@ -55,6 +55,7 @@ pub mod divider;
 pub mod form_group;
 pub mod form_label;
 pub mod linear_progress;
+pub mod link;
 pub mod paper;
 pub mod skeleton;
 pub mod stack;
