@@ -1,95 +1,148 @@
-
 /* Styles for Alert */
 
 // Styles applied to the root element.
 .ZuAlert-root {
-    display: flex;
-    padding: 6px 16px;
+  display: flex;
+  padding: 6px 16px;
 
-    background-color: transparent;
+  background-color: transparent;
+
+  // From body2
+  font-family: var(--zu-typography-body2-fontFamily);
+  font-weight: var(--zu-typography-body2-fontWeight);
+  font-size: var(--zu-typography-body2-fontSize);
+  line-height: var(--zu-typography-body2-lineHeight);
+  letter-spacing: var(--zu-typography-body2-letterSpacing);
 }
 
 // Styles applied to the root element if variant="filled".
 .ZuAlert-filled {
-    &.ZuAlert-success{
+  font-weight: var(--zu-typography-fontWeightMedium);
 
-    }
+  &.ZuAlert-success {
+    // TODO(Shaohua): Support dark theme.
+    color: var(--zu-palette-success-main);
+    border: 1px solid var(--zu-palette-success-main);
+  }
 
-    &.ZuAlert-info {
+  &.ZuAlert-info {
+    color: var(--zu-palette-info-main);
+    border: 1px solid var(--zu-palette-info-main);
+  }
 
-    }
+  &.ZuAlert-warning {
+    color: var(--zu-palette-warning-main);
+    border: 1px solid var(--zu-palette-warning-main);
+  }
 
-    &.ZuAlert-warning {
-
-    }
-
-    &.ZuAlert-error {
-
-    }
+  &.ZuAlert-error {
+    color: var(--zu-palette-error-main);
+    border: 1px solid var(--zu-palette-error-main);
+  }
 }
 
 // Styles applied to the root element if variant="outlined".
 .ZuAlert-outlined {
- &.ZuAlert-success{
+  &.ZuAlert-success {
+    // TODO(Shaohua): Support dark theme.
+    color: darken($zu-palette-success-light, 0.6);
+    border: 1px solid var(--zu-palette-success-light);
 
+    .ZuAlert-icon {
+      color: var(--zu-palette-success-main);
     }
+  }
 
-    &.ZuAlert-info {
+  &.ZuAlert-info {
+    color: darken($zu-palette-info-light, 0.6);
+    border: 1px solid var(--zu-palette-info-light);
 
+    .ZuAlert-icon {
+      color: var(--zu-palette-info-main);
     }
+  }
 
-    &.ZuAlert-warning {
+  &.ZuAlert-warning {
+    color: darken($zu-palette-warning-light, 0.6);
+    border: 1px solid var(--zu-palette-warning-light);
 
+    .ZuAlert-icon {
+      color: var(--zu-palette-warning-main);
     }
+  }
 
-    &.ZuAlert-error {
-        
+  &.ZuAlert-error {
+    color: darken($zu-palette-error-light, 0.6);
+    border: 1px solid var(--zu-palette-error-light);
+
+    .ZuAlert-icon {
+      color: var(--zu-palette-error-main);
     }
+  }
 }
 
 // Styles applied to the root element if variant="standard".
 .ZuAlert-standard {
+  &.ZuAlert-success {
+    // TODO(Shaohua): Support dark theme.
+    color: darken($zu-palette-success-light, 0.6);
+    border: 1px solid var(--zu-palette-success-light);
 
-
-    &.ZuAlert-success{
-
+    .ZuAlert-icon {
+      color: var(--zu-palette-success-main);
     }
+  }
 
-    &.ZuAlert-info {
+  &.ZuAlert-info {
+    color: darken($zu-palette-info-light, 0.6);
+    border: 1px solid var(--zu-palette-info-light);
 
+    .ZuAlert-icon {
+      color: var(--zu-palette-info-main);
     }
+  }
 
-    &.ZuAlert-warning {
+  &.ZuAlert-warning {
+    color: darken($zu-palette-warning-light, 0.6);
+    border: 1px solid var(--zu-palette-warning-light);
 
+    .ZuAlert-icon {
+      color: var(--zu-palette-warning-main);
     }
+  }
 
-    &.ZuAlert-error {
-        
+  &.ZuAlert-error {
+    color: darken($zu-palette-error-light, 0.6);
+    border: 1px solid var(--zu-palette-error-light);
+
+    .ZuAlert-icon {
+      color: var(--zu-palette-error-main);
     }
+  }
 }
 
 // Styles applied to the icon wrapper element.
 .ZuAlert-icon {
-    display: flex;
-    margin-right: 12px;
-    padding: 7px 0;
+  display: flex;
+  margin-right: 12px;
+  padding: 7px 0;
 
-    font-size: 22px;
-    opacity: 0.9;
+  font-size: 22px;
+  opacity: 0.9;
 }
 
 // Styles applied to the message wrapper element.
 .ZuAlert-message {
-    padding: 8px 0;
-    min-width: 0;
-    overflow: auto;
+  padding: 8px 0;
+  min-width: 0;
+  overflow: auto;
 }
 
 // Styles applied to the action wrapper element if action is provided.
 .ZuAlert-action {
-    display: flex;
-    align-items: flex-start;
-    padding: 4px 0 0 16px;
-    margin-left: auto;
-    margin-right: -8px;
+  display: flex;
+  align-items: flex-start;
+  padding: 4px 0 0 16px;
+  margin-left: auto;
+  margin-right: -8px;
 }

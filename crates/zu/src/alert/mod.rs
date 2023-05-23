@@ -72,14 +72,23 @@ pub fn alert(props: &Props) -> Html {
     let message_cls = "ZuAlert-message";
     let action_cls = "ZuAlert-action";
 
+    // TODO(Shaohua): Check props.action is none.
+    // TODO(Shaohua): Add close button.
+
     html! {
         <Paper classes={root_cls} style={&props.style}>
             <div class={icon_cls}>
+                {props.icon.clone()}
             </div>
+
             <div class={message_cls}>
+                {for props.children.iter()}
             </div>
+
             <div class={action_cls}>
+                {props.action.clone()}
             </div>
+
         </Paper>
     }
 }
