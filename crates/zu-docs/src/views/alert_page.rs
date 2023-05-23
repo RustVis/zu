@@ -3,7 +3,11 @@
 // in the LICENSE file.
 
 use yew::{function_component, html, Html};
-use zu::{alert::Alert, alert_title::AlertTitle, styles::severity::Severity};
+use zu::{
+    alert::{Alert, Variant},
+    alert_title::AlertTitle,
+    styles::severity::Severity,
+};
 use zuicon_material::Check;
 
 #[function_component(AlertPage)]
@@ -68,6 +72,40 @@ pub fn alert_page() -> Html {
             </Alert>
 
             <Alert icon={None} severity={Severity::Success}>
+                {"This is a success alert — check it out!"}
+            </Alert>
+        </div>
+
+        <h2>{"Variants"}</h2>
+        <p>{"Two additional variants are available – outlined, and filled:"}</p>
+        <h3>{"Outlined"}</h3>
+        <div class="demo-box">
+            <Alert variant={Variant::Outlined} severity={Severity::Error}>
+                {"This is an error alert — check it out!"}
+            </Alert>
+            <Alert variant={Variant::Outlined} severity={Severity::Warning}>
+                {"This is a warning alert — check it out!"}
+            </Alert>
+            <Alert variant={Variant::Outlined} severity={Severity::Info}>
+                {"This is an info alert — check it out!"}
+            </Alert>
+            <Alert variant={Variant::Outlined} severity={Severity::Success}>
+                {"This is a success alert — check it out!"}
+            </Alert>
+        </div>
+
+        <h3>{"Filled"}</h3>
+        <div class="demo-box">
+            <Alert variant={Variant::Filled} severity={Severity::Error}>
+                {"This is an error alert — check it out!"}
+            </Alert>
+            <Alert variant={Variant::Filled} severity={Severity::Warning}>
+                {"This is a warning alert — check it out!"}
+            </Alert>
+            <Alert variant={Variant::Filled} severity={Severity::Info}>
+                {"This is an info alert — check it out!"}
+            </Alert>
+            <Alert variant={Variant::Filled} severity={Severity::Success}>
                 {"This is a success alert — check it out!"}
             </Alert>
         </div>

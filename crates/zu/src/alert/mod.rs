@@ -73,6 +73,7 @@ pub fn alert(props: &Props) -> Html {
     let action_cls = "ZuAlert-action";
 
     // TODO(Shaohua): Add close button.
+    // TODO(Shaohua): Support adjust props.color
 
     html! {
         <Paper classes={root_cls} style={&props.style}>

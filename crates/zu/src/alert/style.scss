@@ -4,8 +4,12 @@
 .ZuAlert-root {
   display: flex;
   padding: 6px 16px;
+  transition: box-shadow var(--zu-duration-standard) var(--zu-easing-easeInOut)
+    0ms;
 
   background-color: transparent;
+  border-radius: var(--zu-shape-border-radius);
+  box-shadow: none;
 
   // From body2
   font-family: var(--zu-typography-body2-fontFamily);
@@ -21,23 +25,23 @@
 
   &.ZuAlert-success {
     // TODO(Shaohua): Support dark theme.
-    color: var(--zu-palette-success-main);
-    border: 1px solid var(--zu-palette-success-main);
+    color: var(--zu-palette-success-contrastText);
+    background-color: var(--zu-palette-success-main);
   }
 
   &.ZuAlert-info {
-    color: var(--zu-palette-info-main);
-    border: 1px solid var(--zu-palette-info-main);
+    color: var(--zu-palette-info-contrastText);
+    background-color: var(--zu-palette-info-main);
   }
 
   &.ZuAlert-warning {
-    color: var(--zu-palette-warning-main);
-    border: 1px solid var(--zu-palette-warning-main);
+    color: var(--zu-palette-warning-contrastText);
+    background-color: var(--zu-palette-warning-main);
   }
 
   &.ZuAlert-error {
-    color: var(--zu-palette-error-main);
-    border: 1px solid var(--zu-palette-error-main);
+    color: var(--zu-palette-error-contrastText);
+    background-color: var(--zu-palette-error-main);
   }
 }
 
