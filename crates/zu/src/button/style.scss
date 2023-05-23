@@ -1,0 +1,156 @@
+/* Styles for Button */
+
+// Styles applied to the root element.
+.ZuButton-root {
+}
+
+// Styles applied to the root element if variant="text".
+.ZuButton-text {
+  &.ZuButton-inherit {
+  }
+
+  &.ZuButton-primary {
+  }
+
+  &.ZuButton-secondary {
+  }
+
+  &.ZuButton-success {
+  }
+
+  &.ZuButton-info {
+  }
+
+  &.ZuButton-warning {
+  }
+
+  &.ZuButton-error {
+  }
+
+  &.ZuButton-sizeSmall {
+  }
+
+  &.ZuButton-sizeMedium {
+  }
+
+  &.ZuButton-sizeLarge {
+  }
+}
+
+// Styles applied to the root element if variant="outlined".
+.ZuButton-outlined {
+  &.ZuButton-inherit {
+  }
+
+  &.ZuButton-primary {
+  }
+
+  &.ZuButton-secondary {
+  }
+
+  &.ZuButton-success {
+  }
+
+  &.ZuButton-info {
+  }
+
+  &.ZuButton-warning {
+  }
+
+  &.ZuButton-error {
+  }
+
+  &.ZuButton-sizeSmall {
+  }
+
+  &.ZuButton-sizeMedium {
+  }
+
+  &.ZuButton-sizeLarge {
+  }
+}
+
+// Styles applied to the root element if variant="contained".
+.ZuButton-contained {
+  &.ZuButton-inherit {
+  }
+
+  &.ZuButton-primary {
+  }
+
+  &.ZuButton-secondary {
+  }
+
+  &.ZuButton-success {
+  }
+
+  &.ZuButton-info {
+  }
+
+  &.ZuButton-warning {
+  }
+
+  &.ZuButton-error {
+  }
+
+  &.ZuButton-sizeSmall {
+  }
+
+  &.ZuButton-sizeMedium {
+  }
+
+  &.ZuButton-sizeLarge {
+  }
+}
+
+// Styles applied to the root element if disableElevation={true}.
+.ZuButton-disableElevation {
+}
+
+// State class applied to the ButtonBase root element if the button is keyboard focused.
+.ZuButton-focusVisible {
+}
+
+// State class applied to the root element if disabled={true}.
+.ZuButton-disabled {
+}
+
+// Styles applied to the root element if color="inherit".
+.ZuButton-inherit {
+}
+
+// Styles applied to the root element if size="small".
+.ZuButton-sizeSmall {
+}
+
+// Styles applied to the root element if size="medium".
+.ZuButton-sizeMedium {
+}
+
+// Styles applied to the root element if size="large".
+.ZuButton-sizeLarge {
+}
+
+// Styles applied to the root element if fullWidth={true}.
+.ZuButton-fullWidth {
+}
+
+// Styles applied to the startIcon element if supplied.
+.ZuButton-startIcon {
+}
+
+// Styles applied to the endIcon element if supplied.
+.ZuButton-endIcon {
+}
+
+// Styles applied to the icon element if supplied and size="small".
+.ZuButton-iconSizeSmall {
+}
+
+// Styles applied to the icon element if supplied and size="medium".
+.ZuButton-iconSizeMedium {
+}
+
+// Styles applied to the icon element if supplied and size="large".
+.ZuButton-iconSizeLarge {
+}

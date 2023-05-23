@@ -49,6 +49,7 @@ pub mod avatar;
 pub mod avatar_group;
 pub mod badge;
 pub mod r#box;
+pub mod button;
 pub mod button_base;
 pub mod circular_progress;
 pub mod container;
