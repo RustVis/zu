@@ -5,6 +5,7 @@
 use yew::prelude::*;
 use yew_router::prelude::Routable;
 
+use crate::views::alert_page::AlertPage;
 use crate::views::avatar_page::AvatarPage;
 use crate::views::badge_page::BadgePage;
 use crate::views::box_page::BoxPage;
@@ -22,6 +23,9 @@ use crate::views::typography_page::TypographyPage;
 pub enum Route {
     #[at("/")]
     Home,
+
+    #[at("/alert")]
+    Alert,
 
     #[at("/avatar")]
     Avatar,
@@ -63,6 +67,7 @@ pub enum Route {
 pub fn switch_route(routes: Route) -> Html {
     match routes {
         Route::Home => html! {<HomePage />},
+        Route::Alert => html! {<AlertPage />},
         Route::Avatar => html! {<AvatarPage />},
         Route::Badge => html! {<BadgePage />},
         Route::Box => html! {<BoxPage />},

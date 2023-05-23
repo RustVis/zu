@@ -30,6 +30,11 @@ pub fn left_panel() -> Html {
                     </Link<Route>>
                 </li>
                 <li class="nav-item">
+                    <Link<Route> to={Route::Alert} classes={link_cls(Route::Alert)}>
+                    {"Alert"}
+                    </Link<Route>>
+                </li>
+                <li class="nav-item">
                     <Link<Route> to={Route::Avatar} classes={link_cls(Route::Avatar)}>
                     {"Avatar"}
                     </Link<Route>>

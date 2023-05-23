@@ -37,6 +37,7 @@ path = "../zuicon-material"
 version = "0.2.1"
 features = [
   "Assignment",
+  "Check",
   "Folder",
   "Home",
   "Pageview",

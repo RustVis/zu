@@ -26,7 +26,7 @@ pub struct Props {
     ///
     ///  It renders after the message, at the end of the alert.
     #[prop_or_default]
-    pub action: VNode,
+    pub action: Option<VNode>,
 
     #[prop_or_default]
     pub children: Children,
@@ -43,7 +43,7 @@ pub struct Props {
 
     /// Override the icon displayed before the children.
     #[prop_or_default]
-    pub icon: VNode,
+    pub icon: Option<VNode>,
 
     // TODO(Shaohua): Add onClose callback.
     /// The ARIA role attribute of the element.
@@ -72,22 +72,25 @@ pub fn alert(props: &Props) -> Html {
     let message_cls = "ZuAlert-message";
     let action_cls = "ZuAlert-action";
 
-    // TODO(Shaohua): Check props.action is none.
     // TODO(Shaohua): Add close button.
 
     html! {
         <Paper classes={root_cls} style={&props.style}>
-            <div class={icon_cls}>
-                {props.icon.clone()}
-            </div>
+            if let Some(icon) = &props.icon {
+                <div class={icon_cls}>
+                {icon.clone()}
+                </div>
+            }
 
             <div class={message_cls}>
                 {for props.children.iter()}
             </div>
 
-            <div class={action_cls}>
-                {props.action.clone()}
-            </div>
+            if let Some(action) = &props.action {
+                <div class={action_cls}>
+                    {action.clone()}
+                </div>
+            }
 
         </Paper>
     }
