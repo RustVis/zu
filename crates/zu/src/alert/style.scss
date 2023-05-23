@@ -1,0 +1,95 @@
+
+/* Styles for Alert */
+
+// Styles applied to the root element.
+.ZuAlert-root {
+    display: flex;
+    padding: 6px 16px;
+
+    background-color: transparent;
+}
+
+// Styles applied to the root element if variant="filled".
+.ZuAlert-filled {
+    &.ZuAlert-success{
+
+    }
+
+    &.ZuAlert-info {
+
+    }
+
+    &.ZuAlert-warning {
+
+    }
+
+    &.ZuAlert-error {
+
+    }
+}
+
+// Styles applied to the root element if variant="outlined".
+.ZuAlert-outlined {
+ &.ZuAlert-success{
+
+    }
+
+    &.ZuAlert-info {
+
+    }
+
+    &.ZuAlert-warning {
+
+    }
+
+    &.ZuAlert-error {
+        
+    }
+}
+
+// Styles applied to the root element if variant="standard".
+.ZuAlert-standard {
+
+
+    &.ZuAlert-success{
+
+    }
+
+    &.ZuAlert-info {
+
+    }
+
+    &.ZuAlert-warning {
+
+    }
+
+    &.ZuAlert-error {
+        
+    }
+}
+
+// Styles applied to the icon wrapper element.
+.ZuAlert-icon {
+    display: flex;
+    margin-right: 12px;
+    padding: 7px 0;
+
+    font-size: 22px;
+    opacity: 0.9;
+}
+
+// Styles applied to the message wrapper element.
+.ZuAlert-message {
+    padding: 8px 0;
+    min-width: 0;
+    overflow: auto;
+}
+
+// Styles applied to the action wrapper element if action is provided.
+.ZuAlert-action {
+    display: flex;
+    align-items: flex-start;
+    padding: 4px 0 0 16px;
+    margin-left: auto;
+    margin-right: -8px;
+}

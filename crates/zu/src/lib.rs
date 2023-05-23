@@ -43,6 +43,7 @@ pub mod accordion;
 pub mod accordion_actions;
 pub mod accordion_details;
 pub mod accordion_summary;
+pub mod alert;
 pub mod alert_title;
 pub mod avatar;
 pub mod avatar_group;
