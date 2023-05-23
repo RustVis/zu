@@ -3,7 +3,8 @@
 // in the LICENSE file.
 
 use yew::{function_component, html, Html};
-use zu::badge::{Badge, Color, Content};
+use zu::badge::{Badge, Content};
+use zu::styles::color::Color;
 
 #[function_component(BadgePage)]
 pub fn badge_page() -> Html {
