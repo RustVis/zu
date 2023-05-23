@@ -53,6 +53,7 @@ pub mod button_base;
 pub mod circular_progress;
 pub mod container;
 pub mod divider;
+pub mod form_control_label;
 pub mod form_group;
 pub mod form_label;
 pub mod input_label;

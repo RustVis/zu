@@ -9,3 +9,11 @@ pub enum Side {
     Bottom,
     Left,
 }
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Position {
+    Top,
+    Bottom,
+    Start,
+    End,
+}
