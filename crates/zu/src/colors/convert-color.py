@@ -22,13 +22,16 @@ def to_upper(name):
 def convert_color(input_file):
     filename = os.path.split(input_file)[1]
     output_file = filename
-    output_file = output_file.replace(".js", ".css")
+    output_file = output_file.replace(".js", ".scss")
     
     basename = os.path.splitext(filename)[0]
     color_name = basename
 
     lines = [
         F"/* {color_name} color scheme */",
+        "\n",
+    ]
+    css_lines = [
         "\n",
         ":root {\n",
     ]
@@ -43,13 +46,16 @@ def convert_color(input_file):
             parts = line.split(":")
             key = parts[0].strip().replace("A", "a")
             value = parts[1].strip().replace(",", "").replace("'", '')
-            line = F"  --zu-colors-{color_name}-{key}: {value};\n"
+            line = F"$zu-colors-{color_name}-{key}: {value};\n"
+            css_line = F"  --zu-colors-{color_name}-{key}: $zu-colors-{color_name}-{key};\n"
             lines.append(line)
+            css_lines.append(css_line)
 
-    lines.append("}\n")
+    css_lines.append("}\n")
 
     with open(output_file, "w") as output_fh:
         output_fh.writelines(lines)
+        output_fh.writelines(css_lines)
 
 def convert_all_colors(input_file):
     parent_dir = os.path.dirname(input_file)
