@@ -210,8 +210,8 @@
 // Styles applied to the root element if variant="contained".
 .ZuButton-contained {
   // TODO(Shaohua): Convert to contrastText
-  color: getContrastText($zu-color-grey-300);
-  background-color: var(--zu-color-grey-300);
+  color: getContrastText($zu-colors-grey-300);
+  background-color: var(--zu-colors-grey-300);
   box-shadow: var(--zu-shadow-2);
 
   &.ZuButton-inherit {
