@@ -98,25 +98,25 @@ const COMMON_STYLES: &[&str] = &[
 ];
 
 const COLORS: &[&str] = &[
-    "src/colors/amber.css",
-    "src/colors/blue.css",
-    "src/colors/blueGrey.css",
-    "src/colors/brown.css",
-    "src/colors/cyan.css",
-    "src/colors/deepOrange.css",
-    "src/colors/deepPurple.css",
-    "src/colors/green.css",
-    "src/colors/grey.css",
-    "src/colors/indigo.css",
-    "src/colors/lightBlue.css",
-    "src/colors/lightGreen.css",
-    "src/colors/lime.css",
-    "src/colors/orange.css",
-    "src/colors/pink.css",
-    "src/colors/purple.css",
-    "src/colors/red.css",
-    "src/colors/teal.css",
-    "src/colors/yellow.css",
+    "src/colors/amber.scss",
+    "src/colors/blue.scss",
+    "src/colors/blueGrey.scss",
+    "src/colors/brown.scss",
+    "src/colors/cyan.scss",
+    "src/colors/deepOrange.scss",
+    "src/colors/deepPurple.scss",
+    "src/colors/green.scss",
+    "src/colors/grey.scss",
+    "src/colors/indigo.scss",
+    "src/colors/lightBlue.scss",
+    "src/colors/lightGreen.scss",
+    "src/colors/lime.scss",
+    "src/colors/orange.scss",
+    "src/colors/pink.scss",
+    "src/colors/purple.scss",
+    "src/colors/red.scss",
+    "src/colors/teal.scss",
+    "src/colors/yellow.scss",
 ];
 
 fn main() -> Result<(), Box<dyn Error>> {
@@ -125,6 +125,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         "src/themes/export-palette.scss",
         "src/themes/dark-components.scss",
     ];
+    dark_files.extend_from_slice(COLORS);
     dark_files.extend_from_slice(COMMON_STYLES);
     merge_themes(&dark_files, "dark-theme.scss")?;
     compile_scss("dark-theme.scss", "dark-theme.css")?;
@@ -134,11 +135,12 @@ fn main() -> Result<(), Box<dyn Error>> {
         "src/themes/export-palette.scss",
         "src/themes/light-components.scss",
     ];
+    light_files.extend_from_slice(COLORS);
     light_files.extend_from_slice(COMMON_STYLES);
     merge_themes(&light_files, "light-theme.scss")?;
     compile_scss("light-theme.scss", "light-theme.css")?;
 
-    merge_themes(COLORS, "color-schemes.css")?;
+    //merge_themes(COLORS, "color-schemes.css")?;
 
     Ok(())
 }

@@ -13,6 +13,6 @@ pub const fn color_class(color: &Color) -> &'static str {
         Color::Warning => "ZuButton-colorWarning",
         Color::Error => "ZuButton-colorError",
         Color::Inherit => "ZuButton-colorInherit",
-        _ => "",
+        Color::Custom(_) => "",
     }
 }

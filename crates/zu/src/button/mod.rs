@@ -97,9 +97,9 @@ pub fn button(props: &Props) -> Html {
         }
     );
 
-    let label_cls = "ZuButton-label";
-    let start_icon_cls = classes!("ZuButton-startIcon", props.size.icon_class(),);
-    let end_icon_cls = classes!("ZuButton-endIcon", props.size.icon_class(),);
+    //let label_cls = "ZuButton-label";
+    //let start_icon_cls = classes!("ZuButton-startIcon", props.size.icon_class(),);
+    //let end_icon_cls = classes!("ZuButton-endIcon", props.size.icon_class(),);
 
     html! {
         <ButtonBase classes={root_cls}>
