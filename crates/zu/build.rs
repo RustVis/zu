@@ -55,6 +55,7 @@ fn compile_scss(input_name: &str, output_name: &str) -> Result<(), Box<dyn Error
 }
 
 const COMMON_STYLES: &[&str] = &[
+    "src/themes/_functions.scss",
     "src/themes/border-radius.scss",
     "src/themes/breakpoints.scss",
     "src/themes/components-base.scss",
