@@ -2,6 +2,8 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+use crate::styles::CssClass;
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Variant {
     Contained,
@@ -12,5 +14,15 @@ pub enum Variant {
 impl Default for Variant {
     fn default() -> Self {
         Self::Text
+    }
+}
+
+impl CssClass for Variant {
+    fn css_class(&self) -> &'static str {
+        match self {
+            Self::Contained => "ZuButton-contained",
+            Self::Outlined => "ZuButton-outlined",
+            Self::Text => "ZuButton-text",
+        }
     }
 }

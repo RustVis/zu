@@ -2,29 +2,161 @@
 
 // Styles applied to the root element.
 .ZuButton-root {
+  min-width: 64px;
+  padding: 6px 16px;
+  transition: background-color var(--zu-duration-short) var(--zu-easing-easeInOut) 0ms,
+  box-shadow var(--zu-duration-short) var(--zu-easing-easeInOut) 0ms,
+  border-color var(--zu-duration-short) var(--zu-easing-easeInOut) 0ms,
+  color var(--zu-duration-short) var(--zu-easing-easeInOut) 0ms;
+
+  border-radius: var(--zu-shape-border-radius);
+
+  // button typography
+  font-family: var(--zu-typography-button-fontFamily);
+  font-weight: var(--zu-typography-button-fontWeight);
+  font-size: var(--zu-typography-button-fontSize);
+  line-height: var(--zu-typography-button-lineHeight);
+  letter-spacing: var(--zu-typography-button-letterSpacing);
+
+  &:hover {
+    text-decoration: none;
+
+    background-color: #{change-color($zu-palette-text-primary, $alpha: $zu-palette-action-hoverOpacity)};
+
+    // Reset on touch devices, it doesn't add specificity
+    @media (hover: none) {
+      background-color: transparent;
+    }
+
+    &.ZuButton-text {
+      &.ZuButton-primary {
+        background-color: #{change-color($zu-palette-primary-main, $alpha: $zu-palette-action-hoverOpacity)};
+      }
+
+      &.ZuButton-secondary {
+        background-color: #{change-color($zu-palette-secondary-main, $alpha: $zu-palette-action-hoverOpacity)};
+      }
+
+      &.ZuButton-success {
+        background-color: #{change-color($zu-palette-success-main, $alpha: $zu-palette-action-hoverOpacity)};
+      }
+
+      &.ZuButton-info {
+        background-color: #{change-color($zu-palette-info-main, $alpha: $zu-palette-action-hoverOpacity)};
+      }
+
+      &.ZuButton-warning {
+        background-color: #{change-color($zu-palette-warning-main, $alpha: $zu-palette-action-hoverOpacity)};
+      }
+
+      &.ZuButton-error {
+        background-color: #{change-color($zu-palette-error-main, $alpha: $zu-palette-action-hoverOpacity)};
+      }
+    }
+
+    &.ZuButton-contained {
+      // TODO(Shaohua): Support dark theme
+      background-color: var(--zu-colors-grey-100);
+      box-shadow: var(--zu-shadow-4);
+
+      // Reset on touch devices, it doesn't add specificity
+      @media (hover: none) {
+        box-shadow: var(--zu-shadow-2);
+        backgroundColor: var(--zu-colors-grey-300);
+      }
+
+      &.ZuButton-primary {
+        background-color: var(--zu-palette-primary-dark);
+
+        // Reset on touch devices, it doesn't add specificity
+        @media (hover: none) {
+          background-color: var(--zu-palette-primary-main);
+        }
+      }
+
+      &.ZuButton-secondary {
+        background-color: var(--zu-palette-secondary-dark);
+
+        // Reset on touch devices, it doesn't add specificity
+        @media (hover: none) {
+          background-color: var(--zu-palette-secondary-main);
+        }
+      }
+
+      &.ZuButton-success {
+        background-color: var(--zu-palette-success-dark);
+
+        // Reset on touch devices, it doesn't add specificity
+        @media (hover: none) {
+          background-color: var(--zu-palette-success-main);
+        }
+      }
+
+      &.ZuButton-info {
+        background-color: var(--zu-palette-info-dark);
+
+        // Reset on touch devices, it doesn't add specificity
+        @media (hover: none) {
+          background-color: var(--zu-palette-info-main);
+        }
+      }
+
+      &.ZuButton-warning {
+        background-color: var(--zu-palette-warning-dark);
+
+        // Reset on touch devices, it doesn't add specificity
+        @media (hover: none) {
+          background-color: var(--zu-palette-warning-main);
+        }
+      }
+
+      &.ZuButton-error {
+        background-color: var(--zu-palette-error-dark);
+
+        // Reset on touch devices, it doesn't add specificity
+        @media (hover: none) {
+          background-color: var(--zu-palette-error-main);
+        }
+      }
+    }
+  } // &:hover
+
+  &:active {
+    &.ZuButton-contained {
+      box-shadow: var(--zu-shadow-8);
+    }
+  }
 }
 
 // Styles applied to the root element if variant="text".
 .ZuButton-text {
+  padding: 6px 8px;
+
   &.ZuButton-inherit {
   }
 
   &.ZuButton-primary {
+    color: var(--zu-palette-primary-main);
   }
 
   &.ZuButton-secondary {
+    color: var(--zu-palette-secondary-main);
   }
 
   &.ZuButton-success {
+    color: var(--zu-palette-success-main);
   }
 
   &.ZuButton-info {
+    color: var(--zu-palette-info-main);
   }
 
   &.ZuButton-warning {
+    color: var(--zu-palette-warning-main);
   }
 
   &.ZuButton-error {
+    color: var(--zu-palette-error-main);
   }
 
   &.ZuButton-sizeSmall {
@@ -39,10 +171,15 @@
 
 // Styles applied to the root element if variant="outlined".
 .ZuButton-outlined {
+  padding: 5px 15px;
+  border: 1px solid currentColor;
+
   &.ZuButton-inherit {
   }
 
   &.ZuButton-primary {
+    color: var(--zu-palette-primary-main);
+    border: 1px solid #{change-color($zu-palette-primary-main, $alpha: 0.5)};
   }
 
   &.ZuButton-secondary {
@@ -72,25 +209,42 @@
 
 // Styles applied to the root element if variant="contained".
 .ZuButton-contained {
+  // TODO(Shaohua): Convert to contrastText
+  color: getContrastText($zu-color-grey-300);
+  background-color: var(--zu-color-grey-300);
+  box-shadow: var(--zu-shadow-2);
+
   &.ZuButton-inherit {
   }
 
   &.ZuButton-primary {
+    color: var(--zu-palette-primary-contrastText);
+    background-color: var(--zu-palette-primary-main);
   }
 
   &.ZuButton-secondary {
+    color: var(--zu-palette-secondary-contrastText);
+    background-color: var(--zu-palette-secondary-main);
   }
 
   &.ZuButton-success {
+    color: var(--zu-palette-success-contrastText);
+    background-color: var(--zu-palette-success-main);
   }
 
   &.ZuButton-info {
+    color: var(--zu-palette-info-contrastText);
+    background-color: var(--zu-palette-info-main);
   }
 
   &.ZuButton-warning {
+    color: var(--zu-palette-warning-contrastText);
+    background-color: var(--zu-palette-warning-main);
   }
 
   &.ZuButton-error {
+    color: var(--zu-palette-error-contrastText);
+    background-color: var(--zu-palette-error-main);
   }
 
   &.ZuButton-sizeSmall {
@@ -105,22 +259,60 @@
 
 // Styles applied to the root element if disableElevation={true}.
 .ZuButton-disableElevation {
+  box-shadow: none;
+
+  &:hover,
+  &.ZuButton-focusVisible,
+  &:active,
+  &.ZuButton-disabled {
+    box-shadow: none;
+  }
 }
 
 // State class applied to the ButtonBase root element if the button is keyboard focused.
 .ZuButton-focusVisible {
+  &.ZuButton-contained {
+    box-shadow: var(--zu-shadow-6);
+  }
 }
 
 // State class applied to the root element if disabled={true}.
 .ZuButton-disabled {
+  color: var(--zu-palette-action-disabled);
+
+  &.ZuButton-outlined {
+    border: 1px solid var(--zu-palette-action-disabledBackground);
+  }
+
+  &.ZuButton-contained {
+    color: var(--zu-palette-action-disabled);
+    box-shadow: var(--zu-shadow-0);
+    background-color: var(--zu-palette-action-disabledBackground);
+  }
 }
 
 // Styles applied to the root element if color="inherit".
 .ZuButton-inherit {
+  color: inherit;
+  border-color: currentColor;
 }
 
 // Styles applied to the root element if size="small".
 .ZuButton-sizeSmall {
+  &.ZuButton-text {
+    padding: 4px 5px;
+    font-size: 13px;
+  }
+
+  &.ZuButton-outlined {
+    padding: 3px 9px;
+    font-size: 13px;
+  }
+
+  &.ZuButton-contained {
+    padding: 4px 10px;
+    font-size: 13px;
+  }
 }
 
 // Styles applied to the root element if size="medium".
@@ -129,10 +321,25 @@
 
 // Styles applied to the root element if size="large".
 .ZuButton-sizeLarge {
+  &.ZuButton-text {
+    padding: 8px 11px;
+    font-size: 15px;
+  }
+
+  &.ZuButton-outlined {
+    padding: 7px 21px;
+    font-size: 15px;
+  }
+
+  &.ZuButton-contained {
+    padding: 8px 22px;
+    font-size: 15px;
+  }
 }
 
 // Styles applied to the root element if fullWidth={true}.
 .ZuButton-fullWidth {
+  width: 100%;
 }
 
 // Styles applied to the startIcon element if supplied.
@@ -145,12 +352,21 @@
 
 // Styles applied to the icon element if supplied and size="small".
 .ZuButton-iconSizeSmall {
+  & > *:nth-of-type(1) {
+    font-size: 18px;
+  }
 }
 
 // Styles applied to the icon element if supplied and size="medium".
 .ZuButton-iconSizeMedium {
+  & > *:nth-of-type(1) {
+    font-size: 20px;
+  }
 }
 
 // Styles applied to the icon element if supplied and size="large".
 .ZuButton-iconSizeLarge {
+  & > *:nth-of-type(1) {
+    font-size: 22px;
+  }
 }

@@ -2,6 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+mod color;
 mod size;
 mod variant;
 
@@ -9,7 +10,8 @@ use yew::{
     classes, function_component, html, virtual_dom::VNode, AttrValue, Children, Html, Properties,
 };
 
-use crate::styles::color::Color;
+use crate::button_base::ButtonBase;
+use crate::styles::{color::Color, CssClass};
 
 // Re-export
 pub use size::Size;
@@ -78,10 +80,30 @@ pub struct Props {
 
 #[function_component(Button)]
 pub fn button(props: &Props) -> Html {
-    let root_cls = classes!("ZuButton-root");
+    let root_cls = classes!(
+        "ZuButton-root",
+        props.variant.css_class(),
+        color::color_class(&props.color),
+        props.size.css_class(),
+        if props.disable_elevation {
+            "ZuButton-disableElevation"
+        } else {
+            ""
+        },
+        if props.full_width {
+            "ZuButton-fullWidth"
+        } else {
+            ""
+        }
+    );
+
+    let label_cls = "ZuButton-label";
+    let start_icon_cls = classes!("ZuButton-startIcon", props.size.icon_class(),);
+    let end_icon_cls = classes!("ZuButton-endIcon", props.size.icon_class(),);
+
     html! {
-        <button class={root_cls}>
+        <ButtonBase classes={root_cls}>
             {for props.children.iter()}
-        </button>
+        </ButtonBase>
     }
 }
