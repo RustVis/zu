@@ -4,8 +4,8 @@
 
 use yew::{function_component, Html, html};
 
-#[function_component(MaterialIconPage)]
-pub fn material_icon_page() -> Html {
+#[function_component(MaterialIconsPage)]
+pub fn material_icons_page() -> Html {
     // TODO(Shaohua): Add icon list.
 
     html!{

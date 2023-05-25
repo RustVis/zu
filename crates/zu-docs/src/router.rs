@@ -18,7 +18,7 @@ use crate::views::progress_page::ProgressPage;
 use crate::views::skeleton_page::SkeletonPage;
 use crate::views::stack_page::StackPage;
 use crate::views::typography_page::TypographyPage;
-use crate::views::material_icon_page::MaterialIconPage;
+use crate::views::material_icons_page::MaterialIconsPage;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Routable)]
 pub enum Route {
@@ -43,8 +43,8 @@ pub enum Route {
     #[at("/divider")]
     Divider,
 
-    #[at("/material-icon")]
-    MaterialIcon,
+    #[at("/material-icons")]
+    MaterialIcons,
 
     #[at("/icons")]
     Icons,
@@ -78,7 +78,7 @@ pub fn switch_route(routes: Route) -> Html {
         Route::Container => html! {<ContainerPage />},
         Route::Divider => html! {<DividerPage />},
         Route::Icons => html! {<IconsPage />},
-        Route::MaterialIcon => html!{ <MaterialIconPage />},
+        Route::MaterialIcons => html!{ <MaterialIconsPage />},
         Route::Paper => html! {<PaperPage />},
         Route::Progress => html! {<ProgressPage />},
         Route::Skeleton => html! {<SkeletonPage />},
