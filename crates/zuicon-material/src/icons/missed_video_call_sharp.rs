@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(MissedVideoCallSharp)]
 pub fn missed_video_call_sharp(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("MissedVideoCallSharp"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="MissedVideoCallSharp"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M0 0h24v24H0V0z" fill="none"/><path d="M17 10.5V6H3v12h14v-4.5l4 4v-11l-4 4zM10 15l-3.89-3.89v2.55H5V9.22h4.44v1.11H6.89l3.11 3.1 4.22-4.22.78.79-5 5z"/>
         </SvgIcon>
     }

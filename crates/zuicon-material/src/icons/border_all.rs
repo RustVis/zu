@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(BorderAll)]
 pub fn border_all(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("BorderAll"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="BorderAll"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M0 0h24v24H0z" fill="none"/><path d="M3 3v18h18V3H3zm8 16H5v-6h6v6zm0-8H5V5h6v6zm8 8h-6v-6h6v6zm0-8h-6V5h6v6z"/>
         </SvgIcon>
     }

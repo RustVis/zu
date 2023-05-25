@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(CropSharp)]
 pub fn crop_sharp(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("CropSharp"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="CropSharp"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M0 0h24v24H0V0z" fill="none"/><path d="M17 15h2V5H9v2h8v8zM7 17V1H5v4H1v2h4v12h12v4h2v-4h4v-2H7z"/>
         </SvgIcon>
     }

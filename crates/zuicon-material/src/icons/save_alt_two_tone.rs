@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(SaveAltTwoTone)]
 pub fn save_alt_two_tone(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("SaveAltTwoTone"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="SaveAltTwoTone"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2v9.67z"/>
         </SvgIcon>
     }

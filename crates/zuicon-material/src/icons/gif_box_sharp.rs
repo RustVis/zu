@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(GifBoxSharp)]
 pub fn gif_box_sharp(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("GifBoxSharp"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="GifBoxSharp"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M21,3H3v18h18V3z M9.5,13v-1h1v2h-3v-4h3v1h-2v2H9.5z M12.5,14h-1v-4h1V14z M16.5,11h-2v0.5H16v1h-1.5V14h-1v-4h3V11z"/>
         </SvgIcon>
     }

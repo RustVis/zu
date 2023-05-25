@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(AutoAwesomeMosaicSharp)]
 pub fn auto_awesome_mosaic_sharp(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("AutoAwesomeMosaicSharp"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="AutoAwesomeMosaicSharp"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M3,21h8V3L3,3V21z M21,3h-8v8h8V3z M13,21h8v-8h-8V21z"/>
         </SvgIcon>
     }

@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(AutoFixOffOutlined)]
 pub fn auto_fix_off_outlined(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("AutoFixOffOutlined"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="AutoFixOffOutlined"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M14.17,8.42l1.41,1.41l-1.46,1.46l1.41,1.41l2.17-2.17c0.39-0.39,0.39-1.02,0-1.41l-2.83-2.83C14.68,6.1,14.43,6,14.17,6 c-0.26,0-0.51,0.1-0.71,0.29l-2.17,2.17l1.41,1.41L14.17,8.42z"/><path d="M1.39,4.22l7.07,7.07l-6.17,6.17c-0.39,0.39-0.39,1.02,0,1.41l2.83,2.83C5.32,21.9,5.57,22,5.83,22s0.51-0.1,0.71-0.29 l6.17-6.17l7.07,7.07l1.41-1.41L2.81,2.81L1.39,4.22z M11.29,14.12l-5.46,5.46l-1.41-1.41l5.46-5.46L11.29,14.12z"/>
         </SvgIcon>
     }

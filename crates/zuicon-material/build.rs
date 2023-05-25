@@ -289,10 +289,10 @@ pub use {module_name}::{node_name};
 
 fn run() -> Result<(), Box<dyn Error>> {
     // 1. Download icon index
-    //let icons_index = download_index()?;
+    let icons_index = download_index()?;
 
     // 2. Download icons
-    //let _count = download_icons(&icons_index)?;
+    let _count = download_icons(&icons_index)?;
 
     // 3. Convert to SvgIcon components.
     generate_components(SVG_DIR)?;
@@ -307,6 +307,4 @@ fn main() {
     if need_update() {
         run().unwrap();
     }
-    //let mut module_names = vec![];
-    //build_icons(SVG_DIR, &mut module_names).unwrap();
 }

@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(OneKSharp)]
 pub fn one_k_sharp(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("OneKSharp"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="OneKSharp"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M21,3H3v18h18V3z M10,15H8.5v-4.5H7V9h3V15z M17,15h-1.75l-1.75-2.25V15H12V9h1.5v2.25L15.25,9H17l-2.25,3L17,15z"/>
         </SvgIcon>
     }

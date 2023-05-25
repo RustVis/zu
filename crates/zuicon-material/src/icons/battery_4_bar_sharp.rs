@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(Battery4BarSharp)]
 pub fn battery_4_bar_sharp(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("Battery4BarSharp"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="Battery4BarSharp"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M17,4v18H7V4h3V2h4v2H17z M15,6H9v6h6V6z"/>
         </SvgIcon>
     }

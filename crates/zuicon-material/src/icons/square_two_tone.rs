@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(SquareTwoTone)]
 pub fn square_two_tone(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("SquareTwoTone"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="SquareTwoTone"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M3,3v18h18V3H3z M19,19H5V5h14V19z"/>
         </SvgIcon>
     }

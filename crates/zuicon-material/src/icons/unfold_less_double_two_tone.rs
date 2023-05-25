@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(UnfoldLessDoubleTwoTone)]
 pub fn unfold_less_double_two_tone(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("UnfoldLessDoubleTwoTone"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="UnfoldLessDoubleTwoTone"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             
         </SvgIcon>
     }

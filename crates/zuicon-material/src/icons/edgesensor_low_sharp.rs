@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(EdgesensorLowSharp)]
 pub fn edgesensor_low_sharp(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("EdgesensorLowSharp"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="EdgesensorLowSharp"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M0,0h24v24H0V0z" fill="none"/><path d="M2,7h2v7H2V7z M20,10h2v7h-2V10z M6,2v20h12V2H6z M16,17H8V7h8V17z"/>
         </SvgIcon>
     }

@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(DomainVerificationSharp)]
 pub fn domain_verification_sharp(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("DomainVerificationSharp"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="DomainVerificationSharp"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M3,4v16h18V4H3z M19,18H5V8h14V18z"/>
         </SvgIcon>
     }

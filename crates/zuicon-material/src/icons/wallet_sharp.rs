@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(WalletSharp)]
 pub fn wallet_sharp(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("WalletSharp"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="WalletSharp"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M22,4H2v16h20V4z M15.75,14.09L4,11.22V10h16v0.53L15.75,14.09z M4,6h16v2H4V6z"/>
         </SvgIcon>
     }

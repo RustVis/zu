@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(VideoCameraBackSharp)]
 pub fn video_camera_back_sharp(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("VideoCameraBackSharp"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="VideoCameraBackSharp"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M18,10.48V4H2v16h16v-6.48l4,3.98v-11L18,10.48z M5,16l2.38-3.17L9,15l2.62-3.5L15,16H5z"/>
         </SvgIcon>
     }

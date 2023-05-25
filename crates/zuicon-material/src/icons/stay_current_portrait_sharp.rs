@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(StayCurrentPortraitSharp)]
 pub fn stay_current_portrait_sharp(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("StayCurrentPortraitSharp"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="StayCurrentPortraitSharp"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 1.01L5.01 1v22H19V1.01zM17 19H7V5h10v14z"/>
         </SvgIcon>
     }

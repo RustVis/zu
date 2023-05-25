@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(FastForwardSharp)]
 pub fn fast_forward_sharp(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("FastForwardSharp"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="FastForwardSharp"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M4,18l8.5-6L4,6V18z M13,6v12l8.5-6L13,6z"/>
         </SvgIcon>
     }

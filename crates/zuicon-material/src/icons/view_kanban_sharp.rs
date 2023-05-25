@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(ViewKanbanSharp)]
 pub fn view_kanban_sharp(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("ViewKanbanSharp"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="ViewKanbanSharp"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M21,3H3v18h18V3z M9,17H7V7h2V17z M13,12h-2V7h2V12z M17,15h-2V7h2V15z"/>
         </SvgIcon>
     }

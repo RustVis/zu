@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(FolderDeleteSharp)]
 pub fn folder_delete_sharp(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("FolderDeleteSharp"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="FolderDeleteSharp"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M22,6v14H2V4h8l2,2H22z M16.5,10V9h-2v1H12v1.5h1V17h5v-5.5h1V10H16.5z M16.5,15.5h-2v-4h2V15.5z"/>
         </SvgIcon>
     }

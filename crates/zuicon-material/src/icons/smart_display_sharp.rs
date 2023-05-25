@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(SmartDisplaySharp)]
 pub fn smart_display_sharp(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("SmartDisplaySharp"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="SmartDisplaySharp"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M22,4H2v16h20V4z M9.5,16.5v-9l7,4.5L9.5,16.5z"/>
         </SvgIcon>
     }

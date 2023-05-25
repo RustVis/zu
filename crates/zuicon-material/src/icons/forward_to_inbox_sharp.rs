@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(ForwardToInboxSharp)]
 pub fn forward_to_inbox_sharp(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("ForwardToInboxSharp"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="ForwardToInboxSharp"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M22,4H2v16h11v-2H4V8l8,5l8-5v5h2V4z M12,11L4,6h16L12,11z M19,15l4,4l-4,4v-3h-4v-2h4V15z"/>
         </SvgIcon>
     }

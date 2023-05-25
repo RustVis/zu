@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(RMobiledataSharp)]
 pub fn r_mobiledata_sharp(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("RMobiledataSharp"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="RMobiledataSharp"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M0,0h24v24H0V0z" fill="none"/><path d="M7.8,7.2L9,10H7L5.87,7.33H4V10H2V2h7v5.2H7.8z M7,4H4v1.33h3V4z"/>
         </SvgIcon>
     }

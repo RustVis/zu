@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(ViewCozySharp)]
 pub fn view_cozy_sharp(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("ViewCozySharp"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="ViewCozySharp"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M22,4H2v16h20V4z M11.25,16.75h-4v-4h4V16.75z M11.25,11.25h-4v-4h4V11.25z M16.75,16.75h-4v-4h4V16.75z M16.75,11.25h-4 v-4h4V11.25z"/>
         </SvgIcon>
     }

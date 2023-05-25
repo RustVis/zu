@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(WidthNormalSharp)]
 pub fn width_normal_sharp(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("WidthNormalSharp"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="WidthNormalSharp"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M22,4H2v16h20V4z M4,6h4v12H4V6z M20,18h-4V6h4V18z"/>
         </SvgIcon>
     }

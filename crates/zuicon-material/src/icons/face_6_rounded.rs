@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(Face6Rounded)]
 pub fn face_6_rounded(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("Face6Rounded"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="Face6Rounded"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.41,0-8-3.59-8-8c0-0.01,0-0.02,0-0.03 c2.31-0.22,3.43-1.59,4.34-3.41C8.51,8.21,8.85,8,9.24,8h5.53c0.38,0,0.72,0.21,0.89,0.55c0.9,1.8,1.99,3.19,4.34,3.41 c0,0.01,0,0.02,0,0.03C20,16.41,16.41,20,12,20z"/>
         </SvgIcon>
     }

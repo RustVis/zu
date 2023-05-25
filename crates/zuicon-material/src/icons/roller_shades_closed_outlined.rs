@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(RollerShadesClosedOutlined)]
 pub fn roller_shades_closed_outlined(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("RollerShadesClosedOutlined"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="RollerShadesClosedOutlined"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M20,19V3H4v16H2v2h8.25c0,0.97,0.78,1.75,1.75,1.75s1.75-0.78,1.75-1.75H22v-2H20z M18,5v10H6V5H18z M6,19v-2h5v2H6z M13,19v-2h5v2H13z"/>
         </SvgIcon>
     }

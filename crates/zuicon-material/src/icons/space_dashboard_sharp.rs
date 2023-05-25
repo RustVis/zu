@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(SpaceDashboardSharp)]
 pub fn space_dashboard_sharp(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("SpaceDashboardSharp"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="SpaceDashboardSharp"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M11,21H3V3h8V21z M13,21h8v-9h-8V21z M21,10V3h-8v7H21z"/>
         </SvgIcon>
     }

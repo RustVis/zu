@@ -9,16 +9,13 @@ use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(ViewWeekSharp)]
 pub fn view_week_sharp(props: &Props) -> Html {
+    let new_props = Props{
+        icon: From::from("ViewWeekSharp"),
+        ..props.clone()
+    };
+
     html! {
-        <SvgIcon classes={props.classes.clone()}
-            color={props.color}
-            font_size={props.font_size}
-            html_color={props.html_color.clone()}
-            style={props.style.clone()}
-            title_access={props.title_access.clone()}
-            icon="ViewWeekSharp"
-            view_box={props.view_box.clone()}
-            >
+        <SvgIcon ..new_props>
             <path d="M7.33,20H2V4h5.33V20z M22,20V4h-5.33v16H22z M14.67,20V4H9.33v16H14.67z"/>
         </SvgIcon>
     }
