@@ -7,10 +7,6 @@ use zu_util::prop;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
-    /// If true, the component is shown.
-    #[prop_or(false)]
-    pub open: bool,
-
     #[prop_or_default]
     pub children: Children,
 
@@ -23,6 +19,10 @@ pub struct Props {
     /// If true, the backdrop is invisible.
     #[prop_or(false)]
     pub invisible: bool,
+
+    /// If true, the component is shown.
+    #[prop_or(false)]
+    pub open: bool,
 
     #[prop_or_default]
     pub style: AttrValue,

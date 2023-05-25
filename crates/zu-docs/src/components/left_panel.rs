@@ -40,6 +40,11 @@ pub fn left_panel() -> Html {
                     </Link<Route>>
                 </li>
                 <li class="nav-item">
+                    <Link<Route> to={Route::Backdrop} classes={link_cls(Route::Backdrop)}>
+                    {"Backdrop"}
+                    </Link<Route>>
+                </li>
+                <li class="nav-item">
                     <Link<Route> to={Route::Badge} classes={link_cls(Route::Badge)}>
                     {"Badge"}
                     </Link<Route>>
