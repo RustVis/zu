@@ -8,7 +8,7 @@ use yew::{function_component, html, Html};
 use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component({NODE_NAME})]
-pub fn abc(props: &Props) -> Html {
+pub fn {MODULE_NAME}(props: &Props) -> Html {
     html! {
         <SvgIcon classes={props.classes.clone()}
             color={props.color}
@@ -16,7 +16,7 @@ pub fn abc(props: &Props) -> Html {
             html_color={props.html_color.clone()}
             style={props.style.clone()}
             title_access={props.title_access.clone()}
-            icon="{ICON}"
+            icon="{ICON_NAME}"
             view_box={props.view_box.clone()}
             >
             {PATH_DATA}

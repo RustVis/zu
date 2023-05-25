@@ -173,8 +173,9 @@ fn build_icons(
         let svg_content = fs::read_to_string(&path)?;
         let path_data = get_svg_path_data(&svg_content)?;
         let rs_content = TEMPLATE_FILE
+            .replace("{MODULE_NAME}", &module_name)
             .replace("{NODE_NAME}", &node_name)
-            .replace("{ICON}", &node_name)
+            .replace("{ICON_NAME}", &node_name)
             .replace("{PATH_DATA}", &path_data);
 
         fs::write(rs_filepath, rs_content).unwrap();
@@ -231,7 +232,7 @@ fn run() -> Result<(), Box<dyn Error>> {
 }
 
 fn main() {
-    // Check ZUI_CON_UPDATE=1 environment.
+    // Check ZU_ICON_UPDATE=1 environment.
     if need_update() {
         run().unwrap();
     }
