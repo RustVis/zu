@@ -7,6 +7,8 @@
 #![allow(dead_code)]
 
 use inflections::Inflect;
+use lazy_static::lazy_static;
+use regex::Regex;
 use serde::Deserialize;
 use std::collections::HashMap;
 use std::error::Error;
@@ -130,12 +132,82 @@ fn download_icons(index: &IconsIndex) -> Result<i32, Box<dyn Error>> {
 
 fn map_filename(name: &str) -> String {
     let name: String = name.replace("_24px", "");
-    let names = vec!["box", "option", "type", "try", "loop", "html"];
-    if names.contains(&name.as_str()) || name.chars().next().unwrap().is_ascii_digit() {
-        format!("icon-{name}")
-    } else {
-        name
+
+    const KEYWORD_NAMES: &[&str] = &["box", "try", "loop", "html"];
+    //if NAMES.contains(&name.as_str()) || name.chars().next().unwrap().is_ascii_digit() {
+    if KEYWORD_NAMES.contains(&name.as_str()) {
+        return format!("icon-{name}");
     }
+
+    const NAME_MAP: &[(&str, &str)] = &[
+        ("1x", "TimesOne"),
+        ("3d_", "ThreeD_"),
+        ("3g", "ThreeG"),
+        ("3p", "ThreeP"),
+        ("30fps", "ThirtyFps"),
+        ("4g", "FourG"),
+        ("5g", "FiveG"),
+        ("60fps", "SixtyFps"),
+        ("360", "ThreeSixty"),
+    ];
+    for (old, new) in NAME_MAP {
+        if name.starts_with(old) {
+            return name.replace(old, new);
+        }
+    }
+
+    const SINGLE_DIGIT_NUMBERS: &[&str] = &[
+        "Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine",
+    ];
+    const TWO_DIGIT_NUMBERS1: &[&str] = &[
+        "Ten",
+        "Eleven",
+        "Twelve",
+        "Thirteen",
+        "Fourteen",
+        "Fifteen",
+        "Sixteen",
+        "Seventeen",
+        "Eighteen",
+        "Nineteen",
+    ];
+    const TWO_DIGIT_NUMBERS2: &[&str] = &[
+        "Twenty", "Thirty", "Fourty", "Fifty", "Sxity", "Seventy", "Eighty", "Ninety",
+    ];
+    lazy_static! {
+        static ref RE: Regex = Regex::new(r"^(\d+)([km]?)").unwrap();
+    }
+
+    if let Some(cap) = RE.captures(&name) {
+        let integer = cap[1].parse::<usize>().unwrap();
+        let m = cap.get(0).unwrap();
+
+        let digits = if integer < 10 {
+            SINGLE_DIGIT_NUMBERS[integer].to_owned()
+        } else if integer < 20 {
+            TWO_DIGIT_NUMBERS1[integer - 10].to_owned()
+        } else if integer < 100 {
+            let quotient = integer / 10;
+            let remainder = integer % 10;
+            format!(
+                "{}{}",
+                TWO_DIGIT_NUMBERS2[quotient], SINGLE_DIGIT_NUMBERS[remainder]
+            )
+        } else {
+            panic!("Integer out of range");
+        };
+
+        let suffix = if "k" == &cap[2] {
+            "K"
+        } else if "m" == &cap[2] {
+            "M"
+        } else {
+            ""
+        };
+        return format!("{digits}{suffix}{}", &name[m.end()..]);
+    }
+
+    name
 }
 
 fn build_icons(
@@ -161,7 +233,6 @@ fn build_icons(
         let stem = path.file_stem().unwrap();
         let stem_str = stem.to_str().unwrap();
         let stem_str = map_filename(stem_str);
-        //let data_name = &stem_str;
         let node_name = stem_str.to_pascal_case();
         let module_name = stem_str.to_snake_case();
         let mut rs_filepath = PathBuf::new();
@@ -218,10 +289,10 @@ pub use {module_name}::{node_name};
 
 fn run() -> Result<(), Box<dyn Error>> {
     // 1. Download icon index
-    let icons_index = download_index()?;
+    //let icons_index = download_index()?;
 
     // 2. Download icons
-    let _count = download_icons(&icons_index)?;
+    //let _count = download_icons(&icons_index)?;
 
     // 3. Convert to SvgIcon components.
     generate_components(SVG_DIR)?;
@@ -236,4 +307,6 @@ fn main() {
     if need_update() {
         run().unwrap();
     }
+    //let mut module_names = vec![];
+    //build_icons(SVG_DIR, &mut module_names).unwrap();
 }
