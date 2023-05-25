@@ -27,6 +27,9 @@ pub struct Props {
     pub classes: AttrValue,
 
     #[prop_or_default]
+    pub component: AttrValue,
+
+    #[prop_or_default]
     pub style: AttrValue,
 
     #[prop_or(ELEVATION_DEFAULT)]
@@ -62,9 +65,16 @@ pub fn paper(props: &Props) -> Html {
         }
     );
 
+    let component = if props.component.is_empty() {
+        "div"
+    } else {
+        props.component.as_str()
+    };
+
     html! {
-        <div class={cls} style={attr_optional(&props.style)}>
+        <@{component.to_owned()} class={cls}
+            style={attr_optional(&props.style)}>
             {for props.children.iter()}
-        </div>
+        </@>
     }
 }

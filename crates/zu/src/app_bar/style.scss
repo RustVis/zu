@@ -1,0 +1,73 @@
+
+/* Styles for AppBar */
+
+// Styles applied to the root element.
+.ZuAppBar-root {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 100%;
+
+  box-sizing: border-box; // Prevent padding issue with the Modal and fixed positioned AppBar.
+}
+
+// Styles applied to the root element if position="fixed".
+.ZuAppBar-positionFixed {
+  position: sticky;
+  top: 0;
+  left: auto;
+  right: 0;
+  z-index: var(--zu-zIndex-appBar);
+}
+
+// Styles applied to the root element if position="absolute".
+.ZuAppBar-positionAbsolute {
+
+}
+
+// Styles applied to the root element if position="sticky".
+.ZuAppBar-positionSticky {
+
+}
+
+// Styles applied to the root element if position="static".
+.ZuAppBar-positionStatic {
+  position: static;
+}
+
+// Styles applied to the root element if position="relative".
+.ZuAppBar-positionRelative {
+  position: relative;
+}
+
+// Styles applied to the root element if color="default".
+.ZuAppBar-colorDefault {
+  // TODO(Shaohua): Add a theme variable
+  background-color: var(--zu-colors-grey-100);
+  color: getContrastText($zu-colors-grey-100);
+}
+
+// Styles applied to the root element if color="primary".
+.ZuAppBar-colorPrimary {
+  background-color: var(--zu-palette-primary-main);
+  color: var(--zu-palette-primary-contrastText);
+}
+
+// Styles applied to the root element if color="secondary".
+.ZuAppBar-colorSecondary {
+  background-color: var(--zu-palette-secondary-main);
+  color: var(--zu-palette-secondary-contrastText);
+}
+
+// Styles applied to the root element if color="inherit".
+.ZuAppBar-colorInherit {
+  color: inherit;
+}
+
+// Styles applied to the root element if color="transparent".
+.ZuAppBar-colorTransparent {
+  // TODO(Shaohua): Support dark theme.
+  background-color: transparent;
+  background-image: none;
+  color: inherit;
+}
