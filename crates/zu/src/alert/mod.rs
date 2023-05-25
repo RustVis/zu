@@ -5,9 +5,7 @@
 mod severity;
 mod variant;
 
-use yew::{
-    classes, function_component, html, virtual_dom::VNode, AttrValue, Children, Html, Properties,
-};
+use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
 use crate::paper::Paper;
 use crate::styles::{
@@ -26,7 +24,7 @@ pub struct Props {
     ///
     ///  It renders after the message, at the end of the alert.
     #[prop_or_default]
-    pub action: Option<VNode>,
+    pub action: Option<Html>,
 
     #[prop_or_default]
     pub children: Children,
@@ -43,7 +41,7 @@ pub struct Props {
 
     /// Override the icon displayed before the children.
     #[prop_or_default]
-    pub icon: Option<VNode>,
+    pub icon: Option<Html>,
 
     // TODO(Shaohua): Add onClose callback.
     /// The ARIA role attribute of the element.

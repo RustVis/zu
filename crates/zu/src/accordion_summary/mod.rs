@@ -2,7 +2,6 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::virtual_dom::VNode;
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
 #[derive(Debug, Clone, PartialEq, Properties)]
@@ -25,7 +24,7 @@ pub struct Props {
 
     /// The icon to display as the expand indicator.
     #[prop_or_default]
-    pub expand_icon: Option<VNode>,
+    pub expand_icon: Option<Html>,
 
     // pub focus_visible_class_name: AttrValue,
     #[prop_or_default]
@@ -84,9 +83,9 @@ pub fn accordion_summary(props: &Props) -> Html {
                 {for props.children.iter()}
             </div>
 
-            if props.expand_icon.is_some() {
+            if let Some(expand_icon) = &props.expand_icon {
                 <div class={expand_icon_cls}>
-                    {props.expand_icon.as_ref().unwrap().clone()}
+                    {expand_icon.clone()}
                 </div>
             }
         </div>

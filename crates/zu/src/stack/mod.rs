@@ -2,7 +2,6 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::virtual_dom::VNode;
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 use zu_util::prop::attr_optional;
 
@@ -44,7 +43,7 @@ pub struct Props {
 
     /// Add an element between each child.
     #[prop_or_default]
-    pub divider: VNode,
+    pub divider: Html,
 
     /// Defines the space between immediate children.
     ///
@@ -75,6 +74,8 @@ pub fn stack(props: &Props) -> Html {
         spacing_cls(props.spacing),
         props.classes.as_str().to_owned(),
     );
+
+    // TODO(Shaohua): Add divider elements
 
     html! {
         <@{component.to_owned()} class={cls} style={attr_optional(&props.style)}>

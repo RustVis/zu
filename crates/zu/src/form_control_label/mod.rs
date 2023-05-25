@@ -5,7 +5,7 @@
 mod position;
 
 use yew::function_component;
-use yew::{classes, html, virtual_dom::VNode, AttrValue, Children, Html, Properties};
+use yew::{classes, html, AttrValue, Children, Html, Properties};
 
 use crate::styles::side::Position;
 use crate::typography::Typography;
@@ -24,7 +24,7 @@ pub struct Props {
 
     /// A control element.
     #[prop_or_default]
-    pub control: VNode,
+    pub control: Html,
 
     /// If true, the control is disabled.
     #[prop_or(false)]
@@ -40,7 +40,7 @@ pub struct Props {
 
     /// A text or an element to be used in an enclosing label element.
     #[prop_or_default]
-    pub label: VNode,
+    pub label: Html,
 
     #[prop_or(Position::End)]
     pub label_placement: Position,
@@ -98,6 +98,8 @@ pub fn form_control_label(props: &Props) -> Html {
     };
 
     // TODO(Shaohua): Check label is null.
+    // TODO(Shaohua): Add control.
+
     html! {
         <label class={root_cls} style={&props.style}>
             <Typography classes={label_cls}>

@@ -6,9 +6,7 @@ mod color;
 mod size;
 mod variant;
 
-use yew::{
-    classes, function_component, html, virtual_dom::VNode, AttrValue, Children, Html, Properties,
-};
+use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
 use crate::button_base::ButtonBase;
 use crate::styles::{color::Color, CssClass};
@@ -49,7 +47,7 @@ pub struct Props {
 
     /// Element placed after the children.
     #[prop_or_default]
-    pub end_icon: Option<VNode>,
+    pub end_icon: Option<Html>,
 
     /// If true, the button will take up the full width of its container.
     #[prop_or(false)]
@@ -69,7 +67,7 @@ pub struct Props {
 
     /// Element placed before the children.
     #[prop_or_default]
-    pub start_icon: Option<VNode>,
+    pub start_icon: Option<Html>,
 
     #[prop_or_default]
     pub style: AttrValue,
@@ -104,9 +102,17 @@ pub fn button(props: &Props) -> Html {
     //let start_icon_cls = classes!("ZuButton-startIcon", props.size.icon_class(),);
     //let end_icon_cls = classes!("ZuButton-endIcon", props.size.icon_class(),);
 
+    // TODO(Shaohua): Set class for start_icon and end_icon.
+
     html! {
         <ButtonBase classes={root_cls}>
+            if let Some(start_icon) = &props.start_icon {
+                {start_icon.clone()}
+            }
             {for props.children.iter()}
+            if let Some(end_icon) = &props.end_icon {
+                {end_icon.clone()}
+            }
         </ButtonBase>
     }
 }
