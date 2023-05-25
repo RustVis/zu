@@ -1,0 +1,22 @@
+
+/* Styles for Backdrop */
+
+// Styles applied to the root element.
+.ZuBackdrop-root {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+// Styles applied to the root element if invisible={true}.
+.ZuBackdrop-invisible {
+  background-color: transparent;
+}

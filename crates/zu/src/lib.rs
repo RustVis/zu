@@ -50,6 +50,7 @@ pub mod app_bar;
 pub mod autocomplete;
 pub mod avatar;
 pub mod avatar_group;
+pub mod backdrop;
 pub mod badge;
 pub mod r#box;
 pub mod button;
