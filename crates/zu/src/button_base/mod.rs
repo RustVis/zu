@@ -77,7 +77,8 @@ pub fn button_base(props: &Props) -> Html {
             props.focus_visible_class.as_str().to_owned()
         } else {
             String::new()
-        }
+        },
+        props.classes.as_str().to_owned(),
     );
 
     // TODO(Shaohua): Handle mouse events.
@@ -90,6 +91,7 @@ pub fn button_base(props: &Props) -> Html {
 
     html! {
         <@{component.to_owned()} class={root_cls}>
+            {for props.children.iter()}
         </@>
     }
 }

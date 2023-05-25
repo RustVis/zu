@@ -3,6 +3,7 @@
 // that can be found in the LICENSE file.
 
 use yew::{function_component, Html, html};
+use zu::code::Code;
 
 #[function_component(MaterialIconsPage)]
 pub fn material_icons_page() -> Html {
@@ -14,9 +15,9 @@ pub fn material_icons_page() -> Html {
         <p>{"zuicon-material includes the 2,100+ official Material Icons converted to SvgIcon components.
          Use the following command to install it:"}</p>
         <div class="code-root">
-            <pre>
-                <code>{"cargo add zuicon-material"}</code>
-            </pre>
+            <Code>
+                {"cargo add zuicon-material"}
+            </Code>
         </div>
         </div>
     }

@@ -80,8 +80,11 @@ pub struct Props {
 
 #[function_component(Button)]
 pub fn button(props: &Props) -> Html {
+    // TODO(Shaohua): Add mouse event callbacks
+
     let root_cls = classes!(
         "ZuButton-root",
+        props.classes.as_str().to_owned(),
         props.variant.css_class(),
         color::color_class(&props.color),
         props.size.css_class(),

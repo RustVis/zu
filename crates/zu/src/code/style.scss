@@ -1,14 +1,9 @@
 /* Styles for Code */
 
 .ZuCode-root {
-  font-family: var(--zu-typography-body1-fontFamily);
-  font-size: var(--zu-typography-body1-fontSize);
-  font-weight: var(--zu-typography-body1-fontWeight);
-  line-height: var(--zu-typography-body1-lineHeight);
-  letter-spacing: var(--zu-typography-body1-letterSpacing);
-  word-break: break-word;
+  position: relative;
 
-  color: var(--zu-palette-text-primary);
+  color: var(--zu-palette-primary-contrastText);
 }
 
 .ZuCode-pre {
@@ -19,11 +14,11 @@
   max-width: calc(100vw - 32px);
   max-height: 400px;
 
-  background-color: var(zu-palette-primary-dark, #001E3C);
-  color: #f8f8f2;
+  background-color: var(--zu-palette-primary-dark, #001E3C);
+  //color: #f8f8f2;
   border-radius: var(--zu-shape-borderRadius);
   border: 1px solid;
-  border-color: var(zu-palette-primary-dark, #132F4C);
+  border-color: var(--zu-palette-primary-dark, #132F4C);
 
   font-size: 0.8125rem;
 }
@@ -40,4 +35,29 @@
   word-break: normal;
   word-wrap: normal;
   hyphens: none;
+}
+
+.ZuCode-copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  display: none;
+  min-width: 64px;
+  padding: 4px 8px;
+
+  border-radius: var(--zu-shape-borderRadius);
+  border: 1px solid #1E4976;
+  color: #E2EDF8;
+  background-color: rgba(23, 58, 94, 0.5);
+
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.ZuCode-root:hover .ZuCode-copy {
+  display: block;
 }
