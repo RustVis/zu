@@ -33,13 +33,13 @@
   border-radius: 0;
 
   &:first-of-type {
-    border-top-left-radius: var(--zu-shape-border-radius);
-    border-top-right-radius: var(--zu-shape-border-radius);
+    border-top-left-radius: var(--zu-shape-borderRadius);
+    border-top-right-radius: var(--zu-shape-borderRadius);
   }
 
   &:last-of-type {
-    border-bottom-left-radius: var(--zu-shape-border-radius);
-    border-bottom-right-radius: var(--zu-shape-border-radius);
+    border-bottom-left-radius: var(--zu-shape-borderRadius);
+    border-bottom-right-radius: var(--zu-shape-borderRadius);
   }
 }
 

@@ -13,6 +13,7 @@
 //! This UI library is heavily inspired by [material ui](https://github.com/mui/material-ui).
 //!
 //! - [Documentation](https://docs.rs/zu)
+//! - [Online tutorial](https://zu.biofan.org)
 //! - [Release notes](https://github.com/RustVis/zu/releases)
 //!
 //! ## Usage
@@ -68,3 +69,4 @@ pub mod svg_icon;
 pub mod switch;
 pub mod theme_provider;
 pub mod typography;
+pub mod code;
