@@ -91,6 +91,7 @@ const COMMON_STYLES: &[&str] = &[
     "src/linear_progress/style.scss",
     "src/link/style.scss",
     "src/list/style.scss",
+    "src/list_item_icon/style.scss",
     "src/paper/style.scss",
     "src/skeleton/style.scss",
     "src/stack/style.scss",

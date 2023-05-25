@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{AttrValue, Children, classes, function_component, Html, html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 use zu_util::prop;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
@@ -30,7 +30,7 @@ pub struct Props {
     pub subheader: Option<Html>,
 
     #[prop_or_default]
-    pub styles: AttrValue,
+    pub style: AttrValue,
 }
 
 #[function_component(List)]
@@ -42,11 +42,7 @@ pub fn list(props: &Props) -> Html {
         } else {
             "ZuList-padding"
         },
-        if props.dense {
-            "ZuList-dense"
-        } else {
-            ""
-        },
+        if props.dense { "ZuList-dense" } else { "" },
         if props.subheader.is_some() {
             "ZuList-subheader"
         } else {
@@ -59,9 +55,9 @@ pub fn list(props: &Props) -> Html {
         props.component.as_str()
     };
 
-    html!{
+    html! {
         <@{component.to_owned()} class={root_cls}
-            style={prop::attr_optional(&props.styles)}>
+            style={prop::attr_optional(&props.style)}>
             if let Some(subheader) = &props.subheader {
                 {subheader.clone()}
             }
