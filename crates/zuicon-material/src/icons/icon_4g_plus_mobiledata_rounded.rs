@@ -8,7 +8,7 @@ use yew::{function_component, html, Html};
 use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(Icon4gPlusMobiledataRounded)]
-pub fn abc(props: &Props) -> Html {
+pub fn icon_4g_plus_mobiledata_rounded(props: &Props) -> Html {
     html! {
         <SvgIcon classes={props.classes.clone()}
             color={props.color}

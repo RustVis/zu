@@ -8,7 +8,7 @@ use yew::{function_component, html, Html};
 use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(RecordVoiceOverOutlined)]
-pub fn abc(props: &Props) -> Html {
+pub fn record_voice_over_outlined(props: &Props) -> Html {
     html! {
         <SvgIcon classes={props.classes.clone()}
             color={props.color}

@@ -8,7 +8,7 @@ use yew::{function_component, html, Html};
 use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(SignalCellularNoSimTwoTone)]
-pub fn abc(props: &Props) -> Html {
+pub fn signal_cellular_no_sim_two_tone(props: &Props) -> Html {
     html! {
         <SvgIcon classes={props.classes.clone()}
             color={props.color}

@@ -8,7 +8,7 @@ use yew::{function_component, html, Html};
 use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(AspectRatioSharp)]
-pub fn abc(props: &Props) -> Html {
+pub fn aspect_ratio_sharp(props: &Props) -> Html {
     html! {
         <SvgIcon classes={props.classes.clone()}
             color={props.color}

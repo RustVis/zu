@@ -8,7 +8,7 @@ use yew::{function_component, html, Html};
 use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(SignalWifi4BarLockRounded)]
-pub fn abc(props: &Props) -> Html {
+pub fn signal_wifi_4_bar_lock_rounded(props: &Props) -> Html {
     html! {
         <SvgIcon classes={props.classes.clone()}
             color={props.color}

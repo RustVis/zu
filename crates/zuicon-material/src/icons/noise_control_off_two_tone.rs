@@ -8,7 +8,7 @@ use yew::{function_component, html, Html};
 use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(NoiseControlOffTwoTone)]
-pub fn abc(props: &Props) -> Html {
+pub fn noise_control_off_two_tone(props: &Props) -> Html {
     html! {
         <SvgIcon classes={props.classes.clone()}
             color={props.color}

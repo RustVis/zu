@@ -8,7 +8,7 @@ use yew::{function_component, html, Html};
 use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(PersonAddAlt1TwoTone)]
-pub fn abc(props: &Props) -> Html {
+pub fn person_add_alt_1_two_tone(props: &Props) -> Html {
     html! {
         <SvgIcon classes={props.classes.clone()}
             color={props.color}

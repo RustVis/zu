@@ -8,7 +8,7 @@ use yew::{function_component, html, Html};
 use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(ProductionQuantityLimitsSharp)]
-pub fn abc(props: &Props) -> Html {
+pub fn production_quantity_limits_sharp(props: &Props) -> Html {
     html! {
         <SvgIcon classes={props.classes.clone()}
             color={props.color}

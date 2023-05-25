@@ -8,7 +8,7 @@ use yew::{function_component, html, Html};
 use zu::svg_icon::{Props, SvgIcon};
 
 #[function_component(Rotate90DegreesCw)]
-pub fn abc(props: &Props) -> Html {
+pub fn rotate_90_degrees_cw(props: &Props) -> Html {
     html! {
         <SvgIcon classes={props.classes.clone()}
             color={props.color}
