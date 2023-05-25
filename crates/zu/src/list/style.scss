@@ -1,0 +1,28 @@
+
+/* Styles for List */
+
+// Styles applied to the root element.
+.ZuList-root {
+  position: relative;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+// Styles applied to the root element unless disablePadding={true}.
+.ZuList-padding {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+// Styles applied to the root element if dense.
+.ZuList-dense {
+
+}
+
+// Styles applied to the root element if a subheader is provided.
+.ZuList-subheader {
+  padding-top: 0;
+}
