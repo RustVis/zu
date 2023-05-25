@@ -15,18 +15,18 @@ $zu-colors-grey-a400: #bdbdbd;
 $zu-colors-grey-a700: #616161;
 
 :root {
-  --zu-colors-grey-50: $zu-colors-grey-50;
-  --zu-colors-grey-100: $zu-colors-grey-100;
-  --zu-colors-grey-200: $zu-colors-grey-200;
-  --zu-colors-grey-300: $zu-colors-grey-300;
-  --zu-colors-grey-400: $zu-colors-grey-400;
-  --zu-colors-grey-500: $zu-colors-grey-500;
-  --zu-colors-grey-600: $zu-colors-grey-600;
-  --zu-colors-grey-700: $zu-colors-grey-700;
-  --zu-colors-grey-800: $zu-colors-grey-800;
-  --zu-colors-grey-900: $zu-colors-grey-900;
-  --zu-colors-grey-a100: $zu-colors-grey-a100;
-  --zu-colors-grey-a200: $zu-colors-grey-a200;
-  --zu-colors-grey-a400: $zu-colors-grey-a400;
-  --zu-colors-grey-a700: $zu-colors-grey-a700;
+  --zu-colors-grey-50: #{$zu-colors-grey-50};
+  --zu-colors-grey-100: #{$zu-colors-grey-100};
+  --zu-colors-grey-200: #{$zu-colors-grey-200};
+  --zu-colors-grey-300: #{$zu-colors-grey-300};
+  --zu-colors-grey-400: #{$zu-colors-grey-400};
+  --zu-colors-grey-500: #{$zu-colors-grey-500};
+  --zu-colors-grey-600: #{$zu-colors-grey-600};
+  --zu-colors-grey-700: #{$zu-colors-grey-700};
+  --zu-colors-grey-800: #{$zu-colors-grey-800};
+  --zu-colors-grey-900: #{$zu-colors-grey-900};
+  --zu-colors-grey-a100: #{$zu-colors-grey-a100};
+  --zu-colors-grey-a200: #{$zu-colors-grey-a200};
+  --zu-colors-grey-a400: #{$zu-colors-grey-a400};
+  --zu-colors-grey-a700: #{$zu-colors-grey-a700};
 }

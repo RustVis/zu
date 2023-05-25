@@ -15,18 +15,18 @@ $zu-colors-orange-a400: #ff9100;
 $zu-colors-orange-a700: #ff6d00;
 
 :root {
-  --zu-colors-orange-50: $zu-colors-orange-50;
-  --zu-colors-orange-100: $zu-colors-orange-100;
-  --zu-colors-orange-200: $zu-colors-orange-200;
-  --zu-colors-orange-300: $zu-colors-orange-300;
-  --zu-colors-orange-400: $zu-colors-orange-400;
-  --zu-colors-orange-500: $zu-colors-orange-500;
-  --zu-colors-orange-600: $zu-colors-orange-600;
-  --zu-colors-orange-700: $zu-colors-orange-700;
-  --zu-colors-orange-800: $zu-colors-orange-800;
-  --zu-colors-orange-900: $zu-colors-orange-900;
-  --zu-colors-orange-a100: $zu-colors-orange-a100;
-  --zu-colors-orange-a200: $zu-colors-orange-a200;
-  --zu-colors-orange-a400: $zu-colors-orange-a400;
-  --zu-colors-orange-a700: $zu-colors-orange-a700;
+  --zu-colors-orange-50: #{$zu-colors-orange-50};
+  --zu-colors-orange-100: #{$zu-colors-orange-100};
+  --zu-colors-orange-200: #{$zu-colors-orange-200};
+  --zu-colors-orange-300: #{$zu-colors-orange-300};
+  --zu-colors-orange-400: #{$zu-colors-orange-400};
+  --zu-colors-orange-500: #{$zu-colors-orange-500};
+  --zu-colors-orange-600: #{$zu-colors-orange-600};
+  --zu-colors-orange-700: #{$zu-colors-orange-700};
+  --zu-colors-orange-800: #{$zu-colors-orange-800};
+  --zu-colors-orange-900: #{$zu-colors-orange-900};
+  --zu-colors-orange-a100: #{$zu-colors-orange-a100};
+  --zu-colors-orange-a200: #{$zu-colors-orange-a200};
+  --zu-colors-orange-a400: #{$zu-colors-orange-a400};
+  --zu-colors-orange-a700: #{$zu-colors-orange-a700};
 }

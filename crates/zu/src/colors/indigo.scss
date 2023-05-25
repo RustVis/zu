@@ -15,18 +15,18 @@ $zu-colors-indigo-a400: #3d5afe;
 $zu-colors-indigo-a700: #304ffe;
 
 :root {
-  --zu-colors-indigo-50: $zu-colors-indigo-50;
-  --zu-colors-indigo-100: $zu-colors-indigo-100;
-  --zu-colors-indigo-200: $zu-colors-indigo-200;
-  --zu-colors-indigo-300: $zu-colors-indigo-300;
-  --zu-colors-indigo-400: $zu-colors-indigo-400;
-  --zu-colors-indigo-500: $zu-colors-indigo-500;
-  --zu-colors-indigo-600: $zu-colors-indigo-600;
-  --zu-colors-indigo-700: $zu-colors-indigo-700;
-  --zu-colors-indigo-800: $zu-colors-indigo-800;
-  --zu-colors-indigo-900: $zu-colors-indigo-900;
-  --zu-colors-indigo-a100: $zu-colors-indigo-a100;
-  --zu-colors-indigo-a200: $zu-colors-indigo-a200;
-  --zu-colors-indigo-a400: $zu-colors-indigo-a400;
-  --zu-colors-indigo-a700: $zu-colors-indigo-a700;
+  --zu-colors-indigo-50: #{$zu-colors-indigo-50};
+  --zu-colors-indigo-100: #{$zu-colors-indigo-100};
+  --zu-colors-indigo-200: #{$zu-colors-indigo-200};
+  --zu-colors-indigo-300: #{$zu-colors-indigo-300};
+  --zu-colors-indigo-400: #{$zu-colors-indigo-400};
+  --zu-colors-indigo-500: #{$zu-colors-indigo-500};
+  --zu-colors-indigo-600: #{$zu-colors-indigo-600};
+  --zu-colors-indigo-700: #{$zu-colors-indigo-700};
+  --zu-colors-indigo-800: #{$zu-colors-indigo-800};
+  --zu-colors-indigo-900: #{$zu-colors-indigo-900};
+  --zu-colors-indigo-a100: #{$zu-colors-indigo-a100};
+  --zu-colors-indigo-a200: #{$zu-colors-indigo-a200};
+  --zu-colors-indigo-a400: #{$zu-colors-indigo-a400};
+  --zu-colors-indigo-a700: #{$zu-colors-indigo-a700};
 }

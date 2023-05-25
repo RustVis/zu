@@ -15,18 +15,18 @@ $zu-colors-red-a400: #ff1744;
 $zu-colors-red-a700: #d50000;
 
 :root {
-  --zu-colors-red-50: $zu-colors-red-50;
-  --zu-colors-red-100: $zu-colors-red-100;
-  --zu-colors-red-200: $zu-colors-red-200;
-  --zu-colors-red-300: $zu-colors-red-300;
-  --zu-colors-red-400: $zu-colors-red-400;
-  --zu-colors-red-500: $zu-colors-red-500;
-  --zu-colors-red-600: $zu-colors-red-600;
-  --zu-colors-red-700: $zu-colors-red-700;
-  --zu-colors-red-800: $zu-colors-red-800;
-  --zu-colors-red-900: $zu-colors-red-900;
-  --zu-colors-red-a100: $zu-colors-red-a100;
-  --zu-colors-red-a200: $zu-colors-red-a200;
-  --zu-colors-red-a400: $zu-colors-red-a400;
-  --zu-colors-red-a700: $zu-colors-red-a700;
+  --zu-colors-red-50: #{$zu-colors-red-50};
+  --zu-colors-red-100: #{$zu-colors-red-100};
+  --zu-colors-red-200: #{$zu-colors-red-200};
+  --zu-colors-red-300: #{$zu-colors-red-300};
+  --zu-colors-red-400: #{$zu-colors-red-400};
+  --zu-colors-red-500: #{$zu-colors-red-500};
+  --zu-colors-red-600: #{$zu-colors-red-600};
+  --zu-colors-red-700: #{$zu-colors-red-700};
+  --zu-colors-red-800: #{$zu-colors-red-800};
+  --zu-colors-red-900: #{$zu-colors-red-900};
+  --zu-colors-red-a100: #{$zu-colors-red-a100};
+  --zu-colors-red-a200: #{$zu-colors-red-a200};
+  --zu-colors-red-a400: #{$zu-colors-red-a400};
+  --zu-colors-red-a700: #{$zu-colors-red-a700};
 }

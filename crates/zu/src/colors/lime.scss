@@ -15,18 +15,18 @@ $zu-colors-lime-a400: #c6ff00;
 $zu-colors-lime-a700: #aeea00;
 
 :root {
-  --zu-colors-lime-50: $zu-colors-lime-50;
-  --zu-colors-lime-100: $zu-colors-lime-100;
-  --zu-colors-lime-200: $zu-colors-lime-200;
-  --zu-colors-lime-300: $zu-colors-lime-300;
-  --zu-colors-lime-400: $zu-colors-lime-400;
-  --zu-colors-lime-500: $zu-colors-lime-500;
-  --zu-colors-lime-600: $zu-colors-lime-600;
-  --zu-colors-lime-700: $zu-colors-lime-700;
-  --zu-colors-lime-800: $zu-colors-lime-800;
-  --zu-colors-lime-900: $zu-colors-lime-900;
-  --zu-colors-lime-a100: $zu-colors-lime-a100;
-  --zu-colors-lime-a200: $zu-colors-lime-a200;
-  --zu-colors-lime-a400: $zu-colors-lime-a400;
-  --zu-colors-lime-a700: $zu-colors-lime-a700;
+  --zu-colors-lime-50: #{$zu-colors-lime-50};
+  --zu-colors-lime-100: #{$zu-colors-lime-100};
+  --zu-colors-lime-200: #{$zu-colors-lime-200};
+  --zu-colors-lime-300: #{$zu-colors-lime-300};
+  --zu-colors-lime-400: #{$zu-colors-lime-400};
+  --zu-colors-lime-500: #{$zu-colors-lime-500};
+  --zu-colors-lime-600: #{$zu-colors-lime-600};
+  --zu-colors-lime-700: #{$zu-colors-lime-700};
+  --zu-colors-lime-800: #{$zu-colors-lime-800};
+  --zu-colors-lime-900: #{$zu-colors-lime-900};
+  --zu-colors-lime-a100: #{$zu-colors-lime-a100};
+  --zu-colors-lime-a200: #{$zu-colors-lime-a200};
+  --zu-colors-lime-a400: #{$zu-colors-lime-a400};
+  --zu-colors-lime-a700: #{$zu-colors-lime-a700};
 }

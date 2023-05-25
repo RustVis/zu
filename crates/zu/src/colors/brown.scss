@@ -15,18 +15,18 @@ $zu-colors-brown-a400: #8d6e63;
 $zu-colors-brown-a700: #5d4037;
 
 :root {
-  --zu-colors-brown-50: $zu-colors-brown-50;
-  --zu-colors-brown-100: $zu-colors-brown-100;
-  --zu-colors-brown-200: $zu-colors-brown-200;
-  --zu-colors-brown-300: $zu-colors-brown-300;
-  --zu-colors-brown-400: $zu-colors-brown-400;
-  --zu-colors-brown-500: $zu-colors-brown-500;
-  --zu-colors-brown-600: $zu-colors-brown-600;
-  --zu-colors-brown-700: $zu-colors-brown-700;
-  --zu-colors-brown-800: $zu-colors-brown-800;
-  --zu-colors-brown-900: $zu-colors-brown-900;
-  --zu-colors-brown-a100: $zu-colors-brown-a100;
-  --zu-colors-brown-a200: $zu-colors-brown-a200;
-  --zu-colors-brown-a400: $zu-colors-brown-a400;
-  --zu-colors-brown-a700: $zu-colors-brown-a700;
+  --zu-colors-brown-50: #{$zu-colors-brown-50};
+  --zu-colors-brown-100: #{$zu-colors-brown-100};
+  --zu-colors-brown-200: #{$zu-colors-brown-200};
+  --zu-colors-brown-300: #{$zu-colors-brown-300};
+  --zu-colors-brown-400: #{$zu-colors-brown-400};
+  --zu-colors-brown-500: #{$zu-colors-brown-500};
+  --zu-colors-brown-600: #{$zu-colors-brown-600};
+  --zu-colors-brown-700: #{$zu-colors-brown-700};
+  --zu-colors-brown-800: #{$zu-colors-brown-800};
+  --zu-colors-brown-900: #{$zu-colors-brown-900};
+  --zu-colors-brown-a100: #{$zu-colors-brown-a100};
+  --zu-colors-brown-a200: #{$zu-colors-brown-a200};
+  --zu-colors-brown-a400: #{$zu-colors-brown-a400};
+  --zu-colors-brown-a700: #{$zu-colors-brown-a700};
 }

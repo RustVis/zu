@@ -15,18 +15,18 @@ $zu-colors-green-a400: #00e676;
 $zu-colors-green-a700: #00c853;
 
 :root {
-  --zu-colors-green-50: $zu-colors-green-50;
-  --zu-colors-green-100: $zu-colors-green-100;
-  --zu-colors-green-200: $zu-colors-green-200;
-  --zu-colors-green-300: $zu-colors-green-300;
-  --zu-colors-green-400: $zu-colors-green-400;
-  --zu-colors-green-500: $zu-colors-green-500;
-  --zu-colors-green-600: $zu-colors-green-600;
-  --zu-colors-green-700: $zu-colors-green-700;
-  --zu-colors-green-800: $zu-colors-green-800;
-  --zu-colors-green-900: $zu-colors-green-900;
-  --zu-colors-green-a100: $zu-colors-green-a100;
-  --zu-colors-green-a200: $zu-colors-green-a200;
-  --zu-colors-green-a400: $zu-colors-green-a400;
-  --zu-colors-green-a700: $zu-colors-green-a700;
+  --zu-colors-green-50: #{$zu-colors-green-50};
+  --zu-colors-green-100: #{$zu-colors-green-100};
+  --zu-colors-green-200: #{$zu-colors-green-200};
+  --zu-colors-green-300: #{$zu-colors-green-300};
+  --zu-colors-green-400: #{$zu-colors-green-400};
+  --zu-colors-green-500: #{$zu-colors-green-500};
+  --zu-colors-green-600: #{$zu-colors-green-600};
+  --zu-colors-green-700: #{$zu-colors-green-700};
+  --zu-colors-green-800: #{$zu-colors-green-800};
+  --zu-colors-green-900: #{$zu-colors-green-900};
+  --zu-colors-green-a100: #{$zu-colors-green-a100};
+  --zu-colors-green-a200: #{$zu-colors-green-a200};
+  --zu-colors-green-a400: #{$zu-colors-green-a400};
+  --zu-colors-green-a700: #{$zu-colors-green-a700};
 }

@@ -47,7 +47,7 @@ def convert_color(input_file):
             key = parts[0].strip().replace("A", "a")
             value = parts[1].strip().replace(",", "").replace("'", '')
             line = F"$zu-colors-{color_name}-{key}: {value};\n"
-            css_line = F"  --zu-colors-{color_name}-{key}: $zu-colors-{color_name}-{key};\n"
+            css_line = "  --zu-colors-%s-%s: #{$zu-colors-%s-%s};\n" % (color_name, key, color_name, key)
             lines.append(line)
             css_lines.append(css_line)
 

@@ -15,18 +15,18 @@ $zu-colors-deepPurple-a400: #651fff;
 $zu-colors-deepPurple-a700: #6200ea;
 
 :root {
-  --zu-colors-deepPurple-50: $zu-colors-deepPurple-50;
-  --zu-colors-deepPurple-100: $zu-colors-deepPurple-100;
-  --zu-colors-deepPurple-200: $zu-colors-deepPurple-200;
-  --zu-colors-deepPurple-300: $zu-colors-deepPurple-300;
-  --zu-colors-deepPurple-400: $zu-colors-deepPurple-400;
-  --zu-colors-deepPurple-500: $zu-colors-deepPurple-500;
-  --zu-colors-deepPurple-600: $zu-colors-deepPurple-600;
-  --zu-colors-deepPurple-700: $zu-colors-deepPurple-700;
-  --zu-colors-deepPurple-800: $zu-colors-deepPurple-800;
-  --zu-colors-deepPurple-900: $zu-colors-deepPurple-900;
-  --zu-colors-deepPurple-a100: $zu-colors-deepPurple-a100;
-  --zu-colors-deepPurple-a200: $zu-colors-deepPurple-a200;
-  --zu-colors-deepPurple-a400: $zu-colors-deepPurple-a400;
-  --zu-colors-deepPurple-a700: $zu-colors-deepPurple-a700;
+  --zu-colors-deepPurple-50: #{$zu-colors-deepPurple-50};
+  --zu-colors-deepPurple-100: #{$zu-colors-deepPurple-100};
+  --zu-colors-deepPurple-200: #{$zu-colors-deepPurple-200};
+  --zu-colors-deepPurple-300: #{$zu-colors-deepPurple-300};
+  --zu-colors-deepPurple-400: #{$zu-colors-deepPurple-400};
+  --zu-colors-deepPurple-500: #{$zu-colors-deepPurple-500};
+  --zu-colors-deepPurple-600: #{$zu-colors-deepPurple-600};
+  --zu-colors-deepPurple-700: #{$zu-colors-deepPurple-700};
+  --zu-colors-deepPurple-800: #{$zu-colors-deepPurple-800};
+  --zu-colors-deepPurple-900: #{$zu-colors-deepPurple-900};
+  --zu-colors-deepPurple-a100: #{$zu-colors-deepPurple-a100};
+  --zu-colors-deepPurple-a200: #{$zu-colors-deepPurple-a200};
+  --zu-colors-deepPurple-a400: #{$zu-colors-deepPurple-a400};
+  --zu-colors-deepPurple-a700: #{$zu-colors-deepPurple-a700};
 }

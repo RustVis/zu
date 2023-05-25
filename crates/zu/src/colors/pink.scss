@@ -15,18 +15,18 @@ $zu-colors-pink-a400: #f50057;
 $zu-colors-pink-a700: #c51162;
 
 :root {
-  --zu-colors-pink-50: $zu-colors-pink-50;
-  --zu-colors-pink-100: $zu-colors-pink-100;
-  --zu-colors-pink-200: $zu-colors-pink-200;
-  --zu-colors-pink-300: $zu-colors-pink-300;
-  --zu-colors-pink-400: $zu-colors-pink-400;
-  --zu-colors-pink-500: $zu-colors-pink-500;
-  --zu-colors-pink-600: $zu-colors-pink-600;
-  --zu-colors-pink-700: $zu-colors-pink-700;
-  --zu-colors-pink-800: $zu-colors-pink-800;
-  --zu-colors-pink-900: $zu-colors-pink-900;
-  --zu-colors-pink-a100: $zu-colors-pink-a100;
-  --zu-colors-pink-a200: $zu-colors-pink-a200;
-  --zu-colors-pink-a400: $zu-colors-pink-a400;
-  --zu-colors-pink-a700: $zu-colors-pink-a700;
+  --zu-colors-pink-50: #{$zu-colors-pink-50};
+  --zu-colors-pink-100: #{$zu-colors-pink-100};
+  --zu-colors-pink-200: #{$zu-colors-pink-200};
+  --zu-colors-pink-300: #{$zu-colors-pink-300};
+  --zu-colors-pink-400: #{$zu-colors-pink-400};
+  --zu-colors-pink-500: #{$zu-colors-pink-500};
+  --zu-colors-pink-600: #{$zu-colors-pink-600};
+  --zu-colors-pink-700: #{$zu-colors-pink-700};
+  --zu-colors-pink-800: #{$zu-colors-pink-800};
+  --zu-colors-pink-900: #{$zu-colors-pink-900};
+  --zu-colors-pink-a100: #{$zu-colors-pink-a100};
+  --zu-colors-pink-a200: #{$zu-colors-pink-a200};
+  --zu-colors-pink-a400: #{$zu-colors-pink-a400};
+  --zu-colors-pink-a700: #{$zu-colors-pink-a700};
 }

@@ -15,18 +15,18 @@ $zu-colors-deepOrange-a400: #ff3d00;
 $zu-colors-deepOrange-a700: #dd2c00;
 
 :root {
-  --zu-colors-deepOrange-50: $zu-colors-deepOrange-50;
-  --zu-colors-deepOrange-100: $zu-colors-deepOrange-100;
-  --zu-colors-deepOrange-200: $zu-colors-deepOrange-200;
-  --zu-colors-deepOrange-300: $zu-colors-deepOrange-300;
-  --zu-colors-deepOrange-400: $zu-colors-deepOrange-400;
-  --zu-colors-deepOrange-500: $zu-colors-deepOrange-500;
-  --zu-colors-deepOrange-600: $zu-colors-deepOrange-600;
-  --zu-colors-deepOrange-700: $zu-colors-deepOrange-700;
-  --zu-colors-deepOrange-800: $zu-colors-deepOrange-800;
-  --zu-colors-deepOrange-900: $zu-colors-deepOrange-900;
-  --zu-colors-deepOrange-a100: $zu-colors-deepOrange-a100;
-  --zu-colors-deepOrange-a200: $zu-colors-deepOrange-a200;
-  --zu-colors-deepOrange-a400: $zu-colors-deepOrange-a400;
-  --zu-colors-deepOrange-a700: $zu-colors-deepOrange-a700;
+  --zu-colors-deepOrange-50: #{$zu-colors-deepOrange-50};
+  --zu-colors-deepOrange-100: #{$zu-colors-deepOrange-100};
+  --zu-colors-deepOrange-200: #{$zu-colors-deepOrange-200};
+  --zu-colors-deepOrange-300: #{$zu-colors-deepOrange-300};
+  --zu-colors-deepOrange-400: #{$zu-colors-deepOrange-400};
+  --zu-colors-deepOrange-500: #{$zu-colors-deepOrange-500};
+  --zu-colors-deepOrange-600: #{$zu-colors-deepOrange-600};
+  --zu-colors-deepOrange-700: #{$zu-colors-deepOrange-700};
+  --zu-colors-deepOrange-800: #{$zu-colors-deepOrange-800};
+  --zu-colors-deepOrange-900: #{$zu-colors-deepOrange-900};
+  --zu-colors-deepOrange-a100: #{$zu-colors-deepOrange-a100};
+  --zu-colors-deepOrange-a200: #{$zu-colors-deepOrange-a200};
+  --zu-colors-deepOrange-a400: #{$zu-colors-deepOrange-a400};
+  --zu-colors-deepOrange-a700: #{$zu-colors-deepOrange-a700};
 }

@@ -15,18 +15,18 @@ $zu-colors-cyan-a400: #00e5ff;
 $zu-colors-cyan-a700: #00b8d4;
 
 :root {
-  --zu-colors-cyan-50: $zu-colors-cyan-50;
-  --zu-colors-cyan-100: $zu-colors-cyan-100;
-  --zu-colors-cyan-200: $zu-colors-cyan-200;
-  --zu-colors-cyan-300: $zu-colors-cyan-300;
-  --zu-colors-cyan-400: $zu-colors-cyan-400;
-  --zu-colors-cyan-500: $zu-colors-cyan-500;
-  --zu-colors-cyan-600: $zu-colors-cyan-600;
-  --zu-colors-cyan-700: $zu-colors-cyan-700;
-  --zu-colors-cyan-800: $zu-colors-cyan-800;
-  --zu-colors-cyan-900: $zu-colors-cyan-900;
-  --zu-colors-cyan-a100: $zu-colors-cyan-a100;
-  --zu-colors-cyan-a200: $zu-colors-cyan-a200;
-  --zu-colors-cyan-a400: $zu-colors-cyan-a400;
-  --zu-colors-cyan-a700: $zu-colors-cyan-a700;
+  --zu-colors-cyan-50: #{$zu-colors-cyan-50};
+  --zu-colors-cyan-100: #{$zu-colors-cyan-100};
+  --zu-colors-cyan-200: #{$zu-colors-cyan-200};
+  --zu-colors-cyan-300: #{$zu-colors-cyan-300};
+  --zu-colors-cyan-400: #{$zu-colors-cyan-400};
+  --zu-colors-cyan-500: #{$zu-colors-cyan-500};
+  --zu-colors-cyan-600: #{$zu-colors-cyan-600};
+  --zu-colors-cyan-700: #{$zu-colors-cyan-700};
+  --zu-colors-cyan-800: #{$zu-colors-cyan-800};
+  --zu-colors-cyan-900: #{$zu-colors-cyan-900};
+  --zu-colors-cyan-a100: #{$zu-colors-cyan-a100};
+  --zu-colors-cyan-a200: #{$zu-colors-cyan-a200};
+  --zu-colors-cyan-a400: #{$zu-colors-cyan-a400};
+  --zu-colors-cyan-a700: #{$zu-colors-cyan-a700};
 }

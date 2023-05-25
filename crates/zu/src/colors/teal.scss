@@ -15,18 +15,18 @@ $zu-colors-teal-a400: #1de9b6;
 $zu-colors-teal-a700: #00bfa5;
 
 :root {
-  --zu-colors-teal-50: $zu-colors-teal-50;
-  --zu-colors-teal-100: $zu-colors-teal-100;
-  --zu-colors-teal-200: $zu-colors-teal-200;
-  --zu-colors-teal-300: $zu-colors-teal-300;
-  --zu-colors-teal-400: $zu-colors-teal-400;
-  --zu-colors-teal-500: $zu-colors-teal-500;
-  --zu-colors-teal-600: $zu-colors-teal-600;
-  --zu-colors-teal-700: $zu-colors-teal-700;
-  --zu-colors-teal-800: $zu-colors-teal-800;
-  --zu-colors-teal-900: $zu-colors-teal-900;
-  --zu-colors-teal-a100: $zu-colors-teal-a100;
-  --zu-colors-teal-a200: $zu-colors-teal-a200;
-  --zu-colors-teal-a400: $zu-colors-teal-a400;
-  --zu-colors-teal-a700: $zu-colors-teal-a700;
+  --zu-colors-teal-50: #{$zu-colors-teal-50};
+  --zu-colors-teal-100: #{$zu-colors-teal-100};
+  --zu-colors-teal-200: #{$zu-colors-teal-200};
+  --zu-colors-teal-300: #{$zu-colors-teal-300};
+  --zu-colors-teal-400: #{$zu-colors-teal-400};
+  --zu-colors-teal-500: #{$zu-colors-teal-500};
+  --zu-colors-teal-600: #{$zu-colors-teal-600};
+  --zu-colors-teal-700: #{$zu-colors-teal-700};
+  --zu-colors-teal-800: #{$zu-colors-teal-800};
+  --zu-colors-teal-900: #{$zu-colors-teal-900};
+  --zu-colors-teal-a100: #{$zu-colors-teal-a100};
+  --zu-colors-teal-a200: #{$zu-colors-teal-a200};
+  --zu-colors-teal-a400: #{$zu-colors-teal-a400};
+  --zu-colors-teal-a700: #{$zu-colors-teal-a700};
 }

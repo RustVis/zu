@@ -15,18 +15,18 @@ $zu-colors-purple-a400: #d500f9;
 $zu-colors-purple-a700: #aa00ff;
 
 :root {
-  --zu-colors-purple-50: $zu-colors-purple-50;
-  --zu-colors-purple-100: $zu-colors-purple-100;
-  --zu-colors-purple-200: $zu-colors-purple-200;
-  --zu-colors-purple-300: $zu-colors-purple-300;
-  --zu-colors-purple-400: $zu-colors-purple-400;
-  --zu-colors-purple-500: $zu-colors-purple-500;
-  --zu-colors-purple-600: $zu-colors-purple-600;
-  --zu-colors-purple-700: $zu-colors-purple-700;
-  --zu-colors-purple-800: $zu-colors-purple-800;
-  --zu-colors-purple-900: $zu-colors-purple-900;
-  --zu-colors-purple-a100: $zu-colors-purple-a100;
-  --zu-colors-purple-a200: $zu-colors-purple-a200;
-  --zu-colors-purple-a400: $zu-colors-purple-a400;
-  --zu-colors-purple-a700: $zu-colors-purple-a700;
+  --zu-colors-purple-50: #{$zu-colors-purple-50};
+  --zu-colors-purple-100: #{$zu-colors-purple-100};
+  --zu-colors-purple-200: #{$zu-colors-purple-200};
+  --zu-colors-purple-300: #{$zu-colors-purple-300};
+  --zu-colors-purple-400: #{$zu-colors-purple-400};
+  --zu-colors-purple-500: #{$zu-colors-purple-500};
+  --zu-colors-purple-600: #{$zu-colors-purple-600};
+  --zu-colors-purple-700: #{$zu-colors-purple-700};
+  --zu-colors-purple-800: #{$zu-colors-purple-800};
+  --zu-colors-purple-900: #{$zu-colors-purple-900};
+  --zu-colors-purple-a100: #{$zu-colors-purple-a100};
+  --zu-colors-purple-a200: #{$zu-colors-purple-a200};
+  --zu-colors-purple-a400: #{$zu-colors-purple-a400};
+  --zu-colors-purple-a700: #{$zu-colors-purple-a700};
 }

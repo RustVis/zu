@@ -15,18 +15,18 @@ $zu-colors-yellow-a400: #ffea00;
 $zu-colors-yellow-a700: #ffd600;
 
 :root {
-  --zu-colors-yellow-50: $zu-colors-yellow-50;
-  --zu-colors-yellow-100: $zu-colors-yellow-100;
-  --zu-colors-yellow-200: $zu-colors-yellow-200;
-  --zu-colors-yellow-300: $zu-colors-yellow-300;
-  --zu-colors-yellow-400: $zu-colors-yellow-400;
-  --zu-colors-yellow-500: $zu-colors-yellow-500;
-  --zu-colors-yellow-600: $zu-colors-yellow-600;
-  --zu-colors-yellow-700: $zu-colors-yellow-700;
-  --zu-colors-yellow-800: $zu-colors-yellow-800;
-  --zu-colors-yellow-900: $zu-colors-yellow-900;
-  --zu-colors-yellow-a100: $zu-colors-yellow-a100;
-  --zu-colors-yellow-a200: $zu-colors-yellow-a200;
-  --zu-colors-yellow-a400: $zu-colors-yellow-a400;
-  --zu-colors-yellow-a700: $zu-colors-yellow-a700;
+  --zu-colors-yellow-50: #{$zu-colors-yellow-50};
+  --zu-colors-yellow-100: #{$zu-colors-yellow-100};
+  --zu-colors-yellow-200: #{$zu-colors-yellow-200};
+  --zu-colors-yellow-300: #{$zu-colors-yellow-300};
+  --zu-colors-yellow-400: #{$zu-colors-yellow-400};
+  --zu-colors-yellow-500: #{$zu-colors-yellow-500};
+  --zu-colors-yellow-600: #{$zu-colors-yellow-600};
+  --zu-colors-yellow-700: #{$zu-colors-yellow-700};
+  --zu-colors-yellow-800: #{$zu-colors-yellow-800};
+  --zu-colors-yellow-900: #{$zu-colors-yellow-900};
+  --zu-colors-yellow-a100: #{$zu-colors-yellow-a100};
+  --zu-colors-yellow-a200: #{$zu-colors-yellow-a200};
+  --zu-colors-yellow-a400: #{$zu-colors-yellow-a400};
+  --zu-colors-yellow-a700: #{$zu-colors-yellow-a700};
 }

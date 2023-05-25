@@ -15,18 +15,18 @@ $zu-colors-lightBlue-a400: #00b0ff;
 $zu-colors-lightBlue-a700: #0091ea;
 
 :root {
-  --zu-colors-lightBlue-50: $zu-colors-lightBlue-50;
-  --zu-colors-lightBlue-100: $zu-colors-lightBlue-100;
-  --zu-colors-lightBlue-200: $zu-colors-lightBlue-200;
-  --zu-colors-lightBlue-300: $zu-colors-lightBlue-300;
-  --zu-colors-lightBlue-400: $zu-colors-lightBlue-400;
-  --zu-colors-lightBlue-500: $zu-colors-lightBlue-500;
-  --zu-colors-lightBlue-600: $zu-colors-lightBlue-600;
-  --zu-colors-lightBlue-700: $zu-colors-lightBlue-700;
-  --zu-colors-lightBlue-800: $zu-colors-lightBlue-800;
-  --zu-colors-lightBlue-900: $zu-colors-lightBlue-900;
-  --zu-colors-lightBlue-a100: $zu-colors-lightBlue-a100;
-  --zu-colors-lightBlue-a200: $zu-colors-lightBlue-a200;
-  --zu-colors-lightBlue-a400: $zu-colors-lightBlue-a400;
-  --zu-colors-lightBlue-a700: $zu-colors-lightBlue-a700;
+  --zu-colors-lightBlue-50: #{$zu-colors-lightBlue-50};
+  --zu-colors-lightBlue-100: #{$zu-colors-lightBlue-100};
+  --zu-colors-lightBlue-200: #{$zu-colors-lightBlue-200};
+  --zu-colors-lightBlue-300: #{$zu-colors-lightBlue-300};
+  --zu-colors-lightBlue-400: #{$zu-colors-lightBlue-400};
+  --zu-colors-lightBlue-500: #{$zu-colors-lightBlue-500};
+  --zu-colors-lightBlue-600: #{$zu-colors-lightBlue-600};
+  --zu-colors-lightBlue-700: #{$zu-colors-lightBlue-700};
+  --zu-colors-lightBlue-800: #{$zu-colors-lightBlue-800};
+  --zu-colors-lightBlue-900: #{$zu-colors-lightBlue-900};
+  --zu-colors-lightBlue-a100: #{$zu-colors-lightBlue-a100};
+  --zu-colors-lightBlue-a200: #{$zu-colors-lightBlue-a200};
+  --zu-colors-lightBlue-a400: #{$zu-colors-lightBlue-a400};
+  --zu-colors-lightBlue-a700: #{$zu-colors-lightBlue-a700};
 }
