@@ -47,6 +47,7 @@ pub mod accordion_summary;
 pub mod alert;
 pub mod alert_title;
 pub mod app_bar;
+pub mod autocomplete;
 pub mod avatar;
 pub mod avatar_group;
 pub mod badge;

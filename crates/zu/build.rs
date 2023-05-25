@@ -75,6 +75,7 @@ const COMMON_STYLES: &[&str] = &[
     "src/alert/style.scss",
     "src/alert_title/style.scss",
     "src/app_bar/style.scss",
+    "src/autocomplete/style.scss",
     "src/avatar/style.scss",
     "src/avatar_group/style.scss",
     "src/badge/style.scss",
