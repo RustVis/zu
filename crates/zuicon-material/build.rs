@@ -14,7 +14,6 @@ use std::ffi::OsStr;
 use std::fs::{self, OpenOptions};
 use std::io::Write;
 use std::path::PathBuf;
-
 use zu_util::icon::{get_svg_path_data, need_update};
 
 const SVG_DIR: &str = "icons";
