@@ -2,7 +2,13 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-//! # About
+//! # Zu icon material
+//! ![Build status](https://github.com/RustVis/zu/actions/workflows/rust.yml/badge.svg)
+//! [![Latest version](https://img.shields.io/crates/v/zuicon-material.svg)](https://crates.io/crates/zuicon-material)
+//! [![Documentation](https://docs.rs/zuicon-material/badge.svg)](https://docs.rs/zuicon-material)
+//! ![Minimum rustc version](https://img.shields.io/badge/rustc-1.56+-yellow.svg)
+//! ![License](https://img.shields.io/crates/l/zuicon-material.svg)
+//!
 //! Wrapper of material design icons for yew framework.
 //!
 //! Material icons are placed in different themes:
@@ -11,6 +17,10 @@
 //! 3. round
 //! 4. twotone
 //! 5. sharp
+//!
+//! - [Documentation](https://docs.rs/zuicon-material)
+//! - [Online tutorial](https://zu.biofan.org/material-icons)
+//!
 //!
 //! ## How to use
 //! First add this to `Cargo.toml`:
