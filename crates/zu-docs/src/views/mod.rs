@@ -15,3 +15,4 @@ pub mod progress_page;
 pub mod skeleton_page;
 pub mod stack_page;
 pub mod typography_page;
+pub mod material_icon_page;
