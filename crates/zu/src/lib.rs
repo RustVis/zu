@@ -77,3 +77,4 @@ pub mod switch;
 pub mod theme_provider;
 pub mod typography;
 pub mod bottom_navigation;
+pub mod bottom_navigation_action;

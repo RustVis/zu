@@ -1,0 +1,58 @@
+
+/* Styles for BottomNavigationAction */
+
+// Styles applied to the root element.
+.ZuBottomActionNavigation-root {
+  transition: color var(--zu-duration-short) var(--zu-easing-easeInOut) 0 ms,
+    padding-top var(--zu-duration-short) var(--zu-easing-easeInOut) 0 ms;
+
+  flex-direction: column;
+  flex: 1;
+  padding: 0 12px;
+  min-width: 80px;
+  max-width: 168px;
+
+  color: var(--zu-palette-text-secondary);
+
+  &.ZuBottomActionNavigation-iconOnly {
+    padding-top: 14px;
+  }
+
+  &.ZuBottomActionNavigation-selected {
+    color: var(--zu-palette-primary-main);
+  }
+
+  &.ZuBottomNavigation-noLabel {
+    padding-top: 0;
+  }
+}
+
+// State class applied to the root element if selected.
+.ZuBottomActionNavigation-selected {
+
+}
+
+// State class applied to the root element if showLabel={false} and not selected.
+.ZuBottomActionNavigation-iconOnly {
+
+}
+
+// Styles applied to the label's span element.
+.ZuBottomActionNavigation-label {
+  transition: font-size 0.2s, opacity 0.2s;
+  transition-delay: 0.1s;
+
+  opacity: 1;
+
+  font-family: var(--zu-typography-fontFamily);;
+  font-size: 12px;
+
+  &.ZuBottomActionNavigation-iconOnly {
+    opacity: 0;
+    transition-delay: 0s;
+  }
+
+  &.ZuBottomActionNavigation-selected {
+    font-size: 14px;
+  }
+}

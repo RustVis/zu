@@ -31,7 +31,8 @@ pub struct Props<T: PartialEq> {
     pub style: AttrValue,
 
     /// The value of the currently selected BottomNavigationAction.
-    pub value: T,
+    #[prop_or_default]
+    pub value: Option<T>,
 }
 
 #[function_component(BottomNavigation)]
