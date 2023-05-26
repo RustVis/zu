@@ -2,4 +2,6 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-pub mod svg_icons;
+mod create_svg_icon;
+
+pub use create_svg_icon::create_svg_icon;
