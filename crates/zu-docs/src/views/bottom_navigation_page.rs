@@ -10,6 +10,8 @@ use zuicon_material::Folder as FolderIcon;
 use zuicon_material::LocationOn as LocationOnIcon;
 use zuicon_material::Restore as RestoreIcon;
 
+use crate::components::demo_box::DemoBox;
+
 #[function_component(BottomNavigationPage)]
 pub fn bottom_navigation_page() -> Html {
     // TODO(Shaohua): Handles onChange()
@@ -21,17 +23,17 @@ pub fn bottom_navigation_page() -> Html {
 
         <h2>{"Bottom navigation"}</h2>
         <p>{"When there are only three actions, display both icons and text labels at all times."}</p>
-        <div class="demo-box">
+        <DemoBox>
             <BottomNavigation show_labels={true}>
                 <BottomNavigationAction label={html!{"Recent"}} icon={html!{<RestoreIcon />}} />
                 <BottomNavigationAction label={html!{"Favorites"}} icon={html!{<FavoriteIcon />}} />
                 <BottomNavigationAction label={html!{"Nearby"}} icon={html!{<LocationOnIcon />}} />
             </BottomNavigation>
-        </div>
+        </DemoBox>
 
         <h2>{"Bottom navigation with no label"}</h2>
         <p>{"If there are four or five actions, display inactive views as icons only."}</p>
-        <div class="demo-box">
+        <DemoBox>
             <BottomNavigation style="width: 500px;">
                 <BottomNavigationAction
                     label={html!{"Recents"}}
@@ -50,7 +52,7 @@ pub fn bottom_navigation_page() -> Html {
                     icon={html!{<FolderIcon />}}
                     />
             </BottomNavigation>
-        </div>
+        </DemoBox>
         </div>
     }
 }

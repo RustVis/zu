@@ -6,6 +6,8 @@ use stylist::Style;
 use yew::{function_component, html, Html};
 use zu::r#box::Box;
 
+use crate::components::demo_box::DemoBox;
+
 #[function_component(BoxPage)]
 pub fn box_page() -> Html {
     let style = Style::new(
@@ -24,14 +26,14 @@ pub fn box_page() -> Html {
     html! {
         <div class="container">
         <h1>{"Box"}</h1>
-        <div class="demo-box">
+        <DemoBox>
             <Box classes={style.get_class_name().to_owned()}></Box>
-        </div>
+        </DemoBox>
 
         <h2>{"Override component"}</h2>
-        <div class="demo-box">
+        <DemoBox>
             <Box component="span" style="border: 1px dashed grey; padding: 16px">{"Save"}</Box>
-        </div>
+        </DemoBox>
         </div>
     }
 }

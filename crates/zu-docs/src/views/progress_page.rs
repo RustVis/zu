@@ -10,6 +10,8 @@ use zu::linear_progress::LinearProgress;
 use zu::linear_progress::Variant as LinearVariant;
 use zu::styles::color::Color;
 
+use crate::components::demo_box::DemoBox;
+
 #[function_component(ProgressPage)]
 pub fn progress_page() -> Html {
     let progress = use_state(|| 0);
@@ -50,64 +52,64 @@ pub fn progress_page() -> Html {
 
             <h2>{"Circular"}</h2>
             <h3>{"Circular Indeterminate"}</h3>
-            <div class="demo-box">
+            <DemoBox>
                 <CircularProgress />
-            </div>
+            </DemoBox>
 
             <h3>{"Circular color"}</h3>
-            <div class="demo-box">
+            <DemoBox>
                 <CircularProgress color={Color::Secondary} />
                 <CircularProgress color={Color::Success} />
                 <CircularProgress color={Color::Inherit} />
-            </div>
+            </DemoBox>
 
             <h3>{"Circular determinate"}</h3>
-            <div class="demo-box">
+            <DemoBox>
                 <CircularProgress variant={CircularVariant::Determinate} value={25} />
                 <CircularProgress variant={CircularVariant::Determinate} value={50} />
                 <CircularProgress variant={CircularVariant::Determinate} value={75} />
                 <CircularProgress variant={CircularVariant::Determinate} value={100} />
                 <CircularProgress variant={CircularVariant::Determinate} value={*progress} />
-            </div>
+            </DemoBox>
 
             <h3>{"Circular with label"}</h3>
-            <div class="demo-box">
+            <DemoBox>
                 <CircularProgress variant={CircularVariant::Determinate}
                     with_label={true}
                     value={*progress} />
-            </div>
+            </DemoBox>
 
             <h2>{"Linear"}</h2>
             <h3>{"Linear indeterminate"}</h3>
-            <div class="demo-box">
+            <DemoBox>
                 <LinearProgress />
-            </div>
+            </DemoBox>
 
             <h3>{"Linear color"}</h3>
-            <div class="demo-box">
+            <DemoBox>
                 <LinearProgress color={Color::Secondary} />
                 <LinearProgress color={Color::Success} />
                 <LinearProgress color={Color::Inherit} />
-            </div>
+            </DemoBox>
 
             <h3>{"Linear determinate"}</h3>
-            <div class="demo-box">
+            <DemoBox>
                    <LinearProgress variant={LinearVariant::Determinate}
                         value={*progress} />
-            </div>
+            </DemoBox>
 
             <h3>{"Linear with label"}</h3>
-            <div class="demo-box">
+            <DemoBox>
                    <LinearProgress variant={LinearVariant::Determinate}
                         with_label={true}
                         value={*progress} />
-            </div>
+            </DemoBox>
 
             <h3>{"Linear buffer"}</h3>
-            <div class="demo-box">
+            <DemoBox>
                 <LinearProgress variant={LinearVariant::Buffer}
                     value={*progress} value_buffer={*buffer} />
-            </div>
+            </DemoBox>
 
         </div>
     }

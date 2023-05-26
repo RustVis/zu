@@ -5,6 +5,8 @@
 use yew::{function_component, html, Html};
 use zu::paper::Paper;
 
+use crate::components::demo_box::DemoBox;
+
 #[function_component(PaperPage)]
 pub fn paper_page() -> Html {
     let style = "width: 128px; height: 128px; margin: 8px";
@@ -15,11 +17,12 @@ pub fn paper_page() -> Html {
         <p>{"The background of an application resembles the flat, opaque texture of a sheet of paper"}</p>
 
         <h2>{"Basic paper"}</h2>
-        <div class="demo-box">
+        <DemoBox>
             <Paper style={style} elevation={0} />
             <Paper style={style} />
             <Paper style={style} elevation={3} />
-        </div>
+        </DemoBox>
+
         </div>
     }
 }

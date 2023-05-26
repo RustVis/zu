@@ -6,6 +6,8 @@ use yew::{function_component, html, Html};
 use zu::divider::{Divider, Variant};
 use zu::styles::text_align::TextAlign;
 
+use crate::components::demo_box::DemoBox;
+
 #[function_component(DividerPage)]
 pub fn divider_page() -> Html {
     // TODO(Shaohua): Add List, ListItem and ListItemText
@@ -19,7 +21,7 @@ pub fn divider_page() -> Html {
         <h2>{"List dividers"}</h2>
         <p>{"The divider renders as an <hr> by default.
          You can save rendering this DOM element by using the divider prop on the ListItem component."}</p>
-        <div class="demo-box">
+        <DemoBox>
             <nav>
                 <div><span>{"Inbox"}</span></div>
                 <Divider />
@@ -33,13 +35,13 @@ pub fn divider_page() -> Html {
                 <div><span>{"Spam"}</span></div>
                 <Divider />
             </nav>
-        </div>
+        </DemoBox>
 
         <h2>{"HTML5 specification"}</h2>
         <p>{"In a list, you should ensure the Divider is rendered as an <li> \
         to match the HTML5 specification. The examples below show two ways of achieving this."}</p>
         <h3>{"Inset dividers"}</h3>
-        <div class="demo-box">
+        <DemoBox>
             <ul style="list-style-type: none">
                 <li>{"Photos"}</li>
                 <Divider variant={Variant::Inset} component="li" />
@@ -47,11 +49,11 @@ pub fn divider_page() -> Html {
                 <Divider variant={Variant::Inset} component="li" />
                 <li>{"Vacation"}</li>
             </ul>
-        </div>
+        </DemoBox>
 
         <h3>{"Dividers with text"}</h3>
         <p>{"You can also render a divider with content."}</p>
-        <div class="demo-box">
+        <DemoBox>
             <div>
                 <div>{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dignissim justo.
             Nulla ut facilisis ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
@@ -69,7 +71,8 @@ pub fn divider_page() -> Html {
             Nulla ut facilisis ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
             Sed malesuada lobortis pretium."}</div>
             </div>
-        </div>
+        </DemoBox>
+
         </div>
     }
 }

@@ -9,6 +9,8 @@ use zu::stack::Stack;
 use zu::styles::direction::Direction;
 use zu::styles::spacing::Spacing;
 
+use crate::components::demo_box::DemoBox;
+
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
     pub children: Children,
@@ -40,13 +42,13 @@ pub fn stack_page() -> Html {
 
         <h2>{"Basics"}</h2>
         <p>{"The Stack component acts as a generic container, wrapping around the elements to be arranged."}</p>
-        <div class="demo-box">
+        <DemoBox>
             <Stack spacing={Spacing::MiddleNudge}>
                 <Item>{"Item 1"}</Item>
                 <Item>{"Item 2"}</Item>
                 <Item>{"Item 3"}</Item>
             </Stack>
-        </div>
+        </DemoBox>
 
         <h2>{"Stack v.s. Grid"}</h2>
         <p>{"Stack is concerned with one-dimensional layouts,
@@ -57,24 +59,25 @@ pub fn stack_page() -> Html {
         <p>{"By default, Stack arranges items vertically in a column.
          Use the direction prop to position items horizontally in a row:"}</p>
 
-        <div class="demo-box">
+        <DemoBox>
             <Stack direction={Direction::Row} spacing={Spacing::Small}>
                 <Item>{"Item 1"}</Item>
                 <Item>{"Item 2"}</Item>
                 <Item>{"Item 3"}</Item>
             </Stack>
-        </div>
+        </DemoBox>
 
         <h2>{"Dividers"}</h2>
         <p>{"Use the divider prop to insert an element between each child.\
          This works particularly well with the Divider component, as shown below:"}</p>
-        <div class="demo-box">
+        <DemoBox>
             <Stack direction={Direction::Row} spacing={Spacing::Small}>
                 <Item>{"Item 1"}</Item>
                 <Item>{"Item 2"}</Item>
                 <Item>{"Item 3"}</Item>
             </Stack>
-        </div>
+        </DemoBox>
+
         </div>
     }
 }

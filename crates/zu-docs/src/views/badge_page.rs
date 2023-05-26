@@ -6,6 +6,8 @@ use yew::{function_component, html, Html};
 use zu::badge::{Badge, Content};
 use zu::styles::color::Color;
 
+use crate::components::demo_box::DemoBox;
+
 #[function_component(BadgePage)]
 pub fn badge_page() -> Html {
     // TODO(Shaohua): Add invisible
@@ -16,26 +18,26 @@ pub fn badge_page() -> Html {
 
         <h2>{"Badge Basic"}</h2>
         <p>{"Examples of badges containing text, using primary and secondary colors. The badge is applied to its children."}</p>
-        <div class="demo-box">
+        <DemoBox>
           <Badge content={Content::Num(4)} color={Color::Primary}>
             <span>{"hello"}</span>
           </Badge>
-        </div>
+        </DemoBox>
 
         <h2>{"Color"}</h2>
         <p>{"Use color prop to apply theme palette to component."}</p>
-        <div class="demo-box">
+        <DemoBox>
             <Badge content={Content::Num(4)} color={Color::Secondary}>
                 <span>{"Hello"}</span>
             </Badge>
             <Badge content={Content::Num(4)} color={Color::Success}>
                 <span>{"Hello"}</span>
             </Badge>
-        </div>
+        </DemoBox>
 
         <h2>{"Maximum value"}</h2>
         <p>{"You can use the max prop to cap the value of the badge content."}</p>
-        <div class="demo-box">
+        <DemoBox>
             <Badge color={Color::Secondary} content={Content::Num(99)}>
                 <span>{"Hello"}</span>
             </Badge>
@@ -45,7 +47,7 @@ pub fn badge_page() -> Html {
             <Badge color={Color::Secondary} content={Content::Num(1000)} max={999}>
                 <span>{"Hello"}</span>
             </Badge>
-        </div>
+        </DemoBox>
 
         </div>
     }

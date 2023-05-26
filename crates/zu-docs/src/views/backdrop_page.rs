@@ -8,6 +8,8 @@ use zu::button::Button;
 use zu::circular_progress::CircularProgress;
 use zu::styles::color::Color;
 
+use crate::components::demo_box::DemoBox;
+
 #[function_component(BackdropPage)]
 pub fn backdrop_page() -> Html {
     // TODO(Shaohua): Handle events and add callback.
@@ -23,14 +25,14 @@ pub fn backdrop_page() -> Html {
         <p>{"he demo below shows a basic Backdrop with a Circular Progress component \
          in the foreground to indicate a loading state. "}</p>
 
-        <div class="demo-box">
+        <DemoBox>
             <Button>{"Show backdrop"}</Button>
             <Backdrop
                 style="color: #fff; z-index: calc(var(--zu-zIndex-drawer) + 1);"
                 open={open}>
                 <CircularProgress color={Color::Inherit} />
             </Backdrop>
-        </div>
+        </DemoBox>
         </div>
     }
 }

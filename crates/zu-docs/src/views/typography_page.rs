@@ -5,15 +5,17 @@
 use yew::prelude::*;
 use zu::typography::{Typography, Variant};
 
+use crate::components::demo_box::DemoBox;
+
 #[function_component(TypographyPage)]
 pub fn typography_page() -> Html {
     html! {
          <div class="container">
-             <h1>{"Typography"}</h1>
+         <h1>{"Typography"}</h1>
 
-             <h2>{"Component"}</h2>
-             <p>{"The Typography component makes it easy to apply a default set of font weights and sizes in your application."}</p>
-             <div class="demo-box" style={ "width: 80%;" }>
+         <h2>{"Component"}</h2>
+         <p>{"The Typography component makes it easy to apply a default set of font weights and sizes in your application."}</p>
+         <DemoBox style="width: 80%;">
              <Typography variant={Variant::H1} gutter_bottom={true}>{"h1. Heading"}</Typography>
              <Typography variant={Variant::H2} gutter_bottom={true}>{"h2. Heading"}</Typography>
              <Typography variant={Variant::H3} gutter_bottom={true}>{"h3. Heading"}</Typography>
@@ -47,7 +49,8 @@ pub fn typography_page() -> Html {
              <Typography variant={Variant::Overline} style={"display: 'block'"} gutter_bottom={true}>
                {"overline text"}
              </Typography>
-             </div>
+         </DemoBox>
+
          </div>
     }
 }
