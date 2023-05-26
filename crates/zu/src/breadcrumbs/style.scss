@@ -51,7 +51,9 @@
 
   &:active {
     box-shadow: var(--zu-shadow-0);
-    background-color: emphasize(#{$zu-colors-grey-200}, 0.12);
+    // TODO(Shaohua): Fix emphasize() error.
+    //background-color: emphasize(#{$zu-colors-grey-200}, 0.12);
+    background-color: var(--zu-colors-grey-200);
   }
 
   // TODO(Shaohua): Add dark theme support.

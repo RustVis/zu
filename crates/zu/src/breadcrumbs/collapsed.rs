@@ -5,6 +5,7 @@
 use yew::{function_component, html, AttrValue, Html, Properties};
 
 use crate::button_base::ButtonBase;
+use crate::internal::svg_icons::MoreHorizontal as MoreHorizontalIcon;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -16,16 +17,16 @@ pub struct Props {
 }
 
 #[function_component(BreadcrumbsCollapsed)]
-pub fn breadcrumbs_collapsed(_props: &Props) -> Html {
+pub fn breadcrumbs_collapsed(props: &Props) -> Html {
     html! {
         <li>
             <ButtonBase
                 classes="ZuBreadcrumbCollapsed-button"
-                style={props.style}
+                style={&props.style}
                 focus_ripple={true}>
-                <MoreHorizonIcon>
+                <MoreHorizontalIcon>
                     {props.collapsed_icon.clone()}
-                </MoreHorizonIcon>
+                </MoreHorizontalIcon>
             </ButtonBase>
         </li>
     }
