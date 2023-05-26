@@ -76,3 +76,4 @@ pub mod svg_icon;
 pub mod switch;
 pub mod theme_provider;
 pub mod typography;
+pub mod bottom_navigation;
