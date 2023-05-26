@@ -83,7 +83,7 @@ const COMMON_STYLES: &[&str] = &[
     "src/bottom_navigation/style.scss",
     "src/bottom_navigation_action/style.scss",
     "src/box/style.scss",
-    "src/breadcrumb/style.scss",
+    "src/breadcrumbs/style.scss",
     "src/button/style.scss",
     "src/button_base/style.scss",
     "src/code/style.scss",

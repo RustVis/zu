@@ -28,6 +28,9 @@ pub struct Props {
     pub component: AttrValue,
 
     #[prop_or_default]
+    pub href: AttrValue,
+
+    #[prop_or_default]
     pub style: AttrValue,
 
     /// Classes prop applied to the `Typography` element.
@@ -68,12 +71,14 @@ pub fn link(props: &Props) -> Html {
     };
 
     html! {
-        <Typography classes={root_cls}
-             style={&props.style}
-             color={props.color.clone()}
-             component={component.to_owned()}
-             variant={props.variant}>
-             {for props.children.iter()}
+        <Typography
+            classes={root_cls}
+            style={&props.style}
+            color={props.color.clone()}
+            component={component.to_owned()}
+            href={&props.href}
+            variant={props.variant}>
+            {for props.children.iter()}
         </Typography>
     }
 }

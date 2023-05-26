@@ -60,6 +60,11 @@ pub fn left_panel() -> Html {
                     </Link<Route>>
                 </li>
                 <li class="nav-item">
+                    <Link<Route> to={Route::Breadcrumbs} classes={link_cls(Route::Breadcrumbs)}>
+                    {"Breadcrumbs"}
+                    </Link<Route>>
+                </li>
+                <li class="nav-item">
                     <Link<Route> to={Route::Container} classes={link_cls(Route::Container)}>
                     {"Container"}
                     </Link<Route>>

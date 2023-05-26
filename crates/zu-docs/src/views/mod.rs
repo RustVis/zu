@@ -8,6 +8,7 @@ pub mod backdrop_page;
 pub mod badge_page;
 pub mod bottom_navigation_page;
 pub mod box_page;
+pub mod breadcrumbs_page;
 pub mod container_page;
 pub mod divider_page;
 pub mod home_page;

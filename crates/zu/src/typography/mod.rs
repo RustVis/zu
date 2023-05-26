@@ -31,6 +31,9 @@ pub struct Props {
     pub align: TextAlign,
 
     #[prop_or_default]
+    pub aria_label: AttrValue,
+
+    #[prop_or_default]
     pub children: Children,
 
     #[prop_or_default]
@@ -45,6 +48,9 @@ pub struct Props {
     /// If true, the text will have a bottom margin.
     #[prop_or(false)]
     pub gutter_bottom: bool,
+
+    #[prop_or_default]
+    pub href: AttrValue,
 
     /// If true, the text will not wrap, but instead will truncate with a text overflow ellipsis.
     ///
@@ -92,7 +98,11 @@ pub fn typography(props: &Props) -> Html {
     );
 
     html! {
-       <@{component.to_owned()} class={cls} style={attr_optional(&props.style)}>
+       <@{component.to_owned()}
+            aria_label={attr_optional(&props.aria_label)}
+            class={cls}
+            href={attr_optional(&props.href)}
+            style={attr_optional(&props.style)}>
             {for props.children.iter()}
        </@>
     }

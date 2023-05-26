@@ -11,6 +11,7 @@ use crate::views::backdrop_page::BackdropPage;
 use crate::views::badge_page::BadgePage;
 use crate::views::bottom_navigation_page::BottomNavigationPage;
 use crate::views::box_page::BoxPage;
+use crate::views::breadcrumbs_page::BreadcrumbsPage;
 use crate::views::container_page::ContainerPage;
 use crate::views::divider_page::DividerPage;
 use crate::views::home_page::HomePage;
@@ -44,6 +45,9 @@ pub enum Route {
 
     #[at("/box")]
     Box,
+
+    #[at("/breadcrumbs")]
+    Breadcrumbs,
 
     #[at("/container")]
     Container,
@@ -85,6 +89,7 @@ pub fn switch_route(routes: Route) -> Html {
         Route::Badge => html! {<BadgePage />},
         Route::BottomNavigation => html! {<BottomNavigationPage />},
         Route::Box => html! {<BoxPage />},
+        Route::Breadcrumbs => html! {<BreadcrumbsPage />},
         Route::Container => html! {<ContainerPage />},
         Route::Divider => html! {<DividerPage />},
         Route::Icons => html! {<IconsPage />},

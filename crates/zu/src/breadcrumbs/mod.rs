@@ -15,6 +15,9 @@ pub const DEFAULT_SEPARATOR: &str = "/";
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
     #[prop_or_default]
+    pub aria_label: AttrValue,
+
+    #[prop_or_default]
     pub children: Children,
 
     #[prop_or_default]
@@ -49,8 +52,8 @@ pub struct Props {
     pub style: AttrValue,
 }
 
-#[function_component(Breadcrumb)]
-pub fn breadcrumb(props: &Props) -> Html {
+#[function_component(Breadcrumbs)]
+pub fn breadcrumbs(props: &Props) -> Html {
     let component = if props.component.is_empty() {
         AttrValue::from("nav")
     } else {
@@ -59,10 +62,12 @@ pub fn breadcrumb(props: &Props) -> Html {
 
     html! {
         <Typography
+            aria_label={&props.aria_label}
             component={component}
             classes="ZuBreadcrumb-root"
             style={&props.style}>
             <ol class="ZuBreadcrumb-ol">
+                {for props.children.iter()}
             </ol>
         </Typography>
     }
