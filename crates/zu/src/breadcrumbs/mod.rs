@@ -2,6 +2,8 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+mod collapsed;
+
 use yew::{function_component, html, AttrValue, Children, Html, Properties};
 
 use crate::typography::Typography;

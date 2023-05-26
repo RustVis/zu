@@ -34,3 +34,30 @@
 
   user-select: none;
 }
+
+.ZuBreadcrumbCollapsed-button {
+  display: flex;
+  margin-left: calc(var(--zu-spacing-unit) * 0.5);
+  margin-right: calc(var(--zu-spacing-unit) * 0.5);
+
+  border-radius: 2px;
+
+  background-color: var(--zu-colors-grey-100);
+  color: var(--zu-colors-grey-700);
+
+  &:hover, &:focus {
+    background-color: var(--zu-colors-grey-200);
+  }
+
+  &:active {
+    box-shadow: var(--zu-shadow-0);
+    background-color: emphasize(#{$zu-colors-grey-200}, 0.12);
+  }
+
+  // TODO(Shaohua): Add dark theme support.
+}
+
+.ZuBreadcrumbCollapsed-icon {
+  width: 24px;
+  height: 16px;
+}
