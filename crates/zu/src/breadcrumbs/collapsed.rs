@@ -23,9 +23,9 @@ pub fn breadcrumbs_collapsed(_props: &Props) -> Html {
                 classes="ZuBreadcrumbCollapsed-button"
                 style={props.style}
                 focus_ripple={true}>
-                <MoreHorizIcon>
+                <MoreHorizonIcon>
                     {props.collapsed_icon.clone()}
-                </MoreHorizIcon>
+                </MoreHorizonIcon>
             </ButtonBase>
         </li>
     }

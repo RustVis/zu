@@ -6,16 +6,16 @@ use yew::{function_component, html, AttrValue, Html};
 
 use crate::svg_icon::{Props, SvgIcon};
 
-#[function_component({NODE_NAME})]
-pub fn {MODULE_NAME}(props: &Props) -> Html {
+#[function_component(ReportProblemOutlined)]
+pub fn report_problem_outlined(props: &Props) -> Html {
     let new_props = Props {
-        icon: AttrValue::from("{ICON_NAME}"),
+        icon: AttrValue::from("ReportProblemOutlined"),
         ..props.clone()
     };
 
     html! {
         <SvgIcon ..new_props>
-            {PATH_DATA}
+            <path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z" />
         </SvgIcon>
     }
 }

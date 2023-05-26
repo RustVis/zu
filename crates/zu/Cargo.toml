@@ -20,4 +20,6 @@ yew = "0.20.0"
 zu-util = { path = "../zu-util", version = "0.2.1" }
 
 [build-dependencies]
+inflections = "1.1.1"
 rsass = "0.27.0"
+zu-util = { path = "../zu-util", version = "0.2.1", features = ["icon"] }
