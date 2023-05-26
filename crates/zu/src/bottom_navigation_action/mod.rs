@@ -2,15 +2,12 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-#![allow(clippy::type_repetition_in_bounds)]
-
-use std::fmt;
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
 use crate::button_base::ButtonBase;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
-pub struct Props<T: PartialEq> {
+pub struct Props {
     #[prop_or_default]
     pub children: Children,
 
@@ -32,17 +29,10 @@ pub struct Props<T: PartialEq> {
 
     #[prop_or_default]
     pub style: AttrValue,
-
-    /// You can provide your own value. Otherwise, we fallback to the child position index.
-    #[prop_or_default]
-    pub value: Option<T>,
 }
 
 #[function_component(BottomNavigationAction)]
-pub fn bottom_navigation_action<T>(props: &Props<T>) -> Html
-where
-    T: fmt::Debug + Clone + PartialEq,
-{
+pub fn bottom_navigation_action(props: &Props) -> Html {
     let root_cls = classes!(
         "ZuBottomNavigationAction-root",
         if !props.show_label && !props.selected {

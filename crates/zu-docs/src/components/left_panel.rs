@@ -50,6 +50,11 @@ pub fn left_panel() -> Html {
                     </Link<Route>>
                 </li>
                 <li class="nav-item">
+                    <Link<Route> to={Route::BottomNavigation} classes={link_cls(Route::BottomNavigation)}>
+                    {"Bottom Navigation"}
+                    </Link<Route>>
+                </li>
+                <li class="nav-item">
                     <Link<Route> to={Route::Box} classes={link_cls(Route::Box)}>
                     {"Box"}
                     </Link<Route>>
