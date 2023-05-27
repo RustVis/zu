@@ -60,6 +60,7 @@ pub mod button;
 pub mod button_base;
 pub mod button_group;
 pub mod card;
+pub mod card_action_area;
 pub mod circular_progress;
 pub mod code;
 pub mod container;
