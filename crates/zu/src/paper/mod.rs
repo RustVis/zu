@@ -33,7 +33,9 @@ pub struct Props {
     pub style: AttrValue,
 
     #[prop_or(ELEVATION_DEFAULT)]
-    /// Shadow depth, corresponds to dp in the spec. It accepts values between 0 and 24 inclusive.
+    /// Shadow depth, corresponds to dp in the spec.
+    ///
+    /// It accepts values between 0 and 24 inclusive.
     pub elevation: Elevation,
 
     /// If true, rounded corners are disabled.
