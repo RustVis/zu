@@ -87,7 +87,7 @@ pub fn button(props: &Props) -> Html {
         color::color_class(&props.color),
         props.size.css_class(),
         if props.disable_elevation {
-            "ZuButton-disableElevation"
+            "ZuButton-disable_elevation"
         } else {
             ""
         },

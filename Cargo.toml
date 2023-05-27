@@ -16,8 +16,10 @@ exclude = [
 resolver = "2"
 
 [profile.release]
-# Slower build, but better optimization
-codegen-units = 1
 lto = true
+
+[profile.release.package.zu-docs]
+codegen-units = 1
+# Optimize for binary size
 opt-level = "z"
-panic = "abort"
+#panic = "abort"

@@ -58,6 +58,7 @@ pub mod r#box;
 pub mod breadcrumbs;
 pub mod button;
 pub mod button_base;
+pub mod button_group;
 pub mod circular_progress;
 pub mod code;
 pub mod container;
