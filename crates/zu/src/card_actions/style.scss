@@ -1,0 +1,17 @@
+
+/* Styles for CardActions */
+
+// Styles applied to the root element.
+.ZuCardActions-root {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+
+}
+
+// Styles applied to the root element unless disableSpacing={true}.
+.ZuCardActions-spacing {
+  & > :not(:first-of-type) {
+    margin-left: 8px;
+  }
+}
