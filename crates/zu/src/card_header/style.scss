@@ -1,0 +1,38 @@
+
+/* Styles for CardHeader */
+
+// Styles applied to the root element.
+.ZuCardHeader-root {
+  flex: 1 1 auto;
+}
+
+// Styles applied to the avatar element.
+.ZuCardHeader-avatar {
+  display: flex;
+  flex: 0 0 auto;
+  margin-right: 16px;
+}
+
+// Styles applied to the action element.
+.ZuCardHeader-action {
+  flex: 0 0 auto;
+  align-self: flex-start;
+  margin-top: -4px;
+  margin-right: -8px;
+  margin-bottom: -4px;
+}
+
+// Styles applied to the content wrapper element.
+.ZuCardHeader-content {
+  flex: 1 1 auto;
+}
+
+// Styles applied to the title Typography element.
+.ZuCardHeader-title {
+  display: block;
+}
+
+// Styles applied to the subheader Typography element.
+.ZuCardHeader-subheader {
+  display: block;
+}
