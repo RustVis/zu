@@ -1,0 +1,20 @@
+
+/* Styles for CardMedia */
+
+// Styles applied to the root element.
+.ZuCardMedia-root {
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+// Styles applied to the root element if component="video, audio, picture, iframe, or img".
+.ZuCardMedia-media {
+  width: 100%;
+}
+
+// Styles applied to the root element if component="picture or img".
+.ZuCardMedia-img {
+  object-fit: cover;
+}

@@ -64,6 +64,7 @@ pub mod card_action_area;
 pub mod card_actions;
 pub mod card_content;
 pub mod card_header;
+pub mod card_media;
 pub mod circular_progress;
 pub mod code;
 pub mod container;
