@@ -62,6 +62,7 @@ pub mod button_group;
 pub mod card;
 pub mod card_action_area;
 pub mod card_actions;
+pub mod card_content;
 pub mod circular_progress;
 pub mod code;
 pub mod container;

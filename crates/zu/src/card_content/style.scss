@@ -1,0 +1,10 @@
+
+/* Styles for CardContent */
+
+// Styles applied to the root element.
+.ZuCardContent-root {
+  padding: 16px;
+  &:last-child {
+    padding-bottom: 24px;
+  }
+}
