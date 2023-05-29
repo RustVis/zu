@@ -4,14 +4,45 @@
 
 use yew::AttrValue;
 
-/// Convert `AttrValue` to optional string.
+/// Convert value to optional string.
 ///
 /// Thus ignores `None` attribute in html dom.
-#[must_use]
-pub fn attr_optional(val: &AttrValue) -> Option<String> {
-    if val.is_empty() {
-        None
-    } else {
-        Some(val.as_str().to_owned())
+pub trait ToAttr {
+    fn to_attr(self) -> Option<String>;
+}
+
+impl ToAttr for &AttrValue {
+    fn to_attr(self) -> Option<String> {
+        if self.is_empty() {
+            None
+        } else {
+            Some(self.as_str().to_owned())
+        }
+    }
+}
+
+impl ToAttr for i32 {
+    fn to_attr(self) -> Option<String> {
+        if self >= 0 {
+            Some(self.to_string())
+        } else {
+            None
+        }
+    }
+}
+
+impl ToAttr for Option<i32> {
+    fn to_attr(self) -> Option<String> {
+        self.map(|val| val.to_string())
+    }
+}
+
+impl ToAttr for bool {
+    fn to_attr(self) -> Option<String> {
+        if self {
+            Some(self.to_string())
+        } else {
+            None
+        }
     }
 }
