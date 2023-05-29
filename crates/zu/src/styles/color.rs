@@ -14,7 +14,7 @@ pub enum Color {
     Warning,
     Success,
     Inherit,
-    // TODO(Shaohua): Remove custom color.
+    Default,
     Custom(String),
 }
 
@@ -45,7 +45,7 @@ impl CssValue for Color {
             Self::Info => "var(--zu-palette-info-main)".to_owned(),
             Self::Warning => "var(--zu-palette-warning-main)".to_owned(),
             Self::Success => "var(--zu-palette-success-main)".to_owned(),
-            Self::Inherit => String::new(),
+            Self::Inherit | Self::Default => String::new(),
             Self::Custom(color) => color.clone(),
         }
     }
