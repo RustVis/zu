@@ -22,6 +22,7 @@ use crate::views::paper_page::PaperPage;
 use crate::views::progress_page::ProgressPage;
 use crate::views::skeleton_page::SkeletonPage;
 use crate::views::stack_page::StackPage;
+use crate::views::switch_page::SwitchPage;
 use crate::views::typography_page::TypographyPage;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Routable)]
@@ -77,6 +78,9 @@ pub enum Route {
     #[at("/stack")]
     Stack,
 
+    #[at("/switch")]
+    Switch,
+
     #[at("/typography")]
     Typography,
 }
@@ -103,6 +107,7 @@ pub fn switch_route(routes: Route) -> Html {
         Route::Progress => html! {<ProgressPage />},
         Route::Skeleton => html! {<SkeletonPage />},
         Route::Stack => html! {<StackPage />},
+        Route::Switch => html! {<SwitchPage />},
         Route::Typography => html! {<TypographyPage />},
     }
 }
