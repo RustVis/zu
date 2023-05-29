@@ -3,8 +3,7 @@
 // in the LICENSE file.
 
 use yew::{function_component, html, AttrValue, Children, Html, Properties};
-
-use zu_util::prop;
+use zu_util::prop::ToAttr;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -18,7 +17,7 @@ pub struct Props {
 pub fn demo_box(props: &Props) -> Html {
     html! {
         <>
-        <div class="demo-box" style={prop::attr_optional(&props.style)}>
+        <div class="demo-box" style={props.style.to_attr()}>
             {for props.children.iter()}
         </div>
 

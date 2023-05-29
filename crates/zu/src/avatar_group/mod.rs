@@ -7,8 +7,6 @@ mod spacing;
 use yew::{function_component, html, AttrValue, Children, Html, Properties};
 
 use crate::styles::shape_variant::ShapeVariant;
-
-// Re-export
 pub use spacing::Spacing;
 
 #[derive(Debug, Clone, PartialEq, Properties)]

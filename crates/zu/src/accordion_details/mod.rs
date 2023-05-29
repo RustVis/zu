@@ -3,7 +3,7 @@
 // in the LICENSE file.
 
 use yew::{function_component, html, AttrValue, Children, Html, Properties};
-use zu_util::prop::attr_optional;
+use zu_util::prop::ToAttr;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -22,7 +22,7 @@ pub fn accordion_details(props: &Props) -> Html {
     let root_cls = "ZuAccordionDetails-root";
 
     html! {
-        <div class={root_cls} style={attr_optional(&props.style)}>
+        <div class={root_cls} style={props.style.to_attr()}>
             {for props.children.iter()}
         </div>
     }

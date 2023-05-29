@@ -6,12 +6,9 @@ mod person;
 mod variant;
 
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
-use zu_util::{name, prop::attr_optional};
+use zu_util::{name, prop::ToAttr};
 
 use crate::styles::shape_variant::ShapeVariant;
-use variant::variant_class;
-
-// Re-export
 pub use person::Person;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
@@ -72,7 +69,7 @@ pub fn avatar(props: &Props) -> Html {
     let root_cls = classes!(
         "ZuAvatar-root",
         props.classes.as_str().to_owned(),
-        variant_class(props.variant),
+        variant::css_class(props.variant),
         if has_image {
             ""
         } else {
@@ -106,11 +103,11 @@ pub fn avatar(props: &Props) -> Html {
                 {for props.children.iter()}
             } else if has_image {
                 <img class="ZuAvatar-img"
-                    aria-label={attr_optional(&props.aria_label)}
-                    src={attr_optional(&props.src)}
-                    src-set={attr_optional(&props.src_set)}
-                    alt={attr_optional(&props.alt)}
-                    sizes={attr_optional(&props.sizes)} />
+                    aria-label={props.aria_label.to_attr()}
+                    src={props.src.to_attr()}
+                    src-set={props.src_set.to_attr()}
+                    alt={props.alt.to_attr()}
+                    sizes={props.sizes.to_attr()} />
             } else if !abbr_name.is_empty() {
                 {abbr_name}
             } else {

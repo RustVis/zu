@@ -5,14 +5,12 @@
 mod variant;
 
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use zu_util::prop::ToAttr;
 
 use crate::styles::color::Color;
 use crate::styles::text_align::TextAlign;
 use crate::styles::CssClass;
-
-// Re-export
 pub use variant::Variant;
-use zu_util::prop::attr_optional;
 
 #[must_use]
 pub const fn text_align_class(align: TextAlign) -> &'static str {
@@ -99,10 +97,10 @@ pub fn typography(props: &Props) -> Html {
 
     html! {
        <@{component.to_owned()}
-            aria_label={attr_optional(&props.aria_label)}
+            aria_label={props.aria_label.to_attr()}
             class={cls}
-            href={attr_optional(&props.href)}
-            style={attr_optional(&props.style)}>
+            href={props.href.to_attr()}
+            style={props.style.to_attr()}>
             {for props.children.iter()}
        </@>
     }

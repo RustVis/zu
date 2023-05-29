@@ -3,7 +3,7 @@
 // in the LICENSE file.
 
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
-use zu_util::prop;
+use zu_util::prop::ToAttr;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -29,7 +29,8 @@ pub fn card_content(props: &Props) -> Html {
     };
     let root_cls = classes!("ZuCardContent-root", props.classes.as_str().to_owned(),);
     html! {
-        <@{component.to_owned()} class={root_cls} style={prop::attr_optional(&props.style)}>
+        <@{component.to_owned()} class={root_cls}
+            style={props.style.to_attr()}>
         </@>
     }
 }

@@ -10,8 +10,6 @@ use yew::{classes, function_component, html, AttrValue, Children, Html, Properti
 
 use crate::button_base::ButtonBase;
 use crate::styles::{color::Color, size::Size, CssClass};
-
-// Re-export
 pub use variant::Variant;
 
 #[derive(Debug, Clone, PartialEq, Properties)]

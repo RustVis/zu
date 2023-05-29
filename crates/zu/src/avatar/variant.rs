@@ -5,7 +5,7 @@
 use crate::styles::shape_variant::ShapeVariant;
 
 #[must_use]
-pub const fn variant_class(shape_variant: ShapeVariant) -> &'static str {
+pub const fn css_class(shape_variant: ShapeVariant) -> &'static str {
     match shape_variant {
         ShapeVariant::Circle => "ZuAvatar-circle",
         ShapeVariant::Rounded => "ZuAvatar-rounded",

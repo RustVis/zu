@@ -3,7 +3,7 @@
 // in the LICENSE file.
 
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
-use zu_util::prop::attr_optional;
+use zu_util::prop::ToAttr;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -30,7 +30,7 @@ pub fn form_group(props: &Props) -> Html {
     );
 
     html! {
-        <div class={cls} style={attr_optional(&props.style)}>
+        <div class={cls} style={props.style.to_attr()}>
             {for props.children.iter()}
         </div>
     }

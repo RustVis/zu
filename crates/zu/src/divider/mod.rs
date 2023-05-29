@@ -5,14 +5,12 @@
 mod variant;
 
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use zu_util::prop::ToAttr;
 
 use crate::styles::orientation::Orientation;
 use crate::styles::text_align::TextAlign;
 use crate::styles::CssClass;
-
-// Re-export
 pub use variant::Variant;
-use zu_util::prop::attr_optional;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -122,7 +120,7 @@ pub fn divider(props: &Props) -> Html {
     } else {
         None
     };
-    let style = attr_optional(&props.style);
+    let style = props.style.to_attr();
 
     if props.children.is_empty() {
         html! {

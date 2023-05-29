@@ -3,7 +3,7 @@
 // in the LICENSE file.
 
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
-use zu_util::prop::attr_optional;
+use zu_util::prop::ToAttr;
 
 use crate::styles::direction::Direction;
 use crate::styles::spacing::Spacing;
@@ -78,7 +78,8 @@ pub fn stack(props: &Props) -> Html {
     // TODO(Shaohua): Add divider elements
 
     html! {
-        <@{component.to_owned()} class={cls} style={attr_optional(&props.style)}>
+        <@{component.to_owned()} class={cls}
+            style={props.style.to_attr()}>
             {for props.children.iter()}
         </@>
     }

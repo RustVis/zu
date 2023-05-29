@@ -3,7 +3,7 @@
 // in the LICENSE file.
 
 use yew::{classes, function_component, html, AttrValue, Html, Properties};
-use zu_util::prop;
+use zu_util::prop::ToAttr;
 
 use crate::styles::color::Color;
 use crate::typography::{Typography, Variant};
@@ -51,7 +51,7 @@ pub fn card_header(props: &Props) -> Html {
     let root_cls = classes!("ZuCardHeader-root", props.classes.as_str().to_owned());
 
     html! {
-       <@{component.to_owned()} class={root_cls} style={prop::attr_optional(&props.style)}>
+       <@{component.to_owned()} class={root_cls} style={props.style.to_attr()}>
         if let Some(avatar) = &props.avatar {
             <div class="ZuCardHeader-avatar">
                 {avatar.clone()}

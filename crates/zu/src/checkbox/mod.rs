@@ -5,7 +5,7 @@
 mod color;
 
 use yew::{classes, function_component, html, AttrValue, Callback, Event, Html, Properties};
-use zu_util::prop;
+use zu_util::prop::ToAttr;
 
 use crate::styles::color::Color;
 use crate::styles::size::Size;
@@ -90,7 +90,7 @@ pub fn checkbox(props: &Props) -> Html {
     // TODO(Shaohua): Add SwitchBase.
     // TODO(Shaohua): Add default icons.
     html! {
-       <div class={root_cls} style={prop::attr_optional(&props.style)}>
+       <div class={root_cls} style={props.style.to_attr()}>
         </div>
     }
 }

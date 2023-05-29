@@ -9,15 +9,13 @@ mod overlap;
 mod variant;
 
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use zu_util::prop::ToAttr;
 
 use crate::styles::{color::Color, CssClass};
-
-// Re-export property items.
 pub use anchor_origin::AnchorOrigin;
 pub use content::Content;
 pub use overlap::Overlap;
 pub use variant::Variant;
-use zu_util::prop::attr_optional;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -104,7 +102,7 @@ pub fn badge(props: &Props) -> Html {
     };
 
     html! {
-        <@{component.to_owned()} class="ZuBadge-root" style={attr_optional(&props.style)}>
+        <@{component.to_owned()} class="ZuBadge-root" style={props.style.to_attr()}>
             {for props.children.iter()}
             <span class={badge_cls}>{display_value}</span>
         </@>

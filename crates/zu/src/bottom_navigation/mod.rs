@@ -3,7 +3,7 @@
 // in the LICENSE file.
 
 use yew::{function_component, html, AttrValue, Callback, Children, Event, Html, Properties};
-use zu_util::prop;
+use zu_util::prop::ToAttr;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -40,7 +40,7 @@ pub fn bottom_navigation(props: &Props) -> Html {
 
     html! {
         <@{component.to_owned()} class={root_cls}
-            style={prop::attr_optional(&props.style)}>
+            style={props.style.to_attr()}>
             { for props.children.iter()}
         </@>
     }

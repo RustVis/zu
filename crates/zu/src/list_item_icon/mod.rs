@@ -3,7 +3,7 @@
 // in the LICENSE file.
 
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
-use zu_util::prop;
+use zu_util::prop::ToAttr;
 
 use crate::list_item::AlignItems;
 
@@ -35,7 +35,7 @@ pub fn list_item_icon(props: &Props) -> Html {
     );
 
     html! {
-        <div class={root_cls} style={prop::attr_optional(&props.style)}>
+        <div class={root_cls} style={props.style.to_attr()}>
             {for props.children.iter()}
         </div>
     }

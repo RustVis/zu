@@ -3,7 +3,7 @@
 // in the LICENSE file.
 
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
-use zu_util::prop;
+use zu_util::prop::ToAttr;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -33,7 +33,7 @@ pub fn card_actions(props: &Props) -> Html {
     );
 
     html! {
-        <div class={root_cls} style={prop::attr_optional(&props.style)}>
+        <div class={root_cls} style={props.style.to_attr()}>
             {for props.children.iter()}
         </div>
     }

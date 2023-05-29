@@ -5,12 +5,10 @@
 mod variant;
 
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use zu_util::prop::ToAttr;
 
 use crate::styles::CssClass;
-
-// Re-export
 pub use variant::Variant;
-use zu_util::prop::attr_optional;
 
 pub type Elevation = i32;
 pub const ELEVATION_DEFAULT: Elevation = 1;
@@ -75,7 +73,7 @@ pub fn paper(props: &Props) -> Html {
 
     html! {
         <@{component.to_owned()} class={cls}
-            style={attr_optional(&props.style)}>
+            style={props.style.to_attr()}>
             {for props.children.iter()}
         </@>
     }
