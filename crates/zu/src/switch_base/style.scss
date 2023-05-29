@@ -1,0 +1,43 @@
+
+/* Styles for SwitchBase */
+
+.ZuSwitchBase-root {
+  padding: 9px;
+  border-radius: 50%;
+}
+
+.ZuSwitchBase-edgeStart {
+  &.ZuSwitchBase-sizeSmall {
+    margin-left: -3px;
+  }
+
+  &.ZuSwitchBase-sizeMedium {
+    margin-left: -12px;
+  }
+}
+
+.ZuSwitchBase-edgeEnd {
+  &.ZuSwitchBase-sizeSmall {
+    margin-right: -3px;
+  }
+
+  &.ZuSwitchBase-sizeMedium {
+    margin-right: -12px;
+  }
+}
+
+.ZuSwitchBase-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  opacity: 0;
+
+  cursor: inherit;
+}
