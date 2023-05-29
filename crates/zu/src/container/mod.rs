@@ -2,21 +2,12 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+mod size;
+
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
-use crate::styles::size::Size;
-
-#[must_use]
-pub const fn max_width_cls(size: Option<Size>) -> &'static str {
-    match size {
-        Some(Size::XSmall) => "ZuContainer-maxWidthXs",
-        Some(Size::Small) => "ZuContainer-maxWidthSm",
-        Some(Size::Middle) => "ZuContainer-maxWidthMd",
-        Some(Size::Large) => "ZuContainer-maxWidthLg",
-        Some(Size::XLarge) => "ZuContainer-maxWidthXl",
-        Some(Size::Num(_)) | None => "",
-    }
-}
+// Re-export
+pub use size::Size;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -58,7 +49,7 @@ pub fn container(props: &Props) -> Html {
 
     let cls = classes!(
         "ZuContainer-root",
-        max_width_cls(props.max_width),
+        size::max_width_cls(&props.max_width),
         if props.disable_gutters {
             "ZuContainer-disableGutters"
         } else {
@@ -68,8 +59,8 @@ pub fn container(props: &Props) -> Html {
         &props.classes
     );
 
-    let style = if let Some(Size::Num(num)) = props.max_width {
-        let lst = [props.style.as_str(), &format!("max-width: {num}px")];
+    let style = if let Some(Size::Str(s)) = &props.max_width {
+        let lst = [props.style.as_str(), &format!("max-width: {s}")];
         lst.join(";")
     } else {
         props.style.as_str().to_owned()
