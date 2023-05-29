@@ -9,10 +9,9 @@ mod variant;
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
 use crate::button_base::ButtonBase;
-use crate::styles::{color::Color, CssClass};
+use crate::styles::{color::Color, size::Size, CssClass};
 
 // Re-export
-pub use size::Size;
 pub use variant::Variant;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
@@ -85,7 +84,7 @@ pub fn button(props: &Props) -> Html {
         props.classes.as_str().to_owned(),
         props.variant.css_class(),
         color::color_class(&props.color),
-        props.size.css_class(),
+        size::css_class(&props.size),
         if props.disable_elevation {
             "ZuButton-disable_elevation"
         } else {

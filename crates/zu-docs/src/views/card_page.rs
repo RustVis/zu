@@ -4,7 +4,7 @@
 
 use yew::{function_component, html, Html};
 use zu::avatar::Avatar;
-use zu::button::{Button, Size};
+use zu::button::Button;
 use zu::card::Card;
 use zu::card_actions::CardActions;
 use zu::card_content::CardContent;
@@ -12,6 +12,7 @@ use zu::card_header::CardHeader;
 use zu::card_media::CardMedia;
 use zu::paper::Variant as PaperVariant;
 use zu::styles::color::Color;
+use zu::styles::size::Size;
 use zu::typography::{Typography, Variant as TypographyVariant};
 use zuicon_material::{Favorite, MoreVert, Share};
 

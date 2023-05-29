@@ -9,11 +9,10 @@ mod variant;
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
 use crate::form_label::FormLabel;
-use crate::styles::{color::Color, CssClass};
+use crate::styles::{color::Color, size::Size, CssClass};
 
 // Re-export
 use margin::MarginType;
-use size::Size;
 use variant::Variant;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
@@ -82,11 +81,11 @@ pub fn input_label(props: &Props) -> Html {
             "ZuInputLabel-animated"
         },
         if props.shrink {
-            "ZuInputLable-shrink"
+            "ZuInputLabel-shrink"
         } else {
             ""
         },
-        props.size.css_class(),
+        size::css_class(&props.size),
         props.variant.css_class(),
     );
     let _asterisk_class = if props.required {
@@ -94,8 +93,8 @@ pub fn input_label(props: &Props) -> Html {
     } else {
         ""
     };
+    // TODO(Shaohua): Merge props.size into styles.
 
-    // TODO(Shaohua): Replace with props!() macro.
     html! {
         <FormLabel classes={root_cls}
             color={props.color.clone()}

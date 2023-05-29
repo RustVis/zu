@@ -2,22 +2,17 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-/// The size of the component.
-///
-/// If using a number, the pixel unit is assumed.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+/// Size of component.
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub enum Size {
-    XSmall,
     Small,
-    Middle,
+    Medium,
     Large,
-    XLarge,
-
-    Num(i32),
+    Str(String),
 }
 
 impl Default for Size {
     fn default() -> Self {
-        Self::Middle
+        Self::Small
     }
 }

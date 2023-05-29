@@ -4,9 +4,10 @@
 
 use yew::{function_component, html, AttrValue, Children, Html, Properties};
 
-use crate::button::{Size, Variant};
+use crate::button::Variant;
 use crate::styles::color::Color;
 use crate::styles::orientation::Orientation;
+use crate::styles::size::Size;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
