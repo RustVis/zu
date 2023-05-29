@@ -4,6 +4,7 @@
 
 use crate::styles::CssClass;
 
+// TODO(Shaohua): Merge into crate::style
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Size {
     Small,

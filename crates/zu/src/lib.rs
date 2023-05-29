@@ -73,7 +73,7 @@ pub mod form_control_label;
 pub mod form_group;
 pub mod form_label;
 pub mod input_label;
-mod internal;
+pub mod internal;
 pub mod linear_progress;
 pub mod link;
 pub mod list;

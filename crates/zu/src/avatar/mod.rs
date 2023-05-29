@@ -21,6 +21,9 @@ pub struct Props {
     pub alt: AttrValue,
 
     #[prop_or_default]
+    pub aria_label: AttrValue,
+
+    #[prop_or_default]
     pub children: Children,
 
     #[prop_or_default]
@@ -103,6 +106,7 @@ pub fn avatar(props: &Props) -> Html {
                 {for props.children.iter()}
             } else if has_image {
                 <img class="ZuAvatar-img"
+                    aria-label={attr_optional(&props.aria_label)}
                     src={attr_optional(&props.src)}
                     src-set={attr_optional(&props.src_set)}
                     alt={attr_optional(&props.alt)}

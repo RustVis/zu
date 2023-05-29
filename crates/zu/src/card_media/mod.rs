@@ -3,9 +3,13 @@
 // in the LICENSE file.
 
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use zu_util::prop;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
+    #[prop_or_default]
+    pub alt: AttrValue,
+
     #[prop_or_default]
     pub children: Children,
 
@@ -25,6 +29,12 @@ pub struct Props {
 
     #[prop_or_default]
     pub style: AttrValue,
+
+    #[prop_or_default]
+    pub width: i32,
+
+    #[prop_or_default]
+    pub height: i32,
 }
 
 #[function_component(CardMedia)]
@@ -80,6 +90,9 @@ pub fn card_media(props: &Props) -> Html {
     html! {
         <@{component.to_owned()}
             class={root_cls}
+            alt={prop::attr_optional(&props.alt)}
+            width={if props.width > 0 {Some(props.width.to_string()) } else { None }}
+            height={if props.height > 0 {Some(props.height.to_string()) } else { None }}
             style={style}
             src={img_src}>
             {for props.children.iter()}

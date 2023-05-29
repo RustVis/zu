@@ -4,7 +4,7 @@
 
 use yew::{function_component, html, AttrValue, Children, Html, Properties};
 
-use crate::paper::Paper;
+use crate::paper::{Paper, Variant};
 
 // TODO(Shaohua): Add Paper.Props part
 #[derive(Debug, Clone, PartialEq, Properties)]
@@ -21,6 +21,12 @@ pub struct Props {
 
     #[prop_or_default]
     pub style: AttrValue,
+
+    #[prop_or(false)]
+    pub square: bool,
+
+    #[prop_or_default]
+    pub variant: Variant,
 }
 
 #[function_component(Card)]
@@ -30,6 +36,8 @@ pub fn card(props: &Props) -> Html {
     html! {
         <Paper classes={&props.classes}
             style={&props.style}
+            square={props.square}
+            variant={props.variant}
             elevation={elevation}>
             {for props.children.iter()}
         </Paper>
