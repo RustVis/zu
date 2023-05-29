@@ -140,6 +140,29 @@ pub fn card_page() -> Html {
         </Card>
         </DemoBox>
 
+        <h2>{"Media"}</h2>
+        <p>{"Example of a card using an image to reinforce the content."}</p>
+        <DemoBox>
+        <Card style="max-width: 345px">
+            <CardMedia style="height: 140px"
+                image="/assets/images/cards/contemplative-reptile.jpg"
+                title="green iguana"/>
+            <CardContent>
+                <Typography gutter_bottom={true} variant={TypographyVariant::H5} component="div">
+                    {"Lizard"}
+                </Typography>
+                <Typography variant={TypographyVariant::Body2} color={Color::Secondary}>
+                    {"Lizards are a widespread group of squamate reptiles, with over 6,000
+                    species, ranging across all continents except Antarctica"}
+                </Typography>
+            </CardContent>
+            <CardActions>
+                <Button size={Size::Small}>{"Share"}</Button>
+                <Button size={Size::Small}>{"Learn More"}</Button>
+            </CardActions>
+        </Card>
+        </DemoBox>
+
         </div>
     }
 }

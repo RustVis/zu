@@ -31,6 +31,9 @@ pub struct Props {
     pub style: AttrValue,
 
     #[prop_or_default]
+    pub title: AttrValue,
+
+    #[prop_or_default]
     pub width: i32,
 
     #[prop_or_default]
@@ -91,6 +94,7 @@ pub fn card_media(props: &Props) -> Html {
         <@{component.to_owned()}
             class={root_cls}
             alt={prop::attr_optional(&props.alt)}
+            title={prop::attr_optional(&props.title)}
             width={if props.width > 0 {Some(props.width.to_string()) } else { None }}
             height={if props.height > 0 {Some(props.height.to_string()) } else { None }}
             style={style}
