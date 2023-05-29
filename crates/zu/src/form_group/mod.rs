@@ -8,6 +8,9 @@ use zu_util::prop::ToAttr;
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
     #[prop_or_default]
+    pub aria_label: AttrValue,
+
+    #[prop_or_default]
     pub children: Children,
 
     #[prop_or(false)]
@@ -30,7 +33,9 @@ pub fn form_group(props: &Props) -> Html {
     );
 
     html! {
-        <div class={cls} style={props.style.to_attr()}>
+        <div class={cls}
+            style={props.style.to_attr()}
+            aria-label={props.aria_label.to_attr()}>
             {for props.children.iter()}
         </div>
     }

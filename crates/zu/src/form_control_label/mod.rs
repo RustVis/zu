@@ -7,7 +7,7 @@ mod position;
 use yew::function_component;
 use yew::{classes, html, AttrValue, Children, Html, Properties};
 
-use crate::styles::side::Position;
+use crate::styles::position::Position;
 use crate::typography::Typography;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
@@ -43,7 +43,7 @@ pub struct Props {
     pub label: Html,
 
     #[prop_or(Position::End)]
-    pub label_placement: Position,
+    pub label_position: Position,
 
     /// If true, the label will indicate that the input is required.
     #[prop_or(false)]
@@ -67,7 +67,7 @@ pub fn form_control_label(props: &Props) -> Html {
         } else {
             ""
         },
-        position::position_class(props.label_placement),
+        position::css_class(props.label_position),
         if props.error {
             "ZuFormControlLabel-error"
         } else {
@@ -81,7 +81,7 @@ pub fn form_control_label(props: &Props) -> Html {
     );
 
     let label_cls = classes! {
-        "ZuFormControlLable-label",
+        "ZuFormControlLabel-label",
         if props.disabled {
             "ZuFormControlLabel-disabled"
         } else {

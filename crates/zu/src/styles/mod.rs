@@ -5,7 +5,9 @@
 pub mod color;
 pub mod direction;
 pub mod edge;
+pub mod label_variant;
 pub mod orientation;
+pub mod position;
 pub mod severity;
 pub mod shape_variant;
 pub mod side;

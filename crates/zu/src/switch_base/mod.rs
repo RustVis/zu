@@ -8,7 +8,7 @@ mod edge;
 mod size;
 mod variant;
 
-use yew::{classes, function_component, html, AttrValue, Callback, Event, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Callback, Html, MouseEvent, Properties};
 use zu_util::prop::ToAttr;
 
 use crate::button_base::ButtonBase;
@@ -51,7 +51,7 @@ pub struct Props {
 
     pub on_blur: Callback<(), ()>,
 
-    pub on_change: Callback<Event, ()>,
+    pub on_change: Callback<MouseEvent, ()>,
 
     pub on_focus: Callback<(), ()>,
 

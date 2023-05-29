@@ -3,9 +3,9 @@
 // in the LICENSE file.
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum Side {
+pub enum Position {
     Top,
-    Right,
     Bottom,
-    Left,
+    Start,
+    End,
 }

@@ -3,9 +3,14 @@
 // in the LICENSE file.
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum Side {
-    Top,
-    Right,
-    Bottom,
-    Left,
+pub enum LabelVariant {
+    Filled,
+    Outlined,
+    Standard,
+}
+
+impl Default for LabelVariant {
+    fn default() -> Self {
+        Self::Standard
+    }
 }
