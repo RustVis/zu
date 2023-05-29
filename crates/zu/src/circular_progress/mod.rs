@@ -10,10 +10,10 @@ use std::f64::consts::PI;
 use yew::{classes, function_component, html, AttrValue, Html, Properties};
 
 use crate::styles::color::Color;
-use crate::styles::size::Size;
-use crate::styles::CssClass;
+use crate::styles::{CssClass, CssValue};
 
 // Re-export
+pub use size::Size;
 pub use variant::Variant;
 
 const SIZE: i32 = 44;
@@ -67,7 +67,7 @@ pub fn circular_progress(props: &Props) -> Html {
         color::css_class(&props.color),
     );
 
-    let size_style = size::css_value(props.size);
+    let size_style = props.size.css_value();
     let svg_style = [props.style.as_str(), &props.color.text_color(), &size_style].join(";");
 
     let radius: f64 = (f64::from(SIZE) - props.thickness) / 2.0;

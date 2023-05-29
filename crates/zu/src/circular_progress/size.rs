@@ -2,18 +2,23 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::styles::size::Size;
+use crate::styles::CssValue;
 
-#[must_use]
-pub fn css_value(size: Size) -> String {
-    // TODO(Shaohua): Read from css.
-    let size = match size {
-        Size::XSmall => 8,
-        Size::Small => 12,
-        Size::Middle => 14,
-        Size::Large => 18,
-        Size::XLarge => 24,
-        Size::Num(num) => num,
-    };
-    format!("width: {size}px; height: {size}px")
+/// The size of the component.
+///
+/// If using a number, the pixel unit is assumed.
+/// If using a string, you need to provide the CSS unit
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum Size {
+    Num(i32),
+    Str(String),
+}
+
+impl CssValue for Size {
+    fn css_value(&self) -> String {
+        match self {
+            Self::Num(num) => format!("width: {num}px; height: {num}px"),
+            Self::Str(s) => format!("width: {s}; height: {s};"),
+        }
+    }
 }
