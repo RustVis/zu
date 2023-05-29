@@ -9,11 +9,10 @@ mod variant;
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
 use crate::form_label::FormLabel;
-use crate::styles::{color::Color, size::Size, CssClass};
-
-// Re-export
-use margin::MarginType;
-use variant::Variant;
+use crate::styles::color::Color;
+use crate::styles::label_variant::LabelVariant;
+use crate::styles::size::Size;
+pub use margin::MarginType;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -62,7 +61,7 @@ pub struct Props {
     pub style: AttrValue,
 
     #[prop_or_default]
-    pub variant: Variant,
+    pub variant: LabelVariant,
 }
 
 #[function_component(InputLabel)]
@@ -86,7 +85,7 @@ pub fn input_label(props: &Props) -> Html {
             ""
         },
         size::css_class(&props.size),
-        props.variant.css_class(),
+        variant::css_class(props.variant),
     );
     let _asterisk_class = if props.required {
         "ZuInputLabel-asterisk"

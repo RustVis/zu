@@ -3,11 +3,10 @@
 // in the LICENSE file.
 
 use yew::{function_component, html, Html};
-use zu::{
-    alert::{Alert, Variant},
-    alert_title::AlertTitle,
-    styles::severity::Severity,
-};
+use zu::alert::Alert;
+use zu::alert_title::AlertTitle;
+use zu::styles::label_variant::LabelVariant;
+use zu::styles::severity::Severity;
 use zuicon_material::Check;
 
 use crate::components::demo_box::DemoBox;
@@ -82,32 +81,32 @@ pub fn alert_page() -> Html {
         <p>{"Two additional variants are available – outlined, and filled:"}</p>
         <h3>{"Outlined"}</h3>
         <DemoBox>
-            <Alert variant={Variant::Outlined} severity={Severity::Error}>
+            <Alert variant={LabelVariant::Outlined} severity={Severity::Error}>
                 {"This is an error alert — check it out!"}
             </Alert>
-            <Alert variant={Variant::Outlined} severity={Severity::Warning}>
+            <Alert variant={LabelVariant::Outlined} severity={Severity::Warning}>
                 {"This is a warning alert — check it out!"}
             </Alert>
-            <Alert variant={Variant::Outlined} severity={Severity::Info}>
+            <Alert variant={LabelVariant::Outlined} severity={Severity::Info}>
                 {"This is an info alert — check it out!"}
             </Alert>
-            <Alert variant={Variant::Outlined} severity={Severity::Success}>
+            <Alert variant={LabelVariant::Outlined} severity={Severity::Success}>
                 {"This is a success alert — check it out!"}
             </Alert>
         </DemoBox>
 
         <h3>{"Filled"}</h3>
         <DemoBox>
-            <Alert variant={Variant::Filled} severity={Severity::Error}>
+            <Alert variant={LabelVariant::Filled} severity={Severity::Error}>
                 {"This is an error alert — check it out!"}
             </Alert>
-            <Alert variant={Variant::Filled} severity={Severity::Warning}>
+            <Alert variant={LabelVariant::Filled} severity={Severity::Warning}>
                 {"This is a warning alert — check it out!"}
             </Alert>
-            <Alert variant={Variant::Filled} severity={Severity::Info}>
+            <Alert variant={LabelVariant::Filled} severity={Severity::Info}>
                 {"This is an info alert — check it out!"}
             </Alert>
-            <Alert variant={Variant::Filled} severity={Severity::Success}>
+            <Alert variant={LabelVariant::Filled} severity={Severity::Success}>
                 {"This is a success alert — check it out!"}
             </Alert>
         </DemoBox>

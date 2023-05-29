@@ -9,12 +9,10 @@ use yew::{classes, function_component, html, AttrValue, Children, Html, Properti
 
 use crate::paper::Paper;
 use crate::styles::{
+    label_variant::LabelVariant,
     severity::{Severity, SeverityColor},
     CssClass,
 };
-
-// Re-export
-pub use variant::Variant;
 
 pub const DEFAULT_CLOSE: &str = "Close";
 
@@ -56,7 +54,7 @@ pub struct Props {
     pub style: AttrValue,
 
     #[prop_or_default]
-    pub variant: Variant,
+    pub variant: LabelVariant,
 }
 
 #[function_component(Alert)]

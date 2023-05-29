@@ -2,27 +2,13 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::styles::CssClass;
+use crate::styles::label_variant::LabelVariant;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum Variant {
-    Filled,
-    Outlined,
-    Standard,
-}
-
-impl Default for Variant {
-    fn default() -> Self {
-        Self::Standard
-    }
-}
-
-impl CssClass for Variant {
-    fn css_class(&self) -> &'static str {
-        match self {
-            Self::Filled => "ZuInputLabel-filled",
-            Self::Outlined => "ZuInputLabel-outlined",
-            Self::Standard => "ZuInputLabel-standard",
-        }
+#[must_use]
+pub const fn css_class(variant: LabelVariant) -> &'static str {
+    match variant {
+        LabelVariant::Filled => "ZuInputLabel-filled",
+        LabelVariant::Outlined => "ZuInputLabel-outlined",
+        LabelVariant::Standard => "ZuInputLabel-standard",
     }
 }
