@@ -5,7 +5,7 @@
 use crate::styles::color::Color;
 
 #[must_use]
-pub const fn css_clas(color: &Color) -> &'static str {
+pub const fn css_class(color: Color) -> &'static str {
     match color {
         Color::Primary => "ZuCheckbox-colorPrimary",
         Color::Secondary => "ZuCheckbox-colorSecondary",
@@ -14,6 +14,6 @@ pub const fn css_clas(color: &Color) -> &'static str {
         Color::Warning => "ZuCheckbox-colorWarning",
         Color::Error => "ZuCheckbox-colorError",
         Color::Default => "ZuCheckbox-colorDefault",
-        _ => "",
+        Color::Inherit => "",
     }
 }

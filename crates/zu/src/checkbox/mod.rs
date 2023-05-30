@@ -79,7 +79,7 @@ pub fn checkbox(props: &Props) -> Html {
         } else {
             ""
         },
-        color::css_clas(&props.color),
+        color::css_class(props.color),
         if props.disable_ripple {
             ""
         } else {

@@ -55,7 +55,7 @@ pub fn icon_button(props: &Props) -> Html {
         } else {
             ""
         },
-        color::css_class(&props.color),
+        color::css_class(props.color),
         edge::css_class(props.edge),
         size::css_class(props.size),
     );

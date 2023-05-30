@@ -5,7 +5,7 @@
 use crate::styles::color::Color;
 
 #[must_use]
-pub const fn css_class(color: &Color) -> &'static str {
+pub const fn css_class(color: Color) -> &'static str {
     match color {
         Color::Primary => "ZuIconButton-colorPrimary",
         Color::Secondary => "ZuIconButton-colorSecondary",
@@ -14,6 +14,6 @@ pub const fn css_class(color: &Color) -> &'static str {
         Color::Warning => "ZuIconButton-colorWarning",
         Color::Success => "ZuIconButton-colorSuccess",
         Color::Inherit => "ZuIconButton-colorInherit",
-        Color::Default | Color::Custom(_) => "",
+        Color::Default => "",
     }
 }

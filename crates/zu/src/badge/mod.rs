@@ -73,7 +73,7 @@ pub fn badge(props: &Props) -> Html {
         },
         props.anchor_origin.css_class(),
         props.overlap.css_class(),
-        color::color_class(&props.color),
+        color::color_class(props.color),
     );
 
     let component = if props.component.is_empty() {

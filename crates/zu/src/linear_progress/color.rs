@@ -4,7 +4,7 @@
 
 pub use crate::styles::color::Color;
 
-pub const fn root_class(color: &Color) -> &'static str {
+pub const fn root_class(color: Color) -> &'static str {
     match color {
         Color::Primary => "ZuLinearProgress-colorPrimary",
         Color::Secondary => "ZuLinearProgress-colorSecondary",
@@ -14,7 +14,7 @@ pub const fn root_class(color: &Color) -> &'static str {
 }
 
 #[must_use]
-pub const fn dashed_class(color: &Color) -> &'static str {
+pub const fn dashed_class(color: Color) -> &'static str {
     match color {
         Color::Primary => "ZuLinearProgress-dashColorPrimary",
         Color::Secondary => "ZuLinearProgress-dashColorSecondary",
@@ -23,7 +23,7 @@ pub const fn dashed_class(color: &Color) -> &'static str {
 }
 
 #[must_use]
-pub const fn bar_class(color: &Color) -> &'static str {
+pub const fn bar_class(color: Color) -> &'static str {
     match color {
         Color::Primary => "ZuLinearProgress-barColorPrimary",
         Color::Secondary => "ZuLinearProgress-barColorSecondary",

@@ -48,7 +48,7 @@ pub struct Props {
 pub fn linear_progress(props: &Props) -> Html {
     let root_cls = classes!(
         "ZuLinearProgress-root",
-        color::root_class(&props.color),
+        color::root_class(props.color),
         props.variant.css_class(),
         if props.variant == Variant::Buffer {
             ""
@@ -56,10 +56,10 @@ pub fn linear_progress(props: &Props) -> Html {
             "ZuLinearProgress-noBuffer"
         }
     );
-    let _dashed_cls = classes!("ZuLinearProgress-dashed", color::dashed_class(&props.color),);
+    let _dashed_cls = classes!("ZuLinearProgress-dashed", color::dashed_class(props.color),);
     let _bar1_cls = classes!(
         "ZuLinearProgress-bar1",
-        color::bar_class(&props.color),
+        color::bar_class(props.color),
         match props.variant {
             Variant::Indeterminate | Variant::Query => "ZuLinearProgress-bar1Indeterminate",
             Variant::Determinate => "ZuLinearProgress-bar1Determinate",
@@ -69,9 +69,9 @@ pub fn linear_progress(props: &Props) -> Html {
     let _bar2_cls = classes!(
         "ZuLinearProgress-bar2",
         if props.variant == Variant::Buffer {
-            color::root_class(&props.color)
+            color::root_class(props.color)
         } else {
-            color::bar_class(&props.color)
+            color::bar_class(props.color)
         },
         match props.variant {
             Variant::Indeterminate | Variant::Query => "ZuLinearProgress-bar2Indeterminate",

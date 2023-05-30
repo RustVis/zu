@@ -74,7 +74,7 @@ pub fn link(props: &Props) -> Html {
         <Typography
             classes={root_cls}
             style={&props.style}
-            color={props.color.clone()}
+            color={props.color}
             component={component.to_owned()}
             href={&props.href}
             variant={props.variant}>

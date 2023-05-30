@@ -4,7 +4,7 @@
 
 use crate::styles::color::Color;
 
-pub const fn css_class(color: &Color) -> &'static str {
+pub const fn css_class(color: Color) -> &'static str {
     match color {
         Color::Primary => "ZuCircularProgress-colorPrimary",
         Color::Secondary => "ZuCircularProgress-colorSecondary",

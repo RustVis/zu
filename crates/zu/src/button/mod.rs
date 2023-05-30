@@ -133,7 +133,7 @@ pub fn button(props: &Props) -> Html {
         "ZuButton-root",
         props.classes.as_str().to_owned(),
         props.variant.css_class(),
-        color::color_class(&props.color),
+        color::color_class(props.color),
         size::css_class(props.size),
         if props.disable_elevation {
             "ZuButton-disable_elevation"

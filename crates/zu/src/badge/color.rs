@@ -5,7 +5,7 @@
 use crate::styles::color::Color;
 
 #[must_use]
-pub const fn color_class(color: &Color) -> &'static str {
+pub const fn color_class(color: Color) -> &'static str {
     match color {
         Color::Primary => "ZuBadge-colorPrimary",
         Color::Secondary => "ZuBadge-colorSecondary",

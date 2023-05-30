@@ -96,7 +96,7 @@ pub fn input_label(props: &Props) -> Html {
 
     html! {
         <FormLabel classes={root_cls}
-            color={props.color.clone()}
+            color={props.color}
             disabled={props.disabled}
             error={props.error}
             focused={props.focused}

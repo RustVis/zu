@@ -64,7 +64,7 @@ pub fn circular_progress(props: &Props) -> Html {
     let cls = classes!(
         "ZuCircularProgress-root",
         props.variant.css_class(),
-        color::css_class(&props.color),
+        color::css_class(props.color),
     );
 
     let size_style = props.size.css_value();
