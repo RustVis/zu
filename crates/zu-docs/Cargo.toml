@@ -37,8 +37,11 @@ features = [
 path = "../zuicon-material"
 version = "0.2.1"
 features = [
+  "AddShoppingCart",
+  "Alarm",
   "Assignment",
   "Check",
+  "Delete",
   "Favorite",
   "Folder",
   "Home",
@@ -46,5 +49,6 @@ features = [
   "MoreVert",
   "Pageview",
   "Restore",
+  "Send",
   "Share",
 ]
