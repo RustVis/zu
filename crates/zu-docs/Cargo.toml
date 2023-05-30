@@ -19,7 +19,7 @@ wasm-logger = "0.2.0"
 yew = { version = "0.20.0", features = ["csr"] }
 yew-router = "0.17.0"
 zu = { path = "../zu" }
-zu-util = { path = "../zu-util", version = "0.2.1" }
+zu-util = { path = "../zu-util", version = "0.3.1" }
 
 [dependencies.web-sys]
 version = "0.3.63"

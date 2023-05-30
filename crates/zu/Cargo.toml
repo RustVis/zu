@@ -17,9 +17,9 @@ publish = true
 log = "0.4.18"
 stylist = { version = "0.12.0", default-features = false, features = ["parser", "random", "yew"] }
 yew = "0.20.0"
-zu-util = { path = "../zu-util", version = "0.2.1" }
+zu-util = { path = "../zu-util", version = "0.3.1" }
 
 [build-dependencies]
 inflections = "1.1.1"
 rsass = "0.27.0"
-zu-util = { path = "../zu-util", version = "0.2.1", features = ["icon"] }
+zu-util = { path = "../zu-util", version = "0.3.1", features = ["icon"] }
