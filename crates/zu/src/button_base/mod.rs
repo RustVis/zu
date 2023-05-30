@@ -2,7 +2,10 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{classes, function_component, html, use_state, AttrValue, Children, Html, Properties};
+use yew::{
+    classes, function_component, html, use_state, AttrValue, Callback, Children, Html,
+    KeyboardEvent, MouseEvent, Properties,
+};
 
 pub const DEFAULT_LINK_COMPONENT: &str = "a";
 
@@ -42,11 +45,51 @@ pub struct Props {
     #[prop_or_default]
     pub focus_visible_class: AttrValue,
 
+    #[prop_or_default]
+    pub href: AttrValue,
+
     /// The component used to render a link when the href prop is provided.
+    ///
+    /// Default is 'a'
     #[prop_or_default]
     pub link_component: AttrValue,
 
-    // TODO(Shaohua): Add event callback.
+    #[prop_or_default]
+    pub on_blur: Option<Callback<(), ()>>,
+
+    #[prop_or_default]
+    pub on_click: Option<Callback<MouseEvent, ()>>,
+
+    #[prop_or_default]
+    pub on_context_menu: Option<Callback<(), ()>>,
+
+    #[prop_or_default]
+    pub on_drag_leave: Option<Callback<(), ()>>,
+
+    #[prop_or_default]
+    pub on_focus: Option<Callback<(), ()>>,
+
+    /// Callback fired when the component is focused with a keyboard.
+    #[prop_or_default]
+    pub on_focus_visible: Option<Callback<(), ()>>,
+
+    #[prop_or_default]
+    pub on_key_down: Option<Callback<KeyboardEvent, ()>>,
+
+    #[prop_or_default]
+    pub on_key_up: Option<Callback<KeyboardEvent, ()>>,
+
+    #[prop_or_default]
+    pub on_mouse_down: Option<Callback<MouseEvent, ()>>,
+
+    #[prop_or_default]
+    pub on_mouse_leave: Option<Callback<MouseEvent, ()>>,
+
+    #[prop_or_default]
+    pub on_mouse_up: Option<Callback<MouseEvent, ()>>,
+
+    // TODO(Shaohua): Add touch event callback.
+
     // pub onFocusVisible:
     #[prop_or_default]
     pub style: AttrValue,
