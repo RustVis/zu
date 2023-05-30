@@ -1,0 +1,170 @@
+
+/* Styles for IconButton */
+
+// Styles applied to the root element.
+.ZuIconButton-root {
+  transition: background-color var(--zu-duration-shortest) var(--zu-easing-easeInOut) 0ms;
+
+  flex: 0 0 auto;
+  padding: 8px;
+  overflow: visible; // Explicitly set the default value to solve a bug on IE11.
+
+  border-radius: 50%;
+
+  color: var(--zu-palette-action-active);
+
+  text-align: center;
+  font-size: 24px;
+
+}
+
+// Styles applied to the root element if edge="start".
+.ZuIconButton-edgeStart {
+  &.ZuIconButton-sizeSmall {
+    margin-left: -3px;
+  }
+  &.ZuIconButton-sizeMedium,
+  &.ZuIconButton-sizeLarge {
+    margin-left: -12px;
+  }
+}
+
+// Styles applied to the root element if edge="end".
+.ZuIconButton-edgeEnd {
+  &.ZuIconButton-sizeSmall {
+    margin-right: -3px;
+  }
+  &.ZuIconButton-sizeMedium,
+  &.ZuIconButton-sizeLarge {
+    margin-right: -12px;
+  }
+}
+
+// Styles applied to the root element if color="inherit".
+.ZuIconButton-colorInherit {
+  color: inherit;
+}
+
+// Styles applied to the root element if color="primary".
+.ZuIconButton-colorPrimary {
+  color: var(--zu-palette-primary-main);
+
+  &.ZuIconButton-enableRipple {
+    &:hover {
+      background-color: change-color($zu-palette-primary-main, $alpha: $zu-palette-action-hoverOpacity);
+      // Reset on touch devices, it doesn't add specificity
+      @media (hover: none) {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+// Styles applied to the root element if color="secondary".
+.ZuIconButton-colorSecondary {
+  color: var(--zu-palette-secondary-main);
+
+  &.ZuIconButton-enableRipple {
+    &:hover {
+      background-color: change-color($zu-palette-secondary-main, $alpha: $zu-palette-action-hoverOpacity);
+      // Reset on touch devices, it doesn't add specificity
+      @media (hover: none) {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+// Styles applied to the root element if color="error".
+.ZuIconButton-colorError {
+  color: var(--zu-palette-error-main);
+
+  &.ZuIconButton-enableRipple {
+    &:hover {
+      background-color: change-color($zu-palette-error-main, $alpha: $zu-palette-action-hoverOpacity);
+      // Reset on touch devices, it doesn't add specificity
+      @media (hover: none) {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+// Styles applied to the root element if color="info".
+.ZuIconButton-colorInfo {
+  color: var(--zu-palette-info-main);
+
+  &.ZuIconButton-enableRipple {
+    &:hover {
+      background-color: change-color($zu-palette-info-main, $alpha: $zu-palette-action-hoverOpacity);
+      // Reset on touch devices, it doesn't add specificity
+      @media (hover: none) {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+// Styles applied to the root element if color="success".
+.ZuIconButton-colorSuccess {
+  color: var(--zu-palette-success-main);
+
+  &.ZuIconButton-enableRipple {
+    &:hover {
+      background-color: change-color($zu-palette-success-main, $alpha: $zu-palette-action-hoverOpacity);
+      // Reset on touch devices, it doesn't add specificity
+      @media (hover: none) {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+// Styles applied to the root element if color="warning".
+.ZuIconButton-colorWarning {
+  color: var(--zu-palette-warning-main);
+
+  &.ZuIconButton-enableRipple {
+    &:hover {
+      background-color: change-color($zu-palette-warning-main, $alpha: $zu-palette-action-hoverOpacity);
+      // Reset on touch devices, it doesn't add specificity
+      @media (hover: none) {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+// State class applied to the root element if disabled={true}.
+.ZuIconButton-disabled {
+  background-color: transparent;
+  color: var(--zu-palette-action-disabled);
+}
+
+// Styles applied to the root element if size="small".
+.ZuIconButton-sizeSmall {
+  padding: 5px;
+  font-size: 18px;
+}
+
+// Styles applied to the root element if size="medium".
+.ZuIconButton-sizeMedium {
+
+}
+
+// Styles applied to the root element if size="large".
+.ZuIconButton-sizeLarge {
+  padding: 12px;
+  font-size: 28px;
+}
+
+.ZuIconButton-enableRipple {
+  &:hover {
+    background-color: change-color($zu-palette-action-active, $alpha: $zu-palette-action-hoverOpacity);
+
+    // Reset on touch devices, it doesn't add specificity
+    @media (hover: none) {
+      background-color: transparent;
+    }
+  }
+}
