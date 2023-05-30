@@ -5,21 +5,19 @@
 use crate::styles::size::Size;
 
 #[must_use]
-pub const fn css_class(size: &Size) -> &'static str {
+pub const fn css_class(size: Size) -> &'static str {
     match size {
         Size::Small => "ZuButton-sizeSmall",
         Size::Medium => "ZuButton-sizeMedium",
         Size::Large => "ZuButton-sizeLarge",
-        Size::Str(_) => "",
     }
 }
 
 #[must_use]
-pub const fn icon_class(size: &Size) -> &'static str {
+pub const fn icon_class(size: Size) -> &'static str {
     match size {
         Size::Small => "ZuButton-iconSizeSmall",
         Size::Medium => "ZuButton-iconSizeMedium",
         Size::Large => "ZuButton-iconSizeLarge",
-        Size::Str(_) => "",
     }
 }

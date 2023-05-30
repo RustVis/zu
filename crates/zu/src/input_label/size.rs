@@ -5,7 +5,7 @@
 use crate::styles::size::Size;
 
 #[must_use]
-pub const fn css_class(size: &Size) -> &'static str {
+pub const fn css_class(size: Size) -> &'static str {
     match size {
         Size::Small => "ZuInputLabel-sizeSmall",
         _ => "",

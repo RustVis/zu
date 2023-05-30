@@ -104,6 +104,7 @@ const COMMON_STYLES: &[&str] = &[
     "src/form_control_label/style.scss",
     "src/form_group/style.scss",
     "src/form_label/style.scss",
+    "src/icon_button/style.scss",
     "src/input_label/style.scss",
     "src/linear_progress/style.scss",
     "src/link/style.scss",

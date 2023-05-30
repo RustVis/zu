@@ -90,7 +90,7 @@ pub fn switch_base(props: &Props) -> Html {
             ""
         },
         edge::css_class(props.edge),
-        size::css_class(&props.size),
+        size::css_class(props.size),
     );
 
     let has_label_for = match props.variant {

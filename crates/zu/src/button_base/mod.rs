@@ -3,14 +3,18 @@
 // in the LICENSE file.
 
 use yew::{
-    classes, function_component, html, use_state, AttrValue, Callback, Children, Html,
-    KeyboardEvent, MouseEvent, Properties,
+    classes, function_component, html, use_state, AttrValue, Callback, Children, DragEvent,
+    FocusEvent, Html, KeyboardEvent, MouseEvent, Properties, TouchEvent,
 };
+use zu_util::prop::ToAttr;
 
 pub const DEFAULT_LINK_COMPONENT: &str = "a";
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
+    #[prop_or_default]
+    pub aria_label: AttrValue,
+
     // TODO(Shaohua): Add action ref.
     /// If true, the ripples are centered.
     #[prop_or(false)]
@@ -55,23 +59,23 @@ pub struct Props {
     pub link_component: AttrValue,
 
     #[prop_or_default]
-    pub on_blur: Option<Callback<(), ()>>,
+    pub on_blur: Option<Callback<FocusEvent, ()>>,
 
     #[prop_or_default]
     pub on_click: Option<Callback<MouseEvent, ()>>,
 
     #[prop_or_default]
-    pub on_context_menu: Option<Callback<(), ()>>,
+    pub on_context_menu: Option<Callback<MouseEvent, ()>>,
 
     #[prop_or_default]
-    pub on_drag_leave: Option<Callback<(), ()>>,
+    pub on_drag_leave: Option<Callback<DragEvent, ()>>,
 
     #[prop_or_default]
-    pub on_focus: Option<Callback<(), ()>>,
+    pub on_focus: Option<Callback<FocusEvent, ()>>,
 
     /// Callback fired when the component is focused with a keyboard.
     #[prop_or_default]
-    pub on_focus_visible: Option<Callback<(), ()>>,
+    pub on_focus_visible: Option<Callback<FocusEvent, ()>>,
 
     #[prop_or_default]
     pub on_key_down: Option<Callback<KeyboardEvent, ()>>,
@@ -83,16 +87,29 @@ pub struct Props {
     pub on_mouse_down: Option<Callback<MouseEvent, ()>>,
 
     #[prop_or_default]
+    pub on_mouse_enter: Option<Callback<MouseEvent, ()>>,
+
+    #[prop_or_default]
     pub on_mouse_leave: Option<Callback<MouseEvent, ()>>,
 
     #[prop_or_default]
     pub on_mouse_up: Option<Callback<MouseEvent, ()>>,
 
-    // TODO(Shaohua): Add touch event callback.
+    #[prop_or_default]
+    pub on_touch_end: Option<Callback<TouchEvent, ()>>,
+
+    #[prop_or_default]
+    pub on_touch_move: Option<Callback<TouchEvent, ()>>,
+
+    #[prop_or_default]
+    pub on_touch_start: Option<Callback<TouchEvent, ()>>,
 
     // pub onFocusVisible:
     #[prop_or_default]
     pub style: AttrValue,
+
+    #[prop_or(-1)]
+    pub tab_index: i32,
 
     // TODO(Shaohua): Replace with a struct.
     #[prop_or_default]
@@ -132,8 +149,30 @@ pub fn button_base(props: &Props) -> Html {
         props.component.as_str()
     };
 
+    // TODO(Shaohua): Add touch ripple.
+    // TODO(Shaohua): Bind on_focus_visible
+
+    let tab_index = if props.disabled { -1 } else { props.tab_index };
+
     html! {
-        <@{component.to_owned()} class={root_cls}>
+        <@{component.to_owned()} class={root_cls}
+            aria-label={props.aria_label.to_attr()}
+            onblur={props.on_blur.clone()}
+            onclick={props.on_click.clone()}
+            oncontextmenu={props.on_context_menu.clone()}
+            ondragleave={props.on_drag_leave.clone()}
+            onfocus={props.on_focus.clone()}
+            onkeydown={props.on_key_down.clone()}
+            onkeyup={props.on_key_up.clone()}
+            onmousedown={props.on_mouse_down.clone()}
+            onmouseenter={props.on_mouse_enter.clone()}
+            onmouseleave={props.on_mouse_leave.clone()}
+            onmouseup={props.on_mouse_up.clone()}
+            ontouchend={props.on_touch_end.clone()}
+            ontouchmove={props.on_touch_move.clone()}
+            ontouchstart={props.on_touch_start.clone()}
+            tab_index={tab_index.to_string()}
+            >
             {for props.children.iter()}
         </@>
     }

@@ -6,7 +6,10 @@ mod color;
 mod size;
 mod variant;
 
-use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use yew::{
+    classes, function_component, html, AttrValue, Callback, Children, DragEvent, FocusEvent, Html,
+    KeyboardEvent, MouseEvent, Properties, TouchEvent,
+};
 
 use crate::button_base::ButtonBase;
 use crate::styles::{color::Color, size::Size, CssClass};
@@ -56,6 +59,52 @@ pub struct Props {
     #[prop_or_default]
     pub href: AttrValue,
 
+    #[prop_or_default]
+    pub on_blur: Option<Callback<FocusEvent, ()>>,
+
+    #[prop_or_default]
+    pub on_click: Option<Callback<MouseEvent, ()>>,
+
+    #[prop_or_default]
+    pub on_context_menu: Option<Callback<MouseEvent, ()>>,
+
+    #[prop_or_default]
+    pub on_drag_leave: Option<Callback<DragEvent, ()>>,
+
+    #[prop_or_default]
+    pub on_focus: Option<Callback<FocusEvent, ()>>,
+
+    /// Callback fired when the component is focused with a keyboard.
+    #[prop_or_default]
+    pub on_focus_visible: Option<Callback<FocusEvent, ()>>,
+
+    #[prop_or_default]
+    pub on_key_down: Option<Callback<KeyboardEvent, ()>>,
+
+    #[prop_or_default]
+    pub on_key_up: Option<Callback<KeyboardEvent, ()>>,
+
+    #[prop_or_default]
+    pub on_mouse_down: Option<Callback<MouseEvent, ()>>,
+
+    #[prop_or_default]
+    pub on_mouse_enter: Option<Callback<MouseEvent, ()>>,
+
+    #[prop_or_default]
+    pub on_mouse_leave: Option<Callback<MouseEvent, ()>>,
+
+    #[prop_or_default]
+    pub on_mouse_up: Option<Callback<MouseEvent, ()>>,
+
+    #[prop_or_default]
+    pub on_touch_end: Option<Callback<TouchEvent, ()>>,
+
+    #[prop_or_default]
+    pub on_touch_move: Option<Callback<TouchEvent, ()>>,
+
+    #[prop_or_default]
+    pub on_touch_start: Option<Callback<TouchEvent, ()>>,
+
     /// The size of the component.
     ///
     ///  small is equivalent to the dense button styling.
@@ -68,6 +117,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub style: AttrValue,
+
+    #[prop_or(-1)]
+    pub tab_index: i32,
 
     #[prop_or_default]
     pub variant: Variant,
@@ -82,7 +134,7 @@ pub fn button(props: &Props) -> Html {
         props.classes.as_str().to_owned(),
         props.variant.css_class(),
         color::color_class(&props.color),
-        size::css_class(&props.size),
+        size::css_class(props.size),
         if props.disable_elevation {
             "ZuButton-disable_elevation"
         } else {
@@ -102,7 +154,25 @@ pub fn button(props: &Props) -> Html {
     // TODO(Shaohua): Set class for start_icon and end_icon.
 
     html! {
-        <ButtonBase classes={root_cls}>
+        <ButtonBase
+            classes={root_cls}
+            on_blur={props.on_blur.clone()}
+            on_click={props.on_click.clone()}
+            on_context_menu={props.on_context_menu.clone()}
+            on_drag_leave={props.on_drag_leave.clone()}
+            on_focus={props.on_focus.clone()}
+            on_focus_visible={props.on_focus_visible.clone()}
+            on_key_down={props.on_key_down.clone()}
+            on_key_up={props.on_key_up.clone()}
+            on_mouse_down={props.on_mouse_down.clone()}
+            on_mouse_enter={props.on_mouse_enter.clone()}
+            on_mouse_leave={props.on_mouse_leave.clone()}
+            on_mouse_up={props.on_mouse_up.clone()}
+            on_touch_end={props.on_touch_end.clone()}
+            on_touch_move={props.on_touch_move.clone()}
+            on_touch_start={props.on_touch_start.clone()}
+            tab_index={props.tab_index}
+            >
             if let Some(start_icon) = &props.start_icon {
                 {start_icon.clone()}
             }

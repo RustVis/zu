@@ -84,7 +84,7 @@ pub fn input_label(props: &Props) -> Html {
         } else {
             ""
         },
-        size::css_class(&props.size),
+        size::css_class(props.size),
         variant::css_class(props.variant),
     );
     let _asterisk_class = if props.required {

@@ -74,6 +74,7 @@ pub mod form_control;
 pub mod form_control_label;
 pub mod form_group;
 pub mod form_label;
+pub mod icon_button;
 pub mod input_label;
 pub mod internal;
 pub mod linear_progress;

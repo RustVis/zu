@@ -3,12 +3,11 @@
 // in the LICENSE file.
 
 /// Size of component.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Size {
     Small,
     Medium,
     Large,
-    Str(String),
 }
 
 impl Default for Size {
