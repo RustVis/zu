@@ -18,6 +18,9 @@ pub use variant::Variant;
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
     #[prop_or_default]
+    pub aria_label: AttrValue,
+
+    #[prop_or_default]
     pub children: Children,
 
     #[prop_or_default]
@@ -156,6 +159,11 @@ pub fn button(props: &Props) -> Html {
     html! {
         <ButtonBase
             classes={root_cls}
+            aria_label={&props.aria_label}
+            component={&props.component}
+            disabled={props.disabled}
+            disable_focus_ripple={props.disable_focus_ripple}
+            disable_ripple={props.disable_ripple}
             on_blur={props.on_blur.clone()}
             on_click={props.on_click.clone()}
             on_context_menu={props.on_context_menu.clone()}

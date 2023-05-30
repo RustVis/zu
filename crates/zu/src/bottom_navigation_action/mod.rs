@@ -70,7 +70,7 @@ pub fn bottom_navigation_action(props: &Props) -> Html {
     html! {
         <ButtonBase classes={root_cls}
             style={&props.style}
-            focus_ripple={true}>
+            disable_focus_ripple={false}>
             {props.icon.clone()}
             <span class={label_cls}>
                 {props.label.clone()}

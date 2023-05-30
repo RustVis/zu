@@ -41,9 +41,9 @@ pub struct Props {
     #[prop_or(false)]
     pub disable_touch_ripple: bool,
 
-    /// If true, the base button will have a keyboard focus ripple.
+    /// If true, the keyboard focus ripple is disabled.
     #[prop_or(false)]
-    pub focus_ripple: bool,
+    pub disable_focus_ripple: bool,
 
     /// This prop can help identify which element has keyboard focus.
     #[prop_or_default]
@@ -159,6 +159,7 @@ pub fn button_base(props: &Props) -> Html {
     html! {
         <@{component.to_owned()} class={root_cls}
             aria-label={props.aria_label.to_attr()}
+            disabled={props.disabled}
             onblur={props.on_blur.clone()}
             onclick={props.on_click.clone()}
             oncontextmenu={props.on_context_menu.clone()}

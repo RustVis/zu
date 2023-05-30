@@ -113,8 +113,8 @@ pub fn switch_base(props: &Props) -> Html {
     html! {
         <ButtonBase classes={root_cls}
             component="span"
-            focus_ripple={!props.disable_focus_ripple}
             disabled={props.disabled}
+            disable_focus_ripple={props.disable_focus_ripple}
         >
             <input class="ZuSwitchBase-input"
                 auto_focus={props.auto_focus.to_attr()}
