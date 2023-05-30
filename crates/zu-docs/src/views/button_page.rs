@@ -81,11 +81,22 @@ pub fn button_page() -> Html {
 
         <h2>{"Color"}</h2>
         <DemoBox>
-        <Button color={Color::Secondary}>{"Secondary"}</Button>
+        <Button variant={Variant::Contained} color={Color::Primary}>
+            {"Primary"}
+        </Button>
+        <Button variant={Variant::Contained} color={Color::Secondary}>
+            {"Secondary"}
+        </Button>
         <Button variant={Variant::Contained} color={Color::Success}>
             {"Success"}
         </Button>
-        <Button variant={Variant::Outlined} color={Color::Error}>
+        <Button variant={Variant::Contained} color={Color::Info}>
+            {"Info"}
+        </Button>
+        <Button variant={Variant::Contained} color={Color::Warning}>
+            {"Warning"}
+        </Button>
+        <Button variant={Variant::Contained} color={Color::Error}>
             {"Error"}
         </Button>
         </DemoBox>

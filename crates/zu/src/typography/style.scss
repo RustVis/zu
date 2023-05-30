@@ -26,7 +26,7 @@
 
 /* Styles applied to the root element if variant="button". */
 .ZuTypography-button {
-  display: block;
+  display: inline-block;
 
   font-family: var(--zu-typography-button-fontFamily);
   font-weight: var(--zu-typography-button-fontWeight);
@@ -34,6 +34,7 @@
   line-height: var(--zu-typography-button-lineHeight);
   letter-spacing: var(--zu-typography-button-letterSpacing);
   text-transform: var(--zu-typography-button-textTransform);
+
 }
 
 /* Styles applied to the root element if variant="caption". */

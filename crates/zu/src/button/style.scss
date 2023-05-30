@@ -29,27 +29,27 @@
     }
 
     &.ZuButton-text {
-      &.ZuButton-primary {
+      &.ZuButton-colorPrimary {
         background-color: #{change-color($zu-palette-primary-main, $alpha: $zu-palette-action-hoverOpacity)};
       }
 
-      &.ZuButton-secondary {
+      &.ZuButton-colorSecondary {
         background-color: #{change-color($zu-palette-secondary-main, $alpha: $zu-palette-action-hoverOpacity)};
       }
 
-      &.ZuButton-success {
+      &.ZuButton-colorSuccess {
         background-color: #{change-color($zu-palette-success-main, $alpha: $zu-palette-action-hoverOpacity)};
       }
 
-      &.ZuButton-info {
+      &.ZuButton-colorInfo {
         background-color: #{change-color($zu-palette-info-main, $alpha: $zu-palette-action-hoverOpacity)};
       }
 
-      &.ZuButton-warning {
+      &.ZuButton-colorWarning {
         background-color: #{change-color($zu-palette-warning-main, $alpha: $zu-palette-action-hoverOpacity)};
       }
 
-      &.ZuButton-error {
+      &.ZuButton-colorError {
         background-color: #{change-color($zu-palette-error-main, $alpha: $zu-palette-action-hoverOpacity)};
       }
     }
@@ -62,10 +62,10 @@
       // Reset on touch devices, it doesn't add specificity
       @media (hover: none) {
         box-shadow: var(--zu-shadow-2);
-        backgroundColor: var(--zu-colors-grey-300);
+        background-color: var(--zu-colors-grey-300);
       }
 
-      &.ZuButton-primary {
+      &.ZuButton-colorPrimary {
         background-color: var(--zu-palette-primary-dark);
 
         // Reset on touch devices, it doesn't add specificity
@@ -74,7 +74,7 @@
         }
       }
 
-      &.ZuButton-secondary {
+      &.ZuButton-colorSecondary {
         background-color: var(--zu-palette-secondary-dark);
 
         // Reset on touch devices, it doesn't add specificity
@@ -83,7 +83,7 @@
         }
       }
 
-      &.ZuButton-success {
+      &.ZuButton-colorSuccess {
         background-color: var(--zu-palette-success-dark);
 
         // Reset on touch devices, it doesn't add specificity
@@ -92,7 +92,7 @@
         }
       }
 
-      &.ZuButton-info {
+      &.ZuButton-colorInfo {
         background-color: var(--zu-palette-info-dark);
 
         // Reset on touch devices, it doesn't add specificity
@@ -101,7 +101,7 @@
         }
       }
 
-      &.ZuButton-warning {
+      &.ZuButton-colorWarning {
         background-color: var(--zu-palette-warning-dark);
 
         // Reset on touch devices, it doesn't add specificity
@@ -110,7 +110,7 @@
         }
       }
 
-      &.ZuButton-error {
+      &.ZuButton-colorError {
         background-color: var(--zu-palette-error-dark);
 
         // Reset on touch devices, it doesn't add specificity
@@ -132,30 +132,30 @@
 .ZuButton-text {
   padding: 6px 8px;
 
-  &.ZuButton-inherit {
+  &.ZuButton-colorInherit {
   }
 
-  &.ZuButton-primary {
+  &.ZuButton-colorPrimary {
     color: var(--zu-palette-primary-main);
   }
 
-  &.ZuButton-secondary {
+  &.ZuButton-colorSecondary {
     color: var(--zu-palette-secondary-main);
   }
 
-  &.ZuButton-success {
+  &.ZuButton-colorSuccess {
     color: var(--zu-palette-success-main);
   }
 
-  &.ZuButton-info {
+  &.ZuButton-colorInfo {
     color: var(--zu-palette-info-main);
   }
 
-  &.ZuButton-warning {
+  &.ZuButton-colorWarning {
     color: var(--zu-palette-warning-main);
   }
 
-  &.ZuButton-error {
+  &.ZuButton-colorError {
     color: var(--zu-palette-error-main);
   }
 
@@ -174,27 +174,37 @@
   padding: 5px 15px;
   border: 1px solid currentColor;
 
-  &.ZuButton-inherit {
+  &.ZuButton-colorInherit {
   }
 
-  &.ZuButton-primary {
+  &.ZuButton-colorPrimary {
     color: var(--zu-palette-primary-main);
     border: 1px solid #{change-color($zu-palette-primary-main, $alpha: 0.5)};
   }
 
-  &.ZuButton-secondary {
+  &.ZuButton-colorSecondary {
+    color: var(--zu-palette-secondary-main);
+    border: 1px solid #{change-color($zu-palette-secondary-main, $alpha: 0.5)};
   }
 
-  &.ZuButton-success {
+  &.ZuButton-colorSuccess {
+    color: var(--zu-palette-success-main);
+    border: 1px solid #{change-color($zu-palette-success-main, $alpha: 0.5)};
   }
 
-  &.ZuButton-info {
+  &.ZuButton-colorInfo {
+    color: var(--zu-palette-info-main);
+    border: 1px solid #{change-color($zu-palette-info-main, $alpha: 0.5)};
   }
 
-  &.ZuButton-warning {
+  &.ZuButton-colorWarning {
+    color: var(--zu-palette-warning-main);
+    border: 1px solid #{change-color($zu-palette-warning-main, $alpha: 0.5)};
   }
 
-  &.ZuButton-error {
+  &.ZuButton-colorError {
+    color: var(--zu-palette-error-main);
+    border: 1px solid #{change-color($zu-palette-error-main, $alpha: 0.5)};
   }
 
   &.ZuButton-sizeSmall {
@@ -214,35 +224,35 @@
   background-color: var(--zu-colors-grey-300);
   box-shadow: var(--zu-shadow-2);
 
-  &.ZuButton-inherit {
+  &.ZuButton-colorInherit {
   }
 
-  &.ZuButton-primary {
+  &.ZuButton-colorPrimary {
     color: var(--zu-palette-primary-contrastText);
     background-color: var(--zu-palette-primary-main);
   }
 
-  &.ZuButton-secondary {
+  &.ZuButton-colorSecondary {
     color: var(--zu-palette-secondary-contrastText);
     background-color: var(--zu-palette-secondary-main);
   }
 
-  &.ZuButton-success {
+  &.ZuButton-colorSuccess {
     color: var(--zu-palette-success-contrastText);
     background-color: var(--zu-palette-success-main);
   }
 
-  &.ZuButton-info {
+  &.ZuButton-colorInfo {
     color: var(--zu-palette-info-contrastText);
     background-color: var(--zu-palette-info-main);
   }
 
-  &.ZuButton-warning {
+  &.ZuButton-colorWarning {
     color: var(--zu-palette-warning-contrastText);
     background-color: var(--zu-palette-warning-main);
   }
 
-  &.ZuButton-error {
+  &.ZuButton-colorError {
     color: var(--zu-palette-error-contrastText);
     background-color: var(--zu-palette-error-main);
   }
@@ -292,7 +302,7 @@
 }
 
 // Styles applied to the root element if color="inherit".
-.ZuButton-inherit {
+.ZuButton-colorInherit {
   color: inherit;
   border-color: currentColor;
 }
