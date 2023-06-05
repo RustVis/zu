@@ -66,6 +66,7 @@ pub mod card_content;
 pub mod card_header;
 pub mod card_media;
 pub mod checkbox;
+pub mod chip;
 pub mod circular_progress;
 pub mod code;
 pub mod container;

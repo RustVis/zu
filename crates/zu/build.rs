@@ -96,6 +96,7 @@ const COMMON_STYLES: &[&str] = &[
     "src/card_header/style.scss",
     "src/card_media/style.scss",
     "src/checkbox/style.scss",
+    "src/chip/style.scss",
     "src/code/style.scss",
     "src/container/style.scss",
     "src/circular_progress/style.scss",
