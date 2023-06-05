@@ -98,6 +98,7 @@ const COMMON_STYLES: &[&str] = &[
     "src/checkbox/style.scss",
     "src/chip/style.scss",
     "src/code/style.scss",
+    "src/collapse/style.scss",
     "src/container/style.scss",
     "src/circular_progress/style.scss",
     "src/divider/style.scss",

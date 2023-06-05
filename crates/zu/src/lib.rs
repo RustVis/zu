@@ -69,6 +69,7 @@ pub mod checkbox;
 pub mod chip;
 pub mod circular_progress;
 pub mod code;
+pub mod collapse;
 pub mod container;
 pub mod divider;
 pub mod form_control;
