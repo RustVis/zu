@@ -1,12 +1,10 @@
 [workspace]
 members = [
     "crates/zu",
+    "crates/zu-base",
     "crates/zu-docs",
     "crates/zu-util",
-    #"crates/zuicon-ant",
-    #"crates/zuicon-bs",
     "crates/zuicon-material",
-    #"crates/zuicon-mdl2",
 ]
 
 exclude = [
