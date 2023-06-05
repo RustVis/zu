@@ -4,7 +4,7 @@
 
 mod variant;
 
-use yew::{function_component, html, AttrValue, Callback, Children, Html, Properties};
+use yew::{function_component, html, AttrValue, Callback, Children, Html, MouseEvent, Properties};
 
 use crate::styles::color::Color;
 use crate::styles::size::Size;
@@ -37,13 +37,19 @@ pub struct Props {
     pub disabled: bool,
 
     #[prop_or_default]
+    pub href: AttrValue,
+
+    #[prop_or_default]
     pub icon: Option<Html>,
 
     #[prop_or_default]
     pub label: Option<Html>,
 
     #[prop_or_default]
-    pub on_delete: Option<Callback<(), ()>>,
+    pub on_click: Option<Callback<MouseEvent>>,
+
+    #[prop_or_default]
+    pub on_delete: Option<Callback<()>>,
 
     #[prop_or(Size::Medium)]
     pub size: Size,

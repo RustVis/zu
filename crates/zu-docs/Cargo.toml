@@ -42,6 +42,8 @@ features = [
   "Assignment",
   "Check",
   "Delete",
+  "Done",
+  "Face",
   "Favorite",
   "Folder",
   "Home",

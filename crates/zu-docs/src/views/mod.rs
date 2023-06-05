@@ -11,6 +11,7 @@ pub mod box_page;
 pub mod breadcrumbs_page;
 pub mod button_page;
 pub mod card_page;
+pub mod chip_page;
 pub mod container_page;
 pub mod divider_page;
 pub mod home_page;
