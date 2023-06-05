@@ -4,7 +4,7 @@
 
 mod color;
 
-use yew::{classes, function_component, html, AttrValue, Callback, Event, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Callback, Html, Properties};
 use zu_util::prop::ToAttr;
 
 use crate::styles::color::Color;
@@ -56,7 +56,8 @@ pub struct Props {
     pub indeterminate_icon: Option<Html>,
 
     /// Callback fired when the state is changed.
-    pub on_change: Callback<Event, ()>,
+    #[prop_or_default]
+    pub on_change: Option<Callback<()>>,
 
     /// If true, the input element is required.
     #[prop_or(false)]

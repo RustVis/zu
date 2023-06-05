@@ -14,6 +14,7 @@ use crate::views::box_page::BoxPage;
 use crate::views::breadcrumbs_page::BreadcrumbsPage;
 use crate::views::button_page::ButtonPage;
 use crate::views::card_page::CardPage;
+use crate::views::checkbox_page::CheckboxPage;
 use crate::views::chip_page::ChipPage;
 use crate::views::container_page::ContainerPage;
 use crate::views::divider_page::DividerPage;
@@ -58,6 +59,9 @@ pub enum Route {
 
     #[at("/card")]
     Card,
+
+    #[at("/checkbox")]
+    Checkbox,
 
     #[at("/chip")]
     Chip,
@@ -108,6 +112,7 @@ pub fn switch_route(routes: Route) -> Html {
         Route::Breadcrumbs => html! {<BreadcrumbsPage />},
         Route::Button => html! {<ButtonPage />},
         Route::Card => html! {<CardPage />},
+        Route::Checkbox => html! {<CheckboxPage />},
         Route::Chip => html! {<ChipPage />},
         Route::Container => html! {<ContainerPage />},
         Route::Divider => html! {<DividerPage />},

@@ -75,6 +75,11 @@ pub fn left_panel() -> Html {
                     </Link<Route>>
                 </li>
                 <li class="nav-item">
+                    <Link<Route> to={Route::Checkbox} classes={link_cls(Route::Checkbox)}>
+                    {"Checkbox"}
+                    </Link<Route>>
+                </li>
+                <li class="nav-item">
                     <Link<Route> to={Route::Chip} classes={link_cls(Route::Chip)}>
                     {"Chip"}
                     </Link<Route>>

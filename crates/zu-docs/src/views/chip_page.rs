@@ -6,8 +6,11 @@ use web_sys::MouseEvent;
 use yew::{function_component, html, Callback, Html};
 use zu::avatar::Avatar;
 use zu::chip::{Chip, Variant};
+use zu::stack::Stack;
 use zu::styles::color::Color;
+use zu::styles::direction::Direction;
 use zu::styles::size::Size;
+use zu::styles::spacing::Spacing;
 use zuicon_material::Delete as DeleteIcon;
 use zuicon_material::Done as DoneIcon;
 use zuicon_material::Face as FaceIcon;
@@ -16,8 +19,6 @@ use crate::components::demo_box::DemoBox;
 
 #[function_component(ChipPage)]
 pub fn chip_page() -> Html {
-    // TODO(Shaohua): Replace div with Stack
-
     let handle_click = Callback::from(|event: MouseEvent| {
         event.prevent_default();
         log::info!("clicked");
@@ -132,18 +133,18 @@ pub fn chip_page() -> Html {
         <h2>{"Color chip"}</h2>
         <p>{"You can use the color prop to define a color from theme palette."}</p>
         <DemoBox>
-        <div>
+        <Stack direction={Direction::Row} spacing={Spacing::Small}>
             <Chip label={html!{"primary"}} color={Color::Primary} />
             <Chip label={html!{"success"}} color={Color::Success} />
-        </div>
-        <div>
+        </Stack>
+        <Stack direction={Direction::Row} spacing={Spacing::Small}>
             <Chip label={html!{"primary"}}
                 color={Color::Primary}
                 variant={Variant::Outlined} />
             <Chip label={html!{"success"}}
                 color={Color::Success}
                 variant={Variant::Outlined} />
-        </div>
+        </Stack>
         </DemoBox>
 
         <h2>{"Size chip"}</h2>
