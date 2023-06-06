@@ -76,6 +76,7 @@ pub mod dialog;
 pub mod dialog_actions;
 pub mod dialog_content;
 pub mod dialog_content_text;
+pub mod dialog_title;
 pub mod divider;
 pub mod form_control;
 pub mod form_control_label;
