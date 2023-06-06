@@ -6,8 +6,7 @@ mod size;
 
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 
-// Re-export
-pub use size::Size;
+use crate::styles::size::MaxWidth;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -33,7 +32,7 @@ pub struct Props {
     /// The container width grows with the size of the screen.
     /// Set to None to disable max-width.
     #[prop_or_default]
-    pub max_width: Option<Size>,
+    pub max_width: Option<MaxWidth>,
 
     #[prop_or_default]
     pub style: AttrValue,
@@ -49,7 +48,7 @@ pub fn container(props: &Props) -> Html {
 
     let cls = classes!(
         "ZuContainer-root",
-        size::max_width_cls(&props.max_width),
+        size::css_class(&props.max_width),
         if props.disable_gutters {
             "ZuContainer-disableGutters"
         } else {
@@ -59,7 +58,7 @@ pub fn container(props: &Props) -> Html {
         &props.classes
     );
 
-    let style = if let Some(Size::Str(s)) = &props.max_width {
+    let style = if let Some(MaxWidth::Str(s)) = &props.max_width {
         let lst = [props.style.as_str(), &format!("max-width: {s}")];
         lst.join(";")
     } else {

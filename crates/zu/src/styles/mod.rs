@@ -14,6 +14,7 @@ pub mod side;
 pub mod size;
 pub mod spacing;
 pub mod text_align;
+pub mod transition_duration;
 
 use yew::{classes, Classes};
 

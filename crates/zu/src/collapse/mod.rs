@@ -2,12 +2,10 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-mod timeout;
-
 use yew::{function_component, html, AttrValue, Callback, Children, Html, Properties};
 
 use crate::styles::orientation::Orientation;
-pub use timeout::Timeout;
+use crate::styles::transition_duration::TransitionDuration;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -36,7 +34,7 @@ pub struct Props {
     pub style: AttrValue,
 
     #[prop_or_default]
-    pub timeout: Timeout,
+    pub timeout: TransitionDuration,
 }
 
 #[function_component(Collapse)]
