@@ -75,6 +75,7 @@ pub mod css_baseline;
 pub mod dialog;
 pub mod dialog_actions;
 pub mod dialog_content;
+pub mod dialog_content_text;
 pub mod divider;
 pub mod form_control;
 pub mod form_control_label;

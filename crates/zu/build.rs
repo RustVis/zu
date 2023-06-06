@@ -103,6 +103,8 @@ const COMMON_STYLES: &[&str] = &[
     "src/circular_progress/style.scss",
     "src/dialog/style.scss",
     "src/dialog_actions/style.scss",
+    "src/dialog_content/style.scss",
+    "src/dialog_content_text/style.scss",
     "src/divider/style.scss",
     "src/form_control/style.scss",
     "src/form_control_label/style.scss",
