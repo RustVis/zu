@@ -3,21 +3,21 @@
 // in the LICENSE file.
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub enum Timeout {
+pub enum TransitionDuration {
     Auto,
     Standard,
     Num(i32),
-    Complex(ComplexTimeout),
+    Complex(ComplexTransitionDuration),
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct ComplexTimeout {
+pub struct ComplexTransitionDuration {
     pub appear: i32,
     pub enter: i32,
     pub exit: i32,
 }
 
-impl Default for Timeout {
+impl Default for TransitionDuration {
     fn default() -> Self {
         Self::Standard
     }
