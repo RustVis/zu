@@ -108,6 +108,7 @@ const COMMON_STYLES: &[&str] = &[
     "src/dialog_title/style.scss",
     "src/divider/style.scss",
     "src/drawer/style.scss",
+    "src/fab/style.scss",
     "src/form_control/style.scss",
     "src/form_control_label/style.scss",
     "src/form_group/style.scss",
