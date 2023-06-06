@@ -97,3 +97,4 @@ pub mod theme_provider;
 pub mod typography;
 pub mod utils;
 pub mod dialog;
+pub mod dialog_actions;
