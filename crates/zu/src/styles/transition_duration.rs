@@ -22,3 +22,15 @@ impl Default for TransitionDuration {
         Self::Standard
     }
 }
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum Easing {
+    Str(String),
+    Obj(EasingDetail),
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct EasingDetail {
+    pub enter: String,
+    pub exit: String,
+}
