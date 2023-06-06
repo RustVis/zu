@@ -15,3 +15,21 @@ impl Default for Size {
         Self::Small
     }
 }
+
+/// The max-width of the component.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub enum MaxWidth {
+    XSmall,
+    Small,
+    Middle,
+    Large,
+    XLarge,
+
+    Str(String),
+}
+
+impl Default for MaxWidth {
+    fn default() -> Self {
+        Self::Middle
+    }
+}
