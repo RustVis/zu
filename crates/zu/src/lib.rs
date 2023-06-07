@@ -105,6 +105,7 @@ pub mod svg_icon;
 pub mod switch;
 pub mod switch_base;
 pub mod theme_provider;
+pub mod timeline;
 pub mod toggle_button;
 pub mod toggle_button_group;
 pub mod toolbar;
