@@ -132,6 +132,7 @@ const COMMON_STYLES: &[&str] = &[
     "src/switch_base/style.scss",
     "src/toggle_button/style.scss",
     "src/toggle_button_group/style.scss",
+    "src/toolbar/style.scss",
     "src/tree_item/style.scss",
     "src/tree_view/style.scss",
     "src/typography/style.scss",
