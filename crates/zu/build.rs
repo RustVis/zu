@@ -131,6 +131,7 @@ const COMMON_STYLES: &[&str] = &[
     "src/switch/style.scss",
     "src/switch_base/style.scss",
     "src/typography/style.scss",
+    "src/zoom/style.scss",
 ];
 
 const COLORS: &[&str] = &[
