@@ -2,8 +2,9 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::styles::color::Color;
 use yew::{function_component, html, AttrValue, Callback, Html, Properties};
+
+use crate::styles::color::Color;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
