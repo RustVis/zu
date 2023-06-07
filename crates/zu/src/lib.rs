@@ -81,6 +81,7 @@ pub mod divider;
 pub mod drawer;
 pub mod fab;
 pub mod fade;
+pub mod filled_input;
 pub mod form_control;
 pub mod form_control_label;
 pub mod form_group;
