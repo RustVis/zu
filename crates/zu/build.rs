@@ -130,6 +130,7 @@ const COMMON_STYLES: &[&str] = &[
     "src/svg_icon/style.scss",
     "src/switch/style.scss",
     "src/switch_base/style.scss",
+    "src/tree_item/style.scss",
     "src/typography/style.scss",
     "src/zoom/style.scss",
 ];
