@@ -104,6 +104,7 @@ pub mod styles;
 pub mod svg_icon;
 pub mod switch;
 pub mod switch_base;
+pub mod tab;
 pub mod tab_content;
 pub mod theme_provider;
 pub mod timeline;
