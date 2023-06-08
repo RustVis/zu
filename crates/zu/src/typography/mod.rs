@@ -2,6 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+mod text_align;
 mod variant;
 
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
@@ -11,17 +12,6 @@ use crate::styles::color::Color;
 use crate::styles::text_align::TextAlign;
 use crate::styles::CssClass;
 pub use variant::Variant;
-
-#[must_use]
-pub const fn text_align_class(align: TextAlign) -> &'static str {
-    match align {
-        TextAlign::Center => "ZuTypography-center",
-        TextAlign::Start => "ZuTypography-start",
-        TextAlign::End => "ZuTypography-end",
-        TextAlign::Justify => "ZuTypography-justify",
-        TextAlign::Inherit => "",
-    }
-}
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -80,7 +70,7 @@ pub fn typography(props: &Props) -> Html {
     let cls = classes!(
         "ZuTypography-root",
         props.variant.css_class(),
-        text_align_class(props.align),
+        text_align::css_class(props.align),
         if props.no_wrap {
             "ZuTypography-noWrap"
         } else {

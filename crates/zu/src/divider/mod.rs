@@ -2,6 +2,8 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+mod orientation;
+mod text_align;
 mod variant;
 
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
@@ -77,17 +79,10 @@ pub fn divider(props: &Props) -> Html {
         if props.children.is_empty() {
             ""
         } else {
-            match props.orientation {
-                Orientation::Vertical => "ZuDivider-withChildrenVertical",
-                Orientation::Horizontal => "ZuDivider-withChildrenHorizontal",
-            }
+            orientation::css_class(props.orientation)
         },
         if props.orientation == Orientation::Horizontal {
-            match props.text_align {
-                TextAlign::Start => "ZuDivider-textAlignStart",
-                TextAlign::End => "ZuDivider-textAlignEnd",
-                _ => "",
-            }
+            text_align::css_class(props.text_align)
         } else {
             ""
         },
