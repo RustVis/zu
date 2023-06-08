@@ -9,3 +9,15 @@ pub enum Position {
     Start,
     End,
 }
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum HorizontalPosition {
+    Left,
+    Right,
+}
+
+impl Default for HorizontalPosition {
+    fn default() -> Self {
+        Self::Left
+    }
+}
