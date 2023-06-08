@@ -14,10 +14,11 @@ pub enum Position {
 pub enum HorizontalPosition {
     Left,
     Right,
+    Alternate,
 }
 
 impl Default for HorizontalPosition {
     fn default() -> Self {
-        Self::Left
+        Self::Right
     }
 }

@@ -2,11 +2,9 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-mod position;
-
 use yew::{function_component, html, AttrValue, Children, Html, Properties};
 
-pub use position::Position;
+use crate::styles::position::HorizontalPosition;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -20,7 +18,7 @@ pub struct Props {
     pub class_name: AttrValue,
 
     #[prop_or_default]
-    pub position: Position,
+    pub position: HorizontalPosition,
 
     #[prop_or_default]
     pub style: AttrValue,
