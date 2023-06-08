@@ -4,8 +4,13 @@
 
 use yew::{function_component, html, AttrValue, Children, Html, Properties};
 
+use crate::styles::sort_direction::SortDirection;
+
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
+    #[prop_or(false)]
+    pub active: bool,
+
     #[prop_or_default]
     pub children: Children,
 
@@ -13,20 +18,17 @@ pub struct Props {
     pub classes: AttrValue,
 
     #[prop_or_default]
-    pub component: AttrValue,
+    pub direction: SortDirection,
 
     #[prop_or(false)]
-    pub hover: bool,
-
-    #[prop_or(false)]
-    pub selected: bool,
-
+    pub hide_sort_icon: bool,
+    // TODO(Shaohua): Add icon component.
     #[prop_or_default]
     pub style: AttrValue,
 }
 
-#[function_component(TableRow)]
-pub fn table_row(_props: &Props) -> Html {
+#[function_component(TableSortLabel)]
+pub fn table_sort_label(_props: &Props) -> Html {
     html! {
         <>
         </>

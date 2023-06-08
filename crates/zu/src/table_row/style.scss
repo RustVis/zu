@@ -6,22 +6,22 @@
 
 }
 
-// State class applied to the root element if active={true}.
-.ZuTableRow-active {
+// State class applied to the root element if selected={true}.
+.ZuTableRow-selected {
 
 }
 
-// Styles applied to the icon component.
-.ZuTableRow-icon {
+// State class applied to the root element if hover={true}.
+.ZuTableRow-hover {
 
 }
 
-// Styles applied to the icon component if direction="desc".
-.ZuTableRow-iconDirectionDesc {
+// Styles applied to the root element if table variant="head".
+.ZuTableRow-head {
 
 }
 
-// Styles applied to the icon component if direction="asc".
-.ZuTableRow-iconDirectionAsc {
+// Styles applied to the root element if table variant="footer".
+.ZuTableRow-footer {
 
 }
