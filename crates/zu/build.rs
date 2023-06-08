@@ -136,6 +136,7 @@ const COMMON_STYLES: &[&str] = &[
     "src/table_cell/style.scss",
     "src/table_container/style.scss",
     "src/table_footer/style.scss",
+    "src/table_head/style.scss",
     "src/timeline/style.scss",
     "src/timeline_connector/style.scss",
     "src/timeline_content/style.scss",
