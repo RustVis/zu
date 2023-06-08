@@ -5,12 +5,12 @@
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 use zu_util::prop::ToAttr;
 
-use crate::list_item::AlignItems;
+use crate::styles::item_align::ItemAlign;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
     #[prop_or_default]
-    pub align_items: AlignItems,
+    pub align_items: ItemAlign,
 
     #[prop_or_default]
     pub children: Children,
@@ -26,7 +26,7 @@ pub struct Props {
 pub fn list_item_icon(props: &Props) -> Html {
     let root_cls = classes!(
         "ZuListItemIcon-root",
-        if props.align_items == AlignItems::FlexStart {
+        if props.align_items == ItemAlign::FlexStart {
             "ZuListItemIcon-alignItemsFlexStart"
         } else {
             ""

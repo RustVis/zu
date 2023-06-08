@@ -4,12 +4,12 @@
 
 /// Defines the align-items style property.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum AlignItems {
+pub enum ItemAlign {
     Center,
     FlexStart,
 }
 
-impl Default for AlignItems {
+impl Default for ItemAlign {
     fn default() -> Self {
         Self::Center
     }

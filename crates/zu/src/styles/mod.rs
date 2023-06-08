@@ -16,6 +16,7 @@ pub mod sort_direction;
 pub mod spacing;
 pub mod text_align;
 pub mod transition_duration;
+pub mod item_align;
 
 use yew::{classes, Classes};
 
