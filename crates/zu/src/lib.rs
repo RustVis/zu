@@ -99,6 +99,7 @@ pub mod list_item_avatar;
 pub mod list_item_button;
 pub mod list_item_icon;
 pub mod list_item_secondary_action;
+pub mod list_item_text;
 pub mod paper;
 pub mod scoped_css_baseline;
 pub mod skeleton;
