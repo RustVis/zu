@@ -95,6 +95,7 @@ pub mod linear_progress;
 pub mod link;
 pub mod list;
 pub mod list_item;
+pub mod list_item_avatar;
 pub mod list_item_icon;
 pub mod paper;
 pub mod scoped_css_baseline;
