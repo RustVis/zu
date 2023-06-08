@@ -110,6 +110,7 @@ pub mod timeline_connector;
 pub mod timeline_content;
 pub mod timeline_dot;
 pub mod timeline_item;
+pub mod timeline_opposite_content;
 pub mod toggle_button;
 pub mod toggle_button_group;
 pub mod toolbar;
