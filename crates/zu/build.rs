@@ -132,6 +132,7 @@ const COMMON_STYLES: &[&str] = &[
     "src/switch_base/style.scss",
     "src/tab/style.scss",
     "src/table/style.scss",
+    "src/table_body/style.scss",
     "src/timeline/style.scss",
     "src/timeline_connector/style.scss",
     "src/timeline_content/style.scss",

@@ -107,6 +107,7 @@ pub mod switch_base;
 pub mod tab;
 pub mod tab_content;
 pub mod table;
+pub mod table_body;
 pub mod theme_provider;
 pub mod timeline;
 pub mod timeline_connector;
