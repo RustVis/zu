@@ -12,6 +12,7 @@ pub mod severity;
 pub mod shape_variant;
 pub mod side;
 pub mod size;
+pub mod sort_direction;
 pub mod spacing;
 pub mod text_align;
 pub mod transition_duration;

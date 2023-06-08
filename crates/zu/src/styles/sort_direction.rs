@@ -6,11 +6,10 @@
 pub enum SortDirection {
     Ascend,
     Descend,
-    None,
 }
 
 impl Default for SortDirection {
     fn default() -> Self {
-        Self::None
+        Self::Ascend
     }
 }

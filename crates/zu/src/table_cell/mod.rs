@@ -2,15 +2,14 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-mod sort_direction;
 mod variant;
 
 use yew::{function_component, html, AttrValue, Children, Html, Properties};
 
 use crate::styles::size::Size;
+use crate::styles::sort_direction::SortDirection;
 use crate::styles::text_align::TextAlign;
 use crate::table::Padding;
-pub use sort_direction::SortDirection;
 pub use variant::Variant;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
@@ -34,7 +33,7 @@ pub struct Props {
     pub size: Size,
 
     #[prop_or_default]
-    pub sort_direction: SortDirection,
+    pub sort_direction: Option<SortDirection>,
 
     #[prop_or_default]
     pub style: AttrValue,

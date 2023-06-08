@@ -4,7 +4,7 @@
 
 use yew::{function_component, html, AttrValue, Children, Html, Properties};
 
-use crate::table_cell::SortDirection;
+use crate::styles::sort_direction::SortDirection;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
