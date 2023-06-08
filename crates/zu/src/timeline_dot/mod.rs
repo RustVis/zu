@@ -4,7 +4,7 @@
 
 use yew::{function_component, html, AttrValue, Children, Html, Properties};
 
-use crate::styles::label_variant::LabelVariantNoStd;
+use crate::styles::label_variant::SimpleLabelVariant;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -18,7 +18,7 @@ pub struct Props {
     pub style: AttrValue,
 
     #[prop_or_default]
-    pub variant: LabelVariantNoStd,
+    pub variant: SimpleLabelVariant,
 }
 
 #[function_component(TimelineDot)]

@@ -2,11 +2,9 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-mod variant;
-
 use yew::{function_component, html, AttrValue, Children, Html, Properties};
 
-pub use variant::Variant;
+use crate::styles::label_variant::LabelVariant;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -41,7 +39,7 @@ pub struct Props {
     pub style: AttrValue,
 
     #[prop_or_default]
-    pub variant: Variant,
+    pub variant: LabelVariant,
 }
 
 #[function_component(FormHelperText)]

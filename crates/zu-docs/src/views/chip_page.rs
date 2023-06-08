@@ -5,10 +5,11 @@
 use web_sys::MouseEvent;
 use yew::{function_component, html, Callback, Html};
 use zu::avatar::Avatar;
-use zu::chip::{Chip, Variant};
+use zu::chip::Chip;
 use zu::stack::Stack;
 use zu::styles::color::Color;
 use zu::styles::direction::Direction;
+use zu::styles::label_variant::SimpleLabelVariant;
 use zu::styles::size::Size;
 use zu::styles::spacing::Spacing;
 use zuicon_material::Delete as DeleteIcon;
@@ -37,7 +38,7 @@ pub fn chip_page() -> Html {
         <p>{"The Chip component supports outlined and filled styling."}</p>
         <DemoBox>
         <Chip label={html!{"Chip Filled"}} />
-        <Chip label={html!{"Chip Outlined"}} variant={Variant::Outlined} />
+        <Chip label={html!{"Chip Outlined"}} variant={SimpleLabelVariant::Outlined} />
         </DemoBox>
 
         <h2>{"Chip actions"}</h2>
@@ -51,7 +52,7 @@ pub fn chip_page() -> Html {
         <DemoBox>
         <Chip label={html!{"Clickable"}} on_click={handle_click.clone()} />
         <Chip label={html!{"Clickable"}}
-            variant={Variant::Outlined}
+            variant={SimpleLabelVariant::Outlined}
             on_click={handle_click.clone()} />
         </DemoBox>
 
@@ -59,7 +60,7 @@ pub fn chip_page() -> Html {
         <DemoBox>
         <Chip label={html!{"Deletable"}} on_delete={handle_delete.clone()} />
         <Chip label={html!{"Deletable"}}
-            variant={Variant::Outlined}
+            variant={SimpleLabelVariant::Outlined}
             on_delete={handle_delete.clone()} />
         </DemoBox>
 
@@ -72,7 +73,7 @@ pub fn chip_page() -> Html {
             />
         <Chip
             label={html!{"Clickable Deletable"}}
-            variant={Variant::Outlined}
+            variant={SimpleLabelVariant::Outlined}
             on_click={handle_click.clone()}
             on_delete={handle_delete.clone()}
             />
@@ -87,7 +88,7 @@ pub fn chip_page() -> Html {
         <Chip label={html!{"Clickable Link"}}
             component="a"
             href="#basic-chip"
-            variant={Variant::Outlined}
+            variant={SimpleLabelVariant::Outlined}
             clickable={true}
             />
         </DemoBox>
@@ -105,7 +106,7 @@ pub fn chip_page() -> Html {
             on_click={handle_click}
             on_delete={handle_delete}
             delete_icon={html!{<DeleteIcon />}}
-            variant={Variant::Outlined}
+            variant={SimpleLabelVariant::Outlined}
             />
         </DemoBox>
 
@@ -118,7 +119,7 @@ pub fn chip_page() -> Html {
         <Chip
             avatar={html!{<Avatar alt="Natacha" src="/static/images/avatar/1.jpg" />}}
             label={html!{"Avatar"}}
-            variant={Variant::Outlined}
+            variant={SimpleLabelVariant::Outlined}
             />
         </DemoBox>
 
@@ -127,7 +128,7 @@ pub fn chip_page() -> Html {
         <Chip icon={html!{<FaceIcon />}} label={html!{"With Icon"}} />
         <Chip icon={html!{<FaceIcon />}}
                 label={html!{"With Icon"}}
-                variant={Variant::Outlined} />
+                variant={SimpleLabelVariant::Outlined} />
         </DemoBox>
 
         <h2>{"Color chip"}</h2>
@@ -140,10 +141,10 @@ pub fn chip_page() -> Html {
         <Stack direction={Direction::Row} spacing={Spacing::Small}>
             <Chip label={html!{"primary"}}
                 color={Color::Primary}
-                variant={Variant::Outlined} />
+                variant={SimpleLabelVariant::Outlined} />
             <Chip label={html!{"success"}}
                 color={Color::Success}
-                variant={Variant::Outlined} />
+                variant={SimpleLabelVariant::Outlined} />
         </Stack>
         </DemoBox>
 
@@ -153,7 +154,7 @@ pub fn chip_page() -> Html {
         <Chip label={html!{"Small"}} size={Size::Small} />
         <Chip label={html!{"Small"}}
             size={Size::Small}
-            variant={Variant::Outlined} />
+            variant={SimpleLabelVariant::Outlined} />
         </DemoBox>
 
         </div>

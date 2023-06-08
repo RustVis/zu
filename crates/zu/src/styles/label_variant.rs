@@ -16,12 +16,12 @@ impl Default for LabelVariant {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum LabelVariantNoStd {
+pub enum SimpleLabelVariant {
     Filled,
     Outlined,
 }
 
-impl Default for LabelVariantNoStd {
+impl Default for SimpleLabelVariant {
     fn default() -> Self {
         Self::Filled
     }
