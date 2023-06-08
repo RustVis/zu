@@ -105,6 +105,7 @@ pub mod paper;
 pub mod scoped_css_baseline;
 pub mod skeleton;
 pub mod stack;
+pub mod step;
 pub mod styles;
 pub mod svg_icon;
 pub mod switch;

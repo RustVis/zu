@@ -132,6 +132,7 @@ const COMMON_STYLES: &[&str] = &[
     "src/scoped_css_baseline/style.scss",
     "src/skeleton/style.scss",
     "src/stack/style.scss",
+    "src/step/style.scss",
     "src/svg_icon/style.scss",
     "src/switch/style.scss",
     "src/switch_base/style.scss",
