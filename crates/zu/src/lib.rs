@@ -112,6 +112,7 @@ pub mod table_cell;
 pub mod table_container;
 pub mod table_footer;
 pub mod table_head;
+pub mod table_pagination;
 pub mod table_row;
 pub mod theme_provider;
 pub mod timeline;
