@@ -127,6 +127,7 @@ const COMMON_STYLES: &[&str] = &[
     "src/list_item_icon/style.scss",
     "src/list_item_secondary_action/style.scss",
     "src/list_item_text/style.scss",
+    "src/list_subheader/style.scss",
     "src/paper/style.scss",
     "src/scoped_css_baseline/style.scss",
     "src/skeleton/style.scss",
