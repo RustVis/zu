@@ -109,6 +109,7 @@ pub mod tab_content;
 pub mod table;
 pub mod table_body;
 pub mod table_cell;
+pub mod table_container;
 pub mod theme_provider;
 pub mod timeline;
 pub mod timeline_connector;
