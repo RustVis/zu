@@ -118,6 +118,7 @@ const COMMON_STYLES: &[&str] = &[
     "src/form_label/style.scss",
     "src/grow/style.scss",
     "src/icon_button/style.scss",
+    "src/image_list/style.scss",
     "src/input_label/style.scss",
     "src/linear_progress/style.scss",
     "src/link/style.scss",

@@ -89,6 +89,7 @@ pub mod form_helper_text;
 pub mod form_label;
 pub mod grow;
 pub mod icon_button;
+pub mod image_list;
 pub mod input_label;
 pub mod internal;
 pub mod linear_progress;
