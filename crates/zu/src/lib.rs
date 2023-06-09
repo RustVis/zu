@@ -105,6 +105,7 @@ pub mod paper;
 pub mod scoped_css_baseline;
 pub mod skeleton;
 pub mod slide;
+pub mod speed_dial_icon;
 pub mod stack;
 pub mod step;
 pub mod step_button;
