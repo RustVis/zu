@@ -12,9 +12,9 @@ pub enum TransitionDuration {
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct ComplexTransitionDuration {
-    pub appear: i32,
-    pub enter: i32,
-    pub exit: i32,
+    pub appear: String,
+    pub enter: String,
+    pub exit: String,
 }
 
 impl Default for TransitionDuration {
