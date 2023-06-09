@@ -5,9 +5,34 @@
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum TransitionDuration {
     Auto,
-    Standard,
     Num(i32),
     Complex(ComplexTransitionDuration),
+}
+
+impl TransitionDuration {
+    #[must_use]
+    pub fn standard() -> Self {
+        Self::Complex(ComplexTransitionDuration {
+            appear: String::new(),
+            enter: "var(--zu-duration-standard)".to_owned(),
+            exit: "var(--zu-duration-standard)".to_owned(),
+        })
+    }
+
+    #[must_use]
+    pub fn enter_leave_screen() -> Self {
+        Self::Complex(ComplexTransitionDuration {
+            appear: String::new(),
+            enter: "var(--zu-duration-enteringScreen)".to_owned(),
+            exit: "var(--zu-duration-leavingScreen)".to_owned(),
+        })
+    }
+}
+
+impl Default for TransitionDuration {
+    fn default() -> Self {
+        Self::enter_leave_screen()
+    }
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -15,12 +40,6 @@ pub struct ComplexTransitionDuration {
     pub appear: String,
     pub enter: String,
     pub exit: String,
-}
-
-impl Default for TransitionDuration {
-    fn default() -> Self {
-        Self::Standard
-    }
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]

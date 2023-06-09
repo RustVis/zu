@@ -22,7 +22,7 @@ pub struct Props {
     #[prop_or(true)]
     pub is_transition_in: bool,
 
-    #[prop_or_default]
+    #[prop_or(TransitionDuration::Auto)]
     pub timeout: TransitionDuration,
 }
 

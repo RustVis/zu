@@ -33,7 +33,7 @@ pub struct Props {
     #[prop_or_default]
     pub style: AttrValue,
 
-    #[prop_or_default]
+    #[prop_or(TransitionDuration::standard())]
     pub timeout: TransitionDuration,
 }
 
