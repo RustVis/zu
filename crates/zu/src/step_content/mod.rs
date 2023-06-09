@@ -2,8 +2,9 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::styles::transition_duration::TransitionDuration;
 use yew::{function_component, html, AttrValue, Children, Html, Properties};
+
+use crate::styles::transition_duration::TransitionDuration;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {

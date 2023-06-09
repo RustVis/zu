@@ -8,7 +8,7 @@ use zu::avatar::Avatar;
 use zu::chip::Chip;
 use zu::stack::Stack;
 use zu::styles::color::Color;
-use zu::styles::direction::Direction;
+use zu::styles::flex_direction::FlexDirection;
 use zu::styles::label_variant::SimpleLabelVariant;
 use zu::styles::size::Size;
 use zu::styles::spacing::Spacing;
@@ -134,11 +134,11 @@ pub fn chip_page() -> Html {
         <h2>{"Color chip"}</h2>
         <p>{"You can use the color prop to define a color from theme palette."}</p>
         <DemoBox>
-        <Stack direction={Direction::Row} spacing={Spacing::Small}>
+        <Stack direction={FlexDirection::Row} spacing={Spacing::Small}>
             <Chip label={html!{"primary"}} color={Color::Primary} />
             <Chip label={html!{"success"}} color={Color::Success} />
         </Stack>
-        <Stack direction={Direction::Row} spacing={Spacing::Small}>
+        <Stack direction={FlexDirection::Row} spacing={Spacing::Small}>
             <Chip label={html!{"primary"}}
                 color={Color::Primary}
                 variant={SimpleLabelVariant::Outlined} />

@@ -6,7 +6,7 @@ use stylist::Style;
 use yew::{function_component, html, Children, Html, Properties};
 use zu::paper::Paper;
 use zu::stack::Stack;
-use zu::styles::direction::Direction;
+use zu::styles::flex_direction::FlexDirection;
 use zu::styles::spacing::Spacing;
 
 use crate::components::demo_box::DemoBox;
@@ -60,7 +60,7 @@ pub fn stack_page() -> Html {
          Use the direction prop to position items horizontally in a row:"}</p>
 
         <DemoBox>
-            <Stack direction={Direction::Row} spacing={Spacing::Small}>
+            <Stack direction={FlexDirection::Row} spacing={Spacing::Small}>
                 <Item>{"Item 1"}</Item>
                 <Item>{"Item 2"}</Item>
                 <Item>{"Item 3"}</Item>
@@ -71,7 +71,7 @@ pub fn stack_page() -> Html {
         <p>{"Use the divider prop to insert an element between each child.\
          This works particularly well with the Divider component, as shown below:"}</p>
         <DemoBox>
-            <Stack direction={Direction::Row} spacing={Spacing::Small}>
+            <Stack direction={FlexDirection::Row} spacing={Spacing::Small}>
                 <Item>{"Item 1"}</Item>
                 <Item>{"Item 2"}</Item>
                 <Item>{"Item 3"}</Item>

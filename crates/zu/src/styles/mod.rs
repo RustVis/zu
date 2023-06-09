@@ -5,6 +5,8 @@
 pub mod color;
 pub mod direction;
 pub mod edge;
+pub mod flex_direction;
+pub mod item_align;
 pub mod label_variant;
 pub mod orientation;
 pub mod position;
@@ -16,7 +18,6 @@ pub mod sort_direction;
 pub mod spacing;
 pub mod text_align;
 pub mod transition_duration;
-pub mod item_align;
 
 use yew::{classes, Classes};
 

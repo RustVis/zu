@@ -5,7 +5,7 @@
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 use zu_util::prop::ToAttr;
 
-use crate::styles::direction::Direction;
+use crate::styles::flex_direction::FlexDirection;
 use crate::styles::spacing::Spacing;
 use crate::styles::CssClass;
 
@@ -39,7 +39,7 @@ pub struct Props {
 
     /// Defines the flex-direction style property.
     #[prop_or_default]
-    pub direction: Direction,
+    pub direction: FlexDirection,
 
     /// Add an element between each child.
     #[prop_or_default]
