@@ -107,6 +107,7 @@ pub mod skeleton;
 pub mod stack;
 pub mod step;
 pub mod step_button;
+pub mod step_connector;
 pub mod styles;
 pub mod svg_icon;
 pub mod switch;
