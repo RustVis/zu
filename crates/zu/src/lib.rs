@@ -111,6 +111,7 @@ pub mod step_connector;
 pub mod step_content;
 pub mod step_icon;
 pub mod step_label;
+pub mod stepper;
 pub mod styles;
 pub mod svg_icon;
 pub mod switch;

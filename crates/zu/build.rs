@@ -138,6 +138,7 @@ const COMMON_STYLES: &[&str] = &[
     "src/step_content/style.scss",
     "src/step_icon/style.scss",
     "src/step_label/style.scss",
+    "src/stepper/style.scss",
     "src/svg_icon/style.scss",
     "src/switch/style.scss",
     "src/switch_base/style.scss",
