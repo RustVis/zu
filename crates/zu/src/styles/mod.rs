@@ -9,6 +9,7 @@ pub mod flex_direction;
 pub mod item_align;
 pub mod label_variant;
 pub mod orientation;
+pub mod placement;
 pub mod position;
 pub mod severity;
 pub mod shape_variant;
