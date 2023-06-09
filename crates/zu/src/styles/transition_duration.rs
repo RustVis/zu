@@ -24,13 +24,7 @@ impl Default for TransitionDuration {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub enum Easing {
-    Str(String),
-    Obj(EasingDetail),
-}
-
-#[derive(Debug, Clone, PartialEq, Eq)]
-pub struct EasingDetail {
+pub struct Easing {
     pub enter: String,
     pub exit: String,
 }

@@ -104,6 +104,7 @@ pub mod list_subheader;
 pub mod paper;
 pub mod scoped_css_baseline;
 pub mod skeleton;
+pub mod slide;
 pub mod stack;
 pub mod step;
 pub mod step_button;

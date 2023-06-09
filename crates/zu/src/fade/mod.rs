@@ -2,6 +2,8 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+mod easing;
+
 use yew::{function_component, html, Callback, Children, Html, Properties};
 
 use crate::styles::transition_duration::{Easing, TransitionDuration};
@@ -16,6 +18,7 @@ pub struct Props {
     #[prop_or(true)]
     pub appear: bool,
 
+    #[prop_or(easing::default_easing())]
     pub easing: Easing,
 
     #[prop_or(false)]
