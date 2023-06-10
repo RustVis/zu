@@ -91,6 +91,7 @@ pub mod grow;
 pub mod icon_button;
 pub mod image_list;
 pub mod image_list_item;
+pub mod image_list_item_bar;
 pub mod input_label;
 pub mod internal;
 pub mod linear_progress;
