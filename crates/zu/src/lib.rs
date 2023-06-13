@@ -108,6 +108,7 @@ pub mod list_item_text;
 pub mod list_subheader;
 pub mod masonry;
 pub mod menu;
+pub mod menu_item;
 pub mod paper;
 pub mod scoped_css_baseline;
 pub mod skeleton;
