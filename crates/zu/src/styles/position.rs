@@ -22,3 +22,11 @@ impl Default for HorizontalPosition {
         Self::Right
     }
 }
+
+#[derive(Debug, Clone, Eq, PartialEq)]
+pub struct PositionValue {
+    pub top: Option<i32>,
+    pub bottom: Option<i32>,
+    pub left: Option<i32>,
+    pub right: Option<i32>,
+}

@@ -2,25 +2,25 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-mod anchor_origin;
 mod color;
 mod content;
+mod origin;
 mod overlap;
 mod variant;
 
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
 use zu_util::prop::ToAttr;
 
+use crate::styles::origin::Origin;
 use crate::styles::{color::Color, CssClass};
-pub use anchor_origin::AnchorOrigin;
 pub use content::Content;
 pub use overlap::Overlap;
 pub use variant::Variant;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
-    #[prop_or_default]
-    pub anchor_origin: AnchorOrigin,
+    #[prop_or(Origin::top_right())]
+    pub anchor_origin: Origin,
 
     /// The content rendered within the badge.
     #[prop_or_default]
@@ -71,7 +71,7 @@ pub fn badge(props: &Props) -> Html {
         } else {
             ""
         },
-        props.anchor_origin.css_class(),
+        origin::css_class(props.anchor_origin),
         props.overlap.css_class(),
         color::color_class(props.color),
     );
