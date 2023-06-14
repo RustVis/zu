@@ -143,6 +143,7 @@ const COMMON_STYLES: &[&str] = &[
     "src/pagination/style.scss",
     "src/pagination_item/style.scss",
     "src/paper/style.scss",
+    "src/popover/style.scss",
     "src/scoped_css_baseline/style.scss",
     "src/skeleton/style.scss",
     "src/slide/style.scss",
