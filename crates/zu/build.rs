@@ -145,6 +145,7 @@ const COMMON_STYLES: &[&str] = &[
     "src/paper/style.scss",
     "src/popover/style.scss",
     "src/radio/style.scss",
+    "src/radio_group/style.scss",
     "src/scoped_css_baseline/style.scss",
     "src/skeleton/style.scss",
     "src/slide/style.scss",

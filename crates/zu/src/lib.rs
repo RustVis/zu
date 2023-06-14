@@ -118,6 +118,7 @@ pub mod pagination_item;
 pub mod paper;
 pub mod popover;
 pub mod radio;
+pub mod radio_group;
 pub mod scoped_css_baseline;
 pub mod skeleton;
 pub mod slide;
