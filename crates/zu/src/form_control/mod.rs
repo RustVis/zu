@@ -8,7 +8,7 @@ use yew::{function_component, html, AttrValue, Children, Html, Properties};
 
 use crate::styles::color::Color;
 use crate::styles::label_variant::LabelVariant;
-pub use margin::Margin;
+use crate::styles::margin::Margin;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {

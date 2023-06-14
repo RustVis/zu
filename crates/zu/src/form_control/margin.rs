@@ -2,27 +2,13 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::styles::CssClass;
+use crate::styles::margin::Margin;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum Margin {
-    Dense,
-    None,
-    Normal,
-}
-
-impl Default for Margin {
-    fn default() -> Self {
-        Self::None
-    }
-}
-
-impl CssClass for Margin {
-    fn css_class(&self) -> &'static str {
-        match self {
-            Self::Dense => "ZuFormControl-marginDense",
-            Self::Normal => "ZuFormControl-marginNormal",
-            Self::None => "",
-        }
+#[must_use]
+pub const fn css_class(margin: Margin) -> &'static str {
+    match margin {
+        Margin::Dense => "ZuFormControl-marginDense",
+        Margin::Normal => "ZuFormControl-marginNormal",
+        Margin::None => "",
     }
 }
