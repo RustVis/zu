@@ -137,6 +137,7 @@ pub mod step_label;
 pub mod stepper;
 pub mod styles;
 pub mod svg_icon;
+pub mod swipeable_drawer;
 pub mod switch;
 pub mod switch_base;
 pub mod tab;
