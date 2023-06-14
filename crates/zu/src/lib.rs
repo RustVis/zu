@@ -163,6 +163,7 @@ pub mod timeline_separator;
 pub mod toggle_button;
 pub mod toggle_button_group;
 pub mod toolbar;
+pub mod tooltip;
 pub mod tree_item;
 pub mod tree_view;
 pub mod typography;
