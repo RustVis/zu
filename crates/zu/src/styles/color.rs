@@ -60,3 +60,16 @@ impl Default for BasicColor {
         Self::Primary
     }
 }
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum StandardColor {
+    Standard,
+    Primary,
+    Secondary,
+}
+
+impl Default for StandardColor {
+    fn default() -> Self {
+        Self::Standard
+    }
+}

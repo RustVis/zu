@@ -113,6 +113,7 @@ pub mod menu_list;
 pub mod mobile_stepper;
 pub mod native_select;
 pub mod outlined_input;
+pub mod pagination;
 pub mod paper;
 pub mod scoped_css_baseline;
 pub mod skeleton;

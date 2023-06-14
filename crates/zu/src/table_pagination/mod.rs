@@ -23,7 +23,7 @@ pub struct Props {
     #[prop_or_default]
     pub component: AttrValue,
 
-    // TODO(Shaohua): Add getItemAriaLabel
+    // TODO(Shaohua): Add get_item_aria_label
     // TODO(Shaohua): Add labelDisplayedRows
     #[prop_or_default]
     pub label_rows_per_page: Option<Html>,
