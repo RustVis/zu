@@ -151,6 +151,7 @@ pub mod table_head;
 pub mod table_pagination;
 pub mod table_row;
 pub mod tabs;
+pub mod text_field;
 pub mod theme_provider;
 pub mod timeline;
 pub mod timeline_connector;
