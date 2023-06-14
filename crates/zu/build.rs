@@ -139,6 +139,7 @@ const COMMON_STYLES: &[&str] = &[
     "src/menu_list/style.scss",
     "src/mobile_stepper/style.scss",
     "src/native_select/style.scss",
+    "src/outlined_input/style.scss",
     "src/paper/style.scss",
     "src/scoped_css_baseline/style.scss",
     "src/skeleton/style.scss",

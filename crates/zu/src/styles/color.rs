@@ -48,3 +48,15 @@ impl CssValue for Color {
         }
     }
 }
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum BasicColor {
+    Primary,
+    Secondary,
+}
+
+impl Default for BasicColor {
+    fn default() -> Self {
+        Self::Primary
+    }
+}
