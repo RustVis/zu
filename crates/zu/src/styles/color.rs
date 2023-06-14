@@ -73,3 +73,16 @@ impl Default for StandardColor {
         Self::Standard
     }
 }
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum InheritColor {
+    Primary,
+    Secondary,
+    Inherit,
+}
+
+impl Default for InheritColor {
+    fn default() -> Self {
+        Self::Primary
+    }
+}
