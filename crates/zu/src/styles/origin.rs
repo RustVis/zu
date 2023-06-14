@@ -24,6 +24,14 @@ impl Origin {
             vertical: VerticalOrigin::Top,
         }
     }
+
+    #[must_use]
+    pub const fn bottom_left() -> Self {
+        Self {
+            horizontal: HorizontalOrigin::Left,
+            vertical: VerticalOrigin::Bottom,
+        }
+    }
 }
 
 impl Default for Origin {

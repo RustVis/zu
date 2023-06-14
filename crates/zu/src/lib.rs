@@ -123,6 +123,7 @@ pub mod rating;
 pub mod scoped_css_baseline;
 pub mod skeleton;
 pub mod slide;
+pub mod snackbar;
 pub mod snackbar_content;
 pub mod speed_dial;
 pub mod speed_dial_action;
