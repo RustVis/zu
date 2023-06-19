@@ -4,7 +4,7 @@
 
 use yew::{function_component, html, AttrValue, Children, Html, Properties};
 
-use crate::button::Variant;
+use crate::styles::button_variant::ButtonVariant;
 use crate::styles::color::Color;
 use crate::styles::orientation::Orientation;
 use crate::styles::size::Size;
@@ -56,7 +56,7 @@ pub struct Props {
 
     /// The variant to use.
     #[prop_or_default]
-    pub variant: Variant,
+    pub variant: ButtonVariant,
 }
 
 #[function_component(ButtonGroup)]

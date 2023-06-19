@@ -2,27 +2,12 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::styles::CssClass;
+use crate::styles::button_variant::ButtonVariant;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum Variant {
-    Contained,
-    Outlined,
-    Text,
-}
-
-impl Default for Variant {
-    fn default() -> Self {
-        Self::Text
-    }
-}
-
-impl CssClass for Variant {
-    fn css_class(&self) -> &'static str {
-        match self {
-            Self::Contained => "ZuButton-contained",
-            Self::Outlined => "ZuButton-outlined",
-            Self::Text => "ZuButton-text",
-        }
+pub const fn css_class(variant: ButtonVariant) -> &'static str {
+    match variant {
+        ButtonVariant::Contained => "ZuButton-contained",
+        ButtonVariant::Outlined => "ZuButton-outlined",
+        ButtonVariant::Text => "ZuButton-text",
     }
 }

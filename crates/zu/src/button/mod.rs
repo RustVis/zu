@@ -12,8 +12,8 @@ use yew::{
 };
 
 use crate::button_base::ButtonBase;
-use crate::styles::{color::Color, size::Size, CssClass};
-pub use variant::Variant;
+use crate::styles::button_variant::ButtonVariant;
+use crate::styles::{color::Color, size::Size};
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -125,7 +125,7 @@ pub struct Props {
     pub tab_index: i32,
 
     #[prop_or_default]
-    pub variant: Variant,
+    pub variant: ButtonVariant,
 }
 
 #[function_component(Button)]
@@ -135,7 +135,7 @@ pub fn button(props: &Props) -> Html {
     let root_cls = classes!(
         "ZuButton-root",
         props.classes.as_str().to_owned(),
-        props.variant.css_class(),
+        variant::css_class(props.variant),
         color::color_class(props.color),
         size::css_class(props.size),
         if props.disable_elevation {
