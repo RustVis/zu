@@ -106,6 +106,7 @@ pub mod list_item_icon;
 pub mod list_item_secondary_action;
 pub mod list_item_text;
 pub mod list_subheader;
+pub mod loading_button;
 pub mod masonry;
 pub mod menu;
 pub mod menu_item;
