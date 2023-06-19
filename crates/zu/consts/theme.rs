@@ -62,6 +62,7 @@ pub const COMMON_STYLES: &[&str] = &[
     "src/form_group/style.scss",
     "src/form_helper_text/style.scss",
     "src/form_label/style.scss",
+    "src/grid/style.scss",
     "src/grow/style.scss",
     "src/icon_button/style.scss",
     "src/image_list/style.scss",

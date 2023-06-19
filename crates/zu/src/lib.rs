@@ -87,6 +87,7 @@ pub mod form_control_label;
 pub mod form_group;
 pub mod form_helper_text;
 pub mod form_label;
+pub mod grid;
 pub mod grow;
 pub mod icon_button;
 pub mod image_list;
