@@ -7,6 +7,7 @@ pub mod color;
 pub mod direction;
 pub mod edge;
 pub mod flex_direction;
+pub mod flex_wrap;
 pub mod input_type;
 pub mod item_align;
 pub mod label_variant;
