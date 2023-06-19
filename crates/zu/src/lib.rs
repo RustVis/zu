@@ -118,6 +118,7 @@ pub mod pagination;
 pub mod pagination_item;
 pub mod paper;
 pub mod popover;
+pub mod popper;
 pub mod radio;
 pub mod radio_group;
 pub mod rating;
