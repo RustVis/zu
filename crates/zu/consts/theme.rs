@@ -98,6 +98,7 @@ pub const COMMON_STYLES: &[&str] = &[
     "src/radio_group/style.scss",
     "src/rating/style.scss",
     "src/scoped_css_baseline/style.scss",
+    "src/select/style.scss",
     "src/skeleton/style.scss",
     "src/slide/style.scss",
     "src/snackbar/style.scss",

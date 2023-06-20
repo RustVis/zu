@@ -126,6 +126,7 @@ pub mod radio;
 pub mod radio_group;
 pub mod rating;
 pub mod scoped_css_baseline;
+pub mod select;
 pub mod skeleton;
 pub mod slide;
 pub mod snackbar;
