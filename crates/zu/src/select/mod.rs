@@ -2,8 +2,9 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::styles::label_variant::LabelVariant;
 use yew::{function_component, html, AttrValue, Callback, Children, Html, Properties};
+
+use crate::styles::label_variant::LabelVariant;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {

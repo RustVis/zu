@@ -129,6 +129,7 @@ pub mod scoped_css_baseline;
 pub mod select;
 pub mod skeleton;
 pub mod slide;
+pub mod slider;
 pub mod snackbar;
 pub mod snackbar_content;
 pub mod speed_dial;

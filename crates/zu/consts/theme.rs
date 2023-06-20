@@ -101,6 +101,7 @@ pub const COMMON_STYLES: &[&str] = &[
     "src/select/style.scss",
     "src/skeleton/style.scss",
     "src/slide/style.scss",
+    "src/slider/style.scss",
     "src/snackbar/style.scss",
     "src/snackbar_content/style.scss",
     "src/speed_dial/style.scss",
