@@ -24,11 +24,38 @@ pub fn left_panel() -> Html {
     html! {
         <div class="col-sm-4 col-lg-2">
             <ul class="nav nav-pills flex-column mb-auto bg-light">
-                <li class="nav-item">
-                    <Link<Route> to={Route::Home} classes={link_cls(Route::Home)}>
-                        {"Home"}
-                    </Link<Route>>
+                <li>
+                    <div class="section-label">{"Input"}</div>
+                    <ul>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Autocomplete} classes={link_cls(Route::Autocomplete)}>
+                            {"Autocomplete"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Button} classes={link_cls(Route::Button)}>
+                        {"Button"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::ButtonGroup} classes={link_cls(Route::ButtonGroup)}>
+                        {"ButtonGroup"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Checkbox} classes={link_cls(Route::Checkbox)}>
+                        {"Checkbox"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::FloatingActionButton}
+                            classes={link_cls(Route::FloatingActionButton)}>
+                        {"Floating Action Button"}
+                        </Link<Route>>
+                    </li>
+                    </ul>
                 </li>
+
                 <li class="nav-item">
                     <Link<Route> to={Route::Alert} classes={link_cls(Route::Alert)}>
                     {"Alert"}
@@ -50,7 +77,8 @@ pub fn left_panel() -> Html {
                     </Link<Route>>
                 </li>
                 <li class="nav-item">
-                    <Link<Route> to={Route::BottomNavigation} classes={link_cls(Route::BottomNavigation)}>
+                    <Link<Route> to={Route::BottomNavigation}
+                        classes={link_cls(Route::BottomNavigation)}>
                     {"Bottom Navigation"}
                     </Link<Route>>
                 </li>
@@ -64,21 +92,13 @@ pub fn left_panel() -> Html {
                     {"Breadcrumbs"}
                     </Link<Route>>
                 </li>
-                <li class="nav-item">
-                    <Link<Route> to={Route::Button} classes={link_cls(Route::Button)}>
-                    {"Button"}
-                    </Link<Route>>
-                </li>
+
                 <li class="nav-item">
                     <Link<Route> to={Route::Card} classes={link_cls(Route::Card)}>
                     {"Card"}
                     </Link<Route>>
                 </li>
-                <li class="nav-item">
-                    <Link<Route> to={Route::Checkbox} classes={link_cls(Route::Checkbox)}>
-                    {"Checkbox"}
-                    </Link<Route>>
-                </li>
+
                 <li class="nav-item">
                     <Link<Route> to={Route::Chip} classes={link_cls(Route::Chip)}>
                     {"Chip"}
