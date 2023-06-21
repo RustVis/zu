@@ -134,8 +134,23 @@ pub fn left_panel() -> Html {
                         </Link<Route>>
                     </li>
                     <li class="nav-item">
+                        <Link<Route> to={Route::List} classes={link_cls(Route::List)}>
+                        {"List"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
                         <Link<Route> to={Route::MaterialIcons} classes={link_cls(Route::MaterialIcons)}>
                         {"Material Icons"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Table} classes={link_cls(Route::Table)}>
+                        {"Table"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Tooltip} classes={link_cls(Route::Tooltip)}>
+                        {"Tooltip"}
                         </Link<Route>>
                     </li>
                     <li class="nav-item">

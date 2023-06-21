@@ -6,7 +6,8 @@ use yew::prelude::*;
 use yew_router::prelude::Routable;
 
 use crate::views::data_display::{
-    AvatarPage, BadgePage, ChipPage, DividerPage, IconsPage, MaterialIconsPage, TypographyPage,
+    AvatarPage, BadgePage, ChipPage, DividerPage, IconsPage, ListPage, MaterialIconsPage,
+    TablePage, TooltipPage, TypographyPage,
 };
 use crate::views::feedback::{AlertPage, BackdropPage, ProgressPage, SkeletonPage};
 use crate::views::home_page::HomePage;
@@ -65,8 +66,14 @@ pub enum Route {
     Divider,
     #[at("/icons")]
     Icons,
+    #[at("/list")]
+    List,
     #[at("/material-icons")]
     MaterialIcons,
+    #[at("/table")]
+    Table,
+    #[at("/tooltip")]
+    Tooltip,
     #[at("/typography")]
     Typography,
 
@@ -129,7 +136,10 @@ pub fn switch_route(routes: Route) -> Html {
         Route::Chip => html! {<ChipPage />},
         Route::Divider => html! {<DividerPage />},
         Route::Icons => html! {<IconsPage />},
+        Route::List => html! {<ListPage />},
         Route::MaterialIcons => html! { <MaterialIconsPage />},
+        Route::Table => html! {<TablePage />},
+        Route::Tooltip => html! {<TooltipPage />},
         Route::Typography => html! {<TypographyPage />},
 
         // feedback
