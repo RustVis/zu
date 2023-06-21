@@ -18,7 +18,7 @@ use crate::views::inputs::{
     RadioGroupPage, SelectPage, SliderPage, SwitchPage, TextFieldPage, ToggleButtonPage,
     TransferListPage,
 };
-use crate::views::layout::{BoxPage, ContainerPage, StackPage};
+use crate::views::layout::{BoxPage, ContainerPage, GridPage, ImageListPage, StackPage};
 use crate::views::navigation::{
     BottomNavigationPage, BreadcrumbsPage, DrawerPage, LinkPage, MenuPage, PaginationPage,
     SpeedDialPage, StepperPage, TabsPage,
@@ -131,6 +131,10 @@ pub enum Route {
     Box,
     #[at("/container")]
     Container,
+    #[at("/grid")]
+    Grid,
+    #[at("/image-list")]
+    ImageList,
     #[at("/stack")]
     Stack,
     // utils
@@ -197,6 +201,8 @@ pub fn switch_route(routes: Route) -> Html {
         // layout
         Route::Box => html! {<BoxPage />},
         Route::Container => html! {<ContainerPage />},
+        Route::Grid => html! {<GridPage />},
+        Route::ImageList => html! {<ImageListPage />},
         Route::Stack => html! {<StackPage />},
         // utils
     }
