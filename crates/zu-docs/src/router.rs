@@ -20,7 +20,7 @@ use crate::views::inputs::{
 };
 use crate::views::layout::{BoxPage, ContainerPage, StackPage};
 use crate::views::navigation::{BottomNavigationPage, BreadcrumbsPage};
-use crate::views::surfaces::{CardPage, PaperPage};
+use crate::views::surfaces::{AccordionPage, AppBarPage, CardPage, PaperPage};
 
 use crate::views::inputs::RatingPage;
 
@@ -94,6 +94,10 @@ pub enum Route {
     Snackbar,
 
     // surfaces
+    #[at("/accordion")]
+    Accordion,
+    #[at("/app-bar")]
+    AppBar,
     #[at("/card")]
     Card,
     #[at("/paper")]
@@ -157,6 +161,8 @@ pub fn switch_route(routes: Route) -> Html {
         Route::Snackbar => html! {<SnackbarPage />},
 
         // surfaces
+        Route::Accordion => html! {<AccordionPage />},
+        Route::AppBar => html! {<AppBarPage />},
         Route::Card => html! {<CardPage />},
         Route::Paper => html! {<PaperPage />},
 

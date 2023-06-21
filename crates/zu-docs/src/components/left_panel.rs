@@ -175,6 +175,11 @@ pub fn left_panel() -> Html {
                         </Link<Route>>
                     </li>
                     <li class="nav-item">
+                        <Link<Route> to={Route::Dialog} classes={link_cls(Route::Dialog)}>
+                        {"Dialog"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
                         <Link<Route> to={Route::Progress} classes={link_cls(Route::Progress)}>
                             {"Progress"}
                         </Link<Route>>
@@ -184,12 +189,27 @@ pub fn left_panel() -> Html {
                             {"Skeleton"}
                         </Link<Route>>
                     </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Snackbar} classes={link_cls(Route::Snackbar)}>
+                        {"Snackbar"}
+                        </Link<Route>>
+                    </li>
                     </ul>
                 </li>
 
                 <li>
                     <div class="section-label">{"Surfaces"}</div>
                     <ul>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Accordion} classes={link_cls(Route::Accordion)}>
+                        {"Accordion"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::AppBar} classes={link_cls(Route::AppBar)}>
+                        {"App Bar"}
+                        </Link<Route>>
+                    </li>
                     <li class="nav-item">
                         <Link<Route> to={Route::Card} classes={link_cls(Route::Card)}>
                         {"Card"}
