@@ -19,7 +19,10 @@ use crate::views::inputs::{
     TransferListPage,
 };
 use crate::views::layout::{BoxPage, ContainerPage, StackPage};
-use crate::views::navigation::{BottomNavigationPage, BreadcrumbsPage};
+use crate::views::navigation::{
+    BottomNavigationPage, BreadcrumbsPage, DrawerPage, LinkPage, MenuPage, PaginationPage,
+    SpeedDialPage, StepperPage, TabsPage,
+};
 use crate::views::surfaces::{AccordionPage, AppBarPage, CardPage, PaperPage};
 
 use crate::views::inputs::RatingPage;
@@ -108,6 +111,20 @@ pub enum Route {
     BottomNavigation,
     #[at("/breadcrumbs")]
     Breadcrumbs,
+    #[at("/drawer")]
+    Drawer,
+    #[at("/link")]
+    Link,
+    #[at("/menu")]
+    Menu,
+    #[at("/pagination")]
+    Pagination,
+    #[at("/speed-dial")]
+    SpeedDial,
+    #[at("/stepper")]
+    Stepper,
+    #[at("/tabs")]
+    Tabs,
 
     // layout
     #[at("/box")]
@@ -169,6 +186,13 @@ pub fn switch_route(routes: Route) -> Html {
         // navigation
         Route::BottomNavigation => html! {<BottomNavigationPage />},
         Route::Breadcrumbs => html! {<BreadcrumbsPage />},
+        Route::Drawer => html! {<DrawerPage />},
+        Route::Link => html! {<LinkPage />},
+        Route::Menu => html! {<MenuPage />},
+        Route::Pagination => html! {<PaginationPage />},
+        Route::SpeedDial => html! {<SpeedDialPage />},
+        Route::Stepper => html! {<StepperPage />},
+        Route::Tabs => html! {<TabsPage />},
 
         // layout
         Route::Box => html! {<BoxPage />},

@@ -237,6 +237,41 @@ pub fn left_panel() -> Html {
                         {"Breadcrumbs"}
                         </Link<Route>>
                     </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Drawer} classes={link_cls(Route::Drawer)}>
+                        {"Drawer"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Link} classes={link_cls(Route::Link)}>
+                        {"Link"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Menu} classes={link_cls(Route::Menu)}>
+                        {"Menu"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Pagination} classes={link_cls(Route::Pagination)}>
+                        {"Pagination"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::SpeedDial} classes={link_cls(Route::SpeedDial)}>
+                        {"SpeedDial"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Stepper} classes={link_cls(Route::Stepper)}>
+                        {"Stepper"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Tabs} classes={link_cls(Route::Tabs)}>
+                        {"Tabs"}
+                        </Link<Route>>
+                    </li>
                     </ul>
                 </li>
 
