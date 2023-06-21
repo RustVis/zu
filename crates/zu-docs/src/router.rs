@@ -12,7 +12,8 @@ use crate::views::feedback::{AlertPage, BackdropPage, ProgressPage, SkeletonPage
 use crate::views::home_page::HomePage;
 use crate::views::inputs::{
     AutocompletePage, ButtonGroupPage, ButtonPage, CheckboxPage, FloatingActionButtonPage,
-    RadioGroupPage, SwitchPage,
+    RadioGroupPage, SelectPage, SliderPage, SwitchPage, TextFieldPage, ToggleButtonPage,
+    TransferListPage,
 };
 use crate::views::layout::{BoxPage, ContainerPage, StackPage};
 use crate::views::navigation::{BottomNavigationPage, BreadcrumbsPage};
@@ -40,8 +41,18 @@ pub enum Route {
     RadioGroup,
     #[at("/rating")]
     Rating,
+    #[at("/select")]
+    Select,
+    #[at("/slider")]
+    Slider,
     #[at("/switch")]
     Switch,
+    #[at("/text-field")]
+    TextField,
+    #[at("/toggle-button")]
+    ToggleButton,
+    #[at("/transfer-list")]
+    TransferList,
 
     // data display
     #[at("/avatar")]
@@ -105,7 +116,12 @@ pub fn switch_route(routes: Route) -> Html {
         Route::FloatingActionButton => html! {<FloatingActionButtonPage />},
         Route::RadioGroup => html! {<RadioGroupPage />},
         Route::Rating => html! {<RatingPage />},
+        Route::Select => html! {<SelectPage />},
+        Route::Slider => html! {<SliderPage />},
         Route::Switch => html! {<SwitchPage />},
+        Route::TextField => html! {<TextFieldPage />},
+        Route::ToggleButton => html! {<ToggleButtonPage />},
+        Route::TransferList => html! {<TransferListPage />},
 
         // data display
         Route::Avatar => html! {<AvatarPage />},

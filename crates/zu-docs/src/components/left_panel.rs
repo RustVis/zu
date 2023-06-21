@@ -66,9 +66,39 @@ pub fn left_panel() -> Html {
                         </Link<Route>>
                     </li>
                     <li class="nav-item">
+                        <Link<Route> to={Route::Select}
+                            classes={link_cls(Route::Select)}>
+                        {"Select"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Slider}
+                            classes={link_cls(Route::Slider)}>
+                        {"Slider"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
                         <Link<Route> to={Route::Switch}
                             classes={link_cls(Route::Switch)}>
                         {"Switch"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::TextField}
+                            classes={link_cls(Route::TextField)}>
+                        {"Text Field"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::ToggleButton}
+                            classes={link_cls(Route::ToggleButton)}>
+                        {"Toggle Button"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::TransferList}
+                            classes={link_cls(Route::TransferList)}>
+                        {"Transfer List"}
                         </Link<Route>>
                     </li>
                     </ul>
