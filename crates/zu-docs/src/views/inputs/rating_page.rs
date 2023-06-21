@@ -2,11 +2,12 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-pub mod data_display;
-pub mod feedback;
-pub mod home_page;
-pub mod inputs;
-pub mod layout;
-pub mod navigation;
-pub mod surfaces;
-pub mod utils;
+use yew::{function_component, html, Html};
+
+#[function_component(RatingPage)]
+pub fn rating_page() -> Html {
+    html! {
+        <>
+        </>
+    }
+}

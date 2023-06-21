@@ -5,116 +5,90 @@
 use yew::prelude::*;
 use yew_router::prelude::Routable;
 
-use crate::views::alert_page::AlertPage;
-use crate::views::autocomplete_page::AutocompletePage;
-use crate::views::avatar_page::AvatarPage;
-use crate::views::backdrop_page::BackdropPage;
-use crate::views::badge_page::BadgePage;
-use crate::views::bottom_navigation_page::BottomNavigationPage;
-use crate::views::box_page::BoxPage;
-use crate::views::breadcrumbs_page::BreadcrumbsPage;
-use crate::views::button_group_page::ButtonGroupPage;
-use crate::views::button_page::ButtonPage;
-use crate::views::card_page::CardPage;
-use crate::views::checkbox_page::CheckboxPage;
-use crate::views::chip_page::ChipPage;
-use crate::views::container_page::ContainerPage;
-use crate::views::divider_page::DividerPage;
-use crate::views::floating_action_button_page::FloatingActionButtonPage;
+use crate::views::data_display::{
+    AvatarPage, BadgePage, ChipPage, DividerPage, IconsPage, MaterialIconsPage, TypographyPage,
+};
+use crate::views::feedback::{AlertPage, BackdropPage, ProgressPage, SkeletonPage};
 use crate::views::home_page::HomePage;
-use crate::views::icons_page::IconsPage;
-use crate::views::input_page::InputPage;
-use crate::views::material_icons_page::MaterialIconsPage;
-use crate::views::paper_page::PaperPage;
-use crate::views::progress_page::ProgressPage;
-use crate::views::radio_group_page::RadioGroupPage;
-use crate::views::skeleton_page::SkeletonPage;
-use crate::views::stack_page::StackPage;
-use crate::views::switch_page::SwitchPage;
-use crate::views::typography_page::TypographyPage;
+use crate::views::inputs::{
+    AutocompletePage, ButtonGroupPage, ButtonPage, CheckboxPage, FloatingActionButtonPage,
+    RadioGroupPage, SwitchPage,
+};
+use crate::views::layout::{BoxPage, ContainerPage, StackPage};
+use crate::views::navigation::{BottomNavigationPage, BreadcrumbsPage};
+use crate::views::surfaces::{CardPage, PaperPage};
+
+use crate::views::inputs::RatingPage;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Routable)]
 pub enum Route {
     #[at("/")]
     Home,
 
-    #[at("/alert")]
-    Alert,
-
+    // inputs
     #[at("/autocomplete")]
     Autocomplete,
-
-    #[at("/avatar")]
-    Avatar,
-
-    #[at("/backdrop")]
-    Backdrop,
-
-    #[at("/badge")]
-    Badge,
-
-    #[at("/bottom-navigation")]
-    BottomNavigation,
-
-    #[at("/box")]
-    Box,
-
-    #[at("/breadcrumbs")]
-    Breadcrumbs,
-
     #[at("/button")]
     Button,
-
     #[at("/button-group")]
     ButtonGroup,
-
-    #[at("/card")]
-    Card,
-
     #[at("/checkbox")]
     Checkbox,
-
-    #[at("/chip")]
-    Chip,
-
-    #[at("/container")]
-    Container,
-
-    #[at("/divider")]
-    Divider,
-
     #[at("/floating-action-button")]
     FloatingActionButton,
-
-    #[at("/material-icons")]
-    MaterialIcons,
-
-    #[at("/icons")]
-    Icons,
-
-    #[at("/input")]
-    Input,
-
-    #[at("/paper")]
-    Paper,
-
-    #[at("/progress")]
-    Progress,
-
     #[at("/radio-group")]
     RadioGroup,
-
-    #[at("/skeleton")]
-    Skeleton,
-
-    #[at("/stack")]
-    Stack,
-
+    #[at("/rating")]
+    Rating,
     #[at("/switch")]
     Switch,
 
+    // data display
+    #[at("/avatar")]
+    Avatar,
+    #[at("/badge")]
+    Badge,
+    #[at("/chip")]
+    Chip,
+    #[at("/divider")]
+    Divider,
+    #[at("/icons")]
+    Icons,
+    #[at("/material-icons")]
+    MaterialIcons,
     #[at("/typography")]
     Typography,
+
+    // feedback
+    #[at("/alert")]
+    Alert,
+    #[at("/backdrop")]
+    Backdrop,
+    #[at("/progress")]
+    Progress,
+    #[at("/skeleton")]
+    Skeleton,
+
+    // surfaces
+    #[at("/card")]
+    Card,
+    #[at("/paper")]
+    Paper,
+
+    // navigation
+    #[at("/bottom-navigation")]
+    BottomNavigation,
+    #[at("/breadcrumbs")]
+    Breadcrumbs,
+
+    // layout
+    #[at("/box")]
+    Box,
+    #[at("/container")]
+    Container,
+    #[at("/stack")]
+    Stack,
+    // utils
 }
 
 #[must_use]
@@ -140,11 +114,11 @@ pub fn switch_route(routes: Route) -> Html {
         Route::Divider => html! {<DividerPage />},
         Route::FloatingActionButton => html! {<FloatingActionButtonPage />},
         Route::Icons => html! {<IconsPage />},
-        Route::Input => html! {<InputPage />},
         Route::MaterialIcons => html! { <MaterialIconsPage />},
         Route::Paper => html! {<PaperPage />},
         Route::Progress => html! {<ProgressPage />},
         Route::RadioGroup => html! {<RadioGroupPage />},
+        Route::Rating => html! {<RatingPage />},
         Route::Skeleton => html! {<SkeletonPage />},
         Route::Stack => html! {<StackPage />},
         Route::Switch => html! {<SwitchPage />},

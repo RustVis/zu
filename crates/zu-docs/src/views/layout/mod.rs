@@ -2,11 +2,10 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-pub mod data_display;
-pub mod feedback;
-pub mod home_page;
-pub mod inputs;
-pub mod layout;
-pub mod navigation;
-pub mod surfaces;
-pub mod utils;
+mod box_page;
+mod container_page;
+mod stack_page;
+
+pub use box_page::BoxPage;
+pub use container_page::ContainerPage;
+pub use stack_page::StackPage;

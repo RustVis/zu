@@ -53,6 +53,12 @@ pub fn left_panel() -> Html {
                         {"Floating Action Button"}
                         </Link<Route>>
                     </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::RadioGroup}
+                            classes={link_cls(Route::RadioGroup)}>
+                        {"Radio Group"}
+                        </Link<Route>>
+                    </li>
                     </ul>
                 </li>
 

@@ -2,12 +2,8 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{function_component, html, Html};
+mod card_page;
+mod paper_page;
 
-#[function_component(InputPage)]
-pub fn input_page() -> Html {
-    html! {
-        <>
-        </>
-    }
-}
+pub use card_page::CardPage;
+pub use paper_page::PaperPage;
