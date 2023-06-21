@@ -59,104 +59,142 @@ pub fn left_panel() -> Html {
                         {"Radio Group"}
                         </Link<Route>>
                     </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Rating}
+                            classes={link_cls(Route::Rating)}>
+                        {"Rating"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Switch}
+                            classes={link_cls(Route::Switch)}>
+                        {"Switch"}
+                        </Link<Route>>
+                    </li>
                     </ul>
                 </li>
 
-                <li class="nav-item">
-                    <Link<Route> to={Route::Alert} classes={link_cls(Route::Alert)}>
-                    {"Alert"}
-                    </Link<Route>>
-                </li>
-                <li class="nav-item">
-                    <Link<Route> to={Route::Avatar} classes={link_cls(Route::Avatar)}>
-                    {"Avatar"}
-                    </Link<Route>>
-                </li>
-                <li class="nav-item">
-                    <Link<Route> to={Route::Backdrop} classes={link_cls(Route::Backdrop)}>
-                    {"Backdrop"}
-                    </Link<Route>>
-                </li>
-                <li class="nav-item">
-                    <Link<Route> to={Route::Badge} classes={link_cls(Route::Badge)}>
-                    {"Badge"}
-                    </Link<Route>>
-                </li>
-                <li class="nav-item">
-                    <Link<Route> to={Route::BottomNavigation}
-                        classes={link_cls(Route::BottomNavigation)}>
-                    {"Bottom Navigation"}
-                    </Link<Route>>
-                </li>
-                <li class="nav-item">
-                    <Link<Route> to={Route::Box} classes={link_cls(Route::Box)}>
-                    {"Box"}
-                    </Link<Route>>
-                </li>
-                <li class="nav-item">
-                    <Link<Route> to={Route::Breadcrumbs} classes={link_cls(Route::Breadcrumbs)}>
-                    {"Breadcrumbs"}
-                    </Link<Route>>
+                <li>
+                    <div class="section-label">{"Data Display"}</div>
+                    <ul>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Avatar} classes={link_cls(Route::Avatar)}>
+                        {"Avatar"}
+                        </Link<Route>>
+                    </li>
+
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Badge} classes={link_cls(Route::Badge)}>
+                        {"Badge"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Chip} classes={link_cls(Route::Chip)}>
+                        {"Chip"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Divider} classes={link_cls(Route::Divider)}>
+                        {"Divider"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Icons} classes={link_cls(Route::Icons)}>
+                        {"Icons"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::MaterialIcons} classes={link_cls(Route::MaterialIcons)}>
+                        {"Material Icons"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Typography} classes={link_cls(Route::Typography)}>
+                            {"Typography"}
+                        </Link<Route>>
+                    </li>
+                    </ul>
                 </li>
 
-                <li class="nav-item">
-                    <Link<Route> to={Route::Card} classes={link_cls(Route::Card)}>
-                    {"Card"}
-                    </Link<Route>>
+                <li>
+                    <div class="section-label">{"Feedback"}</div>
+                    <ul>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Alert} classes={link_cls(Route::Alert)}>
+                        {"Alert"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Backdrop} classes={link_cls(Route::Backdrop)}>
+                        {"Backdrop"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Progress} classes={link_cls(Route::Progress)}>
+                            {"Progress"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Skeleton} classes={link_cls(Route::Skeleton)}>
+                            {"Skeleton"}
+                        </Link<Route>>
+                    </li>
+                    </ul>
                 </li>
 
-                <li class="nav-item">
-                    <Link<Route> to={Route::Chip} classes={link_cls(Route::Chip)}>
-                    {"Chip"}
-                    </Link<Route>>
-                </li>
-                <li class="nav-item">
-                    <Link<Route> to={Route::Container} classes={link_cls(Route::Container)}>
-                    {"Container"}
-                    </Link<Route>>
-                </li>
-                <li class="nav-item">
-                    <Link<Route> to={Route::Divider} classes={link_cls(Route::Divider)}>
-                    {"Divider"}
-                    </Link<Route>>
-                </li>
-                <li class="nav-item">
-                    <Link<Route> to={Route::Icons} classes={link_cls(Route::Icons)}>
-                    {"Icons"}
-                    </Link<Route>>
-                </li>
-                <li class="nav-item">
-                    <Link<Route> to={Route::MaterialIcons} classes={link_cls(Route::MaterialIcons)}>
-                    {"Material Icons"}
-                    </Link<Route>>
-                </li>
-                <li class="nav-item">
-                    <Link<Route> to={Route::Paper} classes={link_cls(Route::Paper)}>
-                    {"Paper"}
-                    </Link<Route>>
-                </li>
-                <li class="nav-item">
-                    <Link<Route> to={Route::Progress} classes={link_cls(Route::Progress)}>
-                        {"Progress"}
-                    </Link<Route>>
-                </li>
-                <li class="nav-item">
-                    <Link<Route> to={Route::Skeleton} classes={link_cls(Route::Skeleton)}>
-                        {"Skeleton"}
-                    </Link<Route>>
-                </li>
-                <li class="nav-item">
-                    <Link<Route> to={Route::Stack} classes={link_cls(Route::Stack)}>
-                        {"Stack"}
-                    </Link<Route>>
-                </li>
-                <li class="nav-item">
-                    <Link<Route> to={Route::Typography} classes={link_cls(Route::Typography)}>
-                        {"Typography"}
-                    </Link<Route>>
+                <li>
+                    <div class="section-label">{"Surfaces"}</div>
+                    <ul>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Card} classes={link_cls(Route::Card)}>
+                        {"Card"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Paper} classes={link_cls(Route::Paper)}>
+                        {"Paper"}
+                        </Link<Route>>
+                    </li>
+                    </ul>
                 </li>
 
+                <li>
+                    <div class="section-label">{"Navigation"}</div>
+                    <ul>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::BottomNavigation}
+                            classes={link_cls(Route::BottomNavigation)}>
+                        {"Bottom Navigation"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Breadcrumbs} classes={link_cls(Route::Breadcrumbs)}>
+                        {"Breadcrumbs"}
+                        </Link<Route>>
+                    </li>
+                    </ul>
+                </li>
 
+                <li>
+                    <div class="section-label">{"Layout"}</div>
+                    <ul>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Box} classes={link_cls(Route::Box)}>
+                        {"Box"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Container} classes={link_cls(Route::Container)}>
+                        {"Container"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Stack} classes={link_cls(Route::Stack)}>
+                            {"Stack"}
+                        </Link<Route>>
+                    </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     }

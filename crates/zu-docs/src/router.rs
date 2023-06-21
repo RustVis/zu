@@ -97,31 +97,43 @@ pub enum Route {
 pub fn switch_route(routes: Route) -> Html {
     match routes {
         Route::Home => html! {<HomePage />},
-        Route::Alert => html! {<AlertPage />},
+        // inputs
         Route::Autocomplete => html! {<AutocompletePage />},
-        Route::Avatar => html! {<AvatarPage />},
-        Route::Backdrop => html! {<BackdropPage />},
-        Route::Badge => html! {<BadgePage />},
-        Route::BottomNavigation => html! {<BottomNavigationPage />},
-        Route::Box => html! {<BoxPage />},
-        Route::Breadcrumbs => html! {<BreadcrumbsPage />},
         Route::Button => html! {<ButtonPage />},
         Route::ButtonGroup => html! {<ButtonGroupPage />},
-        Route::Card => html! {<CardPage />},
         Route::Checkbox => html! {<CheckboxPage />},
-        Route::Chip => html! {<ChipPage />},
-        Route::Container => html! {<ContainerPage />},
-        Route::Divider => html! {<DividerPage />},
         Route::FloatingActionButton => html! {<FloatingActionButtonPage />},
-        Route::Icons => html! {<IconsPage />},
-        Route::MaterialIcons => html! { <MaterialIconsPage />},
-        Route::Paper => html! {<PaperPage />},
-        Route::Progress => html! {<ProgressPage />},
         Route::RadioGroup => html! {<RadioGroupPage />},
         Route::Rating => html! {<RatingPage />},
-        Route::Skeleton => html! {<SkeletonPage />},
-        Route::Stack => html! {<StackPage />},
         Route::Switch => html! {<SwitchPage />},
+
+        // data display
+        Route::Avatar => html! {<AvatarPage />},
+        Route::Badge => html! {<BadgePage />},
+        Route::Chip => html! {<ChipPage />},
+        Route::Divider => html! {<DividerPage />},
+        Route::Icons => html! {<IconsPage />},
+        Route::MaterialIcons => html! { <MaterialIconsPage />},
         Route::Typography => html! {<TypographyPage />},
+
+        // feedback
+        Route::Alert => html! {<AlertPage />},
+        Route::Backdrop => html! {<BackdropPage />},
+        Route::Progress => html! {<ProgressPage />},
+        Route::Skeleton => html! {<SkeletonPage />},
+
+        // surfaces
+        Route::Card => html! {<CardPage />},
+        Route::Paper => html! {<PaperPage />},
+
+        // navigation
+        Route::BottomNavigation => html! {<BottomNavigationPage />},
+        Route::Breadcrumbs => html! {<BreadcrumbsPage />},
+
+        // layout
+        Route::Box => html! {<BoxPage />},
+        Route::Container => html! {<ContainerPage />},
+        Route::Stack => html! {<StackPage />},
+        // utils
     }
 }
