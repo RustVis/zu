@@ -4,18 +4,24 @@
 
 mod avatar_page;
 mod badge_page;
+mod calendar_page;
 mod chip_page;
+mod data_grid_page;
 mod divider_page;
 mod icons_page;
 mod list_page;
 mod material_icons_page;
 mod table_page;
+mod timeline_page;
 mod tooltip_page;
+mod tree_view_page;
 mod typography_page;
 
 pub use avatar_page::AvatarPage;
 pub use badge_page::BadgePage;
+pub use calendar_page::CalendarPage;
 pub use chip_page::ChipPage;
+pub use data_grid_page::DataGridPage;
 pub use divider_page::DividerPage;
 pub use icons_page::IconsPage;
 pub use list_page::ListPage;

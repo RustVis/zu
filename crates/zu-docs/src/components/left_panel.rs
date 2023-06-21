@@ -305,6 +305,37 @@ pub fn left_panel() -> Html {
                     </li>
                     </ul>
                 </li>
+
+                <li>
+                    <div class="section-label">{"Utils"}</div>
+                    <ul>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::CssBaseline} classes={link_cls(Route::CssBaseline)}>
+                            {"Css Baseline"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Modal} classes={link_cls(Route::Modal)}>
+                            {"Modal"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Popover} classes={link_cls(Route::Popover)}>
+                            {"Popover"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Popper} classes={link_cls(Route::Popper)}>
+                            {"Popper"}
+                        </Link<Route>>
+                    </li>
+                    <li class="nav-item">
+                        <Link<Route> to={Route::Transitions} classes={link_cls(Route::Transitions)}>
+                            {"Transitions"}
+                        </Link<Route>>
+                    </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     }

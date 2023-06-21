@@ -15,8 +15,8 @@ use crate::views::feedback::{
 use crate::views::home_page::HomePage;
 use crate::views::inputs::{
     AutocompletePage, ButtonGroupPage, ButtonPage, CheckboxPage, FloatingActionButtonPage,
-    RadioGroupPage, SelectPage, SliderPage, SwitchPage, TextFieldPage, ToggleButtonPage,
-    TransferListPage,
+    RadioGroupPage, RatingPage, SelectPage, SliderPage, SwitchPage, TextFieldPage,
+    ToggleButtonPage, TransferListPage,
 };
 use crate::views::layout::{BoxPage, ContainerPage, GridPage, ImageListPage, StackPage};
 use crate::views::navigation::{
@@ -24,8 +24,7 @@ use crate::views::navigation::{
     SpeedDialPage, StepperPage, TabsPage,
 };
 use crate::views::surfaces::{AccordionPage, AppBarPage, CardPage, PaperPage};
-
-use crate::views::inputs::RatingPage;
+use crate::views::utils::{CssBaselinePage, ModalPage, PopoverPage, PopperPage, TransitionsPage};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Routable)]
 pub enum Route {
@@ -137,7 +136,18 @@ pub enum Route {
     ImageList,
     #[at("/stack")]
     Stack,
+
     // utils
+    #[at("/css-baseline")]
+    CssBaseline,
+    #[at("/modal")]
+    Modal,
+    #[at("/popover")]
+    Popover,
+    #[at("/popper")]
+    Popper,
+    #[at("/transitions")]
+    Transitions,
 }
 
 #[must_use]
@@ -204,6 +214,12 @@ pub fn switch_route(routes: Route) -> Html {
         Route::Grid => html! {<GridPage />},
         Route::ImageList => html! {<ImageListPage />},
         Route::Stack => html! {<StackPage />},
+
         // utils
+        Route::CssBaseline => html! {<CssBaselinePage />},
+        Route::Modal => html! {<ModalPage />},
+        Route::Popover => html! {<PopoverPage />},
+        Route::Popper => html! {<PopperPage />},
+        Route::Transitions => html! {<TransitionsPage />},
     }
 }
