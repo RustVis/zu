@@ -9,7 +9,9 @@ use crate::views::data_display::{
     AvatarPage, BadgePage, ChipPage, DividerPage, IconsPage, ListPage, MaterialIconsPage,
     TablePage, TooltipPage, TypographyPage,
 };
-use crate::views::feedback::{AlertPage, BackdropPage, ProgressPage, SkeletonPage};
+use crate::views::feedback::{
+    AlertPage, BackdropPage, DialogPage, ProgressPage, SkeletonPage, SnackbarPage,
+};
 use crate::views::home_page::HomePage;
 use crate::views::inputs::{
     AutocompletePage, ButtonGroupPage, ButtonPage, CheckboxPage, FloatingActionButtonPage,
@@ -82,10 +84,14 @@ pub enum Route {
     Alert,
     #[at("/backdrop")]
     Backdrop,
+    #[at("/dialog")]
+    Dialog,
     #[at("/progress")]
     Progress,
     #[at("/skeleton")]
     Skeleton,
+    #[at("/snackbar")]
+    Snackbar,
 
     // surfaces
     #[at("/card")]
@@ -145,8 +151,10 @@ pub fn switch_route(routes: Route) -> Html {
         // feedback
         Route::Alert => html! {<AlertPage />},
         Route::Backdrop => html! {<BackdropPage />},
+        Route::Dialog => html! {<DialogPage />},
         Route::Progress => html! {<ProgressPage />},
         Route::Skeleton => html! {<SkeletonPage />},
+        Route::Snackbar => html! {<SnackbarPage />},
 
         // surfaces
         Route::Card => html! {<CardPage />},
