@@ -39,7 +39,7 @@ pub struct Props {
     pub indicator_color: BasicColor,
 
     #[prop_or_default]
-    pub on_change: Option<Callback<AttrValue>>,
+    pub on_change: Option<Callback<(i32, i32)>>,
 
     #[prop_or_default]
     pub orientation: Orientation,
@@ -60,7 +60,7 @@ pub struct Props {
     pub text_color: InheritColor,
 
     #[prop_or_default]
-    pub value: AttrValue,
+    pub value: i32,
 
     #[prop_or_default]
     pub variant: Variant,

@@ -31,7 +31,7 @@ pub struct Props {
     pub style: AttrValue,
 
     #[prop_or_default]
-    pub value: AttrValue,
+    pub value: i32,
 
     #[prop_or(false)]
     pub wrapped: bool,
