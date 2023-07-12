@@ -3,8 +3,7 @@
 // in the LICENSE file.
 
 use yew::{function_component, html, AttrValue, Html};
-use zu::styles::color::DisabledColor;
-use zu::svg_icon::{FontSize, Props, SvgIcon};
+use zu::svg_icon::{Color as SvgColor, FontSize, Props, SvgIcon};
 use zuicon_material::Home;
 
 use crate::components::demo_box::DemoBox;
@@ -46,11 +45,11 @@ pub fn icons_page() -> Html {
         <h3>{"Color"}</h3>
         <DemoBox>
             <Home />
-            <Home color={DisabledColor::Primary} />
-            <Home color={DisabledColor::Secondary} />
-            <Home color={DisabledColor::Success} />
-            <Home color={DisabledColor::Action} />
-            <Home color={DisabledColor::Disabled} />
+            <Home color={SvgColor::Primary} />
+            <Home color={SvgColor::Secondary} />
+            <Home color={SvgColor::Success} />
+            <Home color={SvgColor::Action} />
+            <Home color={SvgColor::Disabled} />
             <Home style="color: var(--zu-colors-pink-500);" />
         </DemoBox>
 
@@ -68,9 +67,9 @@ pub fn icons_page() -> Html {
         which is passed as a child to the SvgIcon component."}</p>
         <DemoBox>
             <Home />
-            <Home color={DisabledColor::Primary} />
+            <Home color={SvgColor::Primary} />
             <Plus />
-            <Plus color={DisabledColor::Secondary} />
+            <Plus color={SvgColor::Secondary} />
         </DemoBox>
 
         </div>

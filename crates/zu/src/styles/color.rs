@@ -87,23 +87,3 @@ impl Default for InheritColor {
         Self::Primary
     }
 }
-
-/// Another color variant with `Disabled` value.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum DisabledColor {
-    Inherit,
-    Action,
-    Disabled,
-    Primary,
-    Secondary,
-    Success,
-    Info,
-    Warning,
-    Error,
-}
-
-impl Default for DisabledColor {
-    fn default() -> Self {
-        Self::Inherit
-    }
-}

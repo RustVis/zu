@@ -54,7 +54,7 @@ fn compile_scss(input_name: &str, output_name: &str) -> Result<(), Box<dyn Error
         .write(true)
         .open(output_path)?;
     let css: String = String::from_utf8(css).unwrap();
-    // NOTE(Shaohua): Remove @charset, as it is not supported by rsass yet.
+    // NOTE(Shaohua): Remove @charset, as it is not supported by stylist yet.
     let css = css.replace("@charset \"UTF-8\";", "");
     output_file.write_all(css.as_bytes())?;
 
