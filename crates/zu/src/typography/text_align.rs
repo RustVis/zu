@@ -2,15 +2,39 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::styles::text_align::TextAlign;
+use crate::styles::CssClass;
 
-#[must_use]
-pub const fn css_class(align: TextAlign) -> &'static str {
-    match align {
-        TextAlign::Center => "ZuTypography-center",
-        TextAlign::Left => "ZuTypography-left",
-        TextAlign::Right => "ZuTypography-right",
-        TextAlign::Justify => "ZuTypography-justify",
-        TextAlign::Inherit => "",
+/// Set the text-align on the component.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum TextAlign {
+    /// The inline contents are centered within the line box.
+    Center,
+
+    /// The same as left if direction is left-to-right and right if direction is right-to-left.
+    Left,
+
+    /// The same as right if direction is left-to-right and left if direction is right-to-left.
+    Right,
+
+    /// The inline contents are justified.
+    Justify,
+    Inherit,
+}
+
+impl Default for TextAlign {
+    fn default() -> Self {
+        Self::Inherit
+    }
+}
+
+impl CssClass for TextAlign {
+    fn css_class(&self) -> &'static str {
+        match self {
+            Self::Center => "ZuTypography-center",
+            Self::Left => "ZuTypography-left",
+            Self::Right => "ZuTypography-right",
+            Self::Justify => "ZuTypography-justify",
+            Self::Inherit => "",
+        }
     }
 }

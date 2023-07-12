@@ -9,8 +9,8 @@ use yew::{classes, function_component, html, AttrValue, Children, Html, Properti
 use zu_util::prop::ToAttr;
 
 use crate::styles::color::Color;
-use crate::styles::text_align::TextAlign;
 use crate::styles::CssClass;
+pub use text_align::TextAlign;
 pub use variant::Variant;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
@@ -70,7 +70,7 @@ pub fn typography(props: &Props) -> Html {
     let cls = classes!(
         "ZuTypography-root",
         props.variant.css_class(),
-        text_align::css_class(props.align),
+        props.align.css_class(),
         if props.no_wrap {
             "ZuTypography-noWrap"
         } else {

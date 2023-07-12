@@ -10,6 +10,7 @@ pub enum TextAlign {
     Center,
     Left,
     Right,
+    Justify,
 }
 
 impl Default for TextAlign {
@@ -20,10 +21,6 @@ impl Default for TextAlign {
 
 impl CssClass for TextAlign {
     fn css_class(&self) -> &'static str {
-        match self {
-            Self::Center => "",
-            Self::Left => "ZuDivider-textAlignLeft",
-            Self::Right => "ZuDivider-textAlignRight",
-        }
+        todo!()
     }
 }

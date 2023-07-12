@@ -2,14 +2,15 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+mod text_align;
 mod variant;
 
 use yew::{function_component, html, AttrValue, Children, Html, Properties};
 
 use crate::styles::size::Size;
 use crate::styles::sort_direction::SortDirection;
-use crate::styles::text_align::TextAlign;
 use crate::table::Padding;
+pub use text_align::TextAlign;
 pub use variant::Variant;
 
 #[derive(Debug, Clone, PartialEq, Properties)]

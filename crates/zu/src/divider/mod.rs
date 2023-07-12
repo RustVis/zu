@@ -10,8 +10,8 @@ use yew::{classes, function_component, html, AttrValue, Children, Html, Properti
 use zu_util::prop::ToAttr;
 
 use crate::styles::orientation::Orientation;
-use crate::styles::text_align::TextAlign;
 use crate::styles::CssClass;
+pub use text_align::TextAlign;
 pub use variant::Variant;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
@@ -82,7 +82,7 @@ pub fn divider(props: &Props) -> Html {
             orientation::css_class(props.orientation)
         },
         if props.orientation == Orientation::Horizontal {
-            text_align::css_class(props.text_align)
+            props.text_align.css_class()
         } else {
             ""
         },

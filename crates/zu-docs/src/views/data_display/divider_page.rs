@@ -3,8 +3,7 @@
 // in the LICENSE file.
 
 use yew::{function_component, html, Html};
-use zu::divider::{Divider, Variant};
-use zu::styles::text_align::TextAlign;
+use zu::divider::{Divider, TextAlign, Variant};
 
 use crate::components::demo_box::DemoBox;
 
@@ -62,7 +61,7 @@ pub fn divider_page() -> Html {
                 <div>{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dignissim justo.
             Nulla ut facilisis ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
             Sed malesuada lobortis pretium."}</div>
-                <Divider text_align={TextAlign::Left}>{"LEFT"}</Divider>
+                <Divider text_align={TextAlign::Left}>{"Left"}</Divider>
                 <div>{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dignissim justo.
             Nulla ut facilisis ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
             Sed malesuada lobortis pretium."}</div>
