@@ -3,15 +3,33 @@
 // in the LICENSE file.
 
 use yew::{function_component, html, Html};
-use zu::badge::{Badge, Content};
+use zu::badge::{Badge, Content, Overlap, Variant};
+use zu::r#box::r#Box;
 use zu::styles::color::Color;
+use zu::styles::origin::Origin;
+use zuicon_material::Mail;
 
 use crate::components::demo_box::DemoBox;
 
 #[function_component(BadgePage)]
 pub fn badge_page() -> Html {
-    // TODO(Shaohua): Add invisible
-    // TODO(Shaohua): Replace span with MailIcon
+    // TODO(Shaohua): Add toggle visibility button
+    // TODO(Shaohua): Add anchor-origin check buttons
+
+    let rectangle = html! {
+        <Box component="span" style={
+            "background-color: var(--zu-palette-primary-main);\
+             width: 40px;\
+             height: 40px;"} />
+    };
+    let circle = html! {
+        <Box component="span" style={
+            "background-color: var(--zu-palette-primary-main);\
+             width: 40px;\
+             height: 40px;\
+             border-radius: 50%;"} />
+    };
+
     html! {
         <div class="container">
         <h1>{"Badge"}</h1>
@@ -20,7 +38,7 @@ pub fn badge_page() -> Html {
         <p>{"Examples of badges containing text, using primary and secondary colors. The badge is applied to its children."}</p>
         <DemoBox>
           <Badge content={Content::Num(4)} color={Color::Primary}>
-            <span>{"hello"}</span>
+            <Mail />
           </Badge>
         </DemoBox>
 
@@ -28,10 +46,24 @@ pub fn badge_page() -> Html {
         <p>{"Use color prop to apply theme palette to component."}</p>
         <DemoBox>
             <Badge content={Content::Num(4)} color={Color::Secondary}>
-                <span>{"Hello"}</span>
+                <Mail />
             </Badge>
             <Badge content={Content::Num(4)} color={Color::Success}>
-                <span>{"Hello"}</span>
+                <Mail />
+            </Badge>
+        </DemoBox>
+
+        <h2>{"Badge visibility"}</h2>
+        <p>{"The visibility of badges can be controlled using the invisible prop."}</p>
+        <DemoBox>
+            <Badge content={Content::Num(4)} color={Color::Secondary}>
+                <Mail />
+            </Badge>
+             <Badge color={Color::Secondary} variant={Variant::Dot} invisible={false}>
+                <Mail />
+            </Badge>
+            <Badge color={Color::Secondary} variant={Variant::Dot} invisible={true}>
+                <Mail />
             </Badge>
         </DemoBox>
 
@@ -39,13 +71,62 @@ pub fn badge_page() -> Html {
         <p>{"You can use the max prop to cap the value of the badge content."}</p>
         <DemoBox>
             <Badge color={Color::Secondary} content={Content::Num(99)}>
-                <span>{"Hello"}</span>
+                <Mail />
             </Badge>
             <Badge color={Color::Secondary} content={Content::Num(100)}>
-                <span>{"Hello"}</span>
+                <Mail />
             </Badge>
             <Badge color={Color::Secondary} content={Content::Num(1000)} max={999}>
-                <span>{"Hello"}</span>
+                <Mail />
+            </Badge>
+        </DemoBox>
+
+        <h2>{"Dot Badge"}</h2>
+        <p>{"The dot prop changes a badge into a small dot. This can be used as a notification \
+        that something has changed without giving a count."}</p>
+        <DemoBox>
+            <Badge color={Color::Secondary} variant={Variant::Dot}>
+                <Mail />
+            </Badge>
+        </DemoBox>
+
+        <h2>{"Badge overlap"}</h2>
+        <p>{"You can use the overlap prop to place the badge relative to the corner of the wrapped element."}</p>
+        <DemoBox>
+            <Badge color={Color::Secondary} content={Content::Str(" ")}>
+                {rectangle.clone()}
+            </Badge>
+            <Badge color={Color::Secondary} content={Content::Str(" ")} variant={Variant::Dot}>
+                {rectangle}
+            </Badge>
+            <Badge color={Color::Secondary} overlap={Overlap::Circle}
+                content={Content::Str(" ")}>
+                {circle.clone()}
+            </Badge>
+            <Badge color={Color::Secondary} overlap={Overlap::Circle}
+                content={Content::Str(" ")} variant={Variant::Dot}>
+                {circle}
+            </Badge>
+        </DemoBox>
+
+        <h2>{"Badge alignment"}</h2>
+        <p>{"You can use the anchorOrigin prop to move the badge to any corner of the wrapped element."}</p>
+        <DemoBox>
+            <Badge color={Color::Secondary} content={Content::Num(42)}
+                anchor_origin={Origin::top_left()}>
+                <Mail />
+            </Badge>
+            <Badge color={Color::Secondary} content={Content::Num(42)}
+                anchor_origin={Origin::top_right()}>
+                <Mail />
+            </Badge>
+            <Badge color={Color::Secondary} content={Content::Num(42)}
+                anchor_origin={Origin::bottom_left()}>
+                <Mail />
+            </Badge>
+            <Badge color={Color::Secondary} content={Content::Num(42)}
+                anchor_origin={Origin::bottom_right()}>
+                <Mail />
             </Badge>
         </DemoBox>
 
