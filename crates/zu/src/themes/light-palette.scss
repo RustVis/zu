@@ -1,40 +1,40 @@
 
 /* Light Palette */
 
-/* Palette name */
+// Palette name
 $zu-palette-mode: "light" !default;
 
-/* primary */
+// primary
 $zu-palette-primary-main: #1976d2 !default;
 $zu-palette-primary-light: #42a5f5 !default;
 $zu-palette-primary-dark: #1565c0 !default;
 $zu-palette-primary-contrastText: #fff !default;
 
-/* secondary */
+// secondary
 $zu-palette-secondary-main: #9c27b0 !default;
 $zu-palette-secondary-light: #ba68c8 !default;
 $zu-palette-secondary-dark: #7b1fa2 !default;
 $zu-palette-secondary-contrastText: #fff !default;
 
-/* error */
+// error
 $zu-palette-error-main: #d32f2f !default;
 $zu-palette-error-light: #ef5350 !default;
 $zu-palette-error-dark: #c62828 !default;
 $zu-palette-error-contrastText: #fff !default;
 
-/* warning */
+// warning
 $zu-palette-warning-main: #ed6c02 !default;
 $zu-palette-warning-light: #ff9800 !default;
 $zu-palette-warning-dark: #e65100 !default;
 $zu-palette-warning-contrastText: #fff !default;
 
-/* info */
+// info
 $zu-palette-info-main: #0288d1 !default;
 $zu-palette-info-light: #03a9f4 !default;
 $zu-palette-info-dark: #01579b !default;
 $zu-palette-info-contrastText: #fff !default;
 
-/* success */
+// success
 $zu-palette-success-main: #2e7d32 !default;
 $zu-palette-success-light: #4caf50 !default;
 $zu-palette-success-dark: #1b5e20 !default;
@@ -43,21 +43,21 @@ $zu-palette-success-contrastText: #fff !default;
 $zu-palette-contrastThreshold: 3 !default;
 $zu-palette-totalOffset: 0.2 !default;
 
-/* The colors used to style the text. */
+// The colors used to style the text.
 $zu-palette-text-primary: rgba(0, 0, 0, 0.87) !default;
 $zu-palette-text-secondary: rgba(0, 0, 0, 0.6) !default;
-/* Disabled text have even lower visual prominence. */
+// Disabled text have even lower visual prominence.
 $zu-palette-text-disabled: rgba(0, 0, 0, 0.38) !default;
 
-/* The color used to divide different elements. */
+// The color used to divide different elements.
 $zu-palette-divider: rgba(0, 0, 0, 0.12) !default;
 
-/* The background colors used to style the surfaces.
- * Consistency between these values is important. */
+// The background colors used to style the surfaces.
+// Consistency between these values is important.
 $zu-palette-background-paper: white !default;
 $zu-palette-background-default: white !default;
 
-/* The colors used to style the action elements. */
+// The colors used to style the action elements.
 $zu-palette-action-active: rgba(0, 0, 0, 0.54) !default;
 $zu-palette-action-hover: rgba(0, 0, 0, 0.04) !default;
 $zu-palette-action-hoverOpacity: 0.04 !default;

@@ -1,16 +1,16 @@
 /* Transition easing curves */
 
-/* This is the most common easing curve. */
+// This is the most common easing curve.
 $zu-easing-easeInOut: cubic-bezier(0.4, 0, 0.2, 1) !default;
 
-/* Objects enter the screen at full velocity from off-screen and
- * slowly decelerate to a resting point. */
+// Objects enter the screen at full velocity from off-screen and
+// slowly decelerate to a resting point.
 $zu-easing-easeOut: cubic-bezier(0.0, 0, 0.2, 1) !default;
 
-/* Objects leave the screen at full velocity. They do not decelerate when off-screen. */
+// Objects leave the screen at full velocity. They do not decelerate when off-screen.
 $zu-easing-easeIn: cubic-bezier(0.4, 0, 1, 1) !default;
 
-/* The sharp curve is used by objects that may return to the screen at any time. */
+// The sharp curve is used by objects that may return to the screen at any time.
 $zu-easing-sharp: cubic-bezier(0.4, 0, 0.6, 1) !default;
 
 :root {
@@ -20,17 +20,17 @@ $zu-easing-sharp: cubic-bezier(0.4, 0, 0.6, 1) !default;
   --zu-easing-sharp: #{$zu-easing-sharp};
 }
 
-/* Transition duration variables */
+// Transition duration variables
 $zu-duration-shortest: 150ms !default;
 $zu-duration-shorter: 200ms !default;
 $zu-duration-short: 250ms !default;
-/* most basic recommended timing */
+// most basic recommended timing
 $zu-duration-standard: 300ms !default;
-/* this is to be used in complex animations */
+// this is to be used in complex animations
 $zu-duration-complex: 375ms !default;
-/* recommended when something is entering screen */
+// recommended when something is entering screen
 $zu-duration-enteringScreen: 225ms !default;
-/* recommended when something is leaving screen */
+// recommended when something is leaving screen
 $zu-duration-leavingScreen: 195ms !default;
 
 :root {

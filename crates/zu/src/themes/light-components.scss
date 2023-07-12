@@ -1,10 +1,10 @@
 
-/* Component specific variables */
+/* Component specific variables for light theme */
 
-/* Used for Skeleton background color */
+// Used for Skeleton background color
 $zu-skeleton-bg: change-color($zu-palette-text-primary, $alpha: 0.13) !default;
 
-/* Used for Avatar background color if color_default={true} */
+// Used for Avatar background color if color_default={true}
 $zu-avatar-colorDefaultBg: $zu-colors-grey-400 !default;
 $zu-badge-radiusDot: 4px !default;
 $zu-badge-radiusStandard: 10px !default;

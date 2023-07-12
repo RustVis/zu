@@ -1,40 +1,40 @@
 
 /* Dark Palette */
 
-/* Palette name */
+// Palette name
 $zu-palette-mode: "dark" !default;
 
-/* primary */
+// primary
 $zu-palette-primary-main: #90caf9 !default;
 $zu-palette-primary-light: #e3f2fd !default;
 $zu-palette-primary-dark: #42a5f5 !default;
 $zu-palette-primary-contrastText: rgba(0, 0, 0, 0.87) !default;
 
-/* secondary */
+// secondary
 $zu-palette-secondary-main: #ce93d8 !default;
 $zu-palette-secondary-light: #f3e5f5 !default;
 $zu-palette-secondary-dark: #ab47bc !default;
 $zu-palette-secondary-contrastText: rgba(0, 0, 0, 0.87) !default;
 
-/* error */
+// error
 $zu-palette-error-main: #f44336 !default;
 $zu-palette-error-light: #e57373 !default;
 $zu-palette-error-dark: #d32f2f !default;
 $zu-palette-error-contrastText: #fff !default;
 
-/* warning */
+// warning
 $zu-palette-warning-main: #ffa726 !default;
 $zu-palette-warning-light: #ffb74d !default;
 $zu-palette-warning-dark: #f57c00 !default;
 $zu-palette-warning-contrastText: rgba(0, 0, 0, 0.87) !default;
 
-/* info */
+// info
 $zu-palette-info-main: #29b6f6 !default;
 $zu-palette-info-light: #4fc3f7 !default;
 $zu-palette-info-dark: #0288d1 !default;
 $zu-palette-info-contrastText: rgba(0, 0, 0, 0.87) !default;
 
-/* success */
+// success
 $zu-palette-success-main: #66bb6a !default;
 $zu-palette-success-light: #81c784 !default;
 $zu-palette-success-dark: #388e3c !default;
@@ -43,22 +43,22 @@ $zu-palette-success-contrastText: rgba(0, 0, 0, 0.87) !default;
 $zu-palette-contrastThreshold: 3 !default;
 $zu-palette-totalOffset: 0.2 !default;
 
-/* The colors used to style the text. */
+// The colors used to style the text.
 $zu-palette-text-primary: #fff !default;
 $zu-palette-text-secondary: rgba(255, 255, 255, 0.7) !default;
-/* Disabled text have even lower visual prominence. */
+// Disabled text have even lower visual prominence.
 $zu-palette-text-disabled: rgba(255, 255, 255, 0.5) !default;
 $zu-palette-text-icon: rgba(255, 255, 255, 0.5) !default;
 
-/* The color used to divide different elements. */
+// The color used to divide different elements.
 $zu-palette-divider: rgba(255, 255, 255, 0.12) !default;
 
-/* The background colors used to style the surfaces.
- * Consistency between these values is important. */
+// The background colors used to style the surfaces.
+// Consistency between these values is important.
 $zu-palette-background-paper: #121212 !default;
 $zu-palette-background-default: #121212 !default;
 
-/* The colors used to style the action elements. */
+// The colors used to style the action elements.
 $zu-palette-action-active: #fff !default;
 $zu-palette-action-hover: rgba(255, 255, 255, 0.08) !default;
 $zu-palette-action-hoverOpacity: 0.08 !default;
@@ -72,6 +72,6 @@ $zu-palette-action-focusOpacity: 0.12 !default;
 $zu-palette-action-activatedOpacity: 0.24 !default;
 
 :root {
-  /* Export specific variables */
+  // Export specific variables
   --zu-palette-text-icon: #{$zu-palette-text-icon};
 }

@@ -9,77 +9,77 @@ $zu-typography-fontWeightRegular: 400 !default;
 $zu-typography-fontWeightMedium: 500 !default;
 $zu-typography-fontWeightBold: 700 !default;
 
-/* For h1 */
+// For h1
 $zu-typography-h1-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"' !default;
 $zu-typography-h1-fontWeight: 300 !default;
 $zu-typography-h1-fontSize: 6rem !default;
 $zu-typography-h1-lineHeight: 1.167 !default;
 $zu-typography-h1-letterSpacing: -0.01562em !default;
 
-/* For h2 */
+// For h2
 $zu-typography-h2-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"' !default;
 $zu-typography-h2-fontWeight: 300 !default;
 $zu-typography-h2-fontSize: 3.75rem !default;
 $zu-typography-h2-lineHeight: 1.2 !default;
 $zu-typography-h2-letterSpacing: -0.00833em !default;
 
-/* For h3 */
+// For h3
 $zu-typography-h3-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"' !default;
 $zu-typography-h3-fontWeight: 400 !default;
 $zu-typography-h3-fontSize: 3rem !default;
 $zu-typography-h3-lineHeight: 1.168 !default;
 $zu-typography-h3-letterSpacing: 0 !default;
 
-/* For h4 */
+// For h4
 $zu-typography-h4-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"' !default;
 $zu-typography-h4-fontWeight: 400 !default;
 $zu-typography-h4-fontSize: 2.125rem !default;
 $zu-typography-h4-lineHeight: 1.235 !default;
 $zu-typography-h4-letterSpacing: 0.00735em !default;
 
-/* For h5 */
+// For h5
 $zu-typography-h5-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"' !default;
 $zu-typography-h5-fontWeight: 400 !default;
 $zu-typography-h5-fontSize: 1.5rem !default;
 $zu-typography-h5-lineHeight: 1.334 !default;
 $zu-typography-h5-letterSpacing: 0 !default;
 
-/* For h6 */
+// For h6
 $zu-typography-h6-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"' !default;
 $zu-typography-h6-fontWeight: 500 !default;
 $zu-typography-h6-fontSize: 1.25rem !default;
 $zu-typography-h6-lineHeight: 1.6 !default;
 $zu-typography-h6-letterSpacing: 0.0075em !default;
 
-/* For subtitle1 */
+// For subtitle1
 $zu-typography-subtitle1-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"' !default;
 $zu-typography-subtitle1-fontWeight: 400 !default;
 $zu-typography-subtitle1-fontSize: 1rem !default;
 $zu-typography-subtitle1-lineHeight: 1.75 !default;
 $zu-typography-subtitle1-letterSpacing: 0.00938em !default;
 
-/* For subtitle2 */
+// For subtitle2
 $zu-typography-subtitle2-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"' !default;
 $zu-typography-subtitle2-fontWeight: 500 !default;
 $zu-typography-subtitle2-fontSize: 0.875rem !default;
 $zu-typography-subtitle2-lineHeight: 1.57 !default;
 $zu-typography-subtitle2-letterSpacing: 0.00714em !default;
 
-/* For body1 */
+// For body1
 $zu-typography-body1-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"' !default;
 $zu-typography-body1-fontWeight: 400 !default;
 $zu-typography-body1-fontSize: 1rem !default;
 $zu-typography-body1-lineHeight: 1.5 !default;
 $zu-typography-body1-letterSpacing: 0.00938em !default;
 
-/* For body2 */
+// For body2
 $zu-typography-body2-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"' !default;
 $zu-typography-body2-fontWeight: 400 !default;
 $zu-typography-body2-fontSize: 0.875rem !default;
 $zu-typography-body2-lineHeight: 1.43 !default;
 $zu-typography-body2-letterSpacing: 0.01071em !default;
 
-/* For button */
+// For button
 $zu-typography-button-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"' !default;
 $zu-typography-button-fontWeight: 500 !default;
 $zu-typography-button-fontSize: 0.875rem !default;
@@ -87,14 +87,14 @@ $zu-typography-button-lineHeight: 1.75 !default;
 $zu-typography-button-letterSpacing: 0.02857em !default;
 $zu-typography-button-textTransform: uppercase !default;
 
-/* For caption */
+// For caption
 $zu-typography-caption-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"' !default;
 $zu-typography-caption-fontWeight: 400 !default;
 $zu-typography-caption-fontSize: 0.75rem !default;
 $zu-typography-caption-lineHeight: 1.66 !default;
 $zu-typography-caption-letterSpacing: 0.03333em !default;
 
-/* For overline */
+// For overline
 $zu-typography-overline-fontFamily: '"Roboto", "Helvetica", "Arial", "sans-serif"' !default;
 $zu-typography-overline-fontWeight: 400 !default;
 $zu-typography-overline-fontSize: 0.75rem !default;
@@ -102,7 +102,7 @@ $zu-typography-overline-lineHeight: 2.66 !default;
 $zu-typography-overline-letterSpacing: 0.03333em !default;
 $zu-typography-overline-textTransform: uppercase !default;
 
-/* For inherit */
+// For inherit
 $zu-typography-inherit-fontFamily: inherit !default;
 $zu-typography-inherit-fontWeight: inherit !default;
 $zu-typography-inherit-fontSize: inherit !default;
@@ -118,77 +118,66 @@ $zu-typography-inherit-letterSpacing: inherit !default;
   --zu-typography-fontWeightMedium: #{$zu-typography-fontWeightMedium};
   --zu-typography-fontWeightBold: #{$zu-typography-fontWeightBold};
 
-  /* For h1 */
   --zu-typography-h1-fontFamily: #{$zu-typography-h1-fontFamily};
   --zu-typography-h1-fontWeight: #{$zu-typography-h1-fontWeight};
   --zu-typography-h1-fontSize: #{$zu-typography-h1-fontSize};
   --zu-typography-h1-lineHeight: #{$zu-typography-h1-lineHeight};
   --zu-typography-h1-letterSpacing: #{$zu-typography-h1-letterSpacing};
 
-  /* For h2 */
   --zu-typography-h2-fontFamily: #{$zu-typography-h2-fontFamily};
   --zu-typography-h2-fontWeight: #{$zu-typography-h2-fontWeight};
   --zu-typography-h2-fontSize: #{$zu-typography-h2-fontSize};
   --zu-typography-h2-lineHeight: #{$zu-typography-h2-lineHeight};
   --zu-typography-h2-letterSpacing: #{$zu-typography-h2-letterSpacing};
   
-  /* For h3 */
   --zu-typography-h3-fontFamily: #{$zu-typography-h3-fontFamily};
   --zu-typography-h3-fontWeight: #{$zu-typography-h3-fontWeight};
   --zu-typography-h3-fontSize: #{$zu-typography-h3-fontSize};
   --zu-typography-h3-lineHeight: #{$zu-typography-h3-lineHeight};
   --zu-typography-h3-letterSpacing: #{$zu-typography-h3-letterSpacing};
 
-  /* For h4 */
   --zu-typography-h4-fontFamily: #{$zu-typography-h4-fontFamily};
   --zu-typography-h4-fontWeight: #{$zu-typography-h4-fontWeight};
   --zu-typography-h4-fontSize: #{$zu-typography-h4-fontSize};
   --zu-typography-h4-lineHeight: #{$zu-typography-h4-lineHeight};
   --zu-typography-h4-letterSpacing: #{$zu-typography-h4-letterSpacing};
 
-  /* For h5 */
   --zu-typography-h5-fontFamily: #{$zu-typography-h5-fontFamily};
   --zu-typography-h5-fontWeight: #{$zu-typography-h5-fontWeight};
   --zu-typography-h5-fontSize: #{$zu-typography-h5-fontSize};
   --zu-typography-h5-lineHeight: #{$zu-typography-h5-lineHeight};
   --zu-typography-h5-letterSpacing: #{$zu-typography-h5-letterSpacing};
 
-  /* For h6 */
   --zu-typography-h6-fontFamily: #{$zu-typography-h6-fontFamily};
   --zu-typography-h6-fontWeight: #{$zu-typography-h6-fontWeight};
   --zu-typography-h6-fontSize: #{$zu-typography-h6-fontSize};
   --zu-typography-h6-lineHeight: #{$zu-typography-h6-lineHeight};
   --zu-typography-h6-letterSpacing: #{$zu-typography-h6-letterSpacing};
 
-  /* For subtitle1 */
   --zu-typography-subtitle1-fontFamily: #{$zu-typography-subtitle1-fontFamily};
   --zu-typography-subtitle1-fontWeight: #{$zu-typography-subtitle1-fontWeight};
   --zu-typography-subtitle1-fontSize: #{$zu-typography-subtitle1-fontSize};
   --zu-typography-subtitle1-lineHeight: #{$zu-typography-subtitle1-lineHeight};
   --zu-typography-subtitle1-letterSpacing: #{$zu-typography-subtitle1-letterSpacing};
 
-  /* For subtitle2 */
   --zu-typography-subtitle2-fontFamily: #{$zu-typography-subtitle2-fontFamily};
   --zu-typography-subtitle2-fontWeight: #{$zu-typography-subtitle2-fontWeight};
   --zu-typography-subtitle2-fontSize: #{$zu-typography-subtitle2-fontSize};
   --zu-typography-subtitle2-lineHeight: #{$zu-typography-subtitle2-lineHeight};
   --zu-typography-subtitle2-letterSpacing: #{$zu-typography-subtitle2-letterSpacing};
 
-  /* For body1 */
   --zu-typography-body1-fontFamily: #{$zu-typography-body1-fontFamily};
   --zu-typography-body1-fontWeight: #{$zu-typography-body1-fontWeight};
   --zu-typography-body1-fontSize: #{$zu-typography-body1-fontSize};
   --zu-typography-body1-lineHeight: #{$zu-typography-body1-lineHeight};
   --zu-typography-body1-letterSpacing: #{$zu-typography-body1-letterSpacing};
 
-  /* For body2 */
   --zu-typography-body2-fontFamily: #{$zu-typography-body2-fontFamily};
   --zu-typography-body2-fontWeight: #{$zu-typography-body2-fontWeight};
   --zu-typography-body2-fontSize: #{$zu-typography-body2-fontSize};
   --zu-typography-body2-lineHeight: #{$zu-typography-body2-lineHeight};
   --zu-typography-body2-letterSpacing: #{$zu-typography-body2-letterSpacing};
 
-  /* For button */
   --zu-typography-button-fontFamily: #{$zu-typography-button-fontFamily};
   --zu-typography-button-fontWeight: #{$zu-typography-button-fontWeight};
   --zu-typography-button-fontSize: #{$zu-typography-button-fontSize};
@@ -196,14 +185,12 @@ $zu-typography-inherit-letterSpacing: inherit !default;
   --zu-typography-button-letterSpacing: #{$zu-typography-button-letterSpacing};
   --zu-typography-button-textTransform: #{$zu-typography-button-textTransform};
 
-  /* For caption */
   --zu-typography-caption-fontFamily: #{$zu-typography-caption-fontFamily};
   --zu-typography-caption-fontWeight: #{$zu-typography-caption-fontWeight};
   --zu-typography-caption-fontSize: #{$zu-typography-caption-fontSize};
   --zu-typography-caption-lineHeight: #{$zu-typography-caption-lineHeight};
   --zu-typography-caption-letterSpacing: #{$zu-typography-caption-letterSpacing};
 
-  /* For overline */
   --zu-typography-overline-fontFamily: #{$zu-typography-overline-fontFamily};
   --zu-typography-overline-fontWeight: #{$zu-typography-overline-fontWeight};
   --zu-typography-overline-fontSize: #{$zu-typography-overline-fontSize};
@@ -211,7 +198,6 @@ $zu-typography-inherit-letterSpacing: inherit !default;
   --zu-typography-overline-letterSpacing: #{$zu-typography-overline-letterSpacing};
   --zu-typography-overline-textTransform: #{$zu-typography-overline-textTransform};
 
-  /* For inherit */
   --zu-typography-inherit-fontFamily: #{$zu-typography-inherit-fontFamily};
   --zu-typography-inherit-fontWeight: #{$zu-typography-inherit-fontWeight};
   --zu-typography-inherit-fontSize: #{$zu-typography-inherit-fontSize};
