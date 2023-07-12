@@ -7,7 +7,6 @@ pub const COMMON_STYLES: &[&str] = &[
     "src/themes/_functions.scss",
     "src/themes/border-radius.scss",
     "src/themes/breakpoints.scss",
-    "src/themes/components-base.scss",
     "src/themes/fonts.scss",
     "src/themes/shadows.scss",
     "src/themes/shape.scss",
