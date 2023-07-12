@@ -1,12 +1,22 @@
 
 /* Z Index enums */
+
+$zu-zIndex-mobileStepper: 1000;
+$zu-zIndex-fab: 1050;
+$zu-zIndex-speedDial: 1050;
+$zu-zIndex-appBar: 1100;
+$zu-zIndex-drawer: 1200;
+$zu-zIndex-modal: 1300;
+$zu-zIndex-snackbar: 1400;
+$zu-zIndex-tooltip: 1500;
+
 :root {
-  --zu-zIndex-mobileStepper: 1000;
-  --zu-zIndex-fab: 1050;
-  --zu-zIndex-speedDial: 1050;
-  --zu-zIndex-appBar: 1100;
-  --zu-zIndex-drawer: 1200;
-  --zu-zIndex-modal: 1300;
-  --zu-zIndex-snackbar: 1400;
-  --zu-zIndex-tooltip: 1500;
+  --zu-zIndex-mobileStepper: #{$zu-zIndex-mobileStepper};
+  --zu-zIndex-fab: #{$zu-zIndex-fab};
+  --zu-zIndex-speedDial: #{$zu-zIndex-speedDial};
+  --zu-zIndex-appBar: #{$zu-zIndex-appBar};
+  --zu-zIndex-drawer: #{$zu-zIndex-drawer};
+  --zu-zIndex-modal: #{$zu-zIndex-modal};
+  --zu-zIndex-snackbar: #{$zu-zIndex-snackbar};
+  --zu-zIndex-tooltip: #{$zu-zIndex-tooltip};
 }

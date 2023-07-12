@@ -21,7 +21,6 @@ impl Default for FlexDirection {
     }
 }
 
-// TODO(Shaohua): Remove
 impl CssClass for FlexDirection {
     fn css_class(&self) -> &'static str {
         match self {
