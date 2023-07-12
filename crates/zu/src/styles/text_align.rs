@@ -11,10 +11,10 @@ pub enum TextAlign {
     Center,
 
     /// The same as left if direction is left-to-right and right if direction is right-to-left.
-    Start,
+    Left,
 
     /// The same as right if direction is left-to-right and left if direction is right-to-left.
-    End,
+    Right,
 
     /// The inline contents are justified.
     Justify,
@@ -27,12 +27,13 @@ impl Default for TextAlign {
     }
 }
 
+// TODO(Shaohua): Remove
 impl CssValue for TextAlign {
     fn css_value(&self) -> String {
         match self {
             Self::Center => "center".to_owned(),
-            Self::Start => "start".to_owned(),
-            Self::End => "end".to_owned(),
+            Self::Left => "start".to_owned(),
+            Self::Right => "end".to_owned(),
             Self::Justify => "justify".to_owned(),
             Self::Inherit => "inherit".to_owned(),
         }

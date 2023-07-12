@@ -7,8 +7,8 @@ use crate::styles::text_align::TextAlign;
 #[must_use]
 pub const fn css_class(text_align: TextAlign) -> &'static str {
     match text_align {
-        TextAlign::Start => "ZuDivider-textAlignStart",
-        TextAlign::End => "ZuDivider-textAlignEnd",
+        TextAlign::Left => "ZuDivider-textAlignLeft",
+        TextAlign::Right => "ZuDivider-textAlignRight",
         _ => "",
     }
 }

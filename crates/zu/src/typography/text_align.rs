@@ -8,8 +8,8 @@ use crate::styles::text_align::TextAlign;
 pub const fn css_class(align: TextAlign) -> &'static str {
     match align {
         TextAlign::Center => "ZuTypography-center",
-        TextAlign::Start => "ZuTypography-start",
-        TextAlign::End => "ZuTypography-end",
+        TextAlign::Left => "ZuTypography-left",
+        TextAlign::Right => "ZuTypography-right",
         TextAlign::Justify => "ZuTypography-justify",
         TextAlign::Inherit => "",
     }

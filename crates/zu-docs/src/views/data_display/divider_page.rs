@@ -62,11 +62,11 @@ pub fn divider_page() -> Html {
                 <div>{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dignissim justo.
             Nulla ut facilisis ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
             Sed malesuada lobortis pretium."}</div>
-                <Divider text_align={TextAlign::Start}>{"LEFT"}</Divider>
+                <Divider text_align={TextAlign::Left}>{"LEFT"}</Divider>
                 <div>{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dignissim justo.
             Nulla ut facilisis ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
             Sed malesuada lobortis pretium."}</div>
-                <Divider text_align={TextAlign::End}>{"Right"}</Divider>
+                <Divider text_align={TextAlign::Right}>{"Right"}</Divider>
                 <div>{"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id dignissim justo.
             Nulla ut facilisis ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus.
             Sed malesuada lobortis pretium."}</div>
