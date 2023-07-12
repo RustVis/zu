@@ -5,7 +5,7 @@
 use yew::{function_component, html, Html};
 use zu::badge::{Badge, Content, Overlap, Variant};
 use zu::r#box::r#Box;
-use zu::styles::color::Color;
+use zu::styles::color::{Color, DisabledColor};
 use zu::styles::origin::Origin;
 use zuicon_material::Mail;
 
@@ -38,7 +38,7 @@ pub fn badge_page() -> Html {
         <p>{"Examples of badges containing text, using primary and secondary colors. The badge is applied to its children."}</p>
         <DemoBox>
           <Badge content={Content::Num(4)} color={Color::Primary}>
-            <Mail />
+            <Mail color={DisabledColor::Action} />
           </Badge>
         </DemoBox>
 
@@ -46,10 +46,10 @@ pub fn badge_page() -> Html {
         <p>{"Use color prop to apply theme palette to component."}</p>
         <DemoBox>
             <Badge content={Content::Num(4)} color={Color::Secondary}>
-                <Mail />
+                <Mail color={DisabledColor::Action} />
             </Badge>
             <Badge content={Content::Num(4)} color={Color::Success}>
-                <Mail />
+                <Mail color={DisabledColor::Action} />
             </Badge>
         </DemoBox>
 

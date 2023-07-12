@@ -3,13 +3,15 @@
 // in the LICENSE file.
 
 use yew::{function_component, html, Html};
-use zu::svg_icon::{Color, FontSize, Props, SvgIcon};
+use zu::styles::color::DisabledColor;
+use zu::svg_icon::{FontSize, Props, SvgIcon};
 use zuicon_material::Home;
 
 use crate::components::demo_box::DemoBox;
 
 #[function_component(Abc)]
 pub fn abc(props: &Props) -> Html {
+    // TODO(Shaohua): Replace with icon util.
     html! {
         <SvgIcon classes={props.classes.clone()}
             color={props.color}
@@ -44,15 +46,15 @@ pub fn icons_page() -> Html {
         <h3>{"Color"}</h3>
         <DemoBox>
             <Home />
-            <Home color={Color::Primary} />
-            <Home color={Color::Secondary} />
-            <Home color={Color::Success} />
-            <Home color={Color::Action} />
-            <Home color={Color::Disabled} />
+            <Home color={DisabledColor::Primary} />
+            <Home color={DisabledColor::Secondary} />
+            <Home color={DisabledColor::Success} />
+            <Home color={DisabledColor::Action} />
+            <Home color={DisabledColor::Disabled} />
             <Home style="color: var(--zu-colors-pink-500);" />
         </DemoBox>
 
-        <Abc color={Color::Error} font_size={FontSize::Large} />
+        <Abc color={DisabledColor::Error} font_size={FontSize::Large} />
 
         </div>
     }
