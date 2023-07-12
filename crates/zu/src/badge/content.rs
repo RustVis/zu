@@ -5,7 +5,8 @@
 /// Used as badge content.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum Content {
-    Str(String),
+    Str(&'static str),
+    String(String),
     Num(i32),
 }
 

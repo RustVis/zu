@@ -54,8 +54,6 @@ pub struct Props {
     #[prop_or_default]
     pub style: AttrValue,
 
-    // TODO(Shaohua): Support custom inline style
-    //pub style: String,
     /// The variant to use.
     #[prop_or_default]
     pub variant: Variant,
@@ -88,7 +86,8 @@ pub fn badge(props: &Props) -> Html {
     let display_value = if props.variant == Variant::Standard {
         match &props.content {
             None => None,
-            Some(Content::Str(s)) => Some(s.clone()),
+            Some(Content::Str(s)) => Some((*s).to_string()),
+            Some(Content::String(s)) => Some(s.clone()),
             Some(Content::Num(num)) => {
                 if *num > props.max {
                     Some(format!("{}+", props.max))
