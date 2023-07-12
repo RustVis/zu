@@ -120,6 +120,7 @@ pub const COMMON_STYLES: &[&str] = &[
     "src/switch/style.scss",
     "src/switch_base/style.scss",
     "src/tab/style.scss",
+    "src/tab_list/style.scss",
     "src/tab_scroll_button/style.scss",
     "src/table/style.scss",
     "src/table_body/style.scss",
