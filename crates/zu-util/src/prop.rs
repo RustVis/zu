@@ -23,6 +23,7 @@ impl ToAttr for &AttrValue {
 
 impl ToAttr for i32 {
     fn to_attr(self) -> Option<String> {
+        // TODO(Shaohua): No need to check value range.
         if self >= 0 {
             Some(self.to_string())
         } else {
@@ -44,5 +45,17 @@ impl ToAttr for bool {
         } else {
             None
         }
+    }
+}
+
+impl ToAttr for f64 {
+    fn to_attr(self) -> Option<String> {
+        Some(self.to_string())
+    }
+}
+
+impl ToAttr for Option<f64> {
+    fn to_attr(self) -> Option<String> {
+        self.map(|val| val.to_string())
     }
 }

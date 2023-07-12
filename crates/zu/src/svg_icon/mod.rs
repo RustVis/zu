@@ -51,11 +51,20 @@ pub struct Props {
     /// Default is "0 0 24 24".
     #[prop_or_default]
     pub view_box: AttrValue,
+
+    #[prop_or_default]
+    pub fill: AttrValue,
+
+    #[prop_or_default]
+    pub stroke: AttrValue,
+
+    #[prop_or_default]
+    pub stroke_width: Option<f64>,
 }
 
 #[function_component(SvgIcon)]
 pub fn svg_icon(props: &Props) -> Html {
-    let _component = if props.component.is_empty() {
+    let component = if props.component.is_empty() {
         "svg"
     } else {
         props.component.as_str()
@@ -76,17 +85,20 @@ pub fn svg_icon(props: &Props) -> Html {
     let aria_hidden = !props.title_access.is_empty();
 
     html! {
-        <svg class={root_cls}
+        <@{component.to_owned()} class={root_cls}
             style={props.style.to_attr()}
             focusable={"false"}
             color={props.html_color.to_attr()}
             aria-hidden={aria_hidden.to_attr()}
             data-icon={props.icon.to_attr()}
-            viewBox={view_box.to_owned()}>
+            viewBox={view_box.to_owned()}
+            fill={props.fill.to_attr()}
+            stroke={props.stroke.to_attr()}
+            stroke_width={props.stroke_width.to_attr()}>
             {for props.children.iter()}
             if !props.title_access.is_empty() {
                 <title>{&props.title_access}</title>
             }
-        </svg>
+        </@>
     }
 }
