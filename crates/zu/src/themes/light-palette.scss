@@ -2,70 +2,70 @@
 /* Light Palette */
 
 /* Palette name */
-$zu-palette-mode: "light";
+$zu-palette-mode: "light" !default;
 
 /* primary */
-$zu-palette-primary-main: #1976d2;
-$zu-palette-primary-light: #42a5f5;
-$zu-palette-primary-dark: #1565c0;
-$zu-palette-primary-contrastText: #fff;
+$zu-palette-primary-main: #1976d2 !default;
+$zu-palette-primary-light: #42a5f5 !default;
+$zu-palette-primary-dark: #1565c0 !default;
+$zu-palette-primary-contrastText: #fff !default;
 
 /* secondary */
-$zu-palette-secondary-main: #9c27b0;
-$zu-palette-secondary-light: #ba68c8;
-$zu-palette-secondary-dark: #7b1fa2;
-$zu-palette-secondary-contrastText: #fff;
+$zu-palette-secondary-main: #9c27b0 !default;
+$zu-palette-secondary-light: #ba68c8 !default;
+$zu-palette-secondary-dark: #7b1fa2 !default;
+$zu-palette-secondary-contrastText: #fff !default;
 
 /* error */
-$zu-palette-error-main: #d32f2f;
-$zu-palette-error-light: #ef5350;
-$zu-palette-error-dark: #c62828;
-$zu-palette-error-contrastText: #fff;
+$zu-palette-error-main: #d32f2f !default;
+$zu-palette-error-light: #ef5350 !default;
+$zu-palette-error-dark: #c62828 !default;
+$zu-palette-error-contrastText: #fff !default;
 
 /* warning */
-$zu-palette-warning-main: #ed6c02;
-$zu-palette-warning-light: #ff9800;
-$zu-palette-warning-dark: #e65100;
-$zu-palette-warning-contrastText: #fff;
+$zu-palette-warning-main: #ed6c02 !default;
+$zu-palette-warning-light: #ff9800 !default;
+$zu-palette-warning-dark: #e65100 !default;
+$zu-palette-warning-contrastText: #fff !default;
 
 /* info */
-$zu-palette-info-main: #0288d1;
-$zu-palette-info-light: #03a9f4;
-$zu-palette-info-dark: #01579b;
-$zu-palette-info-contrastText: #fff;
+$zu-palette-info-main: #0288d1 !default;
+$zu-palette-info-light: #03a9f4 !default;
+$zu-palette-info-dark: #01579b !default;
+$zu-palette-info-contrastText: #fff !default;
 
 /* success */
-$zu-palette-success-main: #2e7d32;
-$zu-palette-success-light: #4caf50;
-$zu-palette-success-dark: #1b5e20;
-$zu-palette-success-contrastText: #fff;
+$zu-palette-success-main: #2e7d32 !default;
+$zu-palette-success-light: #4caf50 !default;
+$zu-palette-success-dark: #1b5e20 !default;
+$zu-palette-success-contrastText: #fff !default;
 
-$zu-palette-contrastThreshold: 3;
-$zu-palette-totalOffset: 0.2;
+$zu-palette-contrastThreshold: 3 !default;
+$zu-palette-totalOffset: 0.2 !default;
 
 /* The colors used to style the text. */
-$zu-palette-text-primary: rgba(0, 0, 0, 0.87);
-$zu-palette-text-secondary: rgba(0, 0, 0, 0.6);
+$zu-palette-text-primary: rgba(0, 0, 0, 0.87) !default;
+$zu-palette-text-secondary: rgba(0, 0, 0, 0.6) !default;
 /* Disabled text have even lower visual prominence. */
-$zu-palette-text-disabled: rgba(0, 0, 0, 0.38);
+$zu-palette-text-disabled: rgba(0, 0, 0, 0.38) !default;
 
 /* The color used to divide different elements. */
-$zu-palette-divider: rgba(0, 0, 0, 0.12);
+$zu-palette-divider: rgba(0, 0, 0, 0.12) !default;
 
 /* The background colors used to style the surfaces.
  * Consistency between these values is important. */
-$zu-palette-background-paper: white;
-$zu-palette-background-default: white;
+$zu-palette-background-paper: white !default;
+$zu-palette-background-default: white !default;
 
 /* The colors used to style the action elements. */
-$zu-palette-action-active: rgba(0, 0, 0, 0.54);
-$zu-palette-action-hover: rgba(0, 0, 0, 0.04);
-$zu-palette-action-hoverOpacity: 0.04;
-$zu-palette-action-selected: rgba(0, 0, 0, 0.08);
-$zu-palette-action-selectedOpacity: 0.08;
-$zu-palette-action-disabled: rgba(0, 0, 0, 0.26);
-$zu-palette-action-disabledBackground: rgba(0, 0, 0, 0.12);
-$zu-palette-action-disabledOpacity: 0.38;
-$zu-palette-action-focus: rgba(0, 0, 0, 0.12);
-$zu-palette-action-focusOpacity: 0.12;
-$zu-palette-action-activatedOpacity: 0.12;
+$zu-palette-action-active: rgba(0, 0, 0, 0.54) !default;
+$zu-palette-action-hover: rgba(0, 0, 0, 0.04) !default;
+$zu-palette-action-hoverOpacity: 0.04 !default;
+$zu-palette-action-selected: rgba(0, 0, 0, 0.08) !default;
+$zu-palette-action-selectedOpacity: 0.08 !default;
+$zu-palette-action-disabled: rgba(0, 0, 0, 0.26) !default;
+$zu-palette-action-disabledBackground: rgba(0, 0, 0, 0.12) !default;
+$zu-palette-action-disabledOpacity: 0.38 !default;
+$zu-palette-action-focus: rgba(0, 0, 0, 0.12) !default;
+$zu-palette-action-focusOpacity: 0.12 !default;
+$zu-palette-action-activatedOpacity: 0.12 !default;

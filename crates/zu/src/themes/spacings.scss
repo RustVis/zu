@@ -1,18 +1,18 @@
 
 /* Spacing variables */
-$zu-spacing-none: 0;
-$zu-spacing-xxs: 2px;
-$zu-spacing-xs: 4px;
-$zu-spacing-sNudge: 6px;
-$zu-spacing-s: 8px;
-$zu-spacing-mNudge: 10px;
-$zu-spacing-m: 12px;
-$zu-spacing-l: 16px;
-$zu-spacing-xl: 20px;
-$zu-spacing-xxl: 24px;
-$zu-spacing-xxxl: 32px;
+$zu-spacing-none: 0 !default;
+$zu-spacing-xxs: 2px !default;
+$zu-spacing-xs: 4px !default;
+$zu-spacing-sNudge: 6px !default;
+$zu-spacing-s: 8px !default;
+$zu-spacing-mNudge: 10px !default;
+$zu-spacing-m: 12px !default;
+$zu-spacing-l: 16px !default;
+$zu-spacing-xl: 20px !default;
+$zu-spacing-xxl: 24px !default;
+$zu-spacing-xxxl: 32px !default;
 
-$zu-spacing-unit: 8px;
+$zu-spacing-unit: 8px !default;
 
 :root {
   --zu-spacing-none: #{$zu-spacing-none};

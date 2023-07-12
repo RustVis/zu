@@ -1,9 +1,9 @@
 
 /* Stroke width variables */
-$zu-stroke-width-thin: 1px;
-$zu-stroke-width-thick: 2px;
-$zu-stroke-width-thicker: 3px;
-$zu-stroke-width-thickest: 4px;
+$zu-stroke-width-thin: 1px !default;
+$zu-stroke-width-thick: 2px !default;
+$zu-stroke-width-thicker: 3px !default;
+$zu-stroke-width-thickest: 4px !default;
 
 :root {
   --zu-stroke-width-thin: #{$zu-stroke-width-thin};

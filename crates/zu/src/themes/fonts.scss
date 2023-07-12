@@ -1,16 +1,16 @@
 
 /* Font related variables */
 
-$zu-font-size-s100: 10px;
-$zu-font-size-s200: 12px;
-$zu-font-size-s300: 14px;
-$zu-font-size-s400: 16px;
-$zu-font-size-s500: 20px;
-$zu-font-size-s600: 24px;
-$zu-font-size-s700: 28px;
-$zu-font-size-s800: 32px;
-$zu-font-size-s900: 40px;
-$zu-font-size-s1000: 68px;
+$zu-font-size-s100: 10px !default;
+$zu-font-size-s200: 12px !default;
+$zu-font-size-s300: 14px !default;
+$zu-font-size-s400: 16px !default;
+$zu-font-size-s500: 20px !default;
+$zu-font-size-s600: 24px !default;
+$zu-font-size-s700: 28px !default;
+$zu-font-size-s800: 32px !default;
+$zu-font-size-s900: 40px !default;
+$zu-font-size-s1000: 68px !default;
 
 :root {
   --zu-font-size-s100: #{$zu-font-size-s100};

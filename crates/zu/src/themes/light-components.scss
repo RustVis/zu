@@ -2,12 +2,12 @@
 /* Component specific variables */
 
 /* Used for Skeleton background color */
-$zu-skeleton-bg: change-color($zu-palette-text-primary, $alpha: 0.13);
+$zu-skeleton-bg: change-color($zu-palette-text-primary, $alpha: 0.13) !default;
 
 /* Used for Avatar background color if color_default={true} */
-$zu-avatar-colorDefaultBg: $zu-colors-grey-400;
-$zu-badge-radiusDot: 4px;
-$zu-badge-radiusStandard: 10px;
+$zu-avatar-colorDefaultBg: $zu-colors-grey-400 !default;
+$zu-badge-radiusDot: 4px !default;
+$zu-badge-radiusStandard: 10px !default;
 
 :root {
   --zu-skeleton-bg: #{$zu-skeleton-bg};

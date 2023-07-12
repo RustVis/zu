@@ -1,12 +1,12 @@
 
 /* Border Radius variables */
 
-$zu-border-radius-none: 0;
-$zu-border-radius-small: 2px;
-$zu-border-radius-medium: 4px;
-$zu-border-radius-large: 6px;
-$zu-border-radius-xLarge: 8px;
-$zu-border-radius-circular: 10000px;
+$zu-border-radius-none: 0 !default;
+$zu-border-radius-small: 2px !default;
+$zu-border-radius-medium: 4px !default;
+$zu-border-radius-large: 6px !default;
+$zu-border-radius-xLarge: 8px !default;
+$zu-border-radius-circular: 10000px !default;
 
 :root {
   --zu-border-radius-none: #{$zu-border-radius-none};

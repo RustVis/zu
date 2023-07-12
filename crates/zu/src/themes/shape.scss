@@ -1,5 +1,5 @@
 
-$zu-shape-borderRadius: 4px;
+$zu-shape-borderRadius: 4px !default;
 
 :root {
   --zu-shape-borderRadius: #{$zu-shape-borderRadius};
