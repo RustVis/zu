@@ -62,22 +62,22 @@ fn compile_scss(input_name: &str, output_name: &str) -> Result<(), Box<dyn Error
 }
 
 fn generate_style_files() -> Result<(), Box<dyn Error>> {
-    let mut dark_files = vec![
+    let mut dark_files = theme::COLORS.to_vec();
+    dark_files.extend_from_slice(&[
         "src/themes/dark-palette.scss",
         "src/themes/export-palette.scss",
         "src/themes/dark-components.scss",
-    ];
-    dark_files.extend_from_slice(theme::COLORS);
+    ]);
     dark_files.extend_from_slice(theme::COMMON_STYLES);
     merge_themes(&dark_files, "dark-theme.scss")?;
     compile_scss("dark-theme.scss", "dark-theme.css")?;
 
-    let mut light_files = vec![
+    let mut light_files = theme::COLORS.to_vec();
+    light_files.extend_from_slice(&[
         "src/themes/light-palette.scss",
         "src/themes/export-palette.scss",
         "src/themes/light-components.scss",
-    ];
-    light_files.extend_from_slice(theme::COLORS);
+    ]);
     light_files.extend_from_slice(theme::COMMON_STYLES);
     merge_themes(&light_files, "light-theme.scss")?;
     compile_scss("light-theme.scss", "light-theme.css")?;
