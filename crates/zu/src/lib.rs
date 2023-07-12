@@ -152,6 +152,7 @@ pub mod switch_base;
 pub mod tab;
 pub mod tab_content;
 pub mod tab_list;
+pub mod tab_panel;
 pub mod tab_scroll_button;
 pub mod table;
 pub mod table_body;
