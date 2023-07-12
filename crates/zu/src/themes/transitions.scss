@@ -20,19 +20,6 @@ $zu-easing-sharp: cubic-bezier(0.4, 0, 0.6, 1);
   --zu-easing-sharp: #{$zu-easing-sharp};
 }
 
-/* Alternative easing curves */
-//:root {
-//  --zu-easing2-accelerateMax: cubic-bezier(1, 0, 1, 1);
-//  --zu-easing2-accelerateMid: cubic-bezier(0.7, 0, 1, 0.5);
-//  --zu-easing2-accelerateMin: cubic-bezier(0.8, 0, 1, 1);
-//  --zu-easing2-decelerateMax: cubic-bezier(0, 0, 0, 1);
-//  --zu-easing2-decelerateMid: cubic-bezier(0.1, 0.9, 0.2, 1);
-//  --zu-easing2-decelerateMin: cubic-bezier(0.33, 0, 0.1, 1);
-//  --zu-easing2-easyEaseMax: cubic-bezier(0.8, 0, 0.1, 1);
-//  --zu-easing2-easyEase: cubic-bezier(0.33, 0, 0.67, 1);
-//  --zu-easing2-linear: cubic-bezier(0, 0, 1, 1);
-//}
-
 /* Transition duration variables */
 $zu-duration-shortest: 150ms;
 $zu-duration-shorter: 200ms;
@@ -54,21 +41,4 @@ $zu-duration-leavingScreen: 195ms;
   --zu-duration-complex: #{$zu-duration-complex};
   --zu-duration-enteringScreen: #{$zu-duration-enteringScreen};
   --zu-duration-leavingScreen: #{$zu-duration-leavingScreen};
-}
-
-/* Alternative duration variables */
-//:root {
-//  --zu-duration2-ultraFast: 50ms;
-//  --zu-duration2-faster: 100ms;
-//  --zu-duration2-fast: 150ms;
-//  --zu-duration2-normal: 200ms;
-//  --zu-duration2-slow: 300ms;
-//  --zu-duration2-slower: 400ms;
-//  --zu-duration2-ultraSlow: 500ms;
-//}
-
-/* Transforms */
-// TODO(Shaohua): Remove
-:root {
-  --zu-transform: transform var(--zu-duration-standard) var(--zu-easing-easeInOut) 0ms;
 }
