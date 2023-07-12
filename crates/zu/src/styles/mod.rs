@@ -2,6 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+pub mod anchor_origin;
 pub mod button_variant;
 pub mod color;
 pub mod direction;
@@ -13,7 +14,6 @@ pub mod item_align;
 pub mod label_variant;
 pub mod margin;
 pub mod orientation;
-pub mod origin;
 pub mod placement;
 pub mod position;
 pub mod severity;

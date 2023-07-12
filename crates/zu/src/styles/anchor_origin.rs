@@ -3,61 +3,59 @@
 // in the LICENSE file.
 
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
-pub struct Origin {
-    pub horizontal: HorizontalOrigin,
-    pub vertical: VerticalOrigin,
+pub struct AnchorOrigin {
+    pub horizontal: Horizontal,
+    pub vertical: Vertical,
 }
 
-impl Origin {
+impl AnchorOrigin {
     #[must_use]
     pub const fn top_left() -> Self {
         Self {
-            horizontal: HorizontalOrigin::Left,
-            vertical: VerticalOrigin::Top,
+            horizontal: Horizontal::Left,
+            vertical: Vertical::Top,
         }
     }
 
     #[must_use]
     pub const fn top_right() -> Self {
         Self {
-            horizontal: HorizontalOrigin::Right,
-            vertical: VerticalOrigin::Top,
+            horizontal: Horizontal::Right,
+            vertical: Vertical::Top,
         }
     }
 
     #[must_use]
     pub const fn bottom_left() -> Self {
         Self {
-            horizontal: HorizontalOrigin::Left,
-            vertical: VerticalOrigin::Bottom,
+            horizontal: Horizontal::Left,
+            vertical: Vertical::Bottom,
         }
     }
 
     #[must_use]
     pub const fn bottom_right() -> Self {
         Self {
-            horizontal: HorizontalOrigin::Right,
-            vertical: VerticalOrigin::Bottom,
+            horizontal: Horizontal::Right,
+            vertical: Vertical::Bottom,
         }
     }
 }
 
-impl Default for Origin {
+impl Default for AnchorOrigin {
     fn default() -> Self {
         Self::top_left()
     }
 }
 
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
-pub enum HorizontalOrigin {
+pub enum Horizontal {
     Left,
-    Center,
     Right,
 }
 
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
-pub enum VerticalOrigin {
+pub enum Vertical {
     Top,
-    Center,
     Bottom,
 }

@@ -4,7 +4,7 @@
 
 use yew::{function_component, html, AttrValue, Callback, Children, Html, Properties};
 
-use crate::styles::origin::Origin;
+use crate::styles::anchor_origin::AnchorOrigin;
 use crate::styles::position::PositionValue;
 use crate::styles::transition_duration::TransitionDuration;
 
@@ -17,7 +17,7 @@ pub struct Props {
     pub anchor_element: Option<Html>,
 
     #[prop_or_default]
-    pub anchor_origin: Origin,
+    pub anchor_origin: AnchorOrigin,
 
     #[prop_or_default]
     pub anchor_position: Option<PositionValue>,
@@ -43,7 +43,7 @@ pub struct Props {
     #[prop_or_default]
     pub style: AttrValue,
 
-    pub transform_origin: Origin,
+    pub transform_origin: AnchorOrigin,
 
     #[prop_or_default]
     pub transition_component: Option<Html>,

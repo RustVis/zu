@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::styles::origin::HorizontalOrigin;
+use crate::styles::anchor_origin::Horizontal;
 
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
 pub enum Direction {
@@ -24,7 +24,7 @@ pub enum HorizontalDirection {
     Right,
 }
 
-impl Default for HorizontalOrigin {
+impl Default for Horizontal {
     fn default() -> Self {
         Self::Left
     }

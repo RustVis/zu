@@ -4,16 +4,18 @@
 
 use yew::{function_component, html, AttrValue, Callback, Children, Html, Properties};
 
-use crate::styles::origin::Origin;
+use crate::styles::anchor_origin::AnchorOrigin;
 use crate::styles::transition_duration::TransitionDuration;
+
+// TODO(Shaohua): Replace AnchorOrigin with custom type.
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
     #[prop_or_default]
     pub action: Option<Html>,
 
-    #[prop_or(Origin::bottom_left())]
-    pub anchor_origin: Origin,
+    #[prop_or(AnchorOrigin::bottom_left())]
+    pub anchor_origin: AnchorOrigin,
 
     #[prop_or_default]
     pub auto_hide_duration: Option<i32>,

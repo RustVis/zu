@@ -5,8 +5,8 @@
 use yew::{function_component, html, Html};
 use zu::badge::{Badge, Content, Overlap, Variant};
 use zu::r#box::r#Box;
+use zu::styles::anchor_origin::AnchorOrigin;
 use zu::styles::color::Color;
-use zu::styles::origin::Origin;
 use zu::svg_icon::Color as SvgColor;
 use zuicon_material::Mail;
 
@@ -114,19 +114,19 @@ pub fn badge_page() -> Html {
         <p>{"You can use the anchorOrigin prop to move the badge to any corner of the wrapped element."}</p>
         <DemoBox>
             <Badge color={Color::Secondary} content={Content::Num(42)}
-                anchor_origin={Origin::top_left()}>
+                anchor_origin={AnchorOrigin::top_left()}>
                 <Mail />
             </Badge>
             <Badge color={Color::Secondary} content={Content::Num(42)}
-                anchor_origin={Origin::top_right()}>
+                anchor_origin={AnchorOrigin::top_right()}>
                 <Mail />
             </Badge>
             <Badge color={Color::Secondary} content={Content::Num(42)}
-                anchor_origin={Origin::bottom_left()}>
+                anchor_origin={AnchorOrigin::bottom_left()}>
                 <Mail />
             </Badge>
             <Badge color={Color::Secondary} content={Content::Num(42)}
-                anchor_origin={Origin::bottom_right()}>
+                anchor_origin={AnchorOrigin::bottom_right()}>
                 <Mail />
             </Badge>
         </DemoBox>
