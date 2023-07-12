@@ -9,10 +9,10 @@ use crate::styles::CssValue;
 pub enum Color {
     Primary,
     Secondary,
-    Error,
+    Success,
     Info,
     Warning,
-    Success,
+    Error,
     Inherit,
     Default,
 }
@@ -35,6 +35,7 @@ impl Color {
     }
 }
 
+// TODO(Shaohua): Replace return type to &'static str
 impl CssValue for Color {
     fn css_value(&self) -> String {
         match self {
@@ -84,5 +85,25 @@ pub enum InheritColor {
 impl Default for InheritColor {
     fn default() -> Self {
         Self::Primary
+    }
+}
+
+/// Another color variant with `Disabled` value.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum DisabledColor {
+    Inherit,
+    Action,
+    Disabled,
+    Primary,
+    Secondary,
+    Success,
+    Info,
+    Warning,
+    Error,
+}
+
+impl Default for DisabledColor {
+    fn default() -> Self {
+        Self::Inherit
     }
 }
