@@ -77,6 +77,10 @@ pub fn avatar(props: &Props) -> Html {
         },
     );
     // TODO(Shaohua): Load image first.
+    // TODO(Shaohua): Support fallback, fallback order:
+    // - the provided children
+    // - the first letter of the alt text
+    // - a generic avatar icon
 
     let style = [
         props.style.as_str(),

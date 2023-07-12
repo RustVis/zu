@@ -45,7 +45,7 @@ pub fn avatar_page() -> Html {
         <p>{"You can change the size of the avatar with the height and width CSS properties."}</p>
         <DemoBox>
             <Avatar alt="Remy Sharp"
-                src="/static/images/avatar/1.jpg"
+                src="/images/avatar/1.jpg"
                 style="width: 24px; height: 24px;"
             />
             <Avatar alt="Remy Sharp" src="/images/avatar/1.jpg" />
@@ -80,6 +80,7 @@ pub fn avatar_page() -> Html {
         </DemoBox>
 
         <h2>{"Fallbacks"}</h2>
+        <p>{"If there is an error loading the avatar image, the component falls back to an alternative"}</p>
         <DemoBox>
             <Avatar style="background-color: var(--zu-colors-deepOrange-500);"
                 alt="Remy Sharp"

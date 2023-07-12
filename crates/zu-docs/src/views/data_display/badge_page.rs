@@ -18,17 +18,17 @@ pub fn badge_page() -> Html {
     // TODO(Shaohua): Add anchor-origin check buttons
 
     let rectangle = html! {
-        <Box component="span" style={
+        <Box component="span" style=
             "background-color: var(--zu-palette-primary-main);\
              width: 40px;\
-             height: 40px;"} />
+             height: 40px;" />
     };
     let circle = html! {
-        <Box component="span" style={
+        <Box component="span" style=
             "background-color: var(--zu-palette-primary-main);\
              width: 40px;\
              height: 40px;\
-             border-radius: 50%;"} />
+             border-radius: 50%;" />
     };
 
     html! {
