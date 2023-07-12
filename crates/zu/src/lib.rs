@@ -20,7 +20,7 @@
 //! Add this to `Cargo.toml`:
 //! ```toml
 //! [dependencies]
-//! zu = "0.2"
+//! zu = "0.3"
 //! ```
 //!
 //! Or using `cargo add zu` command.

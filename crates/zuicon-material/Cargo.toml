@@ -16,7 +16,7 @@ publish = true
 
 [dependencies]
 yew = "0.20.0"
-zu = { path = "../zu", version = "0.2.4" }
+zu = { path = "../zu", version = "0.3.1" }
 
 [build-dependencies]
 inflections = "1.1.1"
