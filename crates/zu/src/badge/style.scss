@@ -14,7 +14,7 @@
 .ZuBadge-badge {
   position: absolute;
   z-index: 1;
-  transition: transform var(--zu-easing-easeInOut) var(--zu-duration-enteringScreen) 0ms;
+  transition: transform $zu-easing-easeInOut $zu-duration-enteringScreen 0ms;
   
   display: flex;
   flex-direction: row;
@@ -25,17 +25,10 @@
   place-content: center;
   box-sizing: border-box;
 
-  font-family: var(--zu-typography-fontFamily);
-  font-weight: var(--zu-typography-fontWeightMedium);
+  font-family: $zu-typography-fontFamily;
+  font-weight: $zu-typography-fontWeightMedium;
   font-size: 12px;
   line-height: 1;
-}
-
-$zu-badge-radiusDot: 4px;
-$zu-badge-radiusStandard: 10px;
-:root {
-  --zu-badge-radiusDot: #{$zu-badge-radiusDot};
-  --zu-badge-radiusStandard: #{$zu-badge-radiusStandard};
 }
 
 /* Styles applied to the badge `span` element if variant="dot". */
@@ -55,57 +48,140 @@ $zu-badge-radiusStandard: 10px;
 }
 
 .ZuBadge-anchorOriginTopLeft {
+  &.ZuBadge-overlapCircle {
+    top: 14%;
+    left: 14%;
+    transform: scale(1) translate(-50%, -50%);
+    transform-origin: 0 0;
 
+    &.ZuBadge-invisible {
+      transform: scale(0) translate(-50%, -50%);
+    }
+  }
+
+  &.ZuBadge-overlapRect {
+    top: 0;
+    left: 0;
+    transform: scale(1) translate(-50%, -50%);
+    transform-origin: 0 0;
+
+    &.ZuBadge-invisible {
+      transform: scale(0) translate(-50%, -50%);
+    }
+  }
 }
+
 .ZuBadge-anchorOriginTopRight {
+  &.ZuBadge-overlapCircle {
+    top: 14%;
+    right: 14%;
+    transform: scale(1) translate(50%, -50%);
+    transform-origin: 100% 0;
 
+    &.ZuBadge-invisible {
+      transform: scale(0) translate(50%, -50%);
+    }
+  }
+
+  &.ZuBadge-overlapRect {
+    top: 0;
+    right: 0;
+    transform: scale(1) translate(50%, -50%);
+    transform-origin: 100% 0;
+
+    &.ZuBadge-invisible {
+      transform: scale(0) translate(50%, -50%);
+    }
+  }
 }
+
 .ZuBadge-anchorOriginBottomLeft {
+  &.ZuBadge-overlapCircle {
+    bottom: 14%;
+    left: 14%;
+    transform: scale(1) translate(-50%, 50%);
+    transform-origin: 0 100%;
 
+    &.ZuBadge-invisible {
+      transform: scale(0) translate(-50%, 50%);
+    }
+  }
+
+  &.ZuBadge-overlapRect {
+    bottom: 0;
+    left: 0;
+    transform: scale(1) translate(-50%, 50%);
+    transform-origin: 0 100%;
+
+    &.ZuBadge-invisible {
+      transform: scale(0) translate(-50%, 50%);
+    }
+  }
 }
-.ZuBadge-anchorOriginBottomRight {
 
+.ZuBadge-anchorOriginBottomRight {
+  &.ZuBadge-overlapCircle {
+    bottom: 14%;
+    right: 14%;
+    transform: scale(1) translate(50%, 50%);
+    transform-origin: 100% 100%;
+
+    &.ZuBadge-invisible {
+      transform: scale(0) translate(50%, 50%);
+    }
+  }
+
+  &.ZuBadge-overlapRect {
+    bottom: 0;
+    right: 0;
+    transform: scale(1) translate(50%, 50%);
+    transform-origin: 100% 100%;
+
+    &.ZuBadge-invisible {
+      transform: scale(0) translate(50%, 50%);
+    }
+  }
 }
 
 /* State class applied to the badge `span` element if invisible={true}. */
 .ZuBadge-invisible {
-  transition: transform var(--zu-easing-easeInOut), var(--zu-duration-leavingScreen) 0ms;
+  transition: transform $zu-easing-easeInOut $zu-duration-leavingScreen 0ms;
 }
 
 /* Styles applied to the badge `span` element if color="primary". */
 .ZuBadge-colorPrimary {
-  color: var(--zu-palette-primary-contrastText);
-  background-color: var(--zu-palette-primary-main);
+  color: $zu-palette-primary-contrastText;
+  background-color: $zu-palette-primary-main;
 }
 
 /* Styles applied to the badge `span` element if color="secondary". */
 .ZuBadge-colorSecondary {
-  color: var(--zu-palette-secondary-contrastText);
-  background-color: var(--zu-palette-secondary-main);
+  color: $zu-palette-secondary-contrastText;
+  background-color: $zu-palette-secondary-main;
 }
 
 /* Styles applied to the badge `span` element if color="error". */
 .ZuBadge-colorError {
-  color: var(--zu-palette-error-contrastText);
-  background-color: var(--zu-palette-error-main);
+  color: $zu-palette-error-contrastText;
+  background-color: $zu-palette-error-main;
 }
 
 /* Styles applied to the badge `span` element if color="info". */
 .ZuBadge-colorInfo {
-  color: var(--zu-palette-info-contrastText);
-  background-color: var(--zu-palette-info-main);
+  color: $zu-palette-info-contrastText;
+  background-color: $zu-palette-info-main;
 }
 
 /* Styles applied to the badge `span` element if color="success". */
 .ZuBadge-colorSuccess {
-  color: var(--zu-palette-success-contrastText);
-  background-color: var(--zu-palette-success-main);
+  color: $zu-palette-success-contrastText;
+  background-color: $zu-palette-success-main;
 }
 
 /* Styles applied to the badge `span` element if color="warning". */
 .ZuBadge-colorWarning {
-  color: var(--zu-palette-warning-contrastText);
-  background-color: var(--zu-palette-warning-main);
+  color: $zu-palette-warning-contrastText;
+  background-color: $zu-palette-warning-main;
 }
 
 /* Styles applied to the badge `span` element if overlap="circle". */
@@ -113,86 +189,7 @@ $zu-badge-radiusStandard: 10px;
 
 }
 
-.ZuBadge-anchorOriginTopLeft.ZuBadge-overlapCircle {
-  top: 14%;
-  left: 14%;
-  transform: scale(1) translate(-50%, -50%);
-  transform-origin: 0 0;
-}
-.ZuBadge-anchorOriginTopLeft.ZuBadge-overlapCircle.ZuBadge-invisible {
-  transform: scale(0) translate(-50%, -50%);
-}
-
-.ZuBadge-anchorOriginTopRight.ZuBadge-overlapCircle {
-  top: 14%;
-  right: 14%;
-  transform: scale(1) translate(50%, -50%);
-  transform-origin: 100% 0;
-}
-.ZuBadge-anchorOriginTopRight.ZuBadge-overlapCircle.ZuBadge-invisible {
-  transform: scale(0) translate(50%, -50%);
-}
-
-.ZuBadge-anchorOriginBottomLeft.ZuBadge-overlapCircle {
-  bottom: 14%;
-  left: 14%;
-  transform: scale(1) translate(-50%, 50%);
-  transform-origin: 0 100%;
-}
-.ZuBadge-anchorOriginBottomLeft.ZuBadge-overlapCircle.ZuBadge-invisible {
-  transform: scale(0) translate(-50%, 50%);
-}
-
-.ZuBadge-anchorOriginBottomRight.ZuBadge-overlapCircle {
-  bottom: 14%;
-  right: 14%;
-  transform: scale(1) translate(50%, 50%);
-  transform-origin: 100% 100%;
-}
-.ZuBadge-anchorOriginBottomRight.ZuBadge-overlapCircle.ZuBadge-invisible {
-  transform: scale(0) translate(50%, 50%);
-}
-
 /* Styles applied to the badge `span` element if overlap="rect". */
 .ZuBadge-overlapRect {
 
-}
-.ZuBadge-anchorOriginTopLeft.ZuBadge-overlapRect {
-  top: 0;
-  left: 0;
-  transform: scale(1) translate(-50%, -50%);
-  transform-origin: 0 0;
-}
-.ZuBadge-anchorOriginTopLeft.ZuBadge-overlapRect.ZuBadge-invisible {
-  transform: scale(0) translate(-50%, -50%);
-}
-
-.ZuBadge-anchorOriginTopRight.ZuBadge-overlapRect {
-  top: 0;
-  right: 0;
-  transform: scale(1) translate(50%, -50%);
-  transform-origin: 100% 0;
-}
-.ZuBadge-anchorOriginTopRight.ZuBadge-overlapRect.ZuBadge-invisible {
-  transform: scale(0) translate(50%, -50%);
-}
-
-.ZuBadge-anchorOriginBottomLeft.ZuBadge-overlapRect {
-  bottom: 0;
-  left: 0;
-  transform: scale(1) translate(-50%, 50%);
-  transform-origin: 0 100%;
-}
-.ZuBadge-anchorOriginBottomLeft.ZuBadge-overlapRect.ZuBadge-invisible {
-  transform: scale(0) translate(-50%, 50%);
-}
-
-.ZuBadge-anchorOriginBottomRight.ZuBadge-overlapRect {
-  bottom: 0;
-  right: 0;
-  transform: scale(1) translate(50%, 50%);
-  transform-origin: 100% 100%;
-}
-.ZuBadge-anchorOriginBottomRight.ZuBadge-overlapRect.ZuBadge-invisible {
-  transform: scale(0) translate(50%, 50%);
 }

@@ -1,9 +1,18 @@
 
 /* Component specific variables */
+
+$zu-skeleton-bg: change-color($zu-palette-text-primary, $alpha: 0.13);
+$zu-avatar-colorDefaultBg: $zu-colors-grey-400;
+$zu-badge-radiusDot: 4px;
+$zu-badge-radiusStandard: 10px;
+
 :root {
   /* Used for Skeleton background color */
-  --zu-skeleton-bg: #{change-color($zu-palette-text-primary, $alpha: 0.13)};
+  --zu-skeleton-bg: #{$zu-skeleton-bg};
 
   /* Used for Avatar background color if color_default={true} */
-  --zu-avatar-colorDefaultBg: var(--zu-colors-grey-400);
+  --zu-avatar-colorDefaultBg: #{$zu-avatar-colorDefaultBg};
+
+  --zu-badge-radiusDot: #{$zu-badge-radiusDot};
+  --zu-badge-radiusStandard: #{$zu-badge-radiusStandard};
 }
