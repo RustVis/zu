@@ -6,8 +6,7 @@ mod event_type;
 
 use yew::{function_component, html, Callback, Children, Html, Properties};
 
-pub use event_type::MouseEventType;
-pub use event_type::TouchEventType;
+pub use event_type::{MouseEventType, TouchEventType};
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {

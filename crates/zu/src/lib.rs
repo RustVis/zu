@@ -68,6 +68,7 @@ pub mod card_media;
 pub mod checkbox;
 pub mod chip;
 pub mod circular_progress;
+pub mod click_away_listener;
 pub mod code;
 pub mod collapse;
 pub mod container;

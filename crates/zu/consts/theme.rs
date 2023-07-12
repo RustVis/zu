@@ -2,6 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+// TODO(Shaohua): Replace with glob pattern.
 pub const COMMON_STYLES: &[&str] = &[
     "src/themes/_functions.scss",
     "src/themes/border-radius.scss",
