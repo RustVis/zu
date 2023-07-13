@@ -48,7 +48,7 @@
 }
 
 .ZuBadge-anchorOriginTopLeft {
-  &.ZuBadge-overlapCircle {
+  &.ZuBadge-overlapCircular {
     top: 14%;
     left: 14%;
     transform: scale(1) translate(-50%, -50%);
@@ -72,7 +72,7 @@
 }
 
 .ZuBadge-anchorOriginTopRight {
-  &.ZuBadge-overlapCircle {
+  &.ZuBadge-overlapCircular {
     top: 14%;
     right: 14%;
     transform: scale(1) translate(50%, -50%);
@@ -96,7 +96,7 @@
 }
 
 .ZuBadge-anchorOriginBottomLeft {
-  &.ZuBadge-overlapCircle {
+  &.ZuBadge-overlapCircular {
     bottom: 14%;
     left: 14%;
     transform: scale(1) translate(-50%, 50%);
@@ -120,7 +120,7 @@
 }
 
 .ZuBadge-anchorOriginBottomRight {
-  &.ZuBadge-overlapCircle {
+  &.ZuBadge-overlapCircular {
     bottom: 14%;
     right: 14%;
     transform: scale(1) translate(50%, 50%);
@@ -184,8 +184,8 @@
   background-color: $zu-palette-warning-main;
 }
 
-/* Styles applied to the badge `span` element if overlap="circle". */
-.ZuBadge-overlapCircle {
+/* Styles applied to the badge `span` element if overlap="circular". */
+.ZuBadge-overlapCircular {
 
 }
 

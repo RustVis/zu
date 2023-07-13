@@ -11,7 +11,7 @@ use crate::components::demo_box::DemoBox;
 #[function_component(Plus)]
 pub fn plus(props: &Props) -> Html {
     let new_props = Props {
-        icon: From::from("Plus"),
+        icon: AttrValue::from("Plus"),
         stroke: AttrValue::from("currentColor"),
         fill: AttrValue::from("none"),
         stroke_width: Some(1.5),

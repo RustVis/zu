@@ -100,11 +100,11 @@ pub fn badge_page() -> Html {
             <Badge color={Color::Secondary} content={Content::Str(" ")} variant={Variant::Dot}>
                 {rectangle}
             </Badge>
-            <Badge color={Color::Secondary} overlap={Overlap::Circle}
+            <Badge color={Color::Secondary} overlap={Overlap::Circular}
                 content={Content::Str(" ")}>
                 {circle.clone()}
             </Badge>
-            <Badge color={Color::Secondary} overlap={Overlap::Circle}
+            <Badge color={Color::Secondary} overlap={Overlap::Circular}
                 content={Content::Str(" ")} variant={Variant::Dot}>
                 {circle}
             </Badge>

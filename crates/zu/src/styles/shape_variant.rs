@@ -4,13 +4,13 @@
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum ShapeVariant {
-    Circle,
+    Circular,
     Rounded,
     Square,
 }
 
 impl Default for ShapeVariant {
     fn default() -> Self {
-        Self::Circle
+        Self::Circular
     }
 }

@@ -8,7 +8,7 @@ use crate::styles::CssClass;
 #[derive(Debug, Clone, Copy, Eq, PartialEq)]
 pub enum Variant {
     Text,
-    Circle,
+    Circular,
     Rect,
     Rounded,
 }
@@ -23,7 +23,7 @@ impl CssClass for Variant {
     fn css_class(&self) -> &'static str {
         match self {
             Self::Text => "ZuSkeleton-text",
-            Self::Circle => "ZuSkeleton-circle",
+            Self::Circular => "ZuSkeleton-circular",
             Self::Rect => "ZuSkeleton-rect",
             Self::Rounded => "ZuSkeleton-rounded",
         }

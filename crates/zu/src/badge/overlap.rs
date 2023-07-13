@@ -6,7 +6,7 @@ use crate::styles::CssClass;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Overlap {
-    Circle,
+    Circular,
     Rect,
 }
 
@@ -19,7 +19,7 @@ impl Default for Overlap {
 impl CssClass for Overlap {
     fn css_class(&self) -> &'static str {
         match self {
-            Self::Circle => "ZuBadge-overlapCircle",
+            Self::Circular => "ZuBadge-overlapCircular",
             Self::Rect => "ZuBadge-overlapRect",
         }
     }

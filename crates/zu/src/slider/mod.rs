@@ -13,6 +13,8 @@ use crate::styles::size::Size;
 pub use track::Track;
 pub use value_label::ValueLabel;
 
+// TODO(Shaohua): Add SliderValueLabel class
+
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
     #[prop_or_default]
