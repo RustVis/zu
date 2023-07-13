@@ -2,8 +2,6 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::styles::CssValue;
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Spacing {
     None,
@@ -44,8 +42,9 @@ impl Default for Spacing {
     }
 }
 
-impl CssValue for Spacing {
-    fn css_value(&self) -> String {
+impl Spacing {
+    #[must_use]
+    pub fn css_value(&self) -> String {
         let s = self.to_str();
         format!("var(--zu-spacing-{s})")
     }

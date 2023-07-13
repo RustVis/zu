@@ -35,17 +35,16 @@ impl Color {
     }
 }
 
-// TODO(Shaohua): Replace return type to &'static str
 impl CssValue for Color {
-    fn css_value(&self) -> String {
+    fn css_value(&self) -> &'static str {
         match self {
-            Self::Primary => "var(--zu-palette-primary-main)".to_owned(),
-            Self::Secondary => "var(--zu-palette-secondary-main)".to_owned(),
-            Self::Error => "var(--zu-palette-error-main)".to_owned(),
-            Self::Info => "var(--zu-palette-info-main)".to_owned(),
-            Self::Warning => "var(--zu-palette-warning-main)".to_owned(),
-            Self::Success => "var(--zu-palette-success-main)".to_owned(),
-            Self::Inherit | Self::Default => String::new(),
+            Self::Primary => "var(--zu-palette-primary-main)",
+            Self::Secondary => "var(--zu-palette-secondary-main)",
+            Self::Error => "var(--zu-palette-error-main)",
+            Self::Info => "var(--zu-palette-info-main)",
+            Self::Warning => "var(--zu-palette-warning-main)",
+            Self::Success => "var(--zu-palette-success-main)",
+            Self::Inherit | Self::Default => "",
         }
     }
 }

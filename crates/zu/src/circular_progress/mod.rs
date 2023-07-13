@@ -10,7 +10,7 @@ use std::f64::consts::PI;
 use yew::{classes, function_component, html, AttrValue, Html, Properties};
 
 use crate::styles::color::Color;
-use crate::styles::{CssClass, CssValue};
+use crate::styles::CssClass;
 
 // Re-export
 pub use size::Size;

@@ -41,5 +41,5 @@ pub trait CssClass {
 }
 
 pub trait CssValue {
-    fn css_value(&self) -> String;
+    fn css_value(&self) -> &'static str;
 }

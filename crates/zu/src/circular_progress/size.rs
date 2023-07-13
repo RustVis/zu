@@ -2,8 +2,6 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::styles::CssValue;
-
 /// The size of the component.
 ///
 /// If using a number, the pixel unit is assumed.
@@ -14,8 +12,9 @@ pub enum Size {
     Str(String),
 }
 
-impl CssValue for Size {
-    fn css_value(&self) -> String {
+impl Size {
+    #[must_use]
+    pub fn css_value(&self) -> String {
         match self {
             Self::Num(num) => format!("width: {num}px; height: {num}px"),
             Self::Str(s) => format!("width: {s}; height: {s};"),
