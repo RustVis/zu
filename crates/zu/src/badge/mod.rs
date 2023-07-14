@@ -85,25 +85,27 @@ pub fn badge(props: &Props) -> Html {
 
     let display_value = if props.variant == Variant::Standard {
         match &props.content {
-            None => None,
-            Some(Content::Str(s)) => Some((*s).to_string()),
-            Some(Content::String(s)) => Some(s.clone()),
+            None => html! {},
+            Some(Content::Node(node)) => html! {<span class={badge_cls}>{node.clone()}</span>},
+            Some(Content::Str(s)) => html! {<span class={badge_cls}>{s}</span>},
+            Some(Content::String(s)) => html! {<span class={badge_cls}>{s}</span>},
             Some(Content::Num(num)) => {
-                if *num > props.max {
-                    Some(format!("{}+", props.max))
+                let s = if *num > props.max {
+                    format!("{}+", props.max)
                 } else {
-                    Some(num.to_string())
-                }
+                    num.to_string()
+                };
+                html! {<span class={badge_cls}>{s}</span>}
             }
         }
     } else {
-        None
+        html! {}
     };
 
     html! {
         <@{component.to_owned()} class="ZuBadge-root" style={props.style.to_attr()}>
             {for props.children.iter()}
-            <span class={badge_cls}>{display_value}</span>
+            {display_value}
         </@>
     }
 }
