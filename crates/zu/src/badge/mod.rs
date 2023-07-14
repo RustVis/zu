@@ -29,7 +29,7 @@ pub struct Props {
     #[prop_or_default]
     pub children: Children,
 
-    #[prop_or_default]
+    #[prop_or(Color::Default)]
     pub color: Color,
 
     #[prop_or_default]
