@@ -31,9 +31,17 @@ pub fn abbreviate(name: &str) -> String {
         .collect::<String>()
 }
 
+/// Generate name abbreviation, only the first char.
+#[must_use]
+pub fn abbreviate_first(name: &str) -> String {
+    name.chars()
+        .next()
+        .map_or_else(String::new, |c| c.to_string())
+}
+
 #[cfg(test)]
 mod tests {
-    use super::{abbreviate, to_color};
+    use super::{abbreviate, abbreviate_first, to_color};
 
     #[test]
     fn test_to_color() {
@@ -47,5 +55,12 @@ mod tests {
         assert_eq!(abbreviate("Kent Dodds").as_str(), "KD");
         assert_eq!(abbreviate("Jed").as_str(), "J");
         assert_eq!(abbreviate("Tim Neutkens").as_str(), "TN");
+    }
+
+    #[test]
+    fn test_abbreviate_first() {
+        assert_eq!(abbreviate_first("Kent Dodds").as_str(), "K");
+        assert_eq!(abbreviate_first("Jed").as_str(), "J");
+        assert_eq!(abbreviate_first("Tim Neutkens").as_str(), "T");
     }
 }
