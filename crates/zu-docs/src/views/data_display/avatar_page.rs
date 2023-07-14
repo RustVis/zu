@@ -17,9 +17,12 @@ use crate::components::demo_box::DemoBox;
 
 #[function_component(StyledBadge)]
 pub fn styled_badge(props: &BadgeProps) -> Html {
-    let style = " ";
+    // TODO(Shaohua): Update badge style
+    let style = "background-color: #44b700;
+        color: #44b700;
+        box-shadow: 0 0 0 2px var(----zu-palette-background-paper);";
     let new_props = BadgeProps {
-        style: AttrValue::from(style),
+        badge_style: AttrValue::from(style),
         ..props.clone()
     };
     html! {

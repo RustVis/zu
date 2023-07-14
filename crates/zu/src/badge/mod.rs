@@ -54,6 +54,9 @@ pub struct Props {
     #[prop_or_default]
     pub style: AttrValue,
 
+    #[prop_or_default]
+    pub badge_style: AttrValue,
+
     /// The variant to use.
     #[prop_or_default]
     pub variant: Variant,
@@ -85,27 +88,29 @@ pub fn badge(props: &Props) -> Html {
 
     let display_value = if props.variant == Variant::Standard {
         match &props.content {
-            None => html! {},
-            Some(Content::Node(node)) => html! {<span class={badge_cls}>{node.clone()}</span>},
-            Some(Content::Str(s)) => html! {<span class={badge_cls}>{s}</span>},
-            Some(Content::String(s)) => html! {<span class={badge_cls}>{s}</span>},
+            None => None,
+            Some(Content::Node(node)) => Some(html! {node.clone()}),
+            Some(Content::Str(s)) => Some(html! {s}),
+            Some(Content::String(s)) => Some(html! {s}),
             Some(Content::Num(num)) => {
                 let s = if *num > props.max {
                     format!("{}+", props.max)
                 } else {
                     num.to_string()
                 };
-                html! {<span class={badge_cls}>{s}</span>}
+                Some(html! {s})
             }
         }
     } else {
-        html! {}
+        None
     };
 
     html! {
         <@{component.to_owned()} class="ZuBadge-root" style={props.style.to_attr()}>
             {for props.children.iter()}
-            {display_value}
+            <span class={badge_cls} style={props.badge_style.to_attr()}>
+                {display_value}
+            </span>
         </@>
     }
 }
