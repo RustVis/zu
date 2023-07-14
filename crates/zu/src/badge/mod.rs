@@ -52,7 +52,13 @@ pub struct Props {
     pub show_zero: bool,
 
     #[prop_or_default]
+    pub classes: AttrValue,
+
+    #[prop_or_default]
     pub style: AttrValue,
+
+    #[prop_or_default]
+    pub badge_classes: AttrValue,
 
     #[prop_or_default]
     pub badge_style: AttrValue,
@@ -64,6 +70,8 @@ pub struct Props {
 
 #[function_component(Badge)]
 pub fn badge(props: &Props) -> Html {
+    let root_cls = classes!(props.classes.to_string(), "ZuBadge-root",);
+
     let badge_cls = classes!(
         "ZuBadge-badge",
         props.variant.css_class(),
@@ -75,6 +83,7 @@ pub fn badge(props: &Props) -> Html {
         anchor_origin::css_class(props.anchor_origin),
         props.overlap.css_class(),
         color::color_class(props.color),
+        props.badge_classes.to_string(),
     );
 
     let component = if props.component.is_empty() {
@@ -106,7 +115,7 @@ pub fn badge(props: &Props) -> Html {
     };
 
     html! {
-        <@{component.to_owned()} class="ZuBadge-root" style={props.style.to_attr()}>
+        <@{component.to_owned()} class={root_cls} style={props.style.to_attr()}>
             {for props.children.iter()}
             <span class={badge_cls} style={props.badge_style.to_attr()}>
                 {display_value}

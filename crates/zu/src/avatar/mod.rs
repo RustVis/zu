@@ -110,7 +110,6 @@ pub fn avatar(props: &Props) -> Html {
     } else {
         name::abbreviate_first(props.alt.as_str())
     };
-    log::info!("abbr name: {abbr_name}");
 
     html! {
         <@{component.to_owned()} class={root_cls} style={style}>
