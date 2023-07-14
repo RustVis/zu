@@ -5,6 +5,7 @@
 // TODO(Shaohua): Replace with glob pattern.
 pub const COMMON_STYLES: &[&str] = &[
     "src/themes/_functions.scss",
+    "src/themes/base-reset.scss",
     "src/themes/border-radius.scss",
     "src/themes/breakpoints.scss",
     "src/themes/fonts.scss",
