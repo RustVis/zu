@@ -35,5 +35,6 @@
 #[cfg(feature = "icon")]
 pub mod icon;
 
+pub mod image_future;
 pub mod name;
 pub mod prop;
