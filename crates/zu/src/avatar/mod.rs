@@ -6,6 +6,8 @@ mod person;
 mod variant;
 
 use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use yew_hooks::{use_async_with_options, UseAsyncOptions};
+use zu_util::image_future::ImageFuture;
 use zu_util::{name, prop::ToAttr};
 
 use crate::styles::shape_variant::ShapeVariant;
@@ -32,12 +34,12 @@ pub struct Props {
     #[prop_or_default]
     pub component: AttrValue,
 
-    /// Setup avatar background color and value based on specified name.
     #[prop_or_default]
-    pub name: AttrValue,
+    pub img_prop_cross_origin: AttrValue,
 
-    // TODO(Shaohua): Add img_props
-    //pub img_props: AttrValue,
+    #[prop_or_default]
+    pub img_prop_referencer_policy: AttrValue,
+
     /// The sizes attribute for the img element.
     #[prop_or_default]
     pub sizes: AttrValue,
@@ -57,15 +59,29 @@ pub struct Props {
     pub variant: ShapeVariant,
 }
 
+/// Fallback order:
+/// - the provided children
+/// - the first letter of the alt text
+/// - a generic avatar icon
 #[function_component(Avatar)]
 pub fn avatar(props: &Props) -> Html {
+    let has_image = !props.src.is_empty() || !props.src_set.is_empty();
+    // Load image first.
+    let use_loaded = {
+        let image_src = props.src.to_string();
+        let image_src_set = props.src_set.to_string();
+        use_async_with_options(
+            async move { ImageFuture::new(&image_src, Some(&image_src_set)).await },
+            UseAsyncOptions::enable_auto(),
+        )
+    };
+    let has_image_no_failing = has_image && use_loaded.data.is_some();
+
     let component = if props.component.is_empty() {
         "div"
     } else {
         props.component.as_str()
     };
-    let has_image = !props.src.is_empty() || !props.src_set.is_empty();
-
     let root_cls = classes!(
         "ZuAvatar-root",
         props.classes.as_str().to_owned(),
@@ -76,36 +92,31 @@ pub fn avatar(props: &Props) -> Html {
             "ZuAvatar-colorDefault"
         },
     );
-    // TODO(Shaohua): Load image first.
-    // TODO(Shaohua): Support fallback, fallback order:
-    // - the provided children
-    // - the first letter of the alt text
-    // - a generic avatar icon
-
+    // TODO(Shaohua): Tuning background color
+    // TODO(Shaohua): Setup text color based on current theme.
     let style = [
         props.style.as_str(),
-        if props.name.is_empty() {
+        if props.alt.is_empty() {
             String::new()
         } else {
-            format!("background-color: {};", name::to_color(props.name.as_str()))
+            format!("background-color: {};", name::to_color(props.alt.as_str()))
         }
         .as_str(),
     ]
     .join(";");
 
-    let abbr_name: String = if props.name.is_empty() {
+    let abbr_name: String = if props.alt.is_empty() {
         String::new()
     } else {
-        let abbr_name = name::abbreviate(props.name.as_str());
-        log::info!("abbr_name: {abbr_name}");
-        abbr_name
+        name::abbreviate_first(props.alt.as_str())
     };
+    log::info!("abbr name: {abbr_name}");
 
     html! {
         <@{component.to_owned()} class={root_cls} style={style}>
             if !props.children.is_empty() {
                 {for props.children.iter()}
-            } else if has_image {
+            } else if has_image_no_failing {
                 <img class="ZuAvatar-img"
                     aria-label={props.aria_label.to_attr()}
                     src={props.src.to_attr()}

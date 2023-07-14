@@ -1,7 +1,7 @@
 
-/* Styles for Avatar */
+// Styles for Avatar
 
-/* Styles applied to the root element. */
+// Styles applied to the root element.
 .ZuAvatar-root {
   position: relative;
   overflow: hidden;
@@ -13,47 +13,50 @@
   width: 40px;
   height: 40px;
 
-  font-family: var(--zu-typography-fontFamily);
+  font-family: $zu-typography-fontFamily;
   font-size: 20px;
   line-height: 1;
 
   user-select: none;
 }
 
-/* Styles applied to the root element if not src or srcSet. */
+// Styles applied to the root element if not src or srcSet.
 .ZuAvatar-colorDefault {
-  color: var(--zu-palette-background-default);
-  background-color: var(--zu-avatar-colorDefaultBg);
+  color: $zu-palette-background-default;
+  background-color: $zu-avatar-colorDefaultBg;
 }
 
-/* Styles applied to the root element if variant="circular". */
+// Styles applied to the root element if variant="circular".
 .ZuAvatar-circular {
   border-radius: 50%;
 }
 
-/* Styles applied to the root element if variant="rounded". */
+// Styles applied to the root element if variant="rounded".
 .ZuAvatar-rounded {
-  border-radius: var(--zu-shape-borderRadius);
+  border-radius: $zu-shape-borderRadius;
 }
 
-/* Styles applied to the root element if variant="square". */
+// Styles applied to the root element if variant="square".
 .ZuAvatar-square {
   border-radius: 0;
 }
 
-/* Styles applied to the img element if either src or srcSet is defined. */
+// Styles applied to the img element if either src or srcSet is defined.
 .ZuAvatar-img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Handle non-square image. */
+  // Handle non-square image.
+  object-fit: cover;
 
   text-align: center;
-  text-indent: 10000px;  /* Hide the image broken icon, only works on Chrome. */
+  // Hide the image broken icon, only works on Chrome.
+  text-indent: 10000px;
 
-  color: transparent; /* Hide alt text. */
+  // Hide alt text.
+  color: transparent;
 }
 
-/* Styles applied to the fallback icon */
+// Styles applied to the fallback icon
 .ZuAvatar-fallback {
   width: 75%;
   height: 75%;

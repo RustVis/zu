@@ -36,9 +36,9 @@ pub fn avatar_page() -> Html {
         <p>{"You can use different background colors for the avatar.\
          The following demo generates the color based on the name of the person."}</p>
         <DemoBox>
-            <Avatar name="Kent Dodds" />
-            <Avatar name="Jed Watson" />
-            <Avatar name="Tim Neutkens" />
+            <Avatar alt="Kent Dodds" />
+            <Avatar alt="Jed Watson" />
+            <Avatar alt="Tim Neutkens" />
         </DemoBox>
 
         <h2>{"Size"}</h2>
