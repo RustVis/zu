@@ -2,18 +2,47 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{function_component, html, Html};
-use zu::avatar::Avatar;
+use yew::{function_component, html, AttrValue, Html};
+use zu::avatar::{Avatar, Props};
 use zu::avatar_group::AvatarGroup;
+use zu::badge::{
+    Badge, Content as BadgeContent, Overlap as BadgeOverlap, Props as BadgeProps,
+    Variant as BadgeVariant,
+};
+use zu::styles::anchor_origin::AnchorOrigin;
 use zu::styles::shape_variant::ShapeVariant;
 use zuicon_material::{Assignment, Folder, Pageview};
 
 use crate::components::demo_box::DemoBox;
 
+#[function_component(StyledBadge)]
+pub fn styled_badge(props: &BadgeProps) -> Html {
+    let style = " ";
+    let new_props = BadgeProps {
+        style: AttrValue::from(style),
+        ..props.clone()
+    };
+    html! {
+        <Badge ..new_props />
+    }
+}
+
+#[function_component(SmallAvatar)]
+pub fn small_avatar(props: &Props) -> Html {
+    let style = "width: 22px;
+        height: 22px;
+        border: 2px solid var(--zu-palette-background-paper);";
+    let new_props = Props {
+        style: AttrValue::from(style),
+        ..props.clone()
+    };
+    html! {
+        <Avatar ..new_props />
+    }
+}
+
 #[function_component(AvatarPage)]
 pub fn avatar_page() -> Html {
-    // TODO(Shaohua): Support badge
-
     html! {
         <div class="container">
         <h1>{"Avatar"}</h1>
@@ -100,13 +129,44 @@ pub fn avatar_page() -> Html {
             <AvatarGroup max={4}>
                 <Avatar alt="Remy Sharp" src="/images/avatar/1.jpg" />
                 <Avatar alt="Travis Howard" src="/images/avatar/2.jpg" />
-                <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-                <Avatar alt="Agnes Walker" src="/static/images/avatar/4.jpg" />
-                <Avatar alt="Trevor Henderson" src="/static/images/avatar/5.jpg" />
+                <Avatar alt="Cindy Baker" src="/images/avatar/3.jpg" />
+                <Avatar alt="Agnes Walker" src="/images/avatar/4.jpg" />
+                <Avatar alt="Trevor Henderson" src="/images/avatar/5.jpg" />
+            </AvatarGroup>
+        </DemoBox>
+
+        <h3>{"Total avatars"}</h3>
+        <p>{"If you need to control the total number of avatars not shown, you can use the total prop."}</p>
+        <DemoBox>
+            <AvatarGroup total={24}>
+                <Avatar alt="Remy Sharp" src="/images/avatar/1.jpg" />
+                <Avatar alt="Travis Howard" src="/images/avatar/2.jpg" />
+                <Avatar alt="Cindy Baker" src="/images/avatar/3.jpg" />
+                <Avatar alt="Trevor Henderson" src="/images/avatar/5.jpg" />
             </AvatarGroup>
         </DemoBox>
 
         <h2>{"With badge"}</h2>
+        <p>{""}</p>
+        <DemoBox>
+            <StyledBadge
+                overlap={BadgeOverlap::Circular}
+                anchor_origin={AnchorOrigin::bottom_right()}
+                variant={BadgeVariant::Dot}
+                >
+                <Avatar alt="Remy Sharp" src="/images/avatar/1.jpg" />
+            </StyledBadge>
+            <Badge
+                overlap={BadgeOverlap::Circular}
+                anchor_origin={AnchorOrigin::bottom_right()}
+                content={
+                    BadgeContent::Node(
+                    html!{<SmallAvatar alt="Remy Sharp" src="/images/avatar/1.jpg" />}
+                )}>
+                <Avatar alt="Travis Howard" src="/images/avatar/2.jpg" />
+            </Badge>
+        </DemoBox>
+
         </div>
     }
 }
