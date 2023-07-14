@@ -92,16 +92,16 @@ pub fn avatar(props: &Props) -> Html {
             "ZuAvatar-colorDefault"
         },
     );
-    // TODO(Shaohua): Tuning background color
     // TODO(Shaohua): Setup text color based on current theme.
     let style = [
-        props.style.as_str(),
         if props.alt.is_empty() {
             String::new()
         } else {
             format!("background-color: {};", name::to_color(props.alt.as_str()))
         }
         .as_str(),
+        // Put custom style after auto-generated bg-color to make sure it is override.
+        props.style.as_str(),
     ]
     .join(";");
 
