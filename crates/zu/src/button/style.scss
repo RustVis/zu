@@ -4,19 +4,19 @@
 .ZuButton-root {
   min-width: 64px;
   padding: 6px 16px;
-  transition: background-color var(--zu-duration-short) var(--zu-easing-easeInOut) 0ms,
-  box-shadow var(--zu-duration-short) var(--zu-easing-easeInOut) 0ms,
-  border-color var(--zu-duration-short) var(--zu-easing-easeInOut) 0ms,
-  color var(--zu-duration-short) var(--zu-easing-easeInOut) 0ms;
+  transition: background-color $zu-duration-short $zu-easing-easeInOut 0ms,
+  box-shadow $zu-duration-short $zu-easing-easeInOut 0ms,
+  border-color $zu-duration-short $zu-easing-easeInOut 0ms,
+  color $zu-duration-short $zu-easing-easeInOut 0ms;
 
-  border-radius: var(--zu-shape-borderRadius);
+  border-radius: $zu-shape-borderRadius;
 
   // button typography
-  font-family: var(--zu-typography-button-fontFamily);
-  font-weight: var(--zu-typography-button-fontWeight);
-  font-size: var(--zu-typography-button-fontSize);
-  line-height: var(--zu-typography-button-lineHeight);
-  letter-spacing: var(--zu-typography-button-letterSpacing);
+  font-family: $zu-typography-button-fontFamily;
+  font-weight: $zu-typography-button-fontWeight;
+  font-size: $zu-typography-button-fontSize;
+  line-height: $zu-typography-button-lineHeight;
+  letter-spacing: $zu-typography-button-letterSpacing;
 
   &:hover {
     text-decoration: none;
@@ -56,66 +56,66 @@
 
     &.ZuButton-contained {
       // TODO(Shaohua): Support dark theme
-      background-color: var(--zu-colors-grey-100);
-      box-shadow: var(--zu-shadow-4);
+      background-color: $zu-colors-grey-100;
+      box-shadow: $zu-shadow-4;
 
       // Reset on touch devices, it doesn't add specificity
       @media (hover: none) {
-        box-shadow: var(--zu-shadow-2);
-        background-color: var(--zu-colors-grey-300);
+        box-shadow: $zu-shadow-2;
+        background-color: $zu-colors-grey-300;
       }
 
       &.ZuButton-colorPrimary {
-        background-color: var(--zu-palette-primary-dark);
+        background-color: $zu-palette-primary-dark;
 
         // Reset on touch devices, it doesn't add specificity
         @media (hover: none) {
-          background-color: var(--zu-palette-primary-main);
+          background-color: $zu-palette-primary-main;
         }
       }
 
       &.ZuButton-colorSecondary {
-        background-color: var(--zu-palette-secondary-dark);
+        background-color: $zu-palette-secondary-dark;
 
         // Reset on touch devices, it doesn't add specificity
         @media (hover: none) {
-          background-color: var(--zu-palette-secondary-main);
+          background-color: $zu-palette-secondary-main;
         }
       }
 
       &.ZuButton-colorSuccess {
-        background-color: var(--zu-palette-success-dark);
+        background-color: $zu-palette-success-dark;
 
         // Reset on touch devices, it doesn't add specificity
         @media (hover: none) {
-          background-color: var(--zu-palette-success-main);
+          background-color: $zu-palette-success-main;
         }
       }
 
       &.ZuButton-colorInfo {
-        background-color: var(--zu-palette-info-dark);
+        background-color: $zu-palette-info-dark;
 
         // Reset on touch devices, it doesn't add specificity
         @media (hover: none) {
-          background-color: var(--zu-palette-info-main);
+          background-color: $zu-palette-info-main;
         }
       }
 
       &.ZuButton-colorWarning {
-        background-color: var(--zu-palette-warning-dark);
+        background-color: $zu-palette-warning-dark;
 
         // Reset on touch devices, it doesn't add specificity
         @media (hover: none) {
-          background-color: var(--zu-palette-warning-main);
+          background-color: $zu-palette-warning-main;
         }
       }
 
       &.ZuButton-colorError {
-        background-color: var(--zu-palette-error-dark);
+        background-color: $zu-palette-error-dark;
 
         // Reset on touch devices, it doesn't add specificity
         @media (hover: none) {
-          background-color: var(--zu-palette-error-main);
+          background-color: $zu-palette-error-main;
         }
       }
     }
@@ -123,7 +123,7 @@
 
   &:active {
     &.ZuButton-contained {
-      box-shadow: var(--zu-shadow-8);
+      box-shadow: $zu-shadow-8;
     }
   }
 }
@@ -136,27 +136,27 @@
   }
 
   &.ZuButton-colorPrimary {
-    color: var(--zu-palette-primary-main);
+    color: $zu-palette-primary-main;
   }
 
   &.ZuButton-colorSecondary {
-    color: var(--zu-palette-secondary-main);
+    color: $zu-palette-secondary-main;
   }
 
   &.ZuButton-colorSuccess {
-    color: var(--zu-palette-success-main);
+    color: $zu-palette-success-main;
   }
 
   &.ZuButton-colorInfo {
-    color: var(--zu-palette-info-main);
+    color: $zu-palette-info-main;
   }
 
   &.ZuButton-colorWarning {
-    color: var(--zu-palette-warning-main);
+    color: $zu-palette-warning-main;
   }
 
   &.ZuButton-colorError {
-    color: var(--zu-palette-error-main);
+    color: $zu-palette-error-main;
   }
 
   &.ZuButton-sizeSmall {
@@ -178,32 +178,32 @@
   }
 
   &.ZuButton-colorPrimary {
-    color: var(--zu-palette-primary-main);
+    color: $zu-palette-primary-main;
     border: 1px solid #{change-color($zu-palette-primary-main, $alpha: 0.5)};
   }
 
   &.ZuButton-colorSecondary {
-    color: var(--zu-palette-secondary-main);
+    color: $zu-palette-secondary-main;
     border: 1px solid #{change-color($zu-palette-secondary-main, $alpha: 0.5)};
   }
 
   &.ZuButton-colorSuccess {
-    color: var(--zu-palette-success-main);
+    color: $zu-palette-success-main;
     border: 1px solid #{change-color($zu-palette-success-main, $alpha: 0.5)};
   }
 
   &.ZuButton-colorInfo {
-    color: var(--zu-palette-info-main);
+    color: $zu-palette-info-main;
     border: 1px solid #{change-color($zu-palette-info-main, $alpha: 0.5)};
   }
 
   &.ZuButton-colorWarning {
-    color: var(--zu-palette-warning-main);
+    color: $zu-palette-warning-main;
     border: 1px solid #{change-color($zu-palette-warning-main, $alpha: 0.5)};
   }
 
   &.ZuButton-colorError {
-    color: var(--zu-palette-error-main);
+    color: $zu-palette-error-main;
     border: 1px solid #{change-color($zu-palette-error-main, $alpha: 0.5)};
   }
 
@@ -221,40 +221,40 @@
 .ZuButton-contained {
   // TODO(Shaohua): Convert to contrastText
   color: getContrastText($zu-colors-grey-300);
-  background-color: var(--zu-colors-grey-300);
-  box-shadow: var(--zu-shadow-2);
+  background-color: $zu-colors-grey-300;
+  box-shadow: $zu-shadow-2;
 
   &.ZuButton-colorInherit {
   }
 
   &.ZuButton-colorPrimary {
-    color: var(--zu-palette-primary-contrastText);
-    background-color: var(--zu-palette-primary-main);
+    color: $zu-palette-primary-contrastText;
+    background-color: $zu-palette-primary-main;
   }
 
   &.ZuButton-colorSecondary {
-    color: var(--zu-palette-secondary-contrastText);
-    background-color: var(--zu-palette-secondary-main);
+    color: $zu-palette-secondary-contrastText;
+    background-color: $zu-palette-secondary-main;
   }
 
   &.ZuButton-colorSuccess {
-    color: var(--zu-palette-success-contrastText);
-    background-color: var(--zu-palette-success-main);
+    color: $zu-palette-success-contrastText;
+    background-color: $zu-palette-success-main;
   }
 
   &.ZuButton-colorInfo {
-    color: var(--zu-palette-info-contrastText);
-    background-color: var(--zu-palette-info-main);
+    color: $zu-palette-info-contrastText;
+    background-color: $zu-palette-info-main;
   }
 
   &.ZuButton-colorWarning {
-    color: var(--zu-palette-warning-contrastText);
-    background-color: var(--zu-palette-warning-main);
+    color: $zu-palette-warning-contrastText;
+    background-color: $zu-palette-warning-main;
   }
 
   &.ZuButton-colorError {
-    color: var(--zu-palette-error-contrastText);
-    background-color: var(--zu-palette-error-main);
+    color: $zu-palette-error-contrastText;
+    background-color: $zu-palette-error-main;
   }
 
   &.ZuButton-sizeSmall {
@@ -282,22 +282,22 @@
 // State class applied to the ButtonBase root element if the button is keyboard focused.
 .ZuButton-focusVisible {
   &.ZuButton-contained {
-    box-shadow: var(--zu-shadow-6);
+    box-shadow: $zu-shadow-6;
   }
 }
 
 // State class applied to the root element if disabled={true}.
 .ZuButton-disabled {
-  color: var(--zu-palette-action-disabled);
+  color: $zu-palette-action-disabled;
 
   &.ZuButton-outlined {
-    border: 1px solid var(--zu-palette-action-disabledBackground);
+    border: 1px solid $zu-palette-action-disabledBackground;
   }
 
   &.ZuButton-contained {
-    color: var(--zu-palette-action-disabled);
-    box-shadow: var(--zu-shadow-0);
-    background-color: var(--zu-palette-action-disabledBackground);
+    color: $zu-palette-action-disabled;
+    box-shadow: $zu-shadow-0;
+    background-color: $zu-palette-action-disabledBackground;
   }
 }
 
