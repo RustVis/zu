@@ -4,7 +4,6 @@
 
 mod spacing;
 
-use yew::virtual_dom::{VList, VNode};
 use yew::{function_component, html, AttrValue, Children, Html, Properties};
 
 use crate::avatar::Avatar;
@@ -80,20 +79,10 @@ pub fn avatar_group(props: &Props) -> Html {
     #[allow(clippy::cast_sign_loss)]
     let max_avatars = max_avatars as usize;
 
-    let mut children: Vec<Html> = props
-        .children
-        .iter()
-        .enumerate()
-        .filter_map(|(index, node)| {
-            if index < max_avatars {
-                Some(node)
-            } else {
-                None
-            }
-        })
-        .collect();
+    let mut children: Vec<Html> = props.children.iter().collect();
+    children.truncate(max_avatars);
     children.reverse();
-    let children = VNode::VList(VList::with_children(children, None));
+    let children = Children::new(children);
 
     html! {
         <@{component.to_owned()} class={root_cls}>
