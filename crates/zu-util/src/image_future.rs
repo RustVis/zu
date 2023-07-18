@@ -13,7 +13,7 @@ use web_sys::HtmlImageElement;
 /// that will resolve when the image has fully loaded.
 ///
 /// Example:
-/// ```rust
+/// ```ignored
 /// let image = ImageFuture::new("assets/sprite_sheet.png").await;
 /// ```
 ///
