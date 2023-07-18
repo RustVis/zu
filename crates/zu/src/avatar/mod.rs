@@ -86,7 +86,7 @@ pub fn avatar(props: &Props) -> Html {
         "ZuAvatar-root",
         props.classes.as_str().to_owned(),
         variant::css_class(props.variant),
-        if has_image {
+        if has_image_no_failing {
             ""
         } else {
             "ZuAvatar-colorDefault"
