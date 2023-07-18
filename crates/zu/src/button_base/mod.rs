@@ -2,6 +2,11 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+//! `ButtonBase` contains as few styles as possible.
+//!
+//! It aims to be a simple building block for creating a button.
+//! It contains a load of style reset and some focus/ripple logic.
+
 use yew::{
     classes, function_component, html, use_state, AttrValue, Callback, Children, DragEvent,
     FocusEvent, Html, KeyboardEvent, MouseEvent, Properties, TouchEvent,
