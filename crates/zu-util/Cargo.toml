@@ -1,6 +1,6 @@
 [package]
 name = "zu-util"
-version = "0.3.1"
+version = "0.3.2"
 authors = ["Xu Shaohua <shaohua@biofan.org>"]
 readme = "README.md"
 homepage = "https://github.com/RustVis/zu/crates/zu-util"
