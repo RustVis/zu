@@ -4,10 +4,14 @@
 
 mod spacing;
 
+use yew::virtual_dom::{VList, VNode};
 use yew::{function_component, html, AttrValue, Children, Html, Properties};
 
+use crate::avatar::Avatar;
 use crate::styles::shape_variant::ShapeVariant;
 pub use spacing::Spacing;
+
+pub const DEFAULT_MAX: i32 = 5;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -23,7 +27,7 @@ pub struct Props {
     pub component: AttrValue,
 
     /// Max avatars to show before +x.
-    #[prop_or(5)]
+    #[prop_or(DEFAULT_MAX)]
     pub max: i32,
 
     /// Spacing between avatars.
@@ -45,20 +49,22 @@ pub struct Props {
 pub fn avatar_group(props: &Props) -> Html {
     #[allow(clippy::cast_possible_wrap, clippy::cast_possible_truncation)]
     let children_len = props.children.len() as i32;
-    let total_avatars = if props.total < 0 {
+    let total_avatars = if props.total <= 0 {
         children_len
     } else {
         props.total
     };
-    let mut clamped_max = props.max.min(2);
+    let mut clamped_max = props.max.max(2);
     if total_avatars == clamped_max {
         clamped_max += 1;
     }
     clamped_max = clamped_max.min(total_avatars + 1);
     let max_avatars = children_len.min(clamped_max - 1);
-    let _extra_avatars = (total_avatars - clamped_max)
+    let extra_avatars = (total_avatars - clamped_max)
         .max(total_avatars - max_avatars)
         .max(0);
+
+    let margin_left = props.spacing.space();
 
     let component = if props.component.is_empty() {
         "div"
@@ -67,12 +73,36 @@ pub fn avatar_group(props: &Props) -> Html {
     };
 
     let root_cls = "ZuAvatarGroup-root";
+    let avatar_cls = "ZuAvatarGroup-avatar";
+    let avatar_style = margin_left.map_or_else(String::new, |margin_left| {
+        format!("margin-left: {margin_left}px;")
+    });
+    #[allow(clippy::cast_sign_loss)]
+    let max_avatars = max_avatars as usize;
 
-    // TODO(Shaohua): Include Avatar and update styles.
+    let mut children: Vec<Html> = props
+        .children
+        .iter()
+        .enumerate()
+        .filter_map(|(index, node)| {
+            if index < max_avatars {
+                Some(node)
+            } else {
+                None
+            }
+        })
+        .collect();
+    children.reverse();
+    let children = VNode::VList(VList::with_children(children, None));
 
     html! {
         <@{component.to_owned()} class={root_cls}>
-            {for props.children.iter()}
+            if extra_avatars > 0 {
+                <Avatar classes={avatar_cls} style={avatar_style}>
+                    {format!("+{extra_avatars}")}
+                </Avatar>
+            }
+            {children}
         </@>
     }
 }

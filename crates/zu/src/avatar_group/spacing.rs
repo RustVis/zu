@@ -14,3 +14,14 @@ impl Default for Spacing {
         Self::Medium
     }
 }
+
+impl Spacing {
+    #[must_use]
+    pub const fn space(self) -> Option<i32> {
+        match self {
+            Self::Small => Some(-16),
+            Self::Medium => None,
+            Self::Num(n) => Some(-n),
+        }
+    }
+}

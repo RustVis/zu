@@ -1,26 +1,37 @@
 
 /* Styles for AvatarGroup */
 
-/* Styles applied to the root element. */
+// Styles applied to the root element.
 .ZuAvatarGroup-root {
   display: flex;
   flex-direction: row-reverse;
 
-  border: 2px solid var(--zu-palette-background-default);
+  border: 2px solid $zu-palette-background-default;
   box-sizing: content-box;
   margin-left: -8px;
+
+  &:last-child {
+    margin-left: 0;
+  }
+
+  & .ZuAvatar-root {
+    border: 2px solid $zu-palette-background-default;
+    box-sizing: content-box;
+    margin-left: -8px;
+
+    &:last-child {
+      margin-left: 0;
+    }
+  }
 }
 
-.ZuAvatarGroup-root:last-child {
-  margin-left: 0;
-}
-
-/* Styles applied to the avatar elements. */
+// Styles applied to the avatar elements.
 .ZuAvatarGroup-avatar {
-  border: 2px solid var(--zu-palette-background-default);
+  border: 2px solid $zu-palette-background-default;
   box-sizing: content-box;
   margin-left: -8px;
-}
-.ZuAvatarGroup-avatar:last-child {
-  margin-left: 0;
+
+  &:last-child {
+    margin-left: 0;
+  }
 }
