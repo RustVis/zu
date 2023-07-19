@@ -7,11 +7,15 @@
 //! It aims to be a simple building block for creating a button.
 //! It contains a load of style reset and some focus/ripple logic.
 
+mod touch_ripple;
+
 use yew::{
     classes, function_component, html, use_state, AttrValue, Callback, Children, DragEvent,
     FocusEvent, Html, KeyboardEvent, MouseEvent, Properties, TouchEvent,
 };
 use zu_util::prop::ToAttr;
+
+pub use touch_ripple::TouchRipple;
 
 pub const DEFAULT_LINK_COMPONENT: &str = "a";
 
@@ -161,6 +165,8 @@ pub fn button_base(props: &Props) -> Html {
 
     let tab_index = if props.disabled { -1 } else { props.tab_index };
 
+    let enable_touch_ripple = !props.disable_touch_ripple && !props.disabled;
+
     html! {
         <@{component.to_owned()} class={root_cls}
             aria-label={props.aria_label.to_attr()}
@@ -182,6 +188,9 @@ pub fn button_base(props: &Props) -> Html {
             tab_index={tab_index.to_string()}
             >
             {for props.children.iter()}
+            if enable_touch_ripple {
+                <TouchRipple />
+            }
         </@>
     }
 }

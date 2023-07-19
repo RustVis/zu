@@ -16,7 +16,7 @@ publish = true
 
 [dependencies]
 yew = "0.20.0"
-zu = { path = "../zu", version = "0.3.1" }
+zu = { path = "../zu", version = "0.3.2" }
 
 [build-dependencies]
 inflections = "1.1.1"
@@ -25,7 +25,7 @@ regex = "1.9.1"
 reqwest = { version = "0.11.18", features = ["blocking"] }
 serde = { version = "1.0.171", features = ["derive"] }
 serde_json = "1.0.103"
-zu-util = { path="../zu-util", version="0.3.1", features = ["icon"] }
+zu-util = { path="../zu-util", version="0.3.2", features = ["icon"] }
 
 [features]
 default = []
