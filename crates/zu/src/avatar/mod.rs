@@ -5,7 +5,7 @@
 mod person;
 mod variant;
 
-use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Classes, Html, Properties};
 use yew_hooks::{use_async_with_options, UseAsyncOptions};
 use zu_util::image_future::ImageFuture;
 use zu_util::{name, prop::ToAttr};
@@ -26,7 +26,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or(false)]
     pub color_default: bool,
@@ -84,7 +84,7 @@ pub fn avatar(props: &Props) -> Html {
     };
     let root_cls = classes!(
         "ZuAvatar-root",
-        props.classes.as_str().to_owned(),
+        props.classes.clone(),
         variant::css_class(props.variant),
         if has_image_no_failing {
             ""

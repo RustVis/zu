@@ -5,7 +5,7 @@
 mod spacing;
 
 use std::rc::Rc;
-use yew::{function_component, html, AttrValue, ChildrenWithProps, Html, Properties};
+use yew::{function_component, html, AttrValue, ChildrenWithProps, Classes, Html, Properties};
 
 use crate::avatar::{Avatar, Props as AvatarProps};
 use crate::styles::shape_variant::ShapeVariant;
@@ -19,9 +19,8 @@ pub struct Props {
     #[prop_or_default]
     pub children: ChildrenWithProps<Avatar>,
 
-    // TODO(Shaohua): Merge classes.
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     /// The component used for the root node.
     #[prop_or_default]
@@ -87,11 +86,7 @@ pub fn avatar_group(props: &Props) -> Html {
         .iter()
         .map(|mut item| {
             let props = Rc::<AvatarProps>::make_mut(&mut item.props);
-            if props.classes.is_empty() {
-                props.classes = AttrValue::from(AVATAR_CLS);
-            } else {
-                props.classes = format!("{} {AVATAR_CLS}", props.classes).into();
-            }
+            props.classes.push(AVATAR_CLS);
             if props.style.is_empty() {
                 props.style = avatar_style.clone();
             } else {

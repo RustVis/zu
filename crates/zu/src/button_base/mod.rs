@@ -64,7 +64,7 @@ pub struct Props {
     /// The component used to render a link when the href prop is provided.
     ///
     /// Default is 'a'
-    #[prop_or_default]
+    #[prop_or(AttrValue::from(DEFAULT_LINK_COMPONENT))]
     pub link_component: AttrValue,
 
     #[prop_or_default]
