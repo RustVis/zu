@@ -13,16 +13,6 @@
   &:last-child {
     margin-left: 0;
   }
-
-  & .ZuAvatar-root {
-    border: 2px solid $zu-palette-background-default;
-    box-sizing: content-box;
-    margin-left: -8px;
-
-    &:last-child {
-      margin-left: 0;
-    }
-  }
 }
 
 // Styles applied to the avatar elements.

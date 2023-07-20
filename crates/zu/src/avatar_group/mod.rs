@@ -4,18 +4,20 @@
 
 mod spacing;
 
-use yew::{function_component, html, AttrValue, Children, Html, Properties};
+use std::rc::Rc;
+use yew::{function_component, html, AttrValue, ChildrenWithProps, Html, Properties};
 
-use crate::avatar::Avatar;
+use crate::avatar::{Avatar, Props as AvatarProps};
 use crate::styles::shape_variant::ShapeVariant;
 pub use spacing::Spacing;
 
 pub const DEFAULT_MAX: i32 = 5;
+const AVATAR_CLS: &str = "ZuAvatarGroup-avatar";
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
     #[prop_or_default]
-    pub children: Children,
+    pub children: ChildrenWithProps<Avatar>,
 
     // TODO(Shaohua): Merge classes.
     #[prop_or_default]
@@ -72,26 +74,44 @@ pub fn avatar_group(props: &Props) -> Html {
     };
 
     let root_cls = "ZuAvatarGroup-root";
-    let avatar_cls = "ZuAvatarGroup-avatar";
     let avatar_style = margin_left.map_or_else(String::new, |margin_left| {
         format!("margin-left: {margin_left}px;")
     });
     #[allow(clippy::cast_sign_loss)]
     let max_avatars = max_avatars as usize;
 
-    let mut children: Vec<Html> = props.children.iter().collect();
+    let avatar_style: AttrValue = avatar_style.into();
+    // Merge styles and classes to avatars.
+    let mut children: Vec<_> = props
+        .children
+        .iter()
+        .map(|mut item| {
+            let props = Rc::<AvatarProps>::make_mut(&mut item.props);
+            if props.classes.is_empty() {
+                props.classes = AttrValue::from(AVATAR_CLS);
+            } else {
+                props.classes = format!("{} {AVATAR_CLS}", props.classes).into();
+            }
+            if props.style.is_empty() {
+                props.style = avatar_style.clone();
+            } else {
+                props.style = format!("{}; {}", props.style, avatar_style).into();
+            }
+            item
+        })
+        .collect();
     children.truncate(max_avatars);
     children.reverse();
-    let children = Children::new(children);
+    let children = ChildrenWithProps::new(children);
 
     html! {
         <@{component.to_owned()} class={root_cls}>
             if extra_avatars > 0 {
-                <Avatar classes={avatar_cls} style={avatar_style}>
-                    {format!("+{extra_avatars}")}
+                <Avatar classes={AVATAR_CLS} style={avatar_style.clone()}>
+                    {"+"}{extra_avatars}
                 </Avatar>
             }
-            {children}
+            { for children }
         </@>
     }
 }
