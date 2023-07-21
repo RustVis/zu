@@ -162,6 +162,7 @@ fn create_end_icon(icon: &Option<Html>, button_size: Size) -> Html {
 #[function_component(Button)]
 pub fn button(props: &Props) -> Html {
     // TODO(Shaohua): Add mouse event callbacks
+    // TODO(Shaohua): Fix disableElevation not working
 
     let root_cls = classes!(
         "ZuButton-root",

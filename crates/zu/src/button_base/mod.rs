@@ -67,50 +67,50 @@ pub struct Props {
     pub link_component: AttrValue,
 
     #[prop_or_default]
-    pub on_blur: Option<Callback<FocusEvent, ()>>,
+    pub on_blur: Option<Callback<FocusEvent>>,
 
     #[prop_or_default]
-    pub on_click: Option<Callback<MouseEvent, ()>>,
+    pub on_click: Option<Callback<MouseEvent>>,
 
     #[prop_or_default]
-    pub on_context_menu: Option<Callback<MouseEvent, ()>>,
+    pub on_context_menu: Option<Callback<MouseEvent>>,
 
     #[prop_or_default]
-    pub on_drag_leave: Option<Callback<DragEvent, ()>>,
+    pub on_drag_leave: Option<Callback<DragEvent>>,
 
     #[prop_or_default]
-    pub on_focus: Option<Callback<FocusEvent, ()>>,
+    pub on_focus: Option<Callback<FocusEvent>>,
 
     /// Callback fired when the component is focused with a keyboard.
     #[prop_or_default]
-    pub on_focus_visible: Option<Callback<FocusEvent, ()>>,
+    pub on_focus_visible: Option<Callback<FocusEvent>>,
 
     #[prop_or_default]
-    pub on_key_down: Option<Callback<KeyboardEvent, ()>>,
+    pub on_key_down: Option<Callback<KeyboardEvent>>,
 
     #[prop_or_default]
-    pub on_key_up: Option<Callback<KeyboardEvent, ()>>,
+    pub on_key_up: Option<Callback<KeyboardEvent>>,
 
     #[prop_or_default]
-    pub on_mouse_down: Option<Callback<MouseEvent, ()>>,
+    pub on_mouse_down: Option<Callback<MouseEvent>>,
 
     #[prop_or_default]
-    pub on_mouse_enter: Option<Callback<MouseEvent, ()>>,
+    pub on_mouse_enter: Option<Callback<MouseEvent>>,
 
     #[prop_or_default]
-    pub on_mouse_leave: Option<Callback<MouseEvent, ()>>,
+    pub on_mouse_leave: Option<Callback<MouseEvent>>,
 
     #[prop_or_default]
-    pub on_mouse_up: Option<Callback<MouseEvent, ()>>,
+    pub on_mouse_up: Option<Callback<MouseEvent>>,
 
     #[prop_or_default]
-    pub on_touch_end: Option<Callback<TouchEvent, ()>>,
+    pub on_touch_end: Option<Callback<TouchEvent>>,
 
     #[prop_or_default]
-    pub on_touch_move: Option<Callback<TouchEvent, ()>>,
+    pub on_touch_move: Option<Callback<TouchEvent>>,
 
     #[prop_or_default]
-    pub on_touch_start: Option<Callback<TouchEvent, ()>>,
+    pub on_touch_start: Option<Callback<TouchEvent>>,
 
     // pub onFocusVisible:
     #[prop_or_default]

@@ -6,7 +6,7 @@ use yew::{function_component, html, Html, MouseEvent};
 use zu::button::Button;
 use zu::icon_button::IconButton;
 use zu::r#box::Box;
-use zu::styles::button_variant::ButtonVariant;
+use zu::styles::button_variant::ButtonVariant as Variant;
 use zu::styles::color::Color;
 use zu::styles::size::Size;
 use zuicon_material::{AddShoppingCart, Alarm, Delete, Send};
@@ -23,9 +23,9 @@ pub fn button_page() -> Html {
         <h2>{"Basic button"}</h2>
         <p>{"The Button comes with three variants: text (default), contained, and outlined."}</p>
         <DemoBox>
-            <Button variant={ButtonVariant::Text}>{"Text"}</Button>
-            <Button variant={ButtonVariant::Contained}>{"Contained"}</Button>
-            <Button variant={ButtonVariant::Outlined}>{"Outlined"}</Button>
+            <Button variant={Variant::Text}>{"Text"}</Button>
+            <Button variant={Variant::Contained}>{"Contained"}</Button>
+            <Button variant={Variant::Outlined}>{"Outlined"}</Button>
         </DemoBox>
 
         <h3>{"Text button"}</h3>
@@ -39,67 +39,49 @@ pub fn button_page() -> Html {
         <h3>{"Contained button"}</h3>
         <p>{"Contained buttons are high-emphasis, distinguished by their use of elevation and fill. "}</p>
         <DemoBox>
-        <Button variant={ButtonVariant::Contained}>{"Contained"}</Button>
-        <Button variant={ButtonVariant::Contained} disabled={true}>
-            {"Disabled"}
-        </Button>
-        <Button variant={ButtonVariant::Contained} href="#contained-buttons">
-            {"Link"}
-        </Button>
+            <Button variant={Variant::Contained}>{"Contained"}</Button>
+            <Button variant={Variant::Contained} disabled=true>{"Disabled"}</Button>
+            <Button variant={Variant::Contained} href="#contained-buttons">
+                {"Link"}
+            </Button>
         </DemoBox>
 
         <p>{"You can remove the elevation with the disableElevation prop."}</p>
         <DemoBox>
-        <Button variant={ButtonVariant::Contained} disable_elevation={true}>
-            {"Disable elevation"}
-        </Button>
+            <Button variant={Variant::Contained} disable_elevation=true>
+                {"Disable elevation"}
+            </Button>
         </DemoBox>
 
         <h3>{"Outlined button"}</h3>
         <p>{"Outlined buttons are medium-emphasis buttons."}</p>
         <DemoBox>
-        <Button variant={ButtonVariant::Outlined}>{"Primary"}</Button>
-        <Button variant={ButtonVariant::Outlined} disabled={true}>
-            {"Disabled"}
-        </Button>
-        <Button variant={ButtonVariant::Outlined} href="#outlined-buttons">
-            {"Link"}
-        </Button>
+            <Button variant={Variant::Outlined}>{"Primary"}</Button>
+            <Button variant={Variant::Outlined} disabled=true>{"Disabled"}</Button>
+            <Button variant={Variant::Outlined} href="#outlined-buttons">{"Link"}</Button>
         </DemoBox>
 
         <h2>{"Handling clicks"}</h2>
         <p>{"All components accept an onClick handler that is applied to the root DOM element."}</p>
         <DemoBox>
-        <Button
-            on_click={|event: MouseEvent| {
-                event.prevent_default();
-                log::info!("clicked!");
-            }}
-            >
-            {"Click me"}
-        </Button>
+            <Button
+                on_click={|event: MouseEvent| {
+                    event.prevent_default();
+                    log::info!("clicked!");
+                }}
+                >
+                {"Click me"}
+            </Button>
         </DemoBox>
 
         <h2>{"Color"}</h2>
         <DemoBox>
-        <Button variant={ButtonVariant::Contained} color={Color::Primary}>
-            {"Primary"}
-        </Button>
-        <Button variant={ButtonVariant::Contained} color={Color::Secondary}>
-            {"Secondary"}
-        </Button>
-        <Button variant={ButtonVariant::Contained} color={Color::Success}>
-            {"Success"}
-        </Button>
-        <Button variant={ButtonVariant::Contained} color={Color::Info}>
-            {"Info"}
-        </Button>
-        <Button variant={ButtonVariant::Contained} color={Color::Warning}>
-            {"Warning"}
-        </Button>
-        <Button variant={ButtonVariant::Contained} color={Color::Error}>
-            {"Error"}
-        </Button>
+            <Button variant={Variant::Contained} color={Color::Primary}>{"Primary"}</Button>
+            <Button variant={Variant::Contained} color={Color::Secondary}>{"Secondary"}</Button>
+            <Button variant={Variant::Contained} color={Color::Success}>{"Success"}</Button>
+            <Button variant={Variant::Contained} color={Color::Info}>{"Info"}</Button>
+            <Button variant={Variant::Contained} color={Color::Warning}>{"Warning"}</Button>
+            <Button variant={Variant::Contained} color={Color::Error}>{"Error"}</Button>
         </DemoBox>
         <p>{"In addition to using the default button colors, you can add custom ones, or disable any you don't need."}</p>
 
@@ -113,26 +95,14 @@ pub fn button_page() -> Html {
                 <Button size={Size::Large}>{"Large"}</Button>
             </div>
             <div>
-                <Button variant={ButtonVariant::Outlined} size={Size::Small}>
-                    {"Small"}
-                </Button>
-                <Button variant={ButtonVariant::Outlined} size={Size::Medium}>
-                    {"Medium"}
-                </Button>
-                <Button variant={ButtonVariant::Outlined} size={Size::Large}>
-                    {"Large"}
-                </Button>
+                <Button variant={Variant::Outlined} size={Size::Small}>{"Small"}</Button>
+                <Button variant={Variant::Outlined} size={Size::Medium}>{"Medium"}</Button>
+                <Button variant={Variant::Outlined} size={Size::Large}>{"Large"}</Button>
             </div>
             <div>
-                <Button variant={ButtonVariant::Contained} size={Size::Small}>
-                    {"Small"}
-                </Button>
-                <Button variant={ButtonVariant::Contained} size={Size::Medium}>
-                    {"Medium"}
-                </Button>
-                <Button variant={ButtonVariant::Contained} size={Size::Large}>
-                    {"Large"}
-                </Button>
+                <Button variant={Variant::Contained} size={Size::Small}>{"Small"}</Button>
+                <Button variant={Variant::Contained} size={Size::Medium}>{"Medium"}</Button>
+                <Button variant={Variant::Contained} size={Size::Large}>{"Large"}</Button>
             </div>
         </Box>
         </DemoBox>
@@ -141,12 +111,12 @@ pub fn button_page() -> Html {
         <p>{"Sometimes you might want to have icons for certain buttons to enhance \
             the UX of the application as we recognize logos more easily than plain text. "}</p>
         <DemoBox>
-        <Button variant={ButtonVariant::Outlined} start_icon={html!{<Delete />}}>
-            {"Delete"}
-        </Button>
-        <Button variant={ButtonVariant::Contained} end_icon={html!{<Send />}}>
-            {"Send"}
-        </Button>
+            <Button variant={Variant::Outlined} start_icon={html!{<Delete />}}>
+                {"Delete"}
+            </Button>
+            <Button variant={Variant::Contained} end_icon={html!{<Send />}}>
+                {"Send"}
+            </Button>
         </DemoBox>
 
         <h2>{"Icon button"}</h2>
