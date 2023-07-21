@@ -5,7 +5,7 @@
 mod text_align;
 mod variant;
 
-use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Classes, Html, Properties};
 use zu_util::prop::ToAttr;
 
 use crate::styles::color::Color;
@@ -25,7 +25,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub color: Color,
@@ -82,7 +82,7 @@ pub fn typography(props: &Props) -> Html {
             ""
         },
         props.color.text_color(),
-        props.classes.as_str().to_owned(),
+        props.classes.clone(),
     );
 
     html! {

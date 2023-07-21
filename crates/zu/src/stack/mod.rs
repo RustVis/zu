@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Classes, Html, Properties};
 use zu_util::prop::ToAttr;
 
 use crate::styles::flex_direction::FlexDirection;
@@ -32,7 +32,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub component: AttrValue,
@@ -68,17 +68,17 @@ pub fn stack(props: &Props) -> Html {
         props.component.as_str()
     };
 
-    let cls = classes!(
+    let root_cls = classes!(
         "ZuStack-root",
         props.direction.css_class(),
         spacing_cls(props.spacing),
-        props.classes.as_str().to_owned(),
+        props.classes.clone(),
     );
 
     // TODO(Shaohua): Add divider elements
 
     html! {
-        <@{component.to_owned()} class={cls}
+        <@{component.to_owned()} class={root_cls}
             style={props.style.to_attr()}>
             {for props.children.iter()}
         </@>

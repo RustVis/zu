@@ -4,7 +4,7 @@
 
 mod variant;
 
-use yew::{function_component, html, AttrValue, Callback, Children, Html, Properties};
+use yew::{function_component, html, AttrValue, Callback, Children, Classes, Html, Properties};
 
 use crate::styles::transition_duration::TransitionDuration;
 pub use variant::Variant;
@@ -23,7 +23,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or(false)]
     pub disable_auto_focus_item: bool,

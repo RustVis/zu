@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Classes, Html, Properties};
 use zu_util::prop::ToAttr;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
@@ -11,7 +11,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub component: AttrValue,
@@ -27,7 +27,8 @@ pub fn card_content(props: &Props) -> Html {
     } else {
         props.component.as_str()
     };
-    let root_cls = classes!("ZuCardContent-root", props.classes.as_str().to_owned(),);
+    let root_cls = classes!("ZuCardContent-root", props.classes.clone());
+
     html! {
         <@{component.to_owned()} class={root_cls}
             style={props.style.to_attr()}>

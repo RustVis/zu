@@ -4,7 +4,9 @@
 
 mod underline;
 
-use yew::{classes, function_component, html, use_state, AttrValue, Children, Html, Properties};
+use yew::{
+    classes, function_component, html, use_state, AttrValue, Children, Classes, Html, Properties,
+};
 
 use crate::styles::color::Color;
 use crate::styles::CssClass;
@@ -19,7 +21,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub color: Color,
@@ -61,7 +63,8 @@ pub fn link(props: &Props) -> Html {
             "ZuLink-focusVisible"
         } else {
             ""
-        }
+        },
+        props.classes.clone(),
     );
 
     let component = if props.component.is_empty() {

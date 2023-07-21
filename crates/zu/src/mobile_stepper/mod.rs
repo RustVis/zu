@@ -5,7 +5,7 @@
 mod position;
 mod variant;
 
-use yew::{function_component, html, AttrValue, Html, Properties};
+use yew::{function_component, html, AttrValue, Classes, Html, Properties};
 
 pub use position::Position;
 pub use variant::Variant;
@@ -21,7 +21,7 @@ pub struct Props {
     pub back_button: Option<Html>,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub next_button: Option<Html>,

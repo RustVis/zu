@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{classes, function_component, html, AttrValue, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Classes, Html, Properties};
 use zu_util::prop::ToAttr;
 
 use crate::styles::color::Color;
@@ -19,7 +19,7 @@ pub struct Props {
     pub avatar: Option<Html>,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub component: AttrValue,
@@ -48,7 +48,7 @@ pub fn card_header(props: &Props) -> Html {
     } else {
         props.component.as_str()
     };
-    let root_cls = classes!("ZuCardHeader-root", props.classes.as_str().to_owned());
+    let root_cls = classes!("ZuCardHeader-root", props.classes.clone());
 
     html! {
        <@{component.to_owned()} class={root_cls} style={props.style.to_attr()}>

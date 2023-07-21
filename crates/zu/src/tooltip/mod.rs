@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{function_component, html, AttrValue, Callback, Children, Html, Properties};
+use yew::{function_component, html, AttrValue, Callback, Children, Classes, Html, Properties};
 
 use crate::styles::placement::Placement;
 
@@ -14,7 +14,7 @@ pub struct Props {
     pub arrow: bool,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or(false)]
     pub describe_child: bool,

@@ -3,7 +3,7 @@
 // in the LICENSE file.
 
 use stylist::Style;
-use yew::{function_component, html, Children, Html, Properties};
+use yew::{classes, function_component, html, Children, Html, Properties};
 use zu::paper::Paper;
 use zu::stack::Stack;
 use zu::styles::flex_direction::FlexDirection;
@@ -28,7 +28,7 @@ pub fn item(props: &Props) -> Html {
     )
     .unwrap();
     html! {
-        <Paper classes={style.get_class_name().to_owned()}>
+        <Paper classes={classes!(style.get_class_name().to_owned())}>
         {props.children.clone()}
         </Paper>
     }

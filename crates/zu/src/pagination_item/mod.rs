@@ -4,7 +4,7 @@
 
 mod item_type;
 
-use yew::{function_component, html, AttrValue, Html, Properties};
+use yew::{function_component, html, AttrValue, Classes, Html, Properties};
 
 use crate::pagination::Variant;
 use crate::styles::color::StandardColor;
@@ -15,7 +15,7 @@ pub use item_type::ItemType;
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub color: StandardColor,

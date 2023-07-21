@@ -4,7 +4,7 @@
 
 mod position;
 
-use yew::{function_component, html, AttrValue, Html, Properties};
+use yew::{function_component, html, AttrValue, Classes, Html, Properties};
 
 use crate::styles::position::HorizontalPosition;
 pub use position::Position;
@@ -18,7 +18,7 @@ pub struct Props {
     pub action_position: HorizontalPosition,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub position: Position,

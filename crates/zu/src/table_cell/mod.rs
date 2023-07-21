@@ -5,7 +5,7 @@
 mod text_align;
 mod variant;
 
-use yew::{function_component, html, AttrValue, Children, Html, Properties};
+use yew::{function_component, html, AttrValue, Children, Classes, Html, Properties};
 
 use crate::styles::size::Size;
 use crate::styles::sort_direction::SortDirection;
@@ -22,7 +22,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub padding: Padding,

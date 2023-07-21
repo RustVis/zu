@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Classes, Html, Properties};
 use zu_util::prop::ToAttr;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
@@ -12,6 +12,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub children: Children,
+
+    #[prop_or_default]
+    pub classes: Classes,
 
     #[prop_or(false)]
     pub error: bool,
@@ -26,14 +29,15 @@ pub struct Props {
 
 #[function_component(FormGroup)]
 pub fn form_group(props: &Props) -> Html {
-    let cls = classes!(
+    let root_cls = classes!(
         "ZuFormGroup-root",
         if props.row { "ZuFormGroup-row" } else { "" },
         if props.error { "ZuFormGroup-error" } else { "" },
+        props.classes.clone(),
     );
 
     html! {
-        <div class={cls}
+        <div class={root_cls}
             style={props.style.to_attr()}
             aria-label={props.aria_label.to_attr()}>
             {for props.children.iter()}

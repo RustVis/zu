@@ -4,7 +4,9 @@
 
 mod variant;
 
-use yew::{function_component, html, AttrValue, Callback, Children, Html, MouseEvent, Properties};
+use yew::{
+    function_component, html, AttrValue, Callback, Children, Classes, Html, MouseEvent, Properties,
+};
 
 use crate::styles::side::Side;
 use crate::styles::transition_duration::TransitionDuration;
@@ -21,7 +23,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or(DEFAULT_ELEVATION)]
     pub elevation: i32,

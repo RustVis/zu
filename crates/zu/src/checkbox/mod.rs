@@ -4,7 +4,7 @@
 
 mod color;
 
-use yew::{classes, function_component, html, AttrValue, Callback, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Callback, Classes, Html, Properties};
 use zu_util::prop::ToAttr;
 
 use crate::styles::color::Color;
@@ -22,7 +22,7 @@ pub struct Props {
     pub checked_icon: Option<Html>,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub color: Color,
@@ -86,6 +86,7 @@ pub fn checkbox(props: &Props) -> Html {
         } else {
             "ZuCheckbox-enableRipple"
         },
+        props.classes.clone(),
     );
 
     // TODO(Shaohua): Add SwitchBase.

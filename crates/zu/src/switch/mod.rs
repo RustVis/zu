@@ -2,7 +2,9 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{function_component, html, AttrValue, Callback, Children, Html, MouseEvent, Properties};
+use yew::{
+    function_component, html, AttrValue, Callback, Children, Classes, Html, MouseEvent, Properties,
+};
 
 use crate::styles::color::Color;
 use crate::styles::edge::Edge;
@@ -19,7 +21,7 @@ pub struct Props {
 
     /// Override or extend the styles applied to the component.
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub children: Children,

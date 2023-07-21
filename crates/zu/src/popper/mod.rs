@@ -3,7 +3,7 @@
 // in the LICENSE file.
 
 use crate::styles::placement::Placement;
-use yew::{function_component, html, AttrValue, Children, Html, Properties};
+use yew::{function_component, html, AttrValue, Children, Classes, Html, Properties};
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -14,6 +14,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub children: Children,
+
+    #[prop_or_default]
+    pub classes: Classes,
 
     #[prop_or_default]
     pub component: AttrValue,

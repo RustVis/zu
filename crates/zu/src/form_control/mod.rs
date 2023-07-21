@@ -4,7 +4,7 @@
 
 mod margin;
 
-use yew::{function_component, html, AttrValue, Children, Html, Properties};
+use yew::{function_component, html, AttrValue, Children, Classes, Html, Properties};
 
 use crate::styles::color::Color;
 use crate::styles::label_variant::LabelVariant;
@@ -16,7 +16,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub color: Color,

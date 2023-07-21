@@ -5,7 +5,7 @@
 mod color;
 mod font_size;
 
-use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Classes, Html, Properties};
 use zu_util::prop::ToAttr;
 
 use crate::styles::CssClass;
@@ -20,7 +20,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub color: Color,
@@ -74,6 +74,7 @@ pub fn svg_icon(props: &Props) -> Html {
         "ZuSvgIcon-root",
         props.color.css_class(),
         props.font_size.css_class(),
+        props.classes.clone(),
     );
 
     let view_box = if props.view_box.is_empty() {

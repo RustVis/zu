@@ -162,6 +162,7 @@ pub mod table_footer;
 pub mod table_head;
 pub mod table_pagination;
 pub mod table_row;
+pub mod table_sort_label;
 pub mod tabs;
 pub mod text_field;
 pub mod theme_provider;

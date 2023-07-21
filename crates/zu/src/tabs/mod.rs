@@ -5,7 +5,7 @@
 mod behavior;
 mod variant;
 
-use yew::{function_component, html, AttrValue, Callback, Children, Html, Properties};
+use yew::{function_component, html, AttrValue, Callback, Children, Classes, Html, Properties};
 
 use crate::styles::color::{BasicColor, InheritColor};
 use crate::styles::orientation::Orientation;
@@ -30,7 +30,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub component: AttrValue,

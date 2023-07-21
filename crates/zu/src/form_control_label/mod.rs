@@ -4,8 +4,8 @@
 
 mod position;
 
-use yew::function_component;
 use yew::{classes, html, AttrValue, Children, Html, Properties};
+use yew::{function_component, Classes};
 
 use crate::styles::position::Position;
 use crate::typography::Typography;
@@ -16,7 +16,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     /// If true, the component appears selected.
     #[prop_or(false)]
@@ -77,7 +77,8 @@ pub fn form_control_label(props: &Props) -> Html {
             "ZuFormControlLabel-required"
         } else {
             ""
-        }
+        },
+        props.classes.clone(),
     );
 
     let label_cls = classes! {

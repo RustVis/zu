@@ -5,7 +5,7 @@
 mod track;
 mod value_label;
 
-use yew::{function_component, html, AttrValue, Callback, Html, Properties};
+use yew::{function_component, html, AttrValue, Callback, Classes, Html, Properties};
 
 use crate::styles::color::BasicColor;
 use crate::styles::orientation::Orientation;
@@ -27,7 +27,7 @@ pub struct Props {
     pub aria_value_text: AttrValue,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub color: BasicColor,

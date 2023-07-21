@@ -5,7 +5,7 @@
 mod row_height;
 mod variant;
 
-use yew::{function_component, html, AttrValue, Children, Html, Properties};
+use yew::{function_component, html, AttrValue, Children, Classes, Html, Properties};
 
 pub use row_height::RowHeight;
 pub use variant::Variant;
@@ -15,7 +15,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or(2)]
     pub cols: i32,

@@ -53,16 +53,16 @@ pub fn paper(props: &Props) -> Html {
         log::warn!("elevation out of range, expected {ELEVATION_MIN}-{ELEVATION_MAX}");
     };
 
-    let cls = classes!(
+    let root_cls = classes!(
         "ZuPaper-root",
-        props.classes.clone(),
         props.variant.css_class(),
         if props.square { "" } else { "ZuPaper-rounded" },
         if props.variant == Variant::Elevation {
             format!("ZuPaper-elevation-{}", props.elevation)
         } else {
             String::new()
-        }
+        },
+        props.classes.clone(),
     );
 
     let component = if props.component.is_empty() {
@@ -72,7 +72,7 @@ pub fn paper(props: &Props) -> Html {
     };
 
     html! {
-        <@{component.to_owned()} class={cls}
+        <@{component.to_owned()} class={root_cls}
             style={props.style.to_attr()}>
             {for props.children.iter()}
         </@>

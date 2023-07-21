@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{function_component, html, AttrValue, Html, Properties};
+use yew::{function_component, html, AttrValue, Classes, Html, Properties};
 
 const ROLE_DEFAULT: &str = "alert";
 
@@ -12,7 +12,7 @@ pub struct Props {
     pub action: Option<Html>,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub message: Option<Html>,

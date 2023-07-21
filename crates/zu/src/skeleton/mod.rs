@@ -5,7 +5,7 @@
 mod animation;
 mod variant;
 
-use yew::{classes, function_component, html, AttrValue, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Classes, Html, Properties};
 
 use crate::styles::CssClass;
 
@@ -17,6 +17,9 @@ pub use variant::Variant;
 pub struct Props {
     #[prop_or_default]
     pub animation: Animation,
+
+    #[prop_or_default]
+    pub classes: Classes,
 
     /// The type of content that will be rendered.
     #[prop_or_default]
@@ -36,10 +39,11 @@ pub struct Props {
 
 #[function_component(Skeleton)]
 pub fn skeleton(props: &Props) -> Html {
-    let cls = classes!(
+    let root_cls = classes!(
         "ZuSkeleton-root",
         props.animation.css_class(),
-        props.variant.css_class()
+        props.variant.css_class(),
+        props.classes.clone(),
     );
 
     let style = [
@@ -60,7 +64,7 @@ pub fn skeleton(props: &Props) -> Html {
     .join(";");
 
     html! {
-        <span class={cls} style={style}>
+        <span class={root_cls} style={style}>
         </span>
     }
 }

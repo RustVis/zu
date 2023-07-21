@@ -4,7 +4,7 @@
 
 mod size;
 
-use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Classes, Html, Properties};
 
 use crate::styles::size::MaxWidth;
 
@@ -14,7 +14,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: String,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub component: AttrValue,
@@ -46,7 +46,7 @@ pub fn container(props: &Props) -> Html {
         props.component.as_str()
     };
 
-    let cls = classes!(
+    let root_cls = classes!(
         "ZuContainer-root",
         size::css_class(&props.max_width),
         if props.disable_gutters {
@@ -55,7 +55,7 @@ pub fn container(props: &Props) -> Html {
             "ZuContainer-enableGutters"
         },
         if props.fixed { "ZuContainer-fixed" } else { "" },
-        &props.classes
+        props.classes.clone(),
     );
 
     let style = if let Some(MaxWidth::Str(s)) = &props.max_width {
@@ -66,7 +66,7 @@ pub fn container(props: &Props) -> Html {
     };
 
     html! {
-        <@{component.to_owned()} class={cls} style={style}>
+        <@{component.to_owned()} class={root_cls} style={style}>
             {for props.children.iter()}
         </@>
     }

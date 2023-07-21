@@ -3,7 +3,7 @@
 // in the LICENSE file.
 
 use stylist::Style;
-use yew::{function_component, html, Html};
+use yew::{classes, function_component, html, Html};
 use zu::r#box::Box;
 
 use crate::components::demo_box::DemoBox;
@@ -27,7 +27,7 @@ pub fn box_page() -> Html {
         <div class="container">
         <h1>{"Box"}</h1>
         <DemoBox>
-            <Box classes={style.get_class_name().to_owned()}></Box>
+            <Box classes={classes!(style.get_class_name().to_string())}></Box>
         </DemoBox>
 
         <h2>{"Override component"}</h2>

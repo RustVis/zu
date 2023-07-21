@@ -5,7 +5,7 @@
 mod item_type;
 mod variant;
 
-use yew::{function_component, html, AttrValue, Callback, Event, Html, Properties};
+use yew::{function_component, html, AttrValue, Callback, Classes, Event, Html, Properties};
 
 use crate::styles::color::StandardColor;
 use crate::styles::shape_variant::ShapeVariant;
@@ -19,7 +19,7 @@ pub struct Props {
     pub boundary_count: i32,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub color: StandardColor,

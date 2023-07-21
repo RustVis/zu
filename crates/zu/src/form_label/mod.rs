@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Classes, Html, Properties};
 
 use crate::styles::color::Color;
 use crate::styles::CssValue;
@@ -15,7 +15,7 @@ pub struct Props {
 
     /// Override or extend the styles applied to the component.
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub color: Color,
@@ -57,7 +57,7 @@ pub fn form_label(props: &Props) -> Html {
         props.component.as_str()
     };
 
-    let cls = classes!(
+    let root_cls = classes!(
         "ZuFormLabel-root",
         if props.color == Color::Secondary {
             "ZuFormLabel-colorSecondary"
@@ -84,6 +84,7 @@ pub fn form_label(props: &Props) -> Html {
         } else {
             ""
         },
+        props.classes.clone(),
     );
 
     let style = [
@@ -99,7 +100,7 @@ pub fn form_label(props: &Props) -> Html {
     };
 
     html! {
-        <@{component.to_owned()} class={cls} style={style}>
+        <@{component.to_owned()} class={root_cls} style={style}>
             {for props.children.iter()}
             if props.required {
                 <span class={asterisk_cls}>

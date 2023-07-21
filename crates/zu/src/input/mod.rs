@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{function_component, html, AttrValue, Callback, Html, Properties};
+use yew::{function_component, html, AttrValue, Callback, Classes, Html, Properties};
 
 use crate::styles::color::BasicColor;
 use crate::styles::input_type::InputType;
@@ -16,7 +16,7 @@ pub struct Props {
     pub auto_focus: bool,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub color: BasicColor,

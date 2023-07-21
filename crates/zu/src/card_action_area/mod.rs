@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Classes, Html, Properties};
 
 pub use crate::button_base::ButtonBase;
 
@@ -12,7 +12,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub style: AttrValue,
@@ -20,7 +20,7 @@ pub struct Props {
 
 #[function_component(CardActionArea)]
 pub fn card_action_area(props: &Props) -> Html {
-    let root_cls = classes!("ZuCardActionArea-root", props.classes.as_str().to_owned());
+    let root_cls = classes!("ZuCardActionArea-root", props.classes.clone());
 
     html! {
         <ButtonBase classes={root_cls} style={&props.style}>

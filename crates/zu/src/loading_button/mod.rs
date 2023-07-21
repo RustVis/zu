@@ -4,7 +4,7 @@
 
 mod position;
 
-use yew::{function_component, html, AttrValue, Children, Html, Properties};
+use yew::{function_component, html, AttrValue, Children, Classes, Html, Properties};
 
 use crate::styles::button_variant::ButtonVariant;
 pub use position::Position;
@@ -15,7 +15,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or(false)]
     pub disabled: bool,

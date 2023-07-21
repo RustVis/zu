@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{function_component, html, AttrValue, Callback, Html, MouseEvent, Properties};
+use yew::{function_component, html, AttrValue, Callback, Classes, Html, MouseEvent, Properties};
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -18,7 +18,7 @@ pub struct Props {
     pub rows_per_page: i32,
     // TODO(Shaohua): Add ActionsComponent.
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub component: AttrValue,

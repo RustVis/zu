@@ -6,7 +6,7 @@ mod orientation;
 mod text_align;
 mod variant;
 
-use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Classes, Html, Properties};
 use zu_util::prop::ToAttr;
 
 use crate::styles::orientation::Orientation;
@@ -21,7 +21,7 @@ pub struct Props {
     pub absolute: bool,
 
     #[prop_or_default]
-    pub classes: String,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub component: AttrValue,
@@ -52,7 +52,7 @@ pub struct Props {
 
 #[function_component(Divider)]
 pub fn divider(props: &Props) -> Html {
-    let cls = classes!(
+    let root_cls = classes!(
         "ZuDivider-root",
         if props.absolute {
             "ZuDivider-absolute"
@@ -86,6 +86,7 @@ pub fn divider(props: &Props) -> Html {
         } else {
             ""
         },
+        props.classes.clone(),
     );
 
     let wrapper_cls = classes!(
@@ -119,11 +120,11 @@ pub fn divider(props: &Props) -> Html {
 
     if props.children.is_empty() {
         html! {
-            <@{component} class={cls} style={style} role={role} />
+            <@{component} class={root_cls} style={style} role={role} />
         }
     } else {
         html! {
-            <@{component} class={cls} style={style} role={role}>
+            <@{component} class={root_cls} style={style} role={role}>
                 <span class={wrapper_cls}>
                     {for props.children.iter()}
                 </span>
