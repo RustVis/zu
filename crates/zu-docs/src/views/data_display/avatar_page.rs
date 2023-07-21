@@ -43,11 +43,9 @@ pub fn small_avatar(props: &Props) -> Html {
     }
 }
 
-#[function_component(AvatarPage)]
-pub fn avatar_page() -> Html {
+fn create_image_avatars_view() -> Html {
     html! {
-        <div class="container">
-        <h1>{"Avatar"}</h1>
+        <>
         <h2>{"Image avatars"}</h2>
         <p>{"Image avatars can be created by passing standard img props src or srcSet to the component."}</p>
         <DemoBox>
@@ -55,7 +53,13 @@ pub fn avatar_page() -> Html {
             <Avatar alt="Travis Howard" src="/images/avatar/2.jpg" />
             <Avatar alt="Cindy Baker" src="/images/avatar/3.jpg" />
         </DemoBox>
+        </>
+    }
+}
 
+fn create_letter_avatars_view() -> Html {
+    html! {
+        <>
         <h2>{"Letter avatars"}</h2>
         <p>{"Avatars containing simple characters can be created by passing a string as children."}</p>
         <DemoBox>
@@ -71,7 +75,13 @@ pub fn avatar_page() -> Html {
             <Avatar alt="Jed Watson" />
             <Avatar alt="Tim Neutkens" />
         </DemoBox>
+        </>
+    }
+}
 
+fn create_size_view() -> Html {
+    html! {
+        <>
         <h2>{"Size"}</h2>
         <p>{"You can change the size of the avatar with the height and width CSS properties."}</p>
         <DemoBox>
@@ -84,7 +94,13 @@ pub fn avatar_page() -> Html {
                 style="width: 56px; height: 56px;"
             />
         </DemoBox>
+        </>
+    }
+}
 
+fn create_icon_avatars_view() -> Html {
+    html! {
+        <>
         <h2>{"Icon avatars"}</h2>
         <p>{"Icon avatars are created by passing an icon as children."}</p>
         <DemoBox>
@@ -98,7 +114,13 @@ pub fn avatar_page() -> Html {
                 <Assignment />
             </Avatar>
         </DemoBox>
+        </>
+    }
+}
 
+fn create_variants_view() -> Html {
+    html! {
+        <>
         <h2>{"Variants"}</h2>
         <p>{"If you need square or rounded avatars, use the variant prop."}</p>
         <DemoBox>
@@ -109,7 +131,13 @@ pub fn avatar_page() -> Html {
                 <Assignment />
             </Avatar>
         </DemoBox>
+        </>
+    }
+}
 
+fn create_fallbacks_view() -> Html {
+    html! {
+        <>
         <h2>{"Fallbacks"}</h2>
         <p>{"If there is an error loading the avatar image, the component falls back to an alternative"}</p>
         <DemoBox>
@@ -124,7 +152,13 @@ pub fn avatar_page() -> Html {
                 />
             <Avatar src="/images/broken-image.jpg" />
         </DemoBox>
+        </>
+    }
+}
 
+fn create_grouped_view() -> Html {
+    html! {
+        <>
         <h2>{"Grouped"}</h2>
         <p>{"AvatarGroup renders its children as a stack. Use the max prop to limit the number of avatars."}</p>
         <DemoBox>
@@ -147,7 +181,13 @@ pub fn avatar_page() -> Html {
                 <Avatar alt="Trevor Henderson" src="/images/avatar/5.jpg" />
             </AvatarGroup>
         </DemoBox>
+        </>
+    }
+}
 
+fn create_with_badge_view() -> Html {
+    html! {
+        <>
         <h2>{"With badge"}</h2>
         <p>{""}</p>
         <DemoBox>
@@ -168,6 +208,24 @@ pub fn avatar_page() -> Html {
                 <Avatar alt="Travis Howard" src="/images/avatar/2.jpg" />
             </Badge>
         </DemoBox>
+        </>
+    }
+}
+
+#[function_component(AvatarPage)]
+pub fn avatar_page() -> Html {
+    html! {
+        <div class="container">
+        <h1>{"Avatar"}</h1>
+
+        {create_image_avatars_view()}
+        {create_letter_avatars_view()}
+        {create_size_view()}
+        {create_icon_avatars_view()}
+        {create_variants_view()}
+        {create_fallbacks_view()}
+        {create_grouped_view()}
+        {create_with_badge_view()}
 
         </div>
     }
