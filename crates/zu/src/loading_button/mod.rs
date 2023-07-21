@@ -24,10 +24,16 @@ pub struct Props {
     pub loading: bool,
 
     #[prop_or_default]
-    pub loading_indicator: Option<Html>,
+    pub loading_indicator: AttrValue,
 
     #[prop_or_default]
     pub loading_position: Position,
+
+    #[prop_or_default]
+    pub start_icon: Option<Html>,
+
+    #[prop_or_default]
+    pub end_icon: Option<Html>,
 
     #[prop_or_default]
     pub style: AttrValue,

@@ -6,7 +6,7 @@ use stylist::Style;
 use yew::{classes, function_component, html, Html, MouseEvent};
 use zu::button::Button;
 use zu::icon_button::IconButton;
-use zu::loading_button::LoadingButton;
+use zu::loading_button::{LoadingButton, Position};
 use zu::r#box::Box;
 use zu::styles::button_variant::ButtonVariant as Variant;
 use zu::styles::color::Color;
@@ -154,26 +154,9 @@ fn create_icons_and_labels_view() -> Html {
     }
 }
 
-fn create_icon_button_view() -> Html {
+fn create_icon_button_sizes_view() -> Html {
     html! {
         <>
-        <h2>{"Icon button"}</h2>
-        <p>{"Icon buttons are commonly found in app bars and toolbars."}</p>
-        <DemoBox>
-            <IconButton aria_label="delete">
-                <Delete />
-            </IconButton>
-            <IconButton aria_label="delete" disabled={true} color={Color::Primary}>
-                <Delete />
-            </IconButton>
-            <IconButton color={Color::Secondary} aria_label="add an alarm">
-                <Alarm />
-            </IconButton>
-            <IconButton color={Color::Primary} aria_label="add to shopping cart">
-                <AddShoppingCart />
-            </IconButton>
-        </DemoBox>
-
         <h3>{"Sizes"}</h3>
         <p>{"For larger or smaller icon buttons, use the size prop."}</p>
         <DemoBox>
@@ -190,7 +173,13 @@ fn create_icon_button_view() -> Html {
                 <Delete font_size={FontSize::Inherit} />
             </IconButton>
         </DemoBox>
+        </>
+    }
+}
 
+fn create_icon_button_colors_view() -> Html {
+    html! {
+        <>
         <h3>{"Colors"}</h3>
         <p>{"Use color prop to apply theme color palette to component."}</p>
         <DemoBox>
@@ -217,6 +206,33 @@ fn create_icon_button_view() -> Html {
     }
 }
 
+fn create_icon_button_view() -> Html {
+    html! {
+        <>
+        <h2>{"Icon button"}</h2>
+        <p>{"Icon buttons are commonly found in app bars and toolbars."}</p>
+        <DemoBox>
+            <IconButton aria_label="delete">
+                <Delete />
+            </IconButton>
+            <IconButton aria_label="delete" disabled={true} color={Color::Primary}>
+                <Delete />
+            </IconButton>
+            <IconButton color={Color::Secondary} aria_label="add an alarm">
+                <Alarm />
+            </IconButton>
+            <IconButton color={Color::Primary} aria_label="add to shopping cart">
+                <AddShoppingCart />
+            </IconButton>
+        </DemoBox>
+
+        {create_icon_button_sizes_view()}
+        {create_icon_button_colors_view()}
+
+        </>
+    }
+}
+
 fn create_loading_button_view() -> Html {
     html! {
         <>
@@ -229,7 +245,7 @@ fn create_loading_button_view() -> Html {
             <LoadingButton loading=true loading_indicator="Loading…" variant={Variant::Outlined}>
                 {"Fetch data"}
             </LoadingButton>
-            <LoadingButton loading=true loading_position="start"
+            <LoadingButton loading=true loading_position={Position::Start}
                 start_icon={html!{<Save />}} variant={Variant::Outlined}>
                 {"Save"}
             </LoadingButton>
