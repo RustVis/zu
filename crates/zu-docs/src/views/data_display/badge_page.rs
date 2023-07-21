@@ -12,11 +12,93 @@ use zuicon_material::Mail;
 
 use crate::components::demo_box::DemoBox;
 
-#[function_component(BadgePage)]
-pub fn badge_page() -> Html {
-    // TODO(Shaohua): Add toggle visibility button
-    // TODO(Shaohua): Add anchor-origin check buttons
+fn create_badge_basic_view() -> Html {
+    html! {
+        <>
+        <h2>{"Badge Basic"}</h2>
+        <p>{"Examples of badges containing text, using primary and secondary colors. The badge is applied to its children."}</p>
+        <DemoBox>
+          <Badge content={Content::Num(4)} color={Color::Primary}>
+            <Mail color={SvgColor::Action} />
+          </Badge>
+        </DemoBox>
+        </>
+    }
+}
 
+fn create_color_view() -> Html {
+    html! {
+        <>
+        <h2>{"Color"}</h2>
+        <p>{"Use color prop to apply theme palette to component."}</p>
+        <DemoBox>
+            <Badge content={Content::Num(4)} color={Color::Secondary}>
+                <Mail color={SvgColor::Action} />
+            </Badge>
+            <Badge content={Content::Num(4)} color={Color::Success}>
+                <Mail color={SvgColor::Action} />
+            </Badge>
+        </DemoBox>
+        </>
+    }
+}
+
+fn create_badge_visibility_view() -> Html {
+    html! {
+        <>
+        <h2>{"Badge visibility"}</h2>
+        <p>{"The visibility of badges can be controlled using the invisible prop."}</p>
+        <DemoBox>
+            <Badge content={Content::Num(4)} color={Color::Secondary}>
+                <Mail />
+            </Badge>
+             <Badge color={Color::Secondary} variant={Variant::Dot} invisible={false}>
+                <Mail />
+            </Badge>
+            <Badge color={Color::Secondary} variant={Variant::Dot} invisible={true}>
+                <Mail />
+            </Badge>
+        </DemoBox>
+        </>
+    }
+}
+
+fn create_maximum_value_view() -> Html {
+    html! {
+        <>
+        <h2>{"Maximum value"}</h2>
+        <p>{"You can use the max prop to cap the value of the badge content."}</p>
+        <DemoBox>
+            <Badge color={Color::Secondary} content={Content::Num(99)}>
+                <Mail />
+            </Badge>
+            <Badge color={Color::Secondary} content={Content::Num(100)}>
+                <Mail />
+            </Badge>
+            <Badge color={Color::Secondary} content={Content::Num(1000)} max={999}>
+                <Mail />
+            </Badge>
+        </DemoBox>
+        </>
+    }
+}
+
+fn create_dot_badge_view() -> Html {
+    html! {
+        <>
+        <h2>{"Dot Badge"}</h2>
+        <p>{"The dot prop changes a badge into a small dot. This can be used as a notification \
+        that something has changed without giving a count."}</p>
+        <DemoBox>
+            <Badge color={Color::Secondary} variant={Variant::Dot}>
+                <Mail />
+            </Badge>
+        </DemoBox>
+        </>
+    }
+}
+
+fn create_badge_overlap_view() -> Html {
     let rectangle = html! {
         <Box component="span" style=
             "background-color: var(--zu-palette-primary-main);\
@@ -32,65 +114,7 @@ pub fn badge_page() -> Html {
     };
 
     html! {
-        <div class="container">
-        <h1>{"Badge"}</h1>
-
-        <h2>{"Badge Basic"}</h2>
-        <p>{"Examples of badges containing text, using primary and secondary colors. The badge is applied to its children."}</p>
-        <DemoBox>
-          <Badge content={Content::Num(4)} color={Color::Primary}>
-            <Mail color={SvgColor::Action} />
-          </Badge>
-        </DemoBox>
-
-        <h2>{"Color"}</h2>
-        <p>{"Use color prop to apply theme palette to component."}</p>
-        <DemoBox>
-            <Badge content={Content::Num(4)} color={Color::Secondary}>
-                <Mail color={SvgColor::Action} />
-            </Badge>
-            <Badge content={Content::Num(4)} color={Color::Success}>
-                <Mail color={SvgColor::Action} />
-            </Badge>
-        </DemoBox>
-
-        <h2>{"Badge visibility"}</h2>
-        <p>{"The visibility of badges can be controlled using the invisible prop."}</p>
-        <DemoBox>
-            <Badge content={Content::Num(4)} color={Color::Secondary}>
-                <Mail />
-            </Badge>
-             <Badge color={Color::Secondary} variant={Variant::Dot} invisible={false}>
-                <Mail />
-            </Badge>
-            <Badge color={Color::Secondary} variant={Variant::Dot} invisible={true}>
-                <Mail />
-            </Badge>
-        </DemoBox>
-
-        <h2>{"Maximum value"}</h2>
-        <p>{"You can use the max prop to cap the value of the badge content."}</p>
-        <DemoBox>
-            <Badge color={Color::Secondary} content={Content::Num(99)}>
-                <Mail />
-            </Badge>
-            <Badge color={Color::Secondary} content={Content::Num(100)}>
-                <Mail />
-            </Badge>
-            <Badge color={Color::Secondary} content={Content::Num(1000)} max={999}>
-                <Mail />
-            </Badge>
-        </DemoBox>
-
-        <h2>{"Dot Badge"}</h2>
-        <p>{"The dot prop changes a badge into a small dot. This can be used as a notification \
-        that something has changed without giving a count."}</p>
-        <DemoBox>
-            <Badge color={Color::Secondary} variant={Variant::Dot}>
-                <Mail />
-            </Badge>
-        </DemoBox>
-
+        <>
         <h2>{"Badge overlap"}</h2>
         <p>{"You can use the overlap prop to place the badge relative to the corner of the wrapped element."}</p>
         <DemoBox>
@@ -109,7 +133,13 @@ pub fn badge_page() -> Html {
                 {circle}
             </Badge>
         </DemoBox>
+        </>
+    }
+}
 
+fn create_badge_alignment_view() -> Html {
+    html! {
+        <>
         <h2>{"Badge alignment"}</h2>
         <p>{"You can use the anchorOrigin prop to move the badge to any corner of the wrapped element."}</p>
         <DemoBox>
@@ -130,6 +160,26 @@ pub fn badge_page() -> Html {
                 <Mail />
             </Badge>
         </DemoBox>
+        </>
+    }
+}
+
+#[function_component(BadgePage)]
+pub fn badge_page() -> Html {
+    // TODO(Shaohua): Add toggle visibility button
+    // TODO(Shaohua): Add anchor-origin check buttons
+
+    html! {
+        <div class="container">
+        <h1>{"Badge"}</h1>
+
+        {create_badge_basic_view()}
+        {create_color_view()}
+        {create_badge_visibility_view()}
+        {create_maximum_value_view()}
+        {create_dot_badge_view()}
+        {create_badge_overlap_view()}
+        {create_badge_alignment_view()}
 
         </div>
     }
