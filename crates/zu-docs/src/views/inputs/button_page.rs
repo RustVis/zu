@@ -2,19 +2,30 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{function_component, html, Html, MouseEvent};
+use stylist::Style;
+use yew::{classes, function_component, html, Html, MouseEvent};
 use zu::button::Button;
 use zu::icon_button::IconButton;
 use zu::r#box::Box;
 use zu::styles::button_variant::ButtonVariant as Variant;
 use zu::styles::color::Color;
 use zu::styles::size::Size;
-use zuicon_material::{AddShoppingCart, Alarm, Delete, Send};
+use zu::svg_icon::FontSize;
+use zuicon_material::{AddShoppingCart, Alarm, Delete, Fingerprint, Send};
 
 use crate::components::demo_box::DemoBox;
 
 #[function_component(ButtonPage)]
 pub fn button_page() -> Html {
+    let margin_style = Style::new(
+        r#"
+        button {
+            margin: 8px;
+        }
+        "#,
+    )
+    .expect("Failed to create margin-style");
+
     html! {
         <div class="container">
         <h1>{"Button"}</h1>
@@ -88,7 +99,7 @@ pub fn button_page() -> Html {
         <h2>{"Sizes"}</h2>
         <p>{"For larger or smaller buttons, use the size prop."}</p>
         <DemoBox>
-            <Box>
+            <Box classes={classes!(margin_style.get_class_name().to_owned())}>
             <div>
                 <Button size={Size::Small}>{"Small"}</Button>
                 <Button size={Size::Medium}>{"Medium"}</Button>
@@ -122,19 +133,65 @@ pub fn button_page() -> Html {
         <h2>{"Icon button"}</h2>
         <p>{"Icon buttons are commonly found in app bars and toolbars."}</p>
         <DemoBox>
-        <IconButton aria_label="delete">
-            <Delete />
-        </IconButton>
-        <IconButton aria_label="delete" disabled={true} color={Color::Primary}>
-            <Delete />
-        </IconButton>
-        <IconButton color={Color::Secondary} aria_label="add an alarm">
-            <Alarm />
-        </IconButton>
-        <IconButton color={Color::Primary} aria_label="add to shopping cart">
-            <AddShoppingCart />
-        </IconButton>
+            <IconButton aria_label="delete">
+                <Delete />
+            </IconButton>
+            <IconButton aria_label="delete" disabled={true} color={Color::Primary}>
+                <Delete />
+            </IconButton>
+            <IconButton color={Color::Secondary} aria_label="add an alarm">
+                <Alarm />
+            </IconButton>
+            <IconButton color={Color::Primary} aria_label="add to shopping cart">
+                <AddShoppingCart />
+            </IconButton>
         </DemoBox>
+
+        <h3>{"Sizes"}</h3>
+        <p>{"For larger or smaller icon buttons, use the size prop."}</p>
+        <DemoBox>
+            <IconButton aria_label="delete" size={Size::Small}>
+                <Delete font_size={FontSize::Inherit} />
+            </IconButton>
+            <IconButton aria_label="delete" size={Size::Small}>
+                <Delete font_size={FontSize::Small} />
+            </IconButton>
+            <IconButton aria_label="delete" size={Size::Large}>
+                <Delete />
+            </IconButton>
+            <IconButton aria_label="delete" size={Size::Large}>
+                <Delete font_size={FontSize::Inherit} />
+            </IconButton>
+        </DemoBox>
+
+        <h3>{"Colors"}</h3>
+        <p>{"Use color prop to apply theme color palette to component."}</p>
+        <DemoBox>
+            <IconButton aria_label="fingerprint" color={Color::Primary}>
+                <Fingerprint />
+            </IconButton>
+            <IconButton aria_label="fingerprint" color={Color::Secondary}>
+                <Fingerprint />
+            </IconButton>
+            <IconButton aria_label="fingerprint" color={Color::Info}>
+                <Fingerprint />
+            </IconButton>
+            <IconButton aria_label="fingerprint" color={Color::Warning}>
+                <Fingerprint />
+            </IconButton>
+            <IconButton aria_label="fingerprint" color={Color::Error}>
+                <Fingerprint />
+            </IconButton>
+            <IconButton aria_label="fingerprint" color={Color::Success}>
+                <Fingerprint />
+            </IconButton>
+        </DemoBox>
+
+        <h2>{"Customization"}</h2>
+        <p>{"TODO"}</p>
+
+        <h2>{"Complex button"}</h2>
+        <p>{"TODO"}</p>
 
         </div>
     }
