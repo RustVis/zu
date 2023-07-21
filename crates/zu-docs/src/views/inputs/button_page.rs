@@ -6,31 +6,19 @@ use stylist::Style;
 use yew::{classes, function_component, html, Html, MouseEvent};
 use zu::button::Button;
 use zu::icon_button::IconButton;
+use zu::loading_button::LoadingButton;
 use zu::r#box::Box;
 use zu::styles::button_variant::ButtonVariant as Variant;
 use zu::styles::color::Color;
 use zu::styles::size::Size;
 use zu::svg_icon::FontSize;
-use zuicon_material::{AddShoppingCart, Alarm, Delete, Fingerprint, Send};
+use zuicon_material::{AddShoppingCart, Alarm, Delete, Fingerprint, Save, Send};
 
 use crate::components::demo_box::DemoBox;
 
-#[function_component(ButtonPage)]
-pub fn button_page() -> Html {
-    let margin_style = Style::new(
-        r#"
-        button {
-            margin: 8px;
-        }
-        "#,
-    )
-    .expect("Failed to create margin-style");
-
+fn create_basic_button_view() -> Html {
     html! {
-        <div class="container">
-        <h1>{"Button"}</h1>
-        <p>{"Buttons communicate actions that users can take."}</p>
-
+        <>
         <h2>{"Basic button"}</h2>
         <p>{"The Button comes with three variants: text (default), contained, and outlined."}</p>
         <DemoBox>
@@ -71,7 +59,13 @@ pub fn button_page() -> Html {
             <Button variant={Variant::Outlined} disabled=true>{"Disabled"}</Button>
             <Button variant={Variant::Outlined} href="#outlined-buttons">{"Link"}</Button>
         </DemoBox>
+        </>
+    }
+}
 
+fn create_handling_clicks_view() -> Html {
+    html! {
+        <>
         <h2>{"Handling clicks"}</h2>
         <p>{"All components accept an onClick handler that is applied to the root DOM element."}</p>
         <DemoBox>
@@ -84,7 +78,13 @@ pub fn button_page() -> Html {
                 {"Click me"}
             </Button>
         </DemoBox>
+        </>
+    }
+}
 
+fn create_colors_view() -> Html {
+    html! {
+        <>
         <h2>{"Color"}</h2>
         <DemoBox>
             <Button variant={Variant::Contained} color={Color::Primary}>{"Primary"}</Button>
@@ -95,7 +95,22 @@ pub fn button_page() -> Html {
             <Button variant={Variant::Contained} color={Color::Error}>{"Error"}</Button>
         </DemoBox>
         <p>{"In addition to using the default button colors, you can add custom ones, or disable any you don't need."}</p>
+        </>
+    }
+}
 
+fn create_sizes_view() -> Html {
+    let margin_style = Style::new(
+        r#"
+        button {
+            margin: 8px;
+        }
+        "#,
+    )
+    .expect("Failed to create margin-style");
+
+    html! {
+        <>
         <h2>{"Sizes"}</h2>
         <p>{"For larger or smaller buttons, use the size prop."}</p>
         <DemoBox>
@@ -117,7 +132,13 @@ pub fn button_page() -> Html {
             </div>
         </Box>
         </DemoBox>
+        </>
+    }
+}
 
+fn create_icons_and_labels_view() -> Html {
+    html! {
+        <>
         <h2>{"Buttons with icons and label"}</h2>
         <p>{"Sometimes you might want to have icons for certain buttons to enhance \
             the UX of the application as we recognize logos more easily than plain text. "}</p>
@@ -129,7 +150,13 @@ pub fn button_page() -> Html {
                 {"Send"}
             </Button>
         </DemoBox>
+        </>
+    }
+}
 
+fn create_icon_button_view() -> Html {
+    html! {
+        <>
         <h2>{"Icon button"}</h2>
         <p>{"Icon buttons are commonly found in app bars and toolbars."}</p>
         <DemoBox>
@@ -186,6 +213,45 @@ pub fn button_page() -> Html {
                 <Fingerprint />
             </IconButton>
         </DemoBox>
+        </>
+    }
+}
+
+fn create_loading_button_view() -> Html {
+    html! {
+        <>
+        <h2>{"Loading button"}</h2>
+        <p>{"Loading buttons can show loading state and disable interactions."}</p>
+        <DemoBox>
+            <LoadingButton loading=true variant={Variant::Outlined}>
+                {"Submit"}
+            </LoadingButton>
+            <LoadingButton loading=true loading_indicator="Loading…" variant={Variant::Outlined}>
+                {"Fetch data"}
+            </LoadingButton>
+            <LoadingButton loading=true loading_position="start"
+                start_icon={html!{<Save />}} variant={Variant::Outlined}>
+                {"Save"}
+            </LoadingButton>
+        </DemoBox>
+        </>
+    }
+}
+
+#[function_component(ButtonPage)]
+pub fn button_page() -> Html {
+    html! {
+        <div class="container">
+        <h1>{"Button"}</h1>
+        <p>{"Buttons communicate actions that users can take."}</p>
+
+        {create_basic_button_view()}
+        {create_handling_clicks_view()}
+        {create_colors_view()}
+        {create_sizes_view()}
+        {create_icons_and_labels_view()}
+        {create_icon_button_view()}
+        {create_loading_button_view()}
 
         <h2>{"Customization"}</h2>
         <p>{"TODO"}</p>
