@@ -23,17 +23,17 @@ pub fn button_page() -> Html {
         <h2>{"Basic button"}</h2>
         <p>{"The Button comes with three variants: text (default), contained, and outlined."}</p>
         <DemoBox>
-        <Button variant={ButtonVariant::Text}>{"Text"}</Button>
-        <Button variant={ButtonVariant::Contained}>{"Contained"}</Button>
-        <Button variant={ButtonVariant::Outlined}>{"Outlined"}</Button>
+            <Button variant={ButtonVariant::Text}>{"Text"}</Button>
+            <Button variant={ButtonVariant::Contained}>{"Contained"}</Button>
+            <Button variant={ButtonVariant::Outlined}>{"Outlined"}</Button>
         </DemoBox>
 
         <h3>{"Text button"}</h3>
         <p>{"Text buttons are typically used for less-pronounced actions, including those located: in dialogs, in cards."}</p>
         <DemoBox>
-        <Button>{"Primary"}</Button>
-        <Button disabled={true}>{"Disabled"}</Button>
-        <Button href="#text-buttons">{"Link"}</Button>
+            <Button>{"Primary"}</Button>
+            <Button disabled={true}>{"Disabled"}</Button>
+            <Button href="#text-buttons">{"Link"}</Button>
         </DemoBox>
 
         <h3>{"Contained button"}</h3>

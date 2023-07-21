@@ -123,7 +123,8 @@ pub struct Props {
     #[prop_or_default]
     pub style: AttrValue,
 
-    #[prop_or(-1)]
+    // TODO(Shaohua): Remove tab_index from properties.
+    #[prop_or_default]
     pub tab_index: i32,
 
     /// Default value is `Text`.
@@ -180,8 +181,6 @@ pub fn button(props: &Props) -> Html {
         },
         props.classes.clone(),
     );
-
-    //let label_cls = "ZuButton-label";
 
     html! {
         <ButtonBase

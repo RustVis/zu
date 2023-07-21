@@ -149,8 +149,6 @@ pub fn button_base(props: &Props) -> Html {
             String::new()
         },
         props.classes.clone(),
-        // TODO(Shaohua): Merge into Typography.
-        "ZuTypography-button",
     );
 
     // TODO(Shaohua): Handle mouse events.
