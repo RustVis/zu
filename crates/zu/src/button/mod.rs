@@ -123,9 +123,8 @@ pub struct Props {
     #[prop_or_default]
     pub style: AttrValue,
 
-    // TODO(Shaohua): Remove tab_index from properties.
     #[prop_or_default]
-    pub tab_index: i32,
+    pub tab_index: Option<i32>,
 
     /// Default value is `Text`.
     #[prop_or_default]
@@ -167,12 +166,16 @@ pub fn button(props: &Props) -> Html {
     let root_cls = classes!(
         "ZuButton-root",
         variant::css_class(props.variant),
-        color::color_class(props.color),
         size::css_class(props.size),
         if props.disable_elevation {
-            "ZuButton-disable_elevation"
+            "ZuButton-disableElevation"
         } else {
             ""
+        },
+        if props.disabled {
+            "ZuButton-disabled"
+        } else {
+            color::color_class(props.color)
         },
         if props.full_width {
             "ZuButton-fullWidth"
