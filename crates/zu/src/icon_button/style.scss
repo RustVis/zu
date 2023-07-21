@@ -3,19 +3,19 @@
 
 // Styles applied to the root element.
 .ZuIconButton-root {
-  transition: background-color var(--zu-duration-shortest) var(--zu-easing-easeInOut) 0ms;
+  transition: background-color $zu-duration-shortest $zu-easing-easeInOut 0ms;
 
   flex: 0 0 auto;
   padding: 8px;
-  overflow: visible; // Explicitly set the default value to solve a bug on IE11.
+  // Explicitly set the default value to solve a bug on IE11.
+  overflow: visible;
 
   border-radius: 50%;
 
-  color: var(--zu-palette-action-active);
+  color: $zu-palette-action-active;
 
   text-align: center;
   font-size: 24px;
-
 }
 
 // Styles applied to the root element if edge="start".
@@ -23,6 +23,7 @@
   &.ZuIconButton-sizeSmall {
     margin-left: -3px;
   }
+
   &.ZuIconButton-sizeMedium,
   &.ZuIconButton-sizeLarge {
     margin-left: -12px;
@@ -34,6 +35,7 @@
   &.ZuIconButton-sizeSmall {
     margin-right: -3px;
   }
+
   &.ZuIconButton-sizeMedium,
   &.ZuIconButton-sizeLarge {
     margin-right: -12px;
@@ -62,7 +64,7 @@
 
 // Styles applied to the root element if color="secondary".
 .ZuIconButton-colorSecondary {
-  color: var(--zu-palette-secondary-main);
+  color: $zu-palette-secondary-main;
 
   &.ZuIconButton-enableRipple {
     &:hover {
@@ -77,7 +79,7 @@
 
 // Styles applied to the root element if color="error".
 .ZuIconButton-colorError {
-  color: var(--zu-palette-error-main);
+  color: $zu-palette-error-main;
 
   &.ZuIconButton-enableRipple {
     &:hover {
@@ -92,7 +94,7 @@
 
 // Styles applied to the root element if color="info".
 .ZuIconButton-colorInfo {
-  color: var(--zu-palette-info-main);
+  color: $zu-palette-info-main;
 
   &.ZuIconButton-enableRipple {
     &:hover {
@@ -107,7 +109,7 @@
 
 // Styles applied to the root element if color="success".
 .ZuIconButton-colorSuccess {
-  color: var(--zu-palette-success-main);
+  color: $zu-palette-success-main;
 
   &.ZuIconButton-enableRipple {
     &:hover {
@@ -122,7 +124,7 @@
 
 // Styles applied to the root element if color="warning".
 .ZuIconButton-colorWarning {
-  color: var(--zu-palette-warning-main);
+  color: $zu-palette-warning-main;
 
   &.ZuIconButton-enableRipple {
     &:hover {
@@ -138,7 +140,7 @@
 // State class applied to the root element if disabled={true}.
 .ZuIconButton-disabled {
   background-color: transparent;
-  color: var(--zu-palette-action-disabled);
+  color: $zu-palette-action-disabled;
 }
 
 // Styles applied to the root element if size="small".
@@ -158,6 +160,7 @@
   font-size: 28px;
 }
 
+// TODO(Shaohua): Merge into !.ZuIconButton-disableRipple
 .ZuIconButton-enableRipple {
   &:hover {
     background-color: change-color($zu-palette-action-active, $alpha: $zu-palette-action-hoverOpacity);

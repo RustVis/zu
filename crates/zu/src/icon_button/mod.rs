@@ -19,11 +19,15 @@ pub struct Props {
     pub aria_label: AttrValue,
 
     #[prop_or_default]
+    pub center_ripple: bool,
+
+    #[prop_or_default]
     pub children: Children,
 
     #[prop_or_default]
     pub classes: Classes,
 
+    /// Default value is `Color::Default`.
     #[prop_or(Color::Default)]
     pub color: Color,
 
@@ -39,7 +43,8 @@ pub struct Props {
     #[prop_or_default]
     pub edge: Option<Edge>,
 
-    #[prop_or_default]
+    /// Default is `Size::Medium`.
+    #[prop_or(Size::Medium)]
     pub size: Size,
 
     #[prop_or_default]
@@ -55,6 +60,11 @@ pub fn icon_button(props: &Props) -> Html {
         } else {
             ""
         },
+        if props.disable_ripple {
+            ""
+        } else {
+            "ZuIconButton-enableRipple"
+        },
         color::css_class(props.color),
         edge::css_class(props.edge),
         size::css_class(props.size),
@@ -64,7 +74,11 @@ pub fn icon_button(props: &Props) -> Html {
     html! {
         <ButtonBase classes={root_cls}
             aria_label={&props.aria_label}
-            style={&props.style}>
+            center_ripple={props.center_ripple}
+            disabled={props.disabled}
+            focus_ripple={!props.disable_focus_ripple}
+            style={props.style.clone()}>
+            {for props.children.iter()}
         </ButtonBase>
     }
 }
