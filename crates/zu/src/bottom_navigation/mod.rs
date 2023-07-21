@@ -2,7 +2,10 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{function_component, html, AttrValue, Callback, Children, Event, Html, Properties};
+use yew::{
+    classes, function_component, html, AttrValue, Callback, Children, Classes, Event, Html,
+    Properties,
+};
 use zu_util::prop::ToAttr;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
@@ -11,7 +14,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub component: AttrValue,
@@ -29,7 +32,7 @@ pub struct Props {
 
 #[function_component(BottomNavigation)]
 pub fn bottom_navigation(props: &Props) -> Html {
-    let root_cls = "ZuBottomNavigation";
+    let root_cls = classes!("ZuBottomNavigation", props.classes.clone());
     let component = if props.component.is_empty() {
         "div"
     } else {

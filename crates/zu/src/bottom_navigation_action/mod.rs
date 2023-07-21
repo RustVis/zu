@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Classes, Html, Properties};
 
 use crate::button_base::ButtonBase;
 
@@ -12,7 +12,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub icon: Option<Html>,
@@ -50,6 +50,7 @@ pub fn bottom_navigation_action(props: &Props) -> Html {
         } else {
             ""
         },
+        props.classes.clone(),
     );
     let label_cls = classes!(
         "ZuBottomNavigationAction-label",

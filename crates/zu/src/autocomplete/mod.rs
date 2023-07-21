@@ -4,7 +4,7 @@
 
 mod blur_option;
 
-use yew::{function_component, html, AttrValue, Callback, Html, Properties};
+use yew::{function_component, html, AttrValue, Callback, Classes, Html, Properties};
 
 use crate::styles::size::Size;
 pub use blur_option::BlurOption;
@@ -28,7 +28,7 @@ pub struct Props {
     pub blur_on_select: BlurOption,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub clear_icon: Option<Html>,

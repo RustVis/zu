@@ -4,7 +4,7 @@
 
 mod variant;
 
-use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Classes, Html, Properties};
 use zu_util::prop::ToAttr;
 
 use crate::styles::CssClass;
@@ -22,7 +22,7 @@ pub struct Props {
 
     /// Override or extend the styles applied to the component.
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub component: AttrValue,
@@ -55,7 +55,7 @@ pub fn paper(props: &Props) -> Html {
 
     let cls = classes!(
         "ZuPaper-root",
-        props.classes.as_str().to_owned(),
+        props.classes.clone(),
         props.variant.css_class(),
         if props.square { "" } else { "ZuPaper-rounded" },
         if props.variant == Variant::Elevation {

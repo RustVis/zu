@@ -5,7 +5,9 @@
 mod spacing;
 
 use std::rc::Rc;
-use yew::{function_component, html, AttrValue, ChildrenWithProps, Classes, Html, Properties};
+use yew::{
+    classes, function_component, html, AttrValue, ChildrenWithProps, Classes, Html, Properties,
+};
 
 use crate::avatar::{Avatar, Props as AvatarProps};
 use crate::styles::shape_variant::ShapeVariant;
@@ -72,7 +74,7 @@ pub fn avatar_group(props: &Props) -> Html {
         props.component.as_str()
     };
 
-    let root_cls = "ZuAvatarGroup-root";
+    let root_cls = classes!("ZuAvatarGroup-root", props.classes.clone());
     let avatar_style = margin_left.map_or_else(String::new, |margin_left| {
         format!("margin-left: {margin_left}px;")
     });

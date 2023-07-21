@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Classes, Html, Properties};
 use zu_util::prop::ToAttr;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
@@ -15,7 +15,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: String,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub style: AttrValue,
@@ -23,7 +23,7 @@ pub struct Props {
 
 #[function_component(Box)]
 pub fn r#box(props: &Props) -> Html {
-    let cls = classes!("ZuBox-root", &props.classes);
+    let root_cls = classes!("ZuBox-root", props.classes.clone());
     let component = if props.component.is_empty() {
         "div"
     } else {
@@ -31,7 +31,7 @@ pub fn r#box(props: &Props) -> Html {
     };
 
     html! {
-        <@{component.to_owned()} class={cls} style={props.style.to_attr()}>
+        <@{component.to_owned()} class={root_cls} style={props.style.to_attr()}>
             {for props.children.iter()}
         </@>
     }

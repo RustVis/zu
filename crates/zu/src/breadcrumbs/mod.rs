@@ -4,7 +4,7 @@
 
 mod collapsed;
 
-use yew::{function_component, html, AttrValue, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Classes, Html, Properties};
 
 use crate::typography::Typography;
 
@@ -23,7 +23,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub component: AttrValue,
@@ -56,6 +56,7 @@ pub struct Props {
 
 #[function_component(Breadcrumbs)]
 pub fn breadcrumbs(props: &Props) -> Html {
+    let root_cls = classes!("ZuBreadcrumb-root", props.classes.clone(),);
     let component = if props.component.is_empty() {
         AttrValue::from("nav")
     } else {
@@ -63,10 +64,9 @@ pub fn breadcrumbs(props: &Props) -> Html {
     };
 
     html! {
-        <Typography
+        <Typography classes={root_cls}
             aria_label={&props.aria_label}
             component={component}
-            classes="ZuBreadcrumb-root"
             style={&props.style}>
             <ol class="ZuBreadcrumb-ol">
                 {for props.children.iter()}

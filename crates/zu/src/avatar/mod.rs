@@ -84,13 +84,13 @@ pub fn avatar(props: &Props) -> Html {
     };
     let root_cls = classes!(
         "ZuAvatar-root",
-        props.classes.clone(),
         variant::css_class(props.variant),
         if has_image_no_failing {
             ""
         } else {
             "ZuAvatar-colorDefault"
         },
+        props.classes.clone(),
     );
     // TODO(Shaohua): Setup text color based on current theme.
     let style = [
@@ -111,22 +111,24 @@ pub fn avatar(props: &Props) -> Html {
         name::abbreviate_first(props.alt.as_str())
     };
 
+    let children = if !props.children.is_empty() {
+        html! {for props.children.iter()}
+    } else if has_image_no_failing {
+        html! {<img class="ZuAvatar-img"
+        aria-label={props.aria_label.to_attr()}
+        src={props.src.to_attr()}
+        src-set={props.src_set.to_attr()}
+        alt={props.alt.to_attr()}
+        sizes={props.sizes.to_attr()} />}
+    } else if !abbr_name.is_empty() {
+        html! {abbr_name}
+    } else {
+        html! {<Person classes="ZuAvatar-fallback" />}
+    };
+
     html! {
         <@{component.to_owned()} class={root_cls} style={style}>
-            if !props.children.is_empty() {
-                {for props.children.iter()}
-            } else if has_image_no_failing {
-                <img class="ZuAvatar-img"
-                    aria-label={props.aria_label.to_attr()}
-                    src={props.src.to_attr()}
-                    src-set={props.src_set.to_attr()}
-                    alt={props.alt.to_attr()}
-                    sizes={props.sizes.to_attr()} />
-            } else if !abbr_name.is_empty() {
-                {abbr_name}
-            } else {
-                <Person classes="ZuAvatar-fallback" />
-            }
+            {children}
         </@>
     }
 }

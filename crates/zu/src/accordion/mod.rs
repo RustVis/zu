@@ -3,7 +3,8 @@
 // in the LICENSE file.
 
 use yew::{
-    classes, function_component, html, AttrValue, Callback, Children, Event, Html, Properties,
+    classes, function_component, html, AttrValue, Callback, Children, Classes, Event, Html,
+    Properties,
 };
 
 use crate::paper::{Elevation, Paper, Variant, ELEVATION_DEFAULT};
@@ -14,7 +15,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     /// If true, expands the accordion by default.
     #[prop_or(false)]
@@ -72,6 +73,7 @@ pub fn accordion(props: &Props) -> Html {
         } else {
             "ZuAccordion-gutters"
         },
+        props.classes.clone(),
     );
     let region_cls = "ZuAccordion-region";
 

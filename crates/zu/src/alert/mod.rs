@@ -5,7 +5,7 @@
 mod severity;
 mod variant;
 
-use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Classes, Html, Properties};
 
 use crate::paper::Paper;
 use crate::styles::{
@@ -28,7 +28,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     // TODO(Shaohua): Set default value here.
     #[prop_or_default]
@@ -63,6 +63,7 @@ pub fn alert(props: &Props) -> Html {
         "ZuAlert-root",
         severity::severity_class(props.severity),
         props.variant.css_class(),
+        props.classes.clone(),
     };
     let icon_cls = "ZuAlert-icon";
     let message_cls = "ZuAlert-message";

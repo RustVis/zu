@@ -7,8 +7,8 @@ mod size;
 mod variant;
 
 use yew::{
-    classes, function_component, html, AttrValue, Callback, Children, DragEvent, FocusEvent, Html,
-    KeyboardEvent, MouseEvent, Properties, TouchEvent,
+    classes, function_component, html, AttrValue, Callback, Children, Classes, DragEvent,
+    FocusEvent, Html, KeyboardEvent, MouseEvent, Properties, TouchEvent,
 };
 
 use crate::button_base::ButtonBase;
@@ -24,7 +24,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub color: Color,
@@ -134,7 +134,6 @@ pub fn button(props: &Props) -> Html {
 
     let root_cls = classes!(
         "ZuButton-root",
-        props.classes.as_str().to_owned(),
         variant::css_class(props.variant),
         color::color_class(props.color),
         size::css_class(props.size),
@@ -147,7 +146,8 @@ pub fn button(props: &Props) -> Html {
             "ZuButton-fullWidth"
         } else {
             ""
-        }
+        },
+        props.classes.clone(),
     );
 
     //let label_cls = "ZuButton-label";

@@ -10,8 +10,8 @@
 mod touch_ripple;
 
 use yew::{
-    classes, function_component, html, use_state, AttrValue, Callback, Children, DragEvent,
-    FocusEvent, Html, KeyboardEvent, MouseEvent, Properties, TouchEvent,
+    classes, function_component, html, use_state, AttrValue, Callback, Children, Classes,
+    DragEvent, FocusEvent, Html, KeyboardEvent, MouseEvent, Properties, TouchEvent,
 };
 use zu_util::prop::ToAttr;
 
@@ -33,7 +33,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub component: AttrValue,
@@ -147,7 +147,7 @@ pub fn button_base(props: &Props) -> Html {
         } else {
             String::new()
         },
-        props.classes.as_str().to_owned(),
+        props.classes.clone(),
         // TODO(Shaohua): Merge into Typography.
         "ZuTypography-button",
     );

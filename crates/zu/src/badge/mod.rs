@@ -8,7 +8,7 @@ mod content;
 mod overlap;
 mod variant;
 
-use yew::{classes, function_component, html, AttrValue, Children, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Classes, Html, Properties};
 use zu_util::prop::ToAttr;
 
 use crate::styles::anchor_origin::AnchorOrigin;
@@ -32,7 +32,7 @@ pub struct Props {
     #[prop_or(Color::Default)]
     pub color: Color,
 
-    #[prop_or_default]
+    #[prop_or(AttrValue::from("span"))]
     pub component: AttrValue,
 
     /// If true, the badge is invisible.
@@ -52,7 +52,7 @@ pub struct Props {
     pub show_zero: bool,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 
     #[prop_or_default]
     pub style: AttrValue,
@@ -84,13 +84,8 @@ pub fn badge(props: &Props) -> Html {
         props.overlap.css_class(),
         color::color_class(props.color),
         props.badge_classes.to_string(),
+        props.classes.clone(),
     );
-
-    let component = if props.component.is_empty() {
-        "span"
-    } else {
-        props.component.as_str()
-    };
 
     // TODO(Shaohua): Use invisible property.
     let _invisible = props.invisible || props.content.is_none() || props.variant != Variant::Dot;
@@ -115,7 +110,7 @@ pub fn badge(props: &Props) -> Html {
     };
 
     html! {
-        <@{component.to_owned()} class={root_cls} style={props.style.to_attr()}>
+        <@{props.component.to_string()} class={root_cls} style={props.style.to_attr()}>
             {for props.children.iter()}
             <span class={badge_cls} style={props.badge_style.to_attr()}>
                 {display_value}
