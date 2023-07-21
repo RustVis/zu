@@ -116,8 +116,8 @@ pub struct Props {
     #[prop_or_default]
     pub style: AttrValue,
 
-    #[prop_or(-1)]
-    pub tab_index: i32,
+    #[prop_or_default]
+    pub tab_index: Option<i32>,
 
     // TODO(Shaohua): Replace with a struct.
     #[prop_or_default]
@@ -156,7 +156,11 @@ pub fn button_base(props: &Props) -> Html {
     // TODO(Shaohua): Add touch ripple.
     // TODO(Shaohua): Bind on_focus_visible
 
-    let tab_index = if props.disabled { -1 } else { props.tab_index };
+    let tab_index = if props.disabled || props.tab_index.is_none() {
+        None
+    } else {
+        props.tab_index.to_attr()
+    };
 
     let enable_touch_ripple = !props.disable_touch_ripple && !props.disabled;
 
@@ -178,7 +182,7 @@ pub fn button_base(props: &Props) -> Html {
             ontouchend={props.on_touch_end.clone()}
             ontouchmove={props.on_touch_move.clone()}
             ontouchstart={props.on_touch_start.clone()}
-            tab_index={tab_index.to_string()}
+            tab_index={tab_index}
             >
             {for props.children.iter()}
             if enable_touch_ripple {
