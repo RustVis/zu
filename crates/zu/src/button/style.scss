@@ -54,10 +54,54 @@
       }
     }
 
+    &.ZuButton-outlined {
+      border-width: 1px;
+      border-style: solid;
+
+      // Reset on touch devices, it doesn't add specificity
+      @media (hover: none) {
+        background-color: transparent;
+      }
+
+      &.ZuButton-colorPrimary {
+        border-color: $zu-palette-primary-main;
+        background-color: #{change-color($zu-palette-primary-main, $alpha: $zu-palette-action-hoverOpacity)};
+      }
+
+      &.ZuButton-colorSecondary {
+        border-color: $zu-palette-secondary-main;
+        background-color: #{change-color($zu-palette-secondary-main, $alpha: $zu-palette-action-hoverOpacity)};
+      }
+
+      &.ZuButton-colorSuccess {
+        border-color: $zu-palette-success-main;
+        background-color: #{change-color($zu-palette-success-main, $alpha: $zu-palette-action-hoverOpacity)};
+      }
+
+      &.ZuButton-colorInfo {
+        border-color: $zu-palette-info-main;
+        background-color: #{change-color($zu-palette-info-main, $alpha: $zu-palette-action-hoverOpacity)};
+      }
+
+      &.ZuButton-colorWarning {
+        border-color: $zu-palette-warning-main;
+        background-color: #{change-color($zu-palette-warning-main, $alpha: $zu-palette-action-hoverOpacity)};
+      }
+
+      &.ZuButton-colorError {
+        border-color: $zu-palette-error-main;
+        background-color: #{change-color($zu-palette-error-main, $alpha: $zu-palette-action-hoverOpacity)};
+      }
+    }
+
     &.ZuButton-contained {
-      // TODO(Shaohua): Support dark theme
-      background-color: $zu-colors-grey-100;
-      box-shadow: $zu-shadow-4;
+
+      &.ZuButton-colorPrimary {
+        // TODO(Shaohua): Support dark theme
+        // TODO(Shaohua): inheritContainedHoverBackgroundColor
+        background-color: $zu-colors-grey-100;
+        box-shadow: $zu-shadow-4;
+      }
 
       // Reset on touch devices, it doesn't add specificity
       @media (hover: none) {
@@ -352,12 +396,28 @@
   width: 100%;
 }
 
+// For icons
+
 // Styles applied to the startIcon element if supplied.
 .ZuButton-startIcon {
+  display: inherit;
+  margin-right: 8px;
+  margin-left: -4px;
+
+  &.ZuButton-iconSizeSmall {
+    margin-left: -2px;
+  }
 }
 
 // Styles applied to the endIcon element if supplied.
 .ZuButton-endIcon {
+  display: inherit;
+  margin-right: -4px;
+  margin-left: 8px;
+
+  &.ZuButton-iconSizeSmall {
+    margin-right: -2px;
+  }
 }
 
 // Styles applied to the icon element if supplied and size="small".

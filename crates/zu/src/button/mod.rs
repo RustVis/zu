@@ -48,6 +48,10 @@ pub struct Props {
     #[prop_or(false)]
     pub disable_ripple: bool,
 
+    /// Element placed before the children.
+    #[prop_or_default]
+    pub start_icon: Option<Html>,
+
     /// Element placed after the children.
     #[prop_or_default]
     pub end_icon: Option<Html>,
@@ -63,60 +67,58 @@ pub struct Props {
     pub href: AttrValue,
 
     #[prop_or_default]
-    pub on_blur: Option<Callback<FocusEvent, ()>>,
+    pub on_blur: Option<Callback<FocusEvent>>,
 
     #[prop_or_default]
-    pub on_click: Option<Callback<MouseEvent, ()>>,
+    pub on_click: Option<Callback<MouseEvent>>,
 
     #[prop_or_default]
-    pub on_context_menu: Option<Callback<MouseEvent, ()>>,
+    pub on_context_menu: Option<Callback<MouseEvent>>,
 
     #[prop_or_default]
-    pub on_drag_leave: Option<Callback<DragEvent, ()>>,
+    pub on_drag_leave: Option<Callback<DragEvent>>,
 
     #[prop_or_default]
-    pub on_focus: Option<Callback<FocusEvent, ()>>,
+    pub on_focus: Option<Callback<FocusEvent>>,
 
     /// Callback fired when the component is focused with a keyboard.
     #[prop_or_default]
-    pub on_focus_visible: Option<Callback<FocusEvent, ()>>,
+    pub on_focus_visible: Option<Callback<FocusEvent>>,
 
     #[prop_or_default]
-    pub on_key_down: Option<Callback<KeyboardEvent, ()>>,
+    pub on_key_down: Option<Callback<KeyboardEvent>>,
 
     #[prop_or_default]
-    pub on_key_up: Option<Callback<KeyboardEvent, ()>>,
+    pub on_key_up: Option<Callback<KeyboardEvent>>,
 
     #[prop_or_default]
-    pub on_mouse_down: Option<Callback<MouseEvent, ()>>,
+    pub on_mouse_down: Option<Callback<MouseEvent>>,
 
     #[prop_or_default]
-    pub on_mouse_enter: Option<Callback<MouseEvent, ()>>,
+    pub on_mouse_enter: Option<Callback<MouseEvent>>,
 
     #[prop_or_default]
-    pub on_mouse_leave: Option<Callback<MouseEvent, ()>>,
+    pub on_mouse_leave: Option<Callback<MouseEvent>>,
 
     #[prop_or_default]
-    pub on_mouse_up: Option<Callback<MouseEvent, ()>>,
+    pub on_mouse_up: Option<Callback<MouseEvent>>,
 
     #[prop_or_default]
-    pub on_touch_end: Option<Callback<TouchEvent, ()>>,
+    pub on_touch_end: Option<Callback<TouchEvent>>,
 
     #[prop_or_default]
-    pub on_touch_move: Option<Callback<TouchEvent, ()>>,
+    pub on_touch_move: Option<Callback<TouchEvent>>,
 
     #[prop_or_default]
-    pub on_touch_start: Option<Callback<TouchEvent, ()>>,
+    pub on_touch_start: Option<Callback<TouchEvent>>,
 
     /// The size of the component.
     ///
-    ///  small is equivalent to the dense button styling.
-    #[prop_or_default]
+    /// `Small` is equivalent to the dense button styling.
+    ///
+    /// Default is `Medium`.
+    #[prop_or(Size::Medium)]
     pub size: Size,
-
-    /// Element placed before the children.
-    #[prop_or_default]
-    pub start_icon: Option<Html>,
 
     #[prop_or_default]
     pub style: AttrValue,
@@ -124,8 +126,37 @@ pub struct Props {
     #[prop_or(-1)]
     pub tab_index: i32,
 
+    /// Default value is `Text`.
     #[prop_or_default]
     pub variant: ButtonVariant,
+}
+
+fn create_start_icon(icon: &Option<Html>, button_size: Size) -> Html {
+    let icon_cls = classes!("ZuButton-startIcon", size::icon_class(button_size));
+    icon.as_ref().map_or_else(
+        || html! {},
+        |icon| {
+            html! {
+                <span class={icon_cls}>
+                    {icon.clone()}
+                </span>
+            }
+        },
+    )
+}
+
+fn create_end_icon(icon: &Option<Html>, button_size: Size) -> Html {
+    let icon_cls = classes!("ZuButton-endIcon", size::icon_class(button_size));
+    icon.as_ref().map_or_else(
+        || html! {},
+        |icon| {
+            html! {
+                <span class={icon_cls}>
+                    {icon.clone()}
+                </span>
+            }
+        },
+    )
 }
 
 #[function_component(Button)]
@@ -151,10 +182,6 @@ pub fn button(props: &Props) -> Html {
     );
 
     //let label_cls = "ZuButton-label";
-    //let start_icon_cls = classes!("ZuButton-startIcon", props.size.icon_class(),);
-    //let end_icon_cls = classes!("ZuButton-endIcon", props.size.icon_class(),);
-
-    // TODO(Shaohua): Set class for start_icon and end_icon.
 
     html! {
         <ButtonBase
@@ -181,13 +208,9 @@ pub fn button(props: &Props) -> Html {
             on_touch_start={props.on_touch_start.clone()}
             tab_index={props.tab_index}
             >
-            if let Some(start_icon) = &props.start_icon {
-                {start_icon.clone()}
-            }
+            {create_start_icon(&props.start_icon, props.size)}
             {for props.children.iter()}
-            if let Some(end_icon) = &props.end_icon {
-                {end_icon.clone()}
-            }
+            {create_end_icon(&props.end_icon, props.size)}
         </ButtonBase>
     }
 }
