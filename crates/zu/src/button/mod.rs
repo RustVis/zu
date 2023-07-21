@@ -41,7 +41,7 @@ pub struct Props {
     pub disable_elevation: bool,
 
     /// If true, the keyboard focus ripple is disabled.
-    #[prop_or(false)]
+    #[prop_or(true)]
     pub disable_focus_ripple: bool,
 
     /// If true, the ripple effect is disabled.
@@ -192,8 +192,8 @@ pub fn button(props: &Props) -> Html {
             aria_label={&props.aria_label}
             component={props.component.clone()}
             disabled={props.disabled}
-            disable_focus_ripple={props.disable_focus_ripple}
             disable_ripple={props.disable_ripple}
+            focus_ripple={props.disable_focus_ripple}
             on_blur={props.on_blur.clone()}
             on_click={props.on_click.clone()}
             on_context_menu={props.on_context_menu.clone()}

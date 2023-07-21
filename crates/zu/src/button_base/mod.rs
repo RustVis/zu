@@ -51,7 +51,7 @@ pub struct Props {
 
     /// If true, the keyboard focus ripple is disabled.
     #[prop_or(false)]
-    pub disable_focus_ripple: bool,
+    pub focus_ripple: bool,
 
     /// This prop can help identify which element has keyboard focus.
     #[prop_or_default]
@@ -143,6 +143,7 @@ pub fn button_base(props: &Props) -> Html {
         } else {
             ""
         },
+        // TODO(Shaohua): read props.focus_ripple.
         if *focus_visible {
             props.focus_visible_class.as_str().to_owned()
         } else {

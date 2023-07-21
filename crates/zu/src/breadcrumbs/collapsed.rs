@@ -18,12 +18,13 @@ pub struct Props {
 
 #[function_component(BreadcrumbsCollapsed)]
 pub fn breadcrumbs_collapsed(props: &Props) -> Html {
+    // TODO(Shaohua): Check value of focus_ripple.
     html! {
         <li>
             <ButtonBase
                 classes="ZuBreadcrumbCollapsed-button"
                 style={&props.style}
-                disable_focus_ripple={false}>
+                focus_ripple={true}>
                 <MoreHorizontalIcon>
                     {props.collapsed_icon.clone()}
                 </MoreHorizontalIcon>

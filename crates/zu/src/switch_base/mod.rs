@@ -37,7 +37,7 @@ pub struct Props {
     #[prop_or(false)]
     pub disabled: bool,
 
-    #[prop_or(false)]
+    #[prop_or(true)]
     pub disable_focus_ripple: bool,
 
     #[prop_or_default]
@@ -116,7 +116,7 @@ pub fn switch_base(props: &Props) -> Html {
         <ButtonBase classes={root_cls}
             component="span"
             disabled={props.disabled}
-            disable_focus_ripple={props.disable_focus_ripple}
+            focus_ripple={!props.disable_focus_ripple}
         >
             <input class="ZuSwitchBase-input"
                 auto_focus={props.auto_focus.to_attr()}

@@ -68,10 +68,11 @@ pub fn bottom_navigation_action(props: &Props) -> Html {
 
     // TODO(Shaohua): Handle onChange and onClick events
 
+    // TODO(Shaohua): Check value of focus_ripple.
     html! {
         <ButtonBase classes={root_cls}
             style={&props.style}
-            disable_focus_ripple={false}>
+            focus_ripple={true}>
             {props.icon.clone()}
             <span class={label_cls}>
                 {props.label.clone()}
