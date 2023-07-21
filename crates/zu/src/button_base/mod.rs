@@ -17,8 +17,6 @@ use zu_util::prop::ToAttr;
 
 pub use touch_ripple::TouchRipple;
 
-pub const DEFAULT_LINK_COMPONENT: &str = "a";
-
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
     #[prop_or_default]
@@ -64,8 +62,8 @@ pub struct Props {
 
     /// The component used to render a link when the href prop is provided.
     ///
-    /// Default is 'a'
-    #[prop_or(AttrValue::from(DEFAULT_LINK_COMPONENT))]
+    /// Default is `a`.
+    #[prop_or(AttrValue::from("a"))]
     pub link_component: AttrValue,
 
     #[prop_or_default]
@@ -129,6 +127,8 @@ pub struct Props {
 
 #[function_component(ButtonBase)]
 pub fn button_base(props: &Props) -> Html {
+    debug_assert!(!props.component.is_empty());
+
     let focus_visible = use_state(|| false);
 
     let root_cls = classes!(

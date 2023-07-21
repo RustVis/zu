@@ -29,7 +29,7 @@ pub struct Props {
     #[prop_or_default]
     pub color: Color,
 
-    #[prop_or_default]
+    #[prop_or(AttrValue::from("button"))]
     pub component: AttrValue,
 
     /// If true, the component is disabled.
