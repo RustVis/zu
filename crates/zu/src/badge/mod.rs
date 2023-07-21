@@ -32,6 +32,7 @@ pub struct Props {
     #[prop_or(Color::Default)]
     pub color: Color,
 
+    /// Default value is `span`.
     #[prop_or(AttrValue::from("span"))]
     pub component: AttrValue,
 
@@ -58,7 +59,7 @@ pub struct Props {
     pub style: AttrValue,
 
     #[prop_or_default]
-    pub badge_classes: AttrValue,
+    pub badge_classes: Classes,
 
     #[prop_or_default]
     pub badge_style: AttrValue,
@@ -70,7 +71,7 @@ pub struct Props {
 
 #[function_component(Badge)]
 pub fn badge(props: &Props) -> Html {
-    let root_cls = classes!(props.classes.to_string(), "ZuBadge-root",);
+    let root_cls = classes!("ZuBadge-root", props.classes.clone());
 
     let badge_cls = classes!(
         "ZuBadge-badge",
@@ -83,8 +84,7 @@ pub fn badge(props: &Props) -> Html {
         anchor_origin::css_class(props.anchor_origin),
         props.overlap.css_class(),
         color::color_class(props.color),
-        props.badge_classes.to_string(),
-        props.classes.clone(),
+        props.badge_classes.clone(),
     );
 
     // TODO(Shaohua): Use invisible property.

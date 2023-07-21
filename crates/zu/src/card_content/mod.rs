@@ -13,7 +13,8 @@ pub struct Props {
     #[prop_or_default]
     pub classes: Classes,
 
-    #[prop_or_default]
+    /// Default value is `div`.
+    #[prop_or(AttrValue::from("div"))]
     pub component: AttrValue,
 
     #[prop_or_default]
@@ -22,16 +23,12 @@ pub struct Props {
 
 #[function_component(CardContent)]
 pub fn card_content(props: &Props) -> Html {
-    let component = if props.component.is_empty() {
-        "div"
-    } else {
-        props.component.as_str()
-    };
     let root_cls = classes!("ZuCardContent-root", props.classes.clone());
 
     html! {
-        <@{component.to_owned()} class={root_cls}
+        <@{props.component.to_string()} class={root_cls}
             style={props.style.to_attr()}>
+            {for props.children.iter()}
         </@>
     }
 }

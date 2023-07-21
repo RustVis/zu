@@ -25,7 +25,9 @@ pub struct Props {
     pub classes: Classes,
 
     /// The component used for the root node.
-    #[prop_or_default]
+    ///
+    /// Default value is `div`.
+    #[prop_or(AttrValue::from("div"))]
     pub component: AttrValue,
 
     /// Max avatars to show before +x.
@@ -68,12 +70,6 @@ pub fn avatar_group(props: &Props) -> Html {
 
     let margin_left = props.spacing.space();
 
-    let component = if props.component.is_empty() {
-        "div"
-    } else {
-        props.component.as_str()
-    };
-
     let root_cls = classes!("ZuAvatarGroup-root", props.classes.clone());
     let avatar_style = margin_left.map_or_else(String::new, |margin_left| {
         format!("margin-left: {margin_left}px;")
@@ -102,7 +98,7 @@ pub fn avatar_group(props: &Props) -> Html {
     let children = ChildrenWithProps::new(children);
 
     html! {
-        <@{component.to_owned()} class={root_cls}>
+        <@{props.component.to_string()} class={root_cls}>
             if extra_avatars > 0 {
                 <Avatar classes={AVATAR_CLS} style={avatar_style.clone()}>
                     {"+"}{extra_avatars}

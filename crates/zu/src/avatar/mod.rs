@@ -31,7 +31,8 @@ pub struct Props {
     #[prop_or(false)]
     pub color_default: bool,
 
-    #[prop_or_default]
+    /// Default value is `div`.
+    #[prop_or(AttrValue::from("div"))]
     pub component: AttrValue,
 
     #[prop_or_default]
@@ -77,11 +78,6 @@ pub fn avatar(props: &Props) -> Html {
     };
     let has_image_no_failing = has_image && use_loaded.data.is_some();
 
-    let component = if props.component.is_empty() {
-        "div"
-    } else {
-        props.component.as_str()
-    };
     let root_cls = classes!(
         "ZuAvatar-root",
         variant::css_class(props.variant),
@@ -92,6 +88,7 @@ pub fn avatar(props: &Props) -> Html {
         },
         props.classes.clone(),
     );
+
     // TODO(Shaohua): Setup text color based on current theme.
     let style = [
         if props.alt.is_empty() {
@@ -127,7 +124,7 @@ pub fn avatar(props: &Props) -> Html {
     };
 
     html! {
-        <@{component.to_owned()} class={root_cls} style={style}>
+        <@{props.component.to_string()} class={root_cls} style={style}>
             {children}
         </@>
     }

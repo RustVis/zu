@@ -26,7 +26,8 @@ pub struct Props {
     #[prop_or_default]
     pub color: Color,
 
-    #[prop_or_default]
+    /// Default value is `a`.
+    #[prop_or(AttrValue::from("a"))]
     pub component: AttrValue,
 
     #[prop_or_default]
@@ -67,19 +68,13 @@ pub fn link(props: &Props) -> Html {
         props.classes.clone(),
     );
 
-    let component = if props.component.is_empty() {
-        "a"
-    } else {
-        props.component.as_str()
-    };
-
     html! {
         <Typography
             classes={root_cls}
-            style={&props.style}
+            style={props.style.clone()}
             color={props.color}
-            component={component.to_owned()}
-            href={&props.href}
+            component={props.component.clone()}
+            href={props.href.clone()}
             variant={props.variant}>
             {for props.children.iter()}
         </Typography>

@@ -23,6 +23,7 @@ pub struct Props {
     #[prop_or_default]
     pub classes: Classes,
 
+    /// Default value is `vr` or `hr` or `div`.
     #[prop_or_default]
     pub component: AttrValue,
 

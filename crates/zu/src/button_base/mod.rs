@@ -35,7 +35,8 @@ pub struct Props {
     #[prop_or_default]
     pub classes: Classes,
 
-    #[prop_or_default]
+    /// Default value is `button`.
+    #[prop_or(AttrValue::from("button"))]
     pub component: AttrValue,
 
     /// If true, the component is disabled.
@@ -154,12 +155,6 @@ pub fn button_base(props: &Props) -> Html {
 
     // TODO(Shaohua): Handle mouse events.
 
-    let component = if props.component.is_empty() {
-        "button"
-    } else {
-        props.component.as_str()
-    };
-
     // TODO(Shaohua): Add touch ripple.
     // TODO(Shaohua): Bind on_focus_visible
 
@@ -168,7 +163,7 @@ pub fn button_base(props: &Props) -> Html {
     let enable_touch_ripple = !props.disable_touch_ripple && !props.disabled;
 
     html! {
-        <@{component.to_owned()} class={root_cls}
+        <@{props.component.to_string()} class={root_cls}
             aria-label={props.aria_label.to_attr()}
             disabled={props.disabled}
             onblur={props.on_blur.clone()}

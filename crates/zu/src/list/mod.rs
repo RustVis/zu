@@ -13,7 +13,8 @@ pub struct Props {
     #[prop_or_default]
     pub classes: Classes,
 
-    #[prop_or_default]
+    /// Default value is `ul`.
+    #[prop_or(AttrValue::from("ul"))]
     pub component: AttrValue,
 
     /// If true, compact vertical padding designed for keyboard and mouse input
@@ -50,14 +51,9 @@ pub fn list(props: &Props) -> Html {
         },
         props.classes.clone(),
     );
-    let component = if props.component.is_empty() {
-        "ul"
-    } else {
-        props.component.as_str()
-    };
 
     html! {
-        <@{component.to_owned()} class={root_cls}
+        <@{props.component.to_string()} class={root_cls}
             style={props.style.to_attr()}>
             if let Some(subheader) = &props.subheader {
                 {subheader.clone()}

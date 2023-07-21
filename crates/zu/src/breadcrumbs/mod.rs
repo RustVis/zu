@@ -25,7 +25,8 @@ pub struct Props {
     #[prop_or_default]
     pub classes: Classes,
 
-    #[prop_or_default]
+    /// Default value is `nav`.
+    #[prop_or(AttrValue::from("nav"))]
     pub component: AttrValue,
 
     /// Override the default label for the expand button.
@@ -57,16 +58,11 @@ pub struct Props {
 #[function_component(Breadcrumbs)]
 pub fn breadcrumbs(props: &Props) -> Html {
     let root_cls = classes!("ZuBreadcrumb-root", props.classes.clone(),);
-    let component = if props.component.is_empty() {
-        AttrValue::from("nav")
-    } else {
-        props.component.clone()
-    };
 
     html! {
         <Typography classes={root_cls}
             aria_label={&props.aria_label}
-            component={component}
+            component={props.component.clone()}
             style={&props.style}>
             <ol class="ZuBreadcrumb-ol">
                 {for props.children.iter()}

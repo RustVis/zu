@@ -25,7 +25,8 @@ pub struct Props {
     #[prop_or_default]
     pub color: Color,
 
-    #[prop_or_default]
+    /// Default value is `svg`.
+    #[prop_or(AttrValue::from("svg"))]
     pub component: AttrValue,
 
     /// The fontSize applied to the icon.
@@ -64,12 +65,6 @@ pub struct Props {
 
 #[function_component(SvgIcon)]
 pub fn svg_icon(props: &Props) -> Html {
-    let component = if props.component.is_empty() {
-        "svg"
-    } else {
-        props.component.as_str()
-    };
-
     let root_cls = classes!(
         "ZuSvgIcon-root",
         props.color.css_class(),
@@ -86,7 +81,7 @@ pub fn svg_icon(props: &Props) -> Html {
     let aria_hidden = !props.title_access.is_empty();
 
     html! {
-        <@{component.to_owned()} class={root_cls}
+        <@{props.component.to_string()} class={root_cls}
             style={props.style.to_attr()}
             focusable={"false"}
             color={props.html_color.to_attr()}

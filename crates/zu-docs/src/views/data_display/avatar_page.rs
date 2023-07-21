@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{function_component, html, AttrValue, Html};
+use yew::{classes, function_component, html, AttrValue, Html};
 use zu::avatar::{Avatar, Props};
 use zu::avatar_group::AvatarGroup;
 use zu::badge::{
@@ -20,9 +20,8 @@ pub fn styled_badge(props: &BadgeProps) -> Html {
     let style_content = include_str!("avatar_page_styled_badge.css");
     let style = stylist::Style::new(style_content)
         .expect("Invalid style file: avatar_page_styled_badge.css");
-    let style_cls = style.get_class_name().to_string();
     let new_props = BadgeProps {
-        badge_classes: AttrValue::from(style_cls),
+        badge_classes: classes!(style.get_class_name().to_owned()),
         ..props.clone()
     };
     html! {

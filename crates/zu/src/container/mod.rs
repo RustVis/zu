@@ -16,7 +16,8 @@ pub struct Props {
     #[prop_or_default]
     pub classes: Classes,
 
-    #[prop_or_default]
+    /// Default value is `div`.
+    #[prop_or(AttrValue::from("div"))]
     pub component: AttrValue,
 
     /// If true, the left and right padding is removed.
@@ -40,12 +41,6 @@ pub struct Props {
 
 #[function_component(Container)]
 pub fn container(props: &Props) -> Html {
-    let component = if props.component.is_empty() {
-        "div"
-    } else {
-        props.component.as_str()
-    };
-
     let root_cls = classes!(
         "ZuContainer-root",
         size::css_class(&props.max_width),
@@ -66,7 +61,7 @@ pub fn container(props: &Props) -> Html {
     };
 
     html! {
-        <@{component.to_owned()} class={root_cls} style={style}>
+        <@{props.component.to_string()} class={root_cls} style={style}>
             {for props.children.iter()}
         </@>
     }

@@ -16,7 +16,8 @@ pub struct Props {
     #[prop_or_default]
     pub classes: Classes,
 
-    #[prop_or_default]
+    /// Default value is `div`.
+    #[prop_or(AttrValue::from("div"))]
     pub component: AttrValue,
 
     /// Image to be displayed as a background image.
@@ -46,12 +47,6 @@ pub fn card_media(props: &Props) -> Html {
     const IMAGE_COMPONENTS: &[&str] = &["picture", "img"];
     let is_media_component = MEDIA_COMPONENTS.contains(&props.component.as_str());
     let is_image_component = IMAGE_COMPONENTS.contains(&props.component.as_str());
-
-    let component = if props.component.is_empty() {
-        "div"
-    } else {
-        props.component.as_str()
-    };
 
     let root_cls = classes!(
         "ZuCardMedia-root",
@@ -92,7 +87,7 @@ pub fn card_media(props: &Props) -> Html {
 
     // TODO(Shaohua): Add role attribute.
     html! {
-        <@{component.to_owned()}
+        <@{props.component.to_string()}
             class={root_cls}
             alt={props.alt.to_attr()}
             title={props.title.to_attr()}

@@ -8,7 +8,9 @@ use zu_util::prop::ToAttr;
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
     /// The component used for the root node.
-    #[prop_or_default]
+    ///
+    /// Default value is `div`.
+    #[prop_or(AttrValue::from("div"))]
     pub component: AttrValue,
 
     #[prop_or_default]
@@ -24,14 +26,10 @@ pub struct Props {
 #[function_component(Box)]
 pub fn r#box(props: &Props) -> Html {
     let root_cls = classes!("ZuBox-root", props.classes.clone());
-    let component = if props.component.is_empty() {
-        "div"
-    } else {
-        props.component.as_str()
-    };
 
     html! {
-        <@{component.to_owned()} class={root_cls} style={props.style.to_attr()}>
+        <@{props.component.to_string()} class={root_cls}
+            style={props.style.to_attr()}>
             {for props.children.iter()}
         </@>
     }

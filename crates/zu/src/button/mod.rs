@@ -160,7 +160,7 @@ pub fn button(props: &Props) -> Html {
         <ButtonBase
             classes={root_cls}
             aria_label={&props.aria_label}
-            component={&props.component}
+            component={props.component.clone()}
             disabled={props.disabled}
             disable_focus_ripple={props.disable_focus_ripple}
             disable_ripple={props.disable_ripple}

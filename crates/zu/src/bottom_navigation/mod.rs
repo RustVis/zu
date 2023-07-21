@@ -16,7 +16,8 @@ pub struct Props {
     #[prop_or_default]
     pub classes: Classes,
 
-    #[prop_or_default]
+    /// Default value is `div`.
+    #[prop_or(AttrValue::from("div"))]
     pub component: AttrValue,
 
     /// Callback fired when the value changes.
@@ -33,18 +34,13 @@ pub struct Props {
 #[function_component(BottomNavigation)]
 pub fn bottom_navigation(props: &Props) -> Html {
     let root_cls = classes!("ZuBottomNavigation", props.classes.clone());
-    let component = if props.component.is_empty() {
-        "div"
-    } else {
-        props.component.as_str()
-    };
 
     // TODO(Shaohua): Add on_change, value and show_label to children props.
 
     html! {
-        <@{component.to_owned()} class={root_cls}
+        <@{props.component.to_string()} class={root_cls}
             style={props.style.to_attr()}>
-            { for props.children.iter()}
+            {for props.children.iter()}
         </@>
     }
 }

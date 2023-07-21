@@ -21,7 +21,9 @@ pub struct Props {
     pub color: Color,
 
     /// The component used for the root node
-    #[prop_or_default]
+    ///
+    /// Default is `label`.
+    #[prop_or(AttrValue::from("label"))]
     pub component: AttrValue,
 
     /// If true, the label should be displayed in a disabled state.
@@ -51,12 +53,6 @@ pub struct Props {
 
 #[function_component(FormLabel)]
 pub fn form_label(props: &Props) -> Html {
-    let component = if props.component.is_empty() {
-        "label"
-    } else {
-        props.component.as_str()
-    };
-
     let root_cls = classes!(
         "ZuFormLabel-root",
         if props.color == Color::Secondary {
@@ -100,7 +96,7 @@ pub fn form_label(props: &Props) -> Html {
     };
 
     html! {
-        <@{component.to_owned()} class={root_cls} style={style}>
+        <@{props.component.to_string()} class={root_cls} style={style}>
             {for props.children.iter()}
             if props.required {
                 <span class={asterisk_cls}>
