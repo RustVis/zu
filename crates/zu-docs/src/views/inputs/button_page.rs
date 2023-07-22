@@ -3,7 +3,7 @@
 // in the LICENSE file.
 
 use stylist::Style;
-use yew::{classes, function_component, html, Html, MouseEvent};
+use yew::{classes, function_component, html, Callback, Html, MouseEvent};
 use zu::button::Button;
 use zu::icon_button::IconButton;
 use zu::loading_button::{LoadingButton, Position};
@@ -233,6 +233,112 @@ fn create_icon_button_view() -> Html {
     }
 }
 
+fn create_loading_button_toggle_view() -> Html {
+    let margin_style = Style::new(
+        r#"
+        button {
+            margin: 8px;
+        }
+        "#,
+    )
+    .expect("Failed to create margin-style");
+
+    let handle_click = Callback::from(|event: MouseEvent| {
+        event.prevent_default();
+        log::info!("on click");
+    });
+
+    // TODO(Shaohua): Replace with state.
+    let loading = true;
+
+    html! {
+        <>
+        <p>{"Toggle the loading switch to see the transition between the different states."}</p>
+        <DemoBox>
+        <Box classes={classes!(margin_style.get_class_name().to_owned())}>
+            <LoadingButton
+                size={Size::Small}
+                on_click={handle_click.clone()}
+                loading={loading}
+                variant={Variant::Outlined}
+                disabled=true
+                >
+                <span>{"disabled"}</span>
+            </LoadingButton>
+            <LoadingButton
+                size={Size::Small}
+                on_click={handle_click.clone()}
+                loading={loading}
+                loading_indicator="Loading…"
+                variant={Variant::Outlined}
+                >
+                <span>{"Fetch data"}</span>
+            </LoadingButton>
+            <LoadingButton
+                size={Size::Small}
+                on_click={handle_click.clone()}
+                end_icon={html!{<Send />}}
+                loading={loading}
+                loading_position={Position::End}
+                variant={Variant::Contained}
+                >
+                <span>{"Send"}</span>
+            </LoadingButton>
+            <LoadingButton
+                size={Size::Small}
+                color={Color::Secondary}
+                on_click={handle_click.clone()}
+                loading={loading}
+                loading_position={Position::Start}
+                start_icon={html!{<Save />}}
+                variant={Variant::Contained}
+                >
+                <span>{"Save"}</span>
+            </LoadingButton>
+        </Box>
+
+        <Box classes={classes!(margin_style.get_class_name().to_owned())}>
+            <LoadingButton
+                on_click={handle_click.clone()}
+                loading={loading}
+                variant={Variant::Outlined}
+                disabled=true
+                >
+                <span>{"disabled"}</span>
+            </LoadingButton>
+            <LoadingButton
+                on_click={handle_click.clone()}
+                loading={loading}
+                loading_indicator="Loading…"
+                variant={Variant::Outlined}
+                >
+                <span>{"Fetch data"}</span>
+            </LoadingButton>
+            <LoadingButton
+                on_click={handle_click.clone()}
+                end_icon={html!{<Send />}}
+                loading={loading}
+                loading_position={Position::End}
+                variant={Variant::Contained}
+                >
+                <span>{"Send"}</span>
+            </LoadingButton>
+            <LoadingButton
+                color={Color::Secondary}
+                on_click={handle_click}
+                loading={loading}
+                loading_position={Position::Start}
+                start_icon={html!{<Save />}}
+                variant={Variant::Contained}
+                >
+                <span>{"Save"}</span>
+            </LoadingButton>
+        </Box>
+        </DemoBox>
+        </>
+    }
+}
+
 fn create_loading_button_view() -> Html {
     html! {
         <>
@@ -250,6 +356,9 @@ fn create_loading_button_view() -> Html {
                 {"Save"}
             </LoadingButton>
         </DemoBox>
+
+        {create_loading_button_toggle_view()}
+
         </>
     }
 }

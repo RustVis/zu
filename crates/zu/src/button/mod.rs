@@ -66,6 +66,24 @@ pub struct Props {
     #[prop_or_default]
     pub href: AttrValue,
 
+    /// The size of the component.
+    ///
+    /// `Small` is equivalent to the dense button styling.
+    ///
+    /// Default is `Medium`.
+    #[prop_or(Size::Medium)]
+    pub size: Size,
+
+    #[prop_or_default]
+    pub style: AttrValue,
+
+    #[prop_or_default]
+    pub tab_index: Option<i32>,
+
+    /// Default value is `Text`.
+    #[prop_or_default]
+    pub variant: ButtonVariant,
+
     #[prop_or_default]
     pub on_blur: Option<Callback<FocusEvent>>,
 
@@ -111,24 +129,6 @@ pub struct Props {
 
     #[prop_or_default]
     pub on_touch_start: Option<Callback<TouchEvent>>,
-
-    /// The size of the component.
-    ///
-    /// `Small` is equivalent to the dense button styling.
-    ///
-    /// Default is `Medium`.
-    #[prop_or(Size::Medium)]
-    pub size: Size,
-
-    #[prop_or_default]
-    pub style: AttrValue,
-
-    #[prop_or_default]
-    pub tab_index: Option<i32>,
-
-    /// Default value is `Text`.
-    #[prop_or_default]
-    pub variant: ButtonVariant,
 }
 
 fn create_start_icon(icon: &Option<Html>, button_size: Size) -> Html {

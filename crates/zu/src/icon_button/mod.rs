@@ -6,7 +6,10 @@ mod color;
 mod edge;
 mod size;
 
-use yew::{classes, function_component, html, AttrValue, Children, Classes, Html, Properties};
+use yew::{
+    classes, function_component, html, AttrValue, Callback, Children, Classes, DragEvent,
+    FocusEvent, Html, KeyboardEvent, MouseEvent, Properties, TouchEvent,
+};
 
 use crate::button_base::ButtonBase;
 use crate::styles::color::Color;
@@ -49,6 +52,52 @@ pub struct Props {
 
     #[prop_or_default]
     pub style: AttrValue,
+
+    #[prop_or_default]
+    pub on_blur: Option<Callback<FocusEvent>>,
+
+    #[prop_or_default]
+    pub on_click: Option<Callback<MouseEvent>>,
+
+    #[prop_or_default]
+    pub on_context_menu: Option<Callback<MouseEvent>>,
+
+    #[prop_or_default]
+    pub on_drag_leave: Option<Callback<DragEvent>>,
+
+    #[prop_or_default]
+    pub on_focus: Option<Callback<FocusEvent>>,
+
+    /// Callback fired when the component is focused with a keyboard.
+    #[prop_or_default]
+    pub on_focus_visible: Option<Callback<FocusEvent>>,
+
+    #[prop_or_default]
+    pub on_key_down: Option<Callback<KeyboardEvent>>,
+
+    #[prop_or_default]
+    pub on_key_up: Option<Callback<KeyboardEvent>>,
+
+    #[prop_or_default]
+    pub on_mouse_down: Option<Callback<MouseEvent>>,
+
+    #[prop_or_default]
+    pub on_mouse_enter: Option<Callback<MouseEvent>>,
+
+    #[prop_or_default]
+    pub on_mouse_leave: Option<Callback<MouseEvent>>,
+
+    #[prop_or_default]
+    pub on_mouse_up: Option<Callback<MouseEvent>>,
+
+    #[prop_or_default]
+    pub on_touch_end: Option<Callback<TouchEvent>>,
+
+    #[prop_or_default]
+    pub on_touch_move: Option<Callback<TouchEvent>>,
+
+    #[prop_or_default]
+    pub on_touch_start: Option<Callback<TouchEvent>>,
 }
 
 #[function_component(IconButton)]
