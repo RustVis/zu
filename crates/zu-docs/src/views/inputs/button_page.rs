@@ -269,7 +269,7 @@ fn create_loading_button_toggle_view() -> Html {
                 size={Size::Small}
                 on_click={handle_click.clone()}
                 loading={loading}
-                loading_indicator="Loading…"
+                loading_indicator={html!{"Loading…"}}
                 variant={Variant::Outlined}
                 >
                 <span>{"Fetch data"}</span>
@@ -309,7 +309,7 @@ fn create_loading_button_toggle_view() -> Html {
             <LoadingButton
                 on_click={handle_click.clone()}
                 loading={loading}
-                loading_indicator="Loading…"
+                loading_indicator={html!{"Loading…"}}
                 variant={Variant::Outlined}
                 >
                 <span>{"Fetch data"}</span>
@@ -348,7 +348,8 @@ fn create_loading_button_view() -> Html {
             <LoadingButton loading=true variant={Variant::Outlined}>
                 {"Submit"}
             </LoadingButton>
-            <LoadingButton loading=true loading_indicator="Loading…" variant={Variant::Outlined}>
+            <LoadingButton loading=true loading_indicator={html!{"Loading…"}}
+                variant={Variant::Outlined}>
                 {"Fetch data"}
             </LoadingButton>
             <LoadingButton loading=true loading_position={Position::Start}

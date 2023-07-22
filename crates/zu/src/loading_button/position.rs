@@ -14,3 +14,41 @@ impl Default for Position {
         Self::Center
     }
 }
+
+impl Position {
+    #[must_use]
+    pub const fn root_cls_name(self) -> &'static str {
+        match self {
+            Self::Start => "ZuLoadingButton-loadingPositionStart",
+            Self::End => "ZuLoadingButton-loadingPositionEnd",
+            Self::Center => "ZuLoadingButton-loadingPositionCenter",
+        }
+    }
+
+    #[must_use]
+    pub const fn indicator_cls_name(self) -> &'static str {
+        match self {
+            Self::Start => "ZuLoadingButton-loadingIndicatorStart",
+            Self::End => "ZuLoadingButton-loadingIndicatorEnd",
+            Self::Center => "ZuLoadingButton-loadingIndicatorCenter",
+        }
+    }
+
+    #[must_use]
+    pub const fn start_icon_cls_name(self) -> &'static str {
+        match self {
+            Self::Start => "ZuLoadingButton-startIconLoadingStart",
+            Self::End => "ZuLoadingButton-startIconLoadingEnd",
+            Self::Center => "ZuLoadingButton-startIconLoadingCenter",
+        }
+    }
+
+    #[must_use]
+    pub const fn end_icon_cls_name(self) -> &'static str {
+        match self {
+            Self::Start => "ZuLoadingButton-endIconLoadingStart",
+            Self::End => "ZuLoadingButton-endIconLoadingEnd",
+            Self::Center => "ZuLoadingButton-endIconLoadingCenter",
+        }
+    }
+}

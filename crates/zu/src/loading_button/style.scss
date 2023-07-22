@@ -4,6 +4,49 @@
 // Styles applied to the root element.
 .ZuLoadingButton-root {
 
+  // Styles applied to the startIcon element if loading={true} and loadingPosition="start".
+  & .ZuLoadingButton-startIconLoadingStart,
+  // Styles applied to the endIcon element if loading={true} and loadingPosition="end".
+  & .ZuLoadingButton-endIconLoadingEnd {
+    transition: opacity $zu-duration-short;
+    opacity: 0;
+  }
+
+  // Styles applied to the root element if loading={true}.
+  &.ZuLoadingButton-loading {
+    color: transparent;
+  }
+}
+
+.ZuLoadingButton-loadingPositionStart {
+
+  &.ZuLoadingButton-fullWidth {
+
+    & .ZuLoadingButton-startIconLoadingStart,
+    & .ZuLoadingButton-endIconLoadingEnd {
+      transition: opacity $zu-duration-short;
+      opacity: 0;
+      margin-right: -8px;
+    }
+  }
+}
+
+.ZuLoadingButton-loadingPositionEnd {
+
+  &.ZuLoadingButton-fullWidth {
+
+    & .ZuLoadingButton-startIconLoadingStart,
+    & .ZuLoadingButton-endIconLoadingEnd {
+      transition: opacity $zu-duration-short;
+      opacity: 0;
+      margin-left: -8px;
+    }
+  }
+}
+
+.ZuLoadingButton-loadingPositionCenter {
+  transition: background-color $zu-duration-short, box-shadow $zu-duration-short,
+    border-color $zu-duration-short;
 }
 
 // Styles applied to the root element if variant="text".
@@ -236,11 +279,6 @@
 
 }
 
-// Styles applied to the root element if loading={true}.
-.ZuLoadingButton-loading {
-
-}
-
 // Styles applied to the loadingIndicator element.
 .ZuLoadingButton-loadingIndicator {
 
@@ -258,15 +296,5 @@
 
 // Styles applied to the loadingIndicator element if loadingPosition="end".
 .ZuLoadingButton-loadingIndicatorEnd {
-
-}
-
-// Styles applied to the endIcon element if loading={true} and loadingPosition="end".
-.ZuLoadingButton-endIconLoadingEnd {
-
-}
-
-// Styles applied to the startIcon element if loading={true} and loadingPosition="start".
-.ZuLoadingButton-startIconLoadingStart {
 
 }

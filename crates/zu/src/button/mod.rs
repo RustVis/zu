@@ -131,22 +131,15 @@ pub struct Props {
     pub on_touch_start: Option<Callback<TouchEvent>>,
 }
 
-fn create_start_icon(icon: &Option<Html>, button_size: Size) -> Html {
-    let icon_cls = classes!("ZuButton-startIcon", size::icon_class(button_size));
-    icon.as_ref().map_or_else(
-        || html! {},
-        |icon| {
-            html! {
-                <span class={icon_cls}>
-                    {icon.clone()}
-                </span>
-            }
+fn create_icon(is_start: bool, icon: &Option<Html>, button_size: Size) -> Html {
+    let icon_cls = classes!(
+        if is_start {
+            "ZuButton-startIcon"
+        } else {
+            "ZuButton-endIcon"
         },
-    )
-}
-
-fn create_end_icon(icon: &Option<Html>, button_size: Size) -> Html {
-    let icon_cls = classes!("ZuButton-endIcon", size::icon_class(button_size));
+        size::icon_class(button_size)
+    );
     icon.as_ref().map_or_else(
         || html! {},
         |icon| {
@@ -194,6 +187,7 @@ pub fn button(props: &Props) -> Html {
             disabled={props.disabled}
             disable_ripple={props.disable_ripple}
             focus_ripple={props.disable_focus_ripple}
+            tab_index={props.tab_index}
             on_blur={props.on_blur.clone()}
             on_click={props.on_click.clone()}
             on_context_menu={props.on_context_menu.clone()}
@@ -209,11 +203,10 @@ pub fn button(props: &Props) -> Html {
             on_touch_end={props.on_touch_end.clone()}
             on_touch_move={props.on_touch_move.clone()}
             on_touch_start={props.on_touch_start.clone()}
-            tab_index={props.tab_index}
             >
-            {create_start_icon(&props.start_icon, props.size)}
+            {create_icon(true, &props.start_icon, props.size)}
             {for props.children.iter()}
-            {create_end_icon(&props.end_icon, props.size)}
+            {create_icon(false, &props.end_icon, props.size)}
         </ButtonBase>
     }
 }
