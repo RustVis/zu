@@ -8,9 +8,12 @@ use zu::button::Button;
 use zu::icon_button::IconButton;
 use zu::loading_button::{LoadingButton, Position};
 use zu::r#box::Box;
+use zu::stack::Stack;
 use zu::styles::button_variant::ButtonVariant as Variant;
 use zu::styles::color::Color;
+use zu::styles::flex_direction::FlexDirection;
 use zu::styles::size::Size;
+use zu::styles::spacing::Spacing;
 use zu::svg_icon::FontSize;
 use zuicon_material::{AddShoppingCart, Alarm, Delete, Fingerprint, Save, Send};
 
@@ -340,11 +343,13 @@ fn create_loading_button_toggle_view() -> Html {
 }
 
 fn create_loading_button_view() -> Html {
+    // TODO(Shaohua): Replace Spacing::Large with Spacing::Num(2)
     html! {
         <>
         <h2>{"Loading button"}</h2>
         <p>{"Loading buttons can show loading state and disable interactions."}</p>
         <DemoBox>
+        <Stack direction={FlexDirection::Row} spacing={Spacing::Large}>
             <LoadingButton loading=true variant={Variant::Outlined}>
                 {"Submit"}
             </LoadingButton>
@@ -356,6 +361,12 @@ fn create_loading_button_view() -> Html {
                 start_icon={html!{<Save />}} variant={Variant::Outlined}>
                 {"Save"}
             </LoadingButton>
+
+            <LoadingButton loading=true loading_position={Position::End}
+                end_icon={html!{<Send />}} variant={Variant::Outlined}>
+                {"Send"}
+            </LoadingButton>
+        </Stack>
         </DemoBox>
 
         {create_loading_button_toggle_view()}

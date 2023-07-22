@@ -3,6 +3,22 @@
 
 // Styles applied to the root element.
 .ZuLoadingButton-root {
+  min-width: 64px;
+  padding: 6px 16px;
+  transition: background-color $zu-duration-short $zu-easing-easeInOut 0ms,
+  box-shadow $zu-duration-short $zu-easing-easeInOut 0ms,
+  border-color $zu-duration-short $zu-easing-easeInOut 0ms,
+  color $zu-duration-short $zu-easing-easeInOut 0ms;
+
+  border-radius: $zu-shape-borderRadius;
+
+  // button typography
+  font-family: $zu-typography-button-fontFamily;
+  font-weight: $zu-typography-button-fontWeight;
+  font-size: $zu-typography-button-fontSize;
+  line-height: $zu-typography-button-lineHeight;
+  letter-spacing: $zu-typography-button-letterSpacing;
+  text-transform: $zu-typography-button-textTransform;
 
   // Styles applied to the startIcon element if loading={true} and loadingPosition="start".
   & .ZuLoadingButton-startIconLoadingStart,
@@ -281,7 +297,63 @@
 
 // Styles applied to the loadingIndicator element.
 .ZuLoadingButton-loadingIndicator {
+  position: absolute;
+  display: flex;
+  visibility: visible;
 
+  &.ZuLoadingButton-loadingIndicatorStart {
+    &.ZuLoadingButton-loadingIndicatorOutlined,
+    &.ZuLoadingButton-loadingIndicatorContained {
+
+      &.ZuLoadingButton-loadingIndicatorSmall {
+        left: 10px;
+      }
+
+      &.ZuLoadingButton-loadingIndicatorMedium,
+      &.ZuLoadingButton-loadingIndicatorLarge {
+        left: 14px;
+      }
+    }
+
+    &.ZuLoadingButton-loadingIndicatorText {
+      left: 6px;
+    }
+
+    &.ZuLoadingButton-loadingIndicatorFullWidth {
+      position: relative;
+      left: -10px;
+    }
+  }
+
+  &.ZuLoadingButton-loadingIndicatorCenter {
+    left: 50%;
+    transform: translate(-50%);
+    color: $zu-palette-action-disabled;
+  }
+
+  &.ZuLoadingButton-loadingIndicatorEnd {
+    &.ZuLoadingButton-loadingIndicatorOutlined,
+    &.ZuLoadingButton-loadingIndicatorContained {
+
+      &.ZuLoadingButton-loadingIndicatorSmall {
+        right: 10px;
+      }
+
+      &.ZuLoadingButton-loadingIndicatorMedium,
+      &.ZuLoadingButton-loadingIndicatorLarge {
+        right: 14px;
+      }
+    }
+
+    &.ZuLoadingButton-loadingIndicatorText {
+      right: 6px;
+    }
+
+    &.ZuLoadingButton-loadingIndicatorFullWidth {
+      position: relative;
+      right: -10px;
+    }
+  }
 }
 
 // Styles applied to the loadingIndicator element if loadingPosition="center".

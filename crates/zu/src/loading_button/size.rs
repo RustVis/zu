@@ -21,3 +21,12 @@ pub const fn icon_class(size: Size) -> &'static str {
         Size::Large => "ZuLoadingButton-iconSizeLarge",
     }
 }
+
+#[must_use]
+pub const fn indicator_class(size: Size) -> &'static str {
+    match size {
+        Size::Small => "ZuLoadingButton-loadingIndicatorSizeSmall",
+        Size::Medium => "ZuLoadingButton-loadingIndicatorSizeMedium",
+        Size::Large => "ZuLoadingButton-loadingIndicatorSizeLarge",
+    }
+}

@@ -13,6 +13,7 @@ use yew::{
 };
 
 use crate::button_base::ButtonBase;
+use crate::circular_progress::{CircularProgress, Size as CircularProgressSize};
 use crate::styles::button_variant::ButtonVariant;
 use crate::styles::color::Color;
 use crate::styles::size::Size;
@@ -52,7 +53,7 @@ pub struct Props {
     #[prop_or_default]
     pub loading_indicator: Option<Html>,
 
-    #[prop_or_default]
+    #[prop_or(Position::Center)]
     pub loading_position: Position,
 
     #[prop_or_default]
@@ -71,7 +72,7 @@ pub struct Props {
     #[prop_or_default]
     pub tab_index: Option<i32>,
 
-    #[prop_or_default]
+    #[prop_or(ButtonVariant::Text)]
     pub variant: ButtonVariant,
 
     #[prop_or_default]
@@ -142,20 +143,47 @@ fn create_icon(is_start: bool, icon: &Option<Html>, button_size: Size) -> Html {
     )
 }
 
-fn create_indicator(position: Position) -> Html {
+fn create_indicator(
+    indicator: &Option<Html>,
+    position: Position,
+    button_size: Size,
+    full_width: bool,
+) -> Html {
     let root_cls = classes!(
         "ZuLoadingButton-loadingIndicator",
         position.indicator_cls_name(),
+        size::indicator_class(button_size),
+        if full_width {
+            "ZuLoadingButton-loadingIndicatorFullWidth"
+        } else {
+            ""
+        }
     );
 
-    html! {
-        <span class={root_cls}>
-        </span>
+    if let Some(indicator) = indicator {
+        html! {
+            <span class={root_cls}>
+                {indicator.clone()}
+            </span>
+        }
+    } else {
+        html! {
+            <span class={root_cls}>
+                <CircularProgress color={Color::Inherit} size={CircularProgressSize::Num(16)} />
+            </span>
+        }
     }
 }
 
 #[function_component(LoadingButton)]
 pub fn loading_button(props: &Props) -> Html {
+    if props.start_icon.is_some() && props.loading_position != Position::Start {
+        log::error!("The loading_position='start' should be used in combination with start_icon.");
+    }
+    if props.end_icon.is_some() && props.loading_position != Position::End {
+        log::error!("The loading_position='end' should be used in combination with end_icon.");
+    }
+
     let root_cls = classes!(
         "ZuLoadingButton-root",
         variant::css_class(props.variant),
@@ -183,11 +211,55 @@ pub fn loading_button(props: &Props) -> Html {
         props.classes.clone(),
     );
 
+    let indicator = create_indicator(
+        &props.loading_indicator,
+        props.loading_position,
+        props.size,
+        props.full_width,
+    );
+
+    let inner_nodes = match props.loading_position {
+        Position::Start => {
+            log::info!("position is Start, loading: {}", props.loading);
+            html! {
+                <>
+                if props.loading {
+                    {indicator}
+                } else {
+                    {create_icon(true, &props.start_icon, props.size)}
+                }
+                {for props.children.iter()}
+                </>
+            }
+        }
+        Position::Center => {
+            html! {
+                if props.loading {
+                    {indicator}
+                } else {
+                    {for props.children.iter()}
+                }
+            }
+        }
+        Position::End => {
+            html! {
+                <>
+                {for props.children.iter()}
+                if props.loading {
+                    {indicator}
+                } else {
+                    {create_icon(false, &props.end_icon, props.size)}
+                }
+                </>
+            }
+        }
+    };
+
     html! {
         <ButtonBase
             classes={root_cls}
             aria_label={&props.aria_label}
-            disabled={props.disabled}
+            disabled={props.disabled || props.loading}
             tab_index={props.tab_index}
             on_blur={props.on_blur.clone()}
             on_click={props.on_click.clone()}
@@ -206,15 +278,8 @@ pub fn loading_button(props: &Props) -> Html {
             on_touch_start={props.on_touch_start.clone()}
             >
 
-            {create_icon(true, &props.start_icon, props.size)}
+            {inner_nodes}
 
-            if props.loading {
-                {create_indicator(props.loading_position)}
-            } else {
-                {for props.children.iter()}
-            }
-
-            {create_icon(false, &props.end_icon, props.size)}
         </ButtonBase>
     }
 }
