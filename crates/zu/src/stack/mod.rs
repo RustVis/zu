@@ -2,29 +2,14 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+mod spacing;
+
 use yew::{classes, function_component, html, AttrValue, Children, Classes, Html, Properties};
 use zu_util::prop::ToAttr;
 
 use crate::styles::flex_direction::FlexDirection;
 use crate::styles::spacing::Spacing;
 use crate::styles::CssClass;
-
-#[must_use]
-pub const fn spacing_cls(spacing: Spacing) -> &'static str {
-    match spacing {
-        Spacing::None => "ZuStack-spacing-none",
-        Spacing::XXSmall => "ZuStack-spacing-xxs",
-        Spacing::XSmall => "ZuStack-spacing-xs",
-        Spacing::SmallNudge => "ZuStack-spacing-sNudge",
-        Spacing::Small => "ZuStack-spacing-s",
-        Spacing::MiddleNudge => "ZuStack-spacing-mNudge",
-        Spacing::Middle => "ZuStack-spacing-m",
-        Spacing::Large => "ZuStack-spacing-l",
-        Spacing::XLarge => "ZuStack-spacing-xl",
-        Spacing::XXLarge => "ZuStack-spacing-xxl",
-        Spacing::XXXLarge => "ZuStack-spacing-xxxl",
-    }
-}
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -66,7 +51,7 @@ pub fn stack(props: &Props) -> Html {
     let root_cls = classes!(
         "ZuStack-root",
         props.direction.css_class(),
-        spacing_cls(props.spacing),
+        spacing::css_cls(props.spacing),
         props.classes.clone(),
     );
 

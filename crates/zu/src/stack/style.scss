@@ -5,92 +5,96 @@
   display: flex;
 }
 
-.ZuDirection-row.ZuStack-spacing-none > :not(style) + :not(style) {
-  margin-left: var(--zu-spacing-none);
+.ZuDirection-row {
+  // FIXME(Shaohua): selector is wrong
+  &.ZuStack-spacing-none > :not(style){
+    margin-left: $zu-spacing-none;
+  }
+
+  &.ZuStack-spacing-xxs > :not(style){
+    margin-left: $zu-spacing-xxs;
+  }
+
+  &.ZuStack-spacing-xs > :not(style){
+    margin-left: $zu-spacing-xs;
+  }
+
+  &.ZuStack-spacing-sNudge > :not(style){
+    margin-left: $zu-spacing-sNudge;
+  }
+
+  &.ZuStack-spacing-s > :not(style){
+    margin-left: $zu-spacing-s;
+  }
+
+  &.ZuStack-spacing-mNudge > :not(style){
+    margin-left: $zu-spacing-mNudge;
+  }
+
+  &.ZuStack-spacing-m > :not(style){
+    margin-left: $zu-spacing-m;
+  }
+
+  &.ZuStack-spacing-l > :not(style){
+    margin-left: $zu-spacing-l;
+  }
+
+  &.ZuStack-spacing-xl > :not(style){
+    margin-left: $zu-spacing-xl;
+  }
+
+  &.ZuStack-spacing-xxl > :not(style){
+    margin-left: $zu-spacing-xxl;
+  }
+
+  &.ZuStack-spacing-xxxl > :not(style){
+    margin-left: $zu-spacing-xxxl;
+  }
 }
 
-.ZuDirection-row.ZuStack-spacing-xxs > :not(style) + :not(style) {
-  margin-left: var(--zu-spacing-xxs);
-}
+.ZuDirection-column {
+  &.ZuStack-spacing-none > :not(style){
+    margin-top: $zu-spacing-none;
+  }
 
-.ZuDirection-row.ZuStack-spacing-xs > :not(style) + :not(style) {
-  margin-left: var(--zu-spacing-xs);
-}
+  &.ZuStack-spacing-xxs > :not(style){
+    margin-top: $zu-spacing-xxs;
+  }
 
-.ZuDirection-row.ZuStack-spacing-sNudge > :not(style) + :not(style) {
-  margin-left: var(--zu-spacing-sNudge);
-}
+  &.ZuStack-spacing-xs > :not(style){
+    margin-top: $zu-spacing-xs;
+  }
 
-.ZuDirection-row.ZuStack-spacing-s > :not(style) + :not(style) {
-  margin-left: var(--zu-spacing-s);
-}
+  &.ZuStack-spacing-sNudge > :not(style){
+    margin-top: $zu-spacing-sNudge;
+  }
 
-.ZuDirection-row.ZuStack-spacing-mNudge > :not(style) + :not(style) {
-  margin-left: var(--zu-spacing-mNudge);
-}
+  &.ZuStack-spacing-s > :not(style){
+    margin-top: $zu-spacing-s;
+  }
 
-.ZuDirection-row.ZuStack-spacing-m > :not(style) + :not(style) {
-  margin-left: var(--zu-spacing-m);
-}
+  &.ZuStack-spacing-mNudge > :not(style){
+    margin-top: $zu-spacing-mNudge;
+  }
 
-.ZuDirection-row.ZuStack-spacing-l > :not(style) + :not(style) {
-  margin-left: var(--zu-spacing-l);
-}
+  &.ZuStack-spacing-m > :not(style){
+    margin-top: $zu-spacing-m;
+  }
 
-.ZuDirection-row.ZuStack-spacing-xl > :not(style) + :not(style) {
-  margin-left: var(--zu-spacing-xl);
-}
+  &.ZuStack-spacing-l > :not(style){
+    margin-top: $zu-spacing-l;
+  }
 
-.ZuDirection-row.ZuStack-spacing-xxl > :not(style) + :not(style) {
-  margin-left: var(--zu-spacing-xxl);
-}
+  &.ZuStack-spacing-xl > :not(style){
+    margin-top: $zu-spacing-xl;
+  }
 
-.ZuDirection-row.ZuStack-spacing-xxxl > :not(style) + :not(style) {
-  margin-left: var(--zu-spacing-xxxl);
-}
+  &.ZuStack-spacing-xxl > :not(style){
+    margin-top: $zu-spacing-xxl;
+  }
 
-
-.ZuDirection-column.ZuStack-spacing-none > :not(style) + :not(style) {
-  margin-top: var(--zu-spacing-none);
-}
-
-.ZuDirection-column.ZuStack-spacing-xxs > :not(style) + :not(style) {
-  margin-top: var(--zu-spacing-xxs);
-}
-
-.ZuDirection-column.ZuStack-spacing-xs > :not(style) + :not(style) {
-  margin-top: var(--zu-spacing-xs);
-}
-
-.ZuDirection-column.ZuStack-spacing-sNudge > :not(style) + :not(style) {
-  margin-top: var(--zu-spacing-sNudge);
-}
-
-.ZuDirection-column.ZuStack-spacing-s > :not(style) + :not(style) {
-  margin-top: var(--zu-spacing-s);
-}
-
-.ZuDirection-column.ZuStack-spacing-mNudge > :not(style) + :not(style) {
-  margin-top: var(--zu-spacing-mNudge);
-}
-
-.ZuDirection-column.ZuStack-spacing-m > :not(style) + :not(style) {
-  margin-top: var(--zu-spacing-m);
-}
-
-.ZuDirection-column.ZuStack-spacing-l > :not(style) + :not(style) {
-  margin-top: var(--zu-spacing-l);
-}
-
-.ZuDirection-column.ZuStack-spacing-xl > :not(style) + :not(style) {
-  margin-top: var(--zu-spacing-xl);
-}
-
-.ZuDirection-column.ZuStack-spacing-xxl > :not(style) + :not(style) {
-  margin-top: var(--zu-spacing-xxl);
-}
-
-.ZuDirection-column.ZuStack-spacing-xxxl > :not(style) + :not(style) {
-  margin-top: var(--zu-spacing-xxxl);
+  &.ZuStack-spacing-xxxl > :not(style){
+    margin-top: $zu-spacing-xxxl;
+  }
 }
 
