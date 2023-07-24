@@ -12,7 +12,7 @@ use yew::{
     FocusEvent, Html, KeyboardEvent, MouseEvent, Properties, TouchEvent,
 };
 
-use crate::button_base::ButtonBase;
+use crate::button::Button;
 use crate::circular_progress::{CircularProgress, Size as CircularProgressSize};
 use crate::styles::button_variant::ButtonVariant;
 use crate::styles::color::Color;
@@ -122,15 +122,12 @@ pub struct Props {
     pub on_touch_start: Option<Callback<TouchEvent>>,
 }
 
-fn create_icon(is_start: bool, icon: &Option<Html>, button_size: Size) -> Html {
-    let icon_cls = classes!(
-        if is_start {
-            "ZuLoadingButton-startIcon"
-        } else {
-            "ZuLoadingButton-endIcon"
-        },
-        size::icon_class(button_size)
-    );
+fn create_icon(is_start: bool, icon: &Option<Html>) -> Html {
+    let icon_cls = classes!(if is_start {
+        "ZuLoadingButton-startIconLoadingStart"
+    } else {
+        "ZuLoadingButton-endIconLoadingEnd"
+    },);
     icon.as_ref().map_or_else(
         || html! {},
         |icon| {
@@ -147,12 +144,14 @@ fn create_indicator(
     indicator: &Option<Html>,
     position: Position,
     button_size: Size,
+    button_variant: ButtonVariant,
     full_width: bool,
 ) -> Html {
     let root_cls = classes!(
         "ZuLoadingButton-loadingIndicator",
-        position.indicator_cls_name(),
+        position.indicator_class(),
         size::indicator_class(button_size),
+        variant::indicator_class(button_variant),
         if full_width {
             "ZuLoadingButton-loadingIndicatorFullWidth"
         } else {
@@ -168,9 +167,9 @@ fn create_indicator(
         }
     } else {
         html! {
-            <span class={root_cls}>
+            <div class={root_cls}>
                 <CircularProgress color={Color::Inherit} size={CircularProgressSize::Num(16)} />
-            </span>
+            </div>
         }
     }
 }
@@ -186,8 +185,11 @@ pub fn loading_button(props: &Props) -> Html {
 
     let root_cls = classes!(
         "ZuLoadingButton-root",
-        variant::css_class(props.variant),
-        size::css_class(props.size),
+        if props.loading && props.loading_position == Position::Center {
+            "ZuLoadingButton-loading"
+        } else {
+            ""
+        },
         if props.disable_elevation {
             "ZuLoadingButton-disableElevation"
         } else {
@@ -196,70 +198,47 @@ pub fn loading_button(props: &Props) -> Html {
         if props.disabled {
             "ZuLoadingButton-disabled"
         } else {
-            color::color_class(props.color)
+            color::root_class(props.color)
         },
         if props.full_width {
             "ZuLoadingButton-fullWidth"
         } else {
             ""
         },
-        if props.loading {
-            "ZuLoadingButton-loading"
-        } else {
-            ""
-        },
         props.classes.clone(),
     );
 
-    let indicator = create_indicator(
-        &props.loading_indicator,
-        props.loading_position,
-        props.size,
-        props.full_width,
-    );
+    let indicator = if props.loading {
+        create_indicator(
+            &props.loading_indicator,
+            props.loading_position,
+            props.size,
+            props.variant,
+            props.full_width,
+        )
+    } else {
+        html! {}
+    };
 
-    let inner_nodes = match props.loading_position {
-        Position::Start => {
-            log::info!("position is Start, loading: {}", props.loading);
-            html! {
-                <>
-                if props.loading {
-                    {indicator}
-                } else {
-                    {create_icon(true, &props.start_icon, props.size)}
-                }
-                {for props.children.iter()}
-                </>
-            }
-        }
-        Position::Center => {
-            html! {
-                if props.loading {
-                    {indicator}
-                } else {
-                    {for props.children.iter()}
-                }
-            }
-        }
-        Position::End => {
-            html! {
-                <>
-                {for props.children.iter()}
-                if props.loading {
-                    {indicator}
-                } else {
-                    {create_icon(false, &props.end_icon, props.size)}
-                }
-                </>
-            }
-        }
+    let start_icon = if props.loading_position == Position::Start {
+        Some(create_icon(true, &props.end_icon))
+    } else {
+        None
+    };
+
+    let end_icon = if props.loading_position == Position::End {
+        Some(create_icon(false, &props.end_icon))
+    } else {
+        None
     };
 
     html! {
-        <ButtonBase
+        <Button
             classes={root_cls}
             aria_label={&props.aria_label}
             disabled={props.disabled || props.loading}
+            start_icon={start_icon}
+            end_icon={end_icon}
             tab_index={props.tab_index}
             on_blur={props.on_blur.clone()}
             on_click={props.on_click.clone()}
@@ -278,8 +257,14 @@ pub fn loading_button(props: &Props) -> Html {
             on_touch_start={props.on_touch_start.clone()}
             >
 
-            {inner_nodes}
+            if props.loading_position == Position::End {
+                {for props.children.iter()}
+                {indicator.clone()}
+            } else {
+                {indicator.clone()}
+                {for props.children.iter()}
+            }
 
-        </ButtonBase>
+        </Button>
     }
 }

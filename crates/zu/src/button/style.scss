@@ -171,6 +171,91 @@
       box-shadow: $zu-shadow-8;
     }
   }
+
+  // Styles applied to the root element if disable_elevation={true}.
+  &.ZuButton-disableElevation {
+    box-shadow: none;
+
+    &:hover,
+    &.ZuButton-focusVisible,
+    &:active,
+    &.ZuButton-disabled {
+      box-shadow: none;
+    }
+  }
+
+  // State class applied to the ButtonBase root element if the button is keyboard focused.
+  &.ZuButton-focusVisible {
+    &.ZuButton-contained {
+      box-shadow: $zu-shadow-6;
+    }
+  }
+
+  // State class applied to the root element if disabled={true}.
+  &.ZuButton-disabled {
+    color: $zu-palette-action-disabled;
+
+    &.ZuButton-outlined {
+      border: 1px solid $zu-palette-action-disabledBackground;
+    }
+
+    &.ZuButton-contained {
+      color: $zu-palette-action-disabled;
+      box-shadow: $zu-shadow-0;
+      background-color: $zu-palette-action-disabledBackground;
+    }
+  }
+
+  // Styles applied to the root element if color="inherit".
+  &.ZuButton-colorInherit {
+    color: inherit;
+    border-color: currentColor;
+  }
+
+  // Styles applied to the root element if size="small".
+  &.ZuButton-sizeSmall {
+    &.ZuButton-text {
+      padding: 4px 5px;
+      font-size: 13px;
+    }
+
+    &.ZuButton-outlined {
+      padding: 3px 9px;
+      font-size: 13px;
+    }
+
+    &.ZuButton-contained {
+      padding: 4px 10px;
+      font-size: 13px;
+    }
+  }
+
+  // Styles applied to the root element if size="medium".
+  &.ZuButton-sizeMedium {
+  }
+
+  // Styles applied to the root element if size="large".
+  &.ZuButton-sizeLarge {
+    &.ZuButton-text {
+      padding: 8px 11px;
+      font-size: 15px;
+    }
+
+    &.ZuButton-outlined {
+      padding: 7px 21px;
+      font-size: 15px;
+    }
+
+    &.ZuButton-contained {
+      padding: 8px 22px;
+      font-size: 15px;
+    }
+  }
+
+  // Styles applied to the root element if fullWidth={true}.
+  &.ZuButton-fullWidth {
+    width: 100%;
+  }
 }
 
 // Styles applied to the root element if variant="text".
@@ -312,90 +397,6 @@
   }
 }
 
-// Styles applied to the root element if disable_elevation={true}.
-.ZuButton-disableElevation {
-  box-shadow: none;
-
-  &:hover,
-  &.ZuButton-focusVisible,
-  &:active,
-  &.ZuButton-disabled {
-    box-shadow: none;
-  }
-}
-
-// State class applied to the ButtonBase root element if the button is keyboard focused.
-.ZuButton-focusVisible {
-  &.ZuButton-contained {
-    box-shadow: $zu-shadow-6;
-  }
-}
-
-// State class applied to the root element if disabled={true}.
-.ZuButton-disabled {
-  color: $zu-palette-action-disabled;
-
-  &.ZuButton-outlined {
-    border: 1px solid $zu-palette-action-disabledBackground;
-  }
-
-  &.ZuButton-contained {
-    color: $zu-palette-action-disabled;
-    box-shadow: $zu-shadow-0;
-    background-color: $zu-palette-action-disabledBackground;
-  }
-}
-
-// Styles applied to the root element if color="inherit".
-.ZuButton-colorInherit {
-  color: inherit;
-  border-color: currentColor;
-}
-
-// Styles applied to the root element if size="small".
-.ZuButton-sizeSmall {
-  &.ZuButton-text {
-    padding: 4px 5px;
-    font-size: 13px;
-  }
-
-  &.ZuButton-outlined {
-    padding: 3px 9px;
-    font-size: 13px;
-  }
-
-  &.ZuButton-contained {
-    padding: 4px 10px;
-    font-size: 13px;
-  }
-}
-
-// Styles applied to the root element if size="medium".
-.ZuButton-sizeMedium {
-}
-
-// Styles applied to the root element if size="large".
-.ZuButton-sizeLarge {
-  &.ZuButton-text {
-    padding: 8px 11px;
-    font-size: 15px;
-  }
-
-  &.ZuButton-outlined {
-    padding: 7px 21px;
-    font-size: 15px;
-  }
-
-  &.ZuButton-contained {
-    padding: 8px 22px;
-    font-size: 15px;
-  }
-}
-
-// Styles applied to the root element if fullWidth={true}.
-.ZuButton-fullWidth {
-  width: 100%;
-}
 
 // For icons
 

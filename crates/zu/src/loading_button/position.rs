@@ -17,7 +17,7 @@ impl Default for Position {
 
 impl Position {
     #[must_use]
-    pub const fn root_cls_name(self) -> &'static str {
+    pub const fn root_class(self) -> &'static str {
         match self {
             Self::Start => "ZuLoadingButton-loadingPositionStart",
             Self::End => "ZuLoadingButton-loadingPositionEnd",
@@ -26,7 +26,7 @@ impl Position {
     }
 
     #[must_use]
-    pub const fn indicator_cls_name(self) -> &'static str {
+    pub const fn indicator_class(self) -> &'static str {
         match self {
             Self::Start => "ZuLoadingButton-loadingIndicatorStart",
             Self::End => "ZuLoadingButton-loadingIndicatorEnd",
@@ -35,7 +35,7 @@ impl Position {
     }
 
     #[must_use]
-    pub const fn start_icon_cls_name(self) -> &'static str {
+    pub const fn start_icon_class(self) -> &'static str {
         match self {
             Self::Start => "ZuLoadingButton-startIconLoadingStart",
             Self::End => "ZuLoadingButton-startIconLoadingEnd",
@@ -44,7 +44,7 @@ impl Position {
     }
 
     #[must_use]
-    pub const fn end_icon_cls_name(self) -> &'static str {
+    pub const fn end_icon_class(self) -> &'static str {
         match self {
             Self::Start => "ZuLoadingButton-endIconLoadingStart",
             Self::End => "ZuLoadingButton-endIconLoadingEnd",

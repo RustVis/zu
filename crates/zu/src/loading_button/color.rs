@@ -4,7 +4,7 @@
 
 use crate::styles::color::Color;
 
-pub const fn color_class(color: Color) -> &'static str {
+pub const fn root_class(color: Color) -> &'static str {
     match color {
         Color::Primary => "ZuLoadingButton-colorPrimary",
         Color::Secondary => "ZuLoadingButton-colorSecondary",

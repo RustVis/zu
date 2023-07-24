@@ -10,16 +10,6 @@
   border-color $zu-duration-short $zu-easing-easeInOut 0ms,
   color $zu-duration-short $zu-easing-easeInOut 0ms;
 
-  border-radius: $zu-shape-borderRadius;
-
-  // button typography
-  font-family: $zu-typography-button-fontFamily;
-  font-weight: $zu-typography-button-fontWeight;
-  font-size: $zu-typography-button-fontSize;
-  line-height: $zu-typography-button-lineHeight;
-  letter-spacing: $zu-typography-button-letterSpacing;
-  text-transform: $zu-typography-button-textTransform;
-
   // Styles applied to the startIcon element if loading={true} and loadingPosition="start".
   & .ZuLoadingButton-startIconLoadingStart,
   // Styles applied to the endIcon element if loading={true} and loadingPosition="end".
@@ -40,6 +30,7 @@
 
     & .ZuLoadingButton-startIconLoadingStart,
     & .ZuLoadingButton-endIconLoadingEnd {
+      // FIXME(Shaohua): transition invalid
       transition: opacity $zu-duration-short;
       opacity: 0;
       margin-right: -8px;
@@ -61,128 +52,9 @@
 }
 
 .ZuLoadingButton-loadingPositionCenter {
+  // FIXME(Shaohua): transition is invalid
   transition: background-color $zu-duration-short, box-shadow $zu-duration-short,
     border-color $zu-duration-short;
-}
-
-// Styles applied to the root element if variant="text".
-.ZuLoadingButton-text {
-
-}
-
-// Styles applied to the root element if variant="text" and color="inherit".
-.ZuLoadingButton-textInherit {
-
-}
-
-// Styles applied to the root element if variant="text" and color="primary".
-.ZuLoadingButton-textPrimary {
-
-}
-
-// Styles applied to the root element if variant="text" and color="secondary".
-.ZuLoadingButton-textSecondary {
-
-}
-
-// Styles applied to the root element if variant="text" and color="success".
-.ZuLoadingButton-textSuccess {
-
-}
-
-// Styles applied to the root element if variant="text" and color="error".
-.ZuLoadingButton-textError {
-
-}
-
-// Styles applied to the root element if variant="text" and color="info".
-.ZuLoadingButton-textInfo {
-
-}
-
-// Styles applied to the root element if variant="text" and color="warning".
-.ZuLoadingButton-textWarning {
-
-}
-
-// Styles applied to the root element if variant="outlined".
-.ZuLoadingButton-outlined {
-
-}
-
-// Styles applied to the root element if variant="outlined" and color="inherit".
-.ZuLoadingButton-outlinedInherit {
-
-}
-
-// Styles applied to the root element if variant="outlined" and color="primary".
-.ZuLoadingButton-outlinedPrimary {
-
-}
-
-// Styles applied to the root element if variant="outlined" and color="secondary".
-.ZuLoadingButton-outlinedSecondary {
-
-}
-
-// Styles applied to the root element if variant="outlined" and color="success".
-.ZuLoadingButton-outlinedSuccess {
-
-}
-
-// Styles applied to the root element if variant="outlined" and color="error".
-.ZuLoadingButton-outlinedError {
-
-}
-
-// Styles applied to the root element if variant="outlined" and color="info".
-.ZuLoadingButton-outlinedInfo {
-
-}
-
-// Styles applied to the root element if variant="outlined" and color="warning".
-.ZuLoadingButton-outlinedWarning {
-
-}
-
-// Styles applied to the root element if variant="contained".
-.ZuLoadingButton-contained {
-
-}
-
-// Styles applied to the root element if variant="contained" and color="inherit".
-.ZuLoadingButton-containedInherit {
-
-}
-
-// Styles applied to the root element if variant="contained" and color="primary".
-.ZuLoadingButton-containedPrimary {
-
-}
-
-// Styles applied to the root element if variant="contained" and color="secondary".
-.ZuLoadingButton-containedSecondary {
-
-}
-
-// Styles applied to the root element if variant="contained" and color="success".
-.ZuLoadingButton-containedSuccess {
-
-}
-
-// Styles applied to the root element if variant="contained" and color="info".
-.ZuLoadingButton-containedInfo {
-
-}
-
-// Styles applied to the root element if variant="contained" and color="error".
-.ZuLoadingButton-containedError {
-
-}
-
-// Styles applied to the root element if variant="contained" and color="warning".
-.ZuLoadingButton-containedWarning {
-
 }
 
 // Styles applied to the root element if disableElevation={true}.
@@ -197,77 +69,8 @@
 
 // State class applied to the root element if disabled={true}.
 .ZuLoadingButton-disabled {
-
-}
-
-// Styles applied to the root element if color="inherit".
-.ZuLoadingButton-colorInherit {
-
-}
-
-// Styles applied to the root element if size="small" and variant="text".
-.ZuLoadingButton-textSizeSmall {
-
-}
-
-// Styles applied to the root element if size="medium" and variant="text".
-.ZuLoadingButton-textSizeMedium {
-
-}
-
-// Styles applied to the root element if size="large" and variant="text".
-.ZuLoadingButton-textSizeLarge {
-
-}
-
-// Styles applied to the root element if size="small" and variant="outlined".
-.ZuLoadingButton-outlinedSizeSmall {
-
-}
-
-// Styles applied to the root element if size="medium" and variant="outlined".
-.ZuLoadingButton-outlinedSizeMedium {
-
-}
-
-// Styles applied to the root element if size="large" and variant="outlined".
-.ZuLoadingButton-outlinedSizeLarge {
-
-}
-
-// Styles applied to the root element if size="small" and variant="contained".
-.ZuLoadingButton-containedSizeSmall {
-
-}
-
-// Styles applied to the root element if size="medium" and variant="contained".
-.ZuLoadingButton-containedSizeMedium {
-
-}
-
-// Styles applied to the root element if size="large" and variant="contained".
-.ZuLoadingButton-containedSizeLarge {
-
-}
-
-// Styles applied to the root element if size="small".
-.ZuLoadingButton-sizeSmall {
-
-}
-
-// Styles applied to the root element if size="medium".
-.ZuLoadingButton-sizeMedium {
-
-}
-
-// Styles applied to the root element if size="large".
-.ZuLoadingButton-sizeLarge {
-
-}
-
-// Styles applied to the root element if fullWidth={true}.
-.ZuLoadingButton-fullWidth {
-
+  //color: $zu-palette-action-disabled;
+  //border: 1px solid $zu-palette-action-disabledBackground;
 }
 
 // Styles applied to the startIcon element if supplied.
@@ -301,16 +104,18 @@
   display: flex;
   visibility: visible;
 
+  // Styles applied to the loadingIndicator element if loadingPosition="start".
   &.ZuLoadingButton-loadingIndicatorStart {
+
     &.ZuLoadingButton-loadingIndicatorOutlined,
     &.ZuLoadingButton-loadingIndicatorContained {
 
-      &.ZuLoadingButton-loadingIndicatorSmall {
+      &.ZuLoadingButton-loadingIndicatorSizeSmall {
         left: 10px;
       }
 
-      &.ZuLoadingButton-loadingIndicatorMedium,
-      &.ZuLoadingButton-loadingIndicatorLarge {
+      &.ZuLoadingButton-loadingIndicatorSizeMedium,
+      &.ZuLoadingButton-loadingIndicatorSizeLarge {
         left: 14px;
       }
     }
@@ -325,22 +130,25 @@
     }
   }
 
+  // Styles applied to the loadingIndicator element if loadingPosition="center".
   &.ZuLoadingButton-loadingIndicatorCenter {
     left: 50%;
     transform: translate(-50%);
     color: $zu-palette-action-disabled;
   }
 
+  // Styles applied to the loadingIndicator element if loadingPosition="end".
   &.ZuLoadingButton-loadingIndicatorEnd {
+
     &.ZuLoadingButton-loadingIndicatorOutlined,
     &.ZuLoadingButton-loadingIndicatorContained {
 
-      &.ZuLoadingButton-loadingIndicatorSmall {
+      &.ZuLoadingButton-loadingIndicatorSizeSmall {
         right: 10px;
       }
 
-      &.ZuLoadingButton-loadingIndicatorMedium,
-      &.ZuLoadingButton-loadingIndicatorLarge {
+      &.ZuLoadingButton-loadingIndicatorSizeMedium,
+      &.ZuLoadingButton-loadingIndicatorSizeLarge {
         right: 14px;
       }
     }
@@ -354,19 +162,4 @@
       right: -10px;
     }
   }
-}
-
-// Styles applied to the loadingIndicator element if loadingPosition="center".
-.ZuLoadingButton-loadingIndicatorCenter {
-
-}
-
-// Styles applied to the loadingIndicator element if loadingPosition="start".
-.ZuLoadingButton-loadingIndicatorStart {
-
-}
-
-// Styles applied to the loadingIndicator element if loadingPosition="end".
-.ZuLoadingButton-loadingIndicatorEnd {
-
 }
