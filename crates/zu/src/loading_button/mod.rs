@@ -177,11 +177,6 @@ pub fn loading_button(props: &Props) -> Html {
         } else {
             ""
         },
-        if props.disabled {
-            "ZuLoadingButton-disabled"
-        } else {
-            ""
-        },
         if props.full_width {
             "ZuLoadingButton-fullWidth"
         } else {
@@ -207,6 +202,7 @@ pub fn loading_button(props: &Props) -> Html {
             classes={root_cls}
             aria_label={&props.aria_label}
             disabled={props.disabled || props.loading}
+            size={props.size}
             start_icon={props.start_icon.clone()}
             start_icon_classes={classes!("ZuLoadingButton-startIconLoadingStart")}
             end_icon={props.end_icon.clone()}
