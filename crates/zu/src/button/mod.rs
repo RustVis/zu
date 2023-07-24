@@ -52,9 +52,15 @@ pub struct Props {
     #[prop_or_default]
     pub start_icon: Option<Html>,
 
+    #[prop_or_default]
+    pub start_icon_classes: Classes,
+
     /// Element placed after the children.
     #[prop_or_default]
     pub end_icon: Option<Html>,
+
+    #[prop_or_default]
+    pub end_icon_classes: Classes,
 
     /// If true, the button will take up the full width of its container.
     #[prop_or(false)]
@@ -131,14 +137,20 @@ pub struct Props {
     pub on_touch_start: Option<Callback<TouchEvent>>,
 }
 
-fn create_icon(is_start: bool, icon: &Option<Html>, button_size: Size) -> Html {
+fn create_icon(
+    is_start: bool,
+    icon: &Option<Html>,
+    button_size: Size,
+    custom_classes: Classes,
+) -> Html {
     let icon_cls = classes!(
         if is_start {
             "ZuButton-startIcon"
         } else {
             "ZuButton-endIcon"
         },
-        size::icon_class(button_size)
+        size::icon_class(button_size),
+        custom_classes,
     );
     icon.as_ref().map_or_else(
         || html! {},
@@ -204,9 +216,9 @@ pub fn button(props: &Props) -> Html {
             on_touch_move={props.on_touch_move.clone()}
             on_touch_start={props.on_touch_start.clone()}
             >
-            {create_icon(true, &props.start_icon, props.size)}
+            {create_icon(true, &props.start_icon, props.size, props.start_icon_classes.clone())}
             {for props.children.iter()}
-            {create_icon(false, &props.end_icon, props.size)}
+            {create_icon(false, &props.end_icon, props.size, props.end_icon_classes.clone())}
         </ButtonBase>
     }
 }

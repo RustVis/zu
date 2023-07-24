@@ -122,24 +122,6 @@ pub struct Props {
     pub on_touch_start: Option<Callback<TouchEvent>>,
 }
 
-fn create_icon(is_start: bool, icon: &Option<Html>) -> Html {
-    let icon_cls = classes!(if is_start {
-        "ZuLoadingButton-startIconLoadingStart"
-    } else {
-        "ZuLoadingButton-endIconLoadingEnd"
-    },);
-    icon.as_ref().map_or_else(
-        || html! {},
-        |icon| {
-            html! {
-                <span class={icon_cls}>
-                    {icon.clone()}
-                </span>
-            }
-        },
-    )
-}
-
 fn create_indicator(
     indicator: &Option<Html>,
     position: Position,
@@ -198,7 +180,7 @@ pub fn loading_button(props: &Props) -> Html {
         if props.disabled {
             "ZuLoadingButton-disabled"
         } else {
-            color::root_class(props.color)
+            ""
         },
         if props.full_width {
             "ZuLoadingButton-fullWidth"
@@ -220,25 +202,15 @@ pub fn loading_button(props: &Props) -> Html {
         html! {}
     };
 
-    let start_icon = if props.loading_position == Position::Start {
-        Some(create_icon(true, &props.end_icon))
-    } else {
-        None
-    };
-
-    let end_icon = if props.loading_position == Position::End {
-        Some(create_icon(false, &props.end_icon))
-    } else {
-        None
-    };
-
     html! {
         <Button
             classes={root_cls}
             aria_label={&props.aria_label}
             disabled={props.disabled || props.loading}
-            start_icon={start_icon}
-            end_icon={end_icon}
+            start_icon={props.start_icon.clone()}
+            start_icon_classes={classes!("ZuLoadingButton-startIconLoadingStart")}
+            end_icon={props.end_icon.clone()}
+            end_icon_classes={classes!("ZuLoadingButton-endIconLoadingEnd")}
             tab_index={props.tab_index}
             on_blur={props.on_blur.clone()}
             on_click={props.on_click.clone()}

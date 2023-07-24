@@ -279,16 +279,6 @@ fn create_loading_button_toggle_view() -> Html {
             </LoadingButton>
             <LoadingButton
                 size={Size::Small}
-                on_click={handle_click.clone()}
-                end_icon={html!{<Send />}}
-                loading={loading}
-                loading_position={Position::End}
-                variant={Variant::Contained}
-                >
-                <span>{"Send"}</span>
-            </LoadingButton>
-            <LoadingButton
-                size={Size::Small}
                 color={Color::Secondary}
                 on_click={handle_click.clone()}
                 loading={loading}
@@ -297,6 +287,16 @@ fn create_loading_button_toggle_view() -> Html {
                 variant={Variant::Contained}
                 >
                 <span>{"Save"}</span>
+            </LoadingButton>
+            <LoadingButton
+                size={Size::Small}
+                on_click={handle_click.clone()}
+                end_icon={html!{<Send />}}
+                loading={loading}
+                loading_position={Position::End}
+                variant={Variant::Contained}
+                >
+                <span>{"Send"}</span>
             </LoadingButton>
         </Box>
 
@@ -318,23 +318,23 @@ fn create_loading_button_toggle_view() -> Html {
                 <span>{"Fetch data"}</span>
             </LoadingButton>
             <LoadingButton
-                on_click={handle_click.clone()}
-                end_icon={html!{<Send />}}
-                loading={loading}
-                loading_position={Position::End}
-                variant={Variant::Contained}
-                >
-                <span>{"Send"}</span>
-            </LoadingButton>
-            <LoadingButton
                 color={Color::Secondary}
-                on_click={handle_click}
+                on_click={handle_click.clone()}
                 loading={loading}
                 loading_position={Position::Start}
                 start_icon={html!{<Save />}}
                 variant={Variant::Contained}
                 >
                 <span>{"Save"}</span>
+            </LoadingButton>
+            <LoadingButton
+                on_click={handle_click}
+                end_icon={html!{<Send />}}
+                loading={loading}
+                loading_position={Position::End}
+                variant={Variant::Contained}
+                >
+                <span>{"Send"}</span>
             </LoadingButton>
         </Box>
         </DemoBox>
