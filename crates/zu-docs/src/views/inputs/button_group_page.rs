@@ -2,7 +2,7 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{function_component, html, Html};
+use yew::{function_component, html, html_nested, ChildrenWithProps, Html};
 use zu::button::Button;
 use zu::button_group::ButtonGroup;
 use zu::r#box::Box;
@@ -53,28 +53,28 @@ fn create_button_variants_view() -> Html {
     }
 }
 
-fn create_size_colors_view() -> Html {
-    let buttons = html! {
-        <>
-        <Button key="one">{"One"}</Button>
-        <Button key="two">{"Two"}</Button>
-        <Button key="three">{"Three"}</Button>
-        </>
-    };
+fn create_buttons() -> ChildrenWithProps<Button> {
+    ChildrenWithProps::new(vec![
+        html_nested! {<Button key="one">{"One"}</Button>},
+        html_nested! {<Button key="two">{"Two"}</Button>},
+        html_nested! {<Button key="three">{"Three"}</Button>},
+    ])
+}
 
+fn create_size_colors_view() -> Html {
     html! {
         <>
         <h2>{"Size and colors"}</h2>
         <p>{"The size and color props can be used to control the appearance of the button group."}</p>
         <DemoBox>
         <ButtonGroup size={Size::Small} aria_label="small button group">
-            {buttons.clone()}
+            {create_buttons()}
         </ButtonGroup>
         <ButtonGroup color={Color::Secondary} aria_label="medium secondary button group">
-            {buttons.clone()}
+            {create_buttons()}
         </ButtonGroup>
         <ButtonGroup size={Size::Large} aria_label="large button group">
-            {buttons}
+            {create_buttons()}
         </ButtonGroup>
         </DemoBox>
         </>
@@ -82,14 +82,6 @@ fn create_size_colors_view() -> Html {
 }
 
 fn create_vertical_group_view() -> Html {
-    let buttons = html! {
-        <>
-        <Button key="one">{"One"}</Button>
-        <Button key="two">{"Two"}</Button>
-        <Button key="three">{"Three"}</Button>
-        </>
-    };
-
     html! {
         <>
         <h2>{"Vertical group"}</h2>
@@ -100,19 +92,19 @@ fn create_vertical_group_view() -> Html {
             <ButtonGroup
                 orientation={Orientation::Vertical}
                 aria_label="vertical outlined button group">
-                {buttons.clone()}
+                {create_buttons()}
             </ButtonGroup>
             <ButtonGroup
                 orientation={Orientation::Vertical}
                 aria_label="vertical contained button group"
                 variant={ButtonVariant::Contained}>
-                {buttons.clone()}
+                {create_buttons()}
             </ButtonGroup>
             <ButtonGroup
                 orientation={Orientation::Vertical}
                 aria_label="vertical contained button group"
                 variant={ButtonVariant::Text}>
-                {buttons}
+                {create_buttons()}
             </ButtonGroup>
         </Box>
         </DemoBox>
