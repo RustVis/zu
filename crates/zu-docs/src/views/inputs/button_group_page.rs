@@ -2,7 +2,8 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{function_component, html, html_nested, ChildrenWithProps, Html};
+use stylist::Style;
+use yew::{classes, function_component, html, html_nested, ChildrenWithProps, Classes, Html};
 use zu::button::Button;
 use zu::button_group::ButtonGroup;
 use zu::r#box::Box;
@@ -32,22 +33,24 @@ fn create_basic_group_view() -> Html {
     }
 }
 
-fn create_button_variants_view() -> Html {
+fn create_button_variants_view(margin_cls: Classes) -> Html {
     html! {
         <>
         <h2>{"Button variants"}</h2>
         <p>{"All the standard button variants are supported."}</p>
         <DemoBox>
-        <ButtonGroup variant={ButtonVariant::Outlined} aria_label="outlined button group">
-            <Button>{"One"}</Button>
-            <Button>{"Two"}</Button>
-            <Button>{"Three"}</Button>
-        </ButtonGroup>
-        <ButtonGroup variant={ButtonVariant::Text} aria_label="text button group">
-            <Button>{"One"}</Button>
-            <Button>{"Two"}</Button>
-            <Button>{"Three"}</Button>
-        </ButtonGroup>
+        <Box classes={margin_cls}>
+            <ButtonGroup variant={ButtonVariant::Outlined} aria_label="outlined button group">
+                <Button>{"One"}</Button>
+                <Button>{"Two"}</Button>
+                <Button>{"Three"}</Button>
+            </ButtonGroup>
+            <ButtonGroup variant={ButtonVariant::Text} aria_label="text button group">
+                <Button>{"One"}</Button>
+                <Button>{"Two"}</Button>
+                <Button>{"Three"}</Button>
+            </ButtonGroup>
+        </Box>
         </DemoBox>
         </>
     }
@@ -61,34 +64,48 @@ fn create_buttons() -> ChildrenWithProps<Button> {
     ])
 }
 
-fn create_size_colors_view() -> Html {
+fn create_size_colors_view(margin_cls: Classes) -> Html {
     html! {
         <>
         <h2>{"Size and colors"}</h2>
         <p>{"The size and color props can be used to control the appearance of the button group."}</p>
         <DemoBox>
-        <ButtonGroup size={Size::Small} aria_label="small button group">
-            {create_buttons()}
-        </ButtonGroup>
-        <ButtonGroup color={Color::Secondary} aria_label="medium secondary button group">
-            {create_buttons()}
-        </ButtonGroup>
-        <ButtonGroup size={Size::Large} aria_label="large button group">
-            {create_buttons()}
-        </ButtonGroup>
+        <Box classes={margin_cls}>
+            <ButtonGroup size={Size::Small} aria_label="small button group">
+                {create_buttons()}
+            </ButtonGroup>
+            <ButtonGroup color={Color::Secondary} aria_label="medium secondary button group">
+                {create_buttons()}
+            </ButtonGroup>
+            <ButtonGroup size={Size::Large} aria_label="large button group">
+                {create_buttons()}
+            </ButtonGroup>
+        </Box>
         </DemoBox>
         </>
     }
 }
 
 fn create_vertical_group_view() -> Html {
+    let margin_style = Style::new(
+        r#"
+         display: flex;
+
+         & > * {
+            margin: 8px;
+        }
+    "#,
+    )
+    .expect("Failed to create style");
+    let margin_cls = classes!(margin_style.get_class_name().to_owned());
+
     html! {
         <>
         <h2>{"Vertical group"}</h2>
         <p>{"The button group can be displayed vertically using the orientation prop."}</p>
 
         <DemoBox>
-        <Box>
+        <Box classes={margin_cls}>
             <ButtonGroup
                 orientation={Orientation::Vertical}
                 aria_label="vertical outlined button group">
@@ -158,13 +175,27 @@ fn create_disabled_elevation_view() -> Html {
 
 #[function_component(ButtonGroupPage)]
 pub fn button_group_page() -> Html {
+    let margin_style = Style::new(
+        r#"
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+
+         & > * {
+            margin: 8px;
+        }
+    "#,
+    )
+    .expect("Failed to create style");
+    let margin_cls = classes!(margin_style.get_class_name().to_owned());
+
     html! {
         <div class="container">
         <h1>{"Button group"}</h1>
 
         {create_basic_group_view()}
-        {create_button_variants_view()}
-        {create_size_colors_view()}
+        {create_button_variants_view(margin_cls.clone())}
+        {create_size_colors_view(margin_cls)}
         {create_vertical_group_view()}
         {create_split_button_view()}
         {create_disabled_elevation_view()}
