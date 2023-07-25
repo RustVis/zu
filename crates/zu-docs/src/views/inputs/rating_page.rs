@@ -11,6 +11,7 @@ use zu::styles::size::Size;
 use zu::styles::spacing::Spacing;
 use zu::svg_icon::FontSize;
 use zu::typography::Typography;
+use zu_util::cmp::fuzzy_compare;
 use zuicon_material::{Favorite, FavoriteBorder, Star};
 
 use crate::components::demo_box::DemoBox;
@@ -81,7 +82,7 @@ fn create_hover_feedback_view() -> Html {
     let value = 2.5;
     let get_label = |index| -> &'static str {
         for (key, value) in labels {
-            if *key == index {
+            if fuzzy_compare(*key, index) {
                 return value;
             }
         }
