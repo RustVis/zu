@@ -12,7 +12,7 @@ pub struct Props {
     pub classes: Classes,
 
     #[prop_or_default]
-    pub default_value: Option<i32>,
+    pub default_value: Option<f64>,
 
     #[prop_or(false)]
     pub disabled: bool,
@@ -29,8 +29,8 @@ pub struct Props {
     #[prop_or_default]
     pub icon: Option<Html>,
 
-    #[prop_or(5)]
-    pub max: i32,
+    #[prop_or(5.0)]
+    pub max: f64,
 
     #[prop_or_default]
     pub name: AttrValue,
@@ -41,8 +41,8 @@ pub struct Props {
     #[prop_or_default]
     pub on_change_active: Option<Callback<i32>>,
 
-    #[prop_or(1)]
-    pub precision: i32,
+    #[prop_or(1.0)]
+    pub precision: f64,
 
     #[prop_or(false)]
     pub read_only: bool,
@@ -54,7 +54,7 @@ pub struct Props {
     pub style: AttrValue,
 
     #[prop_or_default]
-    pub value: i32,
+    pub value: Option<f64>,
 }
 
 #[function_component(Rating)]

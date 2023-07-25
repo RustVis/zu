@@ -60,4 +60,5 @@ features = [
   "Save",
   "Send",
   "Share",
+  "Star",
 ]
