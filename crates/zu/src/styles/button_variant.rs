@@ -14,3 +14,14 @@ impl Default for ButtonVariant {
         Self::Text
     }
 }
+
+impl ButtonVariant {
+    #[must_use]
+    pub const fn capitalize(self) -> &'static str {
+        match self {
+            Self::Contained => "Contained",
+            Self::Outlined => "Outlined",
+            Self::Text => "Text",
+        }
+    }
+}

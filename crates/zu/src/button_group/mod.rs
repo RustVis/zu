@@ -2,6 +2,8 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+mod variant;
+
 use std::rc::Rc;
 use yew::{
     classes, function_component, html, AttrValue, ChildrenWithProps, Classes, Html, Properties,
@@ -14,8 +16,6 @@ use crate::styles::color::Color;
 use crate::styles::orientation::Orientation;
 use crate::styles::size::Size;
 
-const BUTTON_CLS: &str = "ZuButtonGroup-button";
-
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
     #[prop_or_default]
@@ -26,6 +26,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub classes: Classes,
+
+    #[prop_or_default]
+    pub button_classes: Classes,
 
     #[prop_or(Color::Primary)]
     pub color: Color,
@@ -71,14 +74,56 @@ pub struct Props {
 
 #[function_component(ButtonGroup)]
 pub fn button_group(props: &Props) -> Html {
-    let root_cls = classes!("ZuButtonGroup-root", props.classes.clone(),);
+    let root_cls = classes!(
+        "ZuButtonGroup-root",
+        variant::root_class(props.variant),
+        if props.disable_elevation {
+            "ZuButtonGroup-disableElevation"
+        } else {
+            ""
+        },
+        if props.full_width {
+            "ZuButtonGroup-fullWidth"
+        } else {
+            ""
+        },
+        if props.orientation == Orientation::Vertical {
+            "ZuButtonGroup-vertical"
+        } else {
+            ""
+        },
+        props.classes.clone(),
+    );
+
+    // TODO(Shaohua): Simplify classes
+    let button_cls = classes!(
+        "ZuButtonGroup-grouped",
+        format!("ZuButtonGroup-grouped{}", props.orientation.capitalize()),
+        format!("ZuButtonGroup-grouped{}", props.variant.capitalize()),
+        format!(
+            "ZuButtonGroup-grouped{}{}",
+            props.variant.capitalize(),
+            props.orientation.capitalize()
+        ),
+        format!(
+            "ZuButtonGroup-grouped{}{}",
+            props.variant.capitalize(),
+            props.color.capitalize()
+        ),
+        if props.disabled {
+            "ZuButtonGroup-disabled"
+        } else {
+            ""
+        },
+        props.button_classes.clone(),
+    );
 
     let children: Vec<_> = props
         .children
         .iter()
         .map(|mut item| {
             let p = Rc::<ButtonProps>::make_mut(&mut item.props);
-            p.classes.push(BUTTON_CLS);
+            p.classes.extend(button_cls.clone());
             p.color = props.color;
             p.disabled = props.disabled;
             p.disable_elevation = props.disable_elevation;

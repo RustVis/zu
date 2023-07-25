@@ -33,6 +33,20 @@ impl Color {
     pub fn bg_color(&self) -> String {
         format!("background-color: {}", self.css_value())
     }
+
+    #[must_use]
+    pub const fn capitalize(self) -> &'static str {
+        match self {
+            Self::Primary => "Primary",
+            Self::Secondary => "Secondary",
+            Self::Success => "Success",
+            Self::Info => "Info",
+            Self::Warning => "Warning",
+            Self::Error => "Error",
+            Self::Inherit => "Inherit",
+            Self::Default => "Default",
+        }
+    }
 }
 
 impl CssValue for Color {

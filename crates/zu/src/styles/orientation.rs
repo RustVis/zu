@@ -13,3 +13,13 @@ impl Default for Orientation {
         Self::Horizontal
     }
 }
+
+impl Orientation {
+    #[must_use]
+    pub const fn capitalize(self) -> &'static str {
+        match self {
+            Self::Vertical => "Vertical",
+            Self::Horizontal => "Horizontal",
+        }
+    }
+}

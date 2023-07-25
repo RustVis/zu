@@ -3,130 +3,177 @@
 
 // Styles applied to the root element.
 .ZuButtonGroup-root {
+  display: inline-flex;
+  border-radius: $zu-shape-borderRadius;
 
-}
+  // Styles applied to the root element if variant="contained".
+  &.ZuButtonGroup-contained {
+    box-shadow: $zu-shadow-2;
+  }
 
-// Styles applied to the root element if variant="contained".
-.ZuButtonGroup-contained {
+  // Styles applied to the root element if variant="outlined".
+  &.ZuButtonGroup-outlined {
 
-}
+  }
 
-// Styles applied to the root element if variant="outlined".
-.ZuButtonGroup-outlined {
+  // Styles applied to the root element if variant="text".
+  &.ZuButtonGroup-text {
 
-}
+  }
 
-// Styles applied to the root element if variant="text".
-.ZuButtonGroup-text {
 
-}
+  // Styles applied to the root element if disableElevation={true}.
+  &.ZuButtonGroup-disableElevation {
+    box-shadow: none;
+  }
 
-// Styles applied to the root element if disableElevation={true}.
-.ZuButtonGroup-disableElevation {
+  // Styles applied to the root element if fullWidth={true}.
+  &.ZuButtonGroup-fullWidth {
+    width: 100%;
+  }
 
-}
 
-// State class applied to the child elements if disabled={true}.
-.ZuButtonGroup-disabled {
+  // Styles applied to the root element if orientation="vertical".
+  &.ZuButtonGroup-vertical {
+    flex-direction: column;
+  }
 
-}
+  // Styles applied to the children.
+  & .ZuButtonGroup-grouped {
+    min-width: 40px;
 
-// Styles applied to the root element if fullWidth={true}.
-.ZuButtonGroup-fullWidth {
+    // State class applied to the child elements if disabled={true}.
+    &.ZuButtonGroup-disabled {
 
-}
+    }
 
-// Styles applied to the root element if orientation="vertical".
-.ZuButtonGroup-vertical {
+    &:not(:first-of-type) {
+      &.ZuButtonGroup-groupedHorizontal {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
 
-}
+      &.ZuButtonGroup-groupedVertical {
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+      }
 
-// Styles applied to the children.
-.ZuButtonGroup-grouped {
+      &.ZuButtonGroup-groupedOutlined {
+        &.ZuButtonGroup-groupedHorizontal {
+          margin-left: -8px;
+        }
 
-}
+        &.ZuButtonGroup-groupedVertical {
+          margin-top: -8px;
+        }
+      }
+    }
 
-// Styles applied to the children if orientation="horizontal".
-.ZuButtonGroup-groupedHorizontal {
+    &:not(:last-of-type) {
+      &.ZuButtonGroup-groupedHorizontal {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
 
-}
+      &.ZuButtonGroup-groupedVertical {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
 
-// Styles applied to the children if orientation="vertical".
-.ZuButtonGroup-groupedVertical {
+      &.ZuButtonGroup-groupedText {
+        &.ZuButtonGroup-groupedHorizontal {
+          // TODO(Shaohua): Support dark  theme.
+          border-right: 1px solid rgba(0, 0, 0, 0.23);
 
-}
+          &.ZuButtonGroup-disabled {
+            border-right: 1px solid $zu-palette-action-disabled;
+          }
+        }
 
-// Styles applied to the children if variant="text".
-.ZuButtongroup-groupedText {
+        &.ZuButtonGroup-groupedVertical {
+          // TODO(Shaohua): Support dark  theme.
+          border-bottom: 1px solid rgba(0, 0, 0, 0.23);
 
-}
+          &.ZuButtonGroup-disabled {
+            border-bottom: 1px solid $zu-palette-action-disabled;
+          }
+        }
 
-// Styles applied to the children if variant="text" and orientation="horizontal".
-.ZuButtonGroup-groupedTextHorizontal {
+        // colors
+        &.ZuButtonGroup-groupedTextPrimary {
+          border-color: change-color($zu-palette-primary-main, $alpha: 0.5);
+        }
 
-}
+        &.ZuButtonGroup-groupedTextSecondary {
+          border-color: change-color($zu-palette-secondary-main, $alpha: 0.5);
+        }
 
-// Styles applied to the children if variant="text" and orientation="vertical".
-.ZuButtonGroup-groupedTextVertical {
+        &.ZuButtonGroup-groupedTextSuccess {
+          border-color: change-color($zu-palette-success-main, $alpha: 0.5);
+        }
 
-}
+        &.ZuButtonGroup-groupedTextInfo {
+          border-color: change-color($zu-palette-info-main, $alpha: 0.5);
+        }
 
-// Styles applied to the children if variant="text" and color="primary".
-.ZuButtongroup-groupedTextPrimary {
+        &.ZuButtonGroup-groupedTextWarning {
+          border-color: change-color($zu-palette-warning-main, $alpha: 0.5);
+        }
 
-}
+        &.ZuButtonGroup-groupedTextError {
+          border-color: change-color($zu-palette-error-main, $alpha: 0.5);
+        }
+      }
 
-// Styles applied to the children if variant="text" and color="secondary".
-.ZuButtonGroup-groupedTextSecondary {
+      &.ZuButtonGroup-groupedOutlined {
+        &.ZuButtonGroup-groupedHorizontal {
+          border-right-color: transparent;
+        }
 
-}
+        &.ZuButtonGroup-groupedVertical {
+          border-bottom-color: transparent;
+        }
+      }
 
-// Styles applied to the children if variant="outlined".
-.ZuButtonGroup-groupedOutlined {
+      &.ZuButtonGroup-groupedContained {
+        &.ZuButtonGroup-groupedHorizontal {
+          border-right: 1px solid $zu-colors-grey-400;
 
-}
+          &.ZuButtonGroup-disabled {
+            border-right: 1px solid $zu-palette-action-disabled;
+          }
+        }
 
-// Styles applied to the children if variant="outlined" and orientation="horizontal".
-.ZuButtonGroup-groupedOutlinedHorizontal {
+        &.ZuButtonGroup-groupedVertical {
+          border-bottom: 1px solid $zu-colors-grey-400;
 
-}
+          &.ZuButtonGroup-disabled {
+            border-bottom: 1px solid $zu-palette-action-disabled;
+          }
+        }
+      }
 
-// Styles applied to the children if variant="outlined" and orientation="vertical".
-.ZuButtonGroup-groupedOutlinedVertical {
+      &:hover {
+        &.ZuButtonGroup-groupedOutlined {
+          &.ZuButtonGroup-groupedHorizontal {
+            border-right-color: currentColor;
+          }
 
-}
+          &.ZuButtonGroup-groupedVertical {
+            border-bottom-color: currentColor;
+          }
+        }
+      }
+    }
 
-// Styles applied to the children if variant="outlined" and color="primary".
-.ZuButtonGroup-groupedOutlinedPrimary {
+    &:hover {
+      &.ZuButtonGroup-groupedContained {
+        box-shadow: none;
+      }
+    }
 
-}
-
-// Styles applied to the children if variant="outlined" and color="secondary".
-.ZuButtonGroup-groupedOutlinedSecondary {
-
-}
-
-// Styles applied to the children if variant="contained".
-.ZuButtonGroup-groupedContained {
-
-}
-
-// Styles applied to the children if variant="contained" and orientation="horizontal".
-.ZuButtonGroup-groupedContainedHorizontal {
-
-}
-
-// Styles applied to the children if variant="contained" and orientation="vertical".
-.ZuButtonGroup-groupedContainedVertical {
-
-}
-
-// Styles applied to the children if variant="contained" and color="primary".
-.ZuButtonGroup-groupedContainedPrimary {
-
-}
-
-// Styles applied to the children if variant="contained" and color="secondary".
-.ZuButtonGroup-groupedContainedSecondary {
-
+    &.ZuButtonGroup-groupedContained {
+      box-shadow: none;
+    }
+  }
 }
