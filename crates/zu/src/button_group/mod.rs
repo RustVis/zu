@@ -3,6 +3,7 @@
 // in the LICENSE file.
 
 use yew::{function_component, html, AttrValue, Children, Classes, Html, Properties};
+use zu_util::prop::ToAttr;
 
 use crate::styles::button_variant::ButtonVariant;
 use crate::styles::color::Color;
@@ -11,6 +12,9 @@ use crate::styles::size::Size;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
+    #[prop_or_default]
+    pub aria_label: AttrValue,
+
     #[prop_or_default]
     pub children: Children,
 
@@ -60,9 +64,10 @@ pub struct Props {
 }
 
 #[function_component(ButtonGroup)]
-pub fn button_group(_props: &Props) -> Html {
+pub fn button_group(props: &Props) -> Html {
     html! {
-        <>
-        </>
+        <div
+            aria_label={props.aria_label.to_attr()}>
+        </div>
     }
 }

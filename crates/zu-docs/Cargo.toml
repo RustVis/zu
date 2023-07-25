@@ -39,6 +39,7 @@ version = "0.2.1"
 features = [
   "AddShoppingCart",
   "Alarm",
+  "ArrowDropDown",
   "Assignment",
   "Bookmark",
   "BookmarkBorder",
