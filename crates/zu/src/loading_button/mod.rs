@@ -227,9 +227,9 @@ pub fn loading_button(props: &Props) -> Html {
 
             if props.loading_position == Position::End {
                 {for props.children.iter()}
-                {indicator.clone()}
+                {indicator}
             } else {
-                {indicator.clone()}
+                {indicator}
                 {for props.children.iter()}
             }
 
