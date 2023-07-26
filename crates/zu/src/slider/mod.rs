@@ -7,7 +7,7 @@ mod value_label;
 
 use yew::{function_component, html, AttrValue, Callback, Classes, Html, Properties};
 
-use crate::styles::color::BasicColor;
+use crate::styles::color::PrimaryColor;
 use crate::styles::orientation::Orientation;
 use crate::styles::size::Size;
 pub use track::Track;
@@ -30,7 +30,7 @@ pub struct Props {
     pub classes: Classes,
 
     #[prop_or_default]
-    pub color: BasicColor,
+    pub color: PrimaryColor,
 
     #[prop_or_default]
     pub default_value: Vec<i32>,

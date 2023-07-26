@@ -4,6 +4,7 @@
 
 pub use crate::styles::color::Color;
 
+// TODO(Shaohua): Support more colors.
 pub const fn root_class(color: Color) -> &'static str {
     match color {
         Color::Primary => "ZuLinearProgress-colorPrimary",

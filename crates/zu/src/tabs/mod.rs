@@ -7,7 +7,7 @@ mod variant;
 
 use yew::{function_component, html, AttrValue, Callback, Children, Classes, Html, Properties};
 
-use crate::styles::color::{BasicColor, InheritColor};
+use crate::styles::color::{Color, PrimaryColor};
 use crate::styles::orientation::Orientation;
 pub use behavior::ButtonBehavior;
 pub use variant::Variant;
@@ -36,7 +36,7 @@ pub struct Props {
     pub component: AttrValue,
 
     #[prop_or_default]
-    pub indicator_color: BasicColor,
+    pub indicator_color: PrimaryColor,
 
     #[prop_or_default]
     pub on_change: Option<Callback<(i32, i32)>>,
@@ -57,7 +57,7 @@ pub struct Props {
     pub style: AttrValue,
 
     #[prop_or_default]
-    pub text_color: InheritColor,
+    pub text_color: Color,
 
     #[prop_or_default]
     pub value: i32,

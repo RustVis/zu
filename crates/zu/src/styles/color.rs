@@ -64,25 +64,12 @@ impl CssValue for Color {
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum BasicColor {
+pub enum PrimaryColor {
     Primary,
     Secondary,
 }
 
-impl Default for BasicColor {
-    fn default() -> Self {
-        Self::Primary
-    }
-}
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum InheritColor {
-    Primary,
-    Secondary,
-    Inherit,
-}
-
-impl Default for InheritColor {
+impl Default for PrimaryColor {
     fn default() -> Self {
         Self::Primary
     }

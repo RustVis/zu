@@ -4,7 +4,7 @@
 
 use yew::{function_component, html, AttrValue, Callback, Classes, Html, Properties};
 
-use crate::styles::color::BasicColor;
+use crate::styles::color::PrimaryColor;
 use crate::styles::input_type::InputType;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
@@ -19,7 +19,7 @@ pub struct Props {
     pub classes: Classes,
 
     #[prop_or_default]
-    pub color: BasicColor,
+    pub color: PrimaryColor,
 
     #[prop_or_default]
     pub default_value: AttrValue,
