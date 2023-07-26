@@ -2,11 +2,12 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use yew::{function_component, html, Html};
+use yew::{function_component, html, html_nested, ChildrenWithProps, Html};
 use zu::stack::Stack;
 use zu::styles::color::Color;
 use zu::styles::flex_direction::FlexDirection;
 use zu::styles::orientation::Orientation;
+use zu::styles::size::Size;
 use zu::styles::spacing::Spacing;
 use zu::toggle_button::ToggleButton;
 use zu::toggle_button_group::ToggleButtonGroup;
@@ -100,14 +101,59 @@ fn create_multiple_selection_view() -> Html {
     }
 }
 
+fn create_alignment_buttons() -> ChildrenWithProps<ToggleButton<Alignment>> {
+    ChildrenWithProps::new(vec![
+        html_nested! {
+           <ToggleButton<Alignment> value={Alignment::Left} aria_label="left aligned">
+               <FormatAlignLeft />
+           </ToggleButton<Alignment>>
+        },
+        html_nested! {
+            <ToggleButton<Alignment> value={Alignment::Center} aria_label="centered">
+                <FormatAlignCenter />
+            </ToggleButton<Alignment>>
+        },
+        html_nested! {
+            <ToggleButton<Alignment> value={Alignment::Right} aria_label="right aligned">
+                <FormatAlignRight />
+            </ToggleButton<Alignment>>
+        },
+        html_nested! {
+            <ToggleButton<Alignment> value={Alignment::Justify} aria_label="justified" disabled=true>
+                <FormatAlignJustify />
+            </ToggleButton<Alignment>>
+        },
+    ])
+}
+
 fn create_size_view() -> Html {
+    let value = Alignment::Left;
+
     html! {
         <>
         <h2>{"Size"}</h2>
         <p>{"For larger or smaller buttons, use the size prop."}</p>
 
         <DemoBox>
-        <span></span>
+        <Stack spacing={Spacing::Small}>
+            <ToggleButtonGroup<Alignment>
+                size={Size::Small}
+                value={value}
+                aria_label="Small sizes">
+                {create_alignment_buttons()}
+            </ToggleButtonGroup<Alignment>>
+            <ToggleButtonGroup<Alignment>
+                value={value}
+                aria_label="Medium sizes">
+                {create_alignment_buttons()}
+            </ToggleButtonGroup<Alignment>>
+            <ToggleButtonGroup<Alignment>
+                size={Size::Large}
+                value={value}
+                aria_label="Large sizes">
+                {create_alignment_buttons()}
+            </ToggleButtonGroup<Alignment>>
+        </Stack>
         </DemoBox>
         </>
     }
