@@ -2,17 +2,20 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+#![allow(clippy::type_repetition_in_bounds)]
+
 use yew::{
     function_component, html, AttrValue, Callback, Children, Classes, Html, MouseEvent, Properties,
 };
 
+use crate::button::Button;
 use crate::styles::color::Color;
 use crate::styles::size::Size;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
-pub struct Props {
+pub struct Props<T: Clone + PartialEq> {
     #[prop_or_default]
-    pub value: AttrValue,
+    pub aria_label: AttrValue,
 
     #[prop_or_default]
     pub children: Children,
@@ -49,12 +52,21 @@ pub struct Props {
 
     #[prop_or_default]
     pub style: AttrValue,
+
+    pub value: T,
 }
 
 #[function_component(ToggleButton)]
-pub fn toggle_button(_props: &Props) -> Html {
+pub fn toggle_button<T: Clone + PartialEq>(props: &Props<T>) -> Html {
     html! {
-        <>
-        </>
+        <Button
+            aria_label={props.aria_label.clone()}
+            disabled={props.disabled}
+            disable_focus_ripple={props.disable_focus_ripple}
+            disable_ripple={props.disable_ripple}
+            full_width={props.full_width}
+            size={props.size}
+            >
+        </Button>
     }
 }
