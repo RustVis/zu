@@ -70,6 +70,7 @@ where
             disabled={props.disabled}
             focus_ripple={!props.disable_focus_ripple}
             >
+            {for props.children.iter()}
         </ButtonBase>
     }
 }

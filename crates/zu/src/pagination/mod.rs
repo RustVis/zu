@@ -7,7 +7,7 @@ mod variant;
 
 use yew::{function_component, html, AttrValue, Callback, Classes, Event, Html, Properties};
 
-use crate::styles::color::StandardColor;
+use crate::pagination_item::StandardColor;
 use crate::styles::shape_variant::ShapeVariant;
 use crate::styles::size::Size;
 pub use item_type::ItemType;

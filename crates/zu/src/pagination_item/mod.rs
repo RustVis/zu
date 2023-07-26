@@ -2,14 +2,15 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
+mod color;
 mod item_type;
 
 use yew::{function_component, html, AttrValue, Classes, Html, Properties};
 
 use crate::pagination::Variant;
-use crate::styles::color::StandardColor;
 use crate::styles::shape_variant::ShapeVariant;
 use crate::styles::size::Size;
+pub use color::StandardColor;
 pub use item_type::ItemType;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
