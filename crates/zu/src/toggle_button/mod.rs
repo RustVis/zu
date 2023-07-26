@@ -13,7 +13,10 @@ use crate::styles::color::Color;
 use crate::styles::size::Size;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
-pub struct Props<T: Clone + PartialEq> {
+pub struct Props<T>
+where
+    T: PartialEq,
+{
     #[prop_or_default]
     pub aria_label: AttrValue,
 
@@ -57,7 +60,10 @@ pub struct Props<T: Clone + PartialEq> {
 }
 
 #[function_component(ToggleButton)]
-pub fn toggle_button<T: Clone + PartialEq>(props: &Props<T>) -> Html {
+pub fn toggle_button<T>(props: &Props<T>) -> Html
+where
+    T: PartialEq,
+{
     html! {
         <Button
             aria_label={props.aria_label.clone()}

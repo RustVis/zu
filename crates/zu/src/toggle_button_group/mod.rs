@@ -15,7 +15,10 @@ use crate::styles::size::Size;
 use crate::toggle_button::ToggleButton;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
-pub struct Props<T: Clone + PartialEq + 'static> {
+pub struct Props<T>
+where
+    T: PartialEq + 'static,
+{
     #[prop_or_default]
     pub aria_label: AttrValue,
 
@@ -49,11 +52,18 @@ pub struct Props<T: Clone + PartialEq + 'static> {
     #[prop_or_default]
     pub style: AttrValue,
 
-    pub value: T,
+    #[prop_or_default]
+    pub value: Option<T>,
+
+    #[prop_or_default]
+    pub values: Vec<T>,
 }
 
 #[function_component(ToggleButtonGroup)]
-pub fn toggle_button_group<T: Clone + PartialEq + 'static>(props: &Props<T>) -> Html {
+pub fn toggle_button_group<T>(props: &Props<T>) -> Html
+where
+    T: PartialEq + std::fmt::Debug + 'static,
+{
     html! {
         <div>
             {for props.children.iter()}
