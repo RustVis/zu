@@ -169,6 +169,8 @@ pub fn button_base(props: &Props) -> Html {
         <@{props.component.to_string()} class={root_cls}
             aria-label={props.aria_label.to_attr()}
             disabled={props.disabled}
+            tab_index={tab_index}
+            type="button"
             onblur={props.on_blur.clone()}
             onclick={props.on_click.clone()}
             oncontextmenu={props.on_context_menu.clone()}
@@ -183,7 +185,6 @@ pub fn button_base(props: &Props) -> Html {
             ontouchend={props.on_touch_end.clone()}
             ontouchmove={props.on_touch_move.clone()}
             ontouchstart={props.on_touch_start.clone()}
-            tab_index={tab_index}
             >
             {for props.children.iter()}
             if enable_touch_ripple {

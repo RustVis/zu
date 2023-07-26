@@ -75,6 +75,7 @@ impl Default for BasicColor {
     }
 }
 
+// TODO(Shaohua): Add more items to enum.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum StandardColor {
     Standard,

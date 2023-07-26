@@ -3,30 +3,65 @@
 
 // Styles applied to the root element.
 .ZuToggleButtonGroup-root {
+  display: inline-flex;
+  border-radius: $zu-shape-borderRadius;
 
-}
+  // Styles applied to the root element if orientation="vertical".
+  &.ZuToggleButtonGroup-vertical {
+    flex-direction: column;
+  }
 
-// Styles applied to the root element if orientation="vertical".
-.ZuToggleButtonGroup-vertical {
+  &.ZuToggleButtonGroup-fullWidth {
+    width: 100%;
+  }
 
-}
+  // State class applied to the root element if disabled={true}.
+  &.ZuToggleButtonGroup-disabled {
 
-// State class applied to the root element if disabled={true}.
-.ZuToggleButtonGroup-disabled {
+  }
 
-}
+  // Styles applied to the children.
+  & .ZuToggleButtonGroup-grouped {
 
-// Styles applied to the children.
-.ZuToggleButtonGroup-grouped {
+    // Styles applied to the children if orientation="horizontal".
+    &.ZuToggleButtonGroup-groupedHorizontal {
+      &:not(:first-of-type) {
+        margin-left: -1px;
+        border-left: 1px solid transparent;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
 
-}
+      &:not(:last-of-type) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
 
-// Styles applied to the children if orientation="horizontal".
-.ZuToggleButtonGroup-groupedHorizontal {
+      // TODO(Shaohua): Add parent selector.
+      &.ZuToggleButtonGroup-selected {
+        border-left: 0;
+        margin-left: 0;
+      }
+    }
 
-}
+    // Styles applied to the children if orientation="vertical".
+    &.ZuToggleButtonGroup-groupedVertical {
+      &:not(:first-of-type) {
+        margin-top: -1px;
+        border-top: 1px solid transparent;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
 
-// Styles applied to the children if orientation="vertical".
-.ZuToggleButtonGroup-groupedVertical {
+      &:not(:last-of-type) {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
 
+      &.ZuToggleButtonGroup-selected {
+        border-top: 0;
+        margin-top: 0;
+      }
+    }
+  }
 }

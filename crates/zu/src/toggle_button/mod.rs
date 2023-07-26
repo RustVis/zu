@@ -8,14 +8,14 @@ use yew::{
     function_component, html, AttrValue, Callback, Children, Classes, Html, MouseEvent, Properties,
 };
 
-use crate::button::Button;
+use crate::button_base::ButtonBase;
 use crate::styles::color::Color;
 use crate::styles::size::Size;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props<T>
 where
-    T: PartialEq,
+    T: Clone + PartialEq,
 {
     #[prop_or_default]
     pub aria_label: AttrValue,
@@ -62,17 +62,14 @@ where
 #[function_component(ToggleButton)]
 pub fn toggle_button<T>(props: &Props<T>) -> Html
 where
-    T: PartialEq,
+    T: Clone + PartialEq,
 {
     html! {
-        <Button
+        <ButtonBase
             aria_label={props.aria_label.clone()}
             disabled={props.disabled}
-            disable_focus_ripple={props.disable_focus_ripple}
-            disable_ripple={props.disable_ripple}
-            full_width={props.full_width}
-            size={props.size}
+            focus_ripple={!props.disable_focus_ripple}
             >
-        </Button>
+        </ButtonBase>
     }
 }
