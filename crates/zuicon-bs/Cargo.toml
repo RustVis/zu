@@ -1,6 +1,6 @@
 [package]
 name = "zuicon-bs"
-version = "0.1.1"
+version = "0.2.1"
 authors = ["Xu Shaohua <shaohua@biofan.org>"]
 readme = "README.md"
 homepage = "https://github.com/RustVis/zu"
@@ -19,4 +19,4 @@ yew = "0.20.0"
 
 [build-dependencies]
 inflections = "1.1.1"
-zuicon-util = { path="../zuicon-util", version="0.1.1" }
+zu-util = { path="../zu-util", version="0.3.2", features=["icon"] }

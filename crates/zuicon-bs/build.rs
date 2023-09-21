@@ -7,8 +7,7 @@ use std::ffi::OsStr;
 use std::fs::{self, File};
 use std::io::{self, BufWriter, Write};
 use std::path::PathBuf;
-
-use zuicon_util::{get_svg_inner, need_update, TEMPLATE_FILE};
+use zu_util::icon::{get_svg_inner, need_update, TEMPLATE_FILE};
 
 const SVG_DIR: &str = "third_party/icons/icons";
 const LIB_HEADER: &str = r###"// Auto Generated! DO NOT EDIT!
