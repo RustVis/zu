@@ -25,4 +25,4 @@ zu = "0.3"
 Or using `cargo add zu` command.
 
 ## License
-This library is release in [Apache License](LICENSE).
+This library is release in [LGPL-3.0](LICENSE).

@@ -1,8 +1,8 @@
 // Copyright (c) 2023 Xu Shaohua <shaohua@biofan.org>. All rights reserved.
-// Use of this source is governed by Apache-2.0 License that can be found
-// in the LICENSE file.
+// Use of this source is governed by Lesser General Public License that can be
+// found in the LICENSE file.
 
-use yew::{Children, function_component, Html, html, Properties};
+use yew::{function_component, html, Children, Html, Properties};
 
 use crate::button::Button;
 
@@ -16,7 +16,7 @@ pub struct Props {
 pub fn code(props: &Props) -> Html {
     // TODO(Shaohua): Copy text to clipboard on copy button clicked.
 
-    html!{
+    html! {
         <div class="ZuCode-root">
             <pre class="ZuCode-pre">
                 <code class="ZuCode-code">
