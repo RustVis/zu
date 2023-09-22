@@ -2,7 +2,7 @@
 
 use yew::prelude::{html, Component, Context, Html, Properties};
 
-pub struct TypeH2 {}
+pub struct EmojiAstonishedFill {}
 
 #[derive(Properties, Debug, Clone, PartialEq, Eq)]
 pub struct Props {
@@ -28,7 +28,7 @@ pub struct Props {
     pub rotate: i16,
 }
 
-impl Component for TypeH2 {
+impl Component for EmojiAstonishedFill {
     type Properties = Props;
     type Message = ();
 
@@ -50,12 +50,12 @@ impl Component for TypeH2 {
                 width={ props.width.unwrap_or("16") }
                 height={ props.height.unwrap_or("16") }
                 focusable={ "false" }
-                data-icon={ "type-h2" }
+                data-icon={ "emoji-astonished-fill" }
                 viewBox={ "0 0 16 16" }
                 fill={ props.fill.unwrap_or("currentColor") }
                 style={ style }
             >
-            <path d="M7.495 13V3.201H6.174v4.15H1.32V3.2H0V13h1.32V8.513h4.854V13h1.32Zm3.174-7.071v-.05c0-.934.66-1.752 1.801-1.752 1.005 0 1.76.639 1.76 1.651 0 .898-.582 1.58-1.12 2.19l-3.69 4.2V13h6.331v-1.149h-4.458v-.079L13.9 8.786c.919-1.048 1.666-1.874 1.666-3.101C15.565 4.149 14.35 3 12.499 3 10.46 3 9.384 4.393 9.384 5.879v.05h1.285Z"/>
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0Zm-4.884-3.978a2.092 2.092 0 0 1 .53.332.5.5 0 0 0 .708-.708h-.001v-.001a1.885 1.885 0 0 0-.237-.197 3.087 3.087 0 0 0-.606-.345 2.996 2.996 0 0 0-2.168-.077.5.5 0 1 0 .316.948 1.997 1.997 0 0 1 1.458.048Zm-4.774-.048a.5.5 0 0 0 .316-.948 2.996 2.996 0 0 0-2.167.077 3.091 3.091 0 0 0-.773.478c-.024.02-.047.042-.07.064l-.002.001a.5.5 0 1 0 .728.689 2.09 2.09 0 0 1 .51-.313 2 2 0 0 1 1.458-.048ZM7 6.5C7 5.672 6.552 5 6 5s-1 .672-1 1.5S5.448 8 6 8s1-.672 1-1.5Zm4 0c0-.828-.448-1.5-1-1.5s-1 .672-1 1.5S9.448 8 10 8s1-.672 1-1.5Zm-5.247 4.746c-.383.478.08 1.06.687.98 1.04-.135 2.08-.135 3.12 0 .606.08 1.07-.502.687-.98C9.747 10.623 8.998 10 8 10c-.998 0-1.747.623-2.247 1.246Z"/>
             </svg>
         }
     }

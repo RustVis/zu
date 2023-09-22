@@ -2,7 +2,7 @@
 
 use yew::prelude::{html, Component, Context, Html, Properties};
 
-pub struct TypeH2 {}
+pub struct PersonWalking {}
 
 #[derive(Properties, Debug, Clone, PartialEq, Eq)]
 pub struct Props {
@@ -28,7 +28,7 @@ pub struct Props {
     pub rotate: i16,
 }
 
-impl Component for TypeH2 {
+impl Component for PersonWalking {
     type Properties = Props;
     type Message = ();
 
@@ -50,12 +50,13 @@ impl Component for TypeH2 {
                 width={ props.width.unwrap_or("16") }
                 height={ props.height.unwrap_or("16") }
                 focusable={ "false" }
-                data-icon={ "type-h2" }
+                data-icon={ "person-walking" }
                 viewBox={ "0 0 16 16" }
                 fill={ props.fill.unwrap_or("currentColor") }
                 style={ style }
             >
-            <path d="M7.495 13V3.201H6.174v4.15H1.32V3.2H0V13h1.32V8.513h4.854V13h1.32Zm3.174-7.071v-.05c0-.934.66-1.752 1.801-1.752 1.005 0 1.76.639 1.76 1.651 0 .898-.582 1.58-1.12 2.19l-3.69 4.2V13h6.331v-1.149h-4.458v-.079L13.9 8.786c.919-1.048 1.666-1.874 1.666-3.101C15.565 4.149 14.35 3 12.499 3 10.46 3 9.384 4.393 9.384 5.879v.05h1.285Z"/>
+            <path d="M9.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0ZM6.44 3.752A.75.75 0 0 1 7 3.5h1.445c.742 0 1.32.643 1.243 1.38l-.43 4.083a1.75 1.75 0 0 1-.088.395l-.318.906.213.242a.75.75 0 0 1 .114.175l2 4.25a.75.75 0 1 1-1.357.638l-1.956-4.154-1.68-1.921A.75.75 0 0 1 6 8.96l.138-2.613-.435.489-.464 2.786a.75.75 0 1 1-1.48-.246l.5-3a.75.75 0 0 1 .18-.375l2-2.25Z"/>
+  <path d="M6.25 11.745v-1.418l1.204 1.375.261.524a.75.75 0 0 1-.12.231l-2.5 3.25a.75.75 0 1 1-1.19-.914l2.345-3.048Zm4.22-4.215-.494-.494.205-1.843a1.93 1.93 0 0 0 .006-.067l1.124 1.124h1.44a.75.75 0 0 1 0 1.5H11a.75.75 0 0 1-.531-.22Z"/>
             </svg>
         }
     }

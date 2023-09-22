@@ -2,7 +2,7 @@
 
 use yew::prelude::{html, Component, Context, Html, Properties};
 
-pub struct TypeH2 {}
+pub struct BackpackFill {}
 
 #[derive(Properties, Debug, Clone, PartialEq, Eq)]
 pub struct Props {
@@ -28,7 +28,7 @@ pub struct Props {
     pub rotate: i16,
 }
 
-impl Component for TypeH2 {
+impl Component for BackpackFill {
     type Properties = Props;
     type Message = ();
 
@@ -50,12 +50,13 @@ impl Component for TypeH2 {
                 width={ props.width.unwrap_or("16") }
                 height={ props.height.unwrap_or("16") }
                 focusable={ "false" }
-                data-icon={ "type-h2" }
+                data-icon={ "backpack-fill" }
                 viewBox={ "0 0 16 16" }
                 fill={ props.fill.unwrap_or("currentColor") }
                 style={ style }
             >
-            <path d="M7.495 13V3.201H6.174v4.15H1.32V3.2H0V13h1.32V8.513h4.854V13h1.32Zm3.174-7.071v-.05c0-.934.66-1.752 1.801-1.752 1.005 0 1.76.639 1.76 1.651 0 .898-.582 1.58-1.12 2.19l-3.69 4.2V13h6.331v-1.149h-4.458v-.079L13.9 8.786c.919-1.048 1.666-1.874 1.666-3.101C15.565 4.149 14.35 3 12.499 3 10.46 3 9.384 4.393 9.384 5.879v.05h1.285Z"/>
+            <path d="M5 13v-3h4v.5a.5.5 0 0 0 1 0V10h1v3H5Z"/>
+  <path d="M6 2v.341C3.67 3.165 2 5.388 2 8v5.5A2.5 2.5 0 0 0 4.5 16h7a2.5 2.5 0 0 0 2.5-2.5V8a6.002 6.002 0 0 0-4-5.659V2a2 2 0 1 0-4 0Zm2-1a1 1 0 0 1 1 1v.083a6.04 6.04 0 0 0-2 0V2a1 1 0 0 1 1-1Zm0 3a4 4 0 0 1 3.96 3.43.5.5 0 1 1-.99.14 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.14A4 4 0 0 1 8 4ZM4.5 9h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5Z"/>
             </svg>
         }
     }

@@ -2,7 +2,7 @@
 
 use yew::prelude::{html, Component, Context, Html, Properties};
 
-pub struct TypeH2 {}
+pub struct SimSlash {}
 
 #[derive(Properties, Debug, Clone, PartialEq, Eq)]
 pub struct Props {
@@ -28,7 +28,7 @@ pub struct Props {
     pub rotate: i16,
 }
 
-impl Component for TypeH2 {
+impl Component for SimSlash {
     type Properties = Props;
     type Message = ();
 
@@ -50,12 +50,12 @@ impl Component for TypeH2 {
                 width={ props.width.unwrap_or("16") }
                 height={ props.height.unwrap_or("16") }
                 focusable={ "false" }
-                data-icon={ "type-h2" }
+                data-icon={ "sim-slash" }
                 viewBox={ "0 0 16 16" }
                 fill={ props.fill.unwrap_or("currentColor") }
                 style={ style }
             >
-            <path d="M7.495 13V3.201H6.174v4.15H1.32V3.2H0V13h1.32V8.513h4.854V13h1.32Zm3.174-7.071v-.05c0-.934.66-1.752 1.801-1.752 1.005 0 1.76.639 1.76 1.651 0 .898-.582 1.58-1.12 2.19l-3.69 4.2V13h6.331v-1.149h-4.458v-.079L13.9 8.786c.919-1.048 1.666-1.874 1.666-3.101C15.565 4.149 14.35 3 12.499 3 10.46 3 9.384 4.393 9.384 5.879v.05h1.285Z"/>
+            <path d="m11.646.44.897.896-.707.707-.897-.897A.5.5 0 0 0 10.586 1H3.5a.5.5 0 0 0-.5.5v9.379l-1 1V1.5A1.5 1.5 0 0 1 3.5 0h7.086a1.5 1.5 0 0 1 1.06.44ZM10.5 3c.117 0 .23.013.34.039L9.879 4H8.5v1.379L6.879 7H5v1.879l-1 1V4.5A1.5 1.5 0 0 1 5.5 3h5ZM12 6.121l-1 1V9H9.121L7.5 10.621V12H6.121l-.961.961c.11.026.223.039.34.039h5a1.5 1.5 0 0 0 1.5-1.5V6.121ZM3.5 15a.498.498 0 0 1-.288-.091l-.71.71c.265.237.615.381.998.381h9a1.5 1.5 0 0 0 1.5-1.5V4.121l-1 1V14.5a.5.5 0 0 1-.5.5h-9Zm2-11a.5.5 0 0 0-.5.5V6h2.5V4h-2Zm5.5 6v1.5a.5.5 0 0 1-.5.5h-2v-2H11Zm3.854-8.146a.5.5 0 0 0-.708-.708l-13 13a.5.5 0 0 0 .708.708l13-13Z"/>
             </svg>
         }
     }
