@@ -288,11 +288,13 @@ pub use {module_name}::{node_name};
 }
 
 fn run() -> Result<(), Box<dyn Error>> {
-    // 1. Download icon index
-    let icons_index = download_index()?;
+    if std::env::var_os("MATERIAL_DOWNLOAD").map_or(false, |val| !val.is_empty()) {
+        // 1. Download icon index
+        let icons_index = download_index()?;
 
-    // 2. Download icons
-    let _count = download_icons(&icons_index)?;
+        // 2. Download icons
+        let _count = download_icons(&icons_index)?;
+    }
 
     // 3. Convert to SvgIcon components.
     generate_components(SVG_DIR)?;
@@ -304,6 +306,7 @@ fn run() -> Result<(), Box<dyn Error>> {
 
 fn main() {
     // Check ZU_ICON_UPDATE="material" environment.
+    // Set MATERIAL_DOWNLOAD=1 to download icon files from gstatic.
     if need_update_with_name("material") {
         run().unwrap();
     }
