@@ -24,7 +24,7 @@ const LIB_HEADER: &str = r###"// Auto Generated! DO NOT EDIT!
 "###;
 
 fn map_filename(name: &str) -> String {
-    let names = vec!["box", "option", "type"];
+    let names = ["box", "option", "type"];
     if names.contains(&name) {
         return format!("icon-{name}");
     }
