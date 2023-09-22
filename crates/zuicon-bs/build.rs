@@ -7,7 +7,7 @@ use std::ffi::OsStr;
 use std::fs::{self, File};
 use std::io::{self, BufWriter, Write};
 use std::path::PathBuf;
-use zu_util::icon::{get_svg_inner, need_update, TEMPLATE_FILE};
+use zu_util::icon::{get_svg_inner, need_update_with_name, TEMPLATE_FILE};
 
 const SVG_DIR: &str = "third_party/icons/icons";
 const LIB_HEADER: &str = r###"// Auto Generated! DO NOT EDIT!
@@ -133,8 +133,8 @@ fn rebuild_icons() {
 }
 
 fn main() {
-    // Check ZUICON_UPDATE=1 environment.
-    if need_update() {
+    // Check ZUICON_UPDATE=bs environment.
+    if need_update_with_name("bs") {
         rebuild_icons()
     }
 }

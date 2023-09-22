@@ -1,6 +1,6 @@
 // Copyright (c) 2023 Xu Shaohua <shaohua@biofan.org>. All rights reserved.
-// Use of this source is governed by Apache-2.0 License that can be found
-// in the LICENSE file.
+// Use of this source is governed by Lesser General Public License that can be
+// found in the LICENSE file.
 
 //! Download icons from gstatic.com and convert to SvgIcon components
 
@@ -16,7 +16,7 @@ use std::ffi::OsStr;
 use std::fs::{self, OpenOptions};
 use std::io::Write;
 use std::path::PathBuf;
-use zu_util::icon::{get_svg_path_data, need_update};
+use zu_util::icon::{get_svg_path_data, need_update_with_name};
 
 const SVG_DIR: &str = "icons";
 const CUSTOM_DIR: &str = "custom";
@@ -303,8 +303,8 @@ fn run() -> Result<(), Box<dyn Error>> {
 }
 
 fn main() {
-    // Check ZU_ICON_UPDATE=1 environment.
-    if need_update() {
+    // Check ZU_ICON_UPDATE="material" environment.
+    if need_update_with_name("material") {
         run().unwrap();
     }
 }

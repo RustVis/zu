@@ -1,6 +1,6 @@
 // Copyright (c) 2023 Xu Shaohua <shaohua@biofan.org>. All rights reserved.
-// Use of this source is governed by Apache-2.0 License that can be found
-// in the LICENSE file.
+// Use of this source is governed by Lesser General Public License that can be
+// found in the LICENSE file.
 #[cfg(feature = "Abc")]
 mod abc;
 #[cfg(feature = "Abc")]
@@ -52220,4 +52220,3 @@ pub use zoom_out_sharp::ZoomOutSharp;
 mod zoom_out_two_tone;
 #[cfg(feature = "ZoomOutTwoTone")]
 pub use zoom_out_two_tone::ZoomOutTwoTone;
-

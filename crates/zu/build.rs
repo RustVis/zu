@@ -16,7 +16,7 @@ use std::fs::{self, OpenOptions};
 use std::io;
 use std::io::Write;
 use std::path::{Path, PathBuf};
-use zu_util::icon::need_update;
+use zu_util::icon::need_update_with_name;
 
 fn merge_themes(style_files: &[&str], output_name: &str) -> io::Result<()> {
     let out_dir = env::var("OUT_DIR").unwrap();
@@ -126,8 +126,8 @@ pub use {module_name}::{node_name};
 fn main() -> Result<(), Box<dyn Error>> {
     generate_style_files()?;
 
-    // Check ZU_ICON_UPDATE=1 environment.
-    if need_update() {
+    // Check ZU_ICON_UPDATE=zu environment.
+    if need_update_with_name("zu") {
         generate_svg_icons()?;
     }
 

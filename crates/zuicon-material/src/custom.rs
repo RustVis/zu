@@ -1,6 +1,6 @@
 // Copyright (c) 2023 Xu Shaohua <shaohua@biofan.org>. All rights reserved.
-// Use of this source is governed by Apache-2.0 License that can be found
-// in the LICENSE file.
+// Use of this source is governed by Lesser General Public License that can be
+// found in the LICENSE file.
 #[cfg(feature = "Apple")]
 mod apple;
 #[cfg(feature = "Apple")]
@@ -60,4 +60,3 @@ pub use whats_app::WhatsApp;
 mod you_tube;
 #[cfg(feature = "YouTube")]
 pub use you_tube::YouTube;
-
