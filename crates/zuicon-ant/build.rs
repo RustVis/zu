@@ -1,16 +1,16 @@
 // Copyright (c) 2021 Xu Shaohua <shaohua@biofan.org>. All rights reserved.
-// Use of this source is governed by Apache-2.0 License that can be found
-// in the LICENSE file.
+// Use of this source is governed by Lesser General Public License that can be
+// found in the LICENSE file.
 
 use inflections::Inflect;
+use std::error::Error;
 use std::ffi::OsStr;
-use std::fs::{self, File};
-use std::io::{self, BufWriter, Write};
+use std::fs::{self, File, OpenOptions};
+use std::io::{self, Write};
 use std::path::PathBuf;
+use zu_util::icon::{get_svg_inner, need_update_with_name, TEMPLATE_FILE};
 
-use zuicon_util::{get_svg_inner, need_update, TEMPLATE_FILE};
-
-const SVG_DIR: &str = "third_party/ant-design-icons/packages/icons-svg/svg";
+const SVG_DIR: &str = "icons/packages/icons-svg/svg";
 const LIB_HEADER: &str = r###"// Auto Generated! DO NOT EDIT!
 
 #![deny(
@@ -23,7 +23,7 @@ const LIB_HEADER: &str = r###"// Auto Generated! DO NOT EDIT!
 
 "###;
 
-fn build_icons(folder: &str, module_names: &mut Vec<String>) -> Result<(), io::Error> {
+fn build_icons(folder: &str, module_names: &mut Vec<(String, String)>) -> Result<(), io::Error> {
     let mut dir = PathBuf::new();
     dir.push(SVG_DIR);
     dir.push(folder);
@@ -60,31 +60,48 @@ fn build_icons(folder: &str, module_names: &mut Vec<String>) -> Result<(), io::E
             .replace("MARKUP", markup);
 
         fs::write(rs_filepath, rs_content).unwrap();
-        module_names.push(module_name);
+        module_names.push((module_name, node_name));
     }
 
     Ok(())
 }
 
-fn rebuild_icons() {
+fn rebuild_icons() -> Result<(), Box<dyn Error>> {
     let mut module_names = Vec::new();
-    build_icons("filled", &mut module_names).unwrap();
-    build_icons("outlined", &mut module_names).unwrap();
-    build_icons("twotone", &mut module_names).unwrap();
-
-    let fd = File::create("src/lib.rs").unwrap();
-    let mut buf_fd = BufWriter::new(fd);
-    buf_fd.write_all(LIB_HEADER.as_bytes()).unwrap();
+    build_icons("filled", &mut module_names)?;
+    build_icons("outlined", &mut module_names)?;
+    build_icons("twotone", &mut module_names)?;
     module_names.sort();
-    for module_name in &module_names {
-        buf_fd
-            .write_all(format!("pub mod {module_name};\n").as_bytes())
-            .unwrap();
+
+    let mut lib_file = File::create("src/lib.rs")?;
+    lib_file.write_all(LIB_HEADER.as_bytes())?;
+    for (module_name, node_name) in &module_names {
+        let line = format!(
+            r#"#[cfg(feature = "{node_name}")]
+mod {module_name};
+#[cfg(feature = "{node_name}")]
+pub use {module_name}::{node_name};
+
+"#
+        );
+        lib_file.write_all(line.as_bytes())?;
     }
+    drop(lib_file);
+
+    let mut cargo_file = OpenOptions::new().append(true).open("Cargo.toml")?;
+    for (_module_name, node_name) in module_names.iter() {
+        let line = format!("{node_name} = []\n");
+        cargo_file.write_all(line.as_bytes())?;
+    }
+    drop(cargo_file);
+
+    Ok(())
 }
 
 fn main() {
-    if need_update() {
-        rebuild_icons()
+    // Check ZU_ICON_UPDATE=ant environment.
+    if need_update_with_name("ant") {
+        // Fetch icons repo first: `git clone https://github.com/ant-design/ant-design-icons icons`
+        rebuild_icons().unwrap();
     }
 }
