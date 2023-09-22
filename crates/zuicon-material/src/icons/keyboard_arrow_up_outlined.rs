@@ -16,7 +16,7 @@ pub fn keyboard_arrow_up_outlined(props: &Props) -> Html {
 
     html! {
         <SvgIcon ..new_props>
-            <path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z"/>
+            <path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z"/>
         </SvgIcon>
     }
 }
