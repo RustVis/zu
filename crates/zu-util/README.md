@@ -22,4 +22,4 @@ zu-util = "0.1"
 Or using `cargo add zu-util` command.
 
 ## License
-This library is release in [Apache License](LICENSE).
+This library is release in [LGPL-3.0](LICENSE).

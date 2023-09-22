@@ -1,6 +1,6 @@
 // Copyright (c) 2021 Xu Shaohua <shaohua@biofan.org>. All rights reserved.
-// Use of this source is governed by Apache-2.0 License that can be found
-// in the LICENSE file.
+// Use of this source is governed by Lesser General Public License that can be
+// found in the LICENSE file.
 
 use roxmltree::{Document, Error, Node, NodeType};
 
@@ -19,10 +19,10 @@ pub fn need_update() -> bool {
 #[must_use]
 pub fn get_svg_inner(s: &str) -> Option<&str> {
     let Some(start_index) = s.find("<svg") else {
-        return None
+        return None;
     };
     let Some(end_index) = s.find("</svg>") else {
-        return None
+        return None;
     };
 
     let mut start_index_end = start_index;
