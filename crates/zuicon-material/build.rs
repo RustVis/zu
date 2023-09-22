@@ -210,12 +210,10 @@ fn map_filename(name: &str) -> String {
     name
 }
 
-fn build_icons(
-    icons_dir: &str,
-    module_names: &mut Vec<(String, String)>,
-) -> Result<(), Box<dyn Error>> {
+fn build_icons(icons_dir: &str) -> Result<Vec<(String, String)>, Box<dyn Error>> {
     let mut dir = PathBuf::new();
     dir.push(icons_dir);
+    let mut module_names = Vec::new();
 
     let svg_extension = OsStr::new("svg");
 
@@ -253,13 +251,12 @@ fn build_icons(
         module_names.push((module_name, node_name));
     }
 
-    Ok(())
+    module_names.sort();
+    Ok(module_names)
 }
 
 fn generate_components(icons_dir: &str) -> Result<(), Box<dyn Error>> {
-    let mut module_names = vec![];
-    build_icons(icons_dir, &mut module_names)?;
-    module_names.sort();
+    let module_names = build_icons(icons_dir)?;
 
     let mut icons_file = OpenOptions::new()
         .append(true)
