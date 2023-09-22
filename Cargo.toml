@@ -3,6 +3,7 @@ members = [
     "crates/zu",
     "crates/zu-docs",
     "crates/zu-util",
+    "crates/zuicon-bs",
     "crates/zuicon-material",
 ]
 
