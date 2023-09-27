@@ -23,22 +23,19 @@ const LIB_HEADER: &str = r###"// Auto Generated! DO NOT EDIT!
 
 "###;
 
-fn map_filename(name: &str) -> String {
-    let names = ["box", "option", "type"];
-    if names.contains(&name) {
-        return format!("icon-{name}");
+fn map_filename(name: String) -> String {
+    let names = ["Box", "Option", "Type", "Move"];
+    if names.contains(&name.as_str()) {
+        return format!("{name}Icon");
     }
-    name.to_string()
+    name
 }
 
 fn build_icons() -> Result<Vec<(String, String)>, io::Error> {
     let mut module_names = Vec::new();
-    let mut dir = PathBuf::new();
-    dir.push(SVG_DIR);
-
     let svg_extension = OsStr::new("tsx");
 
-    for entry in fs::read_dir(&dir)? {
+    for entry in fs::read_dir(SVG_DIR)? {
         let entry = entry?;
         let path = entry.path();
         if !path.is_file() {
@@ -51,6 +48,7 @@ fn build_icons() -> Result<Vec<(String, String)>, io::Error> {
 
         let stem = path.file_stem().unwrap();
         let stem_str = stem.to_str().unwrap();
+        let stem_str = stem_str.replace("Icon", "");
         let stem_str = map_filename(stem_str);
         let data_name = &stem_str;
         let node_name = stem_str.to_pascal_case();
