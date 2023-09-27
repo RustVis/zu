@@ -23,13 +23,13 @@ const LIB_HEADER: &str = r###"// Auto Generated! DO NOT EDIT!
 
 "###;
 
-fn build_icons(folder: &str, module_names: &mut Vec<(String, String)>) -> Result<(), io::Error> {
+fn build_icons(folder: &str) -> Result<Vec<(String, String)>, io::Error> {
+    let mut module_names = Vec::new();
     let mut dir = PathBuf::new();
     dir.push(SVG_DIR);
     dir.push(folder);
 
     let svg_extension = OsStr::new("svg");
-    let folder_pascal = folder.to_pascal_case();
 
     for entry in fs::read_dir(&dir)? {
         let entry = entry?;
@@ -45,10 +45,11 @@ fn build_icons(folder: &str, module_names: &mut Vec<(String, String)>) -> Result
         let stem = path.file_stem().unwrap();
         let stem_str = stem.to_str().unwrap();
         let data_name = stem_str;
-        let node_name = stem_str.to_pascal_case() + &folder_pascal;
-        let module_name = format!("{}_{}", stem_str.to_snake_case(), folder);
+        let node_name = stem_str.to_pascal_case();
+        let module_name = stem_str.to_snake_case().to_owned();
         let mut rs_filepath = PathBuf::new();
         rs_filepath.push("src");
+        rs_filepath.push(folder);
         rs_filepath.push(&module_name);
         rs_filepath.set_extension("rs");
 
@@ -63,18 +64,11 @@ fn build_icons(folder: &str, module_names: &mut Vec<(String, String)>) -> Result
         module_names.push((module_name, node_name));
     }
 
-    Ok(())
-}
-
-fn rebuild_icons() -> Result<(), Box<dyn Error>> {
-    let mut module_names = Vec::new();
-    build_icons("filled", &mut module_names)?;
-    build_icons("outlined", &mut module_names)?;
-    build_icons("twotone", &mut module_names)?;
     module_names.sort();
 
-    let mut lib_file = File::create("src/lib.rs")?;
-    lib_file.write_all(LIB_HEADER.as_bytes())?;
+    // Write to module file.
+    let mut module_file = File::create(&format!("src/{}.rs", folder))?;
+    module_file.write_all(LIB_HEADER.as_bytes())?;
     for (module_name, node_name) in &module_names {
         let line = format!(
             r#"#[cfg(feature = "{node_name}")]
@@ -84,9 +78,20 @@ pub use {module_name}::{node_name};
 
 "#
         );
-        lib_file.write_all(line.as_bytes())?;
+        module_file.write_all(line.as_bytes())?;
     }
-    drop(lib_file);
+    drop(module_file);
+
+    Ok(module_names)
+}
+
+fn rebuild_icons() -> Result<(), Box<dyn Error>> {
+    let mut module_names = Vec::new();
+    module_names.extend(build_icons("filled")?);
+    module_names.extend(build_icons("outlined")?);
+    module_names.extend(build_icons("twotone")?);
+    module_names.sort();
+    module_names.dedup();
 
     let mut cargo_file = OpenOptions::new().append(true).open("Cargo.toml")?;
     for (_module_name, node_name) in module_names.iter() {
