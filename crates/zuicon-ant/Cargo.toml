@@ -19,7 +19,7 @@ yew = "0.20.0"
 
 [build-dependencies]
 inflections = "1.1.1"
-zu-util = { path="../zu-util", version="0.3.2", features=["icon"] }
+zu-util = { path="../zu-util", version="0.3.3", features=["icon"] }
 
 [features]
 default = []

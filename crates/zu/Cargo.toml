@@ -18,9 +18,9 @@ log = "0.4.20"
 stylist = { version = "0.12.1", default-features = false, features = ["parser", "random", "yew"] }
 yew = "0.20.0"
 yew-hooks = "0.2.0"
-zu-util = { path = "../zu-util", version = "0.3.2" }
+zu-util = { path = "../zu-util", version = "0.3.3" }
 
 [build-dependencies]
 inflections = "1.1.1"
 rsass = "0.28.2"
-zu-util = { path = "../zu-util", version = "0.3.2", features = ["icon"] }
+zu-util = { path = "../zu-util", version = "0.3.3", features = ["icon"] }
