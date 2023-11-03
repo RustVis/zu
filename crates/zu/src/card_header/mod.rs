@@ -62,14 +62,14 @@ pub fn card_header(props: &Props) -> Html {
             <Typography classes="ZuCardHeader-title"
                 variant={if props.avatar.is_some() {Variant::Body2 } else { Variant::H5 }}
                 component="span">
-                {props.title.clone()}
+                {props.title.clone().unwrap_or_default()}
             </Typography>
 
             <Typography classes="ZuCardHeader-subheader"
                 variant={if props.avatar.is_some() { Variant::Body2 } else { Variant::Body1 }}
                 color={Color::Secondary}
                 component="span">
-                {props.subheader.clone()}
+                {props.subheader.clone().unwrap_or_default()}
             </Typography>
         </div>
 

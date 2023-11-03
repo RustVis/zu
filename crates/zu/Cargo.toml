@@ -15,9 +15,9 @@ publish = true
 
 [dependencies]
 log = "0.4.20"
-stylist = { version = "0.12.1", default-features = false, features = ["parser", "random", "yew"] }
-yew = "0.20.0"
-yew-hooks = "0.2.0"
+stylist = { version = "0.13.0", default-features = false, features = ["parser", "random", "yew"] }
+yew = "0.21.0"
+yew-hooks = "0.3.0"
 zu-util = { path = "../zu-util", version = "0.3.3" }
 
 [build-dependencies]

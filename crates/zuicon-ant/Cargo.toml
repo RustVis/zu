@@ -15,7 +15,7 @@ license = "LGPL-3.0"
 publish = true
 
 [dependencies]
-yew = "0.20.0"
+yew = "0.21.0"
 
 [build-dependencies]
 inflections = "1.1.1"
