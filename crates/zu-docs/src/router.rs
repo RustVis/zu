@@ -150,7 +150,6 @@ pub enum Route {
     Transitions,
 }
 
-#[must_use]
 #[allow(clippy::cognitive_complexity)]
 #[allow(clippy::let_unit_value)]
 pub fn switch_route(routes: Route) -> Html {

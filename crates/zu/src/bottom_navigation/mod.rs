@@ -21,6 +21,7 @@ pub struct Props {
     pub component: AttrValue,
 
     /// Callback fired when the value changes.
+    #[prop_or_default]
     pub on_change: Option<Callback<(Event, i32), ()>>,
 
     /// If true, all BottomNavigationActions will show their labels.
