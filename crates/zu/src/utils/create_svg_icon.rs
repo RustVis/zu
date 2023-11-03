@@ -6,7 +6,6 @@ use yew::{html, AttrValue, Html};
 
 use crate::svg_icon::SvgIcon;
 
-#[must_use]
 pub fn create_svg_icon(path: Html, icon: AttrValue) -> Html {
     html! {
         <SvgIcon icon={icon}>

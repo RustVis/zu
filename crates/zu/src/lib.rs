@@ -34,6 +34,8 @@
 )]
 #![allow(
     dead_code,
+    // bypass dynamic tag in yew 0.21.0
+    clippy::ignored_unit_patterns,
     clippy::let_underscore_untyped,
     clippy::module_name_repetitions,
     clippy::multiple_crate_versions,
