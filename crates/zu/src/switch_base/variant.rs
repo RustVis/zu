@@ -9,6 +9,12 @@ pub enum Variant {
     Switch,
 }
 
+impl Default for Variant {
+    fn default() -> Self {
+        Self::Checkbox
+    }
+}
+
 impl Variant {
     #[must_use]
     pub const fn name(&self) -> &'static str {

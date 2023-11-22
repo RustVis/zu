@@ -9,7 +9,8 @@ mod size;
 mod variant;
 
 use yew::{
-    classes, function_component, html, AttrValue, Callback, Classes, Html, MouseEvent, Properties,
+    classes, function_component, html, AttrValue, Callback, Classes, FocusEvent, Html, MouseEvent,
+    Properties,
 };
 use zu_util::prop::ToAttr;
 
@@ -20,46 +21,63 @@ pub use variant::Variant;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
+    /// If `true`, the `input` element is focused during the first mount.
     #[prop_or(false)]
     pub auto_focus: bool,
 
+    /// If `true`, the component is checked.
     #[prop_or(false)]
     pub checked: bool,
 
+    /// The icon to display when the component is checked.
+    #[prop_or_default]
     pub checked_icon: Html,
 
     #[prop_or_default]
     pub classes: Classes,
 
+    #[prop_or_default]
+    pub input_classes: Classes,
+
     #[prop_or(false)]
     pub default_checked: bool,
 
+    /// If `true`, the component is disabled.
     #[prop_or(false)]
     pub disabled: bool,
 
     #[prop_or(true)]
     pub disable_focus_ripple: bool,
 
+    /// If given, uses a negative margin to counteract the padding on one side.
     #[prop_or_default]
     pub edge: Option<Edge>,
 
+    /// The icon to display when the component is unchecked.
     pub icon: Html,
 
+    /// The id of the `input` element.
     #[prop_or_default]
     pub id: AttrValue,
 
     #[prop_or_default]
     pub name: AttrValue,
 
-    pub on_blur: Callback<(), ()>,
+    #[prop_or_default]
+    pub on_blur: Option<Callback<FocusEvent>>,
 
-    pub on_change: Callback<MouseEvent, ()>,
+    /// Callback fired when the state is changed.
+    #[prop_or_default]
+    pub on_change: Option<Callback<MouseEvent, ()>>,
 
-    pub on_focus: Callback<(), ()>,
+    #[prop_or_default]
+    pub on_focus: Option<Callback<FocusEvent>>,
 
+    /// It prevents the user from changing the value of the field.
     #[prop_or(false)]
     pub read_only: bool,
 
+    /// If `true`, the `input` element is required.
     #[prop_or(false)]
     pub required: bool,
 
@@ -72,8 +90,12 @@ pub struct Props {
     #[prop_or_default]
     pub tab_index: Option<i32>,
 
+    /// Switch variant type.
+    #[prop_or_default]
     pub variant: Variant,
 
+    /// The value of component.
+    #[prop_or_default]
     pub value: Option<String>,
 }
 
@@ -93,6 +115,7 @@ pub fn switch_base(props: &Props) -> Html {
         },
         edge::css_class(props.edge),
         size::css_class(props.size),
+        props.classes.clone(),
     );
 
     let has_label_for = match props.variant {
@@ -112,13 +135,17 @@ pub fn switch_base(props: &Props) -> Html {
         None
     };
 
+    let input_cls = classes!("ZuSwitchBase-input", props.input_classes.clone());
+
     html! {
         <ButtonBase classes={root_cls}
             component="span"
             disabled={props.disabled}
             focus_ripple={!props.disable_focus_ripple}
+            on_focus={&props.on_focus}
+            on_blur={&props.on_blur}
         >
-            <input class="ZuSwitchBase-input"
+            <input class={input_cls}
                 auto_focus={props.auto_focus.to_attr()}
                 checked={props.checked}
                 default_checked={props.default_checked.to_attr()}

@@ -27,7 +27,11 @@ pub fn switch_page() -> Html {
     html! {
         <div class="container">
         <h1>{"Switch"}</h1>
-        <p>{"Switches are the preferred way to adjust settings on mobile. "}</p>
+        <p>{"Switches are the preferred way to adjust settings on mobile. \
+            The option that the switch controls, as well as the state it's in, \
+            should be made clear from the corresponding inline label."}</p>
+
+        <h2>{"Basic switches"}</h2>
         <DemoBox>
         <Switch aria_label={demo_label} default_checked={true} />
         <Switch aria_label={demo_label} />
@@ -84,7 +88,6 @@ pub fn switch_page() -> Html {
                 on_change={handle_change}
             />
         </DemoBox>
-
 
         <h2>{"Label placement"}</h2>
         <p>{"You can change the placement of the label:"}</p>
