@@ -2,13 +2,19 @@
 // Use of this source is governed by Lesser General Public License that can be
 // found in the LICENSE file.
 
+mod color;
+mod edge;
+mod size;
+
 use yew::{
-    function_component, html, AttrValue, Callback, Children, Classes, Html, MouseEvent, Properties,
+    classes, function_component, html, AttrValue, Callback, Children, Classes, Html, MouseEvent,
+    Properties,
 };
 
 use crate::styles::color::Color;
 use crate::styles::edge::Edge;
 use crate::styles::size::Size;
+use crate::switch_base::{SwitchBase, Variant};
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -56,7 +62,7 @@ pub struct Props {
     #[prop_or(false)]
     pub required: bool,
 
-    #[prop_or_default]
+    #[prop_or(Size::Medium)]
     pub size: Size,
 
     #[prop_or_default]
@@ -64,9 +70,46 @@ pub struct Props {
 }
 
 #[function_component(Switch)]
-pub fn switch(_props: &Props) -> Html {
+pub fn switch(props: &Props) -> Html {
+    let root_cls = classes!(
+        "ZuSwitch-root",
+        edge::css_class(props.edge),
+        size::css_class(props.size),
+        props.classes.clone(),
+    );
+    let base_cls = classes!(
+        "ZuSwitch-switchBase",
+        color::color_class(props.color),
+        if props.checked {
+            "ZuSwitch-checked"
+        } else {
+            ""
+        },
+        if props.disabled {
+            "ZuSwitch-disabled"
+        } else {
+            ""
+        }
+    );
+    let base_input_cls = classes!("ZuSwitch-input");
+
+    let icon = html! {
+        <span class="ZuSwitch-thumb">
+        </span>
+    };
+
     html! {
-        <>
-        </>
+        <span class={root_cls}>
+            <SwitchBase
+                classes={base_cls}
+                input_classes={base_input_cls}
+                icon={icon.clone()}
+                checked_icon={icon}
+                variant={Variant::Checkbox}
+                >
+            </SwitchBase>
+             <span class="ZuSwitch-track">
+            </span>
+        </span>
     }
 }

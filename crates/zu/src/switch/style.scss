@@ -3,7 +3,46 @@
 
 /* Styles applied to the root element. */
 .ZuSwitch-root {
+  display: inline-flex;
+  // 34 + 12 * 2
+  width: 58px;
+  // 14 + 12 * 2
+  height: 38px;
+  overflow: hidden;
+  padding: 12px;
+  box-sizing: border-box;
+  position: relative;
+  flex-shrink: 0;
+  // reset stack context.
+  z-index: 0;
+  vertical-align: middle;
 
+  &.ZuSwitch-edgeStart {
+    margin-left: -8xp;
+  }
+
+  &.ZuSwitch-edgeEnd {
+    margin-right: -8px;
+  }
+
+  &.ZuSwitch-sizeSmall {
+    width: 40px;
+    height: 24px;
+    padding: 7px;
+
+    &.ZuSwitch-thumb {
+      width: 16px;
+      height: 16px;
+    }
+
+    &.ZuSwitch-switchBase {
+      padding: 4px;
+
+      &.ZuSwitch-checked {
+        transform: translateX(16px);
+      }
+    }
+  }
 }
 
 /* Styles applied to the root element if edge="start". */
@@ -43,10 +82,116 @@
 
 /* Styles used to create the thumb passed to the internal `SwitchBase` component `icon` prop. */
 .ZuSwitch-thumb {
-
+  box-shadow: $zu-shadow-1;
+  background-color: currentColor;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
 }
 
 /* Styles applied to the track element. */
 .ZuSwitch-track {
+  height: 100%;
+  width: 100%;
+  border-radius: 7px;
+  z-index: -1;
 
+  transition: opacity $zu-duration-shortest $zu-easing-easeInOut 0ms,
+    background-color $zu-duration-shortest $zu-easing-easeInOut 0ms;
+
+  // TODO(Shaohua): onBackground variable.
+  background-color: black;
+  // TODO(Shaohua): switchTrack variable.
+  opacity: 0.38;
+}
+
+.ZuSwitch-switchBase {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;  // Render above the focus ripple.
+  // TODO(Shaohua): Change color based on theme.
+  color: white;
+
+  transition: left $zu-duration-shortest $zu-easing-easeInOut 0ms,
+    transform $zu-duration-shortest $zu-easing-easeInOut 0ms;
+
+  &.ZuSwitch-checked {
+    transform: translateX(20px);
+  }
+
+  &.ZuSwitch-checked + .ZuSwitch-track {
+    opacity: 0.5;
+  }
+
+  &.ZuSwitch-disabled {
+    // TODO(Shaohua): Based on theme.
+    color: $zu-colors-grey-100;
+  }
+
+  &.ZuSwitch-disabled + .ZuSwitch-track {
+    opacity: 0.2;
+  }
+
+  &.ZuSwitch-input {
+    left: -100%;
+    width: 300%;
+  }
+
+  &:hover {
+    // FIXME(Shaohua): hoverOpacity is undefined.
+    //background-color: alpha(var(--zu-palette-action-active), var(--zu-palette-action-hoverOpacity));
+
+    @media (hover:none) {
+      background-color: transparent;
+    }
+
+    &.ZuSwitch-colorPrimary {
+      &.ZuSwitch-checked {
+        color: $zu-palette-primary-main;
+
+        &:hover {
+          // FIXME(Shaohua):
+          //background-color: alpha(var(--zu-palette-primary-main), var(--zu-palette-action-hoverOpacity));
+
+          @media (hover:none) {
+            background-color: transparent;
+          }
+        }
+      }
+
+      &.ZuSwitch-disabled {
+        // TODO(Shaohua): call lighten() for light theme.
+        color: $zu-palette-primary-main;
+      }
+      
+      &.ZuSwitch-checked + &.ZuSwitch-track {
+        background-color: $zu-palette-primary-main;
+      }
+    }
+
+    &.ZuSwitch-colorSecondary {
+      &.ZuSwitch-checked {
+        color: var(--zu-palette-secondary-main);
+
+        &:hover {
+          // FIXME(Shaohua):
+          //background-color: alpha(var(--zu-palette-secondary-main), var(--zu-palette-action-hoverOpacity));
+
+          @media (hover:none) {
+            background-color: transparent;
+          }
+        }
+      }
+
+      &.ZuSwitch-disabled {
+        // TODO(Shaohua): call lighten() for light theme.
+        color: $zu-palette-secondary-main;
+      }
+
+      &.ZuSwitch-checked + &.ZuSwitch-track {
+        background-color: $zu-palette-secondary-main;
+      }
+    }
+  }
 }
