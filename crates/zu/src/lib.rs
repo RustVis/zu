@@ -56,7 +56,7 @@ pub mod backdrop;
 pub mod badge;
 pub mod bottom_navigation;
 pub mod bottom_navigation_action;
-pub mod r#box;
+pub mod boxed;
 pub mod breadcrumbs;
 pub mod button;
 pub mod button_base;

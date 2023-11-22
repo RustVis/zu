@@ -4,9 +4,9 @@
 
 use stylist::Style;
 use yew::{classes, function_component, html, html_nested, ChildrenWithProps, Classes, Html};
+use zu::boxed::Box;
 use zu::button::Button;
 use zu::button_group::ButtonGroup;
-use zu::r#box::Box;
 use zu::styles::button_variant::ButtonVariant;
 use zu::styles::color::Color;
 use zu::styles::orientation::Orientation;

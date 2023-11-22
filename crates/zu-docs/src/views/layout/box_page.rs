@@ -4,7 +4,7 @@
 
 use stylist::Style;
 use yew::{classes, function_component, html, Html};
-use zu::r#box::Box;
+use zu::boxed::Box;
 
 use crate::components::demo_box::DemoBox;
 

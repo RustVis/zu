@@ -30,7 +30,7 @@ pub const COMMON_STYLES: &[&str] = &[
     "src/badge/style.scss",
     "src/bottom_navigation/style.scss",
     "src/bottom_navigation_action/style.scss",
-    "src/box/style.scss",
+    "src/boxed/style.scss",
     "src/breadcrumbs/style.scss",
     "src/button/style.scss",
     "src/button_base/style.scss",

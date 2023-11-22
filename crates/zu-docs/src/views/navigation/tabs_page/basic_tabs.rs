@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 use yew::{function_component, html, use_state, Callback, Children, Html, Properties};
-use zu::r#box::Box;
+use zu::boxed::Box;
 use zu::tab::Tab;
 use zu::tabs::Tabs;
 use zu::typography::Typography;

@@ -4,10 +4,10 @@
 
 use stylist::Style;
 use yew::{classes, function_component, html, Callback, Html, MouseEvent};
+use zu::boxed::Box;
 use zu::button::Button;
 use zu::icon_button::IconButton;
 use zu::loading_button::{LoadingButton, Position};
-use zu::r#box::Box;
 use zu::stack::Stack;
 use zu::styles::button_variant::ButtonVariant as Variant;
 use zu::styles::color::Color;

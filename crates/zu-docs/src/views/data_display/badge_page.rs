@@ -4,7 +4,7 @@
 
 use yew::{function_component, html, Html};
 use zu::badge::{Badge, Content, Overlap, Variant};
-use zu::r#box::r#Box;
+use zu::boxed::Box;
 use zu::styles::anchor_origin::AnchorOrigin;
 use zu::styles::color::Color;
 use zu::svg_icon::Color as SvgColor;

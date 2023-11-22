@@ -3,8 +3,8 @@
 // found in the LICENSE file.
 
 use yew::{function_component, html, Html};
+use zu::boxed::Box;
 use zu::container::Container;
-use zu::r#box::Box;
 
 use crate::components::demo_box::DemoBox;
 
