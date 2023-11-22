@@ -22,5 +22,5 @@ zu-util = { path = "../zu-util", version = "0.3.3" }
 
 [build-dependencies]
 inflections = "1.1.1"
-rsass = "0.28.2"
+rsass = "0.28.6"
 zu-util = { path = "../zu-util", version = "0.3.3", features = ["icon"] }
