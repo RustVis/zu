@@ -19,11 +19,11 @@ use crate::components::demo_box::DemoBox;
 fn create_basic_rating_view() -> Html {
     let value = 2.0;
     let box_style = Style::new(
-        r#"
+        r"
         & > legend {
             margin-top: 12px;
         }
-    "#,
+    ",
     )
     .expect("Failed to parse box style");
 
@@ -128,7 +128,7 @@ fn create_sizes_view() -> Html {
 #[function_component(StyledRating)]
 pub fn styled_rating(props: &RatingProps) -> Html {
     let new_style = Style::new(
-        r#"
+        r"
     & .ZuRating-iconFilled {
         color: #ff6d75;
     }
@@ -136,7 +136,7 @@ pub fn styled_rating(props: &RatingProps) -> Html {
     & .ZuRating-iconHover {
         color: #ff3d47;
     }
-    "#,
+    ",
     )
     .expect("Failed to parse new style of StyledRating");
     let new_props = RatingProps {
@@ -151,11 +151,11 @@ pub fn styled_rating(props: &RatingProps) -> Html {
 
 fn create_customization_view() -> Html {
     let box_style = Style::new(
-        r#"
+        r"
         & > legend {
             margin-top: 12px;
         }
-    "#,
+    ",
     )
     .expect("Failed to parse box style");
 
@@ -187,11 +187,11 @@ fn create_customization_view() -> Html {
 #[function_component(RadioStyledRating)]
 pub fn radio_styled_rating(props: &RatingProps) -> Html {
     let new_style = Style::new(
-        r#"
+        r"
     & .ZuRating-iconEmpty .ZuSvgIcon-root {
       color: var(--zu-palette-action-disabled);
     }
-    "#,
+    ",
     )
     .expect("Failed to parse new style of RadioStyledRating");
     let new_props = RatingProps {

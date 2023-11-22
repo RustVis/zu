@@ -88,13 +88,13 @@ fn create_size_colors_view(margin_cls: Classes) -> Html {
 
 fn create_vertical_group_view() -> Html {
     let margin_style = Style::new(
-        r#"
+        r"
          display: flex;
 
          & > * {
             margin: 8px;
         }
-    "#,
+    ",
     )
     .expect("Failed to create style");
     let margin_cls = classes!(margin_style.get_class_name().to_owned());
@@ -176,7 +176,7 @@ fn create_disabled_elevation_view() -> Html {
 #[function_component(ButtonGroupPage)]
 pub fn button_group_page() -> Html {
     let margin_style = Style::new(
-        r#"
+        r"
          display: flex;
          flex-direction: column;
          align-items: center;
@@ -184,7 +184,7 @@ pub fn button_group_page() -> Html {
          & > * {
             margin: 8px;
         }
-    "#,
+    ",
     )
     .expect("Failed to create style");
     let margin_cls = classes!(margin_style.get_class_name().to_owned());

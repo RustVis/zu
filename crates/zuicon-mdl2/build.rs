@@ -11,7 +11,7 @@ use std::path::PathBuf;
 use zu_util::icon::{get_svg_inner, need_update_with_name, TEMPLATE_FILE};
 
 const SVG_DIR: &str = "fluentui/packages/react-icons-mdl2/src/components";
-const LIB_HEADER: &str = r###"// Auto Generated! DO NOT EDIT!
+const LIB_HEADER: &str = r"// Auto Generated! DO NOT EDIT!
 
 #![deny(
     warnings,
@@ -21,7 +21,7 @@ const LIB_HEADER: &str = r###"// Auto Generated! DO NOT EDIT!
     clippy::pedantic
 )]
 
-"###;
+";
 
 fn map_filename(name: String) -> String {
     let names = ["Box", "Option", "Type", "Move"];

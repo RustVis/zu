@@ -104,11 +104,11 @@ fn create_colors_view() -> Html {
 
 fn create_sizes_view() -> Html {
     let margin_style = Style::new(
-        r#"
+        r"
         button {
             margin: 8px;
         }
-        "#,
+        ",
     )
     .expect("Failed to create margin-style");
 
@@ -238,11 +238,11 @@ fn create_icon_button_view() -> Html {
 
 fn create_loading_button_toggle_view() -> Html {
     let margin_style = Style::new(
-        r#"
+        r"
         button {
             margin: 8px;
         }
-        "#,
+        ",
     )
     .expect("Failed to create margin-style");
 

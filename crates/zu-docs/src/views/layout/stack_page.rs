@@ -19,12 +19,12 @@ pub struct Props {
 #[function_component(Item)]
 pub fn item(props: &Props) -> Html {
     let style = Style::new(
-        r#"
+        r"
         padding: var(--zu-spacing-xs);
         text-align: center;
         color: var(--zu-palette-text-secondary);
         background-color: white;
-    "#,
+    ",
     )
     .unwrap();
     html! {

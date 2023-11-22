@@ -11,7 +11,7 @@ use crate::components::demo_box::DemoBox;
 #[function_component(BoxPage)]
 pub fn box_page() -> Html {
     let style = Style::new(
-        r#"
+        r"
         width: 300px;
         height: 300px;
         background-color: var(--zu-palette-primary-dark);
@@ -19,7 +19,7 @@ pub fn box_page() -> Html {
             background-color: var(--zu-palette-primary-main);
             opacity: 0.9;
         }
-    "#,
+    ",
     )
     .unwrap();
 

@@ -11,7 +11,7 @@ use std::path::PathBuf;
 use zu_util::icon::{get_svg_inner, need_update_with_name, TEMPLATE_FILE};
 
 const SVG_DIR: &str = "icons/packages/icons-svg/svg";
-const LIB_HEADER: &str = r###"// Auto Generated! DO NOT EDIT!
+const LIB_HEADER: &str = r"// Auto Generated! DO NOT EDIT!
 
 #![deny(
     warnings,
@@ -21,7 +21,7 @@ const LIB_HEADER: &str = r###"// Auto Generated! DO NOT EDIT!
     clippy::pedantic
 )]
 
-"###;
+";
 
 fn build_icons(folder: &str) -> Result<Vec<(String, String)>, io::Error> {
     let mut module_names = Vec::new();
@@ -67,7 +67,7 @@ fn build_icons(folder: &str) -> Result<Vec<(String, String)>, io::Error> {
     module_names.sort();
 
     // Write to module file.
-    let mut module_file = File::create(&format!("src/{}.rs", folder))?;
+    let mut module_file = File::create(format!("src/{}.rs", folder))?;
     module_file.write_all(LIB_HEADER.as_bytes())?;
     for (module_name, node_name) in &module_names {
         let line = format!(
