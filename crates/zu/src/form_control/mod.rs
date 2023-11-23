@@ -5,6 +5,7 @@
 mod margin;
 
 use yew::{function_component, html, AttrValue, Children, Classes, Html, Properties};
+use zu_util::prop::ToAttr;
 
 use crate::styles::color::Color;
 use crate::styles::label_variant::LabelVariant;
@@ -12,6 +13,9 @@ use crate::styles::margin::Margin;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
+    #[prop_or_default]
+    pub aria_label: AttrValue,
+
     #[prop_or_default]
     pub children: Children,
 
@@ -57,9 +61,11 @@ pub struct Props {
 }
 
 #[function_component(FormControl)]
-pub fn form_control(_props: &Props) -> Html {
+pub fn form_control(props: &Props) -> Html {
     html! {
-        <>
-        </>
+        <div
+            aria_label={props.aria_label.to_attr()}>
+            {for props.children.iter()}
+        </div>
     }
 }

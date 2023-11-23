@@ -103,25 +103,25 @@ pub fn switch_page() -> Html {
                 <FormControlLabel
                     value="top"
                     control={html!{<Switch color={Color::Primary} />}}
-                    label={html!{"Top"}}
+                    label={"Top"}
                     label_position={Position::Top}
                 />
                 <FormControlLabel
                     value="start"
                     control={html!{<Switch color={Color::Primary} />}}
-                    label={html!{"Start"}}
+                    label={"Start"}
                     label_position={Position::Start}
                 />
                 <FormControlLabel
                     value="bottom"
                     control={html!{<Switch color={Color::Primary} />}}
-                    label={html!{"Bottom"}}
+                    label={"Bottom"}
                     label_position={Position::Bottom}
                 />
                 <FormControlLabel
                     value="end"
                     control={html!{<Switch color={Color::Primary} />}}
-                    label={html!{"End"}}
+                    label={"End"}
                     label_position={Position::End}
                 />
             </FormGroup>
