@@ -72,7 +72,13 @@ pub fn switch_page() -> Html {
                 color={Color::Secondary} />
             <Switch aria_label={demo_label}
                 default_checked={true}
+                color={Color::Info} />
+            <Switch aria_label={demo_label}
+                default_checked={true}
                 color={Color::Warning} />
+           <Switch aria_label={demo_label}
+                default_checked={true}
+                color={Color::Error} />
             <Switch aria_label={demo_label}
                 default_checked={true}
                 color={Color::Default} />

@@ -105,17 +105,12 @@ pub struct Props {
 #[function_component(SwitchBase)]
 pub fn switch_base(props: &Props) -> Html {
     let checked_state = use_state(|| props.default_checked);
-    log::info!(
-        "default checked: {}, check_state: {checked_state:?}",
-        props.default_checked
-    );
     let on_input_change = {
         let checked_state_clone = checked_state.clone();
         let on_change_cb = props.on_change.clone();
         Callback::from(move |event: Event| {
             let input = event.target_unchecked_into::<HtmlInputElement>();
             let is_checked: bool = input.checked();
-            log::info!("input element: {is_checked}");
             checked_state_clone.set(is_checked);
             if let Some(on_change) = &on_change_cb {
                 on_change.emit(is_checked);

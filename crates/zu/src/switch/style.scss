@@ -177,7 +177,7 @@
   // secondary
   &.ZuSwitch-colorSecondary {
     &.ZuSwitchBase-checked {
-      color: var(--zu-palette-secondary-main);
+      color: $zu-palette-secondary-main;
 
       &:hover {
         // FIXME(Shaohua):
@@ -202,7 +202,7 @@
   // Success
   &.ZuSwitch-colorSuccess {
     &.ZuSwitchBase-checked {
-      color: var(--zu-palette-success-main);
+      color: $zu-palette-success-main;
 
       &:hover {
         // FIXME(Shaohua):
@@ -227,7 +227,7 @@
   // Info
   &.ZuSwitch-colorInfo {
     &.ZuSwitchBase-checked {
-      color: var(--zu-palette-info-main);
+      color: $zu-palette-info-main;
 
       &:hover {
         // FIXME(Shaohua):
@@ -250,9 +250,9 @@
   }
 
   // Warning
-  &.ZuSwitch-colorInfo {
+  &.ZuSwitch-colorWarning {
     &.ZuSwitchBase-checked {
-      color: var(--zu-palette-warning-main);
+      color: $zu-palette-warning-main;
 
       &:hover {
         // FIXME(Shaohua):
@@ -275,9 +275,9 @@
   }
 
   // Error
-  &.ZuSwitch-colorInfo {
+  &.ZuSwitch-colorError {
     &.ZuSwitchBase-checked {
-      color: var(--zu-palette-error-main);
+      color: $zu-palette-error-main;
 
       &:hover {
         // FIXME(Shaohua):

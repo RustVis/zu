@@ -78,7 +78,6 @@ pub fn switch(props: &Props) -> Html {
     );
     let base_cls = classes!("ZuSwitch-switchBase", color::color_class(props.color),);
     let base_input_cls = classes!("ZuSwitch-input");
-    log::info!("default checked: {}", props.default_checked);
 
     let icon = html! {
         <span class="ZuSwitch-thumb">
