@@ -76,20 +76,7 @@ pub fn switch(props: &Props) -> Html {
         size::css_class(props.size),
         props.classes.clone(),
     );
-    let base_cls = classes!(
-        "ZuSwitch-switchBase",
-        color::color_class(props.color),
-        if props.checked {
-            "ZuSwitch-checked"
-        } else {
-            "ZuSwitch-notChecked"
-        },
-        if props.disabled {
-            "ZuSwitch-disabled"
-        } else {
-            ""
-        },
-    );
+    let base_cls = classes!("ZuSwitch-switchBase", color::color_class(props.color),);
     let base_input_cls = classes!("ZuSwitch-input");
     log::info!("default checked: {}", props.default_checked);
 

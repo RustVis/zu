@@ -125,7 +125,7 @@ pub fn switch_base(props: &Props) -> Html {
 
     let root_cls = classes!(
         "ZuSwitchBase-root",
-        if props.checked {
+        if *checked_state {
             "ZuSwitchBase-checked"
         } else {
             ""

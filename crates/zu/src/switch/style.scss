@@ -30,15 +30,15 @@
     height: 24px;
     padding: 7px;
 
-    &.ZuSwitch-thumb {
+    & .ZuSwitch-thumb {
       width: 16px;
       height: 16px;
     }
 
-    &.ZuSwitch-switchBase {
+    & .ZuSwitch-switchBase {
       padding: 4px;
 
-      &.ZuSwitch-checked {
+      &.ZuSwitchBase-checked {
         transform: translateX(16px);
       }
     }
@@ -116,20 +116,20 @@
   transition: left $zu-duration-shortest $zu-easing-easeInOut 0ms,
     transform $zu-duration-shortest $zu-easing-easeInOut 0ms;
 
-  &.ZuSwitch-checked {
+  &.ZuSwitchBase-checked {
     transform: translateX(20px);
   }
 
-  &.ZuSwitch-checked + .ZuSwitch-track {
+  &.ZuSwitchBase-checked + .ZuSwitch-track {
     opacity: 0.5;
   }
 
-  &.ZuSwitch-disabled {
+  &.ZuSwitchBase-disabled {
     // TODO(Shaohua): Based on theme.
     color: $zu-colors-grey-100;
   }
 
-  &.ZuSwitch-disabled + .ZuSwitch-track {
+  &.ZuSwitchBase-disabled + .ZuSwitch-track {
     opacity: 0.2;
   }
 
@@ -141,57 +141,161 @@
   &:hover {
     // FIXME(Shaohua): hoverOpacity is undefined.
     //background-color: alpha(var(--zu-palette-action-active), var(--zu-palette-action-hoverOpacity));
+    background-color: rgba(0, 0, 0, 0.04);
 
-    @media (hover:none) {
+    @media (hover: none) {
       background-color: transparent;
     }
+  }
 
-    &.ZuSwitch-colorPrimary {
-      &.ZuSwitch-checked {
-        color: $zu-palette-primary-main;
+  // primary
+  &.ZuSwitch-colorPrimary {
+    &.ZuSwitchBase-checked {
+      color: $zu-palette-primary-main;
 
-        &:hover {
-          // FIXME(Shaohua):
-          //background-color: alpha(var(--zu-palette-primary-main), var(--zu-palette-action-hoverOpacity));
+      &:hover {
+        // FIXME(Shaohua):
+        //background-color: alpha(var(--zu-palette-primary-main), var(--zu-palette-action-hoverOpacity));
+        background-color: rgba(25, 118, 210, 0.04);
 
-          @media (hover:none) {
-            background-color: transparent;
-          }
+        @media (hover:none) {
+          background-color: transparent;
         }
-      }
-
-      &.ZuSwitch-disabled {
-        // TODO(Shaohua): call lighten() for light theme.
-        color: $zu-palette-primary-main;
-      }
-      
-      &.ZuSwitch-checked + &.ZuSwitch-track {
-        background-color: $zu-palette-primary-main;
       }
     }
 
-    &.ZuSwitch-colorSecondary {
-      &.ZuSwitch-checked {
-        color: var(--zu-palette-secondary-main);
+    &.ZuSwitchBase-disabled {
+      // TODO(Shaohua): call lighten() for light theme.
+      color: $zu-palette-primary-main;
+    }
 
-        &:hover {
-          // FIXME(Shaohua):
-          //background-color: alpha(var(--zu-palette-secondary-main), var(--zu-palette-action-hoverOpacity));
+    &.ZuSwitchBase-checked + .ZuSwitch-track {
+      background-color: $zu-palette-primary-main;
+    }
+  }
 
-          @media (hover:none) {
-            background-color: transparent;
-          }
+  // secondary
+  &.ZuSwitch-colorSecondary {
+    &.ZuSwitchBase-checked {
+      color: var(--zu-palette-secondary-main);
+
+      &:hover {
+        // FIXME(Shaohua):
+        //background-color: alpha(var(--zu-palette-secondary-main), var(--zu-palette-action-hoverOpacity));
+
+        @media (hover:none) {
+          background-color: transparent;
         }
       }
+    }
 
-      &.ZuSwitch-disabled {
-        // TODO(Shaohua): call lighten() for light theme.
-        color: $zu-palette-secondary-main;
-      }
+    &.ZuSwitchBase-disabled {
+      // TODO(Shaohua): call lighten() for light theme.
+      color: $zu-palette-secondary-main;
+    }
 
-      &.ZuSwitch-checked + &.ZuSwitch-track {
-        background-color: $zu-palette-secondary-main;
+    &.ZuSwitchBase-checked + .ZuSwitch-track {
+      background-color: $zu-palette-secondary-main;
+    }
+  }
+
+  // Success
+  &.ZuSwitch-colorSuccess {
+    &.ZuSwitchBase-checked {
+      color: var(--zu-palette-success-main);
+
+      &:hover {
+        // FIXME(Shaohua):
+        //background-color: alpha(var(--zu-palette-success-main), var(--zu-palette-action-hoverOpacity));
+
+        @media (hover:none) {
+          background-color: transparent;
+        }
       }
+    }
+
+    &.ZuSwitchBase-disabled {
+      // TODO(Shaohua): call lighten() for light theme.
+      color: $zu-palette-success-main;
+    }
+
+    &.ZuSwitchBase-checked + .ZuSwitch-track {
+      background-color: $zu-palette-success-main;
+    }
+  }
+
+  // Info
+  &.ZuSwitch-colorInfo {
+    &.ZuSwitchBase-checked {
+      color: var(--zu-palette-info-main);
+
+      &:hover {
+        // FIXME(Shaohua):
+        //background-color: alpha(var(--zu-palette-info-main), var(--zu-palette-action-hoverOpacity));
+
+        @media (hover:none) {
+          background-color: transparent;
+        }
+      }
+    }
+
+    &.ZuSwitchBase-disabled {
+      // TODO(Shaohua): call lighten() for light theme.
+      color: $zu-palette-info-main;
+    }
+
+    &.ZuSwitchBase-checked + .ZuSwitch-track {
+      background-color: $zu-palette-info-main;
+    }
+  }
+
+  // Warning
+  &.ZuSwitch-colorInfo {
+    &.ZuSwitchBase-checked {
+      color: var(--zu-palette-warning-main);
+
+      &:hover {
+        // FIXME(Shaohua):
+        //background-color: alpha(var(--zu-palette-warning-main), var(--zu-palette-action-hoverOpacity));
+
+        @media (hover:none) {
+          background-color: transparent;
+        }
+      }
+    }
+
+    &.ZuSwitchBase-disabled {
+      // TODO(Shaohua): call lighten() for light theme.
+      color: $zu-palette-warning-main;
+    }
+
+    &.ZuSwitchBase-checked + .ZuSwitch-track {
+      background-color: $zu-palette-warning-main;
+    }
+  }
+
+  // Error
+  &.ZuSwitch-colorInfo {
+    &.ZuSwitchBase-checked {
+      color: var(--zu-palette-error-main);
+
+      &:hover {
+        // FIXME(Shaohua):
+        //background-color: alpha(var(--zu-palette-error-main), var(--zu-palette-action-hoverOpacity));
+
+        @media (hover:none) {
+          background-color: transparent;
+        }
+      }
+    }
+
+    &.ZuSwitchBase-disabled {
+      // TODO(Shaohua): call lighten() for light theme.
+      color: $zu-palette-error-main;
+    }
+
+    &.ZuSwitchBase-checked + .ZuSwitch-track {
+      background-color: $zu-palette-error-main;
     }
   }
 }
