@@ -90,11 +90,12 @@ pub fn switch(props: &Props) -> Html {
                 aria_label={&props.aria_label}
                 classes={base_cls}
                 checked={props.checked}
+                checked_icon={icon.clone()}
                 default_checked={props.default_checked}
+                disabled={props.disabled}
                 input_classes={base_input_cls}
-                icon={icon.clone()}
+                icon={icon}
                 on_change={props.on_change.clone()}
-                checked_icon={icon}
                 variant={Variant::Switch}
                 >
             </SwitchBase>

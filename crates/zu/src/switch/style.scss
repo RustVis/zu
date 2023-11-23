@@ -162,11 +162,11 @@
           background-color: transparent;
         }
       }
-    }
 
-    &.ZuSwitchBase-disabled {
-      // TODO(Shaohua): call lighten() for light theme.
-      color: $zu-palette-primary-main;
+      &.ZuSwitchBase-disabled {
+        // TODO(Shaohua): call lighten() for light theme.
+        color: $zu-palette-primary-main;
+      }
     }
 
     &.ZuSwitchBase-checked + .ZuSwitch-track {
@@ -187,11 +187,11 @@
           background-color: transparent;
         }
       }
-    }
 
-    &.ZuSwitchBase-disabled {
-      // TODO(Shaohua): call lighten() for light theme.
-      color: $zu-palette-secondary-main;
+      &.ZuSwitchBase-disabled {
+        // TODO(Shaohua): call lighten() for light theme.
+        color: $zu-palette-secondary-main;
+      }
     }
 
     &.ZuSwitchBase-checked + .ZuSwitch-track {
@@ -212,11 +212,11 @@
           background-color: transparent;
         }
       }
-    }
 
-    &.ZuSwitchBase-disabled {
-      // TODO(Shaohua): call lighten() for light theme.
-      color: $zu-palette-success-main;
+      &.ZuSwitchBase-disabled {
+        // TODO(Shaohua): call lighten() for light theme.
+        color: $zu-palette-success-main;
+      }
     }
 
     &.ZuSwitchBase-checked + .ZuSwitch-track {
@@ -237,11 +237,11 @@
           background-color: transparent;
         }
       }
-    }
 
-    &.ZuSwitchBase-disabled {
-      // TODO(Shaohua): call lighten() for light theme.
-      color: $zu-palette-info-main;
+      &.ZuSwitchBase-disabled {
+        // TODO(Shaohua): call lighten() for light theme.
+        color: $zu-palette-info-main;
+      }
     }
 
     &.ZuSwitchBase-checked + .ZuSwitch-track {
@@ -262,11 +262,11 @@
           background-color: transparent;
         }
       }
-    }
 
-    &.ZuSwitchBase-disabled {
-      // TODO(Shaohua): call lighten() for light theme.
-      color: $zu-palette-warning-main;
+      &.ZuSwitchBase-disabled {
+        // TODO(Shaohua): call lighten() for light theme.
+        color: $zu-palette-warning-main;
+      }
     }
 
     &.ZuSwitchBase-checked + .ZuSwitch-track {
@@ -287,11 +287,11 @@
           background-color: transparent;
         }
       }
-    }
 
-    &.ZuSwitchBase-disabled {
-      // TODO(Shaohua): call lighten() for light theme.
-      color: $zu-palette-error-main;
+      &.ZuSwitchBase-disabled {
+        // TODO(Shaohua): call lighten() for light theme.
+        color: $zu-palette-error-main;
+      }
     }
 
     &.ZuSwitchBase-checked + .ZuSwitch-track {
