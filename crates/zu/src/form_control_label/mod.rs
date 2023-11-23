@@ -99,10 +99,12 @@ pub fn form_control_label(props: &Props) -> Html {
     };
 
     // TODO(Shaohua): Check label is null.
-    // TODO(Shaohua): Add control.
+    // TODO(Shaohua): Pass disabled to props.control
 
     html! {
         <label class={root_cls} style={&props.style}>
+            {props.control.clone()}
+
             <Typography classes={label_cls}>
                 {props.label.clone()}
             </Typography>

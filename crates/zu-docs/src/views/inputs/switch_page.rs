@@ -43,13 +43,13 @@ pub fn switch_page() -> Html {
         <DemoBox>
         <FormGroup>
             <FormControlLabel control={html!{<Switch default_checked={true} />}}
-                label={html!{"Label"}} />
+                label={"Label"} />
             <FormControlLabel required={true}
                 control={html!{<Switch />}}
-                label={html!{"Required"}} />
+                label={"Required"} />
             <FormControlLabel disabled={true}
                 control={html!{<Switch />}}
-                label={html!{"Disabled"}} />
+                label={"Disabled"} />
         </FormGroup>
         </DemoBox>
 
