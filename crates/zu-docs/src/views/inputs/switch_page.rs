@@ -2,7 +2,6 @@
 // Use of this source is governed by Lesser General Public License that can be
 // found in the LICENSE file.
 
-use web_sys::MouseEvent;
 use yew::{function_component, html, Callback, Html};
 use zu::form_control::FormControl;
 use zu::form_control_label::FormControlLabel;
@@ -20,8 +19,8 @@ pub fn switch_page() -> Html {
     let demo_label = "Switch Demo";
     // TODO(Shaohua): Add customized switch
 
-    let handle_change = Callback::from(|event: MouseEvent| {
-        event.prevent_default();
+    let handle_change = Callback::from(|checked: bool| {
+        log::info!("handle_change() is checked: {checked}");
     });
 
     html! {

@@ -8,9 +8,10 @@ mod edge;
 mod size;
 mod variant;
 
+use web_sys::HtmlInputElement;
 use yew::{
-    classes, function_component, html, AttrValue, Callback, Classes, FocusEvent, Html, MouseEvent,
-    Properties,
+    classes, function_component, html, use_state, AttrValue, Callback, Classes, Event, FocusEvent,
+    Html, Properties, TargetCast,
 };
 use zu_util::prop::ToAttr;
 
@@ -21,6 +22,9 @@ pub use variant::Variant;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
+    #[prop_or_default]
+    pub aria_label: AttrValue,
+
     /// If `true`, the `input` element is focused during the first mount.
     #[prop_or(false)]
     pub auto_focus: bool,
@@ -68,7 +72,7 @@ pub struct Props {
 
     /// Callback fired when the state is changed.
     #[prop_or_default]
-    pub on_change: Option<Callback<MouseEvent, ()>>,
+    pub on_change: Option<Callback<bool>>,
 
     #[prop_or_default]
     pub on_focus: Option<Callback<FocusEvent>>,
@@ -91,7 +95,6 @@ pub struct Props {
     pub tab_index: Option<i32>,
 
     /// Switch variant type.
-    #[prop_or_default]
     pub variant: Variant,
 
     /// The value of component.
@@ -101,6 +104,25 @@ pub struct Props {
 
 #[function_component(SwitchBase)]
 pub fn switch_base(props: &Props) -> Html {
+    let checked_state = use_state(|| props.default_checked);
+    log::info!(
+        "default checked: {}, check_state: {checked_state:?}",
+        props.default_checked
+    );
+    let on_input_change = {
+        let checked_state_clone = checked_state.clone();
+        let on_change_cb = props.on_change.clone();
+        Callback::from(move |event: Event| {
+            let input = event.target_unchecked_into::<HtmlInputElement>();
+            let is_checked: bool = input.checked();
+            log::info!("input element: {is_checked}");
+            checked_state_clone.set(is_checked);
+            if let Some(on_change) = &on_change_cb {
+                on_change.emit(is_checked);
+            }
+        })
+    };
+
     let root_cls = classes!(
         "ZuSwitchBase-root",
         if props.checked {
@@ -114,7 +136,6 @@ pub fn switch_base(props: &Props) -> Html {
             ""
         },
         edge::css_class(props.edge),
-        size::css_class(props.size),
         props.classes.clone(),
     );
 
@@ -146,11 +167,13 @@ pub fn switch_base(props: &Props) -> Html {
             on_blur={&props.on_blur}
         >
             <input class={input_cls}
+                aria_label={props.aria_label.to_attr()}
                 auto_focus={props.auto_focus.to_attr()}
-                checked={props.checked}
+                checked={*checked_state}
                 default_checked={props.default_checked.to_attr()}
                 disabled={props.disabled}
                 id={input_id}
+                onchange={on_input_change}
                 required={props.required}
                 tab_index={props.tab_index.to_attr()}
                 type={props.variant.name()}

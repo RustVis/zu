@@ -7,8 +7,7 @@ mod edge;
 mod size;
 
 use yew::{
-    classes, function_component, html, AttrValue, Callback, Children, Classes, Html, MouseEvent,
-    Properties,
+    classes, function_component, html, AttrValue, Callback, Children, Classes, Html, Properties,
 };
 
 use crate::styles::color::Color;
@@ -57,7 +56,7 @@ pub struct Props {
     pub id: AttrValue,
 
     #[prop_or_default]
-    pub on_change: Callback<MouseEvent, ()>,
+    pub on_change: Option<Callback<bool>>,
 
     #[prop_or(false)]
     pub required: bool,
@@ -83,15 +82,16 @@ pub fn switch(props: &Props) -> Html {
         if props.checked {
             "ZuSwitch-checked"
         } else {
-            ""
+            "ZuSwitch-notChecked"
         },
         if props.disabled {
             "ZuSwitch-disabled"
         } else {
             ""
-        }
+        },
     );
     let base_input_cls = classes!("ZuSwitch-input");
+    log::info!("default checked: {}", props.default_checked);
 
     let icon = html! {
         <span class="ZuSwitch-thumb">
@@ -101,11 +101,15 @@ pub fn switch(props: &Props) -> Html {
     html! {
         <span class={root_cls}>
             <SwitchBase
+                aria_label={&props.aria_label}
                 classes={base_cls}
+                checked={props.checked}
+                default_checked={props.default_checked}
                 input_classes={base_input_cls}
                 icon={icon.clone()}
+                on_change={props.on_change.clone()}
                 checked_icon={icon}
-                variant={Variant::Checkbox}
+                variant={Variant::Switch}
                 >
             </SwitchBase>
              <span class="ZuSwitch-track">

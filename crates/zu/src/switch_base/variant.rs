@@ -19,9 +19,8 @@ impl Variant {
     #[must_use]
     pub const fn name(&self) -> &'static str {
         match self {
-            Self::Checkbox => "checkbox",
+            Self::Checkbox | Self::Switch => "checkbox",
             Self::Radio => "radio",
-            Self::Switch => "switch",
         }
     }
 }
