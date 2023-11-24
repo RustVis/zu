@@ -16,17 +16,11 @@ $zu-palette-secondary-light: #f3e5f5 !default;
 $zu-palette-secondary-dark: #ab47bc !default;
 $zu-palette-secondary-contrastText: rgba(0, 0, 0, 0.87) !default;
 
-// error
-$zu-palette-error-main: #f44336 !default;
-$zu-palette-error-light: #e57373 !default;
-$zu-palette-error-dark: #d32f2f !default;
-$zu-palette-error-contrastText: #fff !default;
-
-// warning
-$zu-palette-warning-main: #ffa726 !default;
-$zu-palette-warning-light: #ffb74d !default;
-$zu-palette-warning-dark: #f57c00 !default;
-$zu-palette-warning-contrastText: rgba(0, 0, 0, 0.87) !default;
+// success
+$zu-palette-success-main: #66bb6a !default;
+$zu-palette-success-light: #81c784 !default;
+$zu-palette-success-dark: #388e3c !default;
+$zu-palette-success-contrastText: rgba(0, 0, 0, 0.87) !default;
 
 // info
 $zu-palette-info-main: #29b6f6 !default;
@@ -34,11 +28,17 @@ $zu-palette-info-light: #4fc3f7 !default;
 $zu-palette-info-dark: #0288d1 !default;
 $zu-palette-info-contrastText: rgba(0, 0, 0, 0.87) !default;
 
-// success
-$zu-palette-success-main: #66bb6a !default;
-$zu-palette-success-light: #81c784 !default;
-$zu-palette-success-dark: #388e3c !default;
-$zu-palette-success-contrastText: rgba(0, 0, 0, 0.87) !default;
+// warning
+$zu-palette-warning-main: #ffa726 !default;
+$zu-palette-warning-light: #ffb74d !default;
+$zu-palette-warning-dark: #f57c00 !default;
+$zu-palette-warning-contrastText: rgba(0, 0, 0, 0.87) !default;
+
+// error
+$zu-palette-error-main: #f44336 !default;
+$zu-palette-error-light: #e57373 !default;
+$zu-palette-error-dark: #d32f2f !default;
+$zu-palette-error-contrastText: #fff !default;
 
 $zu-palette-contrastThreshold: 3 !default;
 $zu-palette-totalOffset: 0.2 !default;

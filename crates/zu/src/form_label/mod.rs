@@ -106,9 +106,9 @@ pub fn form_label(props: &Props) -> Html {
 
             if props.required {
                 <span
-                    aria_hidden={"true"}
+                    aria-hidden="true"
                     class={asterisk_cls}>
-                {"&thinsp;*"}
+                {"\u{2009}*"}
                 </span>
             }
         </@>

@@ -110,8 +110,10 @@ pub fn form_control_label(props: &Props) -> Html {
             </Typography>
 
             if props.required {
-                <span class={asterisk_cls} aria-hidden="true">
-                    {"&thinsp;{'*'}"}
+                <span
+                    aria-hidden="true"
+                    class={asterisk_cls}>
+                    {"\u{2009}*"}
                 </span>
             }
         </label>
