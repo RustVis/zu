@@ -96,7 +96,9 @@ pub fn form_label(props: &Props) -> Html {
     };
 
     html! {
-        <@{props.component.to_string()} class={root_cls} style={style}>
+        <@{props.component.to_string()}
+            class={root_cls}
+            style={style}>
             {for props.children.iter()}
             if props.required {
                 <span class={asterisk_cls}>

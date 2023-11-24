@@ -85,7 +85,9 @@ pub fn switch(props: &Props) -> Html {
     };
 
     html! {
-        <span class={root_cls}>
+        <span
+            class={root_cls}
+            style={&props.style}>
             <SwitchBase
                 aria_label={&props.aria_label}
                 classes={base_cls}
