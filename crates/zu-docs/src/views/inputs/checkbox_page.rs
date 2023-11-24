@@ -156,6 +156,22 @@ fn form_group_section() -> Html {
     let antoine = use_state(|| true);
     let error = use_state(|| false);
 
+    let gilad_changed = {
+        let gilad_clone = gilad.clone();
+        Callback::from(move |checked: bool| {
+            gilad_clone.set(checked);
+            log::info!("gilad old state: {}, new state: {checked}", *gilad_clone);
+        })
+    };
+    let jason_changed = {
+        let jason_clone = jason.clone();
+        Callback::from(move |checked: bool| jason_clone.set(checked))
+    };
+    let antoine_changed = {
+        let antoine_clone = antoine.clone();
+        Callback::from(move |checked: bool| antoine_clone.set(checked))
+    };
+
     html! {
         <>
         <h2>{"FormGroup"}</h2>
@@ -170,19 +186,28 @@ fn form_group_section() -> Html {
                 <FormGroup>
                     <FormControlLabel
                         control={html!{
-                            <Checkbox checked={*gilad} name="gilad" />
+                            <Checkbox
+                                checked={*gilad}
+                                name="gilad"
+                                on_change={gilad_changed.clone()} />
                         }}
                         label="Gilad Gray"
                     />
                     <FormControlLabel
                         control={html!{
-                            <Checkbox checked={*jason} name="jason" />
+                            <Checkbox
+                                checked={*jason}
+                                name="jason"
+                                on_change={jason_changed.clone()} />
                         }}
                         label="Jason Killian"
                     />
                     <FormControlLabel
                         control={html!{
-                            <Checkbox checked={*antoine} name="antoine" />
+                            <Checkbox
+                                checked={*antoine}
+                                name="antoine"
+                                on_change={antoine_changed.clone()} />
                         }}
                         label="Antoine Llorca"
                     />
@@ -199,19 +224,28 @@ fn form_group_section() -> Html {
                 <FormGroup>
                     <FormControlLabel
                         control={html!{
-                            <Checkbox checked={*gilad} name="gilad" />
+                            <Checkbox
+                                checked={*gilad}
+                                name="gilad"
+                                on_change={gilad_changed} />
                         }}
                         label="Gilad Gray"
                     />
                     <FormControlLabel
                         control={html!{
-                            <Checkbox checked={*jason} name="jason" />
+                            <Checkbox
+                                checked={*jason}
+                                name="jason"
+                                on_change={jason_changed} />
                         }}
                         label="Jason Killian"
                     />
                     <FormControlLabel
                         control={html!{
-                            <Checkbox checked={*antoine} name="antoine" />
+                            <Checkbox
+                                checked={*antoine}
+                                name="antoine"
+                                on_change={antoine_changed} />
                         }}
                         label="Antoine Llorca"
                     />
