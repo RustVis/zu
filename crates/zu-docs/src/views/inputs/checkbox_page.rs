@@ -57,9 +57,7 @@ pub fn checkbox_page() -> Html {
         <DemoBox>
         <Checkbox default_checked={true} size={Size::Small} />
         <Checkbox default_checked={true} />
-        <Checkbox
-            default_checked={true}
-            />
+        <Checkbox default_checked={true} size={Size::Large} />
         </DemoBox>
 
         <h2>{"Color"}</h2>
