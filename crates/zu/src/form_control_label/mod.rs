@@ -7,6 +7,8 @@ mod position;
 use yew::{classes, html, AttrValue, Children, Html, Properties};
 use yew::{function_component, Classes};
 
+use crate::stack::Stack;
+use crate::styles::flex_direction::FlexDirection;
 use crate::styles::position::Position;
 use crate::typography::Typography;
 
@@ -100,21 +102,30 @@ pub fn form_control_label(props: &Props) -> Html {
 
     // TODO(Shaohua): Check label is null.
     // TODO(Shaohua): Pass disabled to props.control
+    // TODO(Shaohua): Pass required to props.control
+    let required = props.required;
+
+    let label_elem = html! {
+        <Typography classes={label_cls}>
+            {props.label.clone()}
+        </Typography>
+    };
 
     html! {
         <label class={root_cls} style={&props.style}>
             {props.control.clone()}
 
-            <Typography classes={label_cls}>
-                {props.label.clone()}
-            </Typography>
-
-            if props.required {
+            if required {
+                <Stack direction={FlexDirection::Row}>
+                {label_elem.clone()}
                 <span
                     aria-hidden="true"
                     class={asterisk_cls}>
                     {"\u{2009}*"}
                 </span>
+                </Stack>
+            } else {
+                {label_elem}
             }
         </label>
     }

@@ -88,11 +88,10 @@ pub fn form_label(props: &Props) -> Html {
     ]
     .join(";");
 
-    let asterisk_cls = if props.error {
-        "ZuFormLabel-asterisk ZuFormLabel-error"
-    } else {
-        "ZuFormLabel-asterisk"
-    };
+    let asterisk_cls = classes!(
+        "ZuFormLabel-asterisk",
+        if props.error { "ZuFormLabel-error" } else { "" }
+    );
 
     // TODO(Shaohua): Pass disabled to children.
 

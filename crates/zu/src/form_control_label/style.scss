@@ -15,25 +15,25 @@
   &.ZuFormControlLabel-disabled {
     cursor: default;
   }
-}
 
-// Styles applied to the root element if labelPlacement="start".
-.ZuFormControlLabel-labelPlacementStart {
-  flex-direction: row-reverse;
-  margin-left: 16px; // used for row presentation of radio/checkbox
-  margin-right: -11px;
-}
+  // Styles applied to the root element if labelPlacement="start".
+  .ZuFormControlLabel-labelPlacementStart {
+    flex-direction: row-reverse;
+    margin-left: 16px; // used for row presentation of radio/checkbox
+    margin-right: -11px;
+  }
 
-// Styles applied to the root element if labelPlacement="top".
-.ZuFormControlLabel-labelPlacementTop {
-  flex-direction: column-reverse;
-  margin-left: 16px;
-}
+  // Styles applied to the root element if labelPlacement="top".
+  .ZuFormControlLabel-labelPlacementTop {
+    flex-direction: column-reverse;
+    margin-left: 16px;
+  }
 
-// Styles applied to the root element if labelPlacement="bottom".
-.ZuFormControlLabel-labelPlacementBottom {
-  flex-direction: column;
-  margin-left: 16px;
+  // Styles applied to the root element if labelPlacement="bottom".
+  .ZuFormControlLabel-labelPlacementBottom {
+    flex-direction: column;
+    margin-left: 16px;
+  }
 }
 
 // State class applied to the root element if disabled={true}.
@@ -43,7 +43,7 @@
 // Styles applied to the labels Typography component.
 .ZuFormControlLabel-label {
   &.ZuFormControlLabel-disabled {
-    color: var(--zu-palette-text-disabled);
+    color: $zu-palette-text-disabled;
   }
 }
 
@@ -57,7 +57,8 @@
 
 // Styles applied to the asterisk element.
 .ZuFormControlLabel-asterisk {
+
   &.ZuFormControlLabel-error {
-    color: var(--zu-palette-error-main);
+    color: $zu-palette-error-main;
   }
 }
