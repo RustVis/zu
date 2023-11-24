@@ -147,155 +147,155 @@
       background-color: transparent;
     }
   }
+}
 
-  // primary
-  &.ZuSwitch-colorPrimary {
-    &.ZuSwitchBase-checked {
+// primary
+.ZuSwitch-colorPrimary {
+  &.ZuSwitchBase-checked {
+    color: $zu-palette-primary-main;
+
+    &:hover {
+      // FIXME(Shaohua):
+      //background-color: alpha(var(--zu-palette-primary-main), var(--zu-palette-action-hoverOpacity));
+      background-color: rgba(25, 118, 210, 0.04);
+
+      @media (hover:none) {
+        background-color: transparent;
+      }
+    }
+
+    &.ZuSwitchBase-disabled {
+      // TODO(Shaohua): call lighten() for light theme.
       color: $zu-palette-primary-main;
-
-      &:hover {
-        // FIXME(Shaohua):
-        //background-color: alpha(var(--zu-palette-primary-main), var(--zu-palette-action-hoverOpacity));
-        background-color: rgba(25, 118, 210, 0.04);
-
-        @media (hover:none) {
-          background-color: transparent;
-        }
-      }
-
-      &.ZuSwitchBase-disabled {
-        // TODO(Shaohua): call lighten() for light theme.
-        color: $zu-palette-primary-main;
-      }
-    }
-
-    &.ZuSwitchBase-checked + .ZuSwitch-track {
-      background-color: $zu-palette-primary-main;
     }
   }
 
-  // secondary
-  &.ZuSwitch-colorSecondary {
-    &.ZuSwitchBase-checked {
+  &.ZuSwitchBase-checked + .ZuSwitch-track {
+    background-color: $zu-palette-primary-main;
+  }
+}
+
+// secondary
+.ZuSwitch-colorSecondary {
+  &.ZuSwitchBase-checked {
+    color: $zu-palette-secondary-main;
+
+    &:hover {
+      // FIXME(Shaohua):
+      //background-color: alpha(var(--zu-palette-secondary-main), var(--zu-palette-action-hoverOpacity));
+
+      @media (hover:none) {
+        background-color: transparent;
+      }
+    }
+
+    &.ZuSwitchBase-disabled {
+      // TODO(Shaohua): call lighten() for light theme.
       color: $zu-palette-secondary-main;
-
-      &:hover {
-        // FIXME(Shaohua):
-        //background-color: alpha(var(--zu-palette-secondary-main), var(--zu-palette-action-hoverOpacity));
-
-        @media (hover:none) {
-          background-color: transparent;
-        }
-      }
-
-      &.ZuSwitchBase-disabled {
-        // TODO(Shaohua): call lighten() for light theme.
-        color: $zu-palette-secondary-main;
-      }
-    }
-
-    &.ZuSwitchBase-checked + .ZuSwitch-track {
-      background-color: $zu-palette-secondary-main;
     }
   }
 
-  // Success
-  &.ZuSwitch-colorSuccess {
-    &.ZuSwitchBase-checked {
+  &.ZuSwitchBase-checked + .ZuSwitch-track {
+    background-color: $zu-palette-secondary-main;
+  }
+}
+
+// Success
+.ZuSwitch-colorSuccess {
+  &.ZuSwitchBase-checked {
+    color: $zu-palette-success-main;
+
+    &:hover {
+      // FIXME(Shaohua):
+      //background-color: alpha(var(--zu-palette-success-main), var(--zu-palette-action-hoverOpacity));
+
+      @media (hover:none) {
+        background-color: transparent;
+      }
+    }
+
+    &.ZuSwitchBase-disabled {
+      // TODO(Shaohua): call lighten() for light theme.
       color: $zu-palette-success-main;
-
-      &:hover {
-        // FIXME(Shaohua):
-        //background-color: alpha(var(--zu-palette-success-main), var(--zu-palette-action-hoverOpacity));
-
-        @media (hover:none) {
-          background-color: transparent;
-        }
-      }
-
-      &.ZuSwitchBase-disabled {
-        // TODO(Shaohua): call lighten() for light theme.
-        color: $zu-palette-success-main;
-      }
-    }
-
-    &.ZuSwitchBase-checked + .ZuSwitch-track {
-      background-color: $zu-palette-success-main;
     }
   }
 
-  // Info
-  &.ZuSwitch-colorInfo {
-    &.ZuSwitchBase-checked {
+  &.ZuSwitchBase-checked + .ZuSwitch-track {
+    background-color: $zu-palette-success-main;
+  }
+}
+
+// Info
+.ZuSwitch-colorInfo {
+  &.ZuSwitchBase-checked {
+    color: $zu-palette-info-main;
+
+    &:hover {
+      // FIXME(Shaohua):
+      //background-color: alpha(var(--zu-palette-info-main), var(--zu-palette-action-hoverOpacity));
+
+      @media (hover:none) {
+        background-color: transparent;
+      }
+    }
+
+    &.ZuSwitchBase-disabled {
+      // TODO(Shaohua): call lighten() for light theme.
       color: $zu-palette-info-main;
-
-      &:hover {
-        // FIXME(Shaohua):
-        //background-color: alpha(var(--zu-palette-info-main), var(--zu-palette-action-hoverOpacity));
-
-        @media (hover:none) {
-          background-color: transparent;
-        }
-      }
-
-      &.ZuSwitchBase-disabled {
-        // TODO(Shaohua): call lighten() for light theme.
-        color: $zu-palette-info-main;
-      }
-    }
-
-    &.ZuSwitchBase-checked + .ZuSwitch-track {
-      background-color: $zu-palette-info-main;
     }
   }
 
-  // Warning
-  &.ZuSwitch-colorWarning {
-    &.ZuSwitchBase-checked {
+  &.ZuSwitchBase-checked + .ZuSwitch-track {
+    background-color: $zu-palette-info-main;
+  }
+}
+
+// Warning
+.ZuSwitch-colorWarning {
+  &.ZuSwitchBase-checked {
+    color: $zu-palette-warning-main;
+
+    &:hover {
+      // FIXME(Shaohua):
+      //background-color: alpha(var(--zu-palette-warning-main), var(--zu-palette-action-hoverOpacity));
+
+      @media (hover:none) {
+        background-color: transparent;
+      }
+    }
+
+    &.ZuSwitchBase-disabled {
+      // TODO(Shaohua): call lighten() for light theme.
       color: $zu-palette-warning-main;
-
-      &:hover {
-        // FIXME(Shaohua):
-        //background-color: alpha(var(--zu-palette-warning-main), var(--zu-palette-action-hoverOpacity));
-
-        @media (hover:none) {
-          background-color: transparent;
-        }
-      }
-
-      &.ZuSwitchBase-disabled {
-        // TODO(Shaohua): call lighten() for light theme.
-        color: $zu-palette-warning-main;
-      }
-    }
-
-    &.ZuSwitchBase-checked + .ZuSwitch-track {
-      background-color: $zu-palette-warning-main;
     }
   }
 
-  // Error
-  &.ZuSwitch-colorError {
-    &.ZuSwitchBase-checked {
+  &.ZuSwitchBase-checked + .ZuSwitch-track {
+    background-color: $zu-palette-warning-main;
+  }
+}
+
+// Error
+.ZuSwitch-colorError {
+  &.ZuSwitchBase-checked {
+    color: $zu-palette-error-main;
+
+    &:hover {
+      // FIXME(Shaohua):
+      //background-color: alpha(var(--zu-palette-error-main), var(--zu-palette-action-hoverOpacity));
+
+      @media (hover:none) {
+        background-color: transparent;
+      }
+    }
+
+    &.ZuSwitchBase-disabled {
+      // TODO(Shaohua): call lighten() for light theme.
       color: $zu-palette-error-main;
-
-      &:hover {
-        // FIXME(Shaohua):
-        //background-color: alpha(var(--zu-palette-error-main), var(--zu-palette-action-hoverOpacity));
-
-        @media (hover:none) {
-          background-color: transparent;
-        }
-      }
-
-      &.ZuSwitchBase-disabled {
-        // TODO(Shaohua): call lighten() for light theme.
-        color: $zu-palette-error-main;
-      }
     }
+  }
 
-    &.ZuSwitchBase-checked + .ZuSwitch-track {
-      background-color: $zu-palette-error-main;
-    }
+  &.ZuSwitchBase-checked + .ZuSwitch-track {
+    background-color: $zu-palette-error-main;
   }
 }

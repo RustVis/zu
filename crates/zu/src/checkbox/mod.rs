@@ -106,8 +106,6 @@ pub fn checkbox(props: &Props) -> Html {
         props.classes.clone(),
     );
 
-    let root_input_cls = "";
-
     let icon = props
         .icon
         .as_ref()
@@ -132,7 +130,6 @@ pub fn checkbox(props: &Props) -> Html {
             checked_icon={checked_icon}
             default_checked={props.default_checked}
             disabled={props.disabled}
-            input_classes={root_input_cls}
             icon={icon}
             on_change={props.on_change.clone()}
             style={&props.style}
