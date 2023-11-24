@@ -56,6 +56,9 @@ pub struct Props {
     pub id: AttrValue,
 
     #[prop_or_default]
+    pub name: AttrValue,
+
+    #[prop_or_default]
     pub on_change: Option<Callback<bool>>,
 
     #[prop_or(false)]
@@ -97,6 +100,7 @@ pub fn switch(props: &Props) -> Html {
                 disabled={props.disabled}
                 input_classes={base_input_cls}
                 icon={icon}
+                name={&props.name}
                 on_change={props.on_change.clone()}
                 variant={Variant::Switch}
                 >

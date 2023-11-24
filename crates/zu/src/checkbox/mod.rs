@@ -65,6 +65,9 @@ pub struct Props {
     #[prop_or_default]
     pub indeterminate_icon: Option<Html>,
 
+    #[prop_or_default]
+    pub name: AttrValue,
+
     /// Callback fired when the state is changed.
     #[prop_or_default]
     pub on_change: Option<Callback<bool>>,
@@ -133,6 +136,7 @@ pub fn checkbox(props: &Props) -> Html {
             default_checked={props.default_checked}
             disabled={props.disabled}
             icon={icon}
+            name={&props.name}
             on_change={props.on_change.clone()}
             size={props.size}
             style={&props.style}

@@ -168,6 +168,7 @@ pub fn switch_base(props: &Props) -> Html {
                 default_checked={props.default_checked.to_attr()}
                 disabled={props.disabled}
                 id={input_id}
+                name={props.name.to_attr()}
                 onchange={on_input_change}
                 required={props.required}
                 tab_index={props.tab_index.to_attr()}
