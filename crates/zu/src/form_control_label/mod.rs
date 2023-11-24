@@ -54,7 +54,6 @@ pub struct Props {
     #[prop_or_default]
     pub style: AttrValue,
 
-    // TODO(Shaohua): Convert value type to any.
     /// The value of the component.
     #[prop_or_default]
     pub value: AttrValue,
