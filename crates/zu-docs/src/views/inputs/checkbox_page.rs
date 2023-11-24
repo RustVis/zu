@@ -8,8 +8,10 @@ use zu::checkbox::Checkbox;
 use zu::form_control::FormControl;
 use zu::form_control_label::FormControlLabel;
 use zu::form_group::FormGroup;
+use zu::form_helper_text::FormHelperText;
 use zu::form_label::FormLabel;
 use zu::styles::color::Color;
+use zu::styles::label_variant::LabelVariant;
 use zu::styles::position::Position;
 use zu::styles::size::Size;
 use zuicon_material::Bookmark as BookmarkIcon;
@@ -146,13 +148,77 @@ fn indeterminate_section() -> Html {
     }
 }
 
+#[function_component(FormGroupSection)]
 fn form_group_section() -> Html {
-    // TODO(Shaohua): Add form group
+    let gilad = use_state(|| false);
+    let jason = use_state(|| false);
+    let antoine = use_state(|| true);
+    let error = use_state(|| false);
 
     html! {
         <>
         <h2>{"FormGroup"}</h2>
         <p>{"FormGroup is a helpful wrapper used to group selection control components."}</p>
+        <DemoBox>
+        <Box style="display: flex">
+            <FormControl
+                style="margin: 3px"
+                component="fieldset"
+                variant={LabelVariant::Standard}>
+                <FormLabel component="legend">{"Assign responsibility"}</FormLabel>
+                <FormGroup>
+                    <FormControlLabel
+                        control={html!{
+                            <Checkbox checked={*gilad} name="gilad" />
+                        }}
+                        label="Gilad Gray"
+                    />
+                    <FormControlLabel
+                        control={html!{
+                            <Checkbox checked={*jason} name="jason" />
+                        }}
+                        label="Jason Killian"
+                    />
+                    <FormControlLabel
+                        control={html!{
+                            <Checkbox checked={*antoine} name="antoine" />
+                        }}
+                        label="Antoine Llorca"
+                    />
+                </FormGroup>
+                <FormHelperText>{"Be careful"}</FormHelperText>
+            </FormControl>
+            <FormControl
+                required={true}
+                error={*error}
+                component="fieldset"
+                style="margin: 3px;"
+                variant={LabelVariant::Standard}>
+                <FormLabel component="legend">{"Pick two"}</FormLabel>
+                <FormGroup>
+                    <FormControlLabel
+                        control={html!{
+                            <Checkbox checked={*gilad} name="gilad" />
+                        }}
+                        label="Gilad Gray"
+                    />
+                    <FormControlLabel
+                        control={html!{
+                            <Checkbox checked={*jason} name="jason" />
+                        }}
+                        label="Jason Killian"
+                    />
+                    <FormControlLabel
+                        control={html!{
+                            <Checkbox checked={*antoine} name="antoine" />
+                        }}
+                        label="Antoine Llorca"
+                    />
+                </FormGroup>
+                <FormHelperText>{"You can display an error"}</FormHelperText>
+            </FormControl>
+        </Box>
+        </DemoBox>
         </>
     }
 }
@@ -207,7 +273,7 @@ pub fn checkbox_page() -> Html {
 
         {basic_sections()}
         <IndeterminateSection />
-        {form_group_section()}
+        <FormGroupSection />
         {placement_section()}
 
         </div>
