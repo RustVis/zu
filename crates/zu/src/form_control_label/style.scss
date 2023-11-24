@@ -17,20 +17,20 @@
   }
 
   // Styles applied to the root element if labelPlacement="start".
-  .ZuFormControlLabel-labelPlacementStart {
+  &.ZuFormControlLabel-labelPlacementStart {
     flex-direction: row-reverse;
     margin-left: 16px; // used for row presentation of radio/checkbox
     margin-right: -11px;
   }
 
   // Styles applied to the root element if labelPlacement="top".
-  .ZuFormControlLabel-labelPlacementTop {
+  &.ZuFormControlLabel-labelPlacementTop {
     flex-direction: column-reverse;
     margin-left: 16px;
   }
 
   // Styles applied to the root element if labelPlacement="bottom".
-  .ZuFormControlLabel-labelPlacementBottom {
+  &.ZuFormControlLabel-labelPlacementBottom {
     flex-direction: column;
     margin-left: 16px;
   }

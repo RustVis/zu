@@ -4,12 +4,13 @@
 
 mod margin;
 
-use yew::{function_component, html, AttrValue, Children, Classes, Html, Properties};
+use yew::{classes, function_component, html, AttrValue, Children, Classes, Html, Properties};
 use zu_util::prop::ToAttr;
 
 use crate::styles::color::Color;
 use crate::styles::label_variant::LabelVariant;
 use crate::styles::margin::Margin;
+use crate::styles::size::Size;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -25,7 +26,7 @@ pub struct Props {
     #[prop_or_default]
     pub color: Color,
 
-    #[prop_or_default]
+    #[prop_or(AttrValue::from("div"))]
     pub component: AttrValue,
 
     #[prop_or(false)]
@@ -54,6 +55,9 @@ pub struct Props {
     pub required: bool,
 
     #[prop_or_default]
+    pub size: Size,
+
+    #[prop_or_default]
     pub style: AttrValue,
 
     #[prop_or(LabelVariant::Outlined)]
@@ -62,10 +66,32 @@ pub struct Props {
 
 #[function_component(FormControl)]
 pub fn form_control(props: &Props) -> Html {
+    let root_cls = classes!(
+        "ZuFormControl-root",
+        margin::css_class(props.margin),
+        if props.full_width {
+            "ZuFormControl-fullWidth"
+        } else {
+            ""
+        },
+        props.classes.clone(),
+    );
+
+    // TODO(Shaohua): Handle properties
+    // - size
+    // - variant
+    // - disabled
+    // - required
+    // - hidden_label
+    // - focused
+
     html! {
-        <div
-            aria_label={props.aria_label.to_attr()}>
+        <@{props.component.to_string()}
+            aria_label={props.aria_label.to_attr()}
+            class={root_cls}
+            style={props.style.to_attr()}
+        >
             {for props.children.iter()}
-        </div>
+        </@>
     }
 }
