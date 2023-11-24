@@ -17,8 +17,8 @@ use crate::components::demo_box::DemoBox;
 
 #[function_component(CheckboxPage)]
 pub fn checkbox_page() -> Html {
-    let handle_change = Callback::from(|()| {
-        log::info!("on change");
+    let handle_change = Callback::from(|checked: bool| {
+        log::info!("handle change, is checked: {checked}");
     });
 
     html! {

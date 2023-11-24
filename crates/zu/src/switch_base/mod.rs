@@ -174,7 +174,7 @@ pub fn switch_base(props: &Props) -> Html {
                 type={props.variant.name()}
                 {value}
             />
-            if props.checked {
+            if *checked_state {
                 {props.checked_icon.clone()}
             } else {
                 {props.icon.clone()}

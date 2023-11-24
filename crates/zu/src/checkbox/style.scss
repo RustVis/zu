@@ -3,15 +3,14 @@
 
 // Styles applied to the root element.
 .ZuCheckbox-root {
-  color: var(--zu-palette-text-secondary);
-
+  color: $zu-palette-text-secondary;
 
 }
 
 .ZuCheckbox-enableRipple {
   &:hover {
     &.ZuCheckbox-colorDefault {
-      background-color: var(--zu-palette-action-active);
+      background-color: change-color($zu-palette-action-active, $alpha: $zu-palette-action-hoverOpacity);
     }
     &.ZuCheckbox-colorPrimary {
       background-color: change-color($zu-palette-primary-main, $alpha: $zu-palette-action-hoverOpacity);
@@ -55,32 +54,61 @@
 }
 
 .ZuCheckbox-colorPrimary {
-  &.ZuCheckbox-checked, &.ZuCheckbox-indeterminate {
-    color: var(--zu-palette-primary-main);
+  &.ZuSwitchBase-checked, &.ZuCheckbox-indeterminate {
+    color: $zu-palette-primary-main;
+  }
+
+  &.ZuCheckbox-disabled {
+    color: $zu-palette-action-disabled;
   }
 }
+
 .ZuCheckbox-colorSecondary {
-  &.ZuCheckbox-checked, &.ZuCheckbox-indeterminate {
-    color: var(--zu-palette-secondary-main);
+  &.ZuSwitchBase-checked, &.ZuCheckbox-indeterminate {
+    color: $zu-palette-secondary-main;
+  }
+
+  &.ZuCheckbox-disabled {
+    color: $zu-palette-action-disabled;
   }
 }
+
 .ZuCheckbox-colorSuccess {
-  &.ZuCheckbox-checked, &.ZuCheckbox-indeterminate {
-    color: var(--zu-palette-success-main);
+  &.ZuSwitchBase-checked, &.ZuCheckbox-indeterminate {
+    color: $zu-palette-success-main;
+  }
+
+  &.ZuCheckbox-disabled {
+    color: $zu-palette-action-disabled;
   }
 }
+
 .ZuCheckbox-colorInfo {
-  &.ZuCheckbox-checked, &.ZuCheckbox-indeterminate {
-    color: var(--zu-palette-info-main);
+  &.ZuSwitchBase-checked, &.ZuCheckbox-indeterminate {
+    color: $zu-palette-info-main;
+  }
+
+  &.ZuCheckbox-disabled {
+    color: $zu-palette-action-disabled;
   }
 }
+
 .ZuCheckbox-colorWarning {
-  &.ZuCheckbox-checked, &.ZuCheckbox-indeterminate {
-    color: var(--zu-palette-warning-main);
+  &.ZuSwitchBase-checked, &.ZuCheckbox-indeterminate {
+    color: $zu-palette-warning-main;
+  }
+
+  &.ZuCheckbox-disabled {
+    color: $zu-palette-action-disabled;
   }
 }
+
 .ZuCheckbox-colorError {
-  &.ZuCheckbox-checked, &.ZuCheckbox-indeterminate {
-    color: var(--zu-palette-error-main);
+  &.ZuSwitchBase-checked, &.ZuCheckbox-indeterminate {
+    color: $zu-palette-error-main;
+  }
+
+  &.ZuCheckbox-disabled {
+    color: $zu-palette-action-disabled;
   }
 }
