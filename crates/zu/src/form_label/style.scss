@@ -14,25 +14,49 @@
   letter-spacing: $zu-typography-body1-letterSpacing;
 
   color: $zu-palette-text-secondary;
-}
 
-/* Styles applied to the root element if the color is secondary. */
-.ZuFormLabel-colorSecondary {
+  /* Styles applied to the root element if the color is secondary. */
+  &.ZuFormLabel-colorSecondary {
 
-}
+  }
 
-/* State class applied to the root element if focused={true}. */
-.ZuFormLabel-focused {
-}
+  /* State class applied to the root element if focused={true}. */
+  &.ZuFormLabel-focused {
 
-/* State class applied to the root element if disabled={true}. */
-.ZuFormLabel-disabled {
-  color: $zu-palette-text-disabled;
-}
+    &.ZuFormLabel-colorPrimary {
+      color: $zu-palette-primary-main;
+    }
 
-/* State class applied to the root element if error={true}. */
-.ZuFormLabel-error {
-  color: $zu-palette-error-main;
+    &.ZuFormLabel-colorSecondary {
+      color: $zu-palette-secondary-main;
+    }
+
+    &.ZuFormLabel-colorSuccess {
+      color: $zu-palette-success-main;
+    }
+
+    &.ZuFormLabel-colorInfo {
+      color: $zu-palette-info-main;
+    }
+
+    &.ZuFormLabel-colorWarning {
+      color: $zu-palette-warning-main;
+    }
+
+    &.ZuFormLabel-colorError {
+      color: $zu-palette-error-main;
+    }
+  }
+
+  /* State class applied to the root element if disabled={true}. */
+  &.ZuFormLabel-disabled {
+    color: $zu-palette-text-disabled;
+  }
+
+  /* State class applied to the root element if error={true}. */
+  &.ZuFormLabel-error {
+    color: $zu-palette-error-main;
+  }
 }
 
 /* State class applied to the root element if filled={true}. */
@@ -47,5 +71,8 @@
 
 /* Styles applied to the asterisk element. */
 .ZuFormLabel-asterisk {
-  color: $zu-palette-error-main;
+
+  &.ZuFormLabel-error {
+    color: $zu-palette-error-main;
+  }
 }

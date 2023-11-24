@@ -2,6 +2,8 @@
 // Use of this source is governed by Lesser General Public License that can be
 // found in the LICENSE file.
 
+mod color;
+
 use yew::{classes, function_component, html, AttrValue, Children, Classes, Html, Properties};
 
 use crate::styles::color::Color;
@@ -17,6 +19,7 @@ pub struct Props {
     #[prop_or_default]
     pub classes: Classes,
 
+    /// The color of the component.
     #[prop_or_default]
     pub color: Color,
 
@@ -55,11 +58,7 @@ pub struct Props {
 pub fn form_label(props: &Props) -> Html {
     let root_cls = classes!(
         "ZuFormLabel-root",
-        if props.color == Color::Secondary {
-            "ZuFormLabel-colorSecondary"
-        } else {
-            ""
-        },
+        color::color_class(props.color),
         if props.disabled {
             "ZuFormLabel-disabled"
         } else {
@@ -95,14 +94,21 @@ pub fn form_label(props: &Props) -> Html {
         "ZuFormLabel-asterisk"
     };
 
+    // TODO(Shaohua): Pass disabled to children.
+
     html! {
         <@{props.component.to_string()}
             class={root_cls}
+            disabled={props.disabled}
             style={style}>
+
             {for props.children.iter()}
+
             if props.required {
-                <span class={asterisk_cls}>
-                {"&thinsp;{'*'}"}
+                <span
+                    aria_hidden={"true"}
+                    class={asterisk_cls}>
+                {"&thinsp;*"}
                 </span>
             }
         </@>
