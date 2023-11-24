@@ -6,11 +6,11 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-}
 
-/* Styles applied to the root element if row={true}. */
-.ZuFormGroup-row {
-  flex-direction: row;
+  /* Styles applied to the root element if row={true}. */
+  &.ZuFormGroup-row {
+    flex-direction: row;
+  }
 }
 
 /* State class applied to the root element if error={true}. */

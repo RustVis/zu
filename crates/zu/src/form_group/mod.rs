@@ -10,9 +10,11 @@ pub struct Props {
     #[prop_or_default]
     pub aria_label: AttrValue,
 
+    /// The content of the component.
     #[prop_or_default]
     pub children: Children,
 
+    /// Override or extend the styles applied to the component.
     #[prop_or_default]
     pub classes: Classes,
 
@@ -37,9 +39,10 @@ pub fn form_group(props: &Props) -> Html {
     );
 
     html! {
-        <div class={root_cls}
-            style={props.style.to_attr()}
-            aria-label={props.aria_label.to_attr()}>
+        <div
+            aria-label={props.aria_label.to_attr()}
+            class={root_cls}
+            style={props.style.to_attr()}>
             {for props.children.iter()}
         </div>
     }
