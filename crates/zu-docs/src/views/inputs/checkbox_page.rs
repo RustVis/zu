@@ -21,6 +21,7 @@ use zuicon_material::FavoriteBorder as FavoriteBorderIcon;
 
 use crate::components::demo_box::DemoBox;
 
+#[allow(clippy::cognitive_complexity)]
 fn basic_sections() -> Html {
     let handle_change = Callback::from(|checked: bool| {
         log::info!("handle change, is checked: {checked}");
