@@ -2,7 +2,7 @@
 // Use of this source is governed by GNU General Public License
 // that can be found in the LICENSE file.
 
-use yew::{classes, function_component, html, AttrValue, Html, Properties};
+use yew::{classes, function_component, html, Classes, Html, Properties};
 
 pub const DELAY_RIPPLE: i32 = 80;
 
@@ -14,12 +14,12 @@ pub struct Props {
     pub center: bool,
 
     #[prop_or_default]
-    pub classes: AttrValue,
+    pub classes: Classes,
 }
 
 #[function_component(TouchRipple)]
 pub fn touch_ripple(props: &Props) -> Html {
-    let root_cls = classes!("ZuTouchRipple-root", props.classes.to_string(),);
+    let root_cls = classes!("ZuTouchRipple-root", props.classes.clone(),);
 
     html! {
         <span class={root_cls}>

@@ -203,6 +203,7 @@ pub fn button(props: &Props) -> Html {
             disabled={props.disabled}
             disable_ripple={props.disable_ripple}
             focus_ripple={props.disable_focus_ripple}
+            style={&props.style}
             tab_index={props.tab_index}
             on_blur={props.on_blur.clone()}
             on_click={props.on_click.clone()}

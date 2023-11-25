@@ -6,6 +6,7 @@ mod position;
 
 use yew::{classes, html, AttrValue, Children, Html, Properties};
 use yew::{function_component, Classes};
+use zu_util::prop::ToAttr;
 
 use crate::stack::Stack;
 use crate::styles::flex_direction::FlexDirection;
@@ -111,7 +112,7 @@ pub fn form_control_label(props: &Props) -> Html {
     };
 
     html! {
-        <label class={root_cls} style={&props.style}>
+        <label class={root_cls} style={props.style.to_attr()}>
             {props.control.clone()}
 
             if required {

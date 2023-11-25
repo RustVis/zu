@@ -141,7 +141,7 @@ pub fn button_group(props: &Props) -> Html {
         <@{props.component.to_string()}
             aria_label={props.aria_label.to_attr()}
             class={root_cls}
-            style={props.style.clone()}
+            style={props.style.to_attr()}
             >
             {for children.iter()}
         </@>
