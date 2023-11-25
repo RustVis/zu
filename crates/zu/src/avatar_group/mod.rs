@@ -88,7 +88,7 @@ pub fn avatar_group(props: &Props) -> Html {
             if props.style.is_empty() {
                 props.style = avatar_style.clone();
             } else {
-                props.style = format!("{}; {}", props.style, avatar_style).into();
+                props.style = format!("{}; {avatar_style}", props.style).into();
             }
             item
         })

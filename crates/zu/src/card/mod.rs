@@ -34,7 +34,8 @@ pub fn card(props: &Props) -> Html {
     let elevation = if props.raised { 8 } else { 0 };
 
     html! {
-        <Paper classes={props.classes.clone()}
+        <Paper
+            classes={&props.classes}
             style={&props.style}
             square={props.square}
             variant={props.variant}

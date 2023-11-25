@@ -58,7 +58,8 @@ pub fn stack(props: &Props) -> Html {
     // TODO(Shaohua): Add divider elements
 
     html! {
-        <@{props.component.to_string()} class={root_cls}
+        <@{props.component.to_string()}
+            class={root_cls}
             style={props.style.to_attr()}>
             {for props.children.iter()}
         </@>

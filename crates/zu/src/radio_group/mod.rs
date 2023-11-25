@@ -54,8 +54,7 @@ pub fn radio_group(props: &Props) -> Html {
         <FormGroup
             classes={&props.classes}
             role="radio-group"
-            style={&props.style}
-        >
+            style={&props.style}>
             {for props.children.iter()}
         </FormGroup>
     }

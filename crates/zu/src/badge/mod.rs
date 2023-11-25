@@ -110,7 +110,9 @@ pub fn badge(props: &Props) -> Html {
     };
 
     html! {
-        <@{props.component.to_string()} class={root_cls} style={props.style.to_attr()}>
+        <@{props.component.to_string()}
+            class={root_cls}
+            style={props.style.to_attr()}>
             {for props.children.iter()}
             <span class={badge_cls} style={props.badge_style.to_attr()}>
                 {display_value}

@@ -71,10 +71,10 @@ pub fn link(props: &Props) -> Html {
     html! {
         <Typography
             classes={root_cls}
-            style={props.style.clone()}
             color={props.color}
-            component={props.component.clone()}
-            href={props.href.clone()}
+            component={&props.component}
+            href={&props.href}
+            style={&props.style}
             variant={props.variant}>
             {for props.children.iter()}
         </Typography>

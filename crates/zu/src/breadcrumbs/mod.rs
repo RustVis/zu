@@ -60,7 +60,8 @@ pub fn breadcrumbs(props: &Props) -> Html {
     let root_cls = classes!("ZuBreadcrumb-root", props.classes.clone(),);
 
     html! {
-        <Typography classes={root_cls}
+        <Typography
+            classes={root_cls}
             aria_label={&props.aria_label}
             component={props.component.clone()}
             style={&props.style}>

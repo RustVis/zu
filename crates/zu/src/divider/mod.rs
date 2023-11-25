@@ -117,15 +117,14 @@ pub fn divider(props: &Props) -> Html {
     } else {
         None
     };
-    let style = props.style.to_attr();
 
     if props.children.is_empty() {
         html! {
-            <@{component} class={root_cls} style={style} role={role} />
+            <@{component} class={root_cls} style={props.style.to_attr()} role={role} />
         }
     } else {
         html! {
-            <@{component} class={root_cls} style={style} role={role}>
+            <@{component} class={root_cls} style={props.style.to_attr()} role={role}>
                 <span class={wrapper_cls}>
                     {for props.children.iter()}
                 </span>

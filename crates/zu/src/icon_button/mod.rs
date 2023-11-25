@@ -121,12 +121,13 @@ pub fn icon_button(props: &Props) -> Html {
     );
 
     html! {
-        <ButtonBase classes={root_cls}
+        <ButtonBase
+            classes={root_cls}
             aria_label={&props.aria_label}
             center_ripple={props.center_ripple}
             disabled={props.disabled}
             focus_ripple={!props.disable_focus_ripple}
-            style={props.style.clone()}>
+            style={&props.style}>
             {for props.children.iter()}
         </ButtonBase>
     }

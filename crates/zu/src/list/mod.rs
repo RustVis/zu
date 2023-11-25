@@ -53,7 +53,8 @@ pub fn list(props: &Props) -> Html {
     );
 
     html! {
-        <@{props.component.to_string()} class={root_cls}
+        <@{props.component.to_string()}
+            class={root_cls}
             style={props.style.to_attr()}>
             if let Some(subheader) = &props.subheader {
                 {subheader.clone()}

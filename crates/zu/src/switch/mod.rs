@@ -88,9 +88,7 @@ pub fn switch(props: &Props) -> Html {
     };
 
     html! {
-        <span
-            class={root_cls}
-            style={&props.style}>
+        <span class={root_cls} style={&props.style}>
             <SwitchBase
                 aria_label={&props.aria_label}
                 classes={base_cls}
@@ -101,9 +99,8 @@ pub fn switch(props: &Props) -> Html {
                 input_classes={base_input_cls}
                 icon={icon}
                 name={&props.name}
-                on_change={props.on_change.clone()}
-                variant={Variant::Switch}
-                >
+                on_change={&props.on_change}
+                variant={Variant::Switch}>
             </SwitchBase>
              <span class="ZuSwitch-track">
             </span>

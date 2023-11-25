@@ -199,28 +199,27 @@ pub fn button(props: &Props) -> Html {
             classes={root_cls}
             aria_label={&props.aria_label}
             button_type={props.button_type}
-            component={props.component.clone()}
+            component={&props.component}
             disabled={props.disabled}
             disable_ripple={props.disable_ripple}
             focus_ripple={props.disable_focus_ripple}
             style={&props.style}
             tab_index={props.tab_index}
-            on_blur={props.on_blur.clone()}
-            on_click={props.on_click.clone()}
-            on_context_menu={props.on_context_menu.clone()}
-            on_drag_leave={props.on_drag_leave.clone()}
-            on_focus={props.on_focus.clone()}
-            on_focus_visible={props.on_focus_visible.clone()}
-            on_key_down={props.on_key_down.clone()}
-            on_key_up={props.on_key_up.clone()}
-            on_mouse_down={props.on_mouse_down.clone()}
-            on_mouse_enter={props.on_mouse_enter.clone()}
-            on_mouse_leave={props.on_mouse_leave.clone()}
-            on_mouse_up={props.on_mouse_up.clone()}
-            on_touch_end={props.on_touch_end.clone()}
-            on_touch_move={props.on_touch_move.clone()}
-            on_touch_start={props.on_touch_start.clone()}
-            >
+            on_blur={&props.on_blur}
+            on_click={&props.on_click}
+            on_context_menu={&props.on_context_menu}
+            on_drag_leave={&props.on_drag_leave}
+            on_focus={&props.on_focus}
+            on_focus_visible={&props.on_focus_visible}
+            on_key_down={&props.on_key_down}
+            on_key_up={&props.on_key_up}
+            on_mouse_down={&props.on_mouse_down}
+            on_mouse_enter={&props.on_mouse_enter}
+            on_mouse_leave={&props.on_mouse_leave}
+            on_mouse_up={&props.on_mouse_up}
+            on_touch_end={&props.on_touch_end}
+            on_touch_move={&props.on_touch_move}
+            on_touch_start={&props.on_touch_start}>
             {create_icon(true, &props.start_icon, props.size, props.start_icon_classes.clone())}
             {for props.children.iter()}
             {create_icon(false, &props.end_icon, props.size, props.end_icon_classes.clone())}

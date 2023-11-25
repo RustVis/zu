@@ -96,7 +96,8 @@ pub fn input_label(props: &Props) -> Html {
     // TODO(Shaohua): Merge props.size into styles.
 
     html! {
-        <FormLabel classes={root_cls}
+        <FormLabel
+            classes={root_cls}
             color={props.color}
             disabled={props.disabled}
             error={props.error}

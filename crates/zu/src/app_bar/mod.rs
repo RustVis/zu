@@ -46,9 +46,10 @@ pub fn app_bar(props: &Props) -> Html {
     );
 
     html! {
-        <Paper classes={root_cls}
+        <Paper
+            classes={root_cls}
             component="header"
-            style={props.style.clone()}
+            style={&props.style}
             elevation={4}>
         </Paper>
     }

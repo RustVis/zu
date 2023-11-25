@@ -70,7 +70,8 @@ pub fn bottom_navigation_action(props: &Props) -> Html {
 
     // TODO(Shaohua): Check value of focus_ripple.
     html! {
-        <ButtonBase classes={root_cls}
+        <ButtonBase
+            classes={root_cls}
             style={&props.style}
             focus_ripple={true}>
             {props.icon.clone()}

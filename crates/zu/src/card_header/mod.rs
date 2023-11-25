@@ -51,34 +51,35 @@ pub fn card_header(props: &Props) -> Html {
     let root_cls = classes!("ZuCardHeader-root", props.classes.clone());
 
     html! {
-       <@{component.to_owned()} class={root_cls} style={props.style.to_attr()}>
-        if let Some(avatar) = &props.avatar {
-            <div class="ZuCardHeader-avatar">
-                {avatar.clone()}
+        <@{component.to_owned()}
+            class={root_cls}
+            style={props.style.to_attr()}>
+            if let Some(avatar) = &props.avatar {
+                <div class="ZuCardHeader-avatar">
+                    {avatar.clone()}
+                </div>
+            }
+
+            <div class="ZuCardHeader-content">
+                <Typography classes="ZuCardHeader-title"
+                    variant={if props.avatar.is_some() {Variant::Body2 } else { Variant::H5 }}
+                    component="span">
+                    {props.title.clone().unwrap_or_default()}
+                </Typography>
+
+                <Typography classes="ZuCardHeader-subheader"
+                    variant={if props.avatar.is_some() { Variant::Body2 } else { Variant::Body1 }}
+                    color={Color::Secondary}
+                    component="span">
+                    {props.subheader.clone().unwrap_or_default()}
+                </Typography>
             </div>
-        }
 
-        <div class="ZuCardHeader-content">
-            <Typography classes="ZuCardHeader-title"
-                variant={if props.avatar.is_some() {Variant::Body2 } else { Variant::H5 }}
-                component="span">
-                {props.title.clone().unwrap_or_default()}
-            </Typography>
-
-            <Typography classes="ZuCardHeader-subheader"
-                variant={if props.avatar.is_some() { Variant::Body2 } else { Variant::Body1 }}
-                color={Color::Secondary}
-                component="span">
-                {props.subheader.clone().unwrap_or_default()}
-            </Typography>
-        </div>
-
-        if let Some(action) = &props.action {
-            <div class="ZuCardHeader-action">
-                {action.clone()}
-            </div>
-        }
-
+            if let Some(action) = &props.action {
+                <div class="ZuCardHeader-action">
+                    {action.clone()}
+                </div>
+            }
         </@>
     }
 }

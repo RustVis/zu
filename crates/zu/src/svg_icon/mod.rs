@@ -81,7 +81,8 @@ pub fn svg_icon(props: &Props) -> Html {
     let aria_hidden = !props.title_access.is_empty();
 
     html! {
-        <@{props.component.to_string()} class={root_cls}
+        <@{props.component.to_string()}
+            class={root_cls}
             style={props.style.to_attr()}
             focusable={"false"}
             color={props.html_color.to_attr()}

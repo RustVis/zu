@@ -52,7 +52,8 @@ pub fn backdrop(props: &Props) -> Html {
     // TODO(Shaohua): Add transition component.
 
     html! {
-        <@{props.component.to_string()} class={root_cls}
+        <@{props.component.to_string()}
+            class={root_cls}
             style={props.style.to_attr()}>
             {for props.children.iter()}
         </@>

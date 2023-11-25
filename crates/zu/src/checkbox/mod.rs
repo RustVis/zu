@@ -137,7 +137,7 @@ pub fn checkbox(props: &Props) -> Html {
             disabled={props.disabled}
             icon={icon}
             name={&props.name}
-            on_change={props.on_change.clone()}
+            on_change={&props.on_change}
             size={props.size}
             style={&props.style}
             variant={Variant::Checkbox}

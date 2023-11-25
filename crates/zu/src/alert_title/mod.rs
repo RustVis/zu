@@ -28,7 +28,8 @@ pub fn alert_title(props: &Props) -> Html {
     // TODO(Shaohua): Merge properties with props!() macro.
 
     html! {
-        <Typography classes={root_cls}
+        <Typography
+            classes={root_cls}
             style={&props.style}
             component="div">
             {for props.children.iter()}
