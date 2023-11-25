@@ -21,6 +21,9 @@ pub struct Props {
     #[prop_or(false)]
     pub error: bool,
 
+    #[prop_or_default]
+    pub role: AttrValue,
+
     /// Display group of elements in a compact row.
     #[prop_or(false)]
     pub row: bool,
@@ -42,6 +45,7 @@ pub fn form_group(props: &Props) -> Html {
         <div
             aria-label={props.aria_label.to_attr()}
             class={root_cls}
+            role={props.role.to_attr()}
             style={props.style.to_attr()}>
             {for props.children.iter()}
         </div>
