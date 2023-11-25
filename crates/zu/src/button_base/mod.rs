@@ -190,8 +190,7 @@ pub fn button_base(props: &Props) -> Html {
             onmouseup={props.on_mouse_up.clone()}
             ontouchend={props.on_touch_end.clone()}
             ontouchmove={props.on_touch_move.clone()}
-            ontouchstart={props.on_touch_start.clone()}
-            >
+            ontouchstart={props.on_touch_start.clone()}>
             {for props.children.iter()}
             if enable_touch_ripple {
                 <TouchRipple />

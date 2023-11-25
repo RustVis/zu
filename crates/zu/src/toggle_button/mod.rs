@@ -66,7 +66,7 @@ where
 {
     html! {
         <ButtonBase
-            aria_label={props.aria_label.clone()}
+            aria_label={&props.aria_label}
             disabled={props.disabled}
             focus_ripple={!props.disable_focus_ripple}
             >

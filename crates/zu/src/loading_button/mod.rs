@@ -204,25 +204,25 @@ pub fn loading_button(props: &Props) -> Html {
             disabled={props.disabled || props.loading}
             size={props.size}
             start_icon={props.start_icon.clone()}
-            start_icon_classes={classes!("ZuLoadingButton-startIconLoadingStart")}
+            start_icon_classes={"ZuLoadingButton-startIconLoadingStart"}
             end_icon={props.end_icon.clone()}
-            end_icon_classes={classes!("ZuLoadingButton-endIconLoadingEnd")}
+            end_icon_classes={"ZuLoadingButton-endIconLoadingEnd"}
             tab_index={props.tab_index}
-            on_blur={props.on_blur.clone()}
-            on_click={props.on_click.clone()}
-            on_context_menu={props.on_context_menu.clone()}
-            on_drag_leave={props.on_drag_leave.clone()}
-            on_focus={props.on_focus.clone()}
-            on_focus_visible={props.on_focus_visible.clone()}
-            on_key_down={props.on_key_down.clone()}
-            on_key_up={props.on_key_up.clone()}
-            on_mouse_down={props.on_mouse_down.clone()}
-            on_mouse_enter={props.on_mouse_enter.clone()}
-            on_mouse_leave={props.on_mouse_leave.clone()}
-            on_mouse_up={props.on_mouse_up.clone()}
-            on_touch_end={props.on_touch_end.clone()}
-            on_touch_move={props.on_touch_move.clone()}
-            on_touch_start={props.on_touch_start.clone()}
+            on_blur={&props.on_blur}
+            on_click={&props.on_click}
+            on_context_menu={&props.on_context_menu}
+            on_drag_leave={&props.on_drag_leave}
+            on_focus={&props.on_focus}
+            on_focus_visible={&props.on_focus_visible}
+            on_key_down={&props.on_key_down}
+            on_key_up={&props.on_key_up}
+            on_mouse_down={&props.on_mouse_down}
+            on_mouse_enter={&props.on_mouse_enter}
+            on_mouse_leave={&props.on_mouse_leave}
+            on_mouse_up={&props.on_mouse_up}
+            on_touch_end={&props.on_touch_end}
+            on_touch_move={&props.on_touch_move}
+            on_touch_start={&props.on_touch_start}
             >
 
             if props.loading_position == Position::End {

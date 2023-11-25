@@ -63,7 +63,7 @@ pub fn breadcrumbs(props: &Props) -> Html {
         <Typography
             classes={root_cls}
             aria_label={&props.aria_label}
-            component={props.component.clone()}
+            component={&props.component}
             style={&props.style}>
             <ol class="ZuBreadcrumb-ol">
                 {for props.children.iter()}
