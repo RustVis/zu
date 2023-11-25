@@ -3,25 +3,64 @@
 
 // Styles applied to the root element.
 .ZuRadio-root {
+  color: $zu-palette-text-secondary;
 
+  &.ZuRadio-enableRipple {
+
+    &:hover {
+      background-color: change-color($zu-palette-action-active, $alpha: $zu-palette-action-hoverOpacity);
+
+      // Reset on touch devices, it doesn't add specificity
+      @media (hover: none) {
+        background-color: transparent;
+      }
+    }
+  }
+
+  // State class applied to the root element if disabled={true}.
+  &.ZuRadio-disabled {
+    color: $zu-palette-action-disabled;
+  }
+
+  // Styles applied to the root element if color="primary".
+  &.ZuRadio-colorPrimary {
+    &.ZuRadio-checked {
+      color: $zu-palette-primary-main;
+    }
+  }
+
+  &.ZuRadio-colorSecondary {
+    &.ZuRadio-checked {
+      color: $zu-palette-secondary-main;
+    }
+  }
+
+  &.ZuRadio-colorSuccess {
+    &.ZuRadio-checked {
+      color: $zu-palette-success-main;
+    }
+  }
+
+  &.ZuRadio-colorInfo {
+    &.ZuRadio-checked {
+      color: $zu-palette-info-main;
+    }
+  }
+
+  &.ZuRadio-colorWarning {
+    &.ZuRadio-checked {
+      color: $zu-palette-warning-main;
+    }
+  }
+
+  &.ZuRadio-colorError {
+    &.ZuRadio-checked {
+      color: $zu-palette-error-main;
+    }
+  }
 }
 
 // State class applied to the root element if checked={true}.
 .ZuRadio-checked {
-
-}
-
-// State class applied to the root element if disabled={true}.
-.ZuRadio-disabled {
-
-}
-
-// Styles applied to the root element if color="primary".
-.ZuRadio-colorPrimary {
-
-}
-
-// Styles applied to the root element if color="secondary".
-.ZuRadio-colorSecondary {
 
 }

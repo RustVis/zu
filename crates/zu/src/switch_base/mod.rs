@@ -40,9 +40,6 @@ pub struct Props {
     #[prop_or_default]
     pub classes: Classes,
 
-    #[prop_or_default]
-    pub input_classes: Classes,
-
     #[prop_or(false)]
     pub default_checked: bool,
 
@@ -63,6 +60,9 @@ pub struct Props {
     /// The id of the `input` element.
     #[prop_or_default]
     pub id: AttrValue,
+
+    #[prop_or_default]
+    pub input_classes: Classes,
 
     #[prop_or_default]
     pub name: AttrValue,
@@ -99,7 +99,7 @@ pub struct Props {
 
     /// The value of component.
     #[prop_or_default]
-    pub value: Option<String>,
+    pub value: AttrValue,
 }
 
 #[function_component(SwitchBase)]
@@ -146,7 +146,7 @@ pub fn switch_base(props: &Props) -> Html {
     };
 
     let value = if props.variant == Variant::Checkbox {
-        props.value.clone()
+        Some(props.value.as_str().to_owned())
     } else {
         None
     };
@@ -154,14 +154,17 @@ pub fn switch_base(props: &Props) -> Html {
     let input_cls = classes!("ZuSwitchBase-input", props.input_classes.clone());
 
     html! {
-        <ButtonBase classes={root_cls}
+        <ButtonBase
+            classes={root_cls}
             component="span"
             disabled={props.disabled}
             focus_ripple={!props.disable_focus_ripple}
+            style={&props.style}
             on_focus={&props.on_focus}
             on_blur={&props.on_blur}
         >
-            <input class={input_cls}
+            <input
+                class={input_cls}
                 aria_label={props.aria_label.to_attr()}
                 auto_focus={props.auto_focus.to_attr()}
                 checked={*checked_state}
@@ -173,7 +176,7 @@ pub fn switch_base(props: &Props) -> Html {
                 required={props.required}
                 tab_index={props.tab_index.to_attr()}
                 type={props.variant.name()}
-                {value}
+                value={value}
             />
             if *checked_state {
                 {props.checked_icon.clone()}
