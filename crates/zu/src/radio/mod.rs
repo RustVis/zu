@@ -34,10 +34,13 @@ pub struct Props {
     pub id: AttrValue,
 
     #[prop_or_default]
+    pub input_aria_label: AttrValue,
+
+    #[prop_or_default]
     pub name: AttrValue,
 
     #[prop_or_default]
-    pub on_change: Option<Callback<()>>,
+    pub on_change: Option<Callback<String>>,
 
     #[prop_or(false)]
     pub required: bool,

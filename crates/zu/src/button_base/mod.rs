@@ -7,6 +7,7 @@
 //! It aims to be a simple building block for creating a button.
 //! It contains a load of style reset and some focus/ripple logic.
 
+mod button_type;
 mod touch_ripple;
 
 use yew::{
@@ -15,12 +16,17 @@ use yew::{
 };
 use zu_util::prop::ToAttr;
 
+use crate::styles::CssValue;
+pub use button_type::ButtonType;
 pub use touch_ripple::TouchRipple;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
     #[prop_or_default]
     pub aria_label: AttrValue,
+
+    #[prop_or_default]
+    pub button_type: ButtonType,
 
     // TODO(Shaohua): Add action ref.
     /// If true, the ripples are centered.
@@ -170,7 +176,7 @@ pub fn button_base(props: &Props) -> Html {
             aria-label={props.aria_label.to_attr()}
             disabled={props.disabled}
             tab_index={tab_index}
-            type="button"
+            type={props.button_type.css_value()}
             onblur={props.on_blur.clone()}
             onclick={props.on_click.clone()}
             oncontextmenu={props.on_context_menu.clone()}

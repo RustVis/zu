@@ -11,7 +11,7 @@ use yew::{
     FocusEvent, Html, KeyboardEvent, MouseEvent, Properties, TouchEvent,
 };
 
-use crate::button_base::ButtonBase;
+use crate::button_base::{ButtonBase, ButtonType};
 use crate::styles::button_variant::ButtonVariant;
 use crate::styles::{color::Color, size::Size};
 
@@ -19,6 +19,9 @@ use crate::styles::{color::Color, size::Size};
 pub struct Props {
     #[prop_or_default]
     pub aria_label: AttrValue,
+
+    #[prop_or_default]
+    pub button_type: ButtonType,
 
     #[prop_or_default]
     pub children: Children,
@@ -195,6 +198,7 @@ pub fn button(props: &Props) -> Html {
         <ButtonBase
             classes={root_cls}
             aria_label={&props.aria_label}
+            button_type={props.button_type}
             component={props.component.clone()}
             disabled={props.disabled}
             disable_ripple={props.disable_ripple}

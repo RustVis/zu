@@ -7,6 +7,9 @@ use yew::{function_component, html, AttrValue, Callback, Children, Html, Propert
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
     #[prop_or_default]
+    pub aria_labelled_by: AttrValue,
+
+    #[prop_or_default]
     pub children: Children,
 
     #[prop_or_default]
@@ -17,6 +20,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub on_change: Option<Callback<String>>,
+
+    #[prop_or(false)]
+    pub row: bool,
 
     #[prop_or_default]
     pub value: AttrValue,

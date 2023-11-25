@@ -45,6 +45,9 @@ pub struct Props {
     #[prop_or(false)]
     pub focused: bool,
 
+    #[prop_or_default]
+    pub id: AttrValue,
+
     /// If true, the label will indicate that the input is required.
     #[prop_or(false)]
     pub required: bool,
