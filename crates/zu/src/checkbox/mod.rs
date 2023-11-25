@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 
 mod color;
-mod size;
 
 use yew::{classes, function_component, html, AttrValue, Callback, Classes, Html, Properties};
 
@@ -110,7 +109,7 @@ pub fn checkbox(props: &Props) -> Html {
         props.classes.clone(),
     );
 
-    let font_size = size::size_to_font_size(props.size);
+    let font_size = props.size.to_font_size();
     let icon = props.icon.as_ref().map_or_else(
         || html! {<CheckBoxOutlineBlank {font_size} />},
         Clone::clone,

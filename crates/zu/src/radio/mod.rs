@@ -3,14 +3,15 @@
 // found in the LICENSE file.
 
 mod color;
+mod radio_button_icon;
 mod size;
 
 use yew::{classes, function_component, html, AttrValue, Callback, Classes, Html, Properties};
 
-use crate::internal::svg_icons::{RadioButtonChecked, RadioButtonUnchecked};
 use crate::styles::color::Color;
 use crate::styles::size::Size;
 use crate::switch_base::{SwitchBase, Variant};
+use radio_button_icon::RadioButtonIcon;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -97,19 +98,22 @@ pub fn radio(props: &Props) -> Html {
         props.classes.clone(),
     );
 
-    let checked_icon = props
-        .checked_icon
-        .as_ref()
-        .map_or_else(|| html! {<RadioButtonChecked />}, Clone::clone);
+    // TODO(Shaohua): Sync check state to checked_icon.
+
+    let font_size = props.size.to_font_size();
+    let checked_icon = props.checked_icon.as_ref().map_or_else(
+        || html! {<RadioButtonIcon checked={true} {font_size} />},
+        Clone::clone,
+    );
     let icon = props
         .icon
         .as_ref()
-        .map_or_else(|| html! {<RadioButtonUnchecked />}, Clone::clone);
+        .map_or_else(|| html! {<RadioButtonIcon {font_size} />}, Clone::clone);
 
     html! {
         <SwitchBase
-            classes={root_cls}
             aria_label={&props.input_aria_label}
+            classes={root_cls}
             checked={props.checked}
             checked_icon={checked_icon}
             default_checked={props.default_checked}

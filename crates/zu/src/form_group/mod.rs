@@ -10,6 +10,9 @@ pub struct Props {
     #[prop_or_default]
     pub aria_label: AttrValue,
 
+    #[prop_or_default]
+    pub aria_labelled_by: AttrValue,
+
     /// The content of the component.
     #[prop_or_default]
     pub children: Children,
@@ -44,6 +47,7 @@ pub fn form_group(props: &Props) -> Html {
     html! {
         <div
             aria-label={props.aria_label.to_attr()}
+            aria-labeledby={props.aria_labelled_by.to_attr()}
             class={root_cls}
             role={props.role.to_attr()}
             style={props.style.to_attr()}>

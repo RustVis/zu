@@ -52,6 +52,7 @@ pub struct Props {
 pub fn radio_group(props: &Props) -> Html {
     html! {
         <FormGroup
+            aria_labelled_by={&props.aria_labelled_by}
             classes={&props.classes}
             role="radio-group"
             style={&props.style}>

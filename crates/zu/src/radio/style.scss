@@ -6,7 +6,6 @@
   color: $zu-palette-text-secondary;
 
   &.ZuRadio-enableRipple {
-
     &:hover {
       background-color: change-color($zu-palette-action-active, $alpha: $zu-palette-action-hoverOpacity);
 
@@ -16,51 +15,74 @@
       }
     }
   }
-
-  // State class applied to the root element if disabled={true}.
-  &.ZuRadio-disabled {
-    color: $zu-palette-action-disabled;
-  }
-
-  // Styles applied to the root element if color="primary".
-  &.ZuRadio-colorPrimary {
-    &.ZuRadio-checked {
-      color: $zu-palette-primary-main;
-    }
-  }
-
-  &.ZuRadio-colorSecondary {
-    &.ZuRadio-checked {
-      color: $zu-palette-secondary-main;
-    }
-  }
-
-  &.ZuRadio-colorSuccess {
-    &.ZuRadio-checked {
-      color: $zu-palette-success-main;
-    }
-  }
-
-  &.ZuRadio-colorInfo {
-    &.ZuRadio-checked {
-      color: $zu-palette-info-main;
-    }
-  }
-
-  &.ZuRadio-colorWarning {
-    &.ZuRadio-checked {
-      color: $zu-palette-warning-main;
-    }
-  }
-
-  &.ZuRadio-colorError {
-    &.ZuRadio-checked {
-      color: $zu-palette-error-main;
-    }
-  }
 }
 
 // State class applied to the root element if checked={true}.
 .ZuRadio-checked {
 
+}
+
+// State class applied to the root element if disabled={true}.
+.ZuRadio-disabled {
+  color: $zu-palette-action-disabled;
+}
+
+// Styles applied to the root element if color="primary".
+.ZuRadio-colorPrimary {
+  &.ZuSwitchBase-checked {
+    color: $zu-palette-primary-main;
+  }
+}
+
+.ZuRadio-colorSecondary {
+  &.ZuSwitchBase-checked {
+    color: $zu-palette-secondary-main;
+  }
+}
+
+.ZuRadio-colorSuccess {
+  &.ZuSwitchBase-checked {
+    color: $zu-palette-success-main;
+  }
+}
+
+.ZuRadio-colorInfo {
+  &.ZuSwitchBase-checked {
+    color: $zu-palette-info-main;
+  }
+}
+
+.ZuRadio-colorWarning {
+  &.ZuSwitchBase-checked {
+    color: $zu-palette-warning-main;
+  }
+}
+
+.ZuRadio-colorError {
+  &.ZuSwitchBase-checked {
+    color: $zu-palette-error-main;
+  }
+}
+
+/** For ZuRadioButtonIcon **/
+.ZuRadioButtonIcon-root {
+  display: flex;
+  position: relative;
+
+  & .ZuRadioButtonIcon-background {
+    // Scale applied to prevent dot misalignment in Safari
+    transform: scale(1);
+  }
+
+  & .ZuRadioButtonIcon-dot {
+    left: 0;
+    position: absolute;
+    transform: scale(0);
+    transition: transform $zu-easing-easeIn $zu-duration-shortest 0ms;
+  }
+
+  & .ZuRadioButtonIcon-dotChecked {
+    transform: scale(1);
+    transition: transform $zu-easing-easeOut $zu-duration-shortest 0ms;
+  }
 }
