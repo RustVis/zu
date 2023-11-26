@@ -18,20 +18,12 @@ use std::io::Write;
 use std::path::{Path, PathBuf};
 use zu_util::icon::need_update_with_name;
 
-const DARK_THEME_CSS: &str = "dark_theme.css";
-const DARK_THEME_SCSS: &str = "dark_theme.scss";
-const LIGHT_THEME_CSS: &str = "light_theme.css";
-const LIGHT_THEME_SCSS: &str = "light_theme.scss";
-
-fn merge_themes(style_files: &[&str], output_name: &str) -> io::Result<()> {
-    let out_dir = env::var("OUT_DIR").unwrap();
-    let output_path = Path::new(&out_dir).join(output_name);
-
+fn merge_themes(style_files: &[&str], output_name: &Path) -> io::Result<()> {
     let mut output_file = fs::OpenOptions::new()
         .truncate(true)
         .create(true)
         .write(true)
-        .open(output_path)?;
+        .open(output_name)?;
 
     for file in style_files {
         let content = fs::read_to_string(file)?;
@@ -42,22 +34,18 @@ fn merge_themes(style_files: &[&str], output_name: &str) -> io::Result<()> {
     Ok(())
 }
 
-fn compile_scss(input_name: &str, output_name: &str) -> Result<(), Box<dyn Error>> {
-    let out_dir = env::var("OUT_DIR").unwrap();
-    let input_path = Path::new(&out_dir).join(input_name);
-    let output_path = Path::new(&out_dir).join(output_name);
-
+fn compile_scss(input_name: &Path, output_name: &Path) -> Result<(), Box<dyn Error>> {
     let format = output::Format {
         style: output::Style::Expanded,
         ..Default::default()
     };
-    let css = compile_scss_path(&input_path, format)?;
+    let css = compile_scss_path(input_name, format)?;
 
     let mut output_file = fs::OpenOptions::new()
         .truncate(true)
         .create(true)
         .write(true)
-        .open(output_path)?;
+        .open(output_name)?;
     let css: String = String::from_utf8(css).unwrap();
     // NOTE(Shaohua): Remove @charset, as it is not supported by stylist yet.
     let css = css.replace("@charset \"UTF-8\";", "");
@@ -67,18 +55,34 @@ fn compile_scss(input_name: &str, output_name: &str) -> Result<(), Box<dyn Error
 }
 
 fn generate_style_files() -> Result<(), Box<dyn Error>> {
+    let out_dir = env::var("OUT_DIR").unwrap();
+
     let mut dark_files = theme::COLORS.to_vec();
     dark_files.extend_from_slice(theme::DARK_COLORS);
     dark_files.extend_from_slice(theme::COMMON_STYLES);
-    merge_themes(&dark_files, DARK_THEME_SCSS)?;
-    compile_scss(DARK_THEME_SCSS, DARK_THEME_CSS)?;
+    let dark_theme_scss = Path::new(&out_dir).join("dark_theme.scss");
+    let dark_theme_css = Path::new(&out_dir).join("dark_theme.css");
+    merge_themes(&dark_files, &dark_theme_scss)?;
+    compile_scss(&dark_theme_scss, &dark_theme_css)?;
+    println!(
+        "cargo:rustc-env=DARK_THEME_CSS={}",
+        dark_theme_css.display()
+    );
 
     let mut light_files = theme::COLORS.to_vec();
     light_files.extend_from_slice(theme::LIGHT_COLORS);
     light_files.extend_from_slice(theme::COMMON_STYLES);
-    merge_themes(&light_files, LIGHT_THEME_SCSS)?;
-    compile_scss(LIGHT_THEME_SCSS, LIGHT_THEME_CSS)?;
-    //merge_themes(COLORS, "color-schemes.css")?;
+    let light_theme_scss = Path::new(&out_dir).join("light_theme.scss");
+    let light_theme_css = Path::new(&out_dir).join("light_theme.css");
+    merge_themes(&light_files, &light_theme_scss)?;
+    compile_scss(&light_theme_scss, &light_theme_css)?;
+    println!(
+        "cargo:rustc-env=LIGHT_THEME_CSS={}",
+        light_theme_css.display()
+    );
+
+    let color_scheme_scss = Path::new(&out_dir).join("color_scheme.scss");
+    merge_themes(theme::COLORS, &color_scheme_scss)?;
 
     Ok(())
 }

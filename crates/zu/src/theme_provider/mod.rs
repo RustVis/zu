@@ -34,8 +34,8 @@ impl ThemeContext {
     /// Will got panic if failed to parse themes.
     #[must_use]
     pub fn new(inner: UseStateHandle<ThemeKind>) -> Self {
-        let dark_style = include_str!(concat!(env!("OUT_DIR"), "/dark-theme.css"));
-        let light_style = include_str!(concat!(env!("OUT_DIR"), "/light-theme.css"));
+        let dark_style = include_str!(env!("DARK_THEME_CSS"));
+        let light_style = include_str!(env!("LIGHT_THEME_CSS"));
 
         let dark = StyleSource::try_from(dark_style).expect("Failed to parse dark theme");
         let light = StyleSource::try_from(light_style).expect("Failed to parse light theme");
