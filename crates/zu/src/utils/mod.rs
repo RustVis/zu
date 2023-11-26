@@ -3,8 +3,10 @@
 // found in the LICENSE file.
 
 mod create_svg_icon;
+mod use_id;
 
 pub use create_svg_icon::create_svg_icon;
+pub use use_id::global_id;
 
 #[inline]
 #[must_use]

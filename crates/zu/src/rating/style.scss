@@ -3,85 +3,109 @@
 
 // Styles applied to the root element.
 .ZuRating-root {
+  display: inline-flex;
+  // Required to position the pristine input absolutely
+  position: relative;
+  font-size: 24px;
+  color: #faaf00;
+  cursor: pointer;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
 
-}
+  // State class applied to the root element if disabled={true}.
+  &.ZuRating-disabled {
+    opacity: $zu-palette-action-disabledOpacity;
+    pointer-events: none;
+  }
 
-// Styles applied to the root element if size="small".
-.ZuRating-sizeSmall {
+  // State class applied to the root element if keyboard focused.
+  &.ZuRating-focusVisible {
+    // Styles applied to the icon wrapping elements when active.
+    & .ZuRating-iconActive {
+      outline: 1px solid #999;
+    }
+  }
 
-}
+  // Visually hide an element.
+  & .ZuRating-visuallyHidden {
+    @include zu-visually-hidden;
+  }
 
-// Styles applied to the root element if size="medium".
-.ZuRating-sizeMedium {
+  // Styles applied to the root element if size="small".
+  &.ZuRating-sizeSmall {
+    font-size: 18px;
+  }
 
-}
+  // Styles applied to the root element if size="medium".
+  &.ZuRating-sizeMedium {
 
-// Styles applied to the root element if size="large".
-.ZuRating-sizeLarge {
+  }
 
-}
+  // Styles applied to the root element if size="large".
+  &.ZuRating-sizeLarge {
+    font-size: 30px;
+  }
 
-// Styles applied to the root element if readOnly={true}.
-.ZuRating-readOnly {
-
-}
-
-// State class applied to the root element if disabled={true}.
-.ZuRating-disabled {
-
-}
-
-// State class applied to the root element if keyboard focused.
-.ZuRating-focusVisible {
-
-}
-
-// Visually hide an element.
-.ZuRating-visuallyHidden {
-
+  // Styles applied to the root element if readOnly={true}.
+  &.ZuRating-readOnly {
+    pointer-events: none;
+  }
 }
 
 // Styles applied to the label elements.
 .ZuRating-label {
+  cursor: inherit;
 
-}
+  &.ZuRating-labelEmptyValueFocused {
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    outline: 1px solid #999;
+    width: 100%;
+  }
 
-// Styles applied to the label of the "no value" input when it is active.
-.ZuRating-labelEmptyValueActive {
+  // Styles applied to the label of the "no value" input when it is active.
+  &.ZuRating-labelEmptyValueActive {
 
+  }
 }
 
 // Styles applied to the icon wrapping elements.
 .ZuRating-icon {
+  // Fit wrapper to actual icon size.
+  display: flex;
+  transition: transform $zu-duration-shortest $zu-easing-easeInOut 0ms;
+  pointer-events: none;
 
-}
+  // Styles applied to the icon wrapping elements when empty.
+  &.ZuRating-iconEmpty {
+    color: $zu-palette-action-disabled;
+  }
 
-// Styles applied to the icon wrapping elements when empty.
-.ZuRating-iconEmpty {
+  // Styles applied to the icon wrapping elements when filled.
+  &.ZuRating-iconFilled {
 
-}
+  }
 
-// Styles applied to the icon wrapping elements when filled.
-.ZuRating-iconFilled {
+  // Styles applied to the icon wrapping elements when hover.
+  &.ZuRating-iconHover {
 
-}
+  }
 
-// Styles applied to the icon wrapping elements when hover.
-.ZuRating-iconHover {
+  &.ZuRating-iconActive {
+    transform: scale(1.2);
+  }
 
-}
-
-// Styles applied to the icon wrapping elements when focus.
-.ZuRating-iconFocus {
-
-}
-
-// Styles applied to the icon wrapping elements when active.
-.ZuRating-iconActive {
-
+  // Styles applied to the icon wrapping elements when focus.
+  &.ZuRating-iconFocus {
+  }
 }
 
 // Styles applied to the icon wrapping elements when decimals are necessary.
 .ZuRating-decimal {
+  position: relative;
 
+  &.ZuRating-iconActive {
+    transform: scale(1.2);
+  }
 }
