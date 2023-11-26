@@ -6,18 +6,18 @@
 pub const COMMON_STYLES: &[&str] = &[
     // Themes
     "src/themes/_functions.scss",
-    "src/themes/base-reset.scss",
-    "src/themes/border-radius.scss",
+    "src/themes/base_reset.scss",
+    "src/themes/border_radius.scss",
     "src/themes/breakpoints.scss",
     "src/themes/fonts.scss",
     "src/themes/shadows.scss",
     "src/themes/shape.scss",
     "src/themes/spacings.scss",
-    "src/themes/stroke-widths.scss",
+    "src/themes/stroke_widths.scss",
     "src/themes/transitions.scss",
     "src/themes/typography.scss",
     "src/themes/visually_hidden.scss",
-    "src/themes/z-index.scss",
+    "src/themes/z_index.scss",
     // Components
     "src/accordion/style.scss",
     "src/accordion_details/style.scss",
@@ -173,4 +173,16 @@ pub const COLORS: &[&str] = &[
     "src/colors/red.scss",
     "src/colors/teal.scss",
     "src/colors/yellow.scss",
+];
+
+pub const DARK_COLORS: &[&str] = &[
+    "src/themes/dark_palette.scss",
+    "src/themes/export_palette.scss",
+    "src/themes/dark_components.scss",
+];
+
+pub const LIGHT_COLORS: &[&str] = &[
+    "src/themes/light_palette.scss",
+    "src/themes/export_palette.scss",
+    "src/themes/light_components.scss",
 ];

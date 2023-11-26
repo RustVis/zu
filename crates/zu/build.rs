@@ -18,6 +18,11 @@ use std::io::Write;
 use std::path::{Path, PathBuf};
 use zu_util::icon::need_update_with_name;
 
+const DARK_THEME_CSS: &str = "dark_theme.css";
+const DARK_THEME_SCSS: &str = "dark_theme.scss";
+const LIGHT_THEME_CSS: &str = "light_theme.css";
+const LIGHT_THEME_SCSS: &str = "light_theme.scss";
+
 fn merge_themes(style_files: &[&str], output_name: &str) -> io::Result<()> {
     let out_dir = env::var("OUT_DIR").unwrap();
     let output_path = Path::new(&out_dir).join(output_name);
@@ -63,25 +68,16 @@ fn compile_scss(input_name: &str, output_name: &str) -> Result<(), Box<dyn Error
 
 fn generate_style_files() -> Result<(), Box<dyn Error>> {
     let mut dark_files = theme::COLORS.to_vec();
-    dark_files.extend_from_slice(&[
-        "src/themes/dark-palette.scss",
-        "src/themes/export-palette.scss",
-        "src/themes/dark-components.scss",
-    ]);
+    dark_files.extend_from_slice(theme::DARK_COLORS);
     dark_files.extend_from_slice(theme::COMMON_STYLES);
-    merge_themes(&dark_files, "dark-theme.scss")?;
-    compile_scss("dark-theme.scss", "dark-theme.css")?;
+    merge_themes(&dark_files, DARK_THEME_SCSS)?;
+    compile_scss(DARK_THEME_SCSS, DARK_THEME_CSS)?;
 
     let mut light_files = theme::COLORS.to_vec();
-    light_files.extend_from_slice(&[
-        "src/themes/light-palette.scss",
-        "src/themes/export-palette.scss",
-        "src/themes/light-components.scss",
-    ]);
+    light_files.extend_from_slice(theme::LIGHT_COLORS);
     light_files.extend_from_slice(theme::COMMON_STYLES);
-    merge_themes(&light_files, "light-theme.scss")?;
-    compile_scss("light-theme.scss", "light-theme.css")?;
-
+    merge_themes(&light_files, LIGHT_THEME_SCSS)?;
+    compile_scss(LIGHT_THEME_SCSS, LIGHT_THEME_CSS)?;
     //merge_themes(COLORS, "color-schemes.css")?;
 
     Ok(())
