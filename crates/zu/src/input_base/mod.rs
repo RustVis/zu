@@ -2,7 +2,10 @@
 // Use of this source is governed by Lesser General Public License that can be
 // found in the LICENSE file.
 
-use yew::{function_component, html, AttrValue, Callback, Classes, Html, Properties};
+mod color;
+mod size;
+
+use yew::{classes, function_component, html, AttrValue, Callback, Classes, Html, Properties};
 
 use crate::styles::color::Color;
 use crate::styles::input_type::InputType;
@@ -63,6 +66,9 @@ pub struct Props {
     /// If `true`, will adjust vertical spacing.
     #[prop_or(true)]
     pub dense_margin: bool,
+
+    #[prop_or_default]
+    pub hidden_label: bool,
 
     /// Maximum number of rows to display when multiline option is set to true.
     #[prop_or_default]
@@ -125,9 +131,102 @@ pub struct Props {
 }
 
 #[function_component(InputBase)]
-pub fn input_base(_props: &Props) -> Html {
+pub fn input_base(props: &Props) -> Html {
+    let form_control = false;
+    let focused = false;
+
+    let root_cls = classes!(
+        "ZuInputBase-root",
+        color::css_class(props.color),
+        if props.disabled {
+            "ZuInputBase-disabled"
+        } else {
+            ""
+        },
+        if props.error { "ZuInputBase-error" } else { "" },
+        if props.full_width {
+            "ZuInputBase-fullWidth"
+        } else {
+            ""
+        },
+        if focused { "ZuInputBase-focused" } else { "" },
+        if form_control {
+            "ZuInputBase-formControl"
+        } else {
+            ""
+        },
+        size::css_class(props.size),
+        if props.multiline {
+            "ZuInputBase-multiline"
+        } else {
+            ""
+        },
+        if props.start_adornment.is_some() {
+            "ZuInputBase-adornedStart"
+        } else {
+            ""
+        },
+        if props.end_adornment.is_some() {
+            "ZuInputBase-adornedEnd"
+        } else {
+            ""
+        },
+        if props.hidden_label {
+            "ZuInputBase-hiddenLabel"
+        } else {
+            ""
+        },
+        if props.read_only {
+            "ZuInputBase-readOnly"
+        } else {
+            ""
+        }
+    );
+
+    let input_cls = classes!(
+        "ZuInputBase-input",
+        if props.disabled {
+            "ZuInputBase-disabled"
+        } else {
+            ""
+        },
+        if props.input_type == InputType::Search {
+            "ZuInputBase-inputTypeSearch"
+        } else {
+            ""
+        },
+        if props.multiline {
+            "ZuInputBase-inputMultiline"
+        } else {
+            ""
+        },
+        size::input_css_class(props.size),
+        if props.hidden_label {
+            "ZuInputBase-inputHiddenLabel"
+        } else {
+            ""
+        },
+        if props.start_adornment.is_some() {
+            "ZuInputBase-inputAdornedStart"
+        } else {
+            ""
+        },
+        if props.end_adornment.is_some() {
+            "ZuInputBase-inputAdornedEnd"
+        } else {
+            ""
+        },
+        if props.read_only {
+            "ZuInputBase-readOnly"
+        } else {
+            ""
+        },
+    );
+
     html! {
-        <>
-        </>
+        <div
+            class={root_cls}>
+            <input class={input_cls} />
+        </div>
     }
 }

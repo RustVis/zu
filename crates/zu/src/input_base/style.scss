@@ -3,7 +3,35 @@
 
 // Styles applied to the root element.
 .ZuInputBase-root {
+  @include zu-typography-body1;
+  color: $zu-palette-text-primary;
+  line-height: 1.4375em; // 23px
+  box-sizing: border-box; // Prevent padding issue with fullWidth.
+  position: relative;
+  cursor: text;
+  display: inline-flex;
+  align-items: center;
 
+  // Styles applied to the root element if disabled={true}.
+  &.ZuInputBase-disabled {
+    color: $zu-palette-text-disabled;
+    cursor: default;
+  }
+
+  // Styles applied to the root element if multiline={true}.
+  &.ZuInputBase-multiline {
+    padding: 4px 0 5px;
+
+    // Styles applied to the input element if size="small".
+    &.ZuInputBase-sizeSmall {
+      padding-top: 1px;
+    }
+  }
+
+  // Styles applied to the root element if fullWidth={true}.
+  &.ZuInputBase-fullWidth {
+    width: 100%;
+  }
 }
 
 // Styles applied to the root element if the component is a descendant of FormControl.
@@ -13,11 +41,6 @@
 
 // Styles applied to the root element if the component is focused.
 .ZuInputBase-focused {
-
-}
-
-// Styles applied to the root element if disabled={true}.
-.ZuInputBase-disabled {
 
 }
 
@@ -36,25 +59,12 @@
 
 }
 
-// Styles applied to the input element if size="small".
-.ZuInputBase-sizeSmall {
-
-}
-
-// Styles applied to the root element if multiline={true}.
-.ZuInputBase-multiline {
-
-}
-
 // Styles applied to the root element if the color is secondary.
 .ZuInputBase-colorSecondary {
 
 }
 
-// Styles applied to the root element if fullWidth={true}.
-.ZuInputBase-fullWidth {
 
-}
 
 // Styles applied to the root element if hiddenLabel={true}.
 .ZuInputBase-hiddenLabel {
@@ -68,7 +78,63 @@
 
 // Styles applied to the input element.
 .ZuInputBase-input {
+  font: inherit;
+  letter-spacing: inherit;
+  color: currentColor;
+  padding: 4px 0 5px;
+  border: 0;
+  box-sizing: content-box;
+  background: none;
+  height: 1.4375em; // Reset 23px the native input line-height
+  margin: 0; // Reset for Safari
+  -webkit-tap-highlight-color: transparent;
+  display: block;
+  // Make the flex item shrink with Firefox
+  min-width: 0;
+  width: 100%; // Fix IE11 width issue
+  animation-name: zu-auto-fill-cancel;
+  animation-duration: 10ms;
 
+  @mixin placeholderHidden {
+    opacity: 0 !important;
+  }
+  @mixin placeholderVisible {
+    // TODO(Shaohua): 0.5 for dark theme
+    opacity: 0.42;
+  }
+  @mixin placeholder {
+    color: currentColor;
+    @include placeholderVisible;
+    transition: opacity $zu-duration-shortest $zu-easing-easeInOut 0ms;
+  }
+
+  &::-webkit-input-placeholder {
+    @include placeholder;
+  }
+
+  &::-moz-placeholder {
+    // Firefox 19+
+    @include placeholder;
+  }
+
+  &::-ms-input-placeholder {
+    // Edge
+    @include placeholder;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  // Reset Firefox invalid required input style
+  &:invalid {
+    box-shadow: none;
+  }
+
+  &::-webkit-search-decoration {
+    // Remove the padding when type=search.
+    -webkit-appearance: none;
+  }
 }
 
 // Styles applied to the input element if size="small".
