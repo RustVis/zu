@@ -162,7 +162,7 @@ pub struct Props {
 
 #[function_component(TextField)]
 pub fn text_field(props: &Props) -> Html {
-    // TODO(Shaohua): Support Select
+    // TODO(Shaohua): Unset defaults from textbox inputs for select.
     // TODO(Shaohua): Check outlined style.
 
     let id = AttrValue::from(global_id());

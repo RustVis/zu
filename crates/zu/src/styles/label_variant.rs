@@ -15,6 +15,14 @@ impl Default for LabelVariant {
     }
 }
 
+impl LabelVariant {
+    #[inline]
+    #[must_use]
+    pub fn is_contained(self) -> bool {
+        self == Self::Filled || self == Self::Outlined
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum SimpleLabelVariant {
     Filled,

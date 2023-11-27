@@ -3,27 +3,31 @@
 
 // Styles applied to the root element.
 .ZuFormHelperText-root {
+  color: $zu-palette-text-secondary;
+  @include zu-typography-caption;
+  text-align: left;
+  margin: 3px 0 0 0;
 
-}
+  // State class applied to the root element if disabled={true}.
+  &.ZuFormHelperText-disabled {
+    color: $zu-palette-text-disabled;
+  }
 
-// State class applied to the root element if error={true}.
-.ZuFormHelperText-error {
+  // State class applied to the root element if error={true}.
+  &.ZuFormHelperText-error {
+    color: $zu-palette-error-main;
+  }
 
-}
+  // Styles applied to the root element if size="small".
+  &.ZuFormHelperText-sizeSmall {
+    margin-top: 4px;
+  }
 
-// State class applied to the root element if disabled={true}.
-.ZuFormHelperText-disabled {
-
-}
-
-// Styles applied to the root element if size="small".
-.ZuFormHelperText-sizeSmall {
-
-}
-
-// Styles applied to the root element if variant="filled" or variant="outlined".
-.ZuFormHelperText-contained {
-
+  // Styles applied to the root element if variant="filled" or variant="outlined".
+  &.ZuFormHelperText-contained {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
 }
 
 // State class applied to the root element if focused={true}.
