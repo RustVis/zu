@@ -37,13 +37,13 @@ pub struct Props {
     pub full_width: bool,
 
     #[prop_or_default]
-    pub helper_text: Option<Html>,
+    pub helper_text: AttrValue,
 
     #[prop_or_default]
     pub id: AttrValue,
 
     #[prop_or_default]
-    pub label: Option<Html>,
+    pub label: Html,
 
     #[prop_or_default]
     pub margin: Margin,
@@ -83,6 +83,12 @@ pub struct Props {
 
     #[prop_or_default]
     pub input_type: InputType,
+
+    #[prop_or(false)]
+    pub input_read_only: bool,
+
+    #[prop_or(false)]
+    pub input_shrink: bool,
 
     #[prop_or_default]
     pub value: AttrValue,

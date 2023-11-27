@@ -2,9 +2,11 @@
 // Use of this source is governed by Apache-2.0 License that can be found
 // in the LICENSE file.
 
-use crate::utils::global_id;
 use web_sys::{Event, FocusEvent, MouseEvent};
 use yew::{classes, function_component, html, AttrValue, Callback, Classes, Html, Properties};
+use zu_util::scalar::Scalar;
+
+use crate::utils::global_id;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
@@ -45,13 +47,13 @@ pub struct Props {
 #[function_component(RatingItem)]
 pub fn rating_item(props: &Props) -> Html {
     let is_filled = if props.highlight_selected_only {
-        props.item_value == props.rating_value
+        props.item_value.nearly_equal(props.rating_value)
     } else {
         props.item_value <= props.rating_value
     };
     let is_hovered = props.item_value <= props.hover;
     let is_focused = props.item_value <= props.focus;
-    let is_checked = props.item_value == props.rating_value_rounded;
+    let is_checked = props.item_value.nearly_equal(props.rating_value_rounded);
     let id: String = global_id();
 
     let label_cls = classes!(

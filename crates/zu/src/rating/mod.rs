@@ -115,16 +115,16 @@ pub fn rating(props: &Props) -> Html {
         }
     );
 
-    let _label_cls = classes!("ZuRating-label", "ZuRating-pristine");
-    let _label_empty_value_cls = "ZuRating-labelEmptyValueActive";
-    let _icon_cls = "ZuRating-icon";
-    let _icon_empty_cls = "ZuRating-iconEmpty";
-    let _icon_filled_cls = "ZuRating-iconFilled";
-    let _icon_hover_cls = "ZuRating-iconHover";
-    let _icon_focus_cls = "ZuRating-iconFocus";
-    let _icon_active_cls = "ZuRating-iconActive";
-    let _decimal_cls = "ZuRating-decimal";
-    let _visually_hidden_cls = "ZuRating-visuallyHidden";
+    // let _label_cls = classes!("ZuRating-label", "ZuRating-pristine");
+    // let _label_empty_value_cls = "ZuRating-labelEmptyValueActive";
+    // let _icon_cls = "ZuRating-icon";
+    // let _icon_empty_cls = "ZuRating-iconEmpty";
+    // let _icon_filled_cls = "ZuRating-iconFilled";
+    // let _icon_hover_cls = "ZuRating-iconHover";
+    // let _icon_focus_cls = "ZuRating-iconFocus";
+    // let _icon_active_cls = "ZuRating-iconActive";
+    // let _decimal_cls = "ZuRating-decimal";
+    // let _visually_hidden_cls = "ZuRating-visuallyHidden";
     let role = if props.read_only { Some("img") } else { None };
 
     html! {

@@ -21,6 +21,12 @@ pub struct Props {
 
     #[prop_or_default]
     pub style: AttrValue,
+
+    #[prop_or(false)]
+    pub no_validate: bool,
+
+    #[prop_or(true)]
+    pub auto_complete: bool,
 }
 
 #[function_component(Box)]
