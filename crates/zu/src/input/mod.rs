@@ -10,6 +10,9 @@ use crate::styles::input_type::InputType;
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
     #[prop_or_default]
+    pub aria_described_by: AttrValue,
+
+    #[prop_or_default]
     pub auto_complete: AttrValue,
 
     #[prop_or(false)]
@@ -61,7 +64,14 @@ pub struct Props {
     pub name: AttrValue,
 
     #[prop_or_default]
-    pub on_change: Option<Callback<()>>,
+    pub on_blur: Option<Callback<()>>,
+
+    /// Callback fired when the value is changed.
+    #[prop_or_default]
+    pub on_change: Option<Callback<AttrValue>>,
+
+    #[prop_or_default]
+    pub on_focus: Option<Callback<()>>,
 
     #[prop_or_default]
     pub placeholder: AttrValue,

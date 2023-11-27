@@ -17,9 +17,13 @@ use yew::{
     classes, function_component, html, AttrValue, Callback, Children, Classes, Html, Properties,
 };
 
+use crate::filled_input::FilledInput;
 use crate::form_control::FormControl;
 use crate::form_helper_text::FormHelperText;
+use crate::input::Input;
 use crate::input_label::InputLabel;
+use crate::outlined_input::OutlinedInput;
+use crate::select::Select;
 use crate::styles::color::Color;
 use crate::styles::input_type::InputType;
 use crate::styles::label_variant::LabelVariant;
@@ -161,8 +165,28 @@ pub fn text_field(props: &Props) -> Html {
     // TODO(Shaohua): Support Select
     // TODO(Shaohua): Check outlined style.
 
-    let id = global_id();
+    let id = AttrValue::from(global_id());
+    let input_label_id = AttrValue::from(format!("{id}-label"));
+    let helper_text_id = AttrValue::from(format!("{id}-helper-text"));
     let root_cls = classes!("ZuTextField-root", props.classes.clone());
+
+    let input_variant = get_input_variant(props, &id, &helper_text_id);
+
+    let input_content = if props.select {
+        html! {
+            <Select
+                aria_described_by={&helper_text_id}
+                id={&id}
+                label_id={&input_label_id}
+                input={input_variant}
+                value={&props.value}
+            >
+                {for props.children.iter()}
+            </Select>
+        }
+    } else {
+        input_variant
+    };
 
     html! {
         <FormControl
@@ -177,19 +201,89 @@ pub fn text_field(props: &Props) -> Html {
 
         if let Some(label) = &props.label {
             <InputLabel
-                id={format!("{id}-label")}
-                html_for={id.clone()}
+                id={input_label_id}
+                html_for={id}
                 shrink={props.input_label_shrink}>
                 {label.clone()}
             </InputLabel>
         }
 
+        {input_content}
+
         if let Some(helper_text) = &props.helper_text {
-            <FormHelperText id={format!("{id}-helper-text")}>
+            <FormHelperText id={helper_text_id}>
                 {helper_text.clone()}
             </FormHelperText>
         }
 
         </FormControl>
+    }
+}
+
+fn get_input_variant(props: &Props, id: &AttrValue, helper_text_id: &AttrValue) -> Html {
+    match props.variant {
+        LabelVariant::Filled => html! {
+            <Input
+                aria_described_by={helper_text_id}
+                auto_complete={&props.auto_complete}
+                auto_focus={props.auto_focus}
+                default_value={&props.default_value}
+                full_width={props.full_width}
+                multiline={props.multiline}
+                name={&props.name}
+                rows={props.rows}
+                max_rows={props.max_rows}
+                min_rows={props.min_rows}
+                input_type={props.input_type}
+                value={&props.value}
+                id={id}
+                on_blur={&props.on_blur}
+                on_change={&props.on_change}
+                on_focus={&props.on_focus}
+                placeholder={&props.placeholder}
+            />
+        },
+        LabelVariant::Outlined => html! {
+            <FilledInput
+                aria_described_by={helper_text_id}
+                auto_complete={&props.auto_complete}
+                auto_focus={props.auto_focus}
+                default_value={&props.default_value}
+                full_width={props.full_width}
+                multiline={props.multiline}
+                name={&props.name}
+                rows={props.rows}
+                max_rows={props.max_rows}
+                min_rows={props.min_rows}
+                input_type={props.input_type}
+                value={&props.value}
+                id={id}
+                on_blur={&props.on_blur}
+                on_change={&props.on_change}
+                on_focus={&props.on_focus}
+                placeholder={&props.placeholder}
+            />
+        },
+        LabelVariant::Standard => html! {
+            <OutlinedInput
+                aria_described_by={helper_text_id}
+                auto_complete={&props.auto_complete}
+                auto_focus={props.auto_focus}
+                default_value={&props.default_value}
+                full_width={props.full_width}
+                multiline={props.multiline}
+                name={&props.name}
+                rows={props.rows}
+                max_rows={props.max_rows}
+                min_rows={props.min_rows}
+                input_type={props.input_type}
+                value={&props.value}
+                id={id}
+                on_blur={&props.on_blur}
+                on_change={&props.on_change}
+                on_focus={&props.on_focus}
+                placeholder={&props.placeholder}
+            />
+        },
     }
 }

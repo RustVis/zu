@@ -5,9 +5,13 @@
 use yew::{function_component, html, AttrValue, Callback, Classes, Html, Properties};
 
 use crate::styles::color::PrimaryColor;
+use crate::styles::input_type::InputType;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
+    #[prop_or_default]
+    pub aria_described_by: AttrValue,
+
     #[prop_or_default]
     pub auto_complete: AttrValue,
 
@@ -63,7 +67,14 @@ pub struct Props {
     pub notched: bool,
 
     #[prop_or_default]
-    pub on_change: Option<Callback<()>>,
+    pub on_blur: Option<Callback<()>>,
+
+    /// Callback fired when the value is changed.
+    #[prop_or_default]
+    pub on_change: Option<Callback<AttrValue>>,
+
+    #[prop_or_default]
+    pub on_focus: Option<Callback<()>>,
 
     #[prop_or_default]
     pub placeholder: AttrValue,
@@ -84,7 +95,7 @@ pub struct Props {
     pub style: AttrValue,
 
     #[prop_or_default]
-    pub input_type: AttrValue,
+    pub input_type: InputType,
 
     #[prop_or_default]
     pub value: AttrValue,

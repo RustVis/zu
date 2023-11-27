@@ -8,6 +8,9 @@ use crate::styles::label_variant::LabelVariant;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
+    #[prop_or_default]
+    pub aria_described_by: AttrValue,
+
     #[prop_or(false)]
     pub auto_width: bool,
 
@@ -64,6 +67,9 @@ pub struct Props {
 
     #[prop_or(LabelVariant::Outlined)]
     pub variant: LabelVariant,
+
+    #[prop_or_default]
+    pub value: AttrValue,
 }
 
 #[function_component(Select)]

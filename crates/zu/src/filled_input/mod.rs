@@ -5,9 +5,13 @@
 use yew::{function_component, html, AttrValue, Callback, Classes, Html, Properties};
 
 use crate::styles::color::Color;
+use crate::styles::input_type::InputType;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
+    #[prop_or_default]
+    pub aria_described_by: AttrValue,
+
     #[prop_or_default]
     pub auto_complete: AttrValue,
 
@@ -19,6 +23,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub color: Color,
+
+    #[prop_or_default]
+    pub default_value: AttrValue,
 
     // pub default_value: AttrValue,
     #[prop_or(false)]
@@ -60,9 +67,15 @@ pub struct Props {
     #[prop_or_default]
     pub name: AttrValue,
 
-    // TODO(Shaohua): Add change event.
     #[prop_or_default]
-    pub on_change: Option<Callback<()>>,
+    pub on_blur: Option<Callback<()>>,
+
+    /// Callback fired when the value is changed.
+    #[prop_or_default]
+    pub on_change: Option<Callback<AttrValue>>,
+
+    #[prop_or_default]
+    pub on_focus: Option<Callback<()>>,
 
     #[prop_or_default]
     pub placeholder: AttrValue,
@@ -74,6 +87,9 @@ pub struct Props {
     pub required: bool,
 
     #[prop_or_default]
+    pub rows: Option<i32>,
+
+    #[prop_or_default]
     pub start_adornment: Option<Html>,
 
     #[prop_or_default]
@@ -81,7 +97,7 @@ pub struct Props {
 
     /// Default is "text".
     #[prop_or_default]
-    pub input_type: AttrValue,
+    pub input_type: InputType,
 
     #[prop_or_default]
     pub value: AttrValue,
