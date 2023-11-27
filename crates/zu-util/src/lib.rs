@@ -39,3 +39,4 @@ pub mod cmp;
 pub mod image_future;
 pub mod name;
 pub mod prop;
+pub mod scalar;
