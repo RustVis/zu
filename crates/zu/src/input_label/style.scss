@@ -60,10 +60,10 @@
 }
 
 // Styles applied to the input element unless disableAnimation={true}.
-.ZuInputLable-animated {
-    transition: color var(--zu-duration-shorter) var(--zu-easing-easeOut) 0ms,
-        transform var(--zu-duration-shorter) var(--zu-easing-easeOut) 0ms,
-        max-width var(--zu-duration-shorter) var(--zu-easing-easeOut) 0ms;
+.ZuInputLabel-animated {
+    transition: color $zu-duration-shorter $zu-easing-easeOut 0ms,
+        transform $zu-duration-shorter $zu-easing-easeOut 0ms,
+        max-width $zu-duration-shorter $zu-easing-easeOut 0ms;
 }
 
 // Styles applied to the root element if variant="filled".

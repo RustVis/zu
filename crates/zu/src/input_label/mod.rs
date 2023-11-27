@@ -100,6 +100,7 @@ pub fn input_label(props: &Props) -> Html {
         ""
     };
     // TODO(Shaohua): Merge props.size into styles.
+    // TODO(Shaohua): Add asterisk element.
 
     html! {
         <FormLabel
