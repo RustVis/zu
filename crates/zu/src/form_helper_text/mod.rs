@@ -32,6 +32,9 @@ pub struct Props {
     #[prop_or(true)]
     pub dense_margin: bool,
 
+    #[prop_or_default]
+    pub id: AttrValue,
+
     #[prop_or(false)]
     pub required: bool,
 

@@ -41,6 +41,12 @@ pub struct Props {
     #[prop_or(false)]
     pub focused: bool,
 
+    #[prop_or_default]
+    pub html_for: AttrValue,
+
+    #[prop_or_default]
+    pub id: AttrValue,
+
     /// If dense, will adjust vertical spacing. This is normally obtained via context from FormControl.
     #[prop_or_default]
     pub margin: MarginType,
@@ -49,7 +55,7 @@ pub struct Props {
     #[prop_or(false)]
     pub required: bool,
 
-    /// If true, the label is shrunk.
+    /// If true, the label is shrink.
     #[prop_or(false)]
     pub shrink: bool,
 

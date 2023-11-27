@@ -19,9 +19,21 @@ fn basic_section() -> Html {
         <p>{"The TextField wrapper component is a complete form control including a label, input, and help text. \
         It comes with three variants: outlined (default), filled, and standard."}</p>
         <DemoBox>
-        <TextField id="outlined-basic" label="Outlined" variant={LabelVariant::Outlined} />
-        <TextField id="filled-basic" label="Filled" variant={LabelVariant::Filled} />
-        <TextField id="standard-basic" label="Standard" variant={LabelVariant::Standard} />
+        <TextField
+            id="outlined-basic"
+            label={html!{"Outlined"}}
+            variant={LabelVariant::Outlined}
+        />
+        <TextField
+            id="filled-basic"
+            label={html!{"Filled"}}
+            variant={LabelVariant::Filled}
+        />
+        <TextField
+            id="standard-basic"
+            label={html!{"Standard"}}
+            variant={LabelVariant::Standard}
+        />
         </DemoBox>
         </>
     }
@@ -44,92 +56,92 @@ fn form_props_section() -> Html {
             <TextField
                 required={true}
                 id="outlined-required"
-                label="Required"
+                label={html!{"Required"}}
                 default_value="Hello World"
             />
             <TextField
                 disabled={true}
                 id="outlined-disabled"
-                label="Disabled"
+                label={html!{"Disabled"}}
                 default_value="Hello World"
             />
             <TextField
                 id="outlined-password-input"
-                label="Password"
+                label={html!{"Password"}}
                 input_type={InputType::Password}
                 auto_complete="current-password"
             />
             <TextField
                 id="outlined-read-only-input"
-                label="Read Only"
+                label={html!{"Read Only"}}
                 default_value="Hello World"
                 input_read_only={true}
             />
             <TextField
                 id="outlined-number"
-                label="Number"
+                label={html!{"Number"}}
                 input_type={InputType::Number}
-                input_shrink={true}
+                input_label_shrink={true}
             />
             <TextField
                 id="outlined-search"
-                label="Search field"
+                label={html!{"Search field"}}
                 input_type={InputType::Search}
             />
             <TextField
                 id="outlined-helperText"
-                label="Helper text"
+                label={html!{"Helper text"}}
                 default_value="Default Value"
-                helper_text="Some important text"
+                helper_text={html!{"Some important text"}}
             />
         </div>
         <div>
             <TextField
                 required={true}
                 id="filled-required"
-                label="Required"
+                label={html!{"Required"}}
                 default_value="Hello World"
                 variant={LabelVariant::Filled}
             />
             <TextField
                 disabled={true}
                 id="filled-disabled"
-                label="Disabled"
+                label={html!{"Disabled"}}
                 default_value="Hello World"
                 variant={LabelVariant::Filled}
             />
             <TextField
                 id="filled-password-input"
-                label="Password"
+                label={html!{"Password"}}
                 input_type={InputType::Password}
                 auto_complete="current-password"
                 variant={LabelVariant::Filled}
             />
             <TextField
                 id="filled-read-only-input"
-                label="Read Only"
+                label={html!{"Read Only"}}
                 default_value="Hello World"
                 input_read_only={true}
                 variant={LabelVariant::Filled}
             />
             <TextField
                 id="filled-number"
-                label="Number"
+                label={html!{"Number"}}
                 input_type={InputType::Number}
-                input_shrink={true}
+                input_label_shrink={true}
                 variant={LabelVariant::Filled}
             />
             <TextField
                 id="filled-search"
-                label="Search field"
+                label={html!{"Search field"}}
                 input_type={InputType::Search}
                 variant={LabelVariant::Filled}
             />
             <TextField
                 id="filled-helperText"
-                label="Helper text"
+                label={html!{"Helper text"}}
                 default_value="Default Value"
-                helper_text="Some important text"
+                helper_text={html!{"Some important text"}}
                 variant={LabelVariant::Filled}
             />
         </div>
@@ -137,49 +149,49 @@ fn form_props_section() -> Html {
             <TextField
                 required={true}
                 id="standard-required"
-                label="Required"
+                label={html!{"Required"}}
                 default_value="Hello World"
                 variant={LabelVariant::Standard}
             />
             <TextField
                 disabled={true}
                 id="standard-disabled"
-                label="Disabled"
+                label={html!{"Disabled"}}
                 default_value="Hello World"
                 variant={LabelVariant::Standard}
             />
             <TextField
                 id="standard-password-input"
-                label="Password"
+                label={html!{"Password"}}
                 input_type={InputType::Password}
                 auto_complete="current-password"
                 variant={LabelVariant::Standard}
             />
             <TextField
                 id="standard-read-only-input"
-                label="Read Only"
+                label={html!{"Read Only"}}
                 default_value="Hello World"
                 input_read_only={true}
                 variant={LabelVariant::Standard}
             />
             <TextField
                 id="standard-number"
-                label="Number"
+                label={html!{"Number"}}
                 input_type={InputType::Number}
-                input_shrink={true}
+                input_label_shrink={true}
                 variant={LabelVariant::Standard}
             />
             <TextField
                 id="standard-search"
-                label="Search field"
+                label={html!{"Search field"}}
                 input_type={InputType::Search}
                 variant={LabelVariant::Standard}
             />
             <TextField
                 id="standard-helperText"
-                label="Helper text"
+                label={html!{"Helper text"}}
                 default_value="Default Value"
-                helper_text="Some important text"
+                helper_text={html!{"Some important text"}}
                 variant={LabelVariant::Standard}
             />
         </div>
