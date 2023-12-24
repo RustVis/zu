@@ -10,17 +10,12 @@ pub enum Position {
     End,
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum HorizontalPosition {
     Left,
+    #[default]
     Right,
     Alternate,
-}
-
-impl Default for HorizontalPosition {
-    fn default() -> Self {
-        Self::Right
-    }
 }
 
 #[derive(Debug, Clone, Eq, PartialEq)]

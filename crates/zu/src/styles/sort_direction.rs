@@ -2,14 +2,9 @@
 // Use of this source is governed by Lesser General Public License that can be
 // found in the LICENSE file.
 
-#[derive(Debug, Clone, Copy, Eq, PartialEq)]
+#[derive(Debug, Default, Clone, Copy, Eq, PartialEq)]
 pub enum SortDirection {
+    #[default]
     Ascend,
     Descend,
-}
-
-impl Default for SortDirection {
-    fn default() -> Self {
-        Self::Ascend
-    }
 }

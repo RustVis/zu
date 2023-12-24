@@ -4,19 +4,14 @@
 
 use crate::styles::CssClass;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum Position {
     Absolute,
+    #[default]
     Fixed,
     Relative,
     Static,
     Sticky,
-}
-
-impl Default for Position {
-    fn default() -> Self {
-        Self::Fixed
-    }
 }
 
 impl CssClass for Position {

@@ -4,16 +4,11 @@
 
 use crate::styles::CssClass;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum Variant {
     Dot,
+    #[default]
     Standard,
-}
-
-impl Default for Variant {
-    fn default() -> Self {
-        Self::Standard
-    }
 }
 
 impl Variant {

@@ -2,17 +2,12 @@
 // Use of this source is governed by Lesser General Public License that can be
 // found in the LICENSE file.
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum ButtonVariant {
     Contained,
     Outlined,
+    #[default]
     Text,
-}
-
-impl Default for ButtonVariant {
-    fn default() -> Self {
-        Self::Text
-    }
 }
 
 impl ButtonVariant {

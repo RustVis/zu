@@ -5,7 +5,7 @@
 use crate::styles::CssClass;
 
 /// Set the text-align on the component.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum TextAlign {
     /// The inline contents are centered within the line box.
     Center,
@@ -18,13 +18,9 @@ pub enum TextAlign {
 
     /// The inline contents are justified.
     Justify,
-    Inherit,
-}
 
-impl Default for TextAlign {
-    fn default() -> Self {
-        Self::Inherit
-    }
+    #[default]
+    Inherit,
 }
 
 impl CssClass for TextAlign {

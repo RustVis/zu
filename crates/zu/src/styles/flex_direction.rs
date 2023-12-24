@@ -7,18 +7,13 @@ use crate::styles::CssClass;
 /// Defines the flex-direction style property.
 ///
 /// It is applied for all screen sizes.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum FlexDirection {
+    #[default]
     Column,
     ColumnReverse,
     Row,
     RowReverse,
-}
-
-impl Default for FlexDirection {
-    fn default() -> Self {
-        Self::Column
-    }
 }
 
 impl CssClass for FlexDirection {

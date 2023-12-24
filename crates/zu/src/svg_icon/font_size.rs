@@ -4,18 +4,13 @@
 
 use crate::styles::CssClass;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum FontSize {
     Inherit,
     Small,
+    #[default]
     Medium,
     Large,
-}
-
-impl Default for FontSize {
-    fn default() -> Self {
-        Self::Medium
-    }
 }
 
 impl CssClass for FontSize {

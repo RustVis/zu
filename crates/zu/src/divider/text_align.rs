@@ -5,17 +5,12 @@
 use crate::styles::CssClass;
 
 /// Set the text-align on the component.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum TextAlign {
+    #[default]
     Center,
     Left,
     Right,
-}
-
-impl Default for TextAlign {
-    fn default() -> Self {
-        Self::Center
-    }
 }
 
 impl CssClass for TextAlign {

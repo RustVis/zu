@@ -2,17 +2,12 @@
 // Use of this source is governed by Lesser General Public License that can be
 // found in the LICENSE file.
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum Spacing {
     Small,
+    #[default]
     Medium,
     Num(i32),
-}
-
-impl Default for Spacing {
-    fn default() -> Self {
-        Self::Medium
-    }
 }
 
 impl Spacing {

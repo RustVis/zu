@@ -5,8 +5,9 @@
 use crate::styles::CssValue;
 
 /// The color of the component. It supports both default and custom theme colors.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum Color {
+    #[default]
     Primary,
     Secondary,
     Success,
@@ -15,12 +16,6 @@ pub enum Color {
     Error,
     Inherit,
     Default,
-}
-
-impl Default for Color {
-    fn default() -> Self {
-        Self::Primary
-    }
 }
 
 impl Color {
@@ -63,14 +58,9 @@ impl CssValue for Color {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum PrimaryColor {
+    #[default]
     Primary,
     Secondary,
-}
-
-impl Default for PrimaryColor {
-    fn default() -> Self {
-        Self::Primary
-    }
 }

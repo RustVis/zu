@@ -4,17 +4,12 @@
 
 use crate::styles::CssClass;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum Variant {
+    #[default]
     FullWidth,
     Inset,
     Middle,
-}
-
-impl Default for Variant {
-    fn default() -> Self {
-        Self::FullWidth
-    }
 }
 
 impl CssClass for Variant {

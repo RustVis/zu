@@ -4,19 +4,14 @@
 
 use crate::styles::CssClass;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum Color {
     Default,
+    #[default]
     Primary,
     Secondary,
     Inherit,
     Transparent,
-}
-
-impl Default for Color {
-    fn default() -> Self {
-        Self::Primary
-    }
 }
 
 impl CssClass for Color {

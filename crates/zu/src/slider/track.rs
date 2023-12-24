@@ -2,15 +2,10 @@
 // Use of this source is governed by Lesser General Public License that can be
 // found in the LICENSE file.
 
-#[derive(Debug, Clone, Copy, Eq, PartialEq)]
+#[derive(Debug, Default, Clone, Copy, Eq, PartialEq)]
 pub enum Track {
+    #[default]
     Normal,
     Inverted,
     False,
-}
-
-impl Default for Track {
-    fn default() -> Self {
-        Self::Normal
-    }
 }

@@ -2,17 +2,12 @@
 // Use of this source is governed by Lesser General Public License that can be
 // found in the LICENSE file.
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum LabelVariant {
     Filled,
     Outlined,
+    #[default]
     Standard,
-}
-
-impl Default for LabelVariant {
-    fn default() -> Self {
-        Self::Standard
-    }
 }
 
 impl LabelVariant {
@@ -23,14 +18,9 @@ impl LabelVariant {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum SimpleLabelVariant {
+    #[default]
     Filled,
     Outlined,
-}
-
-impl Default for SimpleLabelVariant {
-    fn default() -> Self {
-        Self::Filled
-    }
 }

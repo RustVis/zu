@@ -2,8 +2,9 @@
 // Use of this source is governed by Lesser General Public License that can be
 // found in the LICENSE file.
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum MouseEventType {
+    #[default]
     OnClick,
     OnMouseDown,
     OnMouseUp,
@@ -11,20 +12,9 @@ pub enum MouseEventType {
     OnPointerUp,
 }
 
-impl Default for MouseEventType {
-    fn default() -> Self {
-        Self::OnClick
-    }
-}
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum TouchEventType {
+    #[default]
     OnTouchEnd,
     OnTouchStart,
-}
-
-impl Default for TouchEventType {
-    fn default() -> Self {
-        Self::OnTouchEnd
-    }
 }

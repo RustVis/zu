@@ -2,15 +2,10 @@
 // Use of this source is governed by Lesser General Public License that can be
 // found in the LICENSE file.
 
-#[derive(Debug, Clone, Copy, Eq, PartialEq)]
+#[derive(Debug, Default, Clone, Copy, Eq, PartialEq)]
 pub enum ValueLabel {
     Auto,
     On,
+    #[default]
     Off,
-}
-
-impl Default for ValueLabel {
-    fn default() -> Self {
-        Self::Off
-    }
 }

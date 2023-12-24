@@ -5,8 +5,9 @@
 use crate::styles::CssClass;
 
 /// Applies the theme typography styles.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum Variant {
+    #[default]
     Body1,
     Body2,
     Button,
@@ -21,12 +22,6 @@ pub enum Variant {
     Subtitle1,
     Subtitle2,
     Inherit,
-}
-
-impl Default for Variant {
-    fn default() -> Self {
-        Self::Body1
-    }
 }
 
 impl Variant {

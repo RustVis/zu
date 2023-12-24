@@ -7,16 +7,11 @@ use stylist::{yew::Global, StyleSource};
 use yew::html::ImplicitClone;
 use yew::prelude::*;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum ThemeKind {
+    #[default]
     Light,
     Dark,
-}
-
-impl Default for ThemeKind {
-    fn default() -> Self {
-        Self::Light
-    }
 }
 
 impl ImplicitClone for ThemeKind {}

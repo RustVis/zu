@@ -5,18 +5,13 @@
 use crate::styles::CssClass;
 
 /// The type of content that will be rendered.
-#[derive(Debug, Clone, Copy, Eq, PartialEq)]
+#[derive(Debug, Default, Clone, Copy, Eq, PartialEq)]
 pub enum Variant {
+    #[default]
     Text,
     Circular,
     Rect,
     Rounded,
-}
-
-impl Default for Variant {
-    fn default() -> Self {
-        Self::Text
-    }
 }
 
 impl CssClass for Variant {

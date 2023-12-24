@@ -5,8 +5,9 @@
 use crate::styles::CssClass;
 
 /// Another color variant with `Disabled` value.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum Color {
+    #[default]
     Inherit,
     Action,
     Disabled,
@@ -16,12 +17,6 @@ pub enum Color {
     Info,
     Warning,
     Error,
-}
-
-impl Default for Color {
-    fn default() -> Self {
-        Self::Inherit
-    }
 }
 
 impl CssClass for Color {

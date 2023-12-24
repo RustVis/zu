@@ -4,18 +4,13 @@
 
 use crate::styles::CssClass;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum Variant {
     Buffer,
     Determinate,
+    #[default]
     Indeterminate,
     Query,
-}
-
-impl Default for Variant {
-    fn default() -> Self {
-        Self::Indeterminate
-    }
 }
 
 impl CssClass for Variant {

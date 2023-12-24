@@ -4,17 +4,12 @@
 
 use crate::styles::CssClass;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum Underline {
+    #[default]
     Always,
     Hover,
     None,
-}
-
-impl Default for Underline {
-    fn default() -> Self {
-        Self::Always
-    }
 }
 
 impl CssClass for Underline {

@@ -4,31 +4,21 @@
 
 use yew::AttrValue;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum Severity {
+    #[default]
     Success,
     Info,
     Warning,
     Error,
 }
 
-impl Default for Severity {
-    fn default() -> Self {
-        Self::Success
-    }
-}
-
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, PartialEq, Eq)]
 pub enum SeverityColor {
+    #[default]
     Success,
     Info,
     Warning,
     Error,
     Custom(AttrValue),
-}
-
-impl Default for SeverityColor {
-    fn default() -> Self {
-        Self::Success
-    }
 }

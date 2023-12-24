@@ -4,17 +4,12 @@
 
 use crate::styles::CssClass;
 
-#[derive(Debug, Clone, Copy, Eq, PartialEq)]
+#[derive(Debug, Default, Clone, Copy, Eq, PartialEq)]
 pub enum Animation {
+    #[default]
     Pulse,
     Wave,
     None,
-}
-
-impl Default for Animation {
-    fn default() -> Self {
-        Self::Pulse
-    }
 }
 
 impl CssClass for Animation {

@@ -4,16 +4,11 @@
 
 use crate::styles::CssClass;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum Overlap {
     Circular,
+    #[default]
     Rect,
-}
-
-impl Default for Overlap {
-    fn default() -> Self {
-        Self::Rect
-    }
 }
 
 impl CssClass for Overlap {

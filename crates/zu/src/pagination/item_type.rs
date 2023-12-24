@@ -2,17 +2,12 @@
 // Use of this source is governed by Lesser General Public License that can be
 // found in the LICENSE file.
 
-#[derive(Debug, Clone, Copy, Eq, PartialEq)]
+#[derive(Debug, Default, Clone, Copy, Eq, PartialEq)]
 pub enum ItemType {
+    #[default]
     Page,
     First,
     Last,
     Next,
     Previous,
-}
-
-impl Default for ItemType {
-    fn default() -> Self {
-        Self::Page
-    }
 }

@@ -4,28 +4,18 @@
 
 use crate::styles::anchor_origin::Horizontal;
 
-#[derive(Debug, Clone, Copy, Eq, PartialEq)]
+#[derive(Debug, Default, Clone, Copy, Eq, PartialEq)]
 pub enum Direction {
     Up,
     Right,
+    #[default]
     Down,
     Left,
 }
 
-impl Default for Direction {
-    fn default() -> Self {
-        Self::Down
-    }
-}
-
-#[derive(Debug, Clone, Copy, Eq, PartialEq)]
+#[derive(Debug, Default, Clone, Copy, Eq, PartialEq)]
 pub enum HorizontalDirection {
+    #[default]
     Left,
     Right,
-}
-
-impl Default for Horizontal {
-    fn default() -> Self {
-        Self::Left
-    }
 }

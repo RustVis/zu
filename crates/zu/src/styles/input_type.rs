@@ -2,7 +2,7 @@
 // Use of this source is governed by Lesser General Public License that can be
 // found in the LICENSE file.
 
-#[derive(Debug, Clone, Copy, Eq, PartialEq)]
+#[derive(Debug, Default, Clone, Copy, Eq, PartialEq)]
 pub enum InputType {
     Button,
     Checkbox,
@@ -22,14 +22,9 @@ pub enum InputType {
     Search,
     Submit,
     Tel,
+    #[default]
     Text,
     Time,
     Url,
     Week,
-}
-
-impl Default for InputType {
-    fn default() -> Self {
-        Self::Text
-    }
 }

@@ -5,17 +5,12 @@
 use crate::svg_icon::FontSize;
 
 /// Size of component.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum Size {
+    #[default]
     Small,
     Medium,
     Large,
-}
-
-impl Default for Size {
-    fn default() -> Self {
-        Self::Small
-    }
 }
 
 impl Size {
@@ -30,19 +25,14 @@ impl Size {
 }
 
 /// The max-width of the component.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, PartialEq, Eq)]
 pub enum MaxWidth {
     XSmall,
     Small,
+    #[default]
     Middle,
     Large,
     XLarge,
 
     Str(String),
-}
-
-impl Default for MaxWidth {
-    fn default() -> Self {
-        Self::Middle
-    }
 }
