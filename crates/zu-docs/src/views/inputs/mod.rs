@@ -22,8 +22,6 @@ pub use autocomplete_page::AutocompletePage;
 pub use button_group_page::ButtonGroupPage;
 pub use button_page::ButtonPage;
 pub use checkbox_page::CheckboxPage;
-pub use color_selector_page::ColorSelectorPage;
-pub use date_time_selectors_page::DateTimeSelectorsPage;
 pub use floating_action_button_page::FloatingActionButtonPage;
 pub use radio_group_page::RadioGroupPage;
 pub use rating_page::RatingPage;

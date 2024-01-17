@@ -19,9 +19,7 @@ mod typography_page;
 
 pub use avatar_page::AvatarPage;
 pub use badge_page::BadgePage;
-pub use calendar_page::CalendarPage;
 pub use chip_page::ChipPage;
-pub use data_grid_page::DataGridPage;
 pub use divider_page::DividerPage;
 pub use icons_page::IconsPage;
 pub use list_page::ListPage;
