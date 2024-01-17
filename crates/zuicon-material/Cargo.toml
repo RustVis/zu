@@ -22,9 +22,9 @@ zu = { path = "../zu", version = "0.3.2" }
 inflections = "1.1.1"
 lazy_static = "1.4.0"
 regex = "1.10.2"
-reqwest = { version = "0.11.22", features = ["blocking"] }
-serde = { version = "1.0.193", features = ["derive"] }
-serde_json = "1.0.108"
+reqwest = { version = "0.11.23", features = ["blocking"] }
+serde = { version = "1.0.195", features = ["derive"] }
+serde_json = "1.0.111"
 zu-util = { path="../zu-util", version="0.3.3", features = ["icon"] }
 
 [features]
