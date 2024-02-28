@@ -1,0 +1,45 @@
+
+body {
+  box-sizing: border-box;
+
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+
+$zudoc-header-height: 64px !default;
+
+.demo-box {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  width: 80vw;
+  padding: 24px;
+  margin: auto;
+
+  outline: 0;
+  background-color: #e7ebf0;
+}
+
+code {
+  padding: 2px 4px;
+  color: var(--zu-palette-text-primary, #1C2025);
+  background-color: var(--zu-palette-grey-50, #F3F6F9);
+  border: 1px solid;
+  border-color: var(--zu-palette-grey-200, #DAE2ED);
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  direction: ltr;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+
+  line-height: 1.5;
+  letter-spacing: 0;
+  font-family: Menlo, Consolas, "Droid Sans Mono", monospace;
+  font-weight: 400;
+  scroll-margin-top: calc(var(--zudoc-header-height) + 32px);
+  -webkit-font-smoothing: subpixel-antialiased;
+}
