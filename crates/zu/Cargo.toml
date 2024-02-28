@@ -12,6 +12,7 @@ categories = ["gui", "wasm", "web-programming"]
 edition = "2021"
 license = "LGPL-3.0"
 publish = true
+rust-version = "1.66.0"
 
 [dependencies]
 log = { version = "0.4.20", features = [] }
@@ -21,7 +22,7 @@ yew-hooks = "0.3.0"
 zu-util = { path = "../zu-util", version = "0.3.3" }
 
 [dependencies.web-sys]
-version = "0.3.67"
+version = "0.3.68"
 features = [
     "HtmlInputElement",
 ]
