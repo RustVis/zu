@@ -2,6 +2,7 @@
 // Use of this source is governed by Lesser General Public License that can be
 // found in the LICENSE file.
 
+mod color;
 mod text_align;
 mod variant;
 
@@ -81,7 +82,7 @@ pub fn typography(props: &Props) -> Html {
         } else {
             ""
         },
-        props.color.text_color(),
+        color::class_name(props.color),
         props.classes.clone(),
     );
 

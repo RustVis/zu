@@ -1,9 +1,33 @@
-
-// Styles for Typography 
+// Styles for Typography
 
 // Styles applied to the root element.
 .ZuTypography-root {
   margin: 0;
+
+
+  &.ZuTypography-colorPrimary {
+    color: $zu-palette-primary-main;
+  }
+
+  &.ZuTypography-colorSecondary {
+    color: $zu-palette-secondary-main;
+  }
+
+  &.ZuTypography-colorSuccess {
+    color: $zu-palette-success-main;
+  }
+
+  &.ZuTypography-colorInfo {
+    color: $zu-palette-info-main;
+  }
+
+  &.ZuTypography-colorWarning {
+    color: $zu-palette-warning-main;
+  }
+
+  &.ZuTypography-colorError {
+    color: $zu-palette-error-main;
+  }
 }
 
 // styles applied to the root element if variant="body1".

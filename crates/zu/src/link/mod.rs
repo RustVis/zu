@@ -4,8 +4,10 @@
 
 mod underline;
 
+use web_sys::FocusEvent;
 use yew::{
-    classes, function_component, html, use_state, AttrValue, Children, Classes, Html, Properties,
+    classes, function_component, html, use_state, AttrValue, Callback, Children, Classes, Html,
+    Properties,
 };
 
 use crate::styles::color::Color;
@@ -17,18 +19,28 @@ pub use underline::Underline;
 
 #[derive(Debug, Clone, PartialEq, Properties)]
 pub struct Props {
+    /// The content of the component.
     #[prop_or_default]
     pub children: Children,
 
+    /// Override or extend the styles applied to the component.
     #[prop_or_default]
     pub classes: Classes,
 
-    #[prop_or_default]
+    /// The color of the link.
+    #[prop_or(Color::Primary)]
     pub color: Color,
 
+    /// The component used for the root node.
     /// Default value is `a`.
     #[prop_or(AttrValue::from("a"))]
     pub component: AttrValue,
+
+    #[prop_or_default]
+    pub on_blur: Option<Callback<FocusEvent>>,
+
+    #[prop_or_default]
+    pub on_focus: Option<Callback<FocusEvent>>,
 
     #[prop_or_default]
     pub href: AttrValue,
@@ -41,10 +53,11 @@ pub struct Props {
     pub typography_classes: AttrValue,
 
     /// Controls when the link should have an underline.
-    #[prop_or_default]
+    #[prop_or(Underline::Always)]
     pub underline: Underline,
 
-    #[prop_or_default]
+    /// Applies the theme typography styles.
+    #[prop_or(Variant::Inherit)]
     pub variant: Variant,
 }
 
