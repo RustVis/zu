@@ -4,6 +4,7 @@ resolver = "2"
 members = [
     "crates/zu",
     "crates/zu-docs",
+    "crates/zu-floating-core",
     "crates/zu-util",
     "crates/zuicon-ant",
     "crates/zuicon-bs",

@@ -10,9 +10,10 @@ description = "A toolkit to create floating elements"
 keywords = ["popover", "position", "tooltip", "dropdown", "wasm"]
 categories = ["gui", "wasm", "web-programming"]
 edition = "2021"
-license = "Apache-2.0"
+license = "LGPL-3.0"
+rust-version = "1.66.0"
 publish = true
 
 [dependencies]
 float-cmp = "0.9.0"
-log = "0.4.17"
+log = "0.4.20"
