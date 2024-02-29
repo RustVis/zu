@@ -2,19 +2,33 @@
 // Use of this source is governed by Lesser General Public License that
 // can be found in the LICENSE file.
 
+use std::convert::Into;
 use std::fmt;
 use std::rc::Rc;
 
 use crate::traits::{AxisTrait, Element, LengthTrait, Middleware, Platform, SideTrait};
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, Eq, PartialEq, Ord, PartialOrd)]
 pub enum Alignment {
+    #[default]
     Start,
     End,
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+impl Alignment {
+    #[must_use]
+    #[inline]
+    pub const fn opposite(self) -> Self {
+        match self {
+            Self::Start => Self::End,
+            Self::End => Self::Start,
+        }
+    }
+}
+
+#[derive(Debug, Default, Clone, Copy, Eq, PartialEq, Ord, PartialOrd)]
 pub enum Side {
+    #[default]
     Top,
     Right,
     Bottom,
@@ -23,6 +37,7 @@ pub enum Side {
 
 impl Side {
     #[must_use]
+    #[inline]
     pub const fn opposite(self) -> Self {
         match self {
             Self::Top => Self::Bottom,
@@ -31,25 +46,55 @@ impl Side {
             Self::Left => Self::Right,
         }
     }
+
+    #[must_use]
+    #[inline]
+    pub const fn axis(self) -> Axis {
+        match self {
+            Self::Left | Self::Right => Axis::Y,
+            Self::Top | Self::Bottom => Axis::X,
+        }
+    }
+
+    #[must_use]
+    #[inline]
+    pub const fn get_list(self, is_start: bool, is_rtl: bool) -> [Self; 2] {
+        match self {
+            Self::Top | Self::Bottom => {
+                let is_start = if is_rtl { !is_start } else { is_start };
+                if is_start {
+                    [Self::Left, Self::Right]
+                } else {
+                    [Self::Right, Self::Left]
+                }
+            }
+            Self::Left | Self::Right => {
+                if is_start {
+                    [Self::Top, Self::Bottom]
+                } else {
+                    [Self::Bottom, Self::Top]
+                }
+            }
+        }
+    }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, Eq, PartialEq, Ord, PartialOrd)]
 pub enum AlignedPlacement {
+    #[default]
     TopStart,
     TopEnd,
-
     RightStart,
     RightEnd,
-
     BottomStart,
     BottomEnd,
-
     LeftStart,
     LeftEnd,
 }
 
 impl AlignedPlacement {
     #[must_use]
+    #[inline]
     pub const fn alignment(self) -> Alignment {
         match self {
             Self::TopStart | Self::RightStart | Self::BottomStart | Self::LeftStart => {
@@ -58,15 +103,7 @@ impl AlignedPlacement {
             Self::TopEnd | Self::RightEnd | Self::BottomEnd | Self::LeftEnd => Alignment::End,
         }
     }
-}
 
-impl From<AlignedPlacement> for Alignment {
-    fn from(align_placement: AlignedPlacement) -> Self {
-        align_placement.alignment()
-    }
-}
-
-impl AlignedPlacement {
     #[must_use]
     pub const fn opposite(self) -> Self {
         match self {
@@ -82,6 +119,7 @@ impl AlignedPlacement {
     }
 
     #[must_use]
+    #[inline]
     pub const fn opposite_alignment(self) -> Self {
         match self {
             Self::TopStart => Self::TopEnd,
@@ -96,48 +134,47 @@ impl AlignedPlacement {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+impl From<AlignedPlacement> for Alignment {
+    fn from(align_placement: AlignedPlacement) -> Self {
+        align_placement.alignment()
+    }
+}
+
+#[derive(Debug, Default, Clone, Copy, Eq, PartialEq, Ord, PartialOrd)]
 pub enum Placement {
-    // Top
+    #[default]
     TopStart,
     Top,
     TopEnd,
-
-    // Right
     RightStart,
     Right,
     RightEnd,
-
-    // Bottom
     BottomStart,
     Bottom,
     BottomEnd,
-
-    // Left
     LeftStart,
     Left,
     LeftEnd,
 }
 
-impl Default for Placement {
-    fn default() -> Self {
-        Self::TopStart
-    }
-}
-
 impl Placement {
     #[must_use]
-    pub const fn alignment(self) -> Option<Alignment> {
-        match self {
-            Self::TopStart | Self::RightStart | Self::BottomStart | Self::LeftStart => {
-                Some(Alignment::Start)
-            }
-            Self::TopEnd | Self::BottomEnd | Self::RightEnd | Self::LeftEnd => Some(Alignment::End),
-            _ => None,
+    #[inline]
+    pub const fn new(side: Side, alignment: Alignment) -> Self {
+        match (side, alignment) {
+            (Side::Top, Alignment::Start) => Self::TopStart,
+            (Side::Top, Alignment::End) => Self::TopEnd,
+            (Side::Right, Alignment::Start) => Self::RightStart,
+            (Side::Right, Alignment::End) => Self::RightEnd,
+            (Side::Bottom, Alignment::Start) => Self::BottomStart,
+            (Side::Bottom, Alignment::End) => Self::BottomEnd,
+            (Side::Left, Alignment::Start) => Self::LeftStart,
+            (Side::Left, Alignment::End) => Self::LeftEnd,
         }
     }
 
     #[must_use]
+    #[inline]
     pub const fn side(self) -> Side {
         match self {
             Self::TopStart | Self::Top | Self::TopEnd => Side::Top,
@@ -147,41 +184,44 @@ impl Placement {
         }
     }
 
-    /// Convert placment to main axis.
     #[must_use]
-    pub const fn main_axis(self) -> Axis {
+    #[inline]
+    pub const fn alignment(self) -> Option<Alignment> {
         match self {
-            Self::TopStart
-            | Self::Top
-            | Self::TopEnd
-            | Self::BottomStart
-            | Self::Bottom
-            | Self::BottomEnd => Axis::X,
-            Self::RightStart
-            | Self::Right
-            | Self::RightEnd
-            | Self::LeftStart
-            | Self::Left
-            | Self::LeftEnd => Axis::Y,
+            Self::TopStart | Self::RightStart | Self::BottomStart | Self::LeftStart => {
+                Some(Alignment::Start)
+            }
+            Self::TopEnd | Self::RightEnd | Self::BottomEnd | Self::LeftEnd => Some(Alignment::End),
+            _ => None,
         }
+    }
+
+    #[must_use]
+    #[inline]
+    pub const fn side_axis(self) -> Axis {
+        self.side().axis()
+    }
+
+    #[must_use]
+    #[inline]
+    pub const fn alignment_axis(self) -> Axis {
+        self.side_axis().opposite()
     }
 
     /// Get opposite placement.
     #[must_use]
+    #[inline]
     pub const fn opposite(self) -> Self {
         match self {
             Self::TopStart => Self::BottomStart,
             Self::Top => Self::Bottom,
             Self::TopEnd => Self::BottomEnd,
-
             Self::RightStart => Self::LeftStart,
             Self::Right => Self::Left,
             Self::RightEnd => Self::LeftEnd,
-
             Self::BottomStart => Self::TopStart,
             Self::Bottom => Self::Top,
             Self::BottomEnd => Self::TopEnd,
-
             Self::LeftStart => Self::RightStart,
             Self::Left => Self::Right,
             Self::LeftEnd => Self::RightEnd,
@@ -190,6 +230,7 @@ impl Placement {
 
     /// Get opposite alignment placement.
     #[must_use]
+    #[inline]
     pub const fn opposite_alignment(self) -> Self {
         match self {
             Self::TopStart => Self::TopEnd,
@@ -211,6 +252,7 @@ impl Placement {
     }
 
     #[must_use]
+    #[inline]
     pub const fn expand(self) -> [Self; 3] {
         let opposite_placement = self.opposite();
         [
@@ -220,56 +262,22 @@ impl Placement {
         ]
     }
 
-    const fn side_list(side: Side, is_start: bool, rtl: bool) -> [Side; 2] {
-        match side {
-            Side::Top | Side::Bottom => {
-                let is_start = if rtl { !is_start } else { is_start };
-                if is_start {
-                    [Side::Left, Side::Right]
-                } else {
-                    [Side::Right, Side::Left]
-                }
-            }
-            Side::Left | Side::Right => {
-                if is_start {
-                    [Side::Top, Side::Bottom]
-                } else {
-                    [Side::Bottom, Side::Top]
-                }
-            }
-        }
-    }
-
-    const fn merge(side: Side, alignment: Alignment) -> Self {
-        match (side, alignment) {
-            (Side::Top, Alignment::Start) => Self::TopStart,
-            (Side::Top, Alignment::End) => Self::TopEnd,
-            (Side::Right, Alignment::Start) => Self::RightStart,
-            (Side::Right, Alignment::End) => Self::RightEnd,
-            (Side::Bottom, Alignment::Start) => Self::BottomStart,
-            (Side::Bottom, Alignment::End) => Self::BottomEnd,
-            (Side::Left, Alignment::Start) => Self::LeftStart,
-            (Side::Left, Alignment::End) => Self::LeftEnd,
-        }
-    }
-
     #[must_use]
-    pub fn opposite_axis(
-        &self,
+    #[inline]
+    pub fn opposite_axis_placements(
+        self,
         flip_alignment: bool,
         direction: Option<Alignment>,
-        rtl: bool,
+        is_rtl: bool,
     ) -> Vec<Self> {
-        let side = self.side();
-        let is_start: bool = direction.map_or(false, |val| val == Alignment::Start);
-        let list = Self::side_list(side, is_start, rtl);
-
+        let is_start = direction == Some(Alignment::Start);
+        let side_list = self.side().get_list(is_start, is_rtl);
         self.alignment().map_or_else(
-            || list.into_iter().map(Into::into).collect(),
+            || side_list.map(Into::into).to_vec(),
             |alignment| {
-                let mut list: Vec<_> = list
+                let mut list: Vec<_> = side_list
                     .into_iter()
-                    .map(|side| Self::merge(side, alignment))
+                    .map(|side| Self::new(side, alignment))
                     .collect();
                 if flip_alignment {
                     let mut list2: Vec<_> = list
@@ -278,52 +286,15 @@ impl Placement {
                         .collect();
                     list.append(&mut list2);
                 }
-
                 list
             },
         )
     }
-
-    /// Returns main side and cross side.
-    #[must_use]
-    pub fn alignment_sides(self, rects: &ElementRects, rtl: bool) -> [Side; 2] {
-        let alignment = self.alignment();
-        let main_axis: Axis = self.main_axis();
-        let length: Length = main_axis.into();
-
-        let mut main_alignment_side: Side = match main_axis {
-            Axis::X => {
-                let alignment_start = if rtl {
-                    Alignment::End
-                } else {
-                    Alignment::Start
-                };
-
-                if alignment == Some(alignment_start) {
-                    Side::Right
-                } else {
-                    Side::Left
-                }
-            }
-            Axis::Y => {
-                if alignment == Some(Alignment::Start) {
-                    Side::Bottom
-                } else {
-                    Side::Top
-                }
-            }
-        };
-
-        if rects.reference.length(length) > rects.floating.length(length) {
-            main_alignment_side = main_alignment_side.opposite();
-        }
-
-        let cross_side = main_alignment_side.opposite();
-        [main_alignment_side, cross_side]
-    }
 }
 
 impl From<Side> for Placement {
+    #[must_use]
+    #[inline]
     fn from(side: Side) -> Self {
         match side {
             Side::Top => Self::Top,
@@ -331,6 +302,14 @@ impl From<Side> for Placement {
             Side::Bottom => Self::Bottom,
             Side::Left => Self::Left,
         }
+    }
+}
+
+impl From<Placement> for Side {
+    #[must_use]
+    #[inline]
+    fn from(placement: Placement) -> Self {
+        placement.side()
     }
 }
 
@@ -352,65 +331,93 @@ impl From<AlignedPlacement> for Placement {
     }
 }
 
-impl From<Placement> for Side {
-    fn from(placement: Placement) -> Self {
-        placement.side()
-    }
-}
-
 impl From<Placement> for Axis {
+    #[must_use]
+    #[inline]
     fn from(placement: Placement) -> Self {
-        placement.main_axis()
+        placement.side_axis()
     }
 }
 
 impl From<Placement> for Option<Alignment> {
+    #[must_use]
+    #[inline]
     fn from(placement: Placement) -> Self {
         placement.alignment()
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+// impl Placement {
+//     /// Returns main side and cross side.
+//     #[must_use]
+//     pub fn alignment_sides(self, rects: &ElementRects, rtl: bool) -> [Side; 2] {
+//         let alignment = self.alignment();
+//         let main_axis: Axis = self.main_axis();
+//         let length: Length = main_axis.into();
+//
+//         let mut main_alignment_side: Side = match main_axis {
+//             Axis::X => {
+//                 let alignment_start = if rtl {
+//                     Alignment::End
+//                 } else {
+//                     Alignment::Start
+//                 };
+//
+//                 if alignment == Some(alignment_start) {
+//                     Side::Right
+//                 } else {
+//                     Side::Left
+//                 }
+//             }
+//             Axis::Y => {
+//                 if alignment == Some(Alignment::Start) {
+//                     Side::Bottom
+//                 } else {
+//                     Side::Top
+//                 }
+//             }
+//         };
+//
+//         if rects.reference.length(length) > rects.floating.length(length) {
+//             main_alignment_side = main_alignment_side.opposite();
+//         }
+//
+//         let cross_side = main_alignment_side.opposite();
+//         [main_alignment_side, cross_side]
+//     }
+// }
+
+#[derive(Debug, Default, Clone, Copy, Eq, PartialEq, Ord, PartialOrd)]
 pub enum Strategy {
+    #[default]
     Absolute,
     Fixed,
 }
 
-impl Default for Strategy {
-    fn default() -> Self {
-        Self::Absolute
-    }
-}
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, Eq, PartialEq, Ord, PartialOrd)]
 pub enum Axis {
+    #[default]
     X,
     Y,
 }
 
 impl Axis {
     /// Get cross axis
-    #[inline]
     #[must_use]
+    #[inline]
     pub const fn cross(&self) -> Self {
         match self {
             Self::X => Self::Y,
             Self::Y => Self::X,
         }
     }
-}
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum Length {
-    Width,
-    Height,
-}
-
-impl From<Axis> for Length {
-    fn from(axis: Axis) -> Self {
-        match axis {
-            Axis::X => Self::Width,
-            Axis::Y => Self::Height,
+    #[must_use]
+    #[inline]
+    pub const fn opposite(self) -> Self {
+        match self {
+            Self::X => Self::Y,
+            Self::Y => Self::X,
         }
     }
 }
@@ -419,6 +426,23 @@ impl From<Axis> for Length {
 pub struct Coords {
     pub x: f64,
     pub y: f64,
+}
+
+impl Coords {
+    #[must_use]
+    #[inline]
+    pub const fn new(value: f64) -> Self {
+        Self { x: value, y: value }
+    }
+
+    #[must_use]
+    #[inline]
+    pub const fn opposite(&self) -> Self {
+        Self {
+            x: self.y,
+            y: self.x,
+        }
+    }
 }
 
 impl AxisTrait for Coords {
@@ -437,12 +461,29 @@ impl AxisTrait for Coords {
     }
 }
 
-impl Coords {
-    #[inline]
+#[derive(Debug, Default, Clone, Copy, Eq, PartialEq, Ord, PartialOrd)]
+pub enum Length {
+    #[default]
+    Width,
+    Height,
+}
+
+impl From<Axis> for Length {
     #[must_use]
-    pub const fn new(x: f64, y: f64) -> Self {
-        Self { x, y }
+    #[inline]
+    fn from(axis: Axis) -> Self {
+        match axis {
+            Axis::X => Self::Width,
+            Axis::Y => Self::Height,
+        }
     }
+}
+
+/// Alias of Geometry
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct Dimensions {
+    pub width: f64,
+    pub height: f64,
 }
 
 #[derive(Debug, Default, Clone, PartialEq)]
@@ -474,8 +515,8 @@ impl SideTrait for SideObject {
 }
 
 impl SideObject {
-    #[inline]
     #[must_use]
+    #[inline]
     pub const fn new(num: f64) -> Self {
         Self {
             top: num,
@@ -607,8 +648,10 @@ pub struct ComputePositionConfig {
 impl fmt::Debug for ComputePositionConfig {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         f.debug_struct("ComputePositionConfig")
+            .field("platform", &self.platform)
             .field("placement", &self.placement)
             .field("strategy", &self.strategy)
+            .field("middlewares", &self.middlewares)
             .finish()
     }
 }
@@ -641,13 +684,6 @@ pub struct MiddlewareReturn {
     pub reset: MiddlewareReset,
 }
 
-/// Alias of Geometry
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct Dimensions {
-    pub width: f64,
-    pub height: f64,
-}
-
 impl LengthTrait for Dimensions {
     fn length(&self, length: Length) -> f64 {
         match length {
@@ -670,6 +706,37 @@ pub struct Rect {
     pub y: f64,
     pub width: f64,
     pub height: f64,
+}
+
+impl Rect {
+    #[must_use]
+    #[inline]
+    pub const fn coords(&self) -> Coords {
+        Coords {
+            x: self.x,
+            y: self.y,
+        }
+    }
+
+    #[must_use]
+    #[inline]
+    pub const fn dimensions(&self) -> Dimensions {
+        Dimensions {
+            width: self.width,
+            height: self.height,
+        }
+    }
+
+    #[must_use]
+    #[inline]
+    pub fn side_object(&self) -> SideObject {
+        SideObject {
+            top: self.y,
+            right: self.x + self.width,
+            bottom: self.y + self.height,
+            left: self.x,
+        }
+    }
 }
 
 impl LengthTrait for Rect {
@@ -748,6 +815,7 @@ impl fmt::Debug for MiddlewareState {
             .field("middleware_data", &self.middleware_data)
             .field("elements", &self.elements)
             .field("rects", &self.rects)
+            .field("platform", &self.platform)
             .finish()
     }
 }
@@ -755,18 +823,13 @@ impl fmt::Debug for MiddlewareState {
 #[derive(Debug, Default, Clone, PartialEq)]
 pub struct ClientRectObject {
     pub rect: Rect,
-    pub side: SideObject,
+    pub side_object: SideObject,
 }
 
 impl From<Rect> for ClientRectObject {
     fn from(rect: Rect) -> Self {
-        let side = SideObject {
-            left: rect.x,
-            top: rect.y,
-            right: rect.x + rect.width,
-            bottom: rect.y + rect.height,
-        };
-        Self { rect, side }
+        let side_object = rect.side_object();
+        Self { rect, side_object }
     }
 }
 
@@ -779,6 +842,8 @@ pub struct PartialSideObject {
 }
 
 impl From<PartialSideObject> for SideObject {
+    #[must_use]
+    #[inline]
     fn from(val: PartialSideObject) -> Self {
         Self {
             top: val.top.unwrap_or_default(),

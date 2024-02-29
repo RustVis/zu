@@ -13,9 +13,8 @@
 
 // pub mod detect_overflow;
 // pub mod middleware;
-// pub mod traits;
-// pub mod types;
-pub mod utils;
+pub mod traits;
+pub mod types;
 
 // mod compute_coords;
 // pub use compute_coords::compute_coords_from_placement;

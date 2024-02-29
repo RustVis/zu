@@ -6,9 +6,9 @@ use std::fmt;
 use std::rc::Rc;
 
 use crate::types::{
-    Axis, Boundary, ComputePositionConfig, ComputePositionReturn, Dimensions, ElementRects, Length,
-    MiddlewareDataKind, MiddlewareReturn, MiddlewareState, Rect, RootBoundary, Scale, Side,
-    Strategy,
+    Axis, Boundary, ClientRectObject, ComputePositionConfig, ComputePositionReturn, Dimensions,
+    ElementRects, Length, MiddlewareDataKind, MiddlewareReturn, MiddlewareState, Rect,
+    RootBoundary, Scale, Side, Strategy,
 };
 
 pub trait LengthTrait {
@@ -29,7 +29,7 @@ pub trait SideTrait {
 pub trait Element: fmt::Debug + LengthTrait {}
 
 /// Impl Platform trait to support new platform environment.
-pub trait Platform {
+pub trait Platform: fmt::Debug {
     fn dimensions(&self, element: &Rc<dyn Element>) -> Dimensions;
 
     fn offset_parent(&self, element: &Rc<dyn Element>) -> Option<Rc<dyn Element>>;
@@ -63,9 +63,17 @@ pub trait Platform {
     ) -> Rect;
 }
 
-pub trait Middleware {
+pub trait Middleware: fmt::Debug {
     fn kind(&self) -> MiddlewareDataKind;
     fn run(&self, state: &mut MiddlewareState) -> MiddlewareReturn;
 }
 
 pub type ComputePosition = fn(config: &ComputePositionConfig) -> ComputePositionReturn;
+
+/// Custom positioning reference element.
+pub trait VirtualElement {
+    fn get_bounding_client_rect(&self) -> ClientRectObject;
+
+    // TODO(Shaohua): Returns any type.
+    fn get_context_element(&self);
+}
