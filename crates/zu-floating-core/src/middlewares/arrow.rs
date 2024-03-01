@@ -6,10 +6,12 @@ use float_cmp::ApproxEq;
 use std::fmt;
 use std::rc::Rc;
 
-use crate::traits::{AxisTrait, Element, LengthTrait, Middleware, SideTrait};
+use crate::middleware::{
+    ArrowMiddlewareData, Element, Middleware, MiddlewareData, MiddlewareDataKind, MiddlewareReturn,
+    MiddlewareState,
+};
 use crate::types::{
-    ArrowMiddlewareData, Axis, Length, MiddlewareData, MiddlewareDataKind, MiddlewareReturn,
-    MiddlewareState, Padding, PartialCoords, Side, SideObject,
+    Axis, AxisTrait, Length, LengthTrait, Padding, PartialCoords, Side, SideObject, SideTrait,
 };
 
 #[derive(Clone)]
@@ -24,10 +26,11 @@ pub struct ArrowOption {
 }
 
 impl fmt::Debug for ArrowOption {
+    // TODO(Shaohua): Add element field.
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         f.debug_struct("ArrowOption")
             .field("padding", &self.padding)
-            .finish()
+            .finish_non_exhaustive()
     }
 }
 
@@ -71,12 +74,12 @@ impl Middleware for Arrow {
 
         // TODO(Shaohua): Dom related parent
 
-        let center_to_refernce: f64 = end_diff / 2.0 - start_diff / 2.0;
+        let center_to_reference: f64 = end_diff / 2.0 - start_diff / 2.0;
         let min: f64 = padding_object.side(min_prop);
         let max: f64 =
             client_size - arrow_dimensions.length(length) - padding_object.side(max_prop);
         let center: f64 =
-            client_size / 2.0 - arrow_dimensions.length(length) / 2.0 + center_to_refernce;
+            client_size / 2.0 - arrow_dimensions.length(length) / 2.0 + center_to_reference;
         let offset: f64 = center.clamp(min, max);
 
         let expected_offset: f64 = if center < min {

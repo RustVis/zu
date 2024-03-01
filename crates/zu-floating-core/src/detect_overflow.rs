@@ -2,10 +2,8 @@
 // Use of this source is governed by Lesser General Public License that
 // can be found in the LICENSE file.
 
-use crate::types::{
-    Boundary, ClientRectObject, ElementContext, MiddlewareState, Padding, Rect, RootBoundary,
-    Scale, SideObject,
-};
+use crate::middleware::{ElementContext, MiddlewareState};
+use crate::types::{Boundary, ClientRectObject, Padding, Rect, RootBoundary, Scale, SideObject};
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct DetectOverflowOption {

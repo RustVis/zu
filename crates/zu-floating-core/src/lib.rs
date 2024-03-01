@@ -11,9 +11,9 @@
 )]
 #![allow(clippy::module_name_repetitions)]
 
-// pub mod detect_overflow;
-// pub mod middlewares;
+pub mod detect_overflow;
 pub mod middleware;
+pub mod middlewares;
 pub mod types;
 pub mod vanilla;
 

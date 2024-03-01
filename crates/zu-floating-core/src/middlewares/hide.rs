@@ -3,11 +3,11 @@
 // can be found in the LICENSE file.
 
 use crate::detect_overflow::{detect_overflow, DetectOverflowOption};
-use crate::traits::Middleware;
-use crate::types::{
-    HideMiddlewareData, MiddlewareData, MiddlewareDataKind, MiddlewareReturn, MiddlewareState,
-    SideObject,
+use crate::middleware::{
+    HideMiddlewareData, Middleware, MiddlewareData, MiddlewareDataKind, MiddlewareReturn,
+    MiddlewareState,
 };
+use crate::types::SideObject;
 
 #[derive(Debug, Clone)]
 pub struct HideOption {

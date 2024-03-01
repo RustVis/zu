@@ -2,6 +2,7 @@
 // Use of this source is governed by Lesser General Public License that
 // can be found in the LICENSE file.
 
+use crate::middleware::ElementRects;
 use std::convert::Into;
 
 #[derive(Debug, Default, Clone, Copy, Eq, PartialEq, Ord, PartialOrd)]
@@ -54,10 +55,10 @@ impl Side {
 
     #[must_use]
     #[inline]
-    pub const fn get_list(self, is_start: bool, is_rtl: bool) -> [Self; 2] {
+    pub const fn get_list(self, is_start: bool, rtl: bool) -> [Self; 2] {
         match self {
             Self::Top | Self::Bottom => {
-                let is_start = if is_rtl { !is_start } else { is_start };
+                let is_start = if rtl { !is_start } else { is_start };
                 if is_start {
                     [Self::Left, Self::Right]
                 } else {
@@ -200,24 +201,34 @@ impl Placement {
 
     #[must_use]
     #[inline]
+    /// Alias of `side_axis()`.
+    pub const fn main_axis(self) -> Axis {
+        self.side_axis()
+    }
+
+    #[must_use]
+    #[inline]
     pub const fn alignment_axis(self) -> Axis {
         self.side_axis().opposite()
     }
 
-    /// Get opposite placement.
     #[must_use]
     #[inline]
+    /// Get opposite placement.
     pub const fn opposite(self) -> Self {
         match self {
             Self::TopStart => Self::BottomStart,
             Self::Top => Self::Bottom,
             Self::TopEnd => Self::BottomEnd,
+
             Self::RightStart => Self::LeftStart,
             Self::Right => Self::Left,
             Self::RightEnd => Self::LeftEnd,
+
             Self::BottomStart => Self::TopStart,
             Self::Bottom => Self::Top,
             Self::BottomEnd => Self::TopEnd,
+
             Self::LeftStart => Self::RightStart,
             Self::Left => Self::Right,
             Self::LeftEnd => Self::RightEnd,
@@ -264,10 +275,10 @@ impl Placement {
         self,
         flip_alignment: bool,
         direction: Option<Alignment>,
-        is_rtl: bool,
+        rtl: bool,
     ) -> Vec<Self> {
         let is_start = direction == Some(Alignment::Start);
-        let side_list = self.side().get_list(is_start, is_rtl);
+        let side_list = self.side().get_list(is_start, rtl);
         self.alignment().map_or_else(
             || side_list.map(Into::into).to_vec(),
             |alignment| {
@@ -285,6 +296,44 @@ impl Placement {
                 list
             },
         )
+    }
+
+    /// Returns main side and cross side.
+    #[must_use]
+    pub fn alignment_sides(self, rects: &ElementRects, rtl: bool) -> [Side; 2] {
+        let alignment = self.alignment();
+        let main_axis: Axis = self.main_axis();
+        let length: Length = main_axis.into();
+
+        let mut main_alignment_side: Side = match main_axis {
+            Axis::X => {
+                let alignment_start = if rtl {
+                    Alignment::End
+                } else {
+                    Alignment::Start
+                };
+
+                if alignment == Some(alignment_start) {
+                    Side::Right
+                } else {
+                    Side::Left
+                }
+            }
+            Axis::Y => {
+                if alignment == Some(Alignment::Start) {
+                    Side::Bottom
+                } else {
+                    Side::Top
+                }
+            }
+        };
+
+        if rects.reference.length(length) > rects.floating.length(length) {
+            main_alignment_side = main_alignment_side.opposite();
+        }
+
+        let cross_side = main_alignment_side.opposite();
+        [main_alignment_side, cross_side]
     }
 }
 
@@ -342,46 +391,6 @@ impl From<Placement> for Option<Alignment> {
         placement.alignment()
     }
 }
-
-// impl Placement {
-//     /// Returns main side and cross side.
-//     #[must_use]
-//     pub fn alignment_sides(self, rects: &ElementRects, rtl: bool) -> [Side; 2] {
-//         let alignment = self.alignment();
-//         let main_axis: Axis = self.main_axis();
-//         let length: Length = main_axis.into();
-//
-//         let mut main_alignment_side: Side = match main_axis {
-//             Axis::X => {
-//                 let alignment_start = if rtl {
-//                     Alignment::End
-//                 } else {
-//                     Alignment::Start
-//                 };
-//
-//                 if alignment == Some(alignment_start) {
-//                     Side::Right
-//                 } else {
-//                     Side::Left
-//                 }
-//             }
-//             Axis::Y => {
-//                 if alignment == Some(Alignment::Start) {
-//                     Side::Bottom
-//                 } else {
-//                     Side::Top
-//                 }
-//             }
-//         };
-//
-//         if rects.reference.length(length) > rects.floating.length(length) {
-//             main_alignment_side = main_alignment_side.opposite();
-//         }
-//
-//         let cross_side = main_alignment_side.opposite();
-//         [main_alignment_side, cross_side]
-//     }
-// }
 
 #[derive(Debug, Default, Clone, Copy, Eq, PartialEq, Ord, PartialOrd)]
 pub enum Strategy {
@@ -678,13 +687,13 @@ impl AxisTrait for Rect {
 #[derive(Debug, Default, Clone, PartialEq)]
 pub struct ClientRectObject {
     pub rect: Rect,
-    pub side_object: SideObject,
+    pub side: SideObject,
 }
 
 impl From<Rect> for ClientRectObject {
     fn from(rect: Rect) -> Self {
-        let side_object = rect.side_object();
-        Self { rect, side_object }
+        let side = rect.side_object();
+        Self { rect, side }
     }
 }
 

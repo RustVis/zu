@@ -2,13 +2,15 @@
 // Use of this source is governed by Lesser General Public License that
 // can be found in the LICENSE file.
 
-use crate::detect_overflow::{detect_overflow, DetectOverflowOption};
-use crate::traits::{Middleware, SideTrait};
-use crate::types::{
-    Alignment, Axis, Dimensions, MiddlewareData, MiddlewareDataKind, MiddlewareReturn,
-    MiddlewareState, Rect, Side,
-};
 use float_cmp::ApproxEq;
+use std::fmt;
+use std::fmt::Formatter;
+
+use crate::detect_overflow::{detect_overflow, DetectOverflowOption};
+use crate::middleware::{
+    Middleware, MiddlewareData, MiddlewareDataKind, MiddlewareReturn, MiddlewareState,
+};
+use crate::types::{Alignment, Axis, Dimensions, Rect, Side, SideTrait};
 
 pub trait SizeOptionTrait {
     fn apply(&self, state: &mut MiddlewareState, available_width: f64, available_height: f64);
@@ -17,6 +19,13 @@ pub trait SizeOptionTrait {
 pub struct Size {
     pub option: Box<dyn SizeOptionTrait>,
     pub detect_overflow_option: DetectOverflowOption,
+}
+
+impl fmt::Debug for Size {
+    #[allow(clippy::missing_fields_in_debug)]
+    fn fmt(&self, _f: &mut Formatter<'_>) -> fmt::Result {
+        todo!()
+    }
 }
 
 impl Middleware for Size {
