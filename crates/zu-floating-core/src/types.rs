@@ -4,8 +4,6 @@
 
 use std::convert::Into;
 
-use crate::platform::ElementRects;
-
 #[derive(Debug, Default, Clone, Copy, Eq, PartialEq, Ord, PartialOrd)]
 pub enum Alignment {
     #[default]
@@ -297,44 +295,6 @@ impl Placement {
                 list
             },
         )
-    }
-
-    /// Returns main side and cross side.
-    #[must_use]
-    pub fn alignment_sides(self, rects: &ElementRects, rtl: bool) -> [Side; 2] {
-        let alignment = self.alignment();
-        let main_axis: Axis = self.main_axis();
-        let length: Length = main_axis.into();
-
-        let mut main_alignment_side: Side = match main_axis {
-            Axis::X => {
-                let alignment_start = if rtl {
-                    Alignment::End
-                } else {
-                    Alignment::Start
-                };
-
-                if alignment == Some(alignment_start) {
-                    Side::Right
-                } else {
-                    Side::Left
-                }
-            }
-            Axis::Y => {
-                if alignment == Some(Alignment::Start) {
-                    Side::Bottom
-                } else {
-                    Side::Top
-                }
-            }
-        };
-
-        if rects.reference.length(length) > rects.floating.length(length) {
-            main_alignment_side = main_alignment_side.opposite();
-        }
-
-        let cross_side = main_alignment_side.opposite();
-        [main_alignment_side, cross_side]
     }
 }
 

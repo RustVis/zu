@@ -8,7 +8,7 @@
 //! because it appears detached from the reference element (or attached to nothing).
 
 use crate::detect_overflow::{detect_overflow, DetectOverflowOption};
-use crate::platform::{
+use crate::middleware::{
     HideMiddlewareData, Middleware, MiddlewareData, MiddlewareDataKind, MiddlewareReturn,
     MiddlewareState,
 };

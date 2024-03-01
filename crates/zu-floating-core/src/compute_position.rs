@@ -5,10 +5,8 @@
 use std::rc::Rc;
 
 use crate::compute_coords::compute_coords_from_placement;
-use crate::platform::{
-    ComputePositionConfig, ComputePositionReturn, Element, Elements, MiddlewareData,
-    MiddlewareState,
-};
+use crate::middleware::{MiddlewareData, MiddlewareState};
+use crate::platform::{ComputePositionConfig, ComputePositionReturn, Element, Elements};
 
 #[must_use]
 pub fn compute_position(

@@ -5,10 +5,8 @@
 use std::fmt;
 use std::rc::Rc;
 
-use crate::types::{
-    ClientRectObject, Coords, Dimensions, LengthTrait, Overflow, PartialCoords, Placement, Rect,
-    Scale, SideObject, Strategy,
-};
+use crate::middleware::{Middleware, MiddlewareData};
+use crate::types::{Coords, Dimensions, LengthTrait, Placement, Rect, Scale, Strategy};
 
 pub trait Element: fmt::Debug + LengthTrait {}
 
@@ -69,136 +67,6 @@ pub enum RootBoundary {
     Rect(Rect),
 }
 
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct ArrowMiddlewareData {
-    pub coords: PartialCoords,
-    pub center_offset: f64,
-}
-
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct AutoPlacementMiddlewareData {
-    pub index: Option<usize>,
-    pub overflows: Vec<Overflow>,
-}
-
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct FlipMiddlewareData {
-    pub index: Option<usize>,
-    pub overflows: Vec<Overflow>,
-}
-
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct HideMiddlewareData {
-    pub reference_hidden: Option<bool>,
-    pub reference_hidden_offset: Option<SideObject>,
-    pub escaped: Option<bool>,
-    pub escaped_offsets: Option<SideObject>,
-}
-
-// TODO(Shaohua): Remove this enum.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum MiddlewareDataKind {
-    Nil,
-
-    Arrow,
-    AutoPlacement,
-    Flip,
-    Hide,
-
-    Offset,
-    Shift,
-    Size,
-}
-
-impl Default for MiddlewareDataKind {
-    fn default() -> Self {
-        Self::Nil
-    }
-}
-
-// TODO(Shaohua): Replace MiddlewareData with BTreeMap.
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct MiddlewareData {
-    pub kind: MiddlewareDataKind,
-
-    pub arrow: Option<ArrowMiddlewareData>,
-    pub auto_placement: Option<AutoPlacementMiddlewareData>,
-    pub flip: Option<FlipMiddlewareData>,
-    pub hide: Option<HideMiddlewareData>,
-
-    pub offset: Option<Coords>,
-    pub shift: Option<Coords>,
-    pub size: Option<bool>,
-}
-
-#[derive(Clone)]
-pub struct ComputePositionConfig {
-    pub platform: Rc<dyn Platform>,
-    pub placement: Placement,
-    pub strategy: Strategy,
-    pub middlewares: Vec<Rc<dyn Middleware>>,
-}
-
-impl fmt::Debug for ComputePositionConfig {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        f.debug_struct("ComputePositionConfig")
-            .field("platform", &self.platform)
-            .field("placement", &self.placement)
-            .field("strategy", &self.strategy)
-            .field("middlewares", &self.middlewares)
-            .finish()
-    }
-}
-
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct ComputePositionReturn {
-    pub coords: Coords,
-    pub placement: Placement,
-    pub strategy: Strategy,
-    pub middleware_data: MiddlewareData,
-}
-
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct MiddlewareReset {
-    pub reset: bool,
-    pub rects: Option<ElementRects>,
-    pub placement: Option<Placement>,
-}
-
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct MiddlewareReturn {
-    pub coords: PartialCoords,
-    pub data: MiddlewareData,
-    pub reset: MiddlewareReset,
-}
-
-#[derive(Clone)]
-pub struct MiddlewareState {
-    pub coords: Coords,
-    pub initial_placement: Placement,
-    pub placement: Placement,
-    pub strategy: Strategy,
-    pub middleware_data: MiddlewareData,
-    pub elements: Elements,
-    pub rects: ElementRects,
-    pub platform: Rc<dyn Platform>,
-}
-
-impl fmt::Debug for MiddlewareState {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        f.debug_struct("MiddlewareState")
-            .field("coords", &self.coords)
-            .field("initial_placement", &self.initial_placement)
-            .field("placement", &self.placement)
-            .field("strategy", &self.strategy)
-            .field("middleware_data", &self.middleware_data)
-            .field("elements", &self.elements)
-            .field("rects", &self.rects)
-            .field("platform", &self.platform)
-            .finish()
-    }
-}
-
 /// Impl Platform trait to support new platform environment.
 pub trait Platform: fmt::Debug {
     fn dimensions(&self, element: &Rc<dyn Element>) -> Dimensions;
@@ -234,11 +102,31 @@ pub trait Platform: fmt::Debug {
     ) -> Rect;
 }
 
-pub trait Middleware: fmt::Debug {
-    // TODO(Shaohua): Add fn name()
-    // TODO(Shaohua): Remove kind().
-    fn kind(&self) -> MiddlewareDataKind;
-    fn run(&self, state: &mut MiddlewareState) -> MiddlewareReturn;
+#[derive(Clone)]
+pub struct ComputePositionConfig {
+    pub platform: Rc<dyn Platform>,
+    pub placement: Placement,
+    pub strategy: Strategy,
+    pub middlewares: Vec<Rc<dyn Middleware>>,
+}
+
+impl fmt::Debug for ComputePositionConfig {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.debug_struct("ComputePositionConfig")
+            .field("platform", &self.platform)
+            .field("placement", &self.placement)
+            .field("strategy", &self.strategy)
+            .field("middlewares", &self.middlewares)
+            .finish()
+    }
+}
+
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct ComputePositionReturn {
+    pub coords: Coords,
+    pub placement: Placement,
+    pub strategy: Strategy,
+    pub middleware_data: MiddlewareData,
 }
 
 pub type ComputePosition = fn(
@@ -249,11 +137,3 @@ pub type ComputePosition = fn(
 
 // TODO(Shaohua): Remove duplicates
 pub type ComputePosition2 = fn(config: &ComputePositionConfig) -> ComputePositionReturn;
-
-/// Custom positioning reference element.
-pub trait VirtualElement {
-    fn get_bounding_client_rect(&self) -> ClientRectObject;
-
-    // TODO(Shaohua): Returns any type.
-    fn get_context_element(&self);
-}

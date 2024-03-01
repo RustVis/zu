@@ -14,6 +14,7 @@
 pub mod compute_coords;
 pub mod compute_position;
 pub mod detect_overflow;
+mod middleware;
 pub mod middlewares;
 pub mod platform;
 pub mod types;

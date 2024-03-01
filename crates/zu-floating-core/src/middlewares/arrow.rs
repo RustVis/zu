@@ -12,10 +12,11 @@ use float_cmp::ApproxEq;
 use std::fmt;
 use std::rc::Rc;
 
-use crate::platform::{
-    ArrowMiddlewareData, Element, Middleware, MiddlewareData, MiddlewareDataKind, MiddlewareReturn,
+use crate::middleware::{
+    ArrowMiddlewareData, Middleware, MiddlewareData, MiddlewareDataKind, MiddlewareReturn,
     MiddlewareState,
 };
+use crate::platform::Element;
 use crate::types::{
     Axis, AxisTrait, Length, LengthTrait, Padding, PartialCoords, Side, SideObject, SideTrait,
 };
