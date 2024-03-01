@@ -19,7 +19,8 @@ use crate::middleware::{
 use crate::types::{Alignment, Axis, Dimensions, Rect, Side, SideTrait};
 
 pub trait SizeOptionTrait {
-    fn apply(&self, state: &mut MiddlewareState, available_width: f64, available_height: f64);
+    // TODO(Shaohua): Returns new coords.
+    fn apply(&self, state: &MiddlewareState, available_width: f64, available_height: f64);
 }
 
 pub struct Size {
@@ -43,7 +44,7 @@ impl Middleware for Size {
         MiddlewareDataKind::Size
     }
 
-    fn run(&self, state: &mut MiddlewareState) -> MiddlewareReturn {
+    fn run(&self, state: &MiddlewareState) -> MiddlewareReturn {
         let placement = state.placement;
         let platform = &state.platform;
         let rects = &state.rects;

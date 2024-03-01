@@ -138,16 +138,19 @@ impl From<AlignedPlacement> for Alignment {
 
 #[derive(Debug, Default, Clone, Copy, Eq, PartialEq, Ord, PartialOrd)]
 pub enum Placement {
-    #[default]
     TopStart,
     Top,
     TopEnd,
+
     RightStart,
     Right,
     RightEnd,
+
     BottomStart,
+    #[default]
     Bottom,
     BottomEnd,
+
     LeftStart,
     Left,
     LeftEnd,

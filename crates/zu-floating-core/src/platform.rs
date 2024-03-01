@@ -5,10 +5,7 @@
 use std::fmt;
 use std::rc::Rc;
 
-use crate::middleware::{Middleware, MiddlewareData};
-use crate::types::{
-    ClientRectObject, Coords, Dimensions, LengthTrait, Placement, Rect, Scale, Strategy,
-};
+use crate::types::{ClientRectObject, Dimensions, LengthTrait, Rect, Scale, Strategy};
 
 // TODO(Shaohua): Simplify Element trait.
 pub trait Element: fmt::Debug + LengthTrait {}
@@ -149,39 +146,3 @@ pub trait Platform: fmt::Debug {
         Scale::default()
     }
 }
-
-#[derive(Clone)]
-pub struct ComputePositionConfig {
-    pub platform: Rc<dyn Platform>,
-    pub placement: Placement,
-    pub strategy: Strategy,
-    pub middlewares: Vec<Rc<dyn Middleware>>,
-}
-
-impl fmt::Debug for ComputePositionConfig {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        f.debug_struct("ComputePositionConfig")
-            .field("platform", &self.platform)
-            .field("placement", &self.placement)
-            .field("strategy", &self.strategy)
-            .field("middlewares", &self.middlewares)
-            .finish()
-    }
-}
-
-#[derive(Debug, Default, Clone)]
-pub struct ComputePositionReturn {
-    pub coords: Coords,
-    pub placement: Placement,
-    pub strategy: Strategy,
-    pub middleware_data: MiddlewareData,
-}
-
-pub type ComputePosition = fn(
-    reference_element: &Rc<dyn Element>,
-    floating_element: &Rc<dyn Element>,
-    config: &ComputePositionConfig,
-) -> ComputePositionReturn;
-
-// TODO(Shaohua): Remove duplicates
-pub type ComputePosition2 = fn(config: &ComputePositionConfig) -> ComputePositionReturn;

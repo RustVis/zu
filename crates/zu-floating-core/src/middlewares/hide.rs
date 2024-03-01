@@ -42,7 +42,7 @@ impl Middleware for Hide {
         MiddlewareDataKind::Hide
     }
 
-    fn run(&self, state: &mut MiddlewareState) -> MiddlewareReturn {
+    fn run(&self, state: &MiddlewareState) -> MiddlewareReturn {
         let rects = &state.rects;
         let hide_data = match self.option.strategy {
             HideStrategy::ReferenceHidden => {

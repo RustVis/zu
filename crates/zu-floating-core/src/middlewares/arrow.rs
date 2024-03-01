@@ -55,7 +55,7 @@ impl Middleware for Arrow {
         MiddlewareDataKind::Arrow
     }
 
-    fn run(&self, state: &mut MiddlewareState) -> MiddlewareReturn {
+    fn run(&self, state: &MiddlewareState) -> MiddlewareReturn {
         let coords = &state.coords;
         let rects = &state.rects;
         let platform = &state.platform;

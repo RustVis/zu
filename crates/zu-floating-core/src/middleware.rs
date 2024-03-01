@@ -2,8 +2,6 @@
 // Use of this source is governed by Lesser General Public License that can be found
 // in the LICENSE file.
 
-use std::any::Any;
-use std::collections::BTreeMap;
 use std::fmt;
 use std::rc::Rc;
 
@@ -53,7 +51,7 @@ pub enum MiddlewareDataKind {
     Custom,
 }
 
-pub type CustomMiddlewareData = BTreeMap<&'static str, Option<Rc<dyn Any>>>;
+pub trait CustomMiddlewareData: fmt::Debug {}
 
 #[derive(Debug, Default, Clone)]
 pub enum MiddlewareData {
@@ -69,15 +67,78 @@ pub enum MiddlewareData {
     Shift(Coords),
     Size(bool),
 
-    Custom(CustomMiddlewareData),
+    Custom(Rc<dyn CustomMiddlewareData>),
 }
 
 impl MiddlewareData {
     #[must_use]
     #[inline]
+    pub const fn arrow(&self) -> Option<&ArrowMiddlewareData> {
+        match self {
+            Self::Arrow(arrow) => Some(arrow),
+            _ => None,
+        }
+    }
+
+    #[must_use]
+    #[inline]
+    pub const fn auto_placement(&self) -> Option<&AutoPlacementMiddlewareData> {
+        match self {
+            Self::AutoPlacement(opt) => Some(opt),
+            _ => None,
+        }
+    }
+
+    #[must_use]
+    #[inline]
+    pub const fn flip(&self) -> Option<&FlipMiddlewareData> {
+        match self {
+            Self::Flip(flip) => Some(flip),
+            _ => None,
+        }
+    }
+
+    #[must_use]
+    #[inline]
+    pub const fn hide(&self) -> Option<&HideMiddlewareData> {
+        match self {
+            Self::Hide(hide) => Some(hide),
+            _ => None,
+        }
+    }
+
+    #[must_use]
+    #[inline]
+    pub const fn offset(&self) -> Option<&Coords> {
+        match self {
+            Self::Offset(coords) => Some(coords),
+            _ => None,
+        }
+    }
+
+    #[must_use]
+    #[inline]
     pub const fn shift(&self) -> Option<&Coords> {
         match self {
             Self::Shift(coords) => Some(coords),
+            _ => None,
+        }
+    }
+
+    #[must_use]
+    #[inline]
+    pub const fn size(&self) -> Option<bool> {
+        match self {
+            Self::Size(size_opt) => Some(*size_opt),
+            _ => None,
+        }
+    }
+
+    #[must_use]
+    #[inline]
+    pub const fn custom(&self, _name: &'static str) -> Option<&Rc<dyn CustomMiddlewareData>> {
+        match self {
+            Self::Custom(custom) => Some(custom),
             _ => None,
         }
     }
@@ -98,28 +159,28 @@ pub struct MiddlewareReturn {
 }
 
 #[derive(Clone)]
-pub struct MiddlewareState {
+pub struct MiddlewareState<'a> {
     pub coords: Coords,
     pub initial_placement: Placement,
     pub placement: Placement,
     pub strategy: Strategy,
-    pub middleware_data: MiddlewareData,
-    pub elements: Elements,
-    pub rects: ElementRects,
-    pub platform: Rc<dyn Platform>,
+    pub middleware_data: &'a MiddlewareData,
+    pub elements: &'a Elements,
+    pub rects: &'a ElementRects,
+    pub platform: &'a Rc<dyn Platform>,
 }
 
-impl fmt::Debug for MiddlewareState {
+impl<'a> fmt::Debug for MiddlewareState<'a> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         f.debug_struct("MiddlewareState")
             .field("coords", &self.coords)
             .field("initial_placement", &self.initial_placement)
             .field("placement", &self.placement)
             .field("strategy", &self.strategy)
-            .field("middleware_data", &self.middleware_data)
-            .field("elements", &self.elements)
-            .field("rects", &self.rects)
-            .field("platform", &self.platform)
+            .field("middleware_data", self.middleware_data)
+            .field("elements", self.elements)
+            .field("rects", self.rects)
+            .field("platform", self.platform)
             .finish()
     }
 }
@@ -129,5 +190,5 @@ pub trait Middleware: fmt::Debug {
 
     fn kind(&self) -> MiddlewareDataKind;
 
-    fn run(&self, state: &mut MiddlewareState) -> MiddlewareReturn;
+    fn run(&self, state: &MiddlewareState) -> MiddlewareReturn;
 }
