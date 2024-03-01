@@ -5,7 +5,7 @@
 //! Detects when the floating or reference element is overflowing a clipping container
 //! or custom boundary.
 
-use crate::middleware::{Boundary, ElementContext, MiddlewareState, RootBoundary};
+use crate::platform::{Boundary, ElementContext, MiddlewareState, RootBoundary};
 use crate::types::{ClientRectObject, Padding, Rect, Scale, SideObject};
 
 #[derive(Debug, Default, Clone)]

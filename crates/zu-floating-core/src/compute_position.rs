@@ -5,7 +5,7 @@
 use std::rc::Rc;
 
 use crate::compute_coords::compute_coords_from_placement;
-use crate::middleware::{
+use crate::platform::{
     ComputePositionConfig, ComputePositionReturn, Element, Elements, MiddlewareData,
     MiddlewareState,
 };

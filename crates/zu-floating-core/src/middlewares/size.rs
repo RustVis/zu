@@ -13,7 +13,7 @@ use std::fmt;
 use std::fmt::Formatter;
 
 use crate::detect_overflow::{detect_overflow, DetectOverflowOption};
-use crate::middleware::{
+use crate::platform::{
     Middleware, MiddlewareData, MiddlewareDataKind, MiddlewareReturn, MiddlewareState,
 };
 use crate::types::{Alignment, Axis, Dimensions, Rect, Side, SideTrait};

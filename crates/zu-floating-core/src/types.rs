@@ -4,7 +4,7 @@
 
 use std::convert::Into;
 
-use crate::middleware::ElementRects;
+use crate::platform::ElementRects;
 
 #[derive(Debug, Default, Clone, Copy, Eq, PartialEq, Ord, PartialOrd)]
 pub enum Alignment {

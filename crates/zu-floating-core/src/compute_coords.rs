@@ -2,7 +2,7 @@
 // Use of this source is governed by Lesser General Public License that can be found
 // in the LICENSE file.
 
-use crate::middleware::ElementRects;
+use crate::platform::ElementRects;
 use crate::types::{Alignment, Axis, AxisTrait, Coords, Length, LengthTrait, Placement, Side};
 
 #[must_use]

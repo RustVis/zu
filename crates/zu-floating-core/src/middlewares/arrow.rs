@@ -12,7 +12,7 @@ use float_cmp::ApproxEq;
 use std::fmt;
 use std::rc::Rc;
 
-use crate::middleware::{
+use crate::platform::{
     ArrowMiddlewareData, Element, Middleware, MiddlewareData, MiddlewareDataKind, MiddlewareReturn,
     MiddlewareState,
 };

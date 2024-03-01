@@ -15,7 +15,7 @@ publish = true
 rust-version = "1.66.0"
 
 [dependencies]
-log = { version = "0.4.20", features = [] }
+log = { version = "0.4.21", features = [] }
 stylist = { version = "0.13.0", default-features = false, features = ["parser", "random", "yew"] }
 yew = "0.21.0"
 yew-hooks = "0.3.0"

@@ -7,7 +7,7 @@ homepage = "https://github.com/RustVis/crates/zu-floating-core"
 repository = "https://github.com/RustVis/zu"
 documentation = "https://docs.rs/zu-floating-core"
 description = "A toolkit to create floating elements"
-keywords = ["popover", "position", "tooltip", "dropdown", "wasm"]
+keywords = ["popover", "tooltip", "dropdown", "layout", "wasm"]
 categories = ["gui", "wasm", "web-programming"]
 edition = "2021"
 license = "LGPL-3.0"
@@ -16,4 +16,4 @@ publish = true
 
 [dependencies]
 float-cmp = "0.9.0"
-log = "0.4.20"
+log = "0.4.21"
