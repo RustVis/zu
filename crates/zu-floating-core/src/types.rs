@@ -2,8 +2,9 @@
 // Use of this source is governed by Lesser General Public License that
 // can be found in the LICENSE file.
 
-use crate::middleware::ElementRects;
 use std::convert::Into;
+
+use crate::middleware::ElementRects;
 
 #[derive(Debug, Default, Clone, Copy, Eq, PartialEq, Ord, PartialOrd)]
 pub enum Alignment {
@@ -736,30 +737,6 @@ impl From<Padding> for SideObject {
             Padding::Number(num) => Self::new(num),
             Padding::Side(side) => side.into(),
         }
-    }
-}
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum Boundary {
-    ClippingAncestors,
-}
-
-impl Default for Boundary {
-    fn default() -> Self {
-        Self::ClippingAncestors
-    }
-}
-
-#[derive(Debug, Clone, PartialEq)]
-pub enum RootBoundary {
-    Viewport,
-    Document,
-    Rect(Rect),
-}
-
-impl Default for RootBoundary {
-    fn default() -> Self {
-        Self::Viewport
     }
 }
 

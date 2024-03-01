@@ -2,10 +2,13 @@
 // Use of this source is governed by Lesser General Public License that
 // can be found in the LICENSE file.
 
-use crate::middleware::{ElementContext, MiddlewareState};
-use crate::types::{Boundary, ClientRectObject, Padding, Rect, RootBoundary, Scale, SideObject};
+//! Detects when the floating or reference element is overflowing a clipping container
+//! or custom boundary.
 
-#[derive(Debug, Clone, PartialEq)]
+use crate::middleware::{Boundary, ElementContext, MiddlewareState, RootBoundary};
+use crate::types::{ClientRectObject, Padding, Rect, Scale, SideObject};
+
+#[derive(Debug, Clone)]
 pub struct DetectOverflowOption {
     pub boundary: Boundary,
     pub root_boundary: RootBoundary,
@@ -46,7 +49,7 @@ pub fn detect_overflow(state: &MiddlewareState, option: &DetectOverflowOption) -
         // TODO(Shaohua): Call platform.is_element()
         let clipping_rect: Rect = platform.clipping_rect(
             &element,
-            option.boundary,
+            &option.boundary,
             &option.root_boundary,
             state.strategy,
         );

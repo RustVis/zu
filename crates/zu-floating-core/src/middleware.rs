@@ -6,8 +6,8 @@ use std::fmt;
 use std::rc::Rc;
 
 use crate::types::{
-    Boundary, ClientRectObject, Coords, Dimensions, LengthTrait, Overflow, PartialCoords,
-    Placement, Rect, RootBoundary, Scale, SideObject, Strategy,
+    ClientRectObject, Coords, Dimensions, LengthTrait, Overflow, PartialCoords, Placement, Rect,
+    Scale, SideObject, Strategy,
 };
 
 pub trait Element: fmt::Debug + LengthTrait {}
@@ -53,6 +53,33 @@ impl Elements {
             ElementContext::Reference => self.reference.clone(),
             ElementContext::Floating => self.floating.clone(),
         }
+    }
+}
+
+#[derive(Debug, Clone)]
+pub enum Boundary {
+    ClippingAncestors,
+    Element(Rc<dyn Element>),
+    Elements(Vec<Rc<dyn Element>>),
+    Rect(Rect),
+}
+
+impl Default for Boundary {
+    fn default() -> Self {
+        Self::ClippingAncestors
+    }
+}
+
+#[derive(Debug, Clone, PartialEq)]
+pub enum RootBoundary {
+    Viewport,
+    Document,
+    Rect(Rect),
+}
+
+impl Default for RootBoundary {
+    fn default() -> Self {
+        Self::Viewport
     }
 }
 
@@ -198,7 +225,7 @@ pub trait Platform: fmt::Debug {
     fn clipping_rect(
         &self,
         element: &Rc<dyn Element>,
-        boundary: Boundary,
+        boundary: &Boundary,
         root_boundary: &RootBoundary,
         strategy: Strategy,
     ) -> Rect;

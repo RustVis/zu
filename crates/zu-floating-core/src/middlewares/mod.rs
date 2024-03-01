@@ -4,4 +4,6 @@
 
 pub mod arrow;
 pub mod hide;
+mod offset;
+mod shift;
 pub mod size;

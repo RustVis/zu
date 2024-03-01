@@ -2,4 +2,4 @@
 // Use of this source is governed by Lesser General Public License that
 // can be found in the LICENSE file.
 
-//! This module is designed for unittest only.
+//! Shifts the floating element to keep it in view.
