@@ -6,7 +6,9 @@ use std::fmt;
 use std::rc::Rc;
 
 use crate::middleware::{Middleware, MiddlewareData};
-use crate::types::{Coords, Dimensions, LengthTrait, Placement, Rect, Scale, Strategy};
+use crate::types::{
+    ClientRectObject, Coords, Dimensions, LengthTrait, Placement, Rect, Scale, Strategy,
+};
 
 pub trait Element: fmt::Debug + LengthTrait {}
 
@@ -69,13 +71,19 @@ pub enum RootBoundary {
 
 /// Impl Platform trait to support new platform environment.
 pub trait Platform: fmt::Debug {
+    /// Takes in the elements and the positioning strategy and returns the element Rect objects.
+    fn element_rects(
+        &self,
+        reference_element: &Rc<dyn Element>,
+        floating_element: &Rc<dyn Element>,
+        strategy: Strategy,
+    ) -> ElementRects;
+
+    /// Returns the dimensions of an element.
     fn dimensions(&self, element: &Rc<dyn Element>) -> Dimensions;
 
-    fn offset_parent(&self, element: &Rc<dyn Element>) -> Option<Rc<dyn Element>>;
-
-    /// Returns true if layout direction is Right-To-Left.
-    fn is_rtl(&self, element: &Rc<dyn Element>) -> bool;
-
+    /// Returns the Rect (relative to the viewport) whose outside bounds
+    /// will clip the given element. For instance, the viewport itself.
     fn clipping_rect(
         &self,
         element: &Rc<dyn Element>,
@@ -84,22 +92,59 @@ pub trait Platform: fmt::Debug {
         strategy: Strategy,
     ) -> Rect;
 
-    fn element_rects(
-        &self,
-        reference_element: &Rc<dyn Element>,
-        floating_element: &Rc<dyn Element>,
-        strategy: Strategy,
-    ) -> ElementRects;
-
-    fn scale(&self, element: &Rc<dyn Element>) -> Scale;
-
-    /// Convert (offset of parent)-relative-rect to viewport-relative-rect
+    /// Convert (offset of parent)-relative-rect to viewport-relative-rect.
+    ///
+    /// This method is optional.
     fn convert_relative_rect(
         &self,
         rect: &Rect,
-        offset_parent: &Rc<dyn Element>,
-        strategy: Strategy,
-    ) -> Rect;
+        _offset_parent: &Rc<dyn Element>,
+        _strategy: Strategy,
+    ) -> Rect {
+        rect.clone()
+    }
+
+    /// Returns the offsetParent of a given element.
+    ///
+    /// This method is optional.
+    fn offset_parent(&self, _element: &Rc<dyn Element>) -> Option<Rc<dyn Element>> {
+        None
+    }
+
+    /// Determines if the current value is an element.
+    ///
+    /// This method is optional.
+    fn is_element(&self, _value: &Rc<dyn Element>) -> Option<bool> {
+        None
+    }
+
+    /// Returns the document element.
+    ///
+    /// This method is optional.
+    fn document_element(&self, _element: &Rc<dyn Element>) -> Option<Rc<dyn Element>> {
+        None
+    }
+
+    /// Returns an array of `ClientRects`.
+    ///
+    /// This method is optional.
+    fn client_rects(&self, _element: &Rc<dyn Element>) -> Option<Vec<ClientRectObject>> {
+        None
+    }
+
+    /// Returns true if layout direction is Right-To-Left.
+    ///
+    /// This method is optional.
+    fn is_rtl(&self, _element: &Rc<dyn Element>) -> bool {
+        false
+    }
+
+    /// Get scale factor of document.
+    ///
+    /// This method is optional.
+    fn scale(&self, _element: &Rc<dyn Element>) -> Scale {
+        Scale::default()
+    }
 }
 
 #[derive(Clone)]

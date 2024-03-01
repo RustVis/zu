@@ -700,8 +700,24 @@ impl From<Padding> for SideObject {
     }
 }
 
-#[derive(Debug, Default, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct Scale {
     pub x: f64,
     pub y: f64,
+}
+
+impl Default for Scale {
+    #[must_use]
+    #[inline]
+    fn default() -> Self {
+        Self { x: 1.0, y: 1.0 }
+    }
+}
+
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct OffsetParent {
+    pub client_width: f64,
+    pub client_height: f64,
+    pub client_left: f64,
+    pub client_top: f64,
 }

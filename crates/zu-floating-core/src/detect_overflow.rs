@@ -78,7 +78,7 @@ pub fn detect_overflow(state: &MiddlewareState, option: &DetectOverflowOption) -
     let offset_parent = platform.offset_parent(&elements.floating);
     let offset_scale: Scale = offset_parent
         .as_ref()
-        .map_or(Scale { x: 1.0, y: 1.0 }, |offset_parent| {
+        .map_or_else(Scale::default, |offset_parent| {
             platform.scale(offset_parent)
         });
 
