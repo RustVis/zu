@@ -10,6 +10,7 @@ use crate::types::{
     ClientRectObject, Coords, Dimensions, LengthTrait, Placement, Rect, Scale, Strategy,
 };
 
+// TODO(Shaohua): Simplify Element trait.
 pub trait Element: fmt::Debug + LengthTrait {}
 
 #[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
@@ -57,7 +58,7 @@ pub enum Boundary {
     #[default]
     ClippingAncestors,
     Element(Rc<dyn Element>),
-    Elements(Vec<Rc<dyn Element>>),
+    Elements(Elements),
     Rect(Rect),
 }
 
@@ -69,7 +70,9 @@ pub enum RootBoundary {
     Rect(Rect),
 }
 
-/// Impl Platform trait to support new platform environment.
+/// `Platform` interface methods to work with the current platform.
+///
+/// Impl `Platform` trait to support new platform environment.
 pub trait Platform: fmt::Debug {
     /// Takes in the elements and the positioning strategy and returns the element Rect objects.
     fn element_rects(
@@ -166,7 +169,7 @@ impl fmt::Debug for ComputePositionConfig {
     }
 }
 
-#[derive(Debug, Default, Clone, PartialEq)]
+#[derive(Debug, Default, Clone)]
 pub struct ComputePositionReturn {
     pub coords: Coords,
     pub placement: Placement,

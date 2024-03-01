@@ -2,6 +2,8 @@
 // Use of this source is governed by Lesser General Public License that can be found
 // in the LICENSE file.
 
+use std::any::Any;
+use std::collections::BTreeMap;
 use std::fmt;
 use std::rc::Rc;
 
@@ -34,9 +36,9 @@ pub struct HideMiddlewareData {
     pub escaped_offsets: Option<SideObject>,
 }
 
-// TODO(Shaohua): Remove this enum.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum MiddlewareDataKind {
+    #[default]
     Nil,
 
     Arrow,
@@ -47,37 +49,48 @@ pub enum MiddlewareDataKind {
     Offset,
     Shift,
     Size,
+
+    Custom,
 }
 
-impl Default for MiddlewareDataKind {
-    fn default() -> Self {
-        Self::Nil
+pub type CustomMiddlewareData = BTreeMap<&'static str, Option<Rc<dyn Any>>>;
+
+#[derive(Debug, Default, Clone)]
+pub enum MiddlewareData {
+    #[default]
+    Nil,
+
+    Arrow(ArrowMiddlewareData),
+    AutoPlacement(AutoPlacementMiddlewareData),
+    Flip(FlipMiddlewareData),
+    Hide(HideMiddlewareData),
+
+    Offset(Coords),
+    Shift(Coords),
+    Size(bool),
+
+    Custom(CustomMiddlewareData),
+}
+
+impl MiddlewareData {
+    #[must_use]
+    #[inline]
+    pub const fn shift(&self) -> Option<&Coords> {
+        match self {
+            Self::Shift(coords) => Some(coords),
+            _ => None,
+        }
     }
 }
 
-// TODO(Shaohua): Replace MiddlewareData with BTreeMap.
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct MiddlewareData {
-    pub kind: MiddlewareDataKind,
-
-    pub arrow: Option<ArrowMiddlewareData>,
-    pub auto_placement: Option<AutoPlacementMiddlewareData>,
-    pub flip: Option<FlipMiddlewareData>,
-    pub hide: Option<HideMiddlewareData>,
-
-    pub offset: Option<Coords>,
-    pub shift: Option<Coords>,
-    pub size: Option<bool>,
-}
-
-#[derive(Debug, Default, Clone, PartialEq)]
+#[derive(Debug, Default, Clone)]
 pub struct MiddlewareReset {
     pub reset: bool,
     pub rects: Option<ElementRects>,
     pub placement: Option<Placement>,
 }
 
-#[derive(Debug, Default, Clone, PartialEq)]
+#[derive(Debug, Default, Clone)]
 pub struct MiddlewareReturn {
     pub coords: PartialCoords,
     pub data: MiddlewareData,
@@ -112,8 +125,9 @@ impl fmt::Debug for MiddlewareState {
 }
 
 pub trait Middleware: fmt::Debug {
-    // TODO(Shaohua): Add fn name()
-    // TODO(Shaohua): Remove kind().
+    fn name(&self) -> &'static str;
+
     fn kind(&self) -> MiddlewareDataKind;
+
     fn run(&self, state: &mut MiddlewareState) -> MiddlewareReturn;
 }

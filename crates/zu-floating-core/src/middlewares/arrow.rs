@@ -47,6 +47,10 @@ pub struct Arrow {
 }
 
 impl Middleware for Arrow {
+    fn name(&self) -> &'static str {
+        "arrow"
+    }
+
     fn kind(&self) -> MiddlewareDataKind {
         MiddlewareDataKind::Arrow
     }
@@ -117,15 +121,9 @@ impl Middleware for Arrow {
             center_offset: center - offset,
         };
 
-        let data = MiddlewareData {
-            kind: self.kind(),
-            arrow: Some(arrow_data),
-            ..Default::default()
-        };
-
         MiddlewareReturn {
             coords: PartialCoords::new(axis, coords.axis(axis) - alignment_offset),
-            data,
+            data: MiddlewareData::Arrow(arrow_data),
             ..Default::default()
         }
     }

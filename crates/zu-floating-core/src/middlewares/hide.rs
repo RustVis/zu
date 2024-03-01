@@ -34,6 +34,10 @@ pub struct Hide {
 }
 
 impl Middleware for Hide {
+    fn name(&self) -> &'static str {
+        "hide"
+    }
+
     fn kind(&self) -> MiddlewareDataKind {
         MiddlewareDataKind::Hide
     }
@@ -63,13 +67,8 @@ impl Middleware for Hide {
             }
         };
 
-        let data = MiddlewareData {
-            kind: self.kind(),
-            hide: Some(hide_data),
-            ..Default::default()
-        };
         MiddlewareReturn {
-            data,
+            data: MiddlewareData::Hide(hide_data),
             ..Default::default()
         }
     }

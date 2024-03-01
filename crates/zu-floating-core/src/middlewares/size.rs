@@ -35,6 +35,10 @@ impl fmt::Debug for Size {
 }
 
 impl Middleware for Size {
+    fn name(&self) -> &'static str {
+        "size"
+    }
+
     fn kind(&self) -> MiddlewareDataKind {
         MiddlewareDataKind::Size
     }
@@ -90,7 +94,7 @@ impl Middleware for Size {
             (height - overflow.bottom - overflow.top).min(overflow_available_height)
         };
 
-        if state.middleware_data.shift.is_none() && alignment.is_none() {
+        if state.middleware_data.shift().is_none() && alignment.is_none() {
             let x_min = overflow.left.max(0.0);
             let x_max = overflow.right.max(0.0);
             let y_min = overflow.top.max(0.0);
@@ -116,22 +120,11 @@ impl Middleware for Size {
         }
 
         let next_dimensions: Dimensions = state.platform.dimensions(&state.elements.floating);
-
-        let size_opt = if width.approx_ne(next_dimensions.width, (0.0, 1))
-            || height.approx_ne(next_dimensions.height, (0.0, 1))
-        {
-            Some(true)
-        } else {
-            None
-        };
-        let data = MiddlewareData {
-            kind: self.kind(),
-            size: size_opt,
-            ..Default::default()
-        };
+        let size_opt = width.approx_ne(next_dimensions.width, (0.0, 1))
+            || height.approx_ne(next_dimensions.height, (0.0, 1));
 
         MiddlewareReturn {
-            data,
+            data: MiddlewareData::Size(size_opt),
             ..Default::default()
         }
     }
