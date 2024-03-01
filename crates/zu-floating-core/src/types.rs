@@ -3,10 +3,6 @@
 // can be found in the LICENSE file.
 
 use std::convert::Into;
-use std::fmt;
-use std::rc::Rc;
-
-use crate::traits::{AxisTrait, Element, LengthTrait, Middleware, Platform, SideTrait};
 
 #[derive(Debug, Default, Clone, Copy, Eq, PartialEq, Ord, PartialOrd)]
 pub enum Alignment {
@@ -572,116 +568,9 @@ impl PartialCoords {
 }
 
 #[derive(Debug, Default, Clone, PartialEq)]
-pub struct ArrowMiddlewareData {
-    pub coords: PartialCoords,
-    pub center_offset: f64,
-}
-
-#[derive(Debug, Default, Clone, PartialEq)]
 pub struct Overflow {
     pub placement: Placement,
     pub overflows: Vec<f64>,
-}
-
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct AutoPlacementMiddlewareData {
-    pub index: Option<usize>,
-    pub overflows: Vec<Overflow>,
-}
-
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct FlipMiddlewareData {
-    pub index: Option<usize>,
-    pub overflows: Vec<Overflow>,
-}
-
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct HideMiddlewareData {
-    pub reference_hidden: Option<bool>,
-    pub reference_hidden_offset: Option<SideObject>,
-    pub escaped: Option<bool>,
-    pub escaped_offsets: Option<SideObject>,
-}
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum MiddlewareDataKind {
-    Nil,
-
-    Arrow,
-    AutoPlacement,
-    Flip,
-    Hide,
-
-    Offset,
-    Shift,
-    Size,
-}
-
-impl Default for MiddlewareDataKind {
-    fn default() -> Self {
-        Self::Nil
-    }
-}
-
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct MiddlewareData {
-    pub kind: MiddlewareDataKind,
-
-    pub arrow: Option<ArrowMiddlewareData>,
-    pub auto_placement: Option<AutoPlacementMiddlewareData>,
-    pub flip: Option<FlipMiddlewareData>,
-    pub hide: Option<HideMiddlewareData>,
-
-    pub offset: Option<Coords>,
-    pub shift: Option<Coords>,
-    pub size: Option<bool>,
-}
-
-#[derive(Clone)]
-pub struct ComputePositionConfig {
-    pub platform: Rc<dyn Platform>,
-    pub placement: Placement,
-    pub strategy: Strategy,
-    pub middlewares: Vec<Rc<dyn Middleware>>,
-}
-
-impl fmt::Debug for ComputePositionConfig {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        f.debug_struct("ComputePositionConfig")
-            .field("platform", &self.platform)
-            .field("placement", &self.placement)
-            .field("strategy", &self.strategy)
-            .field("middlewares", &self.middlewares)
-            .finish()
-    }
-}
-
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct ComputePositionReturn {
-    pub coords: Coords,
-    pub placement: Placement,
-    pub strategy: Strategy,
-    pub middleware_data: MiddlewareData,
-}
-
-pub type ComputePosition = fn(
-    reference_element: &Rc<dyn Element>,
-    floating_element: &Rc<dyn Element>,
-    config: &ComputePositionConfig,
-) -> ComputePositionReturn;
-
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct MiddlewareReset {
-    pub flag: Option<bool>,
-    pub rects: Option<ElementRects>,
-    pub placement: Option<Placement>,
-}
-
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct MiddlewareReturn {
-    pub coords: PartialCoords,
-    pub data: MiddlewareData,
-    pub reset: MiddlewareReset,
 }
 
 impl LengthTrait for Dimensions {
@@ -755,6 +644,21 @@ impl LengthTrait for Rect {
     }
 }
 
+pub trait LengthTrait {
+    fn length(&self, length: Length) -> f64;
+    fn set_length(&mut self, length: Length, val: f64);
+}
+
+pub trait AxisTrait {
+    fn axis(&self, axis: Axis) -> f64;
+    fn set_axis(&mut self, axis: Axis, val: f64);
+}
+
+pub trait SideTrait {
+    fn side(&self, side: Side) -> f64;
+    fn set_side(&mut self, side: Side, val: f64);
+}
+
 impl AxisTrait for Rect {
     fn axis(&self, axis: Axis) -> f64 {
         match axis {
@@ -768,55 +672,6 @@ impl AxisTrait for Rect {
             Axis::X => self.x = val,
             Axis::Y => self.y = val,
         }
-    }
-}
-
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct ElementRects {
-    pub reference: Rect,
-    pub floating: Rect,
-}
-
-#[derive(Debug, Clone)]
-pub struct Elements {
-    pub reference: Rc<dyn Element>,
-    pub floating: Rc<dyn Element>,
-}
-
-impl Elements {
-    #[must_use]
-    pub fn element(&self, element_context: ElementContext) -> Rc<dyn Element> {
-        match element_context {
-            ElementContext::Reference => self.reference.clone(),
-            ElementContext::Floating => self.floating.clone(),
-        }
-    }
-}
-
-#[derive(Clone)]
-pub struct MiddlewareState {
-    pub coords: Coords,
-    pub initial_placement: Placement,
-    pub placement: Placement,
-    pub strategy: Strategy,
-    pub middleware_data: MiddlewareData,
-    pub elements: Elements,
-    pub rects: ElementRects,
-    pub platform: Rc<dyn Platform>,
-}
-
-impl fmt::Debug for MiddlewareState {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        f.debug_struct("MiddlewareState")
-            .field("coords", &self.coords)
-            .field("initial_placement", &self.initial_placement)
-            .field("placement", &self.placement)
-            .field("strategy", &self.strategy)
-            .field("middleware_data", &self.middleware_data)
-            .field("elements", &self.elements)
-            .field("rects", &self.rects)
-            .field("platform", &self.platform)
-            .finish()
     }
 }
 
@@ -896,28 +751,6 @@ pub enum RootBoundary {
 impl Default for RootBoundary {
     fn default() -> Self {
         Self::Viewport
-    }
-}
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum ElementContext {
-    Floating,
-    Reference,
-}
-
-impl Default for ElementContext {
-    fn default() -> Self {
-        Self::Floating
-    }
-}
-
-impl ElementContext {
-    #[must_use]
-    pub const fn alter(self) -> Self {
-        match self {
-            Self::Floating => Self::Reference,
-            Self::Reference => Self::Floating,
-        }
     }
 }
 

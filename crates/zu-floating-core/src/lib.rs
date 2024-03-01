@@ -12,9 +12,10 @@
 #![allow(clippy::module_name_repetitions)]
 
 // pub mod detect_overflow;
-// pub mod middleware;
-pub mod traits;
+// pub mod middlewares;
+pub mod middleware;
 pub mod types;
+pub mod vanilla;
 
 // mod compute_coords;
 // pub use compute_coords::compute_coords_from_placement;
