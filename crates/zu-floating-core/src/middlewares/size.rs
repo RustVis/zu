@@ -1,6 +1,12 @@
 // Copyright (c) 2023 Xu Shaohua <shaohua@biofan.org>. All rights reserved.
-// Use of this source is governed by Lesser General Public License that
-// can be found in the LICENSE file.
+// Use of this source is governed by Lesser General Public License that can be found
+// in the LICENSE file.
+
+//! Provides data to change the size of a floating element.
+//!
+//! This is useful to ensure the floating element isn’t too big to fit in the viewport
+//! (or more specifically, its clipping context), especially when a maximum size isn’t specified.
+//! It also allows matching the width/height of the reference element.
 
 use float_cmp::ApproxEq;
 use std::fmt;

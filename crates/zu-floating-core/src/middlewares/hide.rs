@@ -1,6 +1,11 @@
 // Copyright (c) 2023 Xu Shaohua <shaohua@biofan.org>. All rights reserved.
-// Use of this source is governed by Lesser General Public License that
-// can be found in the LICENSE file.
+// Use of this source is governed by Lesser General Public License that can be found
+// in the LICENSE file.
+
+//! A data provider that allows you to hide the floating element in applicable situations.
+//!
+//! This is useful for situations where you want to hide the floating element
+//! because it appears detached from the reference element (or attached to nothing).
 
 use crate::detect_overflow::{detect_overflow, DetectOverflowOption};
 use crate::middleware::{
@@ -15,8 +20,9 @@ pub struct HideOption {
 }
 
 /// The strategy used to determine when to hide the floating element.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum HideStrategy {
+    #[default]
     ReferenceHidden,
     Escaped,
 }

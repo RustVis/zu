@@ -1,6 +1,12 @@
 // Copyright (c) 2023 Xu Shaohua <shaohua@biofan.org>. All rights reserved.
-// Use of this source is governed by Lesser General Public License that
-// can be found in the LICENSE file.
+// Use of this source is governed by Lesser General Public License that can be found
+// in the LICENSE file.
+
+//! Provides positioning data for an arrow element (triangle or caret) inside the floating element,
+//! such that it appears to be pointing toward the center of the reference element.
+//!
+//! This is useful to add a visual cue to the floating element about which element
+//! it is referring to.
 
 use float_cmp::ApproxEq;
 use std::fmt;
@@ -16,7 +22,7 @@ use crate::types::{
 
 #[derive(Clone)]
 pub struct ArrowOption {
-    /// The arrow element to be positioned.
+    /// This is the arrow element to be positioned, which must be a child of the floating element.
     pub element: Rc<dyn Element>,
 
     /// The padding between the arrow element and the floating element edges.
