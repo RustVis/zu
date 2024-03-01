@@ -2,8 +2,8 @@
 // Use of this source is governed by Lesser General Public License that
 // can be found in the LICENSE file.
 
-use crate::traits::{AxisTrait, LengthTrait};
-use crate::types::{Alignment, Axis, Coords, ElementRects, Length, Placement, Side};
+use crate::middleware::ElementRects;
+use crate::types::{Alignment, Axis, AxisTrait, Coords, Length, LengthTrait, Placement, Side};
 
 #[must_use]
 pub fn compute_coords_from_placement(

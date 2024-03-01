@@ -11,13 +11,12 @@
 )]
 #![allow(clippy::module_name_repetitions)]
 
+mod compute_coords;
+pub use compute_coords::compute_coords_from_placement;
+mod compute_position;
+pub use compute_position::compute_position;
 pub mod detect_overflow;
 pub mod middleware;
 pub mod middlewares;
 pub mod types;
 pub mod vanilla;
-
-// mod compute_coords;
-// pub use compute_coords::compute_coords_from_placement;
-// mod compute_position;
-// pub use compute_position::compute_position;

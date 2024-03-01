@@ -8,28 +8,33 @@
 use crate::middleware::{Boundary, ElementContext, MiddlewareState, RootBoundary};
 use crate::types::{ClientRectObject, Padding, Rect, Scale, SideObject};
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Default, Clone)]
 pub struct DetectOverflowOption {
+    /// This describes the clipping element(s) or area that overflow will be checked relative to.
     pub boundary: Boundary,
-    pub root_boundary: RootBoundary,
-    pub element_context: ElementContext,
-    pub alt_boundary: bool,
-    pub padding: Padding,
-}
 
-impl Default for DetectOverflowOption {
-    fn default() -> Self {
-        Self {
-            boundary: Boundary::ClippingAncestors,
-            root_boundary: RootBoundary::Viewport,
-            element_context: ElementContext::Floating,
-            alt_boundary: false,
-            padding: Padding::default(),
-        }
-    }
+    /// This describes the root boundary that the element will be checked for overflow relative to.
+    pub root_boundary: RootBoundary,
+
+    /// This describes the virtual padding around the boundary to check for overflow.
+    pub padding: Padding,
+
+    /// By default, the floating element is the one being checked for overflow.
+    pub element_context: ElementContext,
+
+    /// This is a boolean value which determines whether to check the alternate
+    /// element context’s boundary.
+    ///
+    /// Default is `false`.
+    pub alt_boundary: bool,
 }
 
 #[must_use]
+/// A clipping container (or boundary) is one that causes child elements inside it to be clipped
+/// if they overflow it.
+///
+/// Visibility optimizer middleware use this function for collision detection, making it useful
+/// for your own custom middleware that do the same.
 pub fn detect_overflow(state: &MiddlewareState, option: &DetectOverflowOption) -> SideObject {
     let platform = &state.platform;
     let elements = &state.elements;

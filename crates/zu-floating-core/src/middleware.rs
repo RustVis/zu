@@ -12,20 +12,16 @@ use crate::types::{
 
 pub trait Element: fmt::Debug + LengthTrait {}
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum ElementContext {
+    #[default]
     Floating,
     Reference,
 }
 
-impl Default for ElementContext {
-    fn default() -> Self {
-        Self::Floating
-    }
-}
-
 impl ElementContext {
     #[must_use]
+    #[inline]
     pub const fn alter(self) -> Self {
         match self {
             Self::Floating => Self::Reference,
@@ -56,31 +52,21 @@ impl Elements {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Default, Clone)]
 pub enum Boundary {
+    #[default]
     ClippingAncestors,
     Element(Rc<dyn Element>),
     Elements(Vec<Rc<dyn Element>>),
     Rect(Rect),
 }
 
-impl Default for Boundary {
-    fn default() -> Self {
-        Self::ClippingAncestors
-    }
-}
-
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Default, Clone, PartialEq)]
 pub enum RootBoundary {
+    #[default]
     Viewport,
     Document,
     Rect(Rect),
-}
-
-impl Default for RootBoundary {
-    fn default() -> Self {
-        Self::Viewport
-    }
 }
 
 #[derive(Debug, Default, Clone, PartialEq)]

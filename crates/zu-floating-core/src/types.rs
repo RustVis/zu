@@ -437,8 +437,8 @@ pub struct Coords {
 impl Coords {
     #[must_use]
     #[inline]
-    pub const fn new(value: f64) -> Self {
-        Self { x: value, y: value }
+    pub const fn new(x: f64, y: f64) -> Self {
+        Self { x, y }
     }
 
     #[must_use]

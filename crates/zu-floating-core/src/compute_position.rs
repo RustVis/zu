@@ -4,10 +4,10 @@
 
 use std::rc::Rc;
 
-use crate::compute_coords_from_placement;
-use crate::traits::Element;
-use crate::types::{
-    ComputePositionConfig, ComputePositionReturn, Elements, MiddlewareData, MiddlewareState,
+use crate::compute_coords::compute_coords_from_placement;
+use crate::middleware::{
+    ComputePositionConfig, ComputePositionReturn, Element, Elements, MiddlewareData,
+    MiddlewareState,
 };
 
 #[must_use]
@@ -32,7 +32,7 @@ pub fn compute_position(
         reference: reference_element.clone(),
     };
 
-    for middleware in middlewares.iter() {
+    for middleware in middlewares {
         let mut state = MiddlewareState {
             coords: coords.clone(),
             initial_placement: placement,

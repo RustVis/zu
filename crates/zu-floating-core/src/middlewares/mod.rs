@@ -3,7 +3,8 @@
 // can be found in the LICENSE file.
 
 pub mod arrow;
+pub mod flip;
 pub mod hide;
-mod offset;
-mod shift;
+pub mod offset;
+pub mod shift;
 pub mod size;
