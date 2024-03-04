@@ -59,26 +59,26 @@ pub fn compute_position(
 
     let rtl = platform.is_rtl(floating_element);
     let element_rects = platform.element_rects(reference_element, floating_element, strategy);
-    let coords = compute_coords_from_placement(&element_rects, placement, rtl);
+    let mut coords = compute_coords_from_placement(&element_rects, placement, rtl);
     let stateful_placement = placement;
-    let middleware_data = MiddlewareData::default();
+    let mut middleware_data = MiddlewareData::default();
     let elements = &Elements {
         floating: floating_element.clone(),
         reference: reference_element.clone(),
     };
-    let mut state = MiddlewareState {
-        coords,
+    let state = MiddlewareState {
+        coords: &mut coords,
         initial_placement: placement,
         placement: stateful_placement,
         strategy,
-        middleware_data: &middleware_data,
+        middleware_data: &mut middleware_data,
         rects: &element_rects,
         platform,
         elements,
     };
 
     for middleware in middlewares {
-        let middleware_return = middleware.run(&state);
+        let mut middleware_return = middleware.run(&state);
         if let Some(x) = middleware_return.coords.x {
             state.coords.x = x;
         };
@@ -86,14 +86,13 @@ pub fn compute_position(
             state.coords.y = y;
         }
 
-        // TODO(Shaohua): Extend middleware_data
-        // middleware_data.extend(&middleware_return.data);
+        state.middleware_data.append(&mut middleware_return.data);
 
         // TODO(Shaohua): Reset
     }
 
     ComputePositionReturn {
-        coords: state.coords,
+        coords,
         strategy,
         placement: stateful_placement,
         middleware_data,

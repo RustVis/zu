@@ -72,6 +72,11 @@ impl MiddlewareData {
     pub fn insert(&mut self, name: &'static str, value: Box<dyn Any>) {
         self.0.insert(name, value);
     }
+
+    #[inline]
+    pub fn append(&mut self, other: &mut Self) {
+        self.0.append(&mut other.0);
+    }
 }
 
 #[derive(Debug, Default, Clone)]
@@ -99,13 +104,12 @@ impl MiddlewareReturn {
     }
 }
 
-#[derive(Clone)]
 pub struct MiddlewareState<'a> {
-    pub coords: Coords,
+    pub coords: &'a mut Coords,
     pub initial_placement: Placement,
     pub placement: Placement,
     pub strategy: Strategy,
-    pub middleware_data: &'a MiddlewareData,
+    pub middleware_data: &'a mut MiddlewareData,
     pub elements: &'a Elements,
     pub rects: &'a ElementRects,
     pub platform: &'a Rc<dyn Platform>,
