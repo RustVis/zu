@@ -9,6 +9,7 @@
 
 use crate::detect_overflow::{detect_overflow, DetectOverflowOption};
 use crate::middleware::{Middleware, MiddlewareData, MiddlewareReturn, MiddlewareState};
+use crate::platform::ElementContext;
 use crate::types::SideObject;
 
 #[derive(Debug, Default, Clone, PartialEq)]
@@ -27,11 +28,6 @@ impl HideMiddlewareData {
     }
 }
 
-#[derive(Debug, Clone)]
-pub struct HideOption {
-    pub strategy: HideStrategy,
-}
-
 /// The strategy used to determine when to hide the floating element.
 #[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum HideStrategy {
@@ -42,7 +38,7 @@ pub enum HideStrategy {
 
 #[derive(Debug, Clone)]
 pub struct Hide {
-    pub option: HideOption,
+    pub strategy: HideStrategy,
     pub detect_overflow_option: DetectOverflowOption,
 }
 
@@ -57,9 +53,15 @@ impl Middleware for Hide {
 
     fn run(&self, state: &MiddlewareState) -> MiddlewareReturn {
         let rects = &state.rects;
-        let hide_data = match self.option.strategy {
+        let hide_data = match self.strategy {
             HideStrategy::ReferenceHidden => {
-                let overflow: SideObject = detect_overflow(state, &self.detect_overflow_option);
+                let overflow: SideObject = detect_overflow(
+                    state,
+                    &DetectOverflowOption {
+                        element_context: ElementContext::Reference,
+                        ..self.detect_overflow_option.clone()
+                    },
+                );
                 let offsets: SideObject = overflow.offset(&rects.reference);
 
                 HideMiddlewareData {
@@ -69,7 +71,13 @@ impl Middleware for Hide {
                 }
             }
             HideStrategy::Escaped => {
-                let overflow = detect_overflow(state, &self.detect_overflow_option);
+                let overflow = detect_overflow(
+                    state,
+                    &DetectOverflowOption {
+                        alt_boundary: true,
+                        ..self.detect_overflow_option.clone()
+                    },
+                );
                 let offsets = overflow.offset(&rects.floating);
 
                 HideMiddlewareData {

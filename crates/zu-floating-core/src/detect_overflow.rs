@@ -30,6 +30,27 @@ pub struct DetectOverflowOption {
     pub alt_boundary: bool,
 }
 
+#[derive(Debug, Default, Clone)]
+pub struct PartialDetectOverflowOption {
+    /// This describes the clipping element(s) or area that overflow will be checked relative to.
+    pub boundary: Option<Boundary>,
+
+    /// This describes the root boundary that the element will be checked for overflow relative to.
+    pub root_boundary: Option<RootBoundary>,
+
+    /// This describes the virtual padding around the boundary to check for overflow.
+    pub padding: Option<Padding>,
+
+    /// By default, the floating element is the one being checked for overflow.
+    pub element_context: Option<ElementContext>,
+
+    /// This is a boolean value which determines whether to check the alternate
+    /// element context’s boundary.
+    ///
+    /// Default is `false`.
+    pub alt_boundary: Option<bool>,
+}
+
 #[must_use]
 /// A clipping container (or boundary) is one that causes child elements inside it to be clipped
 /// if they overflow it.
