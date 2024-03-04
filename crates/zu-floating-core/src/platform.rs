@@ -2,13 +2,17 @@
 // Use of this source is governed by Lesser General Public License that can be found
 // in the LICENSE file.
 
+use std::any::Any;
 use std::fmt;
 use std::rc::Rc;
 
 use crate::types::{ClientRectObject, Dimensions, LengthTrait, Rect, Scale, Strategy};
 
 // TODO(Shaohua): Simplify Element trait.
-pub trait Element: fmt::Debug + LengthTrait {}
+pub trait Element: fmt::Debug + LengthTrait {
+    /// This method is used to dynamic cast.
+    fn as_any(&self) -> &dyn Any;
+}
 
 #[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum ElementContext {
