@@ -6,7 +6,7 @@ use std::any::Any;
 use std::fmt;
 use std::rc::Rc;
 
-use crate::types::{ClientRectObject, Dimensions, LengthTrait, Rect, Scale, Strategy};
+use crate::types::{ClientRect, Dimensions, LengthTrait, Rect, Scale, Strategy};
 
 // TODO(Shaohua): Simplify Element trait.
 pub trait Element: fmt::Debug + LengthTrait {
@@ -14,6 +14,7 @@ pub trait Element: fmt::Debug + LengthTrait {
     fn as_any(&self) -> &dyn Any;
 }
 
+//  TODO(Shaohua): Remove Rc<> wrapper.
 pub type ElementRef<'a> = &'a Rc<dyn Element>;
 
 #[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
@@ -134,7 +135,7 @@ pub trait Platform: fmt::Debug {
     /// Returns an array of `ClientRects`.
     ///
     /// This method is optional.
-    fn client_rects(&self, _element: &Rc<dyn Element>) -> Option<Vec<ClientRectObject>> {
+    fn client_rects(&self, _element: &Rc<dyn Element>) -> Option<Vec<ClientRect>> {
         None
     }
 

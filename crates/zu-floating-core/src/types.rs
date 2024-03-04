@@ -615,6 +615,13 @@ impl Rect {
             left: self.x,
         }
     }
+
+    #[must_use]
+    #[inline]
+    pub fn client_rect(self) -> ClientRect {
+        let side = self.side_object();
+        ClientRect { rect: self, side }
+    }
 }
 
 impl LengthTrait for Rect {
@@ -650,15 +657,14 @@ impl AxisTrait for Rect {
 }
 
 #[derive(Debug, Default, Clone, PartialEq)]
-pub struct ClientRectObject {
+pub struct ClientRect {
     pub rect: Rect,
     pub side: SideObject,
 }
 
-impl From<Rect> for ClientRectObject {
+impl From<Rect> for ClientRect {
     fn from(rect: Rect) -> Self {
-        let side = rect.side_object();
-        Self { rect, side }
+        rect.client_rect()
     }
 }
 

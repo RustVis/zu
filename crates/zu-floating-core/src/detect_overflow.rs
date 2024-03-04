@@ -7,7 +7,7 @@
 
 use crate::middleware::MiddlewareState;
 use crate::platform::{Boundary, ElementContext, RootBoundary};
-use crate::types::{ClientRectObject, Padding, Rect, Scale, SideObject};
+use crate::types::{ClientRect, Padding, Rect, Scale, SideObject};
 
 #[derive(Debug, Default, Clone)]
 pub struct DetectOverflowOption {
@@ -51,7 +51,7 @@ pub fn detect_overflow(state: &MiddlewareState, option: &DetectOverflowOption) -
         elements.element(element_context)
     };
 
-    let clipping_client_rect: ClientRectObject = {
+    let clipping_client_rect: ClientRect = {
         // TODO(Shaohua): Call platform.is_element()
         let clipping_rect: Rect = platform.clipping_rect(
             &element,
@@ -82,7 +82,7 @@ pub fn detect_overflow(state: &MiddlewareState, option: &DetectOverflowOption) -
             platform.scale(offset_parent)
         });
 
-    let element_client_rect: ClientRectObject =
+    let element_client_rect: ClientRect =
         offset_parent
             .as_ref()
             .map_or(rect.clone().into(), |offset_parent| {
