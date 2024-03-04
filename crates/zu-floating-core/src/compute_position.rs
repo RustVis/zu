@@ -42,6 +42,10 @@ pub type ComputePosition = fn(
     config: &ComputePositionConfig,
 ) -> ComputePositionReturn;
 
+/// Computes the `x` and `y` coordinates that will place the floating element
+/// next to a given reference element.
+///
+/// This export does not have any `platform` interface logic.
 #[must_use]
 pub fn compute_position(
     reference_element: &Rc<dyn Element>,

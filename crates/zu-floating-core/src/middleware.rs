@@ -2,38 +2,16 @@
 // Use of this source is governed by Lesser General Public License that can be found
 // in the LICENSE file.
 
+use std::any::Any;
+use std::collections::BTreeMap;
 use std::fmt;
+use std::fmt::Formatter;
 use std::rc::Rc;
 
 use crate::platform::{ElementRects, Elements, Platform};
-use crate::types::{Coords, Overflow, PartialCoords, Placement, SideObject, Strategy};
+use crate::types::{Coords, PartialCoords, Placement, Strategy};
 
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct ArrowMiddlewareData {
-    pub coords: PartialCoords,
-    pub center_offset: f64,
-}
-
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct AutoPlacementMiddlewareData {
-    pub index: Option<usize>,
-    pub overflows: Vec<Overflow>,
-}
-
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct FlipMiddlewareData {
-    pub index: Option<usize>,
-    pub overflows: Vec<Overflow>,
-}
-
-#[derive(Debug, Default, Clone, PartialEq)]
-pub struct HideMiddlewareData {
-    pub reference_hidden: Option<bool>,
-    pub reference_hidden_offset: Option<SideObject>,
-    pub escaped: Option<bool>,
-    pub escaped_offsets: Option<SideObject>,
-}
-
+// TODO(Shaohua): Remove data kind.
 #[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum MiddlewareDataKind {
     #[default]
@@ -44,6 +22,7 @@ pub enum MiddlewareDataKind {
     Flip,
     Hide,
 
+    Inline,
     Offset,
     Shift,
     Size,
@@ -51,96 +30,47 @@ pub enum MiddlewareDataKind {
     Custom,
 }
 
-pub trait CustomMiddlewareData: fmt::Debug {}
+pub trait MiddlewareDataValue: fmt::Debug {}
 
-#[derive(Debug, Default, Clone)]
-pub enum MiddlewareData {
-    #[default]
-    Nil,
+pub struct MiddlewareData(BTreeMap<&'static str, Box<dyn Any>>);
 
-    Arrow(ArrowMiddlewareData),
-    AutoPlacement(AutoPlacementMiddlewareData),
-    Flip(FlipMiddlewareData),
-    Hide(HideMiddlewareData),
+impl Default for MiddlewareData {
+    fn default() -> Self {
+        Self::new()
+    }
+}
 
-    Offset(Coords),
-    Shift(Coords),
-    Size(bool),
-
-    Custom(Rc<dyn CustomMiddlewareData>),
+impl fmt::Debug for MiddlewareData {
+    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
+        f.debug_struct("MiddlewareData")
+            .field("keys", &self.0.keys())
+            .finish()
+    }
 }
 
 impl MiddlewareData {
     #[must_use]
     #[inline]
-    pub const fn arrow(&self) -> Option<&ArrowMiddlewareData> {
-        match self {
-            Self::Arrow(arrow) => Some(arrow),
-            _ => None,
-        }
+    pub fn new() -> Self {
+        Self(BTreeMap::new())
+    }
+
+    #[inline]
+    pub fn with_value(name: &'static str, value: Box<dyn Any>) -> Self {
+        let mut this = Self(BTreeMap::new());
+        this.0.insert(name, value);
+        this
     }
 
     #[must_use]
     #[inline]
-    pub const fn auto_placement(&self) -> Option<&AutoPlacementMiddlewareData> {
-        match self {
-            Self::AutoPlacement(opt) => Some(opt),
-            _ => None,
-        }
+    pub fn get(&self, name: &'static str) -> Option<&Box<dyn Any>> {
+        self.0.get(name)
     }
 
-    #[must_use]
     #[inline]
-    pub const fn flip(&self) -> Option<&FlipMiddlewareData> {
-        match self {
-            Self::Flip(flip) => Some(flip),
-            _ => None,
-        }
-    }
-
-    #[must_use]
-    #[inline]
-    pub const fn hide(&self) -> Option<&HideMiddlewareData> {
-        match self {
-            Self::Hide(hide) => Some(hide),
-            _ => None,
-        }
-    }
-
-    #[must_use]
-    #[inline]
-    pub const fn offset(&self) -> Option<&Coords> {
-        match self {
-            Self::Offset(coords) => Some(coords),
-            _ => None,
-        }
-    }
-
-    #[must_use]
-    #[inline]
-    pub const fn shift(&self) -> Option<&Coords> {
-        match self {
-            Self::Shift(coords) => Some(coords),
-            _ => None,
-        }
-    }
-
-    #[must_use]
-    #[inline]
-    pub const fn size(&self) -> Option<bool> {
-        match self {
-            Self::Size(size_opt) => Some(*size_opt),
-            _ => None,
-        }
-    }
-
-    #[must_use]
-    #[inline]
-    pub const fn custom(&self, _name: &'static str) -> Option<&Rc<dyn CustomMiddlewareData>> {
-        match self {
-            Self::Custom(custom) => Some(custom),
-            _ => None,
-        }
+    pub fn insert(&mut self, name: &'static str, value: Box<dyn Any>) {
+        self.0.insert(name, value);
     }
 }
 
@@ -151,11 +81,22 @@ pub struct MiddlewareReset {
     pub placement: Option<Placement>,
 }
 
-#[derive(Debug, Default, Clone)]
+#[derive(Debug, Default)]
 pub struct MiddlewareReturn {
     pub coords: PartialCoords,
     pub data: MiddlewareData,
     pub reset: MiddlewareReset,
+}
+
+impl MiddlewareReturn {
+    #[must_use]
+    #[inline]
+    pub fn from_data(data: MiddlewareData) -> Self {
+        Self {
+            data,
+            ..Self::default()
+        }
+    }
 }
 
 #[derive(Clone)]
@@ -186,7 +127,7 @@ impl<'a> fmt::Debug for MiddlewareState<'a> {
 }
 
 pub trait Middleware: fmt::Debug {
-    fn name(&self) -> &'static str;
+    fn name(&self) -> &str;
 
     fn kind(&self) -> MiddlewareDataKind;
 

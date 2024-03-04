@@ -9,10 +9,25 @@
 
 use crate::detect_overflow::{detect_overflow, DetectOverflowOption};
 use crate::middleware::{
-    HideMiddlewareData, Middleware, MiddlewareData, MiddlewareDataKind, MiddlewareReturn,
-    MiddlewareState,
+    Middleware, MiddlewareData, MiddlewareDataKind, MiddlewareReturn, MiddlewareState,
 };
 use crate::types::SideObject;
+
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct HideMiddlewareData {
+    pub reference_hidden: Option<bool>,
+    pub reference_hidden_offset: Option<SideObject>,
+    pub escaped: Option<bool>,
+    pub escaped_offsets: Option<SideObject>,
+}
+
+impl HideMiddlewareData {
+    #[must_use]
+    #[inline]
+    pub fn from(data: &MiddlewareData) -> Option<&Self> {
+        data.get(Hide::NAME).map(|boxed| boxed.downcast_ref())?
+    }
+}
 
 #[derive(Debug, Clone)]
 pub struct HideOption {
@@ -33,9 +48,13 @@ pub struct Hide {
     pub detect_overflow_option: DetectOverflowOption,
 }
 
+impl Hide {
+    pub const NAME: &'static str = "hide";
+}
+
 impl Middleware for Hide {
-    fn name(&self) -> &'static str {
-        "hide"
+    fn name(&self) -> &str {
+        Self::NAME
     }
 
     fn kind(&self) -> MiddlewareDataKind {
@@ -67,9 +86,7 @@ impl Middleware for Hide {
             }
         };
 
-        MiddlewareReturn {
-            data: MiddlewareData::Hide(hide_data),
-            ..Default::default()
-        }
+        let data = MiddlewareData::with_value(Self::NAME, Box::new(hide_data));
+        MiddlewareReturn::from_data(data)
     }
 }

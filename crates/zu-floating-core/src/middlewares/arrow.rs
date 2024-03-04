@@ -13,13 +13,26 @@ use std::fmt;
 use std::rc::Rc;
 
 use crate::middleware::{
-    ArrowMiddlewareData, Middleware, MiddlewareData, MiddlewareDataKind, MiddlewareReturn,
-    MiddlewareState,
+    Middleware, MiddlewareData, MiddlewareDataKind, MiddlewareReturn, MiddlewareState,
 };
 use crate::platform::Element;
 use crate::types::{
     Axis, AxisTrait, Length, LengthTrait, Padding, PartialCoords, Side, SideObject, SideTrait,
 };
+
+#[derive(Debug, Default, Clone, PartialEq)]
+pub struct ArrowMiddlewareData {
+    pub coords: PartialCoords,
+    pub center_offset: f64,
+}
+
+impl ArrowMiddlewareData {
+    #[must_use]
+    #[inline]
+    pub fn from(data: &MiddlewareData) -> Option<&Self> {
+        data.get(Arrow::NAME).map(|boxed| boxed.downcast_ref())?
+    }
+}
 
 #[derive(Clone)]
 pub struct ArrowOption {
@@ -46,9 +59,13 @@ pub struct Arrow {
     pub option: ArrowOption,
 }
 
+impl Arrow {
+    pub const NAME: &'static str = "arrow";
+}
+
 impl Middleware for Arrow {
-    fn name(&self) -> &'static str {
-        "arrow"
+    fn name(&self) -> &str {
+        Self::NAME
     }
 
     fn kind(&self) -> MiddlewareDataKind {
@@ -116,14 +133,14 @@ impl Middleware for Arrow {
             0.0
         };
 
-        let arrow_data = ArrowMiddlewareData {
+        let arrow_data = Box::new(ArrowMiddlewareData {
             coords: PartialCoords::new(axis, offset),
             center_offset: center - offset,
-        };
-
+        });
+        let data = MiddlewareData::with_value(Self::NAME, arrow_data);
         MiddlewareReturn {
             coords: PartialCoords::new(axis, coords.axis(axis) - alignment_offset),
-            data: MiddlewareData::Arrow(arrow_data),
+            data,
             ..Default::default()
         }
     }

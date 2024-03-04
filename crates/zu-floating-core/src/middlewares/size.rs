@@ -16,7 +16,21 @@ use crate::detect_overflow::{detect_overflow, DetectOverflowOption};
 use crate::middleware::{
     Middleware, MiddlewareData, MiddlewareDataKind, MiddlewareReturn, MiddlewareState,
 };
+use crate::middlewares::shift::ShiftMiddlewareData;
 use crate::types::{Alignment, Axis, Dimensions, Rect, Side, SideTrait};
+
+#[derive(Debug, Default, Clone, PartialEq, Eq)]
+pub struct SizeMiddlewareData {
+    pub size_opt: bool,
+}
+
+impl SizeMiddlewareData {
+    #[must_use]
+    #[inline]
+    pub fn from(data: &MiddlewareData) -> Option<&Self> {
+        data.get(Size::NAME).map(|boxed| boxed.downcast_ref())?
+    }
+}
 
 pub trait SizeOptionTrait {
     // TODO(Shaohua): Returns new coords.
@@ -35,9 +49,13 @@ impl fmt::Debug for Size {
     }
 }
 
+impl Size {
+    pub const NAME: &'static str = "size";
+}
+
 impl Middleware for Size {
-    fn name(&self) -> &'static str {
-        "size"
+    fn name(&self) -> &str {
+        Self::NAME
     }
 
     fn kind(&self) -> MiddlewareDataKind {
@@ -95,7 +113,7 @@ impl Middleware for Size {
             (height - overflow.bottom - overflow.top).min(overflow_available_height)
         };
 
-        if state.middleware_data.shift().is_none() && alignment.is_none() {
+        if ShiftMiddlewareData::from(state.middleware_data).is_none() && alignment.is_none() {
             let x_min = overflow.left.max(0.0);
             let x_max = overflow.right.max(0.0);
             let y_min = overflow.top.max(0.0);
@@ -124,9 +142,8 @@ impl Middleware for Size {
         let size_opt = width.approx_ne(next_dimensions.width, (0.0, 1))
             || height.approx_ne(next_dimensions.height, (0.0, 1));
 
-        MiddlewareReturn {
-            data: MiddlewareData::Size(size_opt),
-            ..Default::default()
-        }
+        let boxed_size_data = Box::new(SizeMiddlewareData { size_opt });
+        let data = MiddlewareData::with_value(Self::NAME, boxed_size_data);
+        MiddlewareReturn::from_data(data)
     }
 }
