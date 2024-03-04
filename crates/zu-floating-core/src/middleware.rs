@@ -80,9 +80,17 @@ impl MiddlewareData {
 }
 
 #[derive(Debug, Default, Clone)]
+pub enum MiddlewareResetRects {
+    #[default]
+    Nil,
+    FromPlatform,
+    Value(ElementRects),
+}
+
+#[derive(Debug, Default, Clone)]
 pub struct MiddlewareReset {
-    pub reset: bool,
-    pub rects: Option<ElementRects>,
+    pub is_on: bool,
+    pub rects: MiddlewareResetRects,
     pub placement: Option<Placement>,
 }
 
@@ -105,11 +113,11 @@ impl MiddlewareReturn {
 }
 
 pub struct MiddlewareState<'a> {
-    pub coords: &'a mut Coords,
+    pub coords: &'a Coords,
     pub initial_placement: Placement,
     pub placement: Placement,
     pub strategy: Strategy,
-    pub middleware_data: &'a mut MiddlewareData,
+    pub middleware_data: &'a MiddlewareData,
     pub elements: &'a Elements,
     pub rects: &'a ElementRects,
     pub platform: &'a Rc<dyn Platform>,

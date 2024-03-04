@@ -6,9 +6,13 @@ use std::fmt;
 use std::rc::Rc;
 
 use crate::compute_coords::compute_coords_from_placement;
-use crate::middleware::{Middleware, MiddlewareData, MiddlewareState};
+use crate::middleware::{
+    Middleware, MiddlewareData, MiddlewareResetRects, MiddlewareReturn, MiddlewareState,
+};
 use crate::platform::{Element, Elements, Platform};
 use crate::types::{Coords, Placement, Strategy};
+
+const MAX_RESET_COUNT: usize = 50;
 
 pub struct ComputePositionConfig {
     pub platform: Rc<dyn Platform>,
@@ -47,6 +51,7 @@ pub type ComputePosition = fn(
 ///
 /// This export does not have any `platform` interface logic.
 #[must_use]
+#[allow(clippy::missing_panics_doc)]
 pub fn compute_position(
     reference_element: &Rc<dyn Element>,
     floating_element: &Rc<dyn Element>,
@@ -58,37 +63,63 @@ pub fn compute_position(
     let middlewares = &config.middlewares;
 
     let rtl = platform.is_rtl(floating_element);
-    let element_rects = platform.element_rects(reference_element, floating_element, strategy);
+    let mut element_rects = platform.element_rects(reference_element, floating_element, strategy);
     let mut coords = compute_coords_from_placement(&element_rects, placement, rtl);
-    let stateful_placement = placement;
+    let mut stateful_placement = placement;
     let mut middleware_data = MiddlewareData::default();
     let elements = &Elements {
         floating: floating_element.clone(),
         reference: reference_element.clone(),
     };
-    let state = MiddlewareState {
-        coords: &mut coords,
-        initial_placement: placement,
-        placement: stateful_placement,
-        strategy,
-        middleware_data: &mut middleware_data,
-        rects: &element_rects,
-        platform,
-        elements,
-    };
+    let mut reset_count = 0;
+    let mut index = 0;
+    while index < middlewares.len() {
+        let middleware = middlewares.get(index).unwrap();
+        let state = MiddlewareState {
+            coords: &coords,
+            initial_placement: placement,
+            placement: stateful_placement,
+            strategy,
+            middleware_data: &middleware_data,
+            rects: &element_rects,
+            platform,
+            elements,
+        };
 
-    for middleware in middlewares {
-        let mut middleware_return = middleware.run(&state);
+        let mut middleware_return: MiddlewareReturn = middleware.run(&state);
+
+        // Merge new coordinates.
         if let Some(x) = middleware_return.coords.x {
-            state.coords.x = x;
+            coords.x = x;
         };
         if let Some(y) = middleware_return.coords.y {
-            state.coords.y = y;
+            coords.y = y;
         }
 
-        state.middleware_data.append(&mut middleware_return.data);
+        // Merge middleware data.
+        middleware_data.append(&mut middleware_return.data);
 
-        // TODO(Shaohua): Reset
+        // Check reset state
+        if middleware_return.reset.is_on && reset_count <= MAX_RESET_COUNT {
+            reset_count += 1;
+            index = 0;
+
+            if let Some(placement) = middleware_return.reset.placement {
+                stateful_placement = placement;
+            }
+
+            element_rects = match middleware_return.reset.rects {
+                MiddlewareResetRects::Nil => element_rects,
+                MiddlewareResetRects::FromPlatform => {
+                    platform.element_rects(reference_element, floating_element, strategy)
+                }
+                MiddlewareResetRects::Value(new_rects) => new_rects,
+            };
+
+            coords = compute_coords_from_placement(&element_rects, stateful_placement, rtl);
+        } else {
+            index += 1;
+        }
     }
 
     ComputePositionReturn {
