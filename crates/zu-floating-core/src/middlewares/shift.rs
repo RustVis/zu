@@ -7,9 +7,7 @@
 //! This prevents the floating element from overflowing along its axis of alignment,
 //! thereby preserving the side it’s placed on.
 
-use crate::middleware::{
-    Middleware, MiddlewareData, MiddlewareDataKind, MiddlewareReturn, MiddlewareState,
-};
+use crate::middleware::{Middleware, MiddlewareData, MiddlewareReturn, MiddlewareState};
 use crate::types::Coords;
 
 #[derive(Debug, Default, Clone, PartialEq)]
@@ -37,10 +35,6 @@ impl Shift {
 impl Middleware for Shift {
     fn name(&self) -> &str {
         Self::NAME
-    }
-
-    fn kind(&self) -> MiddlewareDataKind {
-        MiddlewareDataKind::Shift
     }
 
     fn run(&self, _state: &MiddlewareState) -> MiddlewareReturn {

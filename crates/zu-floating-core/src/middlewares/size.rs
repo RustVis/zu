@@ -13,9 +13,7 @@ use std::fmt;
 use std::fmt::Formatter;
 
 use crate::detect_overflow::{detect_overflow, DetectOverflowOption};
-use crate::middleware::{
-    Middleware, MiddlewareData, MiddlewareDataKind, MiddlewareReturn, MiddlewareState,
-};
+use crate::middleware::{Middleware, MiddlewareData, MiddlewareReturn, MiddlewareState};
 use crate::middlewares::shift::ShiftMiddlewareData;
 use crate::types::{Alignment, Axis, Dimensions, Rect, Side, SideTrait};
 
@@ -56,10 +54,6 @@ impl Size {
 impl Middleware for Size {
     fn name(&self) -> &str {
         Self::NAME
-    }
-
-    fn kind(&self) -> MiddlewareDataKind {
-        MiddlewareDataKind::Size
     }
 
     fn run(&self, state: &MiddlewareState) -> MiddlewareReturn {

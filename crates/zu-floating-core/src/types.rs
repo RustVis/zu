@@ -510,6 +510,7 @@ impl SideObject {
         }
     }
 
+    /// Get side offsets.
     #[must_use]
     pub fn offset(&self, rect: &Rect) -> Self {
         Self {

@@ -7,9 +7,7 @@
 //! This lets you add distance (margin or spacing) between the reference and floating element,
 //! slightly alter the placement, or even create custom placements.
 
-use crate::middleware::{
-    Middleware, MiddlewareData, MiddlewareDataKind, MiddlewareReturn, MiddlewareState,
-};
+use crate::middleware::{Middleware, MiddlewareData, MiddlewareReturn, MiddlewareState};
 use crate::types::Coords;
 
 #[derive(Debug, Default, Clone, PartialEq)]
@@ -37,10 +35,6 @@ impl Offset {
 impl Middleware for Offset {
     fn name(&self) -> &str {
         Self::NAME
-    }
-
-    fn kind(&self) -> MiddlewareDataKind {
-        MiddlewareDataKind::Offset
     }
 
     fn run(&self, _state: &MiddlewareState) -> MiddlewareReturn {

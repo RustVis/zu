@@ -12,9 +12,7 @@ use float_cmp::ApproxEq;
 use std::fmt;
 use std::rc::Rc;
 
-use crate::middleware::{
-    Middleware, MiddlewareData, MiddlewareDataKind, MiddlewareReturn, MiddlewareState,
-};
+use crate::middleware::{Middleware, MiddlewareData, MiddlewareReturn, MiddlewareState};
 use crate::platform::Element;
 use crate::types::{
     Axis, AxisTrait, Length, LengthTrait, Padding, PartialCoords, Side, SideObject, SideTrait,
@@ -66,10 +64,6 @@ impl Arrow {
 impl Middleware for Arrow {
     fn name(&self) -> &str {
         Self::NAME
-    }
-
-    fn kind(&self) -> MiddlewareDataKind {
-        MiddlewareDataKind::Arrow
     }
 
     fn run(&self, state: &MiddlewareState) -> MiddlewareReturn {

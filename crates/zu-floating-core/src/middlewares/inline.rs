@@ -4,7 +4,7 @@
 
 //! Improves positioning for inline reference elements that span over multiple lines.
 
-use crate::middleware::{Middleware, MiddlewareDataKind, MiddlewareReturn, MiddlewareState};
+use crate::middleware::{Middleware, MiddlewareReturn, MiddlewareState};
 
 #[derive(Debug, Clone)]
 pub struct Inline {
@@ -18,10 +18,6 @@ impl Inline {
 impl Middleware for Inline {
     fn name(&self) -> &str {
         Self::NAME
-    }
-
-    fn kind(&self) -> MiddlewareDataKind {
-        MiddlewareDataKind::Inline
     }
 
     fn run(&self, _state: &MiddlewareState) -> MiddlewareReturn {

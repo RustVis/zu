@@ -8,9 +8,7 @@
 //! because it appears detached from the reference element (or attached to nothing).
 
 use crate::detect_overflow::{detect_overflow, DetectOverflowOption};
-use crate::middleware::{
-    Middleware, MiddlewareData, MiddlewareDataKind, MiddlewareReturn, MiddlewareState,
-};
+use crate::middleware::{Middleware, MiddlewareData, MiddlewareReturn, MiddlewareState};
 use crate::types::SideObject;
 
 #[derive(Debug, Default, Clone, PartialEq)]
@@ -55,10 +53,6 @@ impl Hide {
 impl Middleware for Hide {
     fn name(&self) -> &str {
         Self::NAME
-    }
-
-    fn kind(&self) -> MiddlewareDataKind {
-        MiddlewareDataKind::Hide
     }
 
     fn run(&self, state: &MiddlewareState) -> MiddlewareReturn {

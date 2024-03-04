@@ -7,9 +7,7 @@
 //! This prevents the floating element from overflowing along its side axis
 //! by flipping it to the opposite side by default.
 
-use crate::middleware::{
-    Middleware, MiddlewareData, MiddlewareDataKind, MiddlewareReturn, MiddlewareState,
-};
+use crate::middleware::{Middleware, MiddlewareData, MiddlewareReturn, MiddlewareState};
 use crate::types::Overflow;
 
 #[derive(Debug, Default, Clone, PartialEq)]
@@ -38,10 +36,6 @@ impl Flip {
 impl Middleware for Flip {
     fn name(&self) -> &str {
         Self::NAME
-    }
-
-    fn kind(&self) -> MiddlewareDataKind {
-        MiddlewareDataKind::Flip
     }
 
     fn run(&self, _state: &MiddlewareState) -> MiddlewareReturn {

@@ -11,25 +11,6 @@ use std::rc::Rc;
 use crate::platform::{ElementRects, Elements, Platform};
 use crate::types::{Coords, PartialCoords, Placement, Strategy};
 
-// TODO(Shaohua): Remove data kind.
-#[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
-pub enum MiddlewareDataKind {
-    #[default]
-    Nil,
-
-    Arrow,
-    AutoPlacement,
-    Flip,
-    Hide,
-
-    Inline,
-    Offset,
-    Shift,
-    Size,
-
-    Custom,
-}
-
 pub trait MiddlewareDataValue: fmt::Debug {}
 
 pub struct MiddlewareData(BTreeMap<&'static str, Box<dyn Any>>);
@@ -140,8 +121,6 @@ impl<'a> fmt::Debug for MiddlewareState<'a> {
 
 pub trait Middleware: fmt::Debug {
     fn name(&self) -> &str;
-
-    fn kind(&self) -> MiddlewareDataKind;
 
     fn run(&self, state: &MiddlewareState) -> MiddlewareReturn;
 }

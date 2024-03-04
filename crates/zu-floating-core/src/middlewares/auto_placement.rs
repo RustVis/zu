@@ -4,9 +4,7 @@
 
 //! Chooses the placement that has the most space available automatically.
 
-use crate::middleware::{
-    Middleware, MiddlewareData, MiddlewareDataKind, MiddlewareReturn, MiddlewareState,
-};
+use crate::middleware::{Middleware, MiddlewareData, MiddlewareReturn, MiddlewareState};
 use crate::types::Overflow;
 
 #[derive(Debug, Default, Clone, PartialEq)]
@@ -36,10 +34,6 @@ impl AutoPlacement {
 impl Middleware for AutoPlacement {
     fn name(&self) -> &str {
         Self::NAME
-    }
-
-    fn kind(&self) -> MiddlewareDataKind {
-        MiddlewareDataKind::AutoPlacement
     }
 
     fn run(&self, _state: &MiddlewareState) -> MiddlewareReturn {
