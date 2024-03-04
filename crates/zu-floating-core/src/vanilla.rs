@@ -5,6 +5,7 @@
 //! This module is designed for unittest only.
 
 use std::any::Any;
+use std::cell::RefCell;
 use std::collections::BTreeMap;
 use std::rc::Rc;
 
@@ -43,7 +44,7 @@ impl Element for VanillaElement {
 
 #[derive(Debug)]
 pub struct VanillaPlatform {
-    elements: BTreeMap<VanillaElementId, Rc<VanillaElement>>,
+    elements: BTreeMap<VanillaElementId, Rc<RefCell<VanillaElement>>>,
     viewport: Rect,
 }
 
@@ -62,7 +63,7 @@ impl VanillaPlatform {
         let mut elements = BTreeMap::new();
         elements.insert(
             REF_ELEMENT_ID,
-            Rc::new(VanillaElement {
+            Rc::new(RefCell::new(VanillaElement {
                 id: REF_ELEMENT_ID,
                 rect: Rect {
                     x: 0.0,
@@ -70,11 +71,11 @@ impl VanillaPlatform {
                     width: 80.0,
                     height: 80.0,
                 },
-            }),
+            })),
         );
         elements.insert(
             FLOATING_ELEMENT_ID,
-            Rc::new(VanillaElement {
+            Rc::new(RefCell::new(VanillaElement {
                 id: FLOATING_ELEMENT_ID,
                 rect: Rect {
                     x: 0.0,
@@ -82,7 +83,7 @@ impl VanillaPlatform {
                     width: 50.0,
                     height: 50.0,
                 },
-            }),
+            })),
         );
         Self {
             elements,
@@ -94,6 +95,16 @@ impl VanillaPlatform {
             },
         }
     }
+
+    // #[must_use]
+    // pub fn floating_element(&self) -> &Rc<dyn Element> {
+    //     self.elements.get(&FLOATING_ELEMENT_ID).unwrap()
+    // }
+    //
+    // #[must_use]
+    // pub fn reference_element(&self) -> &Rc<dyn Element> {
+    //     self.elements.get(&REF_ELEMENT_ID).unwrap()
+    // }
 }
 
 impl Platform for VanillaPlatform {

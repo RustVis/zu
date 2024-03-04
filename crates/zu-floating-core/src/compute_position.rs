@@ -129,3 +129,128 @@ pub fn compute_position(
         middleware_data,
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use std::rc::Rc;
+
+    use crate::compute_position::{compute_position, ComputePositionConfig};
+    use crate::middleware::{Middleware, MiddlewareData, MiddlewareReturn, MiddlewareState};
+    use crate::types::{PartialCoords, Placement, Strategy};
+    use crate::vanilla::VanillaPlatform;
+
+    #[test]
+    fn test_returned_data() {
+        #[derive(Debug)]
+        struct CustomMiddlewareData {
+            pub property: bool,
+        }
+
+        #[derive(Debug)]
+        struct CustomMiddleware {}
+
+        impl CustomMiddleware {
+            pub const NAME: &'static str = "custom";
+
+            #[must_use]
+            pub fn new() -> Self {
+                Self {}
+            }
+        }
+
+        impl Middleware for CustomMiddleware {
+            fn name(&self) -> &str {
+                Self::NAME
+            }
+
+            fn run(&self, _state: &MiddlewareState) -> MiddlewareReturn {
+                let prop = Box::new(CustomMiddlewareData { property: true });
+                let data = MiddlewareData::with_value(Self::NAME, prop);
+                MiddlewareReturn {
+                    data,
+                    ..Default::default()
+                }
+            }
+        }
+
+        let platform = Rc::new(VanillaPlatform::new());
+        let reference_element = platform.reference_element();
+        let floating_element = platform.floating_element();
+        let config = ComputePositionConfig {
+            platform: platform.clone(),
+            placement: Placement::Top,
+            strategy: Strategy::default(),
+            middlewares: vec![Box::new(CustomMiddleware::new())],
+        };
+        let returned_data = compute_position(reference_element, floating_element, &config);
+        assert_eq!(returned_data.placement, Placement::Top);
+        assert_eq!(returned_data.strategy, Strategy::Absolute);
+        assert_eq!(returned_data.coords.x, 25.0);
+        assert_eq!(returned_data.coords.y, 25.0);
+        let custom_data = returned_data.middleware_data.get(CustomMiddleware::NAME);
+        assert!(custom_data.is_some());
+        let custom_data = custom_data.unwrap();
+        if let Some(custom_data) = custom_data.downcast_ref::<CustomMiddlewareData>() {
+            assert_eq!(custom_data.property, true);
+        }
+    }
+
+    #[test]
+    fn test_middleware() {
+        #[derive(Debug)]
+        struct TestMiddlewareData {
+            pub hello: bool,
+        }
+
+        #[derive(Debug)]
+        struct TestMiddleware {}
+
+        impl TestMiddleware {
+            pub const NAME: &'static str = "test";
+
+            #[must_use]
+            pub fn new() -> Self {
+                Self {}
+            }
+        }
+
+        impl Middleware for TestMiddleware {
+            fn name(&self) -> &str {
+                Self::NAME
+            }
+
+            fn run(&self, state: &MiddlewareState) -> MiddlewareReturn {
+                let prop = Box::new(TestMiddlewareData { hello: true });
+                let data = MiddlewareData::with_value(Self::NAME, prop);
+                MiddlewareReturn {
+                    coords: PartialCoords {
+                        x: Some(state.coords.x + 1.0),
+                        y: Some(state.coords.y + 1.0),
+                    },
+                    data,
+                    ..Default::default()
+                }
+            }
+        }
+
+        let platform = Rc::new(VanillaPlatform::new());
+        let reference_element = platform.reference_element();
+        let floating_element = platform.floating_element();
+        let config = ComputePositionConfig {
+            platform: platform.clone(),
+            placement: Placement::Top,
+            strategy: Strategy::default(),
+            middlewares: Vec::new(),
+        };
+        let returned_data = compute_position(reference_element, floating_element, &config);
+        let config2 = ComputePositionConfig {
+            platform: platform.clone(),
+            placement: Placement::Top,
+            strategy: Strategy::default(),
+            middlewares: vec![Box::new(TestMiddleware::new())],
+        };
+        let returned_data2 = compute_position(reference_element, floating_element, &config2);
+        assert_eq!(returned_data2.coords.x, returned_data.coords.x + 1.0);
+        assert_eq!(returned_data2.coords.y, returned_data.coords.y + 1.0);
+    }
+}

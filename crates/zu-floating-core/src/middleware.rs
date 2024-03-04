@@ -13,6 +13,7 @@ use crate::types::{Coords, PartialCoords, Placement, Strategy};
 
 pub trait MiddlewareDataValue: fmt::Debug {}
 
+// TODO(Shaohua): Replace type of key to String.
 pub struct MiddlewareData(BTreeMap<&'static str, Box<dyn Any>>);
 
 impl Default for MiddlewareData {

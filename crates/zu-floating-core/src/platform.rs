@@ -14,6 +14,8 @@ pub trait Element: fmt::Debug + LengthTrait {
     fn as_any(&self) -> &dyn Any;
 }
 
+pub type ElementRef<'a> = &'a Rc<dyn Element>;
+
 #[derive(Debug, Default, Clone, Copy, PartialEq, Eq)]
 pub enum ElementContext {
     #[default]
