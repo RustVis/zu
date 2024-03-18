@@ -18,11 +18,11 @@ rust-version = "1.66.0"
 log = { version = "0.4.21", features = [] }
 stylist = { version = "0.13.0", default-features = false, features = ["parser", "random", "yew"] }
 yew = "0.21.0"
-yew-hooks = "0.3.0"
+yew-hooks = "0.3.1"
 zu-util = { path = "../zu-util", version = "0.3.3" }
 
 [dependencies.web-sys]
-version = "0.3.68"
+version = "0.3.69"
 features = [
     "HtmlInputElement",
 ]
