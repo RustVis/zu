@@ -15,19 +15,19 @@ publish = true
 rust-version = "1.66.0"
 
 [dependencies]
-log = { version = "0.4.21", features = [] }
+log = "0.4.22"
 stylist = { version = "0.13.0", default-features = false, features = ["parser", "random", "yew"] }
 yew = "0.21.0"
-yew-hooks = "0.3.1"
-zu-util = { path = "../zu-util", version = "0.3.3" }
+yew-hooks = "0.3.2"
+zu-util = { path = "../zu-util", version = "0.3.4" }
 
 [dependencies.web-sys]
-version = "0.3.69"
+version = "0.3.72"
 features = [
     "HtmlInputElement",
 ]
 
 [build-dependencies]
 inflections = "1.1.1"
-rsass = "0.28.8"
-zu-util = { path = "../zu-util", version = "0.3.3", features = ["icon"] }
+rsass = "0.28.10"
+zu-util = { path = "../zu-util", version = "0.3.4", features = ["icon"] }

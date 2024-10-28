@@ -31,6 +31,7 @@
     clippy::nursery,
     clippy::pedantic
 )]
+//#![allow(clippy::multiple_crate_versions)]
 
 #[cfg(feature = "icon")]
 pub mod icon;

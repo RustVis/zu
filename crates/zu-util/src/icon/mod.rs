@@ -26,12 +26,8 @@ pub fn need_update_with_name(name: &str) -> bool {
 /// Get inner html of an svg file, without `<svg>` root tag.
 #[must_use]
 pub fn get_svg_inner(s: &str) -> Option<&str> {
-    let Some(start_index) = s.find("<svg") else {
-        return None;
-    };
-    let Some(end_index) = s.find("</svg>") else {
-        return None;
-    };
+    let start_index= s.find("<svg")?;
+    let end_index = s.find("</svg>")?;
 
     let mut start_index_end = start_index;
     for (index, c) in s[start_index..].chars().enumerate() {
