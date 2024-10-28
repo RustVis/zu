@@ -12,7 +12,7 @@ categories = ["gui", "wasm", "web-programming"]
 edition = "2021"
 license = "LGPL-3.0"
 publish = true
-rust-version = "1.66.0"
+rust-version = "1.81.0"
 
 [dependencies]
 log = "0.4.22"

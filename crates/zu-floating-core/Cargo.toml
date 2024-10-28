@@ -11,7 +11,7 @@ keywords = ["popover", "tooltip", "dropdown", "layout", "wasm"]
 categories = ["gui", "wasm", "web-programming"]
 edition = "2021"
 license = "LGPL-3.0"
-rust-version = "1.66.0"
+rust-version = "1.81.0"
 publish = true
 
 [dependencies]
