@@ -9,6 +9,7 @@
     clippy::nursery,
     clippy::pedantic
 )]
+#![allow(clippy::multiple_crate_versions)]
 // For <Link> and <BrowserRouter>
 #![allow(clippy::let_underscore_untyped)]
 

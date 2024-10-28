@@ -36,7 +36,7 @@ where
     #[prop_or(false)]
     pub disabled: bool,
 
-    /// If `true`, only allow one of the child ToggleButton values to be selected.
+    /// If `true`, only allow one of the child `ToggleButton` values to be selected.
     #[prop_or(false)]
     pub exclusive: bool,
 

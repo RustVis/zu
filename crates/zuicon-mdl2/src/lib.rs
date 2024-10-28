@@ -7,6 +7,7 @@
     clippy::nursery,
     clippy::pedantic
 )]
+#![allow(clippy::multiple_crate_versions)]
 
 #[cfg(feature = "Accept")]
 mod accept;

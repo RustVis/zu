@@ -26,7 +26,7 @@ pub struct Props {
     #[prop_or(false)]
     pub disable_padding: bool,
 
-    /// The content of the subheader, normally ListSubheader.
+    /// The content of the subheader, normally `ListSubheader`.
     #[prop_or_default]
     pub subheader: Option<Html>,
 

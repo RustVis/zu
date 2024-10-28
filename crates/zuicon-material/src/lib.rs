@@ -43,6 +43,7 @@
 //!
 //! [icons-material]: https://github.com/mui/material-ui/tree/master/packages/mui-icons-material
 
+#![allow(clippy::multiple_crate_versions)]
 #![allow(unused_imports)]
 
 mod icons;

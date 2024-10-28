@@ -41,7 +41,7 @@ pub struct Props {
     #[prop_or(false)]
     pub filled: bool,
 
-    /// If true, the input of this label is focused (used by FormGroup components).
+    /// If true, the input of this label is focused (used by `FormGroup` components).
     #[prop_or(false)]
     pub focused: bool,
 

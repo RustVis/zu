@@ -7,6 +7,7 @@
     clippy::nursery,
     clippy::pedantic
 )]
+#![allow(clippy::multiple_crate_versions)]
 
 pub mod filled;
 pub mod outlined;

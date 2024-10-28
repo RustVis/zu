@@ -47,7 +47,7 @@ pub struct Props {
     #[prop_or_default]
     pub id: AttrValue,
 
-    /// If dense, will adjust vertical spacing. This is normally obtained via context from FormControl.
+    /// If dense, will adjust vertical spacing. This is normally obtained via context from `FormControl`.
     #[prop_or_default]
     pub margin: MarginType,
 

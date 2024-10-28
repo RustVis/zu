@@ -20,7 +20,7 @@ pub struct Props {
     #[prop_or_default]
     pub label: Option<Html>,
 
-    /// If true, the BottomNavigationAction will show its label.
+    /// If true, the `BottomNavigationAction` will show its label.
     #[prop_or(false)]
     pub show_label: bool,
 

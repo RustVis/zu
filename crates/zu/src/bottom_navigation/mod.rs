@@ -24,7 +24,7 @@ pub struct Props {
     #[prop_or_default]
     pub on_change: Option<Callback<(Event, i32), ()>>,
 
-    /// If true, all BottomNavigationActions will show their labels.
+    /// If true, all `BottomNavigationActions` will show their labels.
     #[prop_or(false)]
     pub show_labels: bool,
 

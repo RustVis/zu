@@ -41,7 +41,7 @@ pub struct Props {
     #[prop_or(false)]
     pub focused: bool,
 
-    /// If `true`, will adjust vertical spacing. This is normally obtained via context from FormControl.
+    /// If `true`, will adjust vertical spacing. This is normally obtained via context from `FormControl`.
     #[prop_or(true)]
     pub dense_margin: bool,
 

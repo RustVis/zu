@@ -43,7 +43,7 @@ pub struct Props {
     #[prop_or(false)]
     pub disabled: bool,
 
-    /// If `true`, GlobalStyles for the auto-fill keyframes will not be injected/removed on mount/unmount.
+    /// If `true`, `GlobalStyles` for the auto-fill keyframes will not be injected/removed on mount/unmount.
     #[prop_or(false)]
     pub disable_injecting_global_styles: bool,
 

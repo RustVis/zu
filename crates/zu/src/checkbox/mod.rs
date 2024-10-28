@@ -22,7 +22,7 @@ pub struct Props {
 
     /// The icon to display when the component is checked.
     ///
-    /// Default is CheckBox icon.
+    /// Default is `CheckBox` icon.
     #[prop_or_default]
     pub checked_icon: Option<Html>,
 
@@ -48,7 +48,7 @@ pub struct Props {
 
     /// The icon to display when the component is unchecked.
     ///
-    /// Default is CheckBoxOutlineBlank
+    /// Default is `CheckBoxOutlineBlank`
     #[prop_or_default]
     pub icon: Option<Html>,
 
@@ -60,7 +60,7 @@ pub struct Props {
     #[prop_or(false)]
     pub indeterminate: bool,
 
-    /// Default is IndeterminateCheckBox
+    /// Default is `IndeterminateCheckBox`
     #[prop_or_default]
     pub indeterminate_icon: Option<Html>,
 
