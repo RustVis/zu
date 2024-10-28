@@ -1,6 +1,6 @@
-// Copyright (c) 2023 Xu Shaohua <shaohua@biofan.org>. All rights reserved.
-// Use of this source is governed by Lesser General Public License that can be
-// found in the LICENSE file.
+// Copyright (c) 2024 Xu Shaohua <shaohua@biofan.org>. All rights reserved.
+// Use of this source is governed by Lesser General Public License
+// that can be found in the LICENSE file.
 
 use stylist::Style;
 use yew::{classes, function_component, html, html_nested, ChildrenWithProps, Classes, Html};

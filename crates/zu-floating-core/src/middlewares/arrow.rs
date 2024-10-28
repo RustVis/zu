@@ -1,6 +1,6 @@
-// Copyright (c) 2023 Xu Shaohua <shaohua@biofan.org>. All rights reserved.
-// Use of this source is governed by Lesser General Public License that can be found
-// in the LICENSE file.
+// Copyright (c) 2024 Xu Shaohua <shaohua@biofan.org>. All rights reserved.
+// Use of this source is governed by Lesser General Public License
+// that can be found in the LICENSE file.
 
 //! Provides positioning data for an arrow element (triangle or caret) inside the floating element,
 //! such that it appears to be pointing toward the center of the reference element.
