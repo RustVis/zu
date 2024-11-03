@@ -5,9 +5,10 @@
 use inflections::Inflect;
 use std::error::Error;
 use std::ffi::OsStr;
-use std::fs::{self, File, OpenOptions};
+use std::fs::{self, File};
 use std::io::{self, Write};
 use std::path::PathBuf;
+use std::process::Command;
 use zu_util::icon::{get_svg_inner, need_update_with_name, TEMPLATE_FILE};
 
 const SVG_DIR: &str = "fluentui/packages/react-icons-mdl2/src/components";
@@ -81,9 +82,7 @@ fn rebuild_icons() -> Result<(), Box<dyn Error>> {
     lib_file.write_all(LIB_HEADER.as_bytes())?;
     for (module_name, node_name) in &module_names {
         let line = format!(
-            r#"#[cfg(feature = "{node_name}")]
-mod {module_name};
-#[cfg(feature = "{node_name}")]
+            r#"mod {module_name};
 pub use {module_name}::{node_name};
 
 "#
@@ -92,20 +91,30 @@ pub use {module_name}::{node_name};
     }
     drop(lib_file);
 
-    let mut cargo_file = OpenOptions::new().append(true).open("Cargo.toml")?;
-    for (_module_name, node_name) in module_names.iter() {
-        let line = format!("{node_name} = []\n");
-        cargo_file.write_all(line.as_bytes())?;
-    }
-    drop(cargo_file);
-
     Ok(())
+}
+
+fn fetch_and_update_repo() {
+    if fs::exists("icons").unwrap_or_default() {
+        Command::new("git")
+            .arg("pull")
+            .current_dir("icons")
+            .output()
+            .expect("Failed to update fluentui repo");
+    } else {
+        Command::new("git")
+            .arg("clone")
+            .arg("https://github.com/microsoft/fluentui")
+            .output()
+            .expect("Failed to clone fluentui repo");
+    }
 }
 
 fn main() {
     // Check ZU_ICON_UPDATE=mdl2 environment.
     if need_update_with_name("mdl2") {
         // Fetch fluentui repo first: `git clone https://github.com/microsoft/fluentui`
+        fetch_and_update_repo();
         rebuild_icons().unwrap();
     }
 }
