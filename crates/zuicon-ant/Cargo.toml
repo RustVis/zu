@@ -1,13 +1,13 @@
 [package]
 name = "zuicon-ant"
-version = "0.2.1"
+version = "0.3.1"
 authors = ["Xu Shaohua <shaohua@biofan.org>"]
 readme = "README.md"
 homepage = "https://github.com/RustVis/zu"
 repository = "https://github.com/RustVis/zu"
 documentation = "https://docs.rs/zuicon-ant"
 description = "Wrapper of ant design icons for yew framework"
-keywords = ["web", "webasm", "icons", "ant design"]
+keywords = ["web", "webasm", "icons", "ant-design"]
 categories = ["gui", "wasm", "web-programming"]
 build = "build.rs"
 edition = "2021"
