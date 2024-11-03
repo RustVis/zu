@@ -8,6 +8,7 @@ use std::ffi::OsStr;
 use std::fs::{self, File, OpenOptions};
 use std::io::{self, Write};
 use std::path::PathBuf;
+use std::process::Command;
 use zu_util::icon::{get_svg_inner, need_update_with_name, TEMPLATE_FILE};
 
 const SVG_DIR: &str = "icons/icons";
@@ -20,6 +21,7 @@ const LIB_HEADER: &str = r"// Auto Generated! DO NOT EDIT!
     clippy::nursery,
     clippy::pedantic
 )]
+#![allow(clippy::multiple_crate_versions)]
 
 ";
 
@@ -148,10 +150,27 @@ pub use {module_name}::{node_name};
     Ok(())
 }
 
+fn fetch_and_update_repo() {
+    if fs::exists("icons").unwrap_or_default() {
+        Command::new("git")
+            .arg("pull")
+            .current_dir("icons")
+            .output()
+            .expect("Failed to update twbs icons repo");
+    } else {
+        Command::new("git")
+            .arg("clone")
+            .arg("https://github.com/twbs/icons")
+            .output()
+            .expect("Failed to clone twbs icons repo");
+    }
+}
+
 fn main() {
     // Check ZU_ICON_UPDATE=bs environment.
     if need_update_with_name("bs") {
         // Fetch icons repo first: `git clone https://github.com/twbs/icons`
+        fetch_and_update_repo();
         rebuild_icons().unwrap();
     }
 }
