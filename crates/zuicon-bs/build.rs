@@ -5,7 +5,7 @@
 use inflections::Inflect;
 use std::error::Error;
 use std::ffi::OsStr;
-use std::fs::{self, File, OpenOptions};
+use std::fs::{self, File};
 use std::io::{self, Write};
 use std::path::PathBuf;
 use std::process::Command;
@@ -129,23 +129,13 @@ fn rebuild_icons() -> Result<(), Box<dyn Error>> {
     lib_file.write_all(LIB_HEADER.as_bytes())?;
     for (module_name, node_name) in &module_names {
         let line = format!(
-            r#"#[cfg(feature = "{node_name}")]
-mod {module_name};
-#[cfg(feature = "{node_name}")]
+            r#" mod {module_name};
 pub use {module_name}::{node_name};
 
 "#
         );
         lib_file.write_all(line.as_bytes())?;
     }
-    drop(lib_file);
-
-    let mut cargo_file = OpenOptions::new().append(true).open("Cargo.toml")?;
-    for (_module_name, node_name) in module_names.iter() {
-        let line = format!("{node_name} = []\n");
-        cargo_file.write_all(line.as_bytes())?;
-    }
-    drop(cargo_file);
 
     Ok(())
 }
