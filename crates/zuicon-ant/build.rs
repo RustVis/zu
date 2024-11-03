@@ -5,9 +5,10 @@
 use inflections::Inflect;
 use std::error::Error;
 use std::ffi::OsStr;
-use std::fs::{self, File, OpenOptions};
+use std::fs::{self, File};
 use std::io::{self, Write};
 use std::path::PathBuf;
+use std::process::Command;
 use zu_util::icon::{get_svg_inner, need_update_with_name, TEMPLATE_FILE};
 
 const SVG_DIR: &str = "icons/packages/icons-svg/svg";
@@ -71,9 +72,7 @@ fn build_icons(folder: &str) -> Result<Vec<(String, String)>, io::Error> {
     module_file.write_all(LIB_HEADER.as_bytes())?;
     for (module_name, node_name) in &module_names {
         let line = format!(
-            r#"#[cfg(feature = "{node_name}")]
-mod {module_name};
-#[cfg(feature = "{node_name}")]
+            r#"mod {module_name};
 pub use {module_name}::{node_name};
 
 "#
@@ -93,20 +92,31 @@ fn rebuild_icons() -> Result<(), Box<dyn Error>> {
     module_names.sort();
     module_names.dedup();
 
-    let mut cargo_file = OpenOptions::new().append(true).open("Cargo.toml")?;
-    for (_module_name, node_name) in module_names.iter() {
-        let line = format!("{node_name} = []\n");
-        cargo_file.write_all(line.as_bytes())?;
-    }
-    drop(cargo_file);
-
     Ok(())
+}
+
+fn fetch_and_update_repo() {
+    if fs::exists("icons").unwrap_or_default() {
+        Command::new("git")
+            .arg("pull")
+            .current_dir("icons")
+            .output()
+            .expect("Failed to update ant-design-icons repo");
+    } else {
+        Command::new("git")
+            .arg("clone")
+            .arg("https://github.com/ant-design/ant-design-icons")
+            .arg("icons")
+            .output()
+            .expect("Failed to clone ant-design-icons repo");
+    }
 }
 
 fn main() {
     // Check ZU_ICON_UPDATE=ant environment.
     if need_update_with_name("ant") {
         // Fetch icons repo first: `git clone https://github.com/ant-design/ant-design-icons icons`
+        fetch_and_update_repo();
         rebuild_icons().unwrap();
     }
 }
