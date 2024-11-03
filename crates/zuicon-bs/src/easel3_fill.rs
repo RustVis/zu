@@ -1,3 +1,7 @@
+// Copyright (c) 2024 Xu Shaohua <shaohua@biofan.org>. All rights reserved.
+// Use of this source is governed by Lesser General Public License
+// that can be found in the LICENSE file.
+
 // Auto Generated! DO NOT EDIT!
 
 use yew::prelude::{html, Component, Context, Html, Properties};
@@ -55,7 +59,7 @@ impl Component for Easel3Fill {
                 fill={ props.fill.unwrap_or("currentColor") }
                 style={ style }
             >
-            <path d="M8.5 12v1.134a1 1 0 1 1-1 0V12h-5A1.5 1.5 0 0 1 1 10.5V3h14v7.5a1.5 1.5 0 0 1-1.5 1.5h-5Zm7-10a.5.5 0 0 0 0-1H.5a.5.5 0 0 0 0 1h15Z"/>
+            <path d="M8.5 12v1.134a1 1 0 1 1-1 0V12h-5A1.5 1.5 0 0 1 1 10.5V3h14v7.5a1.5 1.5 0 0 1-1.5 1.5zm7-10a.5.5 0 0 0 0-1H.5a.5.5 0 0 0 0 1z"/>
             </svg>
         }
     }

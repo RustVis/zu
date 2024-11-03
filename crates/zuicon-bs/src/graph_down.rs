@@ -1,3 +1,7 @@
+// Copyright (c) 2024 Xu Shaohua <shaohua@biofan.org>. All rights reserved.
+// Use of this source is governed by Lesser General Public License
+// that can be found in the LICENSE file.
+
 // Auto Generated! DO NOT EDIT!
 
 use yew::prelude::{html, Component, Context, Html, Properties};
@@ -55,7 +59,7 @@ impl Component for GraphDown {
                 fill={ props.fill.unwrap_or("currentColor") }
                 style={ style }
             >
-            <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm14.817 11.887a.5.5 0 0 0 .07-.704l-4.5-5.5a.5.5 0 0 0-.74-.037L7.06 8.233 3.404 3.206a.5.5 0 0 0-.808.588l4 5.5a.5.5 0 0 0 .758.06l2.609-2.61 4.15 5.073a.5.5 0 0 0 .704.07Z"/>
+            <path fill-rule="evenodd" d="M0 0h1v15h15v1H0zm14.817 11.887a.5.5 0 0 0 .07-.704l-4.5-5.5a.5.5 0 0 0-.74-.037L7.06 8.233 3.404 3.206a.5.5 0 0 0-.808.588l4 5.5a.5.5 0 0 0 .758.06l2.609-2.61 4.15 5.073a.5.5 0 0 0 .704.07"/>
             </svg>
         }
     }

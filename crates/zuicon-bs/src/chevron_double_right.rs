@@ -1,3 +1,7 @@
+// Copyright (c) 2024 Xu Shaohua <shaohua@biofan.org>. All rights reserved.
+// Use of this source is governed by Lesser General Public License
+// that can be found in the LICENSE file.
+
 // Auto Generated! DO NOT EDIT!
 
 use yew::prelude::{html, Component, Context, Html, Properties};
@@ -55,8 +59,8 @@ impl Component for ChevronDoubleRight {
                 fill={ props.fill.unwrap_or("currentColor") }
                 style={ style }
             >
-            <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-  <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
+            <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708"/>
+  <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708"/>
             </svg>
         }
     }

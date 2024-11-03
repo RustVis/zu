@@ -1,3 +1,7 @@
+// Copyright (c) 2024 Xu Shaohua <shaohua@biofan.org>. All rights reserved.
+// Use of this source is governed by Lesser General Public License
+// that can be found in the LICENSE file.
+
 // Auto Generated! DO NOT EDIT!
 
 use yew::prelude::{html, Component, Context, Html, Properties};
@@ -55,7 +59,7 @@ impl Component for FastForwardCircleFill {
                 fill={ props.fill.unwrap_or("currentColor") }
                 style={ style }
             >
-            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16ZM4.79 5.093 8 7.386V5.5a.5.5 0 0 1 .79-.407l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 8 10.5V8.614l-3.21 2.293A.5.5 0 0 1 4 10.5v-5a.5.5 0 0 1 .79-.407Z"/>
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16M4.79 5.093 8 7.386V5.5a.5.5 0 0 1 .79-.407l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 8 10.5V8.614l-3.21 2.293A.5.5 0 0 1 4 10.5v-5a.5.5 0 0 1 .79-.407"/>
             </svg>
         }
     }

@@ -1,3 +1,7 @@
+// Copyright (c) 2024 Xu Shaohua <shaohua@biofan.org>. All rights reserved.
+// Use of this source is governed by Lesser General Public License
+// that can be found in the LICENSE file.
+
 // Auto Generated! DO NOT EDIT!
 
 use yew::prelude::{html, Component, Context, Html, Properties};
@@ -55,7 +59,7 @@ impl Component for DisplayFill {
                 fill={ props.fill.unwrap_or("currentColor") }
                 style={ style }
             >
-            <path d="M6 12c0 .667-.083 1.167-.25 1.5H5a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-.75c-.167-.333-.25-.833-.25-1.5h4c2 0 2-2 2-2V4c0-2-2-2-2-2H2C0 2 0 4 0 4v6c0 2 2 2 2 2h4z"/>
+            <path d="M6 12q0 1-.25 1.5H5a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-.75Q10 13 10 12h4c2 0 2-2 2-2V4c0-2-2-2-2-2H2C0 2 0 4 0 4v6c0 2 2 2 2 2z"/>
             </svg>
         }
     }
