@@ -22,18 +22,14 @@ Material icons are placed in different themes:
 ## How to use
 First add this to `Cargo.toml`:
 ```toml
-[dependencies.zuicon-material]
-version = "0.2"
-features = [
-  "Home",
-  "Email",
-]
+[dependencies]
+zuicon-material = "0.3"
 ```
 
-`Home` and `Email` are available.
-
 Then import specific icons in yew components:
-`use zuicon_material::{email::Email, home::Home};`
+```rust
+use zuicon_material::{email::Email, home::Home};
+```
 
 
 ## Related projects
