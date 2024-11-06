@@ -1,6 +1,6 @@
 [package]
 name = "zu-util"
-version = "0.3.4"
+version = "0.3.5"
 authors = ["Xu Shaohua <shaohua@biofan.org>"]
 readme = "README.md"
 homepage = "https://github.com/RustVis/zu/crates/zu-util"
@@ -12,6 +12,7 @@ categories = ["gui", "wasm", "web-programming"]
 edition = "2021"
 license = "LGPL-3.0"
 publish = true
+rust-version = "1.82.0"
 
 [features]
 default = []
