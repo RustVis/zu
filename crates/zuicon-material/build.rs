@@ -119,9 +119,13 @@ fn download_icons(index: &IconsIndex) -> Result<i32, Box<dyn Error>> {
             let version = &icon.version;
             let url = format!("https://fonts.gstatic.com/s/i/materialicons{formatted_theme}/{name}/v{version}/24px.svg");
             println!("Downloading icon {url}");
-            let resp = reqwest::blocking::get(url)?.text()?;
             let file_map = theme_file_map.get(theme).unwrap();
             let output_file = format!("{SVG_DIR}/{name}{file_map}_24px.svg");
+            if fs::exists(&output_file).unwrap() {
+                count += 1;
+                continue;
+            }
+            let resp = reqwest::blocking::get(url)?.text()?;
             fs::write(output_file, resp)?;
             count += 1;
         }
@@ -263,9 +267,7 @@ fn generate_components(icons_dir: &str) -> Result<(), Box<dyn Error>> {
         .open(format!("src/{icons_dir}.rs"))?;
     for (module_name, node_name) in module_names.iter() {
         let line = format!(
-            r#"#[cfg(feature = "{node_name}")]
-mod {module_name};
-#[cfg(feature = "{node_name}")]
+            r#"mod {module_name};
 pub use {module_name}::{node_name};
 
 "#
@@ -273,13 +275,6 @@ pub use {module_name}::{node_name};
         icons_file.write_all(line.as_bytes())?;
     }
     drop(icons_file);
-
-    let mut cargo_file = OpenOptions::new().append(true).open("Cargo.toml")?;
-    for (_module_name, node_name) in module_names.iter() {
-        let line = format!("{node_name} = []\n");
-        cargo_file.write_all(line.as_bytes())?;
-    }
-    drop(cargo_file);
 
     Ok(())
 }
