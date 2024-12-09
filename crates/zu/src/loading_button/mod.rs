@@ -123,7 +123,7 @@ pub struct Props {
 }
 
 fn create_indicator(
-    indicator: &Option<Html>,
+    indicator: Option<&Html>,
     position: Position,
     button_size: Size,
     button_variant: ButtonVariant,

@@ -142,7 +142,7 @@ pub struct Props {
 
 fn create_icon(
     is_start: bool,
-    icon: &Option<Html>,
+    icon: Option<&Html>,
     button_size: Size,
     custom_classes: Classes,
 ) -> Html {

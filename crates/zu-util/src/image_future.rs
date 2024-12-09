@@ -58,7 +58,7 @@ impl Future for ImageFuture {
     fn poll(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
         match &self.image {
             Some(image) => {
-                return if image.complete() {
+                if image.complete() {
                     let image = self.image.take().unwrap();
                     let failed = *self.load_failed.borrow();
 
@@ -86,7 +86,7 @@ impl Future for ImageFuture {
                     on_error_closure.forget();
 
                     Poll::Pending
-                };
+                }
             }
             _ => Poll::Ready(Err(())),
         }

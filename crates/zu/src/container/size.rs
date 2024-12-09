@@ -5,7 +5,7 @@
 use crate::styles::size::MaxWidth;
 
 #[must_use]
-pub const fn css_class(size: &Option<MaxWidth>) -> &'static str {
+pub const fn css_class(size: Option<&MaxWidth>) -> &'static str {
     match size {
         Some(MaxWidth::XSmall) => "ZuContainer-maxWidthXs",
         Some(MaxWidth::Small) => "ZuContainer-maxWidthSm",
