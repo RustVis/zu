@@ -155,7 +155,7 @@ fn create_icon(
         size::icon_class(button_size),
         custom_classes,
     );
-    icon.as_ref().map_or_else(
+    icon.map_or_else(
         || html! {},
         |icon| {
             html! {
@@ -220,9 +220,9 @@ pub fn button(props: &Props) -> Html {
             on_touch_end={&props.on_touch_end}
             on_touch_move={&props.on_touch_move}
             on_touch_start={&props.on_touch_start}>
-            {create_icon(true, &props.start_icon, props.size, props.start_icon_classes.clone())}
+            {create_icon(true, props.start_icon.as_ref(), props.size, props.start_icon_classes.clone())}
             {for props.children.iter()}
-            {create_icon(false, &props.end_icon, props.size, props.end_icon_classes.clone())}
+            {create_icon(false, props.end_icon.as_ref(), props.size, props.end_icon_classes.clone())}
         </ButtonBase>
     }
 }

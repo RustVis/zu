@@ -187,7 +187,7 @@ pub fn loading_button(props: &Props) -> Html {
 
     let indicator = if props.loading {
         create_indicator(
-            &props.loading_indicator,
+            props.loading_indicator.as_ref(),
             props.loading_position,
             props.size,
             props.variant,

@@ -43,7 +43,7 @@ pub struct Props {
 pub fn container(props: &Props) -> Html {
     let root_cls = classes!(
         "ZuContainer-root",
-        size::css_class(&props.max_width),
+        size::css_class(props.max_width.as_ref()),
         if props.disable_gutters {
             "ZuContainer-disableGutters"
         } else {
