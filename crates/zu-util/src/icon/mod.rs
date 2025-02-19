@@ -12,7 +12,7 @@ pub const TEMPLATE_FILE: &str = include_str!("template.rs");
 /// Current `ZU_ICON_UPDATE=1` environment is used.
 #[must_use]
 pub fn need_update() -> bool {
-    std::env::var_os(UPDATE_KEY).map_or(false, |val| !val.is_empty())
+    std::env::var_os(UPDATE_KEY).is_some_and(|val| !val.is_empty())
 }
 
 /// Check whether icon modules shall be refreshed.
@@ -20,13 +20,13 @@ pub fn need_update() -> bool {
 /// Current `ZU_ICON_UPDATE="name"` environment is used.
 #[must_use]
 pub fn need_update_with_name(name: &str) -> bool {
-    std::env::var_os(UPDATE_KEY).map_or(false, |val| val == name)
+    std::env::var_os(UPDATE_KEY).is_some_and(|val| val == name)
 }
 
 /// Get inner html of an svg file, without `<svg>` root tag.
 #[must_use]
 pub fn get_svg_inner(s: &str) -> Option<&str> {
-    let start_index= s.find("<svg")?;
+    let start_index = s.find("<svg")?;
     let end_index = s.find("</svg>")?;
 
     let mut start_index_end = start_index;

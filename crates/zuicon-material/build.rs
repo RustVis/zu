@@ -280,7 +280,7 @@ pub use {module_name}::{node_name};
 }
 
 fn run() -> Result<(), Box<dyn Error>> {
-    if std::env::var_os("MATERIAL_DOWNLOAD").map_or(false, |val| !val.is_empty()) {
+    if std::env::var_os("MATERIAL_DOWNLOAD").is_some_and(|val| !val.is_empty()) {
         // 1. Download icon index
         let icons_index = download_index()?;
 
