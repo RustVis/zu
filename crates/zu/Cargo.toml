@@ -15,14 +15,14 @@ publish = true
 rust-version = "1.82.0"
 
 [dependencies]
-log = "0.4.22"
+log = "0.4.25"
 stylist = { version = "0.13.0", default-features = false, features = ["parser", "random", "yew"] }
 yew = "0.21.0"
 yew-hooks = "0.3.3"
 zu-util = { path = "../zu-util", version = "0.3.5" }
 
 [dependencies.web-sys]
-version = "0.3.76"
+version = "0.3.77"
 features = [
     "HtmlInputElement",
 ]
