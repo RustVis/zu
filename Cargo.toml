@@ -1,25 +1,13 @@
 [workspace]
-resolver = "2"
+resolver = "3"
 
 members = [
     "crates/zu",
     "crates/zu-docs",
     "crates/zu-util",
-    "crates/zuicon-ant",
-    "crates/zuicon-bs",
-    "crates/zuicon-material",
-    "crates/zuicon-mdl2",
 ]
 
 exclude = [
     "tools",
 ]
 
-[profile.release]
-lto = true
-
-[profile.release.package.zu-docs]
-codegen-units = 1
-# Optimize for binary size
-opt-level = "z"
-#panic = "abort"
